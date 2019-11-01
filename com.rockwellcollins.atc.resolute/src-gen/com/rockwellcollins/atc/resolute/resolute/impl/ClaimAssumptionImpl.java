@@ -2,9 +2,8 @@
  */
 package com.rockwellcollins.atc.resolute.resolute.impl;
 
-import com.rockwellcollins.atc.resolute.resolute.Expr;
+import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
-import com.rockwellcollins.atc.resolute.resolute.UnaryExpr;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -13,59 +12,62 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.osate.aadl2.StringLiteral;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Unary Expr</b></em>'.
+ * An implementation of the model object '<em><b>Claim Assumption</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.UnaryExprImpl#getOp <em>Op</em>}</li>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.UnaryExprImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimAssumptionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimAssumptionImpl#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class UnaryExprImpl extends ExprImpl implements UnaryExpr
+public class ClaimAssumptionImpl extends MinimalEObjectImpl.Container implements ClaimAssumption
 {
   /**
-   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOp()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String OP_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOp()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String op = OP_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
+   * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExpr()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected Expr expr;
+  protected StringLiteral val;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected UnaryExprImpl()
+  protected ClaimAssumptionImpl()
   {
     super();
   }
@@ -78,7 +80,7 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
   @Override
   protected EClass eStaticClass()
   {
-    return ResolutePackage.Literals.UNARY_EXPR;
+    return ResolutePackage.Literals.CLAIM_ASSUMPTION;
   }
 
   /**
@@ -87,9 +89,9 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
    * @generated
    */
   @Override
-  public String getOp()
+  public String getName()
   {
-    return op;
+    return name;
   }
 
   /**
@@ -98,12 +100,12 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
    * @generated
    */
   @Override
-  public void setOp(String newOp)
+  public void setName(String newName)
   {
-    String oldOp = op;
-    op = newOp;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.UNARY_EXPR__OP, oldOp, op));
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_ASSUMPTION__NAME, oldName, name));
   }
 
   /**
@@ -112,9 +114,9 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
    * @generated
    */
   @Override
-  public Expr getExpr()
+  public StringLiteral getVal()
   {
-    return expr;
+    return val;
   }
 
   /**
@@ -122,13 +124,13 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpr(Expr newExpr, NotificationChain msgs)
+  public NotificationChain basicSetVal(StringLiteral newVal, NotificationChain msgs)
   {
-    Expr oldExpr = expr;
-    expr = newExpr;
+    StringLiteral oldVal = val;
+    val = newVal;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutePackage.UNARY_EXPR__EXPR, oldExpr, newExpr);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_ASSUMPTION__VAL, oldVal, newVal);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -140,20 +142,20 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
    * @generated
    */
   @Override
-  public void setExpr(Expr newExpr)
+  public void setVal(StringLiteral newVal)
   {
-    if (newExpr != expr)
+    if (newVal != val)
     {
       NotificationChain msgs = null;
-      if (expr != null)
-        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.UNARY_EXPR__EXPR, null, msgs);
-      if (newExpr != null)
-        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.UNARY_EXPR__EXPR, null, msgs);
-      msgs = basicSetExpr(newExpr, msgs);
+      if (val != null)
+        msgs = ((InternalEObject)val).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_ASSUMPTION__VAL, null, msgs);
+      if (newVal != null)
+        msgs = ((InternalEObject)newVal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_ASSUMPTION__VAL, null, msgs);
+      msgs = basicSetVal(newVal, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.UNARY_EXPR__EXPR, newExpr, newExpr));
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_ASSUMPTION__VAL, newVal, newVal));
   }
 
   /**
@@ -166,8 +168,8 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
   {
     switch (featureID)
     {
-      case ResolutePackage.UNARY_EXPR__EXPR:
-        return basicSetExpr(null, msgs);
+      case ResolutePackage.CLAIM_ASSUMPTION__VAL:
+        return basicSetVal(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -182,10 +184,10 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
   {
     switch (featureID)
     {
-      case ResolutePackage.UNARY_EXPR__OP:
-        return getOp();
-      case ResolutePackage.UNARY_EXPR__EXPR:
-        return getExpr();
+      case ResolutePackage.CLAIM_ASSUMPTION__NAME:
+        return getName();
+      case ResolutePackage.CLAIM_ASSUMPTION__VAL:
+        return getVal();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -200,11 +202,11 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
   {
     switch (featureID)
     {
-      case ResolutePackage.UNARY_EXPR__OP:
-        setOp((String)newValue);
+      case ResolutePackage.CLAIM_ASSUMPTION__NAME:
+        setName((String)newValue);
         return;
-      case ResolutePackage.UNARY_EXPR__EXPR:
-        setExpr((Expr)newValue);
+      case ResolutePackage.CLAIM_ASSUMPTION__VAL:
+        setVal((StringLiteral)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -220,11 +222,11 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
   {
     switch (featureID)
     {
-      case ResolutePackage.UNARY_EXPR__OP:
-        setOp(OP_EDEFAULT);
+      case ResolutePackage.CLAIM_ASSUMPTION__NAME:
+        setName(NAME_EDEFAULT);
         return;
-      case ResolutePackage.UNARY_EXPR__EXPR:
-        setExpr((Expr)null);
+      case ResolutePackage.CLAIM_ASSUMPTION__VAL:
+        setVal((StringLiteral)null);
         return;
     }
     super.eUnset(featureID);
@@ -240,10 +242,10 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
   {
     switch (featureID)
     {
-      case ResolutePackage.UNARY_EXPR__OP:
-        return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
-      case ResolutePackage.UNARY_EXPR__EXPR:
-        return expr != null;
+      case ResolutePackage.CLAIM_ASSUMPTION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ResolutePackage.CLAIM_ASSUMPTION__VAL:
+        return val != null;
     }
     return super.eIsSet(featureID);
   }
@@ -259,10 +261,10 @@ public class UnaryExprImpl extends ExprImpl implements UnaryExpr
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (op: ");
-    result.append(op);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }
 
-} //UnaryExprImpl
+} //ClaimAssumptionImpl
