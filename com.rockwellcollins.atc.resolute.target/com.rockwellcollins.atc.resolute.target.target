@@ -62,8 +62,8 @@
       <repository location="https://osate-build.sei.cmu.edu/download/osate/stable/2.5.0/updates/"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
-      <unit id="com.rockwellcollins.atc.agree.feature.feature.group" version="0.0.0"/>
-      <repository location="file:../agree/repository/target/repository//"/>
+      <unit id="com.rockwellcollins.atc.agree.feature.feature.group" version="2.4.0"/>
+      <repository location="https://raw.githubusercontent.com/loonwerks/AGREE-Updates/master/"/>
     </location>
   </locations>
 </target>
