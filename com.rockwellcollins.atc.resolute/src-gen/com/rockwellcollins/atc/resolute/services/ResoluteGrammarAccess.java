@@ -390,8 +390,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//('int' | 'real' | 'string' | 'bool' | 'range' | 'aadl' | 'component' | 'abstract' | 'bus' | 'data' | 'device' | 'memory'
 		//| 'processor' | 'process' | 'subprogram_group' | 'subprogram' | 'system' | 'thread_group' | 'thread' | 'virtual_bus' |
-		//'virtual_processor' | 'connection' | 'property' | 'feature' | 'port' | 'data_port' | 'event_port' | 'event_data_port'
-		//| 'feature_group' | 'access' | 'bus_access' | 'provides_bus_access' | 'requires_bus_access' | 'data_access' |
+		//'virtual_processor' | 'connection' | 'property' | 'feature' | 'port' | 'data_port' | 'event_port' | 'event_data_port' |
+		//'feature_group' | 'access' | 'bus_access' | 'provides_bus_access' | 'requires_bus_access' | 'data_access' |
 		//'provides_data_access' | 'requires_data_access' | 'subprogram_access' | 'provides_subprogram_access' |
 		//'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
 		//'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow')
@@ -559,7 +559,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//=> (name=ID ':' type=Type)
 		public Group getGroup_0() { return cGroup_0; }
 
-		//name=ID ':' type=Type
+		//(name=ID ':' type=Type)
 		public Group getGroup_0_0() { return cGroup_0_0; }
 
 		//name=ID
@@ -779,7 +779,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'<='
 		public Keyword getLessThanSignEqualsSignKeyword_1_1() { return cLessThanSignEqualsSignKeyword_1_1; }
 
-		//'**' claim+=ClaimText+ '**'
+		//('**' claim+=ClaimText+ '**')
 		public Group getGroup_1_2() { return cGroup_1_2; }
 
 		//'**'
@@ -1061,7 +1061,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//=> ({BinaryExpr.left=current} op='=>')
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//{BinaryExpr.left=current} op='=>'
+		//({BinaryExpr.left=current} op='=>')
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 
 		//{BinaryExpr.left=current}
@@ -1112,13 +1112,13 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//=> ({BinaryExpr.left=current} (op='or' | op='orelse'))
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//{BinaryExpr.left=current} (op='or' | op='orelse')
+		//({BinaryExpr.left=current} (op='or' | op='orelse'))
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 
 		//{BinaryExpr.left=current}
 		public Action getBinaryExprLeftAction_1_0_0_0() { return cBinaryExprLeftAction_1_0_0_0; }
 
-		//op='or' | op='orelse'
+		//(op='or' | op='orelse')
 		public Alternatives getAlternatives_1_0_0_1() { return cAlternatives_1_0_0_1; }
 
 		//op='or'
@@ -1172,13 +1172,13 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//=> ({BinaryExpr.left=current} (op='and' | op='andthen'))
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//{BinaryExpr.left=current} (op='and' | op='andthen')
+		//({BinaryExpr.left=current} (op='and' | op='andthen'))
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 
 		//{BinaryExpr.left=current}
 		public Action getBinaryExprLeftAction_1_0_0_0() { return cBinaryExprLeftAction_1_0_0_0; }
 
-		//op='and' | op='andthen'
+		//(op='and' | op='andthen')
 		public Alternatives getAlternatives_1_0_0_1() { return cAlternatives_1_0_0_1; }
 
 		//op='and'
@@ -1228,7 +1228,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//=> ({InstanceOfExpr.expr=current} 'instanceof')
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//{InstanceOfExpr.expr=current} 'instanceof'
+		//({InstanceOfExpr.expr=current} 'instanceof')
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 
 		//{InstanceOfExpr.expr=current}
@@ -1309,7 +1309,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//=> ({BinaryExpr.left=current} op=RelationalOp)
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//{BinaryExpr.left=current} op=RelationalOp
+		//({BinaryExpr.left=current} op=RelationalOp)
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 
 		//{BinaryExpr.left=current}
@@ -1359,7 +1359,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//=> ({BinaryExpr.left=current} op=('+' | '-'))
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//{BinaryExpr.left=current} op=('+' | '-')
+		//({BinaryExpr.left=current} op=('+' | '-'))
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 
 		//{BinaryExpr.left=current}
@@ -1416,7 +1416,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//=> ({BinaryExpr.left=current} op=('*' | '/' | '%'))
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//{BinaryExpr.left=current} op=('*' | '/' | '%')
+		//({BinaryExpr.left=current} op=('*' | '/' | '%'))
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 
 		//{BinaryExpr.left=current}
@@ -1473,7 +1473,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//=> ({BinaryExpr.left=current} op='^')
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//{BinaryExpr.left=current} op='^'
+		//({BinaryExpr.left=current} op='^')
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 
 		//{BinaryExpr.left=current}
@@ -1835,7 +1835,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'fail'
 		public Keyword getFailKeyword_2_1() { return cFailKeyword_2_1; }
 
-		//val=Expr | '**' failmsg+=ClaimText+ '**'
+		//(val=Expr | '**' failmsg+=ClaimText+ '**')
 		public Alternatives getAlternatives_2_2() { return cAlternatives_2_2; }
 
 		//val=Expr
@@ -1985,7 +1985,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//=> ({LibraryFnCallExpr} libName=ID '.' fnName=ID '(' (args+=Expr (',' args+=Expr)*)? ')')
 		public Group getGroup_9() { return cGroup_9; }
 
-		//{LibraryFnCallExpr} libName=ID '.' fnName=ID '(' (args+=Expr (',' args+=Expr)*)? ')'
+		//({LibraryFnCallExpr} libName=ID '.' fnName=ID '(' (args+=Expr (',' args+=Expr)*)? ')')
 		public Group getGroup_9_0() { return cGroup_9_0; }
 
 		//{LibraryFnCallExpr}
@@ -2136,8 +2136,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//Expr
 		public RuleCall getExprParserRuleCall_13_1() { return cExprParserRuleCall_13_1; }
 
-		//{ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {ListExpr.exprs+=current} (','
-		//exprs+=Expr)*
+		//({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {ListExpr.exprs+=current} (','
+		//exprs+=Expr)*)
 		public Alternatives getAlternatives_13_2() { return cAlternatives_13_2; }
 
 		//{ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)?
@@ -2207,8 +2207,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//Expr
 		public RuleCall getExprParserRuleCall_14_1() { return cExprParserRuleCall_14_1; }
 
-		//{SetFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {SetExpr.exprs+=current} (','
-		//exprs+=Expr)*
+		//({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {SetExpr.exprs+=current} (','
+		//exprs+=Expr)*)
 		public Alternatives getAlternatives_14_2() { return cAlternatives_14_2; }
 
 		//{SetFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)?
