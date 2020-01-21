@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: AgreeLib
 Bundle-SymbolicName: com.rockwellcollins.atc.resolute.agreelib;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.4.0.qualifier
 Bundle-Activator: com.rockwellcollins.atc.resolute.agreelib.Activator
-Bundle-Vendor: ROCKWELLCOLLINS
+Bundle-Vendor: Collins Aerospace, Inc.
 Require-Bundle: org.eclipse.ui,
  org.eclipse.emf;bundle-version="2.6.0",
  org.eclipse.emf.common,
