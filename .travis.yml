@@ -1,0 +1,48 @@
+sudo: false
+dist: xenial
+services:
+- xvfb
+language: java
+jdk:
+- openjdk8
+addons:
+  apt:
+    packages:
+    - python3
+    - python3-pip
+env:
+  global:
+  - DISPLAY=:99.0
+  - secure: KGqKUWIDSBOS8xOj6jW21mKbREPmn44oXdwqDAF3OHtpTKTMTTsNjLSspjbmXOp8b7a1GseHnXE9jhjhZKfyW3IsaZdNyjr6ukOP97WVnnWsKlu9b9YW315g89vKEO/xrvkhRiHjRRVScTWl76hjwzxZFfq8M/1Qs+CityAGKegnlZWs0kXYHXYCWGI9JI0L0P8yhePbKWtprE+1OK9lkc/b84zS27JH+PtRTdmxTuqz4afpLdDactCG15tN6xzXF0pYEpxhHLJBh2r9JObMb/ZM0OTQ1WMgD2IZgXwg8PfGbH62eM4ghAec1tPetc7yrrOsRqdp+TcDC+kNhDyg6vzhAlrOJ0IhleH+rkBMrdnQksBQg53BhrIrMAKJzXwrFrmHm/+ek0rTzTvR48iZknAJYAJL/5az/rz2gPIAZBk7jgHZvqQtxXwIuCChg4USfDu6HQ90VlMaIn+X4LUXiPW06Xks1jGkKhjOnZZQh6ebJYCMjJMEPzqWlL6Y9rdl8e/ZJ/MP8XEsCpCoFsu1ggEHXAlX9Jt+uPUDbaAk2GWk3etGxayoruLulJDorjPyCZDceD1g/lWTsQiV5Q+xndb5yaogW/21T51rx4oxNOEI6tzBtceJpb05U7XwCoH2foAKJCSi4qRX/5U/odNhsJrmEOWiQ9bShKq9993/JC8=
+before_install:
+- pip3 install --user --upgrade setuptools
+- pip3 install --user GitPython github3.py
+- "./git-setup.sh"
+script:
+- mvn clean verify
+before_deploy:
+- export RELEASE_PKG_FILE=$(ls repository/target/com.rockwellcollins.atc.resolute.repository-*.zip)
+- echo "deploying $RELEASE_PKG_FILE to GitHub releases"
+- export SNAPSHOT_NUMBER=$(ls repository/target/repository/plugins/com.rockwellcollins.atc.resolute*.jar
+  | grep -o "[0-9]\\{12\\}")
+- echo "deploying snapshot number $SNAPSHOT_NUMBER"
+deploy:
+- provider: releases
+  api-key: "$GH_TOKEN"
+  file:
+  - "${RELEASE_PKG_FILE}"
+  name: Nightly development build ($SNAPSHOT_NUMBER)
+  body: Automated AGREE integration build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built
+    by Travis CI on $(date +'%F %T %Z').
+  prerelease: true
+  overwrite: false
+  skip_cleanup: true
+  target_commitish: "$TRAVIS_COMMIT"
+  on:
+    branch: master
+    condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
+- provider: script
+  script: python3 .travis/manage_daily_builds.py
+  on:
+    branch: master
+    condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
