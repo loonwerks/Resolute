@@ -414,8 +414,8 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:git:https://github.com/loonwerks/formal-methods-workbench.git</connection>
-		<developerConnection>scm:git:https://github.com/loonwerks/formal-methods-workbench.git</developerConnection>
+		<connection>scm:git:https://github.com/loonwerks/Resolute.git</connection>
+		<developerConnection>scm:git:https://github.com/loonwerks/Resolute.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
