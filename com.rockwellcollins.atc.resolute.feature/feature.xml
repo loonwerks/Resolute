@@ -42,7 +42,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    </license>
 
    <requires>
-      <import feature="org.osate.core.feature" version="2.5.0.vfinal"/>
       <import plugin="org.eclipse.xtext"/>
       <import plugin="org.eclipse.xtext.util"/>
       <import plugin="org.eclipse.emf.ecore"/>
@@ -85,10 +84,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       <import plugin="com.rockwellcollins.atc.agree.analysis" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="com.rockwellcollins.atc.resolute" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="com.rockwellcollins.atc.resolute.analysis" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="com.collins.trustedsystems.jkindapi"/>
       <import plugin="org.eclipse.xtext.common.types.ui"/>
       <import plugin="org.osate.xtext.aadl2.properties.ui" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.osate.xtext.aadl2.ui"/>
+      <import feature="org.osate.core.feature" version="2.5.0.vfinal"/>
+      <import plugin="com.collins.trustedsystems.jkindapi" version="4.0.0" match="compatible"/>
+      <import feature="com.rockwellcollins.atc.agree.feature" version="2.4.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
