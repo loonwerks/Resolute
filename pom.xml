@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.rockwellcollins.atc.resolute</groupId>
 	<artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-	<version>2.4.1</version>
+	<version>2.4.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -134,7 +134,7 @@
 						<artifact>
 							<groupId>com.rockwellcollins.atc.resolute</groupId>
 							<artifactId>com.rockwellcollins.atc.resolute.target</artifactId>
-							<version>2.4.1</version>
+							<version>2.4.2-SNAPSHOT</version>
 						</artifact>
 					</target>
 					<environments>
@@ -414,7 +414,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/loonwerks/Resolute.git</connection>
 		<developerConnection>scm:git:https://github.com/loonwerks/Resolute.git</developerConnection>
-		<tag>2.4.1-RELEASE</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 </project>
