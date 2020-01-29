@@ -89,7 +89,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       <import plugin="org.osate.xtext.aadl2.ui"/>
       <import feature="org.osate.core.feature" version="2.6.0.vfinal" match="compatible"/>
       <import plugin="com.collins.trustedsystems.jkindapi" version="4.0.0" match="compatible"/>
-      <import feature="com.rockwellcollins.atc.agree.feature" version="2.4.1" match="exact"/>
+      <import feature="com.rockwellcollins.atc.agree.feature" version="2.4.1" match="equivalent"/>
    </requires>
 
    <plugin
