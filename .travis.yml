@@ -5,6 +5,10 @@ services:
 language: java
 jdk:
 - openjdk8
+cache:
+  directories
+  - $HOME/.m2
+
 addons:
   apt:
     packages:
@@ -20,6 +24,8 @@ before_install:
 - pip3 install --user --upgrade setuptools
 - pip3 install --user GitPython github3.py
 - "./git-setup.sh"
+
+install: /bin/true
 
 script:
 - mvn clean verify
