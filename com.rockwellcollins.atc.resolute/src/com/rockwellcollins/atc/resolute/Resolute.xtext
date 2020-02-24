@@ -111,11 +111,15 @@ FunctionDefinition:
 
 DefinitionBody:
 	 {FunctionBody} ':' type=Type '=' expr=Expr
-|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (context+=ClaimContext)* (assumptions+=ClaimAssumption)* (strategies+=ClaimStrategy)* expr=Expr
+|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (context+=ClaimContext)* (justification+=ClaimJustification)* (assumptions+=ClaimAssumption)* (strategies+=ClaimStrategy)* expr=Expr
 ;
 
 ClaimContext:
 	'context' name=ID ':' val=StringTerm
+;
+
+ClaimJustification:
+	'justification' name=ID ':' val=StringTerm
 ;
 
 ClaimAssumption:
@@ -130,8 +134,6 @@ ClaimText:
 	 {ClaimString} str=STRING 
 | 	 {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?
 ;
-
-
 
 ClaimTextVar: Arg | ConstantDefinition | LetBinding;
 

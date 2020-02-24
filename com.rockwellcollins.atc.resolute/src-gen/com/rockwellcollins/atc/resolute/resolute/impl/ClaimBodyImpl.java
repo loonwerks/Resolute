@@ -5,6 +5,7 @@ package com.rockwellcollins.atc.resolute.resolute.impl;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
+import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ClaimText;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimBodyImpl#getClaim <em>Claim</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimBodyImpl#getContext <em>Context</em>}</li>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimBodyImpl#getJustification <em>Justification</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimBodyImpl#getAssumptions <em>Assumptions</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimBodyImpl#getStrategies <em>Strategies</em>}</li>
  * </ul>
@@ -58,6 +60,16 @@ public class ClaimBodyImpl extends DefinitionBodyImpl implements ClaimBody
    * @ordered
    */
   protected EList<ClaimContext> context;
+
+  /**
+   * The cached value of the '{@link #getJustification() <em>Justification</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getJustification()
+   * @generated
+   * @ordered
+   */
+  protected EList<ClaimJustification> justification;
 
   /**
    * The cached value of the '{@link #getAssumptions() <em>Assumptions</em>}' containment reference list.
@@ -136,6 +148,21 @@ public class ClaimBodyImpl extends DefinitionBodyImpl implements ClaimBody
    * @generated
    */
   @Override
+  public EList<ClaimJustification> getJustification()
+  {
+    if (justification == null)
+    {
+      justification = new EObjectContainmentEList<ClaimJustification>(ClaimJustification.class, this, ResolutePackage.CLAIM_BODY__JUSTIFICATION);
+    }
+    return justification;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<ClaimAssumption> getAssumptions()
   {
     if (assumptions == null)
@@ -174,6 +201,8 @@ public class ClaimBodyImpl extends DefinitionBodyImpl implements ClaimBody
         return ((InternalEList<?>)getClaim()).basicRemove(otherEnd, msgs);
       case ResolutePackage.CLAIM_BODY__CONTEXT:
         return ((InternalEList<?>)getContext()).basicRemove(otherEnd, msgs);
+      case ResolutePackage.CLAIM_BODY__JUSTIFICATION:
+        return ((InternalEList<?>)getJustification()).basicRemove(otherEnd, msgs);
       case ResolutePackage.CLAIM_BODY__ASSUMPTIONS:
         return ((InternalEList<?>)getAssumptions()).basicRemove(otherEnd, msgs);
       case ResolutePackage.CLAIM_BODY__STRATEGIES:
@@ -196,6 +225,8 @@ public class ClaimBodyImpl extends DefinitionBodyImpl implements ClaimBody
         return getClaim();
       case ResolutePackage.CLAIM_BODY__CONTEXT:
         return getContext();
+      case ResolutePackage.CLAIM_BODY__JUSTIFICATION:
+        return getJustification();
       case ResolutePackage.CLAIM_BODY__ASSUMPTIONS:
         return getAssumptions();
       case ResolutePackage.CLAIM_BODY__STRATEGIES:
@@ -222,6 +253,10 @@ public class ClaimBodyImpl extends DefinitionBodyImpl implements ClaimBody
       case ResolutePackage.CLAIM_BODY__CONTEXT:
         getContext().clear();
         getContext().addAll((Collection<? extends ClaimContext>)newValue);
+        return;
+      case ResolutePackage.CLAIM_BODY__JUSTIFICATION:
+        getJustification().clear();
+        getJustification().addAll((Collection<? extends ClaimJustification>)newValue);
         return;
       case ResolutePackage.CLAIM_BODY__ASSUMPTIONS:
         getAssumptions().clear();
@@ -251,6 +286,9 @@ public class ClaimBodyImpl extends DefinitionBodyImpl implements ClaimBody
       case ResolutePackage.CLAIM_BODY__CONTEXT:
         getContext().clear();
         return;
+      case ResolutePackage.CLAIM_BODY__JUSTIFICATION:
+        getJustification().clear();
+        return;
       case ResolutePackage.CLAIM_BODY__ASSUMPTIONS:
         getAssumptions().clear();
         return;
@@ -275,6 +313,8 @@ public class ClaimBodyImpl extends DefinitionBodyImpl implements ClaimBody
         return claim != null && !claim.isEmpty();
       case ResolutePackage.CLAIM_BODY__CONTEXT:
         return context != null && !context.isEmpty();
+      case ResolutePackage.CLAIM_BODY__JUSTIFICATION:
+        return justification != null && !justification.isEmpty();
       case ResolutePackage.CLAIM_BODY__ASSUMPTIONS:
         return assumptions != null && !assumptions.isEmpty();
       case ResolutePackage.CLAIM_BODY__STRATEGIES:

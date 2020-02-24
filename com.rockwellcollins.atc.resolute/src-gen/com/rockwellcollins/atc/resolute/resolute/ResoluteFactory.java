@@ -104,6 +104,15 @@ public interface ResoluteFactory extends EFactory
   ClaimContext createClaimContext();
 
   /**
+   * Returns a new object of class '<em>Claim Justification</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Claim Justification</em>'.
+   * @generated
+   */
+  ClaimJustification createClaimJustification();
+
+  /**
    * Returns a new object of class '<em>Claim Assumption</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

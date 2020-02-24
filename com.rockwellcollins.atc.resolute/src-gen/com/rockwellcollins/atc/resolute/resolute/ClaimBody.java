@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimBody#getClaim <em>Claim</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimBody#getContext <em>Context</em>}</li>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimBody#getJustification <em>Justification</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimBody#getAssumptions <em>Assumptions</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimBody#getStrategies <em>Strategies</em>}</li>
  * </ul>
@@ -48,6 +49,18 @@ public interface ClaimBody extends DefinitionBody
    * @generated
    */
   EList<ClaimContext> getContext();
+
+  /**
+   * Returns the value of the '<em><b>Justification</b></em>' containment reference list.
+   * The list contents are of type {@link com.rockwellcollins.atc.resolute.resolute.ClaimJustification}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Justification</em>' containment reference list.
+   * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getClaimBody_Justification()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ClaimJustification> getJustification();
 
   /**
    * Returns the value of the '<em><b>Assumptions</b></em>' containment reference list.
