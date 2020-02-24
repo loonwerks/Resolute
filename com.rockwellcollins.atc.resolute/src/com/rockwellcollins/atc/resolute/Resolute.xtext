@@ -203,6 +203,8 @@ AtomicExpr returns Expr:
 |   {SetExpr} '{' '}'
 |   {LetExpr} 'let' binding=LetBinding ';' expr=Expr
 |	'(' Expr ')'
+
+| {UndevelopedExpr} 'undeveloped'
 ;
 
 LetBinding:

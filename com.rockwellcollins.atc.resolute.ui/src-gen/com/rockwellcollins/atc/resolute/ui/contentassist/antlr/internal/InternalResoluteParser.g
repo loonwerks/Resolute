@@ -167,6 +167,7 @@ import com.rockwellcollins.atc.resolute.services.ResoluteGrammarAccess;
 		tokenNameToValue.put("Is_bound_to", "'is_bound_to'");
 		tokenNameToValue.put("Is_in_array", "'is_in_array'");
 		tokenNameToValue.put("Lower_bound", "'lower_bound'");
+		tokenNameToValue.put("Undeveloped", "'undeveloped'");
 		tokenNameToValue.put("Upper_bound", "'upper_bound'");
 		tokenNameToValue.put("Virtual_bus", "'virtual_bus'");
 		tokenNameToValue.put("Has_property", "'has_property'");
@@ -2938,6 +2939,12 @@ rule__AtomicExpr__Alternatives
 { before(grammarAccess.getAtomicExprAccess().getGroup_18()); }
 (rule__AtomicExpr__Group_18__0)
 { after(grammarAccess.getAtomicExprAccess().getGroup_18()); }
+)
+
+    |(
+{ before(grammarAccess.getAtomicExprAccess().getGroup_19()); }
+(rule__AtomicExpr__Group_19__0)
+{ after(grammarAccess.getAtomicExprAccess().getGroup_19()); }
 )
 
 ;
@@ -11875,6 +11882,71 @@ finally {
 }
 
 
+
+
+
+
+
+
+rule__AtomicExpr__Group_19__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__AtomicExpr__Group_19__0__Impl
+	rule__AtomicExpr__Group_19__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AtomicExpr__Group_19__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAtomicExprAccess().getUndevelopedExprAction_19_0()); }
+(
+
+)
+{ after(grammarAccess.getAtomicExprAccess().getUndevelopedExprAction_19_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__AtomicExpr__Group_19__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__AtomicExpr__Group_19__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AtomicExpr__Group_19__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAtomicExprAccess().getUndevelopedKeyword_19_1()); }
+
+	Undeveloped 
+
+{ after(grammarAccess.getAtomicExprAccess().getUndevelopedKeyword_19_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 

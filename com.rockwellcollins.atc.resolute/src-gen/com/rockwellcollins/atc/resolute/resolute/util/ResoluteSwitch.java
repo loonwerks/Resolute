@@ -526,6 +526,15 @@ public class ResoluteSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ResolutePackage.UNDEVELOPED_EXPR:
+      {
+        UndevelopedExpr undevelopedExpr = (UndevelopedExpr)theEObject;
+        T result = caseUndevelopedExpr(undevelopedExpr);
+        if (result == null) result = caseExpr(undevelopedExpr);
+        if (result == null) result = caseElement(undevelopedExpr);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ResolutePackage.WARNING_STATEMENT:
       {
         WarningStatement warningStatement = (WarningStatement)theEObject;
@@ -1384,6 +1393,22 @@ public class ResoluteSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLetExpr(LetExpr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Undeveloped Expr</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Undeveloped Expr</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUndevelopedExpr(UndevelopedExpr object)
   {
     return null;
   }

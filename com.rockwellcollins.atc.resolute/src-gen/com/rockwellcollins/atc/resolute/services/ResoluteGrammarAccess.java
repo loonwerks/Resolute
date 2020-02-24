@@ -390,8 +390,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//('int' | 'real' | 'string' | 'bool' | 'range' | 'aadl' | 'component' | 'abstract' | 'bus' | 'data' | 'device' | 'memory'
 		//| 'processor' | 'process' | 'subprogram_group' | 'subprogram' | 'system' | 'thread_group' | 'thread' | 'virtual_bus' |
-		//'virtual_processor' | 'connection' | 'property' | 'feature' | 'port' | 'data_port' | 'event_port' | 'event_data_port' |
-		//'feature_group' | 'access' | 'bus_access' | 'provides_bus_access' | 'requires_bus_access' | 'data_access' |
+		//'virtual_processor' | 'connection' | 'property' | 'feature' | 'port' | 'data_port' | 'event_port' | 'event_data_port'
+		//| 'feature_group' | 'access' | 'bus_access' | 'provides_bus_access' | 'requires_bus_access' | 'data_access' |
 		//'provides_data_access' | 'requires_data_access' | 'subprogram_access' | 'provides_subprogram_access' |
 		//'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
 		//'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow')
@@ -1755,6 +1755,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftParenthesisKeyword_18_0 = (Keyword)cGroup_18.eContents().get(0);
 		private final RuleCall cExprParserRuleCall_18_1 = (RuleCall)cGroup_18.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_18_2 = (Keyword)cGroup_18.eContents().get(2);
+		private final Group cGroup_19 = (Group)cAlternatives.eContents().get(19);
+		private final Action cUndevelopedExprAction_19_0 = (Action)cGroup_19.eContents().get(0);
+		private final Keyword cUndevelopedKeyword_19_1 = (Keyword)cGroup_19.eContents().get(1);
 		
 		//AtomicExpr Expr:
 		//	{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)?
@@ -1775,7 +1778,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//	| {ListExpr} '[' ']'
 		//	| {SetExpr} '{' '}'
 		//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
-		//	| '(' Expr ')';
+		//	| '(' Expr ')'
+		//	| {UndevelopedExpr} 'undeveloped';
 		@Override public ParserRule getRule() { return rule; }
 
 		//{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)? | {FailExpr} 'fail' (val=Expr | '**'
@@ -1787,7 +1791,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {ListExpr.exprs+=current} (','
 		//exprs+=Expr)*) ']' | '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? |
 		//{SetExpr.exprs+=current} (',' exprs+=Expr)*) '}' | {ListExpr} '[' ']' | {SetExpr} '{' '}' | {LetExpr} 'let'
-		//binding=LetBinding ';' expr=Expr | '(' Expr ')'
+		//binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr} 'undeveloped'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{IdExpr} id=[aadl2::NamedElement|QCREF]
@@ -2327,6 +2331,15 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//')'
 		public Keyword getRightParenthesisKeyword_18_2() { return cRightParenthesisKeyword_18_2; }
+
+		//{UndevelopedExpr} 'undeveloped'
+		public Group getGroup_19() { return cGroup_19; }
+
+		//{UndevelopedExpr}
+		public Action getUndevelopedExprAction_19_0() { return cUndevelopedExprAction_19_0; }
+
+		//'undeveloped'
+		public Keyword getUndevelopedKeyword_19_1() { return cUndevelopedKeyword_19_1; }
 	}
 
 	public class LetBindingElements extends AbstractParserRuleElementFinder {
@@ -3533,7 +3546,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//	| {ListExpr} '[' ']'
 	//	| {SetExpr} '{' '}'
 	//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
-	//	| '(' Expr ')';
+	//	| '(' Expr ')'
+	//	| {UndevelopedExpr} 'undeveloped';
 	public AtomicExprElements getAtomicExprAccess() {
 		return pAtomicExpr;
 	}

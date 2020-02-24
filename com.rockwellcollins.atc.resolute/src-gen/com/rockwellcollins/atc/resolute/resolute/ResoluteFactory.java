@@ -482,6 +482,15 @@ public interface ResoluteFactory extends EFactory
   LetExpr createLetExpr();
 
   /**
+   * Returns a new object of class '<em>Undeveloped Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Undeveloped Expr</em>'.
+   * @generated
+   */
+  UndevelopedExpr createUndevelopedExpr();
+
+  /**
    * Returns a new object of class '<em>Warning Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

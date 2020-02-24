@@ -188,6 +188,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//LetExpr/binding"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//LetExpr/expr"/>
     </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//UndevelopedExpr"/>
     <genClasses ecoreClass="Resolute.ecore#//WarningStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//ErrorStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//InfoStatement"/>

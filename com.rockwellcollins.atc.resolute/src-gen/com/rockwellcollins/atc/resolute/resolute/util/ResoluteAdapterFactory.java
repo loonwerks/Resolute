@@ -337,6 +337,11 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
         return createLetExprAdapter();
       }
       @Override
+      public Adapter caseUndevelopedExpr(UndevelopedExpr object)
+      {
+        return createUndevelopedExprAdapter();
+      }
+      @Override
       public Adapter caseWarningStatement(WarningStatement object)
       {
         return createWarningStatementAdapter();
@@ -1174,6 +1179,21 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLetExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr <em>Undeveloped Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr
+   * @generated
+   */
+  public Adapter createUndevelopedExprAdapter()
   {
     return null;
   }

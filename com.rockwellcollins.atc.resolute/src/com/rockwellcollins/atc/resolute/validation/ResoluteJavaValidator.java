@@ -89,6 +89,7 @@ import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
 import com.rockwellcollins.atc.resolute.resolute.Type;
 import com.rockwellcollins.atc.resolute.resolute.UnaryExpr;
+import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 
 //TODO: How do we handle arithmetic operations of complex types (e.g., Time in ms)?
 public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
@@ -1229,6 +1230,13 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 
 			if (expr instanceof InstanceOfExpr) {
+				return BaseType.BOOL;
+			}
+
+			if (expr instanceof UndevelopedExpr) {
+				if (!(expr.eContainer() instanceof ClaimBody)) {
+					error(expr, "Undeveloped element can only be defined inside a Claim or a Strategy");
+				}
 				return BaseType.BOOL;
 			}
 

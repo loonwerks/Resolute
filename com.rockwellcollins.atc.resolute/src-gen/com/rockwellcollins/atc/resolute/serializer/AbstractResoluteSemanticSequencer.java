@@ -52,6 +52,7 @@ import com.rockwellcollins.atc.resolute.resolute.SetType;
 import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
 import com.rockwellcollins.atc.resolute.resolute.UnaryExpr;
+import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 import com.rockwellcollins.atc.resolute.resolute.WarningStatement;
 import com.rockwellcollins.atc.resolute.services.ResoluteGrammarAccess;
 import java.util.Set;
@@ -342,6 +343,9 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 				return; 
 			case ResolutePackage.UNARY_EXPR:
 				sequence_PrefixExpr(context, (UnaryExpr) semanticObject); 
+				return; 
+			case ResolutePackage.UNDEVELOPED_EXPR:
+				sequence_AtomicExpr(context, (UndevelopedExpr) semanticObject); 
 				return; 
 			case ResolutePackage.WARNING_STATEMENT:
 				sequence_LintStatement(context, (WarningStatement) semanticObject); 
@@ -1161,6 +1165,41 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     sub=NestedDotID?
 	 */
 	protected void sequence_AtomicExpr(ISerializationContext context, ThisExpr semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Element returns UndevelopedExpr
+	 *     Expr returns UndevelopedExpr
+	 *     ImpliesExpr returns UndevelopedExpr
+	 *     ImpliesExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     OrExpr returns UndevelopedExpr
+	 *     OrExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     AndExpr returns UndevelopedExpr
+	 *     AndExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     InstanceOfExpr returns UndevelopedExpr
+	 *     InstanceOfExpr.InstanceOfExpr_1_0_0_0 returns UndevelopedExpr
+	 *     RelationalExpr returns UndevelopedExpr
+	 *     RelationalExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     PlusExpr returns UndevelopedExpr
+	 *     PlusExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     TimesExpr returns UndevelopedExpr
+	 *     TimesExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     ExpExpr returns UndevelopedExpr
+	 *     ExpExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     PrefixExpr returns UndevelopedExpr
+	 *     AtomicExpr returns UndevelopedExpr
+	 *     AtomicExpr.ListFilterMapExpr_13_2_0_0 returns UndevelopedExpr
+	 *     AtomicExpr.ListExpr_13_2_1_0 returns UndevelopedExpr
+	 *     AtomicExpr.SetFilterMapExpr_14_2_0_0 returns UndevelopedExpr
+	 *     AtomicExpr.SetExpr_14_2_1_0 returns UndevelopedExpr
+	 *
+	 * Constraint:
+	 *     {UndevelopedExpr}
+	 */
+	protected void sequence_AtomicExpr(ISerializationContext context, UndevelopedExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

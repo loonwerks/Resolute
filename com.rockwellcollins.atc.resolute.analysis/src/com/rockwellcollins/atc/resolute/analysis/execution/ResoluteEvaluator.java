@@ -64,6 +64,7 @@ import com.rockwellcollins.atc.resolute.resolute.SetFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
 import com.rockwellcollins.atc.resolute.resolute.UnaryExpr;
+import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 import com.rockwellcollins.atc.resolute.resolute.util.ResoluteSwitch;
 import com.rockwellcollins.atc.resolute.validation.ResoluteType;
 
@@ -89,6 +90,11 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 
 	public EvaluationContext getEvaluationContext() {
 		return context;
+	}
+
+	@Override
+	public ResoluteValue caseUndevelopedExpr(UndevelopedExpr expr) {
+		return FALSE;
 	}
 
 	@Override

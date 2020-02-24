@@ -3728,6 +3728,18 @@ RightParenthesis
     {
     	newLeafNode(otherlv_98, grammarAccess.getAtomicExprAccess().getRightParenthesisKeyword_18_2());
     }
+)
+    |((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getAtomicExprAccess().getUndevelopedExprAction_19_0(),
+            $current);
+    }
+)
+	otherlv_100=Undeveloped
+    {
+    	newLeafNode(otherlv_100, grammarAccess.getAtomicExprAccess().getUndevelopedKeyword_19_1());
+    }
 ))
 ;
 

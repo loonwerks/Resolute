@@ -59,6 +59,7 @@ import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
 import com.rockwellcollins.atc.resolute.resolute.Type;
 import com.rockwellcollins.atc.resolute.resolute.UnaryExpr;
+import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 import com.rockwellcollins.atc.resolute.resolute.WarningStatement;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -435,6 +436,13 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   private EClass letExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass undevelopedExprEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1963,6 +1971,17 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
+  public EClass getUndevelopedExpr()
+  {
+    return undevelopedExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getWarningStatement()
   {
     return warningStatementEClass;
@@ -2223,6 +2242,8 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     createEReference(letExprEClass, LET_EXPR__BINDING);
     createEReference(letExprEClass, LET_EXPR__EXPR);
 
+    undevelopedExprEClass = createEClass(UNDEVELOPED_EXPR);
+
     warningStatementEClass = createEClass(WARNING_STATEMENT);
 
     errorStatementEClass = createEClass(ERROR_STATEMENT);
@@ -2314,6 +2335,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     setFilterMapExprEClass.getESuperTypes().add(this.getExpr());
     setExprEClass.getESuperTypes().add(this.getExpr());
     letExprEClass.getESuperTypes().add(this.getExpr());
+    undevelopedExprEClass.getESuperTypes().add(this.getExpr());
     warningStatementEClass.getESuperTypes().add(this.getLintStatement());
     errorStatementEClass.getESuperTypes().add(this.getLintStatement());
     infoStatementEClass.getESuperTypes().add(this.getLintStatement());
@@ -2500,6 +2522,8 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEClass(letExprEClass, LetExpr.class, "LetExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLetExpr_Binding(), this.getLetBinding(), null, "binding", null, 0, 1, LetExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLetExpr_Expr(), this.getExpr(), null, "expr", null, 0, 1, LetExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(undevelopedExprEClass, UndevelopedExpr.class, "UndevelopedExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(warningStatementEClass, WarningStatement.class, "WarningStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
