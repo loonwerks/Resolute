@@ -1388,17 +1388,17 @@ ruleDefinitionBody returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getDefinitionBodyAccess().getContextClaimContextParserRuleCall_1_3_0()); 
+	        newCompositeNode(grammarAccess.getDefinitionBodyAccess().getAttributesClaimAttributeParserRuleCall_1_3_0()); 
 	    }
-		lv_context_10_0=ruleClaimContext		{
+		lv_attributes_10_0=ruleClaimAttribute		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getDefinitionBodyRule());
 	        }
        		add(
        			$current, 
-       			"context",
-        		lv_context_10_0, 
-        		"com.rockwellcollins.atc.resolute.Resolute.ClaimContext");
+       			"attributes",
+        		lv_attributes_10_0, 
+        		"com.rockwellcollins.atc.resolute.Resolute.ClaimAttribute");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1406,76 +1406,82 @@ ruleDefinitionBody returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getDefinitionBodyAccess().getJustificationClaimJustificationParserRuleCall_1_4_0()); 
+	        newCompositeNode(grammarAccess.getDefinitionBodyAccess().getExprExprParserRuleCall_1_4_0()); 
 	    }
-		lv_justification_11_0=ruleClaimJustification		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getDefinitionBodyRule());
-	        }
-       		add(
-       			$current, 
-       			"justification",
-        		lv_justification_11_0, 
-        		"com.rockwellcollins.atc.resolute.Resolute.ClaimJustification");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getDefinitionBodyAccess().getAssumptionsClaimAssumptionParserRuleCall_1_5_0()); 
-	    }
-		lv_assumptions_12_0=ruleClaimAssumption		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getDefinitionBodyRule());
-	        }
-       		add(
-       			$current, 
-       			"assumptions",
-        		lv_assumptions_12_0, 
-        		"com.rockwellcollins.atc.resolute.Resolute.ClaimAssumption");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getDefinitionBodyAccess().getStrategiesClaimStrategyParserRuleCall_1_6_0()); 
-	    }
-		lv_strategies_13_0=ruleClaimStrategy		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getDefinitionBodyRule());
-	        }
-       		add(
-       			$current, 
-       			"strategies",
-        		lv_strategies_13_0, 
-        		"com.rockwellcollins.atc.resolute.Resolute.ClaimStrategy");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getDefinitionBodyAccess().getExprExprParserRuleCall_1_7_0()); 
-	    }
-		lv_expr_14_0=ruleExpr		{
+		lv_expr_11_0=ruleExpr		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getDefinitionBodyRule());
 	        }
        		set(
        			$current, 
        			"expr",
-        		lv_expr_14_0, 
+        		lv_expr_11_0, 
         		"com.rockwellcollins.atc.resolute.Resolute.Expr");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )))
+;
+
+
+
+
+
+// Entry rule entryRuleClaimAttribute
+entryRuleClaimAttribute returns [EObject current=null]
+	:
+	{ newCompositeNode(grammarAccess.getClaimAttributeRule()); }
+	 iv_ruleClaimAttribute=ruleClaimAttribute 
+	 { $current=$iv_ruleClaimAttribute.current; } 
+	 EOF 
+;
+
+// Rule ClaimAttribute
+ruleClaimAttribute returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getClaimAttributeAccess().getClaimContextParserRuleCall_0()); 
+    }
+    this_ClaimContext_0=ruleClaimContext
+    {
+        $current = $this_ClaimContext_0.current;
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getClaimAttributeAccess().getClaimJustificationParserRuleCall_1()); 
+    }
+    this_ClaimJustification_1=ruleClaimJustification
+    {
+        $current = $this_ClaimJustification_1.current;
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getClaimAttributeAccess().getClaimAssumptionParserRuleCall_2()); 
+    }
+    this_ClaimAssumption_2=ruleClaimAssumption
+    {
+        $current = $this_ClaimAssumption_2.current;
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getClaimAttributeAccess().getClaimStrategyParserRuleCall_3()); 
+    }
+    this_ClaimStrategy_3=ruleClaimStrategy
+    {
+        $current = $this_ClaimStrategy_3.current;
+        afterParserOrEnumRuleCall();
+    }
+)
 ;
 
 

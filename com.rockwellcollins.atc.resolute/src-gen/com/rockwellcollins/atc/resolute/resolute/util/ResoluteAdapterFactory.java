@@ -122,6 +122,11 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
         return createDefinitionBodyAdapter();
       }
       @Override
+      public Adapter caseClaimAttribute(ClaimAttribute object)
+      {
+        return createClaimAttributeAdapter();
+      }
+      @Override
       public Adapter caseClaimContext(ClaimContext object)
       {
         return createClaimContextAdapter();
@@ -539,6 +544,21 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDefinitionBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimAttribute <em>Claim Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimAttribute
+   * @generated
+   */
+  public Adapter createClaimAttributeAdapter()
   {
     return null;
   }

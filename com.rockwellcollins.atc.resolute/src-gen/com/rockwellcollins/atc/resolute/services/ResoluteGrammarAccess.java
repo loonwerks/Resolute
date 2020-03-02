@@ -726,25 +726,19 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cClaimAssignment_1_2_1 = (Assignment)cGroup_1_2.eContents().get(1);
 		private final RuleCall cClaimClaimTextParserRuleCall_1_2_1_0 = (RuleCall)cClaimAssignment_1_2_1.eContents().get(0);
 		private final Keyword cAsteriskAsteriskKeyword_1_2_2 = (Keyword)cGroup_1_2.eContents().get(2);
-		private final Assignment cContextAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final RuleCall cContextClaimContextParserRuleCall_1_3_0 = (RuleCall)cContextAssignment_1_3.eContents().get(0);
-		private final Assignment cJustificationAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cJustificationClaimJustificationParserRuleCall_1_4_0 = (RuleCall)cJustificationAssignment_1_4.eContents().get(0);
-		private final Assignment cAssumptionsAssignment_1_5 = (Assignment)cGroup_1.eContents().get(5);
-		private final RuleCall cAssumptionsClaimAssumptionParserRuleCall_1_5_0 = (RuleCall)cAssumptionsAssignment_1_5.eContents().get(0);
-		private final Assignment cStrategiesAssignment_1_6 = (Assignment)cGroup_1.eContents().get(6);
-		private final RuleCall cStrategiesClaimStrategyParserRuleCall_1_6_0 = (RuleCall)cStrategiesAssignment_1_6.eContents().get(0);
-		private final Assignment cExprAssignment_1_7 = (Assignment)cGroup_1.eContents().get(7);
-		private final RuleCall cExprExprParserRuleCall_1_7_0 = (RuleCall)cExprAssignment_1_7.eContents().get(0);
+		private final Assignment cAttributesAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final RuleCall cAttributesClaimAttributeParserRuleCall_1_3_0 = (RuleCall)cAttributesAssignment_1_3.eContents().get(0);
+		private final Assignment cExprAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
+		private final RuleCall cExprExprParserRuleCall_1_4_0 = (RuleCall)cExprAssignment_1_4.eContents().get(0);
 		
 		//DefinitionBody:
 		//	{FunctionBody} ':' type=Type '=' expr=Expr
-		//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') context+=ClaimContext* justification+=ClaimJustification*
-		//	assumptions+=ClaimAssumption* strategies+=ClaimStrategy* expr=Expr;
+		//	//|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (context+=ClaimContext)* (justification+=ClaimJustification)* (assumptions+=ClaimAssumption)* (strategies+=ClaimStrategy)* expr=Expr
+		//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
-		//{FunctionBody} ':' type=Type '=' expr=Expr | {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') context+=ClaimContext*
-		//justification+=ClaimJustification* assumptions+=ClaimAssumption* strategies+=ClaimStrategy* expr=Expr
+		//{FunctionBody} ':' type=Type '=' expr=Expr //|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (context+=ClaimContext)* (justification+=ClaimJustification)* (assumptions+=ClaimAssumption)* (strategies+=ClaimStrategy)* expr=Expr
+		//| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{FunctionBody} ':' type=Type '=' expr=Expr
@@ -771,8 +765,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//Expr
 		public RuleCall getExprExprParserRuleCall_0_4_0() { return cExprExprParserRuleCall_0_4_0; }
 
-		//{ClaimBody} '<=' ('**' claim+=ClaimText+ '**') context+=ClaimContext* justification+=ClaimJustification*
-		//assumptions+=ClaimAssumption* strategies+=ClaimStrategy* expr=Expr
+		//{ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{ClaimBody}
@@ -796,35 +789,48 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'**'
 		public Keyword getAsteriskAsteriskKeyword_1_2_2() { return cAsteriskAsteriskKeyword_1_2_2; }
 
-		//context+=ClaimContext*
-		public Assignment getContextAssignment_1_3() { return cContextAssignment_1_3; }
+		//attributes+=ClaimAttribute*
+		public Assignment getAttributesAssignment_1_3() { return cAttributesAssignment_1_3; }
 
-		//ClaimContext
-		public RuleCall getContextClaimContextParserRuleCall_1_3_0() { return cContextClaimContextParserRuleCall_1_3_0; }
-
-		//justification+=ClaimJustification*
-		public Assignment getJustificationAssignment_1_4() { return cJustificationAssignment_1_4; }
-
-		//ClaimJustification
-		public RuleCall getJustificationClaimJustificationParserRuleCall_1_4_0() { return cJustificationClaimJustificationParserRuleCall_1_4_0; }
-
-		//assumptions+=ClaimAssumption*
-		public Assignment getAssumptionsAssignment_1_5() { return cAssumptionsAssignment_1_5; }
-
-		//ClaimAssumption
-		public RuleCall getAssumptionsClaimAssumptionParserRuleCall_1_5_0() { return cAssumptionsClaimAssumptionParserRuleCall_1_5_0; }
-
-		//strategies+=ClaimStrategy*
-		public Assignment getStrategiesAssignment_1_6() { return cStrategiesAssignment_1_6; }
-
-		//ClaimStrategy
-		public RuleCall getStrategiesClaimStrategyParserRuleCall_1_6_0() { return cStrategiesClaimStrategyParserRuleCall_1_6_0; }
+		//ClaimAttribute
+		public RuleCall getAttributesClaimAttributeParserRuleCall_1_3_0() { return cAttributesClaimAttributeParserRuleCall_1_3_0; }
 
 		//expr=Expr
-		public Assignment getExprAssignment_1_7() { return cExprAssignment_1_7; }
+		public Assignment getExprAssignment_1_4() { return cExprAssignment_1_4; }
 
 		//Expr
-		public RuleCall getExprExprParserRuleCall_1_7_0() { return cExprExprParserRuleCall_1_7_0; }
+		public RuleCall getExprExprParserRuleCall_1_4_0() { return cExprExprParserRuleCall_1_4_0; }
+	}
+
+	public class ClaimAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.ClaimAttribute");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cClaimContextParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cClaimJustificationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cClaimAssumptionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cClaimStrategyParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		
+		//ClaimAttribute:
+		//	ClaimContext
+		//	| ClaimJustification
+		//	| ClaimAssumption
+		//	| ClaimStrategy;
+		@Override public ParserRule getRule() { return rule; }
+
+		//ClaimContext | ClaimJustification | ClaimAssumption | ClaimStrategy
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ClaimContext
+		public RuleCall getClaimContextParserRuleCall_0() { return cClaimContextParserRuleCall_0; }
+
+		//ClaimJustification
+		public RuleCall getClaimJustificationParserRuleCall_1() { return cClaimJustificationParserRuleCall_1; }
+
+		//ClaimAssumption
+		public RuleCall getClaimAssumptionParserRuleCall_2() { return cClaimAssumptionParserRuleCall_2; }
+
+		//ClaimStrategy
+		public RuleCall getClaimStrategyParserRuleCall_3() { return cClaimStrategyParserRuleCall_3; }
 	}
 
 	public class ClaimContextElements extends AbstractParserRuleElementFinder {
@@ -3111,6 +3117,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	private final ConstantDefinitionElements pConstantDefinition;
 	private final FunctionDefinitionElements pFunctionDefinition;
 	private final DefinitionBodyElements pDefinitionBody;
+	private final ClaimAttributeElements pClaimAttribute;
 	private final ClaimContextElements pClaimContext;
 	private final ClaimJustificationElements pClaimJustification;
 	private final ClaimAssumptionElements pClaimAssumption;
@@ -3164,6 +3171,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		this.pConstantDefinition = new ConstantDefinitionElements();
 		this.pFunctionDefinition = new FunctionDefinitionElements();
 		this.pDefinitionBody = new DefinitionBodyElements();
+		this.pClaimAttribute = new ClaimAttributeElements();
 		this.pClaimContext = new ClaimContextElements();
 		this.pClaimJustification = new ClaimJustificationElements();
 		this.pClaimAssumption = new ClaimAssumptionElements();
@@ -3400,14 +3408,27 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 	//DefinitionBody:
 	//	{FunctionBody} ':' type=Type '=' expr=Expr
-	//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') context+=ClaimContext* justification+=ClaimJustification*
-	//	assumptions+=ClaimAssumption* strategies+=ClaimStrategy* expr=Expr;
+	//	//|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (context+=ClaimContext)* (justification+=ClaimJustification)* (assumptions+=ClaimAssumption)* (strategies+=ClaimStrategy)* expr=Expr
+	//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr;
 	public DefinitionBodyElements getDefinitionBodyAccess() {
 		return pDefinitionBody;
 	}
 	
 	public ParserRule getDefinitionBodyRule() {
 		return getDefinitionBodyAccess().getRule();
+	}
+
+	//ClaimAttribute:
+	//	ClaimContext
+	//	| ClaimJustification
+	//	| ClaimAssumption
+	//	| ClaimStrategy;
+	public ClaimAttributeElements getClaimAttributeAccess() {
+		return pClaimAttribute;
+	}
+	
+	public ParserRule getClaimAttributeRule() {
+		return getClaimAttributeAccess().getRule();
 	}
 
 	//ClaimContext:

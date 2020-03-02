@@ -44,6 +44,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getBaseTypeAccess().getTypeAlternatives_0(), "rule__BaseType__TypeAlternatives_0");
 					put(grammarAccess.getArgAccess().getAlternatives(), "rule__Arg__Alternatives");
 					put(grammarAccess.getDefinitionBodyAccess().getAlternatives(), "rule__DefinitionBody__Alternatives");
+					put(grammarAccess.getClaimAttributeAccess().getAlternatives(), "rule__ClaimAttribute__Alternatives");
 					put(grammarAccess.getClaimTextAccess().getAlternatives(), "rule__ClaimText__Alternatives");
 					put(grammarAccess.getClaimTextVarAccess().getAlternatives(), "rule__ClaimTextVar__Alternatives");
 					put(grammarAccess.getOrExprAccess().getAlternatives_1_0_0_1(), "rule__OrExpr__Alternatives_1_0_0_1");
@@ -246,11 +247,8 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getDefinitionBodyAccess().getTypeAssignment_0_2(), "rule__DefinitionBody__TypeAssignment_0_2");
 					put(grammarAccess.getDefinitionBodyAccess().getExprAssignment_0_4(), "rule__DefinitionBody__ExprAssignment_0_4");
 					put(grammarAccess.getDefinitionBodyAccess().getClaimAssignment_1_2_1(), "rule__DefinitionBody__ClaimAssignment_1_2_1");
-					put(grammarAccess.getDefinitionBodyAccess().getContextAssignment_1_3(), "rule__DefinitionBody__ContextAssignment_1_3");
-					put(grammarAccess.getDefinitionBodyAccess().getJustificationAssignment_1_4(), "rule__DefinitionBody__JustificationAssignment_1_4");
-					put(grammarAccess.getDefinitionBodyAccess().getAssumptionsAssignment_1_5(), "rule__DefinitionBody__AssumptionsAssignment_1_5");
-					put(grammarAccess.getDefinitionBodyAccess().getStrategiesAssignment_1_6(), "rule__DefinitionBody__StrategiesAssignment_1_6");
-					put(grammarAccess.getDefinitionBodyAccess().getExprAssignment_1_7(), "rule__DefinitionBody__ExprAssignment_1_7");
+					put(grammarAccess.getDefinitionBodyAccess().getAttributesAssignment_1_3(), "rule__DefinitionBody__AttributesAssignment_1_3");
+					put(grammarAccess.getDefinitionBodyAccess().getExprAssignment_1_4(), "rule__DefinitionBody__ExprAssignment_1_4");
 					put(grammarAccess.getClaimContextAccess().getNameAssignment_1(), "rule__ClaimContext__NameAssignment_1");
 					put(grammarAccess.getClaimContextAccess().getValAssignment_3(), "rule__ClaimContext__ValAssignment_3");
 					put(grammarAccess.getClaimJustificationAccess().getNameAssignment_1(), "rule__ClaimJustification__NameAssignment_1");

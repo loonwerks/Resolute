@@ -1327,6 +1327,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	
 	/**
 	 * Contexts:
+	 *     ClaimAttribute returns ClaimAssumption
 	 *     ClaimAssumption returns ClaimAssumption
 	 *
 	 * Constraint:
@@ -1334,10 +1335,10 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 */
 	protected void sequence_ClaimAssumption(ISerializationContext context, ClaimAssumption semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__NAME));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__VAL));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimAssumptionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
@@ -1348,6 +1349,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	
 	/**
 	 * Contexts:
+	 *     ClaimAttribute returns ClaimContext
 	 *     ClaimContext returns ClaimContext
 	 *
 	 * Constraint:
@@ -1355,10 +1357,10 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 */
 	protected void sequence_ClaimContext(ISerializationContext context, ClaimContext semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__NAME));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__VAL));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimContextAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
@@ -1369,6 +1371,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	
 	/**
 	 * Contexts:
+	 *     ClaimAttribute returns ClaimJustification
 	 *     ClaimJustification returns ClaimJustification
 	 *
 	 * Constraint:
@@ -1376,10 +1379,10 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 */
 	protected void sequence_ClaimJustification(ISerializationContext context, ClaimJustification semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_JUSTIFICATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_JUSTIFICATION__NAME));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_JUSTIFICATION__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_JUSTIFICATION__VAL));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimJustificationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
@@ -1390,6 +1393,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	
 	/**
 	 * Contexts:
+	 *     ClaimAttribute returns ClaimStrategy
 	 *     ClaimStrategy returns ClaimStrategy
 	 *
 	 * Constraint:
@@ -1397,10 +1401,10 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 */
 	protected void sequence_ClaimStrategy(ISerializationContext context, ClaimStrategy semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_STRATEGY__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_STRATEGY__NAME));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_STRATEGY__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_STRATEGY__VAL));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimStrategyAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
@@ -1474,14 +1478,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     DefinitionBody returns ClaimBody
 	 *
 	 * Constraint:
-	 *     (
-	 *         claim+=ClaimText+ 
-	 *         context+=ClaimContext* 
-	 *         justification+=ClaimJustification* 
-	 *         assumptions+=ClaimAssumption* 
-	 *         strategies+=ClaimStrategy* 
-	 *         expr=Expr
-	 *     )
+	 *     (claim+=ClaimText+ attributes+=ClaimAttribute* expr=Expr)
 	 */
 	protected void sequence_DefinitionBody(ISerializationContext context, ClaimBody semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

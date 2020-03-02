@@ -153,10 +153,18 @@ public class ResoluteSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ResolutePackage.CLAIM_ATTRIBUTE:
+      {
+        ClaimAttribute claimAttribute = (ClaimAttribute)theEObject;
+        T result = caseClaimAttribute(claimAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ResolutePackage.CLAIM_CONTEXT:
       {
         ClaimContext claimContext = (ClaimContext)theEObject;
         T result = caseClaimContext(claimContext);
+        if (result == null) result = caseClaimAttribute(claimContext);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -164,6 +172,7 @@ public class ResoluteSwitch<T> extends Switch<T>
       {
         ClaimJustification claimJustification = (ClaimJustification)theEObject;
         T result = caseClaimJustification(claimJustification);
+        if (result == null) result = caseClaimAttribute(claimJustification);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -171,6 +180,7 @@ public class ResoluteSwitch<T> extends Switch<T>
       {
         ClaimAssumption claimAssumption = (ClaimAssumption)theEObject;
         T result = caseClaimAssumption(claimAssumption);
+        if (result == null) result = caseClaimAttribute(claimAssumption);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -178,6 +188,7 @@ public class ResoluteSwitch<T> extends Switch<T>
       {
         ClaimStrategy claimStrategy = (ClaimStrategy)theEObject;
         T result = caseClaimStrategy(claimStrategy);
+        if (result == null) result = caseClaimAttribute(claimStrategy);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -712,6 +723,22 @@ public class ResoluteSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDefinitionBody(DefinitionBody object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Claim Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Claim Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseClaimAttribute(ClaimAttribute object)
   {
     return null;
   }
