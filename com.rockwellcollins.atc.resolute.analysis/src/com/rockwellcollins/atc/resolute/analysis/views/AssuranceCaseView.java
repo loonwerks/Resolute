@@ -92,6 +92,10 @@ public class AssuranceCaseView extends ViewPart {
 			} else {
 				manager.add(createEnableResoluteConsoleAction());
 			}
+			if (treeViewer.getTree().getItemCount() > 0) {
+				manager.add(createExpandAll());
+				manager.add(createCollapseAll());
+			}
 		});
         treeViewer.getControl().setMenu(manager.createContextMenu(treeViewer.getTree()));
     }
@@ -176,6 +180,24 @@ public class AssuranceCaseView extends ViewPart {
 				doResoluteDebug = true;
 				consoleStream = console.newMessageStream();
 				consoleStream.println("Resolute debug tracing enabled");
+			}
+		};
+	}
+
+	private Action createExpandAll() {
+		return new Action("Expand All") {
+			@Override
+			public void run() {
+				treeViewer.expandAll();
+			}
+		};
+	}
+
+	private Action createCollapseAll() {
+		return new Action("Collapse All") {
+			@Override
+			public void run() {
+				treeViewer.collapseAll();
 			}
 		};
 	}
