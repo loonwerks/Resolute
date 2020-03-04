@@ -25,6 +25,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ConstantDefinition/expr"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//FunctionDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//FunctionDefinition/claimType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//FunctionDefinition/args"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//FunctionDefinition/body"/>
     </genClasses>

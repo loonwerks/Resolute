@@ -711,9 +711,20 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
+  public EAttribute getFunctionDefinition_ClaimType()
+  {
+    return (EAttribute)functionDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getFunctionDefinition_Args()
   {
-    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -724,7 +735,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
   @Override
   public EReference getFunctionDefinition_Body()
   {
-    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(1);
+    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2053,6 +2064,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     createEReference(constantDefinitionEClass, CONSTANT_DEFINITION__EXPR);
 
     functionDefinitionEClass = createEClass(FUNCTION_DEFINITION);
+    createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__CLAIM_TYPE);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__ARGS);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__BODY);
 
@@ -2336,6 +2348,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEReference(getConstantDefinition_Expr(), this.getExpr(), null, "expr", null, 0, 1, ConstantDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionDefinitionEClass, FunctionDefinition.class, "FunctionDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFunctionDefinition_ClaimType(), theEcorePackage.getEString(), "claimType", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Args(), this.getArg(), null, "args", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Body(), this.getDefinitionBody(), null, "body", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

@@ -480,13 +480,22 @@ public interface ResolutePackage extends EPackage
   int FUNCTION_DEFINITION__MEMBER = Aadl2Package.NAMESPACE__MEMBER;
 
   /**
+   * The feature id for the '<em><b>Claim Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_DEFINITION__CLAIM_TYPE = Aadl2Package.NAMESPACE_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_DEFINITION__ARGS = Aadl2Package.NAMESPACE_FEATURE_COUNT + 0;
+  int FUNCTION_DEFINITION__ARGS = Aadl2Package.NAMESPACE_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -495,7 +504,7 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_DEFINITION__BODY = Aadl2Package.NAMESPACE_FEATURE_COUNT + 1;
+  int FUNCTION_DEFINITION__BODY = Aadl2Package.NAMESPACE_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Function Definition</em>' class.
@@ -504,7 +513,7 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_DEFINITION_FEATURE_COUNT = Aadl2Package.NAMESPACE_FEATURE_COUNT + 2;
+  int FUNCTION_DEFINITION_FEATURE_COUNT = Aadl2Package.NAMESPACE_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.DefinitionBodyImpl <em>Definition Body</em>}' class.
@@ -3135,6 +3144,17 @@ public interface ResolutePackage extends EPackage
   EClass getFunctionDefinition();
 
   /**
+   * Returns the meta object for the attribute '{@link com.rockwellcollins.atc.resolute.resolute.FunctionDefinition#getClaimType <em>Claim Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Claim Type</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.FunctionDefinition#getClaimType()
+   * @see #getFunctionDefinition()
+   * @generated
+   */
+  EAttribute getFunctionDefinition_ClaimType();
+
+  /**
    * Returns the meta object for the containment reference list '{@link com.rockwellcollins.atc.resolute.resolute.FunctionDefinition#getArgs <em>Args</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4520,6 +4540,14 @@ public interface ResolutePackage extends EPackage
      * @generated
      */
     EClass FUNCTION_DEFINITION = eINSTANCE.getFunctionDefinition();
+
+    /**
+     * The meta object literal for the '<em><b>Claim Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNCTION_DEFINITION__CLAIM_TYPE = eINSTANCE.getFunctionDefinition_ClaimType();
 
     /**
      * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.

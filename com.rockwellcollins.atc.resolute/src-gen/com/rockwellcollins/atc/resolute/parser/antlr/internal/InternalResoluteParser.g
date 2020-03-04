@@ -1185,11 +1185,44 @@ ruleFunctionDefinition returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
+(((
 (
-		lv_name_0_0=RULE_ID
+		lv_claimType_0_0=
+	Goal
+    {
+        newLeafNode(lv_claimType_0_0, grammarAccess.getFunctionDefinitionAccess().getClaimTypeGoalKeyword_0_0_0());
+    }
+
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFunctionDefinitionRule());
+	        }
+       		setWithLastConsumed($current, "claimType", lv_claimType_0_0, "goal");
+	    }
+
+)
+)
+    |(
+(
+		lv_claimType_1_0=
+	Strategy
+    {
+        newLeafNode(lv_claimType_1_0, grammarAccess.getFunctionDefinitionAccess().getClaimTypeStrategyKeyword_0_1_0());
+    }
+
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFunctionDefinitionRule());
+	        }
+       		setWithLastConsumed($current, "claimType", lv_claimType_1_0, "strategy");
+	    }
+
+)
+))?(
+(
+		lv_name_2_0=RULE_ID
 		{
-			newLeafNode(lv_name_0_0, grammarAccess.getFunctionDefinitionAccess().getNameIDTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_2_0, grammarAccess.getFunctionDefinitionAccess().getNameIDTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -1198,43 +1231,20 @@ ruleFunctionDefinition returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_0_0, 
+        		lv_name_2_0, 
         		"org.osate.xtext.aadl2.properties.Properties.ID");
 	    }
 
 )
 )
-	otherlv_1=LeftParenthesis
+	otherlv_3=LeftParenthesis
     {
-    	newLeafNode(otherlv_1, grammarAccess.getFunctionDefinitionAccess().getLeftParenthesisKeyword_1());
+    	newLeafNode(otherlv_3, grammarAccess.getFunctionDefinitionAccess().getLeftParenthesisKeyword_2());
     }
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getArgsArgParserRuleCall_2_0_0()); 
-	    }
-		lv_args_2_0=ruleArg		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
-	        }
-       		add(
-       			$current, 
-       			"args",
-        		lv_args_2_0, 
-        		"com.rockwellcollins.atc.resolute.Resolute.Arg");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(
-	otherlv_3=Comma
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getFunctionDefinitionAccess().getCommaKeyword_2_1_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getArgsArgParserRuleCall_2_1_1_0()); 
+	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getArgsArgParserRuleCall_3_0_0()); 
 	    }
 		lv_args_4_0=ruleArg		{
 	        if ($current==null) {
@@ -1249,24 +1259,47 @@ ruleFunctionDefinition returns [EObject current=null]
 	    }
 
 )
-))*)?
-	otherlv_5=RightParenthesis
+)(
+	otherlv_5=Comma
     {
-    	newLeafNode(otherlv_5, grammarAccess.getFunctionDefinitionAccess().getRightParenthesisKeyword_3());
+    	newLeafNode(otherlv_5, grammarAccess.getFunctionDefinitionAccess().getCommaKeyword_3_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getBodyDefinitionBodyParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getArgsArgParserRuleCall_3_1_1_0()); 
 	    }
-		lv_body_6_0=ruleDefinitionBody		{
+		lv_args_6_0=ruleArg		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
+	        }
+       		add(
+       			$current, 
+       			"args",
+        		lv_args_6_0, 
+        		"com.rockwellcollins.atc.resolute.Resolute.Arg");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*)?
+	otherlv_7=RightParenthesis
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getFunctionDefinitionAccess().getRightParenthesisKeyword_4());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getBodyDefinitionBodyParserRuleCall_5_0()); 
+	    }
+		lv_body_8_0=ruleDefinitionBody		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
 	        }
        		set(
        			$current, 
        			"body",
-        		lv_body_6_0, 
+        		lv_body_8_0, 
         		"com.rockwellcollins.atc.resolute.Resolute.DefinitionBody");
 	        afterParserOrEnumRuleCall();
 	    }

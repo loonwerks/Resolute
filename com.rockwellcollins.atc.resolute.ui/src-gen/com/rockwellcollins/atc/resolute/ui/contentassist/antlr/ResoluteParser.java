@@ -43,6 +43,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 					put(grammarAccess.getBaseTypeAccess().getTypeAlternatives_0(), "rule__BaseType__TypeAlternatives_0");
 					put(grammarAccess.getArgAccess().getAlternatives(), "rule__Arg__Alternatives");
+					put(grammarAccess.getFunctionDefinitionAccess().getAlternatives_0(), "rule__FunctionDefinition__Alternatives_0");
 					put(grammarAccess.getDefinitionBodyAccess().getAlternatives(), "rule__DefinitionBody__Alternatives");
 					put(grammarAccess.getClaimAttributeAccess().getAlternatives(), "rule__ClaimAttribute__Alternatives");
 					put(grammarAccess.getClaimTextAccess().getAlternatives(), "rule__ClaimText__Alternatives");
@@ -81,8 +82,8 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getArgAccess().getGroup_1(), "rule__Arg__Group_1__0");
 					put(grammarAccess.getConstantDefinitionAccess().getGroup(), "rule__ConstantDefinition__Group__0");
 					put(grammarAccess.getFunctionDefinitionAccess().getGroup(), "rule__FunctionDefinition__Group__0");
-					put(grammarAccess.getFunctionDefinitionAccess().getGroup_2(), "rule__FunctionDefinition__Group_2__0");
-					put(grammarAccess.getFunctionDefinitionAccess().getGroup_2_1(), "rule__FunctionDefinition__Group_2_1__0");
+					put(grammarAccess.getFunctionDefinitionAccess().getGroup_3(), "rule__FunctionDefinition__Group_3__0");
+					put(grammarAccess.getFunctionDefinitionAccess().getGroup_3_1(), "rule__FunctionDefinition__Group_3_1__0");
 					put(grammarAccess.getDefinitionBodyAccess().getGroup_0(), "rule__DefinitionBody__Group_0__0");
 					put(grammarAccess.getDefinitionBodyAccess().getGroup_1(), "rule__DefinitionBody__Group_1__0");
 					put(grammarAccess.getDefinitionBodyAccess().getGroup_1_2(), "rule__DefinitionBody__Group_1_2__0");
@@ -240,10 +241,12 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getConstantDefinitionAccess().getNameAssignment_0(), "rule__ConstantDefinition__NameAssignment_0");
 					put(grammarAccess.getConstantDefinitionAccess().getTypeAssignment_2(), "rule__ConstantDefinition__TypeAssignment_2");
 					put(grammarAccess.getConstantDefinitionAccess().getExprAssignment_4(), "rule__ConstantDefinition__ExprAssignment_4");
-					put(grammarAccess.getFunctionDefinitionAccess().getNameAssignment_0(), "rule__FunctionDefinition__NameAssignment_0");
-					put(grammarAccess.getFunctionDefinitionAccess().getArgsAssignment_2_0(), "rule__FunctionDefinition__ArgsAssignment_2_0");
-					put(grammarAccess.getFunctionDefinitionAccess().getArgsAssignment_2_1_1(), "rule__FunctionDefinition__ArgsAssignment_2_1_1");
-					put(grammarAccess.getFunctionDefinitionAccess().getBodyAssignment_4(), "rule__FunctionDefinition__BodyAssignment_4");
+					put(grammarAccess.getFunctionDefinitionAccess().getClaimTypeAssignment_0_0(), "rule__FunctionDefinition__ClaimTypeAssignment_0_0");
+					put(grammarAccess.getFunctionDefinitionAccess().getClaimTypeAssignment_0_1(), "rule__FunctionDefinition__ClaimTypeAssignment_0_1");
+					put(grammarAccess.getFunctionDefinitionAccess().getNameAssignment_1(), "rule__FunctionDefinition__NameAssignment_1");
+					put(grammarAccess.getFunctionDefinitionAccess().getArgsAssignment_3_0(), "rule__FunctionDefinition__ArgsAssignment_3_0");
+					put(grammarAccess.getFunctionDefinitionAccess().getArgsAssignment_3_1_1(), "rule__FunctionDefinition__ArgsAssignment_3_1_1");
+					put(grammarAccess.getFunctionDefinitionAccess().getBodyAssignment_5(), "rule__FunctionDefinition__BodyAssignment_5");
 					put(grammarAccess.getDefinitionBodyAccess().getTypeAssignment_0_2(), "rule__DefinitionBody__TypeAssignment_0_2");
 					put(grammarAccess.getDefinitionBodyAccess().getExprAssignment_0_4(), "rule__DefinitionBody__ExprAssignment_0_4");
 					put(grammarAccess.getDefinitionBodyAccess().getClaimAssignment_1_2_1(), "rule__DefinitionBody__ClaimAssignment_1_2_1");

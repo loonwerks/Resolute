@@ -56,7 +56,9 @@ import com.rockwellcollins.atc.resolute.resolute.BoolExpr;
 import com.rockwellcollins.atc.resolute.resolute.BuiltInFnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.CastExpr;
 import com.rockwellcollins.atc.resolute.resolute.CheckStatement;
+import com.rockwellcollins.atc.resolute.resolute.ClaimAttribute;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
+import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
 import com.rockwellcollins.atc.resolute.resolute.Expr;
@@ -255,6 +257,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	@Check
 	public void checkFuncDef(FunctionDefinition funcDef) {
 		DefinitionBody body = funcDef.getBody();
+		String claimType = funcDef.getClaimType();
 		if (body == null) {
 			return; // handled by parse error
 		}
@@ -264,6 +267,10 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		if (body instanceof FunctionBody) {
 			FunctionBody funcBody = (FunctionBody) body;
 			ResoluteType defType = typeToResoluteType(funcBody.getType());
+			if (!claimType.isEmpty()) {
+				error("Keyword " + claimType + " can only be declared for claims", funcDef,
+						ResolutePackage.Literals.FUNCTION_DEFINITION__CLAIM_TYPE);
+			}
 			if (!defType.subtypeOf(exprType)) {
 				error(funcBody.getType(), "Function expects type " + defType + " but has type " + exprType);
 			}
@@ -273,6 +280,28 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 
+		if (claimType.equals("strategy") && body instanceof ClaimBody) {
+			ClaimBody claimBody = (ClaimBody) body;
+			if (containsStrategy(claimBody)) {
+				error("Keyword " + claimType
+						+ " cannot be used along with a strategy claim attribute inside claim body", funcDef,
+						ResolutePackage.Literals.FUNCTION_DEFINITION__CLAIM_TYPE);
+			}
+		}
+
+	}
+
+	private boolean containsStrategy(ClaimBody body) {
+//		List<ClaimAttribute> attributes = EcoreUtil2.getAllContentsOfType(body, ClaimAttribute.class);
+//		List<ClaimAttribute> strategies = attributes.stream().filter(a -> (a instanceof ClaimStrategy))
+//				.collect(Collectors.toList());
+//		return strategies.size() > 0;
+		for (ClaimAttribute attr : body.getAttributes()) {
+			if (attr instanceof ClaimStrategy) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Check
