@@ -253,6 +253,13 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	}
 
 	@Check
+	public void checkSolutionExpr(SolutionExpr expr) {
+		if (!(expr.eContainer() instanceof ClaimBody || expr.eContainer() instanceof LetExpr)) {
+			error(expr, "Solution element can only be defined inside a Claim");
+		}
+	}
+
+	@Check
 	public void checkConstDef(ConstantDefinition consDef) {
 		ResoluteType exprType = getExprType(consDef.getExpr());
 		ResoluteType defType = typeToResoluteType(consDef.getType());
@@ -1315,11 +1322,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 
 			if (expr instanceof SolutionExpr) {
-				if (!(expr.eContainer() instanceof ClaimBody)) {
-					error(expr, "Solution element can only be defined inside a Claim");
-				}
-//				if (expr.eContainer() instanceof ClaimBody) {
-//					if (checkDef)
+//				if (!(expr.eContainer() instanceof ClaimBody)) {
+//					error(expr, "Solution element can only be defined inside a Claim");
 //				}
 				return BaseType.BOOL;
 			}
