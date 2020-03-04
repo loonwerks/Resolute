@@ -215,6 +215,7 @@ AtomicExpr returns Expr:
 |	'(' Expr ')'
 
 | {UndevelopedExpr} 'undeveloped'
+| {SolutionExpr} 'solution'
 ;
 
 LetBinding:

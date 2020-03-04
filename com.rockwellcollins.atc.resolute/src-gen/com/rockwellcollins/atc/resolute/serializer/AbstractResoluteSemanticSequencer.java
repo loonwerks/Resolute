@@ -50,6 +50,7 @@ import com.rockwellcollins.atc.resolute.resolute.RulesetBody;
 import com.rockwellcollins.atc.resolute.resolute.SetExpr;
 import com.rockwellcollins.atc.resolute.resolute.SetFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.SetType;
+import com.rockwellcollins.atc.resolute.resolute.SolutionExpr;
 import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
 import com.rockwellcollins.atc.resolute.resolute.UnaryExpr;
@@ -338,6 +339,9 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 				return; 
 			case ResolutePackage.SET_TYPE:
 				sequence_Type(context, (SetType) semanticObject); 
+				return; 
+			case ResolutePackage.SOLUTION_EXPR:
+				sequence_AtomicExpr(context, (SolutionExpr) semanticObject); 
 				return; 
 			case ResolutePackage.STRING_EXPR:
 				sequence_AtomicExpr(context, (StringExpr) semanticObject); 
@@ -1093,6 +1097,41 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     (map=AtomicExpr_SetFilterMapExpr_14_2_0_0 args+=Arg+ filter=Expr?)
 	 */
 	protected void sequence_AtomicExpr(ISerializationContext context, SetFilterMapExpr semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Element returns SolutionExpr
+	 *     Expr returns SolutionExpr
+	 *     ImpliesExpr returns SolutionExpr
+	 *     ImpliesExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     OrExpr returns SolutionExpr
+	 *     OrExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     AndExpr returns SolutionExpr
+	 *     AndExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     InstanceOfExpr returns SolutionExpr
+	 *     InstanceOfExpr.InstanceOfExpr_1_0_0_0 returns SolutionExpr
+	 *     RelationalExpr returns SolutionExpr
+	 *     RelationalExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     PlusExpr returns SolutionExpr
+	 *     PlusExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     TimesExpr returns SolutionExpr
+	 *     TimesExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     ExpExpr returns SolutionExpr
+	 *     ExpExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     PrefixExpr returns SolutionExpr
+	 *     AtomicExpr returns SolutionExpr
+	 *     AtomicExpr.ListFilterMapExpr_13_2_0_0 returns SolutionExpr
+	 *     AtomicExpr.ListExpr_13_2_1_0 returns SolutionExpr
+	 *     AtomicExpr.SetFilterMapExpr_14_2_0_0 returns SolutionExpr
+	 *     AtomicExpr.SetExpr_14_2_1_0 returns SolutionExpr
+	 *
+	 * Constraint:
+	 *     {SolutionExpr}
+	 */
+	protected void sequence_AtomicExpr(ISerializationContext context, SolutionExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

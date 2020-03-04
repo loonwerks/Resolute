@@ -2831,6 +2831,43 @@ public interface ResolutePackage extends EPackage
   int UNDEVELOPED_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.SolutionExprImpl <em>Solution Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.SolutionExprImpl
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getSolutionExpr()
+   * @generated
+   */
+  int SOLUTION_EXPR = 54;
+
+  /**
+   * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOLUTION_EXPR__OWNED_ELEMENT = EXPR__OWNED_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOLUTION_EXPR__OWNED_COMMENT = EXPR__OWNED_COMMENT;
+
+  /**
+   * The number of structural features of the '<em>Solution Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOLUTION_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.WarningStatementImpl <em>Warning Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2838,7 +2875,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getWarningStatement()
    * @generated
    */
-  int WARNING_STATEMENT = 54;
+  int WARNING_STATEMENT = 55;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -2866,7 +2903,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getErrorStatement()
    * @generated
    */
-  int ERROR_STATEMENT = 55;
+  int ERROR_STATEMENT = 56;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -2894,7 +2931,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getInfoStatement()
    * @generated
    */
-  int INFO_STATEMENT = 56;
+  int INFO_STATEMENT = 57;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -2922,7 +2959,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getProveStatement()
    * @generated
    */
-  int PROVE_STATEMENT = 57;
+  int PROVE_STATEMENT = 58;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2968,7 +3005,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getCheckStatement()
    * @generated
    */
-  int CHECK_STATEMENT = 58;
+  int CHECK_STATEMENT = 59;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -4351,6 +4388,16 @@ public interface ResolutePackage extends EPackage
   EClass getUndevelopedExpr();
 
   /**
+   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.SolutionExpr <em>Solution Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Solution Expr</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.SolutionExpr
+   * @generated
+   */
+  EClass getSolutionExpr();
+
+  /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.WarningStatement <em>Warning Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5546,6 +5593,16 @@ public interface ResolutePackage extends EPackage
      * @generated
      */
     EClass UNDEVELOPED_EXPR = eINSTANCE.getUndevelopedExpr();
+
+    /**
+     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.SolutionExprImpl <em>Solution Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.SolutionExprImpl
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getSolutionExpr()
+     * @generated
+     */
+    EClass SOLUTION_EXPR = eINSTANCE.getSolutionExpr();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.WarningStatementImpl <em>Warning Statement</em>}' class.

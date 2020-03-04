@@ -87,6 +87,7 @@ import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
 import com.rockwellcollins.atc.resolute.resolute.Ruleset;
 import com.rockwellcollins.atc.resolute.resolute.SetExpr;
 import com.rockwellcollins.atc.resolute.resolute.SetFilterMapExpr;
+import com.rockwellcollins.atc.resolute.resolute.SolutionExpr;
 import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
 import com.rockwellcollins.atc.resolute.resolute.Type;
@@ -267,6 +268,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		if (body instanceof FunctionBody) {
 			FunctionBody funcBody = (FunctionBody) body;
 			ResoluteType defType = typeToResoluteType(funcBody.getType());
+			// check if functions other than claims contain the
 			if (!claimType.isEmpty()) {
 				error("Keyword " + claimType + " can only be declared for claims", funcDef,
 						ResolutePackage.Literals.FUNCTION_DEFINITION__CLAIM_TYPE);
@@ -1265,6 +1267,13 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			if (expr instanceof UndevelopedExpr) {
 				if (!(expr.eContainer() instanceof ClaimBody)) {
 					error(expr, "Undeveloped element can only be defined inside a Claim or a Strategy");
+				}
+				return BaseType.BOOL;
+			}
+
+			if (expr instanceof SolutionExpr) {
+				if (!(expr.eContainer() instanceof ClaimBody)) {
+					error(expr, "Solution element can only be defined inside a Claim");
 				}
 				return BaseType.BOOL;
 			}

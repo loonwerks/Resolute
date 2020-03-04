@@ -118,6 +118,7 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.SET_EXPR: return createSetExpr();
       case ResolutePackage.LET_EXPR: return createLetExpr();
       case ResolutePackage.UNDEVELOPED_EXPR: return createUndevelopedExpr();
+      case ResolutePackage.SOLUTION_EXPR: return createSolutionExpr();
       case ResolutePackage.WARNING_STATEMENT: return createWarningStatement();
       case ResolutePackage.ERROR_STATEMENT: return createErrorStatement();
       case ResolutePackage.INFO_STATEMENT: return createInfoStatement();
@@ -774,6 +775,18 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
   {
     UndevelopedExprImpl undevelopedExpr = new UndevelopedExprImpl();
     return undevelopedExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SolutionExpr createSolutionExpr()
+  {
+    SolutionExprImpl solutionExpr = new SolutionExprImpl();
+    return solutionExpr;
   }
 
   /**

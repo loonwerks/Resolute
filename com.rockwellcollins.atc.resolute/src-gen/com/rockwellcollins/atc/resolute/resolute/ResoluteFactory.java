@@ -509,6 +509,15 @@ public interface ResoluteFactory extends EFactory
   UndevelopedExpr createUndevelopedExpr();
 
   /**
+   * Returns a new object of class '<em>Solution Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Solution Expr</em>'.
+   * @generated
+   */
+  SolutionExpr createSolutionExpr();
+
+  /**
    * Returns a new object of class '<em>Warning Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

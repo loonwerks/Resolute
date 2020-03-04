@@ -61,6 +61,7 @@ import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
 import com.rockwellcollins.atc.resolute.resolute.RealExpr;
 import com.rockwellcollins.atc.resolute.resolute.SetExpr;
 import com.rockwellcollins.atc.resolute.resolute.SetFilterMapExpr;
+import com.rockwellcollins.atc.resolute.resolute.SolutionExpr;
 import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
 import com.rockwellcollins.atc.resolute.resolute.UnaryExpr;
@@ -95,6 +96,11 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 	@Override
 	public ResoluteValue caseUndevelopedExpr(UndevelopedExpr expr) {
 		return FALSE;
+	}
+
+	@Override
+	public ResoluteValue caseSolutionExpr(SolutionExpr expr) {
+		return TRUE;
 	}
 
 	@Override

@@ -1828,6 +1828,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_19 = (Group)cAlternatives.eContents().get(19);
 		private final Action cUndevelopedExprAction_19_0 = (Action)cGroup_19.eContents().get(0);
 		private final Keyword cUndevelopedKeyword_19_1 = (Keyword)cGroup_19.eContents().get(1);
+		private final Group cGroup_20 = (Group)cAlternatives.eContents().get(20);
+		private final Action cSolutionExprAction_20_0 = (Action)cGroup_20.eContents().get(0);
+		private final Keyword cSolutionKeyword_20_1 = (Keyword)cGroup_20.eContents().get(1);
 		
 		//AtomicExpr Expr:
 		//	{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)?
@@ -1849,7 +1852,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//	| {SetExpr} '{' '}'
 		//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
 		//	| '(' Expr ')'
-		//	| {UndevelopedExpr} 'undeveloped';
+		//	| {UndevelopedExpr} 'undeveloped'
+		//	| {SolutionExpr} 'solution';
 		@Override public ParserRule getRule() { return rule; }
 
 		//{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)? | {FailExpr} 'fail' (val=Expr | '**'
@@ -1861,7 +1865,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {ListExpr.exprs+=current} (','
 		//exprs+=Expr)*) ']' | '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? |
 		//{SetExpr.exprs+=current} (',' exprs+=Expr)*) '}' | {ListExpr} '[' ']' | {SetExpr} '{' '}' | {LetExpr} 'let'
-		//binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr} 'undeveloped'
+		//binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr} 'undeveloped' | {SolutionExpr} 'solution'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{IdExpr} id=[aadl2::NamedElement|QCREF]
@@ -2410,6 +2414,15 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//'undeveloped'
 		public Keyword getUndevelopedKeyword_19_1() { return cUndevelopedKeyword_19_1; }
+
+		//{SolutionExpr} 'solution'
+		public Group getGroup_20() { return cGroup_20; }
+
+		//{SolutionExpr}
+		public Action getSolutionExprAction_20_0() { return cSolutionExprAction_20_0; }
+
+		//'solution'
+		public Keyword getSolutionKeyword_20_1() { return cSolutionKeyword_20_1; }
 	}
 
 	public class LetBindingElements extends AbstractParserRuleElementFinder {
@@ -3644,7 +3657,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//	| {SetExpr} '{' '}'
 	//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
 	//	| '(' Expr ')'
-	//	| {UndevelopedExpr} 'undeveloped';
+	//	| {UndevelopedExpr} 'undeveloped'
+	//	| {SolutionExpr} 'solution';
 	public AtomicExprElements getAtomicExprAccess() {
 		return pAtomicExpr;
 	}

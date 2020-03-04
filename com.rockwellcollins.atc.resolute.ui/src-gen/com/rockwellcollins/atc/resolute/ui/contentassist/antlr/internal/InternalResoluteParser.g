@@ -137,6 +137,7 @@ import com.rockwellcollins.atc.resolute.services.ResoluteGrammarAccess;
 		tokenNameToValue.put("Has_type", "'has_type'");
 		tokenNameToValue.put("Instance", "'instance'");
 		tokenNameToValue.put("Property", "'property'");
+		tokenNameToValue.put("Solution", "'solution'");
 		tokenNameToValue.put("Strategy", "'strategy'");
 		tokenNameToValue.put("Component", "'component'");
 		tokenNameToValue.put("Data_port", "'data_port'");
@@ -3059,6 +3060,12 @@ rule__AtomicExpr__Alternatives
 { before(grammarAccess.getAtomicExprAccess().getGroup_19()); }
 (rule__AtomicExpr__Group_19__0)
 { after(grammarAccess.getAtomicExprAccess().getGroup_19()); }
+)
+
+    |(
+{ before(grammarAccess.getAtomicExprAccess().getGroup_20()); }
+(rule__AtomicExpr__Group_20__0)
+{ after(grammarAccess.getAtomicExprAccess().getGroup_20()); }
 )
 
 ;
@@ -12151,6 +12158,71 @@ rule__AtomicExpr__Group_19__1__Impl
 	Undeveloped 
 
 { after(grammarAccess.getAtomicExprAccess().getUndevelopedKeyword_19_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__AtomicExpr__Group_20__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__AtomicExpr__Group_20__0__Impl
+	rule__AtomicExpr__Group_20__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AtomicExpr__Group_20__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAtomicExprAccess().getSolutionExprAction_20_0()); }
+(
+
+)
+{ after(grammarAccess.getAtomicExprAccess().getSolutionExprAction_20_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__AtomicExpr__Group_20__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__AtomicExpr__Group_20__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AtomicExpr__Group_20__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAtomicExprAccess().getSolutionKeyword_20_1()); }
+
+	Solution 
+
+{ after(grammarAccess.getAtomicExprAccess().getSolutionKeyword_20_1()); }
 )
 
 ;
