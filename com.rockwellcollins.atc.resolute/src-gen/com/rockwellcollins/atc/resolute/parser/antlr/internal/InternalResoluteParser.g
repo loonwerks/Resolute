@@ -3876,7 +3876,48 @@ RightParenthesis
     {
     	newLeafNode(otherlv_102, grammarAccess.getAtomicExprAccess().getSolutionKeyword_20_1());
     }
-))
+(
+(
+		lv_name_103_0=RULE_ID
+		{
+			newLeafNode(lv_name_103_0, grammarAccess.getAtomicExprAccess().getNameIDTerminalRuleCall_20_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAtomicExprRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_103_0, 
+        		"org.osate.xtext.aadl2.properties.Properties.ID");
+	    }
+
+)
+)
+	otherlv_104=Colon
+    {
+    	newLeafNode(otherlv_104, grammarAccess.getAtomicExprAccess().getColonKeyword_20_3());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAtomicExprAccess().getValStringTermParserRuleCall_20_4_0()); 
+	    }
+		lv_val_105_0=ruleStringTerm		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAtomicExprRule());
+	        }
+       		set(
+       			$current, 
+       			"val",
+        		lv_val_105_0, 
+        		"org.osate.xtext.aadl2.properties.Properties.StringTerm");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
 ;
 
 

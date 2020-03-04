@@ -1129,10 +1129,19 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     AtomicExpr.SetExpr_14_2_1_0 returns SolutionExpr
 	 *
 	 * Constraint:
-	 *     {SolutionExpr}
+	 *     (name=ID val=StringTerm)
 	 */
 	protected void sequence_AtomicExpr(ISerializationContext context, SolutionExpr semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.SOLUTION_EXPR__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.SOLUTION_EXPR__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.SOLUTION_EXPR__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.SOLUTION_EXPR__VAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicExprAccess().getNameIDTerminalRuleCall_20_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getAtomicExprAccess().getValStringTermParserRuleCall_20_4_0(), semanticObject.getVal());
+		feeder.finish();
 	}
 	
 	

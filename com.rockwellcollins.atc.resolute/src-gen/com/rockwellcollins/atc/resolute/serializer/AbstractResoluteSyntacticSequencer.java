@@ -99,7 +99,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '[' (ambiguity) 'fail' val=Expr
 	 *     (rule start) '[' (ambiguity) 'if' cond=Expr
 	 *     (rule start) '[' (ambiguity) 'let' binding=LetBinding
-	 *     (rule start) '[' (ambiguity) 'solution' (rule start)
+	 *     (rule start) '[' (ambiguity) 'solution' name=ID
 	 *     (rule start) '[' (ambiguity) 'this' '.' sub=NestedDotID
 	 *     (rule start) '[' (ambiguity) 'this' (rule start)
 	 *     (rule start) '[' (ambiguity) 'undeveloped' (rule start)
@@ -129,7 +129,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '{' (ambiguity) 'fail' val=Expr
 	 *     (rule start) '{' (ambiguity) 'if' cond=Expr
 	 *     (rule start) '{' (ambiguity) 'let' binding=LetBinding
-	 *     (rule start) '{' (ambiguity) 'solution' (rule start)
+	 *     (rule start) '{' (ambiguity) 'solution' name=ID
 	 *     (rule start) '{' (ambiguity) 'this' '.' sub=NestedDotID
 	 *     (rule start) '{' (ambiguity) 'this' (rule start)
 	 *     (rule start) '{' (ambiguity) 'undeveloped' (rule start)
@@ -159,7 +159,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) (ambiguity) 'fail' val=Expr
 	 *     (rule start) (ambiguity) 'if' cond=Expr
 	 *     (rule start) (ambiguity) 'let' binding=LetBinding
-	 *     (rule start) (ambiguity) 'solution' (rule start)
+	 *     (rule start) (ambiguity) 'solution' name=ID
 	 *     (rule start) (ambiguity) 'this' '.' sub=NestedDotID
 	 *     (rule start) (ambiguity) 'this' (rule start)
 	 *     (rule start) (ambiguity) 'undeveloped' (rule start)

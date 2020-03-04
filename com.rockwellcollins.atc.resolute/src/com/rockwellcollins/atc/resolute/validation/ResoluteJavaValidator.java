@@ -246,6 +246,13 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	}
 
 	@Check
+	public void checkUndevelopedExpr(UndevelopedExpr expr) {
+		if (!(expr.eContainer() instanceof ClaimBody || expr.eContainer() instanceof LetExpr)) {
+			error(expr, "Undeveloped element can only be defined inside a Claim or a Strategy");
+		}
+	}
+
+	@Check
 	public void checkConstDef(ConstantDefinition consDef) {
 		ResoluteType exprType = getExprType(consDef.getExpr());
 		ResoluteType defType = typeToResoluteType(consDef.getType());
@@ -284,16 +291,50 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 
 		if (claimType.equals("strategy") && body instanceof ClaimBody) {
 			ClaimBody claimBody = (ClaimBody) body;
-			if (containsStrategy(claimBody)) {
+			if (containsStrategyAttribute(claimBody)) {
 				error("Keyword " + claimType
 						+ " cannot be used along with a strategy claim attribute inside claim body", funcDef,
 						ResolutePackage.Literals.FUNCTION_DEFINITION__CLAIM_TYPE);
+			} else if (!isValidStrategyExpr(claimBody.getExpr())) {
+				error(claimBody.getExpr(), "Strategies can only make calls to other goals");
 			}
+
 		}
 
 	}
 
-	private boolean containsStrategy(ClaimBody body) {
+	private boolean isValidStrategyExpr(Expr expr) {
+		if (expr instanceof BinaryExpr) {
+			BinaryExpr binaryExpr = (BinaryExpr) expr;
+			if (binaryExpr.getOp() == "=>") {
+				return false;
+			}
+			return isValidStrategyExpr(binaryExpr.getLeft()) && isValidStrategyExpr(binaryExpr.getRight());
+		} else if (expr instanceof UnaryExpr) {
+			UnaryExpr unaryExpr = (UnaryExpr) expr;
+			return isValidStrategyExpr(unaryExpr.getExpr());
+		} else if (expr instanceof IfThenElseExpr) {
+			IfThenElseExpr ifThenElseExpr = (IfThenElseExpr) expr;
+			return isValidStrategyExpr(ifThenElseExpr.getThen()) && isValidStrategyExpr(ifThenElseExpr.getElse());
+		} else if (expr instanceof QuantifiedExpr) {
+			QuantifiedExpr quantifiedExpr = (QuantifiedExpr) expr;
+			return isValidStrategyExpr(quantifiedExpr.getExpr());
+		} else if (expr instanceof FnCallExpr) {
+			FnCallExpr fnCallExpr = (FnCallExpr) expr;
+			FunctionDefinition funcDef = fnCallExpr.getFn();
+			if (funcDef.getClaimType() != "strategy" && !(funcDef.getBody() instanceof FunctionBody)) {
+				return true;
+			}
+		} else if (expr instanceof LetExpr) {
+			LetExpr letExpr = (LetExpr) expr;
+			return isValidStrategyExpr(letExpr.getExpr());
+		} else if (expr instanceof UndevelopedExpr) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean containsStrategyAttribute(ClaimBody body) {
 //		List<ClaimAttribute> attributes = EcoreUtil2.getAllContentsOfType(body, ClaimAttribute.class);
 //		List<ClaimAttribute> strategies = attributes.stream().filter(a -> (a instanceof ClaimStrategy))
 //				.collect(Collectors.toList());
@@ -356,6 +397,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			error("types mismatch in let expression for variable '" + letExpr.getBinding().getName() + "'. "
 					+ "The binding is of type '" + resLetType + "' but the expression is of type '" + exprType + "'",
 					letExpr, ResolutePackage.Literals.LET_EXPR__BINDING);
+		} else if (letExpr.getExpr() instanceof UndevelopedExpr || letExpr.getExpr() instanceof SolutionExpr) {
+			warning(letExpr, "Let expression is never used");
 		}
 
 		// System.out.println("binding=" + letExpr.getBinding());
@@ -1265,9 +1308,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 
 			if (expr instanceof UndevelopedExpr) {
-				if (!(expr.eContainer() instanceof ClaimBody)) {
-					error(expr, "Undeveloped element can only be defined inside a Claim or a Strategy");
-				}
+//				if (!(expr.eContainer() instanceof ClaimBody)) {
+//					error(expr, "Undeveloped element can only be defined inside a Claim or a Strategy");
+//				}
 				return BaseType.BOOL;
 			}
 
@@ -1275,6 +1318,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				if (!(expr.eContainer() instanceof ClaimBody)) {
 					error(expr, "Solution element can only be defined inside a Claim");
 				}
+//				if (expr.eContainer() instanceof ClaimBody) {
+//					if (checkDef)
+//				}
 				return BaseType.BOOL;
 			}
 
@@ -1284,6 +1330,14 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			typeEvalContext.pop();
 		}
 	}
+
+//	private boolean checkDef(FunctionDefinition funcDef) {
+//		String claimType = funcDef.getClaimType();
+//		if (claimType.equals("strategy")) {
+//			return true;
+//		}
+//		return false;
+//	}
 
 	public ResoluteType getBinaryExprType(BinaryExpr binExpr) {
 		ResoluteType leftType = getExprType(binExpr.getLeft());

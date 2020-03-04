@@ -2859,13 +2859,31 @@ public interface ResolutePackage extends EPackage
   int SOLUTION_EXPR__OWNED_COMMENT = EXPR__OWNED_COMMENT;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOLUTION_EXPR__NAME = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOLUTION_EXPR__VAL = EXPR_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Solution Expr</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SOLUTION_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 0;
+  int SOLUTION_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.WarningStatementImpl <em>Warning Statement</em>}' class.
@@ -4398,6 +4416,28 @@ public interface ResolutePackage extends EPackage
   EClass getSolutionExpr();
 
   /**
+   * Returns the meta object for the attribute '{@link com.rockwellcollins.atc.resolute.resolute.SolutionExpr#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.SolutionExpr#getName()
+   * @see #getSolutionExpr()
+   * @generated
+   */
+  EAttribute getSolutionExpr_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.SolutionExpr#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Val</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.SolutionExpr#getVal()
+   * @see #getSolutionExpr()
+   * @generated
+   */
+  EReference getSolutionExpr_Val();
+
+  /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.WarningStatement <em>Warning Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5603,6 +5643,22 @@ public interface ResolutePackage extends EPackage
      * @generated
      */
     EClass SOLUTION_EXPR = eINSTANCE.getSolutionExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SOLUTION_EXPR__NAME = eINSTANCE.getSolutionExpr_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SOLUTION_EXPR__VAL = eINSTANCE.getSolutionExpr_Val();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.WarningStatementImpl <em>Warning Statement</em>}' class.

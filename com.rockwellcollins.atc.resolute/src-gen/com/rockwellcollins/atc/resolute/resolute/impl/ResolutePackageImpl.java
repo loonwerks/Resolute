@@ -1984,6 +1984,28 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
+  public EAttribute getSolutionExpr_Name()
+  {
+    return (EAttribute)solutionExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSolutionExpr_Val()
+  {
+    return (EReference)solutionExprEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getWarningStatement()
   {
     return warningStatementEClass;
@@ -2246,6 +2268,8 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     undevelopedExprEClass = createEClass(UNDEVELOPED_EXPR);
 
     solutionExprEClass = createEClass(SOLUTION_EXPR);
+    createEAttribute(solutionExprEClass, SOLUTION_EXPR__NAME);
+    createEReference(solutionExprEClass, SOLUTION_EXPR__VAL);
 
     warningStatementEClass = createEClass(WARNING_STATEMENT);
 
@@ -2533,6 +2557,8 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEClass(undevelopedExprEClass, UndevelopedExpr.class, "UndevelopedExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(solutionExprEClass, SolutionExpr.class, "SolutionExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSolutionExpr_Name(), theEcorePackage.getEString(), "name", null, 0, 1, SolutionExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSolutionExpr_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, SolutionExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(warningStatementEClass, WarningStatement.class, "WarningStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

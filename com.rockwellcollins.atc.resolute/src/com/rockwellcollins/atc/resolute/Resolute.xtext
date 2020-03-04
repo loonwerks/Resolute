@@ -215,7 +215,7 @@ AtomicExpr returns Expr:
 |	'(' Expr ')'
 
 | {UndevelopedExpr} 'undeveloped'
-| {SolutionExpr} 'solution'
+| {SolutionExpr} 'solution' name=ID ':' val=StringTerm
 ;
 
 LetBinding:

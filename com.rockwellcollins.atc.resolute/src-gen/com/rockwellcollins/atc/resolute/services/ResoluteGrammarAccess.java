@@ -1831,6 +1831,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_20 = (Group)cAlternatives.eContents().get(20);
 		private final Action cSolutionExprAction_20_0 = (Action)cGroup_20.eContents().get(0);
 		private final Keyword cSolutionKeyword_20_1 = (Keyword)cGroup_20.eContents().get(1);
+		private final Assignment cNameAssignment_20_2 = (Assignment)cGroup_20.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_20_2_0 = (RuleCall)cNameAssignment_20_2.eContents().get(0);
+		private final Keyword cColonKeyword_20_3 = (Keyword)cGroup_20.eContents().get(3);
+		private final Assignment cValAssignment_20_4 = (Assignment)cGroup_20.eContents().get(4);
+		private final RuleCall cValStringTermParserRuleCall_20_4_0 = (RuleCall)cValAssignment_20_4.eContents().get(0);
 		
 		//AtomicExpr Expr:
 		//	{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)?
@@ -1853,7 +1858,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
 		//	| '(' Expr ')'
 		//	| {UndevelopedExpr} 'undeveloped'
-		//	| {SolutionExpr} 'solution';
+		//	| {SolutionExpr} 'solution' name=ID ':' val=StringTerm;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)? | {FailExpr} 'fail' (val=Expr | '**'
@@ -1865,7 +1870,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {ListExpr.exprs+=current} (','
 		//exprs+=Expr)*) ']' | '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? |
 		//{SetExpr.exprs+=current} (',' exprs+=Expr)*) '}' | {ListExpr} '[' ']' | {SetExpr} '{' '}' | {LetExpr} 'let'
-		//binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr} 'undeveloped' | {SolutionExpr} 'solution'
+		//binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr} 'undeveloped' | {SolutionExpr} 'solution' name=ID
+		//':' val=StringTerm
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{IdExpr} id=[aadl2::NamedElement|QCREF]
@@ -2415,7 +2421,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'undeveloped'
 		public Keyword getUndevelopedKeyword_19_1() { return cUndevelopedKeyword_19_1; }
 
-		//{SolutionExpr} 'solution'
+		//{SolutionExpr} 'solution' name=ID ':' val=StringTerm
 		public Group getGroup_20() { return cGroup_20; }
 
 		//{SolutionExpr}
@@ -2423,6 +2429,21 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//'solution'
 		public Keyword getSolutionKeyword_20_1() { return cSolutionKeyword_20_1; }
+
+		//name=ID
+		public Assignment getNameAssignment_20_2() { return cNameAssignment_20_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_20_2_0() { return cNameIDTerminalRuleCall_20_2_0; }
+
+		//':'
+		public Keyword getColonKeyword_20_3() { return cColonKeyword_20_3; }
+
+		//val=StringTerm
+		public Assignment getValAssignment_20_4() { return cValAssignment_20_4; }
+
+		//StringTerm
+		public RuleCall getValStringTermParserRuleCall_20_4_0() { return cValStringTermParserRuleCall_20_4_0; }
 	}
 
 	public class LetBindingElements extends AbstractParserRuleElementFinder {
@@ -3658,7 +3679,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
 	//	| '(' Expr ')'
 	//	| {UndevelopedExpr} 'undeveloped'
-	//	| {SolutionExpr} 'solution';
+	//	| {SolutionExpr} 'solution' name=ID ':' val=StringTerm;
 	public AtomicExprElements getAtomicExprAccess() {
 		return pAtomicExpr;
 	}
