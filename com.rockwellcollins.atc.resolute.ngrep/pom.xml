@@ -4,9 +4,9 @@
   <parent>
     <groupId>com.rockwellcollins.atc.resolute</groupId>
     <artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-    <version>2.4.2-SNAPSHOT</version>
+    <version>2.4.2</version>
   </parent>
   <artifactId>com.rockwellcollins.atc.resolute.ngrep</artifactId>
-  <version>2.4.2-SNAPSHOT</version>
+  <version>2.4.2</version>
   <packaging>eclipse-plugin</packaging>
 </project>
