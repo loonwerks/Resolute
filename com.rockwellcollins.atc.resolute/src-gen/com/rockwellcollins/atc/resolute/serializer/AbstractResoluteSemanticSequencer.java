@@ -1385,8 +1385,8 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__VAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimAssumptionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
@@ -1401,18 +1401,18 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     ClaimContext returns ClaimContext
 	 *
 	 * Constraint:
-	 *     (name=ID val=StringTerm)
+	 *     (name=ID expr=AtomicExpr)
 	 */
 	protected void sequence_ClaimContext(ISerializationContext context, ClaimContext semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__EXPR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimContextAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getClaimContextAccess().getValStringTermParserRuleCall_3_0(), semanticObject.getVal());
+		feeder.accept(grammarAccess.getClaimContextAccess().getExprAtomicExprParserRuleCall_3_0(), semanticObject.getExpr());
 		feeder.finish();
 	}
 	
@@ -1429,8 +1429,8 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_JUSTIFICATION__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_JUSTIFICATION__VAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimJustificationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
@@ -1451,8 +1451,8 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__VAL));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_STRATEGY__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_STRATEGY__VAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimStrategyAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());

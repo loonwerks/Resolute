@@ -1566,22 +1566,27 @@ ruleClaimContext returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClaimContextAccess().getValStringTermParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getClaimContextAccess().getExprAtomicExprParserRuleCall_3_0()); 
 	    }
-		lv_val_3_0=ruleStringTerm		{
+		lv_expr_3_0=ruleAtomicExpr		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClaimContextRule());
 	        }
        		set(
        			$current, 
-       			"val",
-        		lv_val_3_0, 
-        		"org.osate.xtext.aadl2.properties.Properties.StringTerm");
+       			"expr",
+        		lv_expr_3_0, 
+        		"com.rockwellcollins.atc.resolute.Resolute.AtomicExpr");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
+)
+	otherlv_4=Semicolon
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getClaimContextAccess().getSemicolonKeyword_4());
+    }
+)
 ;
 
 

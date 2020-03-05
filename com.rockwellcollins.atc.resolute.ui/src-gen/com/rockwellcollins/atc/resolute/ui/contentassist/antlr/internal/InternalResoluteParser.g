@@ -5787,6 +5787,7 @@ rule__ClaimContext__Group__3
     }
 :
 	rule__ClaimContext__Group__3__Impl
+	rule__ClaimContext__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -5798,15 +5799,47 @@ rule__ClaimContext__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getClaimContextAccess().getValAssignment_3()); }
-(rule__ClaimContext__ValAssignment_3)
-{ after(grammarAccess.getClaimContextAccess().getValAssignment_3()); }
+{ before(grammarAccess.getClaimContextAccess().getExprAssignment_3()); }
+(rule__ClaimContext__ExprAssignment_3)
+{ after(grammarAccess.getClaimContextAccess().getExprAssignment_3()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__ClaimContext__Group__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ClaimContext__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClaimContext__Group__4__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClaimContextAccess().getSemicolonKeyword_4()); }
+
+	Semicolon 
+
+{ after(grammarAccess.getClaimContextAccess().getSemicolonKeyword_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -16953,14 +16986,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ClaimContext__ValAssignment_3
+rule__ClaimContext__ExprAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getClaimContextAccess().getValStringTermParserRuleCall_3_0()); }
-	ruleStringTerm{ after(grammarAccess.getClaimContextAccess().getValStringTermParserRuleCall_3_0()); }
+{ before(grammarAccess.getClaimContextAccess().getExprAtomicExprParserRuleCall_3_0()); }
+	ruleAtomicExpr{ after(grammarAccess.getClaimContextAccess().getExprAtomicExprParserRuleCall_3_0()); }
 )
 
 ;

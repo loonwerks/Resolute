@@ -36,10 +36,18 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//ClaimAttribute/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimAttribute/val"/>
     </genClasses>
-    <genClasses ecoreClass="Resolute.ecore#//ClaimContext"/>
-    <genClasses ecoreClass="Resolute.ecore#//ClaimJustification"/>
-    <genClasses ecoreClass="Resolute.ecore#//ClaimAssumption"/>
-    <genClasses ecoreClass="Resolute.ecore#//ClaimStrategy"/>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimContext">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimContext/expr"/>
+    </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimJustification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimJustification/val"/>
+    </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimAssumption">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimAssumption/val"/>
+    </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimStrategy">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimStrategy/val"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimText"/>
     <genClasses ecoreClass="Resolute.ecore#//ClaimTextVar"/>
     <genClasses ecoreClass="Resolute.ecore#//Expr"/>
@@ -188,6 +196,5 @@
     <genClasses ecoreClass="Resolute.ecore#//InfoStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//ProveStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//CheckStatement"/>
-    <genClasses ecoreClass="Resolute.ecore#//Solution"/>
   </genPackages>
 </genmodel:GenModel>

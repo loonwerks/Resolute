@@ -4,8 +4,6 @@ package com.rockwellcollins.atc.resolute.resolute;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.osate.aadl2.StringLiteral;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Claim Attribute</b></em>'.
@@ -16,7 +14,6 @@ import org.osate.aadl2.StringLiteral;
  * </p>
  * <ul>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimAttribute#getName <em>Name</em>}</li>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimAttribute#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getClaimAttribute()
@@ -46,27 +43,5 @@ public interface ClaimAttribute extends EObject
    * @generated
    */
   void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Val</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Val</em>' containment reference.
-   * @see #setVal(StringLiteral)
-   * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getClaimAttribute_Val()
-   * @model containment="true"
-   * @generated
-   */
-  StringLiteral getVal();
-
-  /**
-   * Sets the value of the '{@link com.rockwellcollins.atc.resolute.resolute.ClaimAttribute#getVal <em>Val</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Val</em>' containment reference.
-   * @see #getVal()
-   * @generated
-   */
-  void setVal(StringLiteral value);
 
 } // ClaimAttribute

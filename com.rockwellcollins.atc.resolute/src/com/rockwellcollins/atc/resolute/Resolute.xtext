@@ -123,7 +123,7 @@ ClaimAttribute:
 ;
 
 ClaimContext:
-	'context' name=ID ':' val=StringTerm
+	'context' name=ID ':' expr=AtomicExpr ';'
 ;
 
 ClaimJustification:

@@ -58,6 +58,7 @@ import com.rockwellcollins.atc.resolute.resolute.CastExpr;
 import com.rockwellcollins.atc.resolute.resolute.CheckStatement;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAttribute;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
+import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
@@ -267,6 +268,21 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		if (!exprType.subtypeOf(defType)) {
 			error(consDef.getType(), "Definition expects type " + defType + " but has type " + exprType);
 		}
+	}
+
+	@Check
+	public void checkClaimContext(ClaimContext claimContext) {
+		if (!isValidClaimContextExpr(claimContext.getExpr())) {
+			error(claimContext.getExpr(), "Not a valid expression for a claim context");
+		}
+	}
+
+	private boolean isValidClaimContextExpr(Expr expr) {
+		if (expr instanceof IdExpr || expr instanceof ThisExpr || expr instanceof StringExpr || expr instanceof ListExpr
+				|| expr instanceof SetExpr) {
+			return true;
+		}
+		return false;
 	}
 
 	@Check

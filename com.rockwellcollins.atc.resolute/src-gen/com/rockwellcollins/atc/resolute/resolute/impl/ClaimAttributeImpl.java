@@ -6,15 +6,11 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimAttribute;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.osate.aadl2.StringLiteral;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +21,6 @@ import org.osate.aadl2.StringLiteral;
  * </p>
  * <ul>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimAttributeImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimAttributeImpl#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,16 +46,6 @@ public class ClaimAttributeImpl extends MinimalEObjectImpl.Container implements 
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVal()
-   * @generated
-   * @ordered
-   */
-  protected StringLiteral val;
 
   /**
    * <!-- begin-user-doc -->
@@ -114,80 +99,12 @@ public class ClaimAttributeImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
-  public StringLiteral getVal()
-  {
-    return val;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetVal(StringLiteral newVal, NotificationChain msgs)
-  {
-    StringLiteral oldVal = val;
-    val = newVal;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_ATTRIBUTE__VAL, oldVal, newVal);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setVal(StringLiteral newVal)
-  {
-    if (newVal != val)
-    {
-      NotificationChain msgs = null;
-      if (val != null)
-        msgs = ((InternalEObject)val).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_ATTRIBUTE__VAL, null, msgs);
-      if (newVal != null)
-        msgs = ((InternalEObject)newVal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_ATTRIBUTE__VAL, null, msgs);
-      msgs = basicSetVal(newVal, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_ATTRIBUTE__VAL, newVal, newVal));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case ResolutePackage.CLAIM_ATTRIBUTE__VAL:
-        return basicSetVal(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case ResolutePackage.CLAIM_ATTRIBUTE__NAME:
         return getName();
-      case ResolutePackage.CLAIM_ATTRIBUTE__VAL:
-        return getVal();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -204,9 +121,6 @@ public class ClaimAttributeImpl extends MinimalEObjectImpl.Container implements 
     {
       case ResolutePackage.CLAIM_ATTRIBUTE__NAME:
         setName((String)newValue);
-        return;
-      case ResolutePackage.CLAIM_ATTRIBUTE__VAL:
-        setVal((StringLiteral)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -225,9 +139,6 @@ public class ClaimAttributeImpl extends MinimalEObjectImpl.Container implements 
       case ResolutePackage.CLAIM_ATTRIBUTE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ResolutePackage.CLAIM_ATTRIBUTE__VAL:
-        setVal((StringLiteral)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -244,8 +155,6 @@ public class ClaimAttributeImpl extends MinimalEObjectImpl.Container implements 
     {
       case ResolutePackage.CLAIM_ATTRIBUTE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ResolutePackage.CLAIM_ATTRIBUTE__VAL:
-        return val != null;
     }
     return super.eIsSet(featureID);
   }

@@ -860,14 +860,15 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cValAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cValStringTermParserRuleCall_3_0 = (RuleCall)cValAssignment_3.eContents().get(0);
+		private final Assignment cExprAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cExprAtomicExprParserRuleCall_3_0 = (RuleCall)cExprAssignment_3.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//ClaimContext:
-		//	'context' name=ID ':' val=StringTerm;
+		//	'context' name=ID ':' expr=AtomicExpr ';';
 		@Override public ParserRule getRule() { return rule; }
 
-		//'context' name=ID ':' val=StringTerm
+		//'context' name=ID ':' expr=AtomicExpr ';'
 		public Group getGroup() { return cGroup; }
 
 		//'context'
@@ -882,11 +883,14 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
-		//val=StringTerm
-		public Assignment getValAssignment_3() { return cValAssignment_3; }
+		//expr=AtomicExpr
+		public Assignment getExprAssignment_3() { return cExprAssignment_3; }
 
-		//StringTerm
-		public RuleCall getValStringTermParserRuleCall_3_0() { return cValStringTermParserRuleCall_3_0; }
+		//AtomicExpr
+		public RuleCall getExprAtomicExprParserRuleCall_3_0() { return cExprAtomicExprParserRuleCall_3_0; }
+
+		//';'
+		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
 	}
 
 	public class ClaimJustificationElements extends AbstractParserRuleElementFinder {
@@ -3486,7 +3490,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ClaimContext:
-	//	'context' name=ID ':' val=StringTerm;
+	//	'context' name=ID ':' expr=AtomicExpr ';';
 	public ClaimContextElements getClaimContextAccess() {
 		return pClaimContext;
 	}
