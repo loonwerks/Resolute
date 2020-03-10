@@ -168,6 +168,50 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		error(check, "Check statements must contain either a ruleset or lint call");
 	}
 
+//	@Check
+//	public void checkIdExpr(IdExpr expr) {
+//
+//		NamedElement refElement = expr.getId();
+//		NamedElement idFuncDef = null;
+//		EObject parent = expr;
+//		while (parent.eContainer() != null) {
+//			parent = parent.eContainer();
+//			if (parent instanceof FunctionDefinition) {
+//				idFuncDef = (FunctionDefinition) parent;
+//				break;
+//			}
+//		}
+//
+//
+//		// If I'm in a function definition
+//		if (idFuncDef != null) {
+//			boolean inResoluteAnnex = false;
+//			NamedElement refFuncDef = null;
+//			parent = refElement;
+//			while (parent.eContainer() != null) {
+//				parent = parent.eContainer();
+//				if (parent instanceof ResoluteSubclause || parent instanceof ResoluteLibrary) {
+//					inResoluteAnnex = true;
+//					break;
+//				} else if (parent instanceof FunctionDefinition) {
+//					refFuncDef = (FunctionDefinition) parent;
+//				}
+//			}
+//			// If a constant or AADL native element (anything outside the Resolute annex)
+//			if (inResoluteAnnex && !(refElement instanceof ConstantDefinition)) {
+//				if (!(refElement instanceof Arg || refElement instanceof LetBinding)) {
+//					error(expr, "Couldn't resolve reference to " + expr.getId().getName());
+//				} else {
+//					// It must be a FunctionDefinition Arg, QuantifiedExpr Arg, LetExpr Arg, ListFilterMapExpr Arg, SetFilterMapExpr Arg
+//					// AND the Arg container must be contained somewhere inside the FunctionDefinition
+//					if (!idFuncDef.equals(refFuncDef)) {
+//						error(expr, "Couldn't resolve reference to " + expr.getId().getName());
+//					}
+//				}
+//			}
+//		}
+//	}
+
 	@Check
 	public void checkLintStatement(LintStatement lintStmt) {
 
@@ -292,7 +336,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			return; // handled by parse error
 		}
 
-		if (claimType == null) {
+		if (claimType == null && body instanceof ClaimBody) {
 			claimType = "goal";
 		}
 
