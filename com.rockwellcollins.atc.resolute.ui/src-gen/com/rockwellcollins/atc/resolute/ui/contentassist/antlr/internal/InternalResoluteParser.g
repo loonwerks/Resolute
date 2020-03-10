@@ -5947,6 +5947,7 @@ rule__ClaimJustification__Group__3
     }
 :
 	rule__ClaimJustification__Group__3__Impl
+	rule__ClaimJustification__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -5967,6 +5968,38 @@ rule__ClaimJustification__Group__3__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__ClaimJustification__Group__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ClaimJustification__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClaimJustification__Group__4__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClaimJustificationAccess().getSemicolonKeyword_4()); }
+
+	Semicolon 
+
+{ after(grammarAccess.getClaimJustificationAccess().getSemicolonKeyword_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -6074,6 +6107,7 @@ rule__ClaimAssumption__Group__3
     }
 :
 	rule__ClaimAssumption__Group__3__Impl
+	rule__ClaimAssumption__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -6094,6 +6128,38 @@ rule__ClaimAssumption__Group__3__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__ClaimAssumption__Group__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ClaimAssumption__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClaimAssumption__Group__4__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClaimAssumptionAccess().getSemicolonKeyword_4()); }
+
+	Semicolon 
+
+{ after(grammarAccess.getClaimAssumptionAccess().getSemicolonKeyword_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -6201,6 +6267,7 @@ rule__ClaimStrategy__Group__3
     }
 :
 	rule__ClaimStrategy__Group__3__Impl
+	rule__ClaimStrategy__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -6221,6 +6288,38 @@ rule__ClaimStrategy__Group__3__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__ClaimStrategy__Group__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ClaimStrategy__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClaimStrategy__Group__4__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClaimStrategyAccess().getSemicolonKeyword_4()); }
+
+	Semicolon 
+
+{ after(grammarAccess.getClaimStrategyAccess().getSemicolonKeyword_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -16992,8 +17091,8 @@ rule__ClaimContext__ExprAssignment_3
     }
 :
 (
-{ before(grammarAccess.getClaimContextAccess().getExprAtomicExprParserRuleCall_3_0()); }
-	ruleAtomicExpr{ after(grammarAccess.getClaimContextAccess().getExprAtomicExprParserRuleCall_3_0()); }
+{ before(grammarAccess.getClaimContextAccess().getExprExprParserRuleCall_3_0()); }
+	ruleExpr{ after(grammarAccess.getClaimContextAccess().getExprExprParserRuleCall_3_0()); }
 )
 
 ;

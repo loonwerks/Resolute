@@ -1566,9 +1566,9 @@ ruleClaimContext returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClaimContextAccess().getExprAtomicExprParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getClaimContextAccess().getExprExprParserRuleCall_3_0()); 
 	    }
-		lv_expr_3_0=ruleAtomicExpr		{
+		lv_expr_3_0=ruleExpr		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClaimContextRule());
 	        }
@@ -1576,7 +1576,7 @@ ruleClaimContext returns [EObject current=null]
        			$current, 
        			"expr",
         		lv_expr_3_0, 
-        		"com.rockwellcollins.atc.resolute.Resolute.AtomicExpr");
+        		"com.rockwellcollins.atc.resolute.Resolute.Expr");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1653,7 +1653,12 @@ ruleClaimJustification returns [EObject current=null]
 	    }
 
 )
-))
+)
+	otherlv_4=Semicolon
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getClaimJustificationAccess().getSemicolonKeyword_4());
+    }
+)
 ;
 
 
@@ -1720,7 +1725,12 @@ ruleClaimAssumption returns [EObject current=null]
 	    }
 
 )
-))
+)
+	otherlv_4=Semicolon
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getClaimAssumptionAccess().getSemicolonKeyword_4());
+    }
+)
 ;
 
 
@@ -1787,7 +1797,12 @@ ruleClaimStrategy returns [EObject current=null]
 	    }
 
 )
-))
+)
+	otherlv_4=Semicolon
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getClaimStrategyAccess().getSemicolonKeyword_4());
+    }
+)
 ;
 
 

@@ -123,19 +123,19 @@ ClaimAttribute:
 ;
 
 ClaimContext:
-	'context' name=ID ':' expr=AtomicExpr ';'
+	'context' name=ID ':' expr=Expr ';'
 ;
 
 ClaimJustification:
-	'justification' name=ID ':' val=StringTerm
+	'justification' name=ID ':' val=StringTerm ';'
 ;
 
 ClaimAssumption:
-	'assumption' name=ID ':' val=StringTerm
+	'assumption' name=ID ':' val=StringTerm ';'
 ;
 
 ClaimStrategy:
-	'strategy' name=ID ':' val=StringTerm
+	'strategy' name=ID ':' val=StringTerm ';' 
 ;
 
 ClaimText:

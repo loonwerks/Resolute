@@ -1401,7 +1401,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     ClaimContext returns ClaimContext
 	 *
 	 * Constraint:
-	 *     (name=ID expr=AtomicExpr)
+	 *     (name=ID expr=Expr)
 	 */
 	protected void sequence_ClaimContext(ISerializationContext context, ClaimContext semanticObject) {
 		if (errorAcceptor != null) {
@@ -1412,7 +1412,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimContextAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getClaimContextAccess().getExprAtomicExprParserRuleCall_3_0(), semanticObject.getExpr());
+		feeder.accept(grammarAccess.getClaimContextAccess().getExprExprParserRuleCall_3_0(), semanticObject.getExpr());
 		feeder.finish();
 	}
 	

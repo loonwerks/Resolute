@@ -58,7 +58,6 @@ import com.rockwellcollins.atc.resolute.resolute.CastExpr;
 import com.rockwellcollins.atc.resolute.resolute.CheckStatement;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAttribute;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
-import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
@@ -270,20 +269,20 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		}
 	}
 
-	@Check
-	public void checkClaimContext(ClaimContext claimContext) {
-		if (!isValidClaimContextExpr(claimContext.getExpr())) {
-			error(claimContext.getExpr(), "Not a valid expression for a claim context");
-		}
-	}
-
-	private boolean isValidClaimContextExpr(Expr expr) {
-		if (expr instanceof IdExpr || expr instanceof ThisExpr || expr instanceof StringExpr || expr instanceof ListExpr
-				|| expr instanceof SetExpr) {
-			return true;
-		}
-		return false;
-	}
+//	@Check
+//	public void checkClaimContext(ClaimContext claimContext) {
+//		if (!isValidClaimContextExpr(claimContext.getExpr())) {
+//			error(claimContext.getExpr(), "Not a valid expression for a claim context");
+//		}
+//	}
+//
+//	private boolean isValidClaimContextExpr(Expr expr) {
+//		if (expr instanceof IdExpr || expr instanceof ThisExpr || expr instanceof StringExpr || expr instanceof ListExpr
+//				|| expr instanceof SetExpr) {
+//			return true;
+//		}
+//		return false;
+//	}
 
 	@Check
 	public void checkFuncDef(FunctionDefinition funcDef) {
@@ -291,6 +290,10 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		String claimType = funcDef.getClaimType();
 		if (body == null) {
 			return; // handled by parse error
+		}
+
+		if (claimType == null) {
+			claimType = "goal";
 		}
 
 		ResoluteType exprType = getExprType(body.getExpr());
@@ -312,7 +315,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 
-		if (claimType.equals("strategy") && body instanceof ClaimBody) {
+		if (claimType == "strategy" && body instanceof ClaimBody) {
 			ClaimBody claimBody = (ClaimBody) body;
 			if (containsStrategyAttribute(claimBody)) {
 				error("Keyword " + claimType
@@ -321,7 +324,19 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			} else if (!isValidStrategyExpr(claimBody.getExpr())) {
 				error(claimBody.getExpr(), "Strategies can only make calls to other goals");
 			}
+		}
 
+		if (body instanceof ClaimBody) {
+			ClaimBody claimBody = (ClaimBody) body;
+			int claimStrategyCount = 0;
+			for (ClaimAttribute attr : claimBody.getAttributes()) {
+				if (attr instanceof ClaimStrategy) {
+					claimStrategyCount++;
+					if (claimStrategyCount > 1) {
+						error(attr, "Strategy claim attribute can only be declared once inside a claim");
+					}
+				}
+			}
 		}
 
 	}
