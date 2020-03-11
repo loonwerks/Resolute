@@ -121,13 +121,13 @@ class ResoluteFormatter extends PropertiesFormatter {
 			format(claim, document);
 		}
 		
-		for (ClaimContext context : claimbody.getContext()) {
-			context.prepend[newLines = 1].surround[indent];
-		}
-		
-		for (ClaimAssumption assumption : claimbody.getAssumptions()) {
-			assumption.prepend[newLines = 1].surround[indent];
-		}
+//		for (ClaimContext context : claimbody.getContext()) {
+//			context.prepend[newLines = 1].surround[indent];
+//		}
+//		
+//		for (ClaimAssumption assumption : claimbody.getAssumptions()) {
+//			assumption.prepend[newLines = 1].surround[indent];
+//		}
 		
 		claimbody.getExpr().prepend[newLines = 1].surround[indent];
 		formatExpr(claimbody.getExpr(), document);

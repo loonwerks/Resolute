@@ -106,32 +106,42 @@ ConstantDefinition:
 ;
 
 FunctionDefinition:
-	name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
+	(claimType='goal' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
 ;
 
 DefinitionBody:
 	 {FunctionBody} ':' type=Type '=' expr=Expr
-|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (context+=ClaimContext)* (assumptions+=ClaimAssumption)* (strategies+=ClaimStrategy)* expr=Expr
+//|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (context+=ClaimContext)* (justification+=ClaimJustification)* (assumptions+=ClaimAssumption)* (strategies+=ClaimStrategy)* expr=Expr
+|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (attributes+=ClaimAttribute)* expr=Expr
+;
+
+ClaimAttribute:
+	ClaimContext
+|	ClaimJustification
+|	ClaimAssumption
+|	ClaimStrategy
 ;
 
 ClaimContext:
-	'context' name=ID ':' val=StringTerm
+	'context' name=ID ':' expr=Expr ';'
+;
+
+ClaimJustification:
+	'justification' name=ID ':' val=StringTerm ';'
 ;
 
 ClaimAssumption:
-	'assumption' name=ID ':' val=StringTerm
+	'assumption' name=ID ':' val=StringTerm ';'
 ;
 
 ClaimStrategy:
-	'strategy' name=ID ':' val=StringTerm
+	'strategy' name=ID ':' val=StringTerm ';' 
 ;
 
 ClaimText:
 	 {ClaimString} str=STRING 
 | 	 {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?
 ;
-
-
 
 ClaimTextVar: Arg | ConstantDefinition | LetBinding;
 
@@ -203,6 +213,9 @@ AtomicExpr returns Expr:
 |   {SetExpr} '{' '}'
 |   {LetExpr} 'let' binding=LetBinding ';' expr=Expr
 |	'(' Expr ')'
+
+| {UndevelopedExpr} 'undeveloped'
+| {SolutionExpr} 'solution' name=ID ':' val=StringTerm
 ;
 
 LetBinding:

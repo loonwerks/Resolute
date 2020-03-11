@@ -15,6 +15,7 @@ import org.osate.aadl2.Namespace;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.FunctionDefinition#getClaimType <em>Claim Type</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.FunctionDefinition#getArgs <em>Args</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.FunctionDefinition#getBody <em>Body</em>}</li>
  * </ul>
@@ -25,6 +26,28 @@ import org.osate.aadl2.Namespace;
  */
 public interface FunctionDefinition extends Namespace, Definition
 {
+  /**
+   * Returns the value of the '<em><b>Claim Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Claim Type</em>' attribute.
+   * @see #setClaimType(String)
+   * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getFunctionDefinition_ClaimType()
+   * @model
+   * @generated
+   */
+  String getClaimType();
+
+  /**
+   * Sets the value of the '{@link com.rockwellcollins.atc.resolute.resolute.FunctionDefinition#getClaimType <em>Claim Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Claim Type</em>' attribute.
+   * @see #getClaimType()
+   * @generated
+   */
+  void setClaimType(String value);
+
   /**
    * Returns the value of the '<em><b>Args</b></em>' containment reference list.
    * The list contents are of type {@link com.rockwellcollins.atc.resolute.resolute.Arg}.

@@ -15,6 +15,7 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimArg;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
+import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ClaimString;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
@@ -49,9 +50,11 @@ import com.rockwellcollins.atc.resolute.resolute.RulesetBody;
 import com.rockwellcollins.atc.resolute.resolute.SetExpr;
 import com.rockwellcollins.atc.resolute.resolute.SetFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.SetType;
+import com.rockwellcollins.atc.resolute.resolute.SolutionExpr;
 import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
 import com.rockwellcollins.atc.resolute.resolute.UnaryExpr;
+import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 import com.rockwellcollins.atc.resolute.resolute.WarningStatement;
 import com.rockwellcollins.atc.resolute.services.ResoluteGrammarAccess;
 import java.util.Set;
@@ -235,6 +238,9 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 			case ResolutePackage.CLAIM_CONTEXT:
 				sequence_ClaimContext(context, (ClaimContext) semanticObject); 
 				return; 
+			case ResolutePackage.CLAIM_JUSTIFICATION:
+				sequence_ClaimJustification(context, (ClaimJustification) semanticObject); 
+				return; 
 			case ResolutePackage.CLAIM_STRATEGY:
 				sequence_ClaimStrategy(context, (ClaimStrategy) semanticObject); 
 				return; 
@@ -334,6 +340,9 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 			case ResolutePackage.SET_TYPE:
 				sequence_Type(context, (SetType) semanticObject); 
 				return; 
+			case ResolutePackage.SOLUTION_EXPR:
+				sequence_AtomicExpr(context, (SolutionExpr) semanticObject); 
+				return; 
 			case ResolutePackage.STRING_EXPR:
 				sequence_AtomicExpr(context, (StringExpr) semanticObject); 
 				return; 
@@ -342,6 +351,9 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 				return; 
 			case ResolutePackage.UNARY_EXPR:
 				sequence_PrefixExpr(context, (UnaryExpr) semanticObject); 
+				return; 
+			case ResolutePackage.UNDEVELOPED_EXPR:
+				sequence_AtomicExpr(context, (UndevelopedExpr) semanticObject); 
 				return; 
 			case ResolutePackage.WARNING_STATEMENT:
 				sequence_LintStatement(context, (WarningStatement) semanticObject); 
@@ -1091,6 +1103,50 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	
 	/**
 	 * Contexts:
+	 *     Element returns SolutionExpr
+	 *     Expr returns SolutionExpr
+	 *     ImpliesExpr returns SolutionExpr
+	 *     ImpliesExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     OrExpr returns SolutionExpr
+	 *     OrExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     AndExpr returns SolutionExpr
+	 *     AndExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     InstanceOfExpr returns SolutionExpr
+	 *     InstanceOfExpr.InstanceOfExpr_1_0_0_0 returns SolutionExpr
+	 *     RelationalExpr returns SolutionExpr
+	 *     RelationalExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     PlusExpr returns SolutionExpr
+	 *     PlusExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     TimesExpr returns SolutionExpr
+	 *     TimesExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     ExpExpr returns SolutionExpr
+	 *     ExpExpr.BinaryExpr_1_0_0_0 returns SolutionExpr
+	 *     PrefixExpr returns SolutionExpr
+	 *     AtomicExpr returns SolutionExpr
+	 *     AtomicExpr.ListFilterMapExpr_13_2_0_0 returns SolutionExpr
+	 *     AtomicExpr.ListExpr_13_2_1_0 returns SolutionExpr
+	 *     AtomicExpr.SetFilterMapExpr_14_2_0_0 returns SolutionExpr
+	 *     AtomicExpr.SetExpr_14_2_1_0 returns SolutionExpr
+	 *
+	 * Constraint:
+	 *     (name=ID val=StringTerm)
+	 */
+	protected void sequence_AtomicExpr(ISerializationContext context, SolutionExpr semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.SOLUTION_EXPR__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.SOLUTION_EXPR__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.SOLUTION_EXPR__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.SOLUTION_EXPR__VAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicExprAccess().getNameIDTerminalRuleCall_20_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getAtomicExprAccess().getValStringTermParserRuleCall_20_4_0(), semanticObject.getVal());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Element returns StringExpr
 	 *     Expr returns StringExpr
 	 *     ImpliesExpr returns StringExpr
@@ -1161,6 +1217,41 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     sub=NestedDotID?
 	 */
 	protected void sequence_AtomicExpr(ISerializationContext context, ThisExpr semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Element returns UndevelopedExpr
+	 *     Expr returns UndevelopedExpr
+	 *     ImpliesExpr returns UndevelopedExpr
+	 *     ImpliesExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     OrExpr returns UndevelopedExpr
+	 *     OrExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     AndExpr returns UndevelopedExpr
+	 *     AndExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     InstanceOfExpr returns UndevelopedExpr
+	 *     InstanceOfExpr.InstanceOfExpr_1_0_0_0 returns UndevelopedExpr
+	 *     RelationalExpr returns UndevelopedExpr
+	 *     RelationalExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     PlusExpr returns UndevelopedExpr
+	 *     PlusExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     TimesExpr returns UndevelopedExpr
+	 *     TimesExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     ExpExpr returns UndevelopedExpr
+	 *     ExpExpr.BinaryExpr_1_0_0_0 returns UndevelopedExpr
+	 *     PrefixExpr returns UndevelopedExpr
+	 *     AtomicExpr returns UndevelopedExpr
+	 *     AtomicExpr.ListFilterMapExpr_13_2_0_0 returns UndevelopedExpr
+	 *     AtomicExpr.ListExpr_13_2_1_0 returns UndevelopedExpr
+	 *     AtomicExpr.SetFilterMapExpr_14_2_0_0 returns UndevelopedExpr
+	 *     AtomicExpr.SetExpr_14_2_1_0 returns UndevelopedExpr
+	 *
+	 * Constraint:
+	 *     {UndevelopedExpr}
+	 */
+	protected void sequence_AtomicExpr(ISerializationContext context, UndevelopedExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1284,6 +1375,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	
 	/**
 	 * Contexts:
+	 *     ClaimAttribute returns ClaimAssumption
 	 *     ClaimAssumption returns ClaimAssumption
 	 *
 	 * Constraint:
@@ -1291,8 +1383,8 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 */
 	protected void sequence_ClaimAssumption(ISerializationContext context, ClaimAssumption semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
 			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__VAL) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__VAL));
 		}
@@ -1305,27 +1397,51 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	
 	/**
 	 * Contexts:
+	 *     ClaimAttribute returns ClaimContext
 	 *     ClaimContext returns ClaimContext
 	 *
 	 * Constraint:
-	 *     (name=ID val=StringTerm)
+	 *     (name=ID expr=Expr)
 	 */
 	protected void sequence_ClaimContext(ISerializationContext context, ClaimContext semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__NAME));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__VAL));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_CONTEXT__EXPR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimContextAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getClaimContextAccess().getValStringTermParserRuleCall_3_0(), semanticObject.getVal());
+		feeder.accept(grammarAccess.getClaimContextAccess().getExprExprParserRuleCall_3_0(), semanticObject.getExpr());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
+	 *     ClaimAttribute returns ClaimJustification
+	 *     ClaimJustification returns ClaimJustification
+	 *
+	 * Constraint:
+	 *     (name=ID val=StringTerm)
+	 */
+	protected void sequence_ClaimJustification(ISerializationContext context, ClaimJustification semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_JUSTIFICATION__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_JUSTIFICATION__VAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getClaimJustificationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getClaimJustificationAccess().getValStringTermParserRuleCall_3_0(), semanticObject.getVal());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ClaimAttribute returns ClaimStrategy
 	 *     ClaimStrategy returns ClaimStrategy
 	 *
 	 * Constraint:
@@ -1333,8 +1449,8 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 */
 	protected void sequence_ClaimStrategy(ISerializationContext context, ClaimStrategy semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_STRATEGY__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_STRATEGY__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ATTRIBUTE__NAME));
 			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_STRATEGY__VAL) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_STRATEGY__VAL));
 		}
@@ -1410,7 +1526,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     DefinitionBody returns ClaimBody
 	 *
 	 * Constraint:
-	 *     (claim+=ClaimText+ context+=ClaimContext* assumptions+=ClaimAssumption* strategies+=ClaimStrategy* expr=Expr)
+	 *     (claim+=ClaimText+ attributes+=ClaimAttribute* expr=Expr)
 	 */
 	protected void sequence_DefinitionBody(ISerializationContext context, ClaimBody semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1447,7 +1563,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     FunctionDefinition returns FunctionDefinition
 	 *
 	 * Constraint:
-	 *     (name=ID (args+=Arg args+=Arg*)? body=DefinitionBody)
+	 *     ((claimType='goal' | claimType='strategy')? name=ID (args+=Arg args+=Arg*)? body=DefinitionBody)
 	 */
 	protected void sequence_FunctionDefinition(ISerializationContext context, FunctionDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

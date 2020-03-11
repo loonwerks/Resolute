@@ -95,6 +95,15 @@ public interface ResoluteFactory extends EFactory
   DefinitionBody createDefinitionBody();
 
   /**
+   * Returns a new object of class '<em>Claim Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Claim Attribute</em>'.
+   * @generated
+   */
+  ClaimAttribute createClaimAttribute();
+
+  /**
    * Returns a new object of class '<em>Claim Context</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -102,6 +111,15 @@ public interface ResoluteFactory extends EFactory
    * @generated
    */
   ClaimContext createClaimContext();
+
+  /**
+   * Returns a new object of class '<em>Claim Justification</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Claim Justification</em>'.
+   * @generated
+   */
+  ClaimJustification createClaimJustification();
 
   /**
    * Returns a new object of class '<em>Claim Assumption</em>'.
@@ -480,6 +498,24 @@ public interface ResoluteFactory extends EFactory
    * @generated
    */
   LetExpr createLetExpr();
+
+  /**
+   * Returns a new object of class '<em>Undeveloped Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Undeveloped Expr</em>'.
+   * @generated
+   */
+  UndevelopedExpr createUndevelopedExpr();
+
+  /**
+   * Returns a new object of class '<em>Solution Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Solution Expr</em>'.
+   * @generated
+   */
+  SolutionExpr createSolutionExpr();
 
   /**
    * Returns a new object of class '<em>Warning Statement</em>'.

@@ -122,9 +122,19 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
         return createDefinitionBodyAdapter();
       }
       @Override
+      public Adapter caseClaimAttribute(ClaimAttribute object)
+      {
+        return createClaimAttributeAdapter();
+      }
+      @Override
       public Adapter caseClaimContext(ClaimContext object)
       {
         return createClaimContextAdapter();
+      }
+      @Override
+      public Adapter caseClaimJustification(ClaimJustification object)
+      {
+        return createClaimJustificationAdapter();
       }
       @Override
       public Adapter caseClaimAssumption(ClaimAssumption object)
@@ -337,6 +347,16 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
         return createLetExprAdapter();
       }
       @Override
+      public Adapter caseUndevelopedExpr(UndevelopedExpr object)
+      {
+        return createUndevelopedExprAdapter();
+      }
+      @Override
+      public Adapter caseSolutionExpr(SolutionExpr object)
+      {
+        return createSolutionExprAdapter();
+      }
+      @Override
       public Adapter caseWarningStatement(WarningStatement object)
       {
         return createWarningStatementAdapter();
@@ -534,6 +554,21 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimAttribute <em>Claim Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimAttribute
+   * @generated
+   */
+  public Adapter createClaimAttributeAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimContext <em>Claim Context</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -544,6 +579,21 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createClaimContextAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimJustification <em>Claim Justification</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimJustification
+   * @generated
+   */
+  public Adapter createClaimJustificationAdapter()
   {
     return null;
   }
@@ -1174,6 +1224,36 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLetExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr <em>Undeveloped Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr
+   * @generated
+   */
+  public Adapter createUndevelopedExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.SolutionExpr <em>Solution Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.SolutionExpr
+   * @generated
+   */
+  public Adapter createSolutionExprAdapter()
   {
     return null;
   }

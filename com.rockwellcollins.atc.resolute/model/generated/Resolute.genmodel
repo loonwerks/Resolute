@@ -4,7 +4,7 @@
     editorDirectory="/com.rockwellcollins.atc.resolute.editor/src" modelPluginID="com.rockwellcollins.atc.resolute"
     forceOverwrite="true" modelName="Resolute" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="6.0" copyrightFields="false" editPluginID="com.rockwellcollins.atc.resolute.edit"
-    editorPluginID="com.rockwellcollins.atc.resolute.editor" runtimeVersion="2.13"
+    editorPluginID="com.rockwellcollins.atc.resolute.editor" runtimeVersion="2.19"
     usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/resource/org.osate.aadl2/model/aadl2.genmodel#//aadl2">
   <genPackages prefix="Resolute" basePackage="com.rockwellcollins.atc.resolute" disposableProviderFactory="true"
       ecorePackage="Resolute.ecore#/">
@@ -25,25 +25,27 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ConstantDefinition/expr"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//FunctionDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//FunctionDefinition/claimType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//FunctionDefinition/args"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//FunctionDefinition/body"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//DefinitionBody">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//DefinitionBody/expr"/>
     </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//ClaimAttribute/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimAttribute/val"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimContext">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//ClaimContext/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimContext/val"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimContext/context"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//ClaimContext/contextName"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute Resolute.ecore#//ClaimContext/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimContext/expr"/>
+    </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimJustification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimJustification/val"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimAssumption">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//ClaimAssumption/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimAssumption/val"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimStrategy">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//ClaimStrategy/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimStrategy/val"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimText"/>
@@ -90,11 +92,7 @@
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimBody">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimBody/claim"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimBody/context"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimBody/assumptions"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimBody/strategies"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimBody/claimContext"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//ClaimBody/claimTags"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimBody/attributes"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimString">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//ClaimString/str"/>
@@ -188,11 +186,15 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//LetExpr/binding"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//LetExpr/expr"/>
     </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//UndevelopedExpr"/>
+    <genClasses ecoreClass="Resolute.ecore#//SolutionExpr">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//SolutionExpr/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//SolutionExpr/val"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//WarningStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//ErrorStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//InfoStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//ProveStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//CheckStatement"/>
-    <genClasses ecoreClass="Resolute.ecore#//ContextExpr"/>
   </genPackages>
 </genmodel:GenModel>

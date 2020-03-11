@@ -2,9 +2,6 @@
  */
 package com.rockwellcollins.atc.resolute.resolute;
 
-import org.eclipse.emf.ecore.EObject;
-
-import org.osate.aadl2.StringLiteral;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,58 +12,35 @@ import org.osate.aadl2.StringLiteral;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimContext#getName <em>Name</em>}</li>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimContext#getVal <em>Val</em>}</li>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimContext#getExpr <em>Expr</em>}</li>
  * </ul>
  *
  * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getClaimContext()
  * @model
  * @generated
  */
-public interface ClaimContext extends EObject
+public interface ClaimContext extends ClaimAttribute
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Expr</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getClaimContext_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link com.rockwellcollins.atc.resolute.resolute.ClaimContext#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Val</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Val</em>' containment reference.
-   * @see #setVal(StringLiteral)
-   * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getClaimContext_Val()
+   * @return the value of the '<em>Expr</em>' containment reference.
+   * @see #setExpr(Expr)
+   * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getClaimContext_Expr()
    * @model containment="true"
    * @generated
    */
-  StringLiteral getVal();
+  Expr getExpr();
 
   /**
-   * Sets the value of the '{@link com.rockwellcollins.atc.resolute.resolute.ClaimContext#getVal <em>Val</em>}' containment reference.
+   * Sets the value of the '{@link com.rockwellcollins.atc.resolute.resolute.ClaimContext#getExpr <em>Expr</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Val</em>' containment reference.
-   * @see #getVal()
+   * @param value the new value of the '<em>Expr</em>' containment reference.
+   * @see #getExpr()
    * @generated
    */
-  void setVal(StringLiteral value);
+  void setExpr(Expr value);
 
 } // ClaimContext

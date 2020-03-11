@@ -79,31 +79,8 @@ public class ResoluteScopeProvider extends PropertiesScopeProvider {
 	}
 
 	IScope scope_NamedElement(LetExpr ctx, EReference ref) {
-		return Scopes.scopeFor(Collections.singleton(ctx.getBinding()),
-				getScope(ctx.eContainer(), ref));
+		return Scopes.scopeFor(Collections.singleton(ctx.getBinding()), getScope(ctx.eContainer(), ref));
 	}
-
-//	IScope scope_NamedElement(ProveStatement ctx, EReference ref) {
-//		EObject container = ctx.eContainer();
-//		assert (container instanceof ResoluteSubclause);
-//		container = container.eContainer();
-//		if (container instanceof ComponentImplementation) {
-//			ComponentImplementation compImpl = (ComponentImplementation) container;
-//			return Scopes.scopeFor(compImpl.getAllModes(), getScope(ctx.eContainer(), ref));
-//		}
-//		return getScope(ctx.eContainer(), ref);
-//	}
-
-//	IScope scope_NamedElement(CheckStatement ctx, EReference ref) {
-//		EObject container = ctx.eContainer();
-//		assert (container instanceof ResoluteSubclause);
-//		container = container.eContainer();
-//		if (container instanceof ComponentImplementation) {
-//			ComponentImplementation compImpl = (ComponentImplementation) container;
-//			return Scopes.scopeFor(compImpl.getAllModes(), getScope(ctx.eContainer(), ref));
-//		}
-//		return getScope(ctx.eContainer(), ref);
-//	}
 
 	IScope scope_NamedElement(AnalysisStatement ctx, EReference ref) {
 		EObject container = ctx.eContainer();

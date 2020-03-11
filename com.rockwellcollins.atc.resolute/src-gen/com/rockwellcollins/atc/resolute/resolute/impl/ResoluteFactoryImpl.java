@@ -72,7 +72,9 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.CONSTANT_DEFINITION: return createConstantDefinition();
       case ResolutePackage.FUNCTION_DEFINITION: return createFunctionDefinition();
       case ResolutePackage.DEFINITION_BODY: return createDefinitionBody();
+      case ResolutePackage.CLAIM_ATTRIBUTE: return createClaimAttribute();
       case ResolutePackage.CLAIM_CONTEXT: return createClaimContext();
+      case ResolutePackage.CLAIM_JUSTIFICATION: return createClaimJustification();
       case ResolutePackage.CLAIM_ASSUMPTION: return createClaimAssumption();
       case ResolutePackage.CLAIM_STRATEGY: return createClaimStrategy();
       case ResolutePackage.CLAIM_TEXT: return createClaimText();
@@ -115,6 +117,8 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.SET_FILTER_MAP_EXPR: return createSetFilterMapExpr();
       case ResolutePackage.SET_EXPR: return createSetExpr();
       case ResolutePackage.LET_EXPR: return createLetExpr();
+      case ResolutePackage.UNDEVELOPED_EXPR: return createUndevelopedExpr();
+      case ResolutePackage.SOLUTION_EXPR: return createSolutionExpr();
       case ResolutePackage.WARNING_STATEMENT: return createWarningStatement();
       case ResolutePackage.ERROR_STATEMENT: return createErrorStatement();
       case ResolutePackage.INFO_STATEMENT: return createInfoStatement();
@@ -227,10 +231,34 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
    * @generated
    */
   @Override
+  public ClaimAttribute createClaimAttribute()
+  {
+    ClaimAttributeImpl claimAttribute = new ClaimAttributeImpl();
+    return claimAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public ClaimContext createClaimContext()
   {
     ClaimContextImpl claimContext = new ClaimContextImpl();
     return claimContext;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ClaimJustification createClaimJustification()
+  {
+    ClaimJustificationImpl claimJustification = new ClaimJustificationImpl();
+    return claimJustification;
   }
 
   /**
@@ -735,6 +763,30 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
   {
     LetExprImpl letExpr = new LetExprImpl();
     return letExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public UndevelopedExpr createUndevelopedExpr()
+  {
+    UndevelopedExprImpl undevelopedExpr = new UndevelopedExprImpl();
+    return undevelopedExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SolutionExpr createSolutionExpr()
+  {
+    SolutionExprImpl solutionExpr = new SolutionExprImpl();
+    return solutionExpr;
   }
 
   /**

@@ -99,8 +99,10 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '[' (ambiguity) 'fail' val=Expr
 	 *     (rule start) '[' (ambiguity) 'if' cond=Expr
 	 *     (rule start) '[' (ambiguity) 'let' binding=LetBinding
+	 *     (rule start) '[' (ambiguity) 'solution' name=ID
 	 *     (rule start) '[' (ambiguity) 'this' '.' sub=NestedDotID
 	 *     (rule start) '[' (ambiguity) 'this' (rule start)
+	 *     (rule start) '[' (ambiguity) 'undeveloped' (rule start)
 	 *     (rule start) '[' (ambiguity) '{' '}' (rule start)
 	 *     (rule start) '[' (ambiguity) fn=BuiltInFn
 	 *     (rule start) '[' (ambiguity) fn=[FunctionDefinition|ID]
@@ -127,8 +129,10 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '{' (ambiguity) 'fail' val=Expr
 	 *     (rule start) '{' (ambiguity) 'if' cond=Expr
 	 *     (rule start) '{' (ambiguity) 'let' binding=LetBinding
+	 *     (rule start) '{' (ambiguity) 'solution' name=ID
 	 *     (rule start) '{' (ambiguity) 'this' '.' sub=NestedDotID
 	 *     (rule start) '{' (ambiguity) 'this' (rule start)
+	 *     (rule start) '{' (ambiguity) 'undeveloped' (rule start)
 	 *     (rule start) '{' (ambiguity) '{' '}' (rule start)
 	 *     (rule start) '{' (ambiguity) fn=BuiltInFn
 	 *     (rule start) '{' (ambiguity) fn=[FunctionDefinition|ID]
@@ -155,8 +159,10 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) (ambiguity) 'fail' val=Expr
 	 *     (rule start) (ambiguity) 'if' cond=Expr
 	 *     (rule start) (ambiguity) 'let' binding=LetBinding
+	 *     (rule start) (ambiguity) 'solution' name=ID
 	 *     (rule start) (ambiguity) 'this' '.' sub=NestedDotID
 	 *     (rule start) (ambiguity) 'this' (rule start)
+	 *     (rule start) (ambiguity) 'undeveloped' (rule start)
 	 *     (rule start) (ambiguity) '{' '}' (rule start)
 	 *     (rule start) (ambiguity) fn=BuiltInFn
 	 *     (rule start) (ambiguity) fn=[FunctionDefinition|ID]

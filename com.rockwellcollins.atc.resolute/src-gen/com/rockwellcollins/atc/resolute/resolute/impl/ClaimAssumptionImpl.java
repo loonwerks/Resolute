@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.osate.aadl2.StringLiteral;
 
@@ -24,34 +23,13 @@ import org.osate.aadl2.StringLiteral;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimAssumptionImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimAssumptionImpl#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ClaimAssumptionImpl extends MinimalEObjectImpl.Container implements ClaimAssumption
+public class ClaimAssumptionImpl extends ClaimAttributeImpl implements ClaimAssumption
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -81,31 +59,6 @@ public class ClaimAssumptionImpl extends MinimalEObjectImpl.Container implements
   protected EClass eStaticClass()
   {
     return ResolutePackage.Literals.CLAIM_ASSUMPTION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_ASSUMPTION__NAME, oldName, name));
   }
 
   /**
@@ -184,8 +137,6 @@ public class ClaimAssumptionImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_ASSUMPTION__NAME:
-        return getName();
       case ResolutePackage.CLAIM_ASSUMPTION__VAL:
         return getVal();
     }
@@ -202,9 +153,6 @@ public class ClaimAssumptionImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_ASSUMPTION__NAME:
-        setName((String)newValue);
-        return;
       case ResolutePackage.CLAIM_ASSUMPTION__VAL:
         setVal((StringLiteral)newValue);
         return;
@@ -222,9 +170,6 @@ public class ClaimAssumptionImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_ASSUMPTION__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case ResolutePackage.CLAIM_ASSUMPTION__VAL:
         setVal((StringLiteral)null);
         return;
@@ -242,29 +187,10 @@ public class ClaimAssumptionImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_ASSUMPTION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ResolutePackage.CLAIM_ASSUMPTION__VAL:
         return val != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ClaimAssumptionImpl

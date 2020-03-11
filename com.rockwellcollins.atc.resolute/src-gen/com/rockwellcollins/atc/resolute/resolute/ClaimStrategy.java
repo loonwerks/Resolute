@@ -2,8 +2,6 @@
  */
 package com.rockwellcollins.atc.resolute.resolute;
 
-import org.eclipse.emf.ecore.EObject;
-
 import org.osate.aadl2.StringLiteral;
 
 /**
@@ -15,7 +13,6 @@ import org.osate.aadl2.StringLiteral;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimStrategy#getName <em>Name</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ClaimStrategy#getVal <em>Val</em>}</li>
  * </ul>
  *
@@ -23,30 +20,8 @@ import org.osate.aadl2.StringLiteral;
  * @model
  * @generated
  */
-public interface ClaimStrategy extends EObject
+public interface ClaimStrategy extends ClaimAttribute
 {
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getClaimStrategy_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link com.rockwellcollins.atc.resolute.resolute.ClaimStrategy#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
   /**
    * Returns the value of the '<em><b>Val</b></em>' containment reference.
    * <!-- begin-user-doc -->

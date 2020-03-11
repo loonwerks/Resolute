@@ -32,6 +32,7 @@ import org.osate.aadl2.impl.NamespaceImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.FunctionDefinitionImpl#getClaimType <em>Claim Type</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.FunctionDefinitionImpl#getArgs <em>Args</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.FunctionDefinitionImpl#getBody <em>Body</em>}</li>
  * </ul>
@@ -40,6 +41,26 @@ import org.osate.aadl2.impl.NamespaceImpl;
  */
 public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDefinition
 {
+  /**
+   * The default value of the '{@link #getClaimType() <em>Claim Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getClaimType()
+   * @generated
+   * @ordered
+   */
+  protected static final String CLAIM_TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getClaimType() <em>Claim Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getClaimType()
+   * @generated
+   * @ordered
+   */
+  protected String claimType = CLAIM_TYPE_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -79,6 +100,31 @@ public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDef
   protected EClass eStaticClass()
   {
     return ResolutePackage.Literals.FUNCTION_DEFINITION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getClaimType()
+  {
+    return claimType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setClaimType(String newClaimType)
+  {
+    String oldClaimType = claimType;
+    claimType = newClaimType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.FUNCTION_DEFINITION__CLAIM_TYPE, oldClaimType, claimType));
   }
 
   /**
@@ -174,6 +220,8 @@ public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDef
   {
     switch (featureID)
     {
+      case ResolutePackage.FUNCTION_DEFINITION__CLAIM_TYPE:
+        return getClaimType();
       case ResolutePackage.FUNCTION_DEFINITION__ARGS:
         return getArgs();
       case ResolutePackage.FUNCTION_DEFINITION__BODY:
@@ -193,6 +241,9 @@ public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDef
   {
     switch (featureID)
     {
+      case ResolutePackage.FUNCTION_DEFINITION__CLAIM_TYPE:
+        setClaimType((String)newValue);
+        return;
       case ResolutePackage.FUNCTION_DEFINITION__ARGS:
         getArgs().clear();
         getArgs().addAll((Collection<? extends Arg>)newValue);
@@ -214,6 +265,9 @@ public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDef
   {
     switch (featureID)
     {
+      case ResolutePackage.FUNCTION_DEFINITION__CLAIM_TYPE:
+        setClaimType(CLAIM_TYPE_EDEFAULT);
+        return;
       case ResolutePackage.FUNCTION_DEFINITION__ARGS:
         getArgs().clear();
         return;
@@ -234,12 +288,31 @@ public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDef
   {
     switch (featureID)
     {
+      case ResolutePackage.FUNCTION_DEFINITION__CLAIM_TYPE:
+        return CLAIM_TYPE_EDEFAULT == null ? claimType != null : !CLAIM_TYPE_EDEFAULT.equals(claimType);
       case ResolutePackage.FUNCTION_DEFINITION__ARGS:
         return args != null && !args.isEmpty();
       case ResolutePackage.FUNCTION_DEFINITION__BODY:
         return body != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (claimType: ");
+    result.append(claimType);
+    result.append(')');
+    return result.toString();
   }
 
 } //FunctionDefinitionImpl
