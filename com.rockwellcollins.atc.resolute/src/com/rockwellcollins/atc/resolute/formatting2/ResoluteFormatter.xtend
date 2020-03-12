@@ -121,14 +121,6 @@ class ResoluteFormatter extends PropertiesFormatter {
 		for (ClaimText claim : claimbody.getClaim()) {
 			format(claim, document);
 		}
-		
-//		for (ClaimContext context : claimbody.getContext()) {
-//			context.prepend[newLines = 1].surround[indent];
-//		}
-//		
-//		for (ClaimAssumption assumption : claimbody.getAssumptions()) {
-//			assumption.prepend[newLines = 1].surround[indent];
-//		}
 
 		for (ClaimAttribute attr : claimbody.getAttributes()) {
 			attr.regionFor.keyword(";").prepend[noSpace];
