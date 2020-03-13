@@ -4,6 +4,8 @@ package com.rockwellcollins.atc.resolute.resolute;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.osate.aadl2.NamedElement;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Claim Body</b></em>'.
@@ -37,7 +39,7 @@ public interface ClaimBody extends DefinitionBody
 
   /**
    * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
-   * The list contents are of type {@link com.rockwellcollins.atc.resolute.resolute.ClaimAttribute}.
+   * The list contents are of type {@link org.osate.aadl2.NamedElement}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Attributes</em>' containment reference list.
@@ -45,6 +47,6 @@ public interface ClaimBody extends DefinitionBody
    * @model containment="true"
    * @generated
    */
-  EList<ClaimAttribute> getAttributes();
+  EList<NamedElement> getAttributes();
 
 } // ClaimBody

@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.osate.aadl2.impl.NamedElementImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Claim Context</b></em>'.
@@ -27,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ClaimContextImpl extends ClaimAttributeImpl implements ClaimContext
+public class ClaimContextImpl extends NamedElementImpl implements ClaimContext
 {
   /**
    * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.

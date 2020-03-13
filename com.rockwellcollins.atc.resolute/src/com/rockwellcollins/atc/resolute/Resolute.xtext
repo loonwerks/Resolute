@@ -111,11 +111,10 @@ FunctionDefinition:
 
 DefinitionBody:
 	 {FunctionBody} ':' type=Type '=' expr=Expr
-//|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (context+=ClaimContext)* (justification+=ClaimJustification)* (assumptions+=ClaimAssumption)* (strategies+=ClaimStrategy)* expr=Expr
 |	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (attributes+=ClaimAttribute)* expr=Expr
 ;
 
-ClaimAttribute:
+ClaimAttribute returns aadl2::NamedElement:
 	ClaimContext
 |	ClaimJustification
 |	ClaimAssumption

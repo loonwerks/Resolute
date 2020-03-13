@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.osate.aadl2.StringLiteral;
 
+import org.osate.aadl2.impl.NamedElementImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Claim Strategy</b></em>'.
@@ -28,7 +30,7 @@ import org.osate.aadl2.StringLiteral;
  *
  * @generated
  */
-public class ClaimStrategyImpl extends ClaimAttributeImpl implements ClaimStrategy
+public class ClaimStrategyImpl extends NamedElementImpl implements ClaimStrategy
 {
   /**
    * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.

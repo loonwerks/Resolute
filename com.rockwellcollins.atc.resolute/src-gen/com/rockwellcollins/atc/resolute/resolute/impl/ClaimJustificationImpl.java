@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.osate.aadl2.StringLiteral;
 
+import org.osate.aadl2.impl.NamedElementImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Claim Justification</b></em>'.
@@ -28,7 +30,7 @@ import org.osate.aadl2.StringLiteral;
  *
  * @generated
  */
-public class ClaimJustificationImpl extends ClaimAttributeImpl implements ClaimJustification
+public class ClaimJustificationImpl extends NamedElementImpl implements ClaimJustification
 {
   /**
    * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.

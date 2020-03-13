@@ -56,7 +56,6 @@ import com.rockwellcollins.atc.resolute.resolute.BoolExpr;
 import com.rockwellcollins.atc.resolute.resolute.BuiltInFnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.CastExpr;
 import com.rockwellcollins.atc.resolute.resolute.CheckStatement;
-import com.rockwellcollins.atc.resolute.resolute.ClaimAttribute;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
@@ -377,7 +376,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		if (body instanceof ClaimBody) {
 			ClaimBody claimBody = (ClaimBody) body;
 			int claimStrategyCount = 0;
-			for (ClaimAttribute attr : claimBody.getAttributes()) {
+			for (NamedElement attr : claimBody.getAttributes()) {
 				if (attr instanceof ClaimStrategy) {
 					claimStrategyCount++;
 					if (claimStrategyCount > 1) {
@@ -421,11 +420,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	}
 
 	private boolean containsStrategyAttribute(ClaimBody body) {
-//		List<ClaimAttribute> attributes = EcoreUtil2.getAllContentsOfType(body, ClaimAttribute.class);
-//		List<ClaimAttribute> strategies = attributes.stream().filter(a -> (a instanceof ClaimStrategy))
-//				.collect(Collectors.toList());
-//		return strategies.size() > 0;
-		for (ClaimAttribute attr : body.getAttributes()) {
+		for (NamedElement attr : body.getAttributes()) {
 			if (attr instanceof ClaimStrategy) {
 				return true;
 			}

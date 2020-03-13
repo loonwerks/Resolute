@@ -95,15 +95,6 @@ public interface ResoluteFactory extends EFactory
   DefinitionBody createDefinitionBody();
 
   /**
-   * Returns a new object of class '<em>Claim Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Claim Attribute</em>'.
-   * @generated
-   */
-  ClaimAttribute createClaimAttribute();
-
-  /**
    * Returns a new object of class '<em>Claim Context</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

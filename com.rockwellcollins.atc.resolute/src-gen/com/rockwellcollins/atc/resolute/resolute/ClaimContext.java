@@ -2,6 +2,9 @@
  */
 package com.rockwellcollins.atc.resolute.resolute;
 
+import org.eclipse.emf.ecore.EObject;
+
+import org.osate.aadl2.NamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +22,7 @@ package com.rockwellcollins.atc.resolute.resolute;
  * @model
  * @generated
  */
-public interface ClaimContext extends ClaimAttribute
+public interface ClaimContext extends EObject, NamedElement
 {
   /**
    * Returns the value of the '<em><b>Expr</b></em>' containment reference.

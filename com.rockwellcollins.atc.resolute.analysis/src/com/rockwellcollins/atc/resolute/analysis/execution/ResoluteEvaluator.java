@@ -36,6 +36,7 @@ import com.rockwellcollins.atc.resolute.resolute.BoolExpr;
 import com.rockwellcollins.atc.resolute.resolute.BuiltInFnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.CastExpr;
 import com.rockwellcollins.atc.resolute.resolute.ClaimArg;
+import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
 import com.rockwellcollins.atc.resolute.resolute.ClaimString;
 import com.rockwellcollins.atc.resolute.resolute.ClaimText;
 import com.rockwellcollins.atc.resolute.resolute.ClaimTextVar;
@@ -378,6 +379,11 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 		default:
 			throw new IllegalArgumentException("Unknown unary operator: " + object.getOp());
 		}
+	}
+
+	@Override
+	public ResoluteValue caseClaimContext(ClaimContext object) {
+		return doSwitch(object.getExpr());
 	}
 
 	@Override

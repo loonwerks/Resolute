@@ -753,12 +753,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//DefinitionBody:
 		//	{FunctionBody} ':' type=Type '=' expr=Expr
-		//	//|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (context+=ClaimContext)* (justification+=ClaimJustification)* (assumptions+=ClaimAssumption)* (strategies+=ClaimStrategy)* expr=Expr
 		//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
-		//{FunctionBody} ':' type=Type '=' expr=Expr //|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (context+=ClaimContext)* (justification+=ClaimJustification)* (assumptions+=ClaimAssumption)* (strategies+=ClaimStrategy)* expr=Expr
-		//| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr
+		//{FunctionBody} ':' type=Type '=' expr=Expr | {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute*
+		//expr=Expr
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{FunctionBody} ':' type=Type '=' expr=Expr
@@ -830,7 +829,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cClaimAssumptionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cClaimStrategyParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//ClaimAttribute:
+		//ClaimAttribute aadl2::NamedElement:
 		//	ClaimContext
 		//	| ClaimJustification
 		//	| ClaimAssumption
@@ -3478,7 +3477,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 	//DefinitionBody:
 	//	{FunctionBody} ':' type=Type '=' expr=Expr
-	//	//|	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (context+=ClaimContext)* (justification+=ClaimJustification)* (assumptions+=ClaimAssumption)* (strategies+=ClaimStrategy)* expr=Expr
 	//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr;
 	public DefinitionBodyElements getDefinitionBodyAccess() {
 		return pDefinitionBody;
@@ -3488,7 +3486,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getDefinitionBodyAccess().getRule();
 	}
 
-	//ClaimAttribute:
+	//ClaimAttribute aadl2::NamedElement:
 	//	ClaimContext
 	//	| ClaimJustification
 	//	| ClaimAssumption

@@ -49,7 +49,7 @@ import java.util.List
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption
 import com.rockwellcollins.atc.resolute.resolute.CheckStatement
-import com.rockwellcollins.atc.resolute.resolute.ClaimAttribute
+import org.osate.aadl2.NamedElement
 
 class ResoluteFormatter extends PropertiesFormatter {
 	
@@ -122,7 +122,7 @@ class ResoluteFormatter extends PropertiesFormatter {
 			format(claim, document);
 		}
 
-		for (ClaimAttribute attr : claimbody.getAttributes()) {
+		for (NamedElement attr : claimbody.getAttributes()) {
 			attr.regionFor.keyword(";").prepend[noSpace];
 			attr.prepend[newLines = 1].surround[indent];
 		}

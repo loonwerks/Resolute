@@ -2,6 +2,9 @@
  */
 package com.rockwellcollins.atc.resolute.resolute;
 
+import org.eclipse.emf.ecore.EObject;
+
+import org.osate.aadl2.NamedElement;
 import org.osate.aadl2.StringLiteral;
 
 /**
@@ -20,7 +23,7 @@ import org.osate.aadl2.StringLiteral;
  * @model
  * @generated
  */
-public interface ClaimStrategy extends ClaimAttribute
+public interface ClaimStrategy extends EObject, NamedElement
 {
   /**
    * Returns the value of the '<em><b>Val</b></em>' containment reference.

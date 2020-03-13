@@ -2,7 +2,6 @@
  */
 package com.rockwellcollins.atc.resolute.resolute.impl;
 
-import com.rockwellcollins.atc.resolute.resolute.ClaimAttribute;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimText;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
@@ -18,6 +17,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.osate.aadl2.NamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,7 +54,7 @@ public class ClaimBodyImpl extends DefinitionBodyImpl implements ClaimBody
    * @generated
    * @ordered
    */
-  protected EList<ClaimAttribute> attributes;
+  protected EList<NamedElement> attributes;
 
   /**
    * <!-- begin-user-doc -->
@@ -97,11 +98,11 @@ public class ClaimBodyImpl extends DefinitionBodyImpl implements ClaimBody
    * @generated
    */
   @Override
-  public EList<ClaimAttribute> getAttributes()
+  public EList<NamedElement> getAttributes()
   {
     if (attributes == null)
     {
-      attributes = new EObjectContainmentEList<ClaimAttribute>(ClaimAttribute.class, this, ResolutePackage.CLAIM_BODY__ATTRIBUTES);
+      attributes = new EObjectContainmentEList<NamedElement>(NamedElement.class, this, ResolutePackage.CLAIM_BODY__ATTRIBUTES);
     }
     return attributes;
   }
@@ -159,7 +160,7 @@ public class ClaimBodyImpl extends DefinitionBodyImpl implements ClaimBody
         return;
       case ResolutePackage.CLAIM_BODY__ATTRIBUTES:
         getAttributes().clear();
-        getAttributes().addAll((Collection<? extends ClaimAttribute>)newValue);
+        getAttributes().addAll((Collection<? extends NamedElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
