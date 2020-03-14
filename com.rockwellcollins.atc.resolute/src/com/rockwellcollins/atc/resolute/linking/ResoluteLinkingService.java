@@ -76,7 +76,7 @@ public class ResoluteLinkingService extends PropertiesLinkingService {
                     res = EcoreUtil.resolve(res, context.eResource().getResourceSet());
                     if (!Aadl2Util.isNull(res)){
                         URI linkUri = res.eResource().getURI();
-                        if(linkUri.segment(1).equals(contextProject)){
+						if (linkUri.segment(1).equalsIgnoreCase(contextProject)) {
                             return res;
                         }
                     }
@@ -108,7 +108,7 @@ public class ResoluteLinkingService extends PropertiesLinkingService {
 
     private EObject getFromScope(EObject context, EReference reference, String name) {
 		for (IEObjectDescription description : getScope(context, reference).getAllElements()) {
-			if (!description.getName().isEmpty() && description.getName().getLastSegment().equals(name)) {
+			if (!description.getName().isEmpty() && description.getName().getLastSegment().equalsIgnoreCase(name)) {
 				return description.getEObjectOrProxy();
 			}
 		}
