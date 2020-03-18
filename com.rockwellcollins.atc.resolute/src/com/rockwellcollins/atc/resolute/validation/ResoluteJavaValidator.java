@@ -1,9 +1,11 @@
 package com.rockwellcollins.atc.resolute.validation;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 import org.eclipse.core.runtime.Platform;
@@ -176,6 +178,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		NamedElement idFuncDef = null;
 		EObject parent = expr;
 
+		// Get the FunctionDefinition containing the IdExpr
 		while (parent.eContainer() != null) {
 			parent = parent.eContainer();
 			if (parent instanceof FunctionDefinition) {
@@ -184,11 +187,12 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 
-		// If I'm in a function definition
+		// If IdExpr is in a function definition
 		if (idFuncDef != null) {
 			boolean inResoluteAnnex = false;
 			NamedElement refFuncDef = null;
 			parent = refElement;
+
 			while (parent.eContainer() != null) {
 				parent = parent.eContainer();
 				if (parent instanceof ResoluteSubclause || parent instanceof ResoluteLibrary) {
@@ -202,17 +206,56 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 			// If a constant or AADL native element (anything outside the Resolute annex)
 			if (inResoluteAnnex && !(refElement instanceof ConstantDefinition)) {
-				if (!(refElement instanceof Arg || refElement instanceof LetBinding)) {
+				if (!(refElement instanceof Arg || refElement instanceof LetBinding
+						|| refElement instanceof ClaimContext)) {
 					error(expr, "Couldn't resolve reference to " + expr.getId().getName());
 				} else {
 					// It must be a FunctionDefinition Arg, QuantifiedExpr Arg, LetExpr Arg, ListFilterMapExpr Arg, SetFilterMapExpr Arg
 					// AND the Arg container must be contained somewhere inside the FunctionDefinition
 					if (!idFuncDef.equals(refFuncDef)) {
-						error(expr, "Couldn't resolve reference to " + expr.getId().getName());
+						if (refElement instanceof ClaimContext) {
+							ClaimBody claimBody = (ClaimBody) refElement.eContainer();
+							Set<String> funcNames = buildContextScope(claimBody.getExpr());
+							if (!funcNames.contains(idFuncDef.getName())) {
+								error(expr, "Couldn't resolve reference to " + expr.getId().getName());
+							}
+						} else {
+							error(expr, "Couldn't resolve reference to " + expr.getId().getName());
+						}
 					}
 				}
 			}
 		}
+	}
+
+	/**
+	 * Recursive function to build a scope for a ClaimContext by compiling the set of FunctionDefinitions
+	 * that have visibility to the ClaimContext
+	 * @param expr
+	 * @return
+	 */
+	private Set<String> buildContextScope(Expr expr) {
+		Set<String> functionNames = new HashSet<>();
+		if (expr instanceof BinaryExpr) {
+			BinaryExpr binaryExpr = (BinaryExpr) expr;
+			functionNames = buildContextScope(binaryExpr.getLeft());
+			functionNames.addAll(buildContextScope(binaryExpr.getRight()));
+		} else if (expr instanceof IfThenElseExpr) {
+			IfThenElseExpr ifThenElseExpr = (IfThenElseExpr) expr;
+			functionNames = buildContextScope(ifThenElseExpr.getCond());
+			functionNames.addAll(buildContextScope(ifThenElseExpr.getThen()));
+			functionNames.addAll(buildContextScope(ifThenElseExpr.getElse()));
+		} else if (expr instanceof QuantifiedExpr) {
+			QuantifiedExpr quantifiedExpr = (QuantifiedExpr) expr;
+			functionNames = buildContextScope(quantifiedExpr.getExpr());
+		} else if (expr instanceof FnCallExpr) {
+			FnCallExpr fnCallExpr = (FnCallExpr) expr;
+			if (fnCallExpr.getFn().getBody() instanceof ClaimBody) {
+				functionNames.add(fnCallExpr.getFn().getName());
+				functionNames.addAll(buildContextScope(fnCallExpr.getFn().getBody().getExpr()));
+			}
+		}
+		return functionNames;
 	}
 
 	@Check
@@ -420,6 +463,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	}
 
 	private boolean containsStrategyAttribute(ClaimBody body) {
+
 		for (NamedElement attr : body.getAttributes()) {
 			if (attr instanceof ClaimStrategy) {
 				return true;
