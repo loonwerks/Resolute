@@ -28,6 +28,7 @@ public class AdvocateExport {
 	public static void export(ClaimResult cr) throws IOException {
 
 		ClaimResult claimResult = cr;
+		int a = 1;
 		StringBuilder str = new StringBuilder();
 		if (claimResult.getLocation() instanceof ProveStatement) {
 			ProveStatement proveStatement = (ProveStatement) claimResult.getLocation();

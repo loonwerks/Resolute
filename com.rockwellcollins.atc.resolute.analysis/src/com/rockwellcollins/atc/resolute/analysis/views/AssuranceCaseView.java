@@ -130,7 +130,7 @@ public class AssuranceCaseView extends ViewPart {
     }
 
 	private IAction createExportTextFileAction(final ClaimResult claim) {
-		return new Action("Export to AdvoCATE") {
+		return new Action("Export to AdvoCATE Tool") {
 			@Override
 			public void run() {
 				try {
