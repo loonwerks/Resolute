@@ -34,8 +34,8 @@ annex Resolute {**
     MaximumWeight : real = 1.2kg
 
     SCSReq1(self : component) <=
-    ** "R1" SCS shall be no heavier than " MaximumWeight%kg **
-    SCSReq1VA1(self, MaximumWeight) or SCSReq1VA2(self, MaximumWeight)
+    	** "R1" SCS shall be no heavier than " MaximumWeight%kg **
+    	SCSReq1VA1(self, MaximumWeight) or SCSReq1VA2(self, MaximumWeight)
 
     AddBudgets(self : component) : real =
     sum([WeightBudget(t) for (t: subcomponents(self))])
@@ -80,14 +80,15 @@ The syntax of a claim function is as follows:
 
     <name> "(" (<parameter> ("," <parameter) )* )? ")" "<="
     "**" <description> "**" <claim_function_expression>
-
+<attribute> ::= <name> ":" <value>
 <parameter> ::= <name> ":" <type>
 
-<description> ::= <text> ( <parameter_reference> | <text>)*
+<description> ::= <text> ( <attribute_reference> | <parameter_reference> | <text>)*
 ~~~
 
-The parameter declaration consists of a name and a type (see Resolute
-Type System).
+Attributes can be `context`, `assumption`, `strategy`, or `justification` statements.  Each attribute has a name and a value.  `context` values can be any Resolute type (see Resolute Type System), but `assumption`, `strategy`, and `justification` values are currently limited to text strings.
+
+The parameter declaration consists of a name and a type (see Resolute Type System).
 
 The description for a claim function consists of a sequence of strings
 and references to claim function parameters, global constants, or local
@@ -124,11 +125,11 @@ Resolute assumes that there is a global name space for the names of
 claim functions and computational functions. Therefore, their names must
 be globally unique. Claim and computational functions can be referenced in `prove` statements,
 other claim functions, or computational functions without qualification
-by a package name.
-
+by a package name.  
 
 > You may have two claim functions with the same name in different packages. Resolute will not complain and will use the first one it encounters when resolving references.
 
+Context attributes are visible within the claim in which they are declared, as well as all descendant claims.
 
 []{#application-of-claim-functions}
 
@@ -192,6 +193,87 @@ Uses of Claim Functions
 The compiler does enforce that claim functions can be invoked only in
 `prove` statements, and in other claim functions, and cannot be invoked
 in computational functions.
+
+[]{#goal-structuring-notation}
+
+Goal Structuring Notation
+=========================
+
+Resolute can be used to construct assurance cases that comply with the GSN v2 standard.  The core elements in the GSN are
+* Goal
+* Strategy
+* Context
+* Assumption
+* Justification
+* Solution
+* Undeveloped classifier
+
+Goals can be supported by goals and strategies.  Strategies can only be supported by goals.  Both goals and strategies can contain contextual information such as assumptions and justifications.  Leaf nodes of the GSN argument will either be evidence to support the claim, or an indication that the argument requires further development.
+
+A Resolute claim is the GSN equivalent of a goal or strategy.  A claim in Resolute can be annotated with the `goal` or `strategy` keyword to distinguish between the two.  A Resolute claim that is not annotated with either keyword is assumed to be a goal.  For example, explicit declarations of claims as a goal and strategy would look like:
+
+~~~ {caption="Resolute Goal"}
+goal G25(Monitors : {component}, Contingency_Manager : component) <=
+	** "Runtime monitors detect the error condition and intervene when it occurs" **
+	S25(Monitors, Contingency_Manager)
+
+strategy S25(Monitors : {component}, Contingency_Manager : component)
+	** "Argue based on simplex architecture" **
+	G27(Monitors) and G28(Contingency_Manager)
+~~~
+
+In the example above, the goal contains the rules for evaluating whether sufficient evidence exists to support the goal.  Assurance arguments will typically include one or more strategies for supporting a goal.  In Resolute, strategies are referenced in goals as claim calls.  In the example above, the call to S25() indicates that the goal is supported by strategy S25().  In turn, strategy S25() call two sub-goals G27() and G28().
+
+Strategies can be declared using a short-hand notation as well.  When it is not necessary to create a unique claim to represent a strategy, a goal can declare a strategy "in-line" as an attribute.  For instance, the following is equivalent to the example above:
+
+~~~ {caption="Resolute Strategy"}
+goal G25(Monitors : {component}, Contingency_Manager : component) <=
+	** "Runtime monitors detect the error condition and intervene when it occurs" **
+	strategy S25 : "Argue based on simplex architecture";
+	G27(Monitors) and G28(Contingency_Manager)
+~~~
+
+Goal and strategy claims can include zero or more *claim attributes*.  Claim attributes are declared after the claim description and before the claim body.  The in-line `strategy` attribute can only be declared in a goal.  The other three types of claim attributes, `context`, `assumption`, and `justification` can be declared in both goals and strategies.
+
+The context attribute provides a means for attaching contextual information to a goal.  As per the GSN standard, context is visible to a goal and all its sub-goals.  In Resolute, this means that a context element can be references by descendants of a goal without having to pass the context as an argument from one goal to the next.  For example, the following is valid syntax:
+
+~~~ {caption="Resolute Context"}
+goal G25(Monitors : {component}, Contingency_Manager : component) <=
+	** "Runtime monitors detect the error condition and intervene when it occurs" **
+	context C1 : Monitors;
+	strategy S25 : "Argue based on simplex architecture";
+	G27() and G28(Contingency_Manager)
+	
+goal G27() <=
+ 	** "The error condition can be detected when it occurs" **
+ 	strategy S27: "Reason over multiple monitors"
+	forall(m : C1) . G102(m)
+~~~
+
+In the above example, context C1 is declared and set to the value of the Monitors parameter passed into the goal.  Sub-goal G27() is then evaluated with zero arguments.  However, G27() can still refer to context C1 declared in an ancestor goal.  Context attributes can be any Resolute type.
+
+Unlike context attributes, assumption, justification, and strategy attributes can only have string values.  These elements are mainly used to provide descriptive information within the assurance argument to aid human evaluators in an assessment.  Therefore, Resolute does not evaluate these types of attribute statements.
+
+To determine whether sufficient evidence exists to support a goal, Resolute evaluates the body of claims.  However, in some instances the user will want to *assert* that the evidence exists without requiring Resolute to do the evaluation.  Resolute therefore includes a `solution` keyword to be placed in the body of a claim.  For example:
+
+~~~ {caption="Resolute Solution"}
+goal G28(Contingency_Manager : component) <=
+	** "When the error condition is detected a recovery mechanism intervenes" **
+	solution Sln28 : "Recovery mechanism implemented"
+~~~
+
+When Resolute evaluates a claim that contains a solution element in its body, the claim evaluates *true*.
+
+When an argument has not been completed, it is necessary to indicate that.  GSN defines an *undeveloped* element that can be applied to a goal or strategy.  Resolute includes support for such arguments with an 
+`undeveloped` keyword that can be placed in the body of a claim.  For example:
+
+~~~ {caption="Resolute Undeveloped"}
+goal G28(Contingency_Manager : component) <=
+	** "When the error condition is detected a recovery mechanism intervenes" **
+	undeveloped
+~~~
+
+When Resolute evaluates a claim that contains an undeveloped element in its body, the claim evaluates *false*.
 
 []{#computational-functions-and-constants}
 
@@ -699,6 +781,10 @@ instance
 
 `is_data_access`(\<connection\>): Boolean - true if one end of a connection is a data component
 
+`is_bus_access`(\<connection\>): Boolean - true if one end of a connection is a bus component
+
+`is_bidirectional`(\<connection\>: Boolean - true if connection is bidirectional
+
 []{#built-in-functions-for-bindings}
 
 Built-in Functions for Bindings
@@ -785,6 +871,18 @@ function is specified as string identifier of the extension point. The
 arguments are additional parameters of the analysis function. 
 
 The return value must be one of the ResoluteValue subclasses: Boolvalue, IntValue, ListValue, NamedElementValue, RangeValue, RealValue, ResoluteRecordValue, SetValue, StringValue.
+
+While the `analysis` capability in Resolute enables the execution of external plugins, a separate plugin is required for each analysis call.  This is an inefficient mechanism for encapsulating a group of related functions.  For example, a library of string manipulation functions (such as concat(), length(), substring(), etc.) would each require an individual plugin using the analysis() call, as in analysis(concat, str1, str2).  
+
+Resolute external function library support provides a mechanism for packaging multiple functions into a single plugin, which can then be called in a Resolute claim using the syntax
+> `\<LibraryName\>.\<LibraryFunction\>(Arg1, Arg2, …)`
+  
+For example, the concat function in string manipulation library is called as 
+> `StringLib.concat(str1, str2)` 
+
+and returns a string.
+
+
 
 []{#debug-functions}
 
