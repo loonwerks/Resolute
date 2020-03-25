@@ -34,6 +34,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.ui.editor.GlobalURIEditorOpener;
 
 import com.google.inject.Inject;
+import com.rockwellcollins.atc.resolute.analysis.export.AdvocateExport;
 import com.rockwellcollins.atc.resolute.analysis.export.ResoluteDOTUtils;
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.FailResult;
@@ -105,6 +106,7 @@ public class AssuranceCaseView extends ViewPart {
 
         manager.add(createExportDOTAction(claim));
         manager.add(createExportCAZAction(claim));
+		manager.add(createExportTextFileAction(claim));
         return manager;
     }
 
@@ -127,6 +129,20 @@ public class AssuranceCaseView extends ViewPart {
         }
     }
 
+	private IAction createExportTextFileAction(final ClaimResult claim) {
+		return new Action("Export to AdvoCATE") {
+			@Override
+			public void run() {
+				try {
+					AdvocateExport.export(claim);
+				} catch (Throwable t) {
+					MessageDialog.openError(treeViewer.getControl().getShell(), "Error during export to TextFile",
+							t.getMessage());
+					t.printStackTrace();
+				}
+			}
+		};
+	}
 
 
     private IAction createExportCAZAction(final ClaimResult claim) {
