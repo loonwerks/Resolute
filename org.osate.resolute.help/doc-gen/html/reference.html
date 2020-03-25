@@ -8,7 +8,7 @@
   <meta name="author" content="Julien Delange">
   <title>Resolute Reference Guide</title>
   <style type="text/css">code{white-space: pre;}</style>
-  <link rel="stylesheet" href="/home/kfhoech/git/smaccm/fm-workbench/resolute/org.osate.resolute.help/css/pandoc.css">
+  <link rel="stylesheet" href="/home/kfhoech/git/Resolute/org.osate.resolute.help/css/pandoc.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -26,50 +26,51 @@
 <li><a href="#sec:application-of-claim-functions"><span class="toc-section-number">2.1</span> Application of Claim Functions</a></li>
 <li><a href="#sec:uses-of-claim-functions"><span class="toc-section-number">2.2</span> Uses of Claim Functions</a></li>
 </ul></li>
-<li><a href="#sec:computational-functions-and-constants"><span class="toc-section-number">3</span> Computational Functions and Constants</a><ul>
-<li><a href="#sec:computational-functions"><span class="toc-section-number">3.1</span> Computational Functions</a></li>
-<li><a href="#sec:global-constants"><span class="toc-section-number">3.2</span> Global Constants</a></li>
-<li><a href="#sec:local-constants"><span class="toc-section-number">3.3</span> Local Constants</a></li>
+<li><a href="#sec:goal-structuring-notation"><span class="toc-section-number">3</span> Goal Structuring Notation</a></li>
+<li><a href="#sec:computational-functions-and-constants"><span class="toc-section-number">4</span> Computational Functions and Constants</a><ul>
+<li><a href="#sec:computational-functions"><span class="toc-section-number">4.1</span> Computational Functions</a></li>
+<li><a href="#sec:global-constants"><span class="toc-section-number">4.2</span> Global Constants</a></li>
+<li><a href="#sec:local-constants"><span class="toc-section-number">4.3</span> Local Constants</a></li>
 </ul></li>
-<li><a href="#sec:predicate-expressions-and-computational-expressions"><span class="toc-section-number">4</span> Predicate Expressions and Computational Expressions</a><ul>
-<li><a href="#sec:predicate-expressions"><span class="toc-section-number">4.1</span> Predicate Expressions</a></li>
-<li><a href="#sec:computational-expressions"><span class="toc-section-number">4.2</span> Computational Expressions</a><ul>
-<li><a href="#sec:type-related-operators"><span class="toc-section-number">4.2.1</span> Type-related operators</a></li>
-<li><a href="#sec:atomic-expressions"><span class="toc-section-number">4.2.2</span> Atomic expressions</a></li>
-<li><a href="#sec:collection-related-operators"><span class="toc-section-number">4.2.3</span> Collection-related operators</a></li>
-<li><a href="#sec:the-fail-expression"><span class="toc-section-number">4.2.4</span> The <code>fail</code> expression</a></li>
+<li><a href="#sec:predicate-expressions-and-computational-expressions"><span class="toc-section-number">5</span> Predicate Expressions and Computational Expressions</a><ul>
+<li><a href="#sec:predicate-expressions"><span class="toc-section-number">5.1</span> Predicate Expressions</a></li>
+<li><a href="#sec:computational-expressions"><span class="toc-section-number">5.2</span> Computational Expressions</a><ul>
+<li><a href="#sec:type-related-operators"><span class="toc-section-number">5.2.1</span> Type-related operators</a></li>
+<li><a href="#sec:atomic-expressions"><span class="toc-section-number">5.2.2</span> Atomic expressions</a></li>
+<li><a href="#sec:collection-related-operators"><span class="toc-section-number">5.2.3</span> Collection-related operators</a></li>
+<li><a href="#sec:the-fail-expression"><span class="toc-section-number">5.2.4</span> The <code>fail</code> expression</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#sec:resolute-type-system"><span class="toc-section-number">5</span> Resolute Type System</a><ul>
-<li><a href="#sec:built-in-base-types"><span class="toc-section-number">5.1</span> Built-in Base Types</a></li>
-<li><a href="#sec:arithmetic-with-integers-and-reals"><span class="toc-section-number">5.2</span> Arithmetic with Integers and Reals</a></li>
-<li><a href="#sec:aadl-model-element-types"><span class="toc-section-number">5.3</span> AADL Model Element Types</a></li>
+<li><a href="#sec:resolute-type-system"><span class="toc-section-number">6</span> Resolute Type System</a><ul>
+<li><a href="#sec:built-in-base-types"><span class="toc-section-number">6.1</span> Built-in Base Types</a></li>
+<li><a href="#sec:arithmetic-with-integers-and-reals"><span class="toc-section-number">6.2</span> Arithmetic with Integers and Reals</a></li>
+<li><a href="#sec:aadl-model-element-types"><span class="toc-section-number">6.3</span> AADL Model Element Types</a></li>
 </ul></li>
-<li><a href="#sec:built-in-functions"><span class="toc-section-number">6</span> Built-in Functions</a><ul>
-<li><a href="#sec:built-in-functions-for-collections"><span class="toc-section-number">6.1</span> Built-in Functions for Collections</a></li>
-<li><a href="#sec:built-in-functions-for-ranges"><span class="toc-section-number">6.2</span> Built-in Functions for Ranges</a></li>
-<li><a href="#sec:built-in-functions-for-properties"><span class="toc-section-number">6.3</span> Built-in Functions for Properties</a></li>
-<li><a href="#sec:built-in-functions-for-any-model-element-and-components"><span class="toc-section-number">6.4</span> Built-in Functions for Any Model Element and Components</a></li>
-<li><a href="#sec:built-in-functions-for-features"><span class="toc-section-number">6.5</span> Built-in Functions for Features</a></li>
-<li><a href="#sec:built-in-functions-for-connections"><span class="toc-section-number">6.6</span> Built-in Functions for Connections</a></li>
-<li><a href="#sec:built-in-functions-for-bindings"><span class="toc-section-number">6.7</span> Built-in Functions for Bindings</a></li>
-<li><a href="#sec:built-in-functions-for-sets-and-lists"><span class="toc-section-number">6.8</span> Built-in Functions for Sets and Lists</a></li>
-<li><a href="#sec:built-in-functions-for-flows"><span class="toc-section-number">6.9</span> Built-in Functions for Flows</a></li>
-<li><a href="#sec:built-in-functions-for-error-models"><span class="toc-section-number">6.10</span> Built-in Functions for Error Models</a></li>
-<li><a href="#sec:external-functions"><span class="toc-section-number">6.11</span> External Functions</a></li>
-<li><a href="#sec:debug-functions"><span class="toc-section-number">6.12</span> Debug Functions</a></li>
+<li><a href="#sec:built-in-functions"><span class="toc-section-number">7</span> Built-in Functions</a><ul>
+<li><a href="#sec:built-in-functions-for-collections"><span class="toc-section-number">7.1</span> Built-in Functions for Collections</a></li>
+<li><a href="#sec:built-in-functions-for-ranges"><span class="toc-section-number">7.2</span> Built-in Functions for Ranges</a></li>
+<li><a href="#sec:built-in-functions-for-properties"><span class="toc-section-number">7.3</span> Built-in Functions for Properties</a></li>
+<li><a href="#sec:built-in-functions-for-any-model-element-and-components"><span class="toc-section-number">7.4</span> Built-in Functions for Any Model Element and Components</a></li>
+<li><a href="#sec:built-in-functions-for-features"><span class="toc-section-number">7.5</span> Built-in Functions for Features</a></li>
+<li><a href="#sec:built-in-functions-for-connections"><span class="toc-section-number">7.6</span> Built-in Functions for Connections</a></li>
+<li><a href="#sec:built-in-functions-for-bindings"><span class="toc-section-number">7.7</span> Built-in Functions for Bindings</a></li>
+<li><a href="#sec:built-in-functions-for-sets-and-lists"><span class="toc-section-number">7.8</span> Built-in Functions for Sets and Lists</a></li>
+<li><a href="#sec:built-in-functions-for-flows"><span class="toc-section-number">7.9</span> Built-in Functions for Flows</a></li>
+<li><a href="#sec:built-in-functions-for-error-models"><span class="toc-section-number">7.10</span> Built-in Functions for Error Models</a></li>
+<li><a href="#sec:external-functions"><span class="toc-section-number">7.11</span> External Functions</a></li>
+<li><a href="#sec:debug-functions"><span class="toc-section-number">7.12</span> Debug Functions</a></li>
 </ul></li>
-<li><a href="#sec:common-resolute-function-library"><span class="toc-section-number">7</span> Common Resolute Function Library</a><ul>
-<li><a href="#sec:binding-related-functions"><span class="toc-section-number">7.1</span> Binding Related Functions</a></li>
-<li><a href="#sec:connection-related-functions"><span class="toc-section-number">7.2</span> Connection Related Functions</a></li>
-<li><a href="#sec:model-element-containment"><span class="toc-section-number">7.3</span> Model Element Containment</a></li>
-<li><a href="#sec:handling-of-feature-groups"><span class="toc-section-number">7.4</span> Handling of Feature Groups</a></li>
+<li><a href="#sec:common-resolute-function-library"><span class="toc-section-number">8</span> Common Resolute Function Library</a><ul>
+<li><a href="#sec:binding-related-functions"><span class="toc-section-number">8.1</span> Binding Related Functions</a></li>
+<li><a href="#sec:connection-related-functions"><span class="toc-section-number">8.2</span> Connection Related Functions</a></li>
+<li><a href="#sec:model-element-containment"><span class="toc-section-number">8.3</span> Model Element Containment</a></li>
+<li><a href="#sec:handling-of-feature-groups"><span class="toc-section-number">8.4</span> Handling of Feature Groups</a></li>
 </ul></li>
-<li><a href="#sec:resolute-examples"><span class="toc-section-number">8</span> Resolute Examples</a><ul>
-<li><a href="#sec:debugging-models-with-resolute"><span class="toc-section-number">8.1</span> Debugging Models with Resolute</a></li>
-<li><a href="#sec:reachable-model-elements"><span class="toc-section-number">8.2</span> Reachable Model Elements</a></li>
+<li><a href="#sec:resolute-examples"><span class="toc-section-number">9</span> Resolute Examples</a><ul>
+<li><a href="#sec:debugging-models-with-resolute"><span class="toc-section-number">9.1</span> Debugging Models with Resolute</a></li>
+<li><a href="#sec:reachable-model-elements"><span class="toc-section-number">9.2</span> Reachable Model Elements</a></li>
 </ul></li>
-<li><a href="#sec:copyright"><span class="toc-section-number">9</span> Copyright</a></li>
+<li><a href="#sec:copyright"><span class="toc-section-number">10</span> Copyright</a></li>
 </ul>
 </nav>
 <p><span id="introduction"></span></p>
@@ -82,8 +83,8 @@ annex Resolute {**
     MaximumWeight : real = 1.2kg
 
     SCSReq1(self : component) &lt;=
-    ** &quot;R1&quot; SCS shall be no heavier than &quot; MaximumWeight%kg **
-    SCSReq1VA1(self, MaximumWeight) or SCSReq1VA2(self, MaximumWeight)
+        ** &quot;R1&quot; SCS shall be no heavier than &quot; MaximumWeight%kg **
+        SCSReq1VA1(self, MaximumWeight) or SCSReq1VA2(self, MaximumWeight)
 
     AddBudgets(self : component) : real =
     sum([WeightBudget(t) for (t: subcomponents(self))])</code></pre>
@@ -110,10 +111,11 @@ annex Resolute {**
 
     &lt;name&gt; &quot;(&quot; (&lt;parameter&gt; (&quot;,&quot; &lt;parameter) )* )? &quot;)&quot; &quot;&lt;=&quot;
     &quot;**&quot; &lt;description&gt; &quot;**&quot; &lt;claim_function_expression&gt;
-
+&lt;attribute&gt; ::= &lt;name&gt; &quot;:&quot; &lt;value&gt;
 &lt;parameter&gt; ::= &lt;name&gt; &quot;:&quot; &lt;type&gt;
 
-&lt;description&gt; ::= &lt;text&gt; ( &lt;parameter_reference&gt; | &lt;text&gt;)*</code></pre>
+&lt;description&gt; ::= &lt;text&gt; ( &lt;attribute_reference&gt; | &lt;parameter_reference&gt; | &lt;text&gt;)*</code></pre>
+<p>Attributes can be <code>context</code>, <code>assumption</code>, <code>strategy</code>, or <code>justification</code> statements. Each attribute has a name and a value. <code>context</code> values can be any Resolute type (see Resolute Type System), but <code>assumption</code>, <code>strategy</code>, and <code>justification</code> values are currently limited to text strings.</p>
 <p>The parameter declaration consists of a name and a type (see Resolute Type System).</p>
 <p>The description for a claim function consists of a sequence of strings and references to claim function parameters, global constants, or local constants (defined by <code>let</code> statements). If your values are numerical with a unit, you can specify the unit to be used for display by indicating the desired unit after a <code>%</code>, <em>e.g.</em>, WeightLimit%kg. The units are those defined by Units property types in property sets and do not have to be qualified by the Units type.</p>
 <p>The claim function expression is assumed to be a logical expression (<code>and</code>, <code>or</code>, <code>andthen</code>, <code>orelse</code>, implies (<code>=&gt;</code>)) or quantified expressions (<code>forall</code>,<code>exists</code>) to represent a predicate. You can also and <code>let</code> expressions to compute local variables.</p>
@@ -127,6 +129,7 @@ annex Resolute {**
 <blockquote>
 <p>You may have two claim functions with the same name in different packages. Resolute will not complain and will use the first one it encounters when resolving references.</p>
 </blockquote>
+<p>Context attributes are visible within the claim in which they are declared, as well as all descendant claims.</p>
 <p><span id="application-of-claim-functions"></span></p>
 <h2 id="sec:application-of-claim-functions"><span class="header-section-number">2.1</span> Application of Claim Functions</h2>
 <p>Claim functions are invoked on a component by specifying a <code>prove</code> statement in a Resolute annex subclause of the component implementation. This claim function is then executed on every instance of this component implementation when the <em>Resolute</em> command is invoked.</p>
@@ -149,10 +152,52 @@ annex Resolute {**
 <p><span id="uses-of-claim-functions"></span></p>
 <h2 id="sec:uses-of-claim-functions"><span class="header-section-number">2.2</span> Uses of Claim Functions</h2>
 <p>The compiler does enforce that claim functions can be invoked only in <code>prove</code> statements, and in other claim functions, and cannot be invoked in computational functions.</p>
+<p><span id="goal-structuring-notation"></span></p>
+<h1 id="sec:goal-structuring-notation"><span class="header-section-number">3</span> Goal Structuring Notation</h1>
+<p>Resolute can be used to construct assurance cases that comply with the GSN v2 standard. The core elements in the GSN are * Goal * Strategy * Context * Assumption * Justification * Solution * Undeveloped classifier</p>
+<p>Goals can be supported by goals and strategies. Strategies can only be supported by goals. Both goals and strategies can contain contextual information such as assumptions and justifications. Leaf nodes of the GSN argument will either be evidence to support the claim, or an indication that the argument requires further development.</p>
+<p>A Resolute claim is the GSN equivalent of a goal or strategy. A claim in Resolute can be annotated with the <code>goal</code> or <code>strategy</code> keyword to distinguish between the two. A Resolute claim that is not annotated with either keyword is assumed to be a goal. For example, explicit declarations of claims as a goal and strategy would look like:</p>
+<pre caption="Resolute Goal"><code>goal G25(Monitors : {component}, Contingency_Manager : component) &lt;=
+    ** &quot;Runtime monitors detect the error condition and intervene when it occurs&quot; **
+    S25(Monitors, Contingency_Manager)
+
+strategy S25(Monitors : {component}, Contingency_Manager : component)
+    ** &quot;Argue based on simplex architecture&quot; **
+    G27(Monitors) and G28(Contingency_Manager)</code></pre>
+<p>In the example above, the goal contains the rules for evaluating whether sufficient evidence exists to support the goal. Assurance arguments will typically include one or more strategies for supporting a goal. In Resolute, strategies are referenced in goals as claim calls. In the example above, the call to S25() indicates that the goal is supported by strategy S25(). In turn, strategy S25() call two sub-goals G27() and G28().</p>
+<p>Strategies can be declared using a short-hand notation as well. When it is not necessary to create a unique claim to represent a strategy, a goal can declare a strategy &quot;in-line&quot; as an attribute. For instance, the following is equivalent to the example above:</p>
+<pre caption="Resolute Strategy"><code>goal G25(Monitors : {component}, Contingency_Manager : component) &lt;=
+    ** &quot;Runtime monitors detect the error condition and intervene when it occurs&quot; **
+    strategy S25 : &quot;Argue based on simplex architecture&quot;;
+    G27(Monitors) and G28(Contingency_Manager)</code></pre>
+<p>Goal and strategy claims can include zero or more <em>claim attributes</em>. Claim attributes are declared after the claim description and before the claim body. The in-line <code>strategy</code> attribute can only be declared in a goal. The other three types of claim attributes, <code>context</code>, <code>assumption</code>, and <code>justification</code> can be declared in both goals and strategies.</p>
+<p>The context attribute provides a means for attaching contextual information to a goal. As per the GSN standard, context is visible to a goal and all its sub-goals. In Resolute, this means that a context element can be references by descendants of a goal without having to pass the context as an argument from one goal to the next. For example, the following is valid syntax:</p>
+<pre caption="Resolute Context"><code>goal G25(Monitors : {component}, Contingency_Manager : component) &lt;=
+    ** &quot;Runtime monitors detect the error condition and intervene when it occurs&quot; **
+    context C1 : Monitors;
+    strategy S25 : &quot;Argue based on simplex architecture&quot;;
+    G27() and G28(Contingency_Manager)
+    
+goal G27() &lt;=
+    ** &quot;The error condition can be detected when it occurs&quot; **
+    strategy S27: &quot;Reason over multiple monitors&quot;
+    forall(m : C1) . G102(m)</code></pre>
+<p>In the above example, context C1 is declared and set to the value of the Monitors parameter passed into the goal. Sub-goal G27() is then evaluated with zero arguments. However, G27() can still refer to context C1 declared in an ancestor goal. Context attributes can be any Resolute type.</p>
+<p>Unlike context attributes, assumption, justification, and strategy attributes can only have string values. These elements are mainly used to provide descriptive information within the assurance argument to aid human evaluators in an assessment. Therefore, Resolute does not evaluate these types of attribute statements.</p>
+<p>To determine whether sufficient evidence exists to support a goal, Resolute evaluates the body of claims. However, in some instances the user will want to <em>assert</em> that the evidence exists without requiring Resolute to do the evaluation. Resolute therefore includes a <code>solution</code> keyword to be placed in the body of a claim. For example:</p>
+<pre caption="Resolute Solution"><code>goal G28(Contingency_Manager : component) &lt;=
+    ** &quot;When the error condition is detected a recovery mechanism intervenes&quot; **
+    solution Sln28 : &quot;Recovery mechanism implemented&quot;</code></pre>
+<p>When Resolute evaluates a claim that contains a solution element in its body, the claim evaluates <em>true</em>.</p>
+<p>When an argument has not been completed, it is necessary to indicate that. GSN defines an <em>undeveloped</em> element that can be applied to a goal or strategy. Resolute includes support for such arguments with an <code>undeveloped</code> keyword that can be placed in the body of a claim. For example:</p>
+<pre caption="Resolute Undeveloped"><code>goal G28(Contingency_Manager : component) &lt;=
+    ** &quot;When the error condition is detected a recovery mechanism intervenes&quot; **
+    undeveloped</code></pre>
+<p>When Resolute evaluates a claim that contains an undeveloped element in its body, the claim evaluates <em>false</em>.</p>
 <p><span id="computational-functions-and-constants"></span></p>
-<h1 id="sec:computational-functions-and-constants"><span class="header-section-number">3</span> Computational Functions and Constants</h1>
+<h1 id="sec:computational-functions-and-constants"><span class="header-section-number">4</span> Computational Functions and Constants</h1>
 <p><span id="computational-functions"></span></p>
-<h2 id="sec:computational-functions"><span class="header-section-number">3.1</span> Computational Functions</h2>
+<h2 id="sec:computational-functions"><span class="header-section-number">4.1</span> Computational Functions</h2>
 <p>Computational functions are used to calculate a value of any type. The result can be Boolean, numeric, model elements, or collections of items of a specific type. Computational functions take parameters that are typed. Computational functions have a single expression that can be preceded by a local constant declaration.</p>
 <pre class="bnf" caption="Computational Functions"><code>&lt;computational_function&gt; ::=
     &lt;function_name&gt; &quot;(&quot; &lt;parameter&gt; (&quot;.&quot; &lt;parameter&gt;)* &quot;)&quot; &quot;:&quot; &lt;return_type&gt; &quot;=&quot;
@@ -162,7 +207,7 @@ annex Resolute {**
 <li>Computational functions can be invoked in expressions of claim functions. Typically they are invoked in claim functions that represent verification actions or assumptions.</li>
 </ul>
 <p><span id="global-constants"></span></p>
-<h2 id="sec:global-constants"><span class="header-section-number">3.2</span> Global Constants</h2>
+<h2 id="sec:global-constants"><span class="header-section-number">4.2</span> Global Constants</h2>
 <p>Global constants represent parameters to the verification whose value is set once and can be used in any computational expression, including parameters to claim function calls. Global constants can also hold the result of a computational function or a set constructor whose value can be determined at startup time of a Resolute command. For example, a global constant may be used to precompute various sets of model element instances, <em>e.g.</em>, all elements that are reachable from a component of a certain component type.</p>
 <pre class="bnf" caption="Global Constants"><code>&lt;global_constant&gt; ::=
     &lt;constant_name&gt; &quot;:&quot; &lt;type&gt; &quot;=&quot; &lt;computational_expression&gt;</code></pre>
@@ -171,7 +216,7 @@ annex Resolute {**
 <li>Global constants can precompute any expression.</li>
 </ul>
 <p><span id="local-constants"></span></p>
-<h2 id="sec:local-constants"><span class="header-section-number">3.3</span> Local Constants</h2>
+<h2 id="sec:local-constants"><span class="header-section-number">4.3</span> Local Constants</h2>
 <p>Resolute also supports precomputation of local constants, which are used inside a claim function or computational function. One or more local constants can be defined before any expression. Typically, they are used in a verification action or computational function before the logical or computational expression. However, they can also be used before any subexpression, <em>e.g.</em>, before the right-hand subexpression of an <code>and</code> or <code>+</code> operator.</p>
 <pre class="bnf" caption="Local Constants"><code>&lt;local_constant&gt; ::=
     &quot;let&quot; &lt;constant_name&gt; &quot;:&quot; &lt;type&gt; &quot;=&quot; &lt;computational_expression&gt; &quot;;&quot;</code></pre>
@@ -180,10 +225,10 @@ annex Resolute {**
 <li>Local constants are used to precompute values that may be referenced multiple times in the succeeding expression.</li>
 </ul>
 <p><span id="predicate-expressions-and-computational-expressions"></span></p>
-<h1 id="sec:predicate-expressions-and-computational-expressions"><span class="header-section-number">4</span> Predicate Expressions and Computational Expressions</h1>
+<h1 id="sec:predicate-expressions-and-computational-expressions"><span class="header-section-number">5</span> Predicate Expressions and Computational Expressions</h1>
 <p>A constraint expression results in a Boolean value.</p>
 <p><span id="predicate-expressions"></span></p>
-<h2 id="sec:predicate-expressions"><span class="header-section-number">4.1</span> Predicate Expressions</h2>
+<h2 id="sec:predicate-expressions"><span class="header-section-number">5.1</span> Predicate Expressions</h2>
 <p>Predicate expressions support the following operators in increasing precedence order:</p>
 <p>Logical operators (the operands a, b are expressions of type Boolean):</p>
 <ul>
@@ -194,7 +239,7 @@ annex Resolute {**
 <li>Quantified logical expressions: ( <code>forall</code> | <code>exists</code> ) <code>(</code> &lt;variablename&gt; <code>:</code> &lt;collection_constructor&gt; <code>)</code> <code>.</code> &lt;logical_expression&gt;</li>
 </ul>
 <p><span id="computational-expressions"></span></p>
-<h2 id="sec:computational-expressions"><span class="header-section-number">4.2</span> Computational Expressions</h2>
+<h2 id="sec:computational-expressions"><span class="header-section-number">5.2</span> Computational Expressions</h2>
 <p>Computational expressions are used in computational functions and must return a value of the specified type. Computational expressions include constraint expressions, arithmetic expressions, and operations on collections of values and model elements.</p>
 <p>Relational operators (the operands are of type <code>real</code> or <code>int</code>):</p>
 <ul>
@@ -211,14 +256,14 @@ annex Resolute {**
 <blockquote>
 <p>The precedence order is Relational operators (low) to Arithmetic in increasing order. They are higher than <code>and</code> <em>and</em> <code>andthen</code>.</p>
 </blockquote>
-<h3 id="sec:type-related-operators"><span class="header-section-number">4.2.1</span> Type-related operators</h3>
+<h3 id="sec:type-related-operators"><span class="header-section-number">5.2.1</span> Type-related operators</h3>
 <ul>
 <li>Type cast: <code>(</code> &lt;type&gt; <code>)</code> a</li>
 </ul>
 <blockquote>
 <p>Type cast is the same precedence as <code>not</code> <em>and</em> &lt;negations&gt;.</p>
 </blockquote>
-<h3 id="sec:atomic-expressions"><span class="header-section-number">4.2.2</span> Atomic expressions</h3>
+<h3 id="sec:atomic-expressions"><span class="header-section-number">5.2.2</span> Atomic expressions</h3>
 <p>Atomic expressions can be used as operands and have highest precedence.</p>
 <ul>
 <li><p>Base type values: integer value, real value, string value, and Boolean value. Integer and real values can be annotated with a unit. Any unit defined by a Unit property type in any of the property sets is acceptable.</p></li>
@@ -235,7 +280,7 @@ function_name <code>(</code> (&lt;parameter_value&gt; ( <code>,</code> &lt;param
 <li>Used only as parameter in <code>prove</code> statement</li>
 </ul></li>
 </ul>
-<h3 id="sec:collection-related-operators"><span class="header-section-number">4.2.3</span> Collection-related operators</h3>
+<h3 id="sec:collection-related-operators"><span class="header-section-number">5.2.3</span> Collection-related operators</h3>
 <p>Collections in Resolute can be either lists or sets. Lists can contain multiple identical elements, preserve insertion order, and support <code>head</code> and <code>tail</code> accessors for defining recursive processing. By contrast sets can contain no more than one element of a given value, do not necessarily support insertion order, and support set <code>intersect</code> and <code>union</code> operators. Both lists and sets support quantifiers <code>forall</code> and <code>exists</code> and filtered collections. Operators exist to convert a list into a set (collapsing duplicated elements) and a set into a list.</p>
 <ul>
 <li><p>Basic collection: &lt;Basic_list&gt; | &lt;Basic_set&gt;</p></li>
@@ -263,13 +308,13 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
     (sum([ 1.0 for (sub : subs) | has_property(sub,SEI::GrossWeight)]) / length(subs))</code></pre>
 <p>Collections can also be precomputed in global constants. This is useful when you want to make use of certain collections of instance model objects repeatedly. In this example, the global constant declaration <code>MOTORS</code> represents the set of instances of a particular component type.</p>
 <pre><code>MOTORS : {component} = instances(PX4IOAR::Motor)</code></pre>
-<h3 id="sec:the-fail-expression"><span class="header-section-number">4.2.4</span> The <code>fail</code> expression</h3>
+<h3 id="sec:the-fail-expression"><span class="header-section-number">5.2.4</span> The <code>fail</code> expression</h3>
 <p>The <code>fail</code> expression can be used in any computational function and can be viewed like an exception that is thrown. It is automatically caught by the closest enclosing claim function, interpreted as a fail of the claim, and reported as a sub-result to the claim function. That is, the <code>fail</code> expression is shown as a failure, and the provided text explains the failure.</p>
 <ul>
 <li>Exception: <code>fail</code> &lt;string value&gt; or <code>fail **</code> &lt;description&gt; <code>**</code> with the description syntax the same as for claim functions</li>
 </ul>
 <p><span id="resolute-type-system"></span></p>
-<h1 id="sec:resolute-type-system"><span class="header-section-number">5</span> Resolute Type System</h1>
+<h1 id="sec:resolute-type-system"><span class="header-section-number">6</span> Resolute Type System</h1>
 <pre class="bnf" caption="Resolute Type System"><code>&lt;type&gt; ::=
     &lt;list_type&gt; | &lt;set_type&gt; | &lt;base_type&gt; | &lt;AADL_model_element_type&gt;
 
@@ -278,7 +323,7 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 &lt;set_type&gt; ::= &quot;{&quot; &lt;type&gt; &quot;}</code></pre>
 <p>The list and set collections allow multiple elements of the same value. In the <em>SubcomponentWeightCoverage</em> example, the collection concept has multiple instances of the value 1.0, and each is counted in the summation.</p>
 <p><span id="built-inbase-types"></span></p>
-<h2 id="sec:built-in-base-types"><span class="header-section-number">5.1</span> Built-in Base Types</h2>
+<h2 id="sec:built-in-base-types"><span class="header-section-number">6.1</span> Built-in Base Types</h2>
 <p>Base type:</p>
 <ul>
 <li><code>int</code></li>
@@ -288,11 +333,11 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 <li><code>range</code></li>
 </ul>
 <p><span id="arithmetic-with-integers-and-reals"></span></p>
-<h2 id="sec:arithmetic-with-integers-and-reals"><span class="header-section-number">5.2</span> Arithmetic with Integers and Reals</h2>
+<h2 id="sec:arithmetic-with-integers-and-reals"><span class="header-section-number">6.2</span> Arithmetic with Integers and Reals</h2>
 <p><code>int</code> and <code>real</code> --- as well as the min and max of a <code>range</code> --- can be values specified with a measurement unit. Any of the unit literals defined in AADL2 Units property types are acceptable. The Units property type definition specifies the ratios to be used to perform conversion between the units. For <code>int</code> and <code>real</code> values with units, Resolute converts the value to a value relative to the base unit (the first unit defined in the Units type). All arithmetic is performed based on those values. To present results in the description of a claim function of a <code>fail</code> operation, the value is converted to the unit specified in the description specification.</p>
 <p>Resolute can retrieve property values with built-in functions. The property values for <code>aadlinteger</code> are mapped into <code>int</code>, <code>aadlreal</code> into <code>real</code>, and <code>range of</code> into <code>range</code>.</p>
 <p><span id="aadl-model-element-types"></span></p>
-<h2 id="sec:aadl-model-element-types"><span class="header-section-number">5.3</span> AADL Model Element Types</h2>
+<h2 id="sec:aadl-model-element-types"><span class="header-section-number">6.3</span> AADL Model Element Types</h2>
 <p>AADL model element types have an implied type hierarchy. The nesting level indicates this type hierarchy.</p>
 <ul>
 <li><code>aadl</code> [any AADL model element]
@@ -353,9 +398,9 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 </ul>
 <p>Resolute operates on the instance model; <em>i.e.</em>, the model elements represent instances. Built-in collection functions operate on instance model elements or retrieve the set of instances for a given classifier (see Built-in Functions).</p>
 <p><span id="built-in-functions"></span></p>
-<h1 id="sec:built-in-functions"><span class="header-section-number">6</span> Built-in Functions</h1>
+<h1 id="sec:built-in-functions"><span class="header-section-number">7</span> Built-in Functions</h1>
 <p><span id="built-in-functions-for-collections"></span></p>
-<h2 id="sec:built-in-functions-for-collections"><span class="header-section-number">6.1</span> Built-in Functions for Collections</h2>
+<h2 id="sec:built-in-functions-for-collections"><span class="header-section-number">7.1</span> Built-in Functions for Collections</h2>
 <p><code>union</code>(&lt;set&gt;, &lt;set&gt;): set - returns a set collection that is the union of the two inputs</p>
 <p><code>intersect</code>(&lt;set&gt;, &lt;set&gt;): set - returns a set collection that is the intersection of the two inputs</p>
 <p><code>length</code>(&lt;collection&gt;): int - returns the size of the given set or list collection</p>
@@ -368,11 +413,11 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 <p><code>as_set</code>(&lt;list&gt;): set - returns a set collection containing all of the unique elements contained in the given list collection</p>
 <p><code>as_list</code>(&lt;set&gt;): list - returns a list collection containing all of the elements contained in the given set collection</p>
 <p><span id="built-in-functions-for-ranges"></span></p>
-<h2 id="sec:built-in-functions-for-ranges"><span class="header-section-number">6.2</span> Built-in Functions for Ranges</h2>
+<h2 id="sec:built-in-functions-for-ranges"><span class="header-section-number">7.2</span> Built-in Functions for Ranges</h2>
 <p><code>upper_bound</code>(&lt;range&gt;): numeric - returns the upper bound of the range</p>
 <p><code>lower_bound</code>(&lt;range&gt;): numeric - returns the lower bound of the range</p>
 <p><span id="built-in-functions-for-properties"></span></p>
-<h2 id="sec:built-in-functions-for-properties"><span class="header-section-number">6.3</span> Built-in Functions for Properties</h2>
+<h2 id="sec:built-in-functions-for-properties"><span class="header-section-number">7.3</span> Built-in Functions for Properties</h2>
 <p><code>has_property</code>(&lt;named_element&gt;, &lt;property&gt;): Boolean - the named element has the property.</p>
 <p><code>property</code>(&lt;named_element&gt;, &lt;property&gt;, &lt;default value&gt;*): value - returns the value of the property. If a default value is supplied, then it is returned if the element does not have the property value. If no default is supplied and the value does not exist, a resolute failure exception is thrown, which is caught by the closest enclosing claim function and interpreted as a fail.</p>
 <p><code>property</code>(&lt;property&gt;) value - returns the value of the property constant.</p>
@@ -382,7 +427,7 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 </blockquote>
 <p><code>enumerated_values</code>(&lt;property&gt;): [ &lt;string&gt; ] - return the an ordered set of string values.</p>
 <p><span id="built-in-functions-for-any-model-element-and-components"></span></p>
-<h2 id="sec:built-in-functions-for-any-model-element-and-components"><span class="header-section-number">6.4</span> Built-in Functions for Any Model Element and Components</h2>
+<h2 id="sec:built-in-functions-for-any-model-element-and-components"><span class="header-section-number">7.4</span> Built-in Functions for Any Model Element and Components</h2>
 <p><code>name</code>(&lt;named_element&gt;): string - returns the name of the named element</p>
 <p><code>has_type</code> (named_element): Boolean - returns true if the named element has a classifier. The named element can be a component, feature, or connection instance. In the case of a connection, the type of the feature is the connection end.</p>
 <p><code>type</code>(&lt;named_element&gt;): Classifier - returns the classifier of a component, feature, or connection. In the case of a connection, the type is that of the connection source (if not present the destination) feature. The named element must have a type, otherwise a resolute failure exception is thrown and caught by the closest enclosing claim function.</p>
@@ -402,7 +447,7 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 <p>Missing tests (<code>abstract</code>, <code>thread_group</code>, <code>subprogram_group</code>) can be tested by <code>\&lt;object\&gt; instanceof \&lt;aadl model element type\&gt;</code></p>
 </blockquote>
 <p><span id="built-in-functions-for-features"></span></p>
-<h2 id="sec:built-in-functions-for-features"><span class="header-section-number">6.5</span> Built-in Functions for Features</h2>
+<h2 id="sec:built-in-functions-for-features"><span class="header-section-number">7.5</span> Built-in Functions for Features</h2>
 <p><code>direction</code>(&lt;feature&gt;): string - returns the direction of a feature instance as string (<code>in</code>, <code>out</code>, <code>in out</code>/<code>in_out</code>). Access features do not have direction.</p>
 <p><code>is_event_port</code>(&lt;feature&gt;): Boolean - true if the feature instance is an event port or event data port</p>
 <p><code>is_data_port</code>(&lt;feature&gt;): Boolean - true if the feature instance is an data port or event data port</p>
@@ -412,12 +457,14 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 <p>Note that you can test any feature or component by writing <code>\&lt;object\&gt; instanceof \&lt;aadl model element type\&gt;</code></p>
 </blockquote>
 <p><span id="built-in-functions-for-connections"></span></p>
-<h2 id="sec:built-in-functions-for-connections"><span class="header-section-number">6.6</span> Built-in Functions for Connections</h2>
+<h2 id="sec:built-in-functions-for-connections"><span class="header-section-number">7.6</span> Built-in Functions for Connections</h2>
 <p><code>source</code>(&lt;connection&gt;): connection_endpoint - returns the component or feature instance that is the source of the connection instance</p>
 <p><code>destination</code>(&lt;connection&gt;): connection_endpoint - returns the component or feature instance that is the destination of the connection instance</p>
 <p><code>is_data_access</code>(&lt;connection&gt;): Boolean - true if one end of a connection is a data component</p>
+<p><code>is_bus_access</code>(&lt;connection&gt;): Boolean - true if one end of a connection is a bus component</p>
+<p><code>is_bidirectional</code>(&lt;connection&gt;: Boolean - true if connection is bidirectional</p>
 <p><span id="built-in-functions-for-bindings"></span></p>
-<h2 id="sec:built-in-functions-for-bindings"><span class="header-section-number">6.7</span> Built-in Functions for Bindings</h2>
+<h2 id="sec:built-in-functions-for-bindings"><span class="header-section-number">7.7</span> Built-in Functions for Bindings</h2>
 <p><code>is_bound_to</code>(&lt;binding_source&gt;, &lt;binding_target&gt;): Boolean - true if the binding source (a component or connection instance) is bound to the binding target (a component). It handles processor bindings, memory bindings, and connection bindings.</p>
 <blockquote>
 <p>Note: The <code>is_bound_to</code> function is the same as library function <code>bound</code>.</p>
@@ -426,7 +473,7 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 <p>Note: The <code>is_bound_to</code> function does not consider function_bindings. See <em>Resolute_Stdlib.aadl</em> for how this can be done by mirroring <em>processor_bound</em>.</p>
 </blockquote>
 <p><span id="built-in-functions-for-sets-and-lists"></span></p>
-<h2 id="sec:built-in-functions-for-sets-and-lists"><span class="header-section-number">6.8</span> Built-in Functions for Sets and Lists</h2>
+<h2 id="sec:built-in-functions-for-sets-and-lists"><span class="header-section-number">7.8</span> Built-in Functions for Sets and Lists</h2>
 <p>Resolute operates on the instance model; this means that the collections are of instance model elements.</p>
 <p><code>features</code>(&lt;named_element&gt;): {feature} - returns a collection containing the features of the named element</p>
 <p><code>subcomponents</code>(&lt;named_element&gt;): {component} - returns a collection containing the subcomponents (component instances) of the named element</p>
@@ -434,24 +481,28 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 <p><code>instances</code> (&lt;component_classifier&gt;): {component} - returns the collection of instances in the instance model for a given component classifier</p>
 <p><code>instance</code> (&lt;component_classifier&gt;): component - returns the component instance for a given component classifier. The method assumes that there is only one instance.</p>
 <p><span id="built-in-functions-for-flows"></span></p>
-<h2 id="sec:built-in-functions-for-flows"><span class="header-section-number">6.9</span> Built-in Functions for Flows</h2>
+<h2 id="sec:built-in-functions-for-flows"><span class="header-section-number">7.9</span> Built-in Functions for Flows</h2>
 <p><code>end_to_end_flows</code> (&lt;component&gt;): { &lt;end_to_end_flow&gt; } - returns set of end to end flows contained in component instance.</p>
 <p><code>flow_elements</code> (&lt;end_to_end_flow&gt;): { &lt;flow_element&gt; } - returns set of flow elements, which are connection instances, flow spec instances, or components instances.</p>
 <p><code>flow_specifications</code> (&lt;component&gt;): { &lt;flow_spec&gt; } - returns set of flow specification instances of a component.</p>
 <p><code>flow_source</code> (&lt;flow_spec&gt;): feature - returns the source of a flow specification.</p>
 <p><code>flow_destination</code> (&lt;flow_spec&gt;): feature - returns the destination of a flow specification.</p>
 <p><span id="built-in-functions-for-error-models"></span></p>
-<h2 id="sec:built-in-functions-for-error-models"><span class="header-section-number">6.10</span> Built-in Functions for Error Models</h2>
+<h2 id="sec:built-in-functions-for-error-models"><span class="header-section-number">7.10</span> Built-in Functions for Error Models</h2>
 <p><code>error_state_reachable</code> (&lt;component&gt;, &lt;state: string&gt;): Boolean - true</p>
 <p><code>propagate_error</code> (&lt;component&gt;, &lt;error_type: string&gt;): Boolean - true if the component instance propagates out the error type on any of its features if the error state of the component instance is reachable by an incoming transition</p>
 <p><code>receive_error</code> (&lt;component&gt;, &lt;error_type: string&gt;): Boolean - true true if the component instance receives the error type of a propagated error on any of its features. Not supported yet.</p>
 <p><code>contain_error</code> (&lt;component&gt;, &lt;error_type: string&gt;): Boolean - true if the the component instance has an error event with the specified error type. Not supported yet.</p>
 <p><span id="external-functions"></span></p>
-<h2 id="sec:external-functions"><span class="header-section-number">6.11</span> External Functions</h2>
+<h2 id="sec:external-functions"><span class="header-section-number">7.11</span> External Functions</h2>
 <p><code>analysis</code> (&lt;function: string&gt;, &lt;args&gt;): &lt;ResoluteValue&gt; - invocation of a Java function registered as an external function extension point. The function is specified as string identifier of the extension point. The arguments are additional parameters of the analysis function.</p>
 <p>The return value must be one of the ResoluteValue subclasses: Boolvalue, IntValue, ListValue, NamedElementValue, RangeValue, RealValue, ResoluteRecordValue, SetValue, StringValue.</p>
+<p>While the <code>analysis</code> capability in Resolute enables the execution of external plugins, a separate plugin is required for each analysis call. This is an inefficient mechanism for encapsulating a group of related functions. For example, a library of string manipulation functions (such as concat(), length(), substring(), etc.) would each require an individual plugin using the analysis() call, as in analysis(concat, str1, str2).</p>
+<p>Resolute external function library support provides a mechanism for packaging multiple functions into a single plugin, which can then be called in a Resolute claim using the syntax &gt; <code>\&lt;LibraryName\&gt;.\&lt;LibraryFunction\&gt;(Arg1, Arg2, …)</code></p>
+<p>For example, the concat function in string manipulation library is called as &gt; <code>StringLib.concat(str1, str2)</code></p>
+<p>and returns a string.</p>
 <p><span id="debug-functions"></span></p>
-<h2 id="sec:debug-functions"><span class="header-section-number">6.12</span> Debug Functions</h2>
+<h2 id="sec:debug-functions"><span class="header-section-number">7.12</span> Debug Functions</h2>
 <p><code>debug</code> (&lt;args&gt;): true - writes one or more arguments (strings and other base types, sets, lists, model elements as names) to the console.</p>
 <blockquote>
 <p>The debug trace is written to a console in OSATE.</p>
@@ -460,9 +511,9 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 <p>You can enable and disable debug tracing through commands in the context menu of the Assurance Case View that comes with Resolute.</p>
 </blockquote>
 <p><span id="common-resolute-function-library"></span></p>
-<h1 id="sec:common-resolute-function-library"><span class="header-section-number">7</span> Common Resolute Function Library</h1>
+<h1 id="sec:common-resolute-function-library"><span class="header-section-number">8</span> Common Resolute Function Library</h1>
 <p><span id="binding-related-functions"></span></p>
-<h2 id="sec:binding-related-functions"><span class="header-section-number">7.1</span> Binding Related Functions</h2>
+<h2 id="sec:binding-related-functions"><span class="header-section-number">8.1</span> Binding Related Functions</h2>
 <p><code>bound</code>(&lt;component, binding_target&gt;): Boolean - true if the component instance is bound to the binding target by actual processor, memory, or connection binding. Note: <code>bound</code> is the same as the built-in <code>is_bound_to</code> function.</p>
 <p><code>processor_bound</code>(&lt;component&gt;, &lt;binding_target&gt;): Boolean - true if the component instance is bound to the binding target by actual processor binding</p>
 <p><code>memory_bound</code>(&lt;component&gt;, &lt;binding_target&gt;): Boolean - true if the component instance is bound to the binding target by actual memory binding</p>
@@ -471,7 +522,7 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 <p>Note: You may want to implement a <code>function_bound</code> function. See <em>Resolute_Stdlib.aadl</em> for how this can be done by mirroring <em>processor_bound</em>.</p>
 </blockquote>
 <p><span id="connection-related-functions"></span></p>
-<h2 id="sec:connection-related-functions"><span class="header-section-number">7.2</span> Connection Related Functions</h2>
+<h2 id="sec:connection-related-functions"><span class="header-section-number">8.2</span> Connection Related Functions</h2>
 <p><code>connected</code>(&lt;source component&gt;, &lt;connection&gt;, &lt;destination component&gt;): Boolean - returns true if the components are the soruce and destination components of the connection..</p>
 <p><code>source_component</code>(&lt;connection&gt;): component - returns the component that is the source of the connection instance. This component contains the feature instance as a connection end point.</p>
 <p><code>destination_component</code>(&lt;connection&gt;): component - returns the component that is the destination of the connection instance. This component contains the feature instance as a connection end point.</p>
@@ -481,18 +532,18 @@ SubcomponentWeightBudgetCoverage(self:component) : bool =
 <p><code>is_event_data_port_connection</code>(&lt;connection&gt;): Boolean - true if one of the connection end points is an event data port. Note: should be determined by the destination.</p>
 <p><code>is_data_access_connection</code>(&lt;connection&gt;): Boolean - true if one of the connection end points is a data access feature.</p>
 <p><span id="model-element-containment"></span></p>
-<h2 id="sec:model-element-containment"><span class="header-section-number">7.3</span> Model Element Containment</h2>
+<h2 id="sec:model-element-containment"><span class="header-section-number">8.3</span> Model Element Containment</h2>
 <p><code>contained</code>(&lt;named_element&gt;, &lt;container_component&gt;): Boolean - true if the named element is contained in the container component. The named element can be a component or feature instance. Note: also works for connection instance.</p>
 <p><code>containing_component</code>(&lt;named_element&gt;): component - returns the directly containing component instance. The named element can be a component or feature instance. Note: also works for connection instance.</p>
 <p><span id="handling-of-feature-groups"></span></p>
-<h2 id="sec:handling-of-feature-groups"><span class="header-section-number">7.4</span> Handling of Feature Groups</h2>
+<h2 id="sec:handling-of-feature-groups"><span class="header-section-number">8.4</span> Handling of Feature Groups</h2>
 <p>Feature groups are represented in the instance model as a hierarchy of feature instances reflecting the nesting of the feature group.</p>
 <p><code>flatten_feature</code>(&lt;feature&gt;): {feature} - returns a set of feature instances that are the leaf elements of a given feature instance. If no elements are contained in the feature instance, the feature instance itself is returned as a set.</p>
 <p><code>flatten_features</code>( &lt;{feature}&gt; ) : {feature} - returns a set of feature instances that are the leaf elements of a given feature instance set.</p>
 <p><span id="resolute-examples"></span></p>
-<h1 id="sec:resolute-examples"><span class="header-section-number">8</span> Resolute Examples</h1>
+<h1 id="sec:resolute-examples"><span class="header-section-number">9</span> Resolute Examples</h1>
 <p><span id="debugging-models-with-resolute"></span></p>
-<h2 id="sec:debugging-models-with-resolute"><span class="header-section-number">8.1</span> Debugging Models with Resolute</h2>
+<h2 id="sec:debugging-models-with-resolute"><span class="header-section-number">9.1</span> Debugging Models with Resolute</h2>
 <p>Get a model element trace on the Console View. You enable and disable console logging through a command in the context menu of the Assurance Case View of Resolute. Once enabled the built-in function <strong>debug</strong> will write to the console when executed.</p>
 <p>The built-in function <strong>debug</strong> takes one or more parameters and writes them out. It can handle any Resolute base type, lists and sets, as well as AADL model elements.</p>
 <pre class="resolute" caption="Model Element Trace in the Assurance View"><code>    let conns : {connection} = connections;
@@ -514,7 +565,7 @@ record_list(s : [aadl], msg: string) &lt;=
      ** msg &quot;: &quot;s **
      true</code></pre>
 <p><span id="reachable-model-elements"></span></p>
-<h2 id="sec:reachable-model-elements"><span class="header-section-number">8.2</span> Reachable Model Elements</h2>
+<h2 id="sec:reachable-model-elements"><span class="header-section-number">9.2</span> Reachable Model Elements</h2>
 <p>This is a set of functions that collect AADL components that are directly or indirectly reachable via connections.</p>
 <pre class="resolute" caption="Reachability Example"><code>-- return set of reachable components that have no outgoing connections. 
 reachable_endpoints(c : component) : {component} =
@@ -575,7 +626,7 @@ recusive_reach(curr: {component}) : {component} =
             destination_component(conn)
 </code></pre>
 <p><span id="copyright"></span></p>
-<h1 id="sec:copyright"><span class="header-section-number">9</span> Copyright</h1>
+<h1 id="sec:copyright"><span class="header-section-number">10</span> Copyright</h1>
 <p>Copyright 2015-18 Carnegie Mellon University</p>
 <p>This material is based upon work funded and supported by the Department of Defense under Contract No. FA8721-05-C-0003 with Carnegie Mellon University for the operation of the Software Engineering Institute, a federally funded research and development center.</p>
 <p>Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the United States Department of Defense.</p>
