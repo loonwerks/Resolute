@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: StringLib
 Bundle-SymbolicName: com.rockwellcollins.atc.resolute.stringlib;singleton:=true
-Bundle-Version: 2.4.3.qualifier
+Bundle-Version: 2.4.3
 Bundle-Activator: com.rockwellcollins.atc.resolute.stringlib.Activator
 Bundle-Vendor: Collins Aerospace, Inc.
 Require-Bundle: org.eclipse.ui,
