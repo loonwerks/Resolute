@@ -72,7 +72,7 @@
 	</target>
 
 	<target name="build_user_guide_pdf" description="Build the user guide PDF">
-		<mkdir dir="../../../documentation/resolute/" />
+		<mkdir dir="${basedir}/doc-gen/pdf/" />
 
 		<exec executable="pandoc" dir="${user_guide.dir}">
 			<arg value="user_guide.md"/>
@@ -94,7 +94,7 @@
 			<arg value="-V"/>
 			<arg value="documentclass=report"/>
 			<arg value="-o"/>
-			<arg value="${basedir}/../../../documentation/resolute/user_guide.pdf"/>
+			<arg value="${basedir}/doc-gen/pdf/user_guide.pdf"/>
 		</exec>
 	</target>
 
@@ -145,7 +145,7 @@
 	</target>
 
 	<target name="build_reference_pdf" description="Build the reference PDF">
-		<mkdir dir="${basedir}/../../../documentation/resolute/" />
+		<mkdir dir="${basedir}/doc-gen/pdf/" />
 
 		<exec executable="pandoc" dir="${reference.dir}">
 			<arg value="reference.md" />
@@ -167,7 +167,7 @@
 			<arg value="-V" />
 			<arg value="documentclass=report" />
 			<arg value="-o" />
-			<arg value="${basedir}/../../../documentation/resolute/reference.pdf" />
+			<arg value="${basedir}/doc-gen/pdf/reference.pdf" />
 		</exec>
 	</target>
 </project>
