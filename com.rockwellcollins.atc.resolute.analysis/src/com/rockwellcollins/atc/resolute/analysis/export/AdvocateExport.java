@@ -7,9 +7,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.osate.aadl2.NamedElement;
+
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
+import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
+import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
+import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
+import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
 
 public class AdvocateExport {
@@ -35,26 +41,29 @@ public class AdvocateExport {
 	}
 
 	public static StringBuilder exportBuilder(ResoluteResult resoluteResult, StringBuilder s) {
-		String st = "";
+		String claim = "";
 		if (resoluteResult instanceof ClaimResult) {
+			String attributes = "";
 			ClaimResult claimResult = (ClaimResult) resoluteResult;
 			if (claimResult.getLocation() instanceof FunctionDefinition) {
 				FunctionDefinition functionDefinition = (FunctionDefinition) claimResult.getLocation();
 				if (functionDefinition.getBody() instanceof ClaimBody) {
 					ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
+					attributes = buildClaimAttributes(claimBody.getAttributes());
 					String claimText = claimResult.getText();
 					if (functionDefinition.getClaimType() == "goal" | functionDefinition.getClaimType() == null) {
-						st += "Goal ";
+						claim += "Goal ";
 					} else {
-						st += "Strategy ";
+						claim += "Strategy ";
 					}
-					st = st + functionDefinition.getName() + " {" + "\r\n" + "\tdescription " + "\"" + claimText + "\""
-							+ "\r\n"
-							+ "}" + "\r\n";
+					claim = claim + functionDefinition.getName() + " {" + "\r\n" + "\tdescription " + "\"" + claimText
+							+ "\""
+							+ "\r\n" + "}" + "\r\n";
 				}
 			}
-			System.out.println(st);
-			s.append(st);
+			System.out.println(claim);
+			s.append(claim);
+			s.append(attributes);
 			List<ResoluteResult> children = claimResult.getChildren();
 			for (ResoluteResult child : children) {
 				exportBuilder(child, s);
@@ -66,6 +75,35 @@ public class AdvocateExport {
 			}
 		}
 		return s;
+	}
+
+	public static String buildClaimAttributes(List<NamedElement> claimAttributes) {
+		String buildAttribute = "";
+		for (NamedElement namedElement : claimAttributes) {
+			if (namedElement instanceof ClaimContext) {
+				ClaimContext claimContext = (ClaimContext) namedElement;
+				buildAttribute = buildAttribute + "Context " + claimContext.getName() + " {" + "\r\n" + "\tdescription "
+						+ "\""
+						+ claimContext.getExpr().toString() + "\"" + "\r\n" + "}" + "\r\n";
+			} else if (namedElement instanceof ClaimAssumption) {
+				ClaimAssumption claimAssumption = (ClaimAssumption) namedElement;
+				buildAttribute = buildAttribute + "Assumption " + claimAssumption.getName() + " {" + "\r\n"
+						+ "\tdescription "
+						+ claimAssumption.getVal().getValue() + "\r\n" + "}" + "\r\n";
+			} else if (namedElement instanceof ClaimJustification) {
+				ClaimJustification claimJustification = (ClaimJustification) namedElement;
+				buildAttribute = buildAttribute + "Justification " + claimJustification.getName() + " {" + "\r\n"
+						+ "\tdescription "
+						+ claimJustification.getVal().getValue() + "\r\n" + "}" + "\r\n";
+			} else if (namedElement instanceof ClaimStrategy) {
+				ClaimStrategy claimStrategy = (ClaimStrategy) namedElement;
+				buildAttribute = buildAttribute + "Strategy " + claimStrategy.getName() + " {" + "\r\n"
+						+ "\tdescription "
+						+ claimStrategy.getVal().getValue() + "\r\n" + "}" + "\r\n";
+			}
+		}
+		System.out.println(buildAttribute);
+		return buildAttribute;
 	}
 
 //	public static StringBuilder exportBuilder(Expr expr, StringBuilder s) {
