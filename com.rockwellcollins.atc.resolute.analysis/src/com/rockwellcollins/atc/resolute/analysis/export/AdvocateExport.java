@@ -30,6 +30,10 @@ public class AdvocateExport {
 		StringBuilder str = new StringBuilder();
 		List<ResoluteResult> result = cr.getChildren();
 		ClaimResult cResult = (ClaimResult) result.get(0);
+		str.append("<?xml version=\"1.0\" encoding=\"ASCII\"?>" + "\r\n");
+		str.append(
+				"<argument:Argument xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:argument=\"http://www.advocate.arc.nasa.gov/argument\" xmlns:egsn=\"http://www.advocate.arc.nasa.gov/egsn\">"
+						+ "\r\n");
 		exportBuilder(cResult, str);
 //		if (claimResult.getLocation() instanceof ProveStatement) {
 //			ProveStatement proveStatement = (ProveStatement) claimResult.getLocation();
@@ -37,6 +41,7 @@ public class AdvocateExport {
 		Path fileToDeletePath = Paths.get("C:\\Saqib\\Resolute\\docs\\AdvocateText.txt");
 		Files.delete(fileToDeletePath);
 		FileWriter writer = new FileWriter("C:\\Saqib\\Resolute\\docs\\AdvocateText.txt", true);
+		str.append("</argument:Argument>");
 		writer.write(str.toString());
 		writer.close();
 //		}
@@ -52,21 +57,26 @@ public class AdvocateExport {
 			if (claimResult.getLocation() instanceof FunctionDefinition) {
 				FunctionDefinition functionDefinition = (FunctionDefinition) claimResult.getLocation();
 				if (functionDefinition.getBody() instanceof ClaimBody) {
+					claim = "  <nodes xsi:type=\"argument:Argument";
 					ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
 					attributes = buildClaimAttributes(claimBody.getAttributes());
 					String claimText = claimResult.getText();
 					if (functionDefinition.getClaimType() == "goal" || functionDefinition.getClaimType() == null) {
-						claim += "Goal ";
+//						claim += "Goal ";
+						claim += "Goal\" ";
 					} else {
-						claim += "Strategy ";
+//						claim += "Strategy ";
+						claim += "Strategy\" ";
 					}
 					if (isUndevelopedExpr(claimBody.getExpr())) {
 						undeveloped = "toBeDeveloped ";
 					}
-					claim += undeveloped + functionDefinition.getName() + " {" + "\r\n" + "\tdescription " + "\""
-							+ claimText
-							+ "\""
-							+ "\r\n" + "}" + "\r\n";
+					claim += "name=\"" + functionDefinition.getName() + "\" description=\"" + claimText + "\"/>"
+							+ "\r\n";
+//					claim += undeveloped + functionDefinition.getName() + " {" + "\r\n" + "\tdescription " + "\""
+//							+ claimText
+//							+ "\""
+//							+ "\r\n" + "}" + "\r\n";
 				}
 			}
 			System.out.println(claim);
@@ -88,25 +98,34 @@ public class AdvocateExport {
 	private static String buildClaimAttributes(List<NamedElement> claimAttributes) {
 		String buildAttribute = "";
 		for (NamedElement namedElement : claimAttributes) {
+			buildAttribute += "  <nodes xsi:type=\"argument:Argument";
 			if (namedElement instanceof ClaimContext) {
 				ClaimContext claimContext = (ClaimContext) namedElement;
-				buildAttribute += "Context " + claimContext.getName() + " {" + "\r\n" + "\tdescription "
-						+ "\"" + claimContext.getExpr().toString() + "\"" + "\r\n" + "}" + "\r\n";
+				buildAttribute += "Context\" name=\"" + claimContext.getName() + "\" description=\""
+						+ claimContext.getExpr().toString() + "\"/>" + "\r\n";
+//				buildAttribute += "Context " + claimContext.getName() + " {" + "\r\n" + "\tdescription "
+//						+ "\"" + claimContext.getExpr().toString() + "\"" + "\r\n" + "}" + "\r\n";
 			} else if (namedElement instanceof ClaimAssumption) {
 				ClaimAssumption claimAssumption = (ClaimAssumption) namedElement;
-				buildAttribute += "Assumption " + claimAssumption.getName() + " {" + "\r\n"
-						+ "\tdescription "
-						+ claimAssumption.getVal().getValue() + "\r\n" + "}" + "\r\n";
+				buildAttribute += "Assumption\" name=\"" + claimAssumption.getName() + "\" description="
+						+ claimAssumption.getVal().getValue() + "/>" + "\r\n";
+//				buildAttribute += "Assumption " + claimAssumption.getName() + " {" + "\r\n"
+//						+ "\tdescription "
+//						+ claimAssumption.getVal().getValue() + "\r\n" + "}" + "\r\n";
 			} else if (namedElement instanceof ClaimJustification) {
 				ClaimJustification claimJustification = (ClaimJustification) namedElement;
-				buildAttribute += "Justification " + claimJustification.getName() + " {" + "\r\n"
-						+ "\tdescription "
-						+ claimJustification.getVal().getValue() + "\r\n" + "}" + "\r\n";
+				buildAttribute += "Justification\" name=\"" + claimJustification.getName() + "\" description="
+						+ claimJustification.getVal().getValue() + "/>" + "\r\n";
+//				buildAttribute += "Justification " + claimJustification.getName() + " {" + "\r\n"
+//						+ "\tdescription "
+//						+ claimJustification.getVal().getValue() + "\r\n" + "}" + "\r\n";
 			} else if (namedElement instanceof ClaimStrategy) {
 				ClaimStrategy claimStrategy = (ClaimStrategy) namedElement;
-				buildAttribute += "Strategy " + claimStrategy.getName() + " {" + "\r\n"
-						+ "\tdescription "
-						+ claimStrategy.getVal().getValue() + "\r\n" + "}" + "\r\n";
+				buildAttribute += "Strategy\" name=\"" + claimStrategy.getName() + "\" description="
+						+ claimStrategy.getVal().getValue() + "/>" + "\r\n";
+//				buildAttribute += "Strategy " + claimStrategy.getName() + " {" + "\r\n"
+//						+ "\tdescription "
+//						+ claimStrategy.getVal().getValue() + "\r\n" + "}" + "\r\n";
 			}
 		}
 		System.out.println(buildAttribute);
