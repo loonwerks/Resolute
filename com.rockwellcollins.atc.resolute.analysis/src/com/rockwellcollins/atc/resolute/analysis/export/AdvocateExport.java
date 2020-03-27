@@ -16,7 +16,10 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
 import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
+import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
+import com.rockwellcollins.atc.resolute.resolute.LetExpr;
+import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 
 public class AdvocateExport {
 
@@ -44,6 +47,7 @@ public class AdvocateExport {
 		String claim = "";
 		if (resoluteResult instanceof ClaimResult) {
 			String attributes = "";
+			String undeveloped = "";
 			ClaimResult claimResult = (ClaimResult) resoluteResult;
 			if (claimResult.getLocation() instanceof FunctionDefinition) {
 				FunctionDefinition functionDefinition = (FunctionDefinition) claimResult.getLocation();
@@ -51,12 +55,16 @@ public class AdvocateExport {
 					ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
 					attributes = buildClaimAttributes(claimBody.getAttributes());
 					String claimText = claimResult.getText();
-					if (functionDefinition.getClaimType() == "goal" | functionDefinition.getClaimType() == null) {
+					if (functionDefinition.getClaimType() == "goal" || functionDefinition.getClaimType() == null) {
 						claim += "Goal ";
 					} else {
 						claim += "Strategy ";
 					}
-					claim = claim + functionDefinition.getName() + " {" + "\r\n" + "\tdescription " + "\"" + claimText
+					if (isUndevelopedExpr(claimBody.getExpr())) {
+						undeveloped = "toBeDeveloped ";
+					}
+					claim += undeveloped + functionDefinition.getName() + " {" + "\r\n" + "\tdescription " + "\""
+							+ claimText
 							+ "\""
 							+ "\r\n" + "}" + "\r\n";
 				}
@@ -77,33 +85,42 @@ public class AdvocateExport {
 		return s;
 	}
 
-	public static String buildClaimAttributes(List<NamedElement> claimAttributes) {
+	private static String buildClaimAttributes(List<NamedElement> claimAttributes) {
 		String buildAttribute = "";
 		for (NamedElement namedElement : claimAttributes) {
 			if (namedElement instanceof ClaimContext) {
 				ClaimContext claimContext = (ClaimContext) namedElement;
-				buildAttribute = buildAttribute + "Context " + claimContext.getName() + " {" + "\r\n" + "\tdescription "
-						+ "\""
-						+ claimContext.getExpr().toString() + "\"" + "\r\n" + "}" + "\r\n";
+				buildAttribute += "Context " + claimContext.getName() + " {" + "\r\n" + "\tdescription "
+						+ "\"" + claimContext.getExpr().toString() + "\"" + "\r\n" + "}" + "\r\n";
 			} else if (namedElement instanceof ClaimAssumption) {
 				ClaimAssumption claimAssumption = (ClaimAssumption) namedElement;
-				buildAttribute = buildAttribute + "Assumption " + claimAssumption.getName() + " {" + "\r\n"
+				buildAttribute += "Assumption " + claimAssumption.getName() + " {" + "\r\n"
 						+ "\tdescription "
 						+ claimAssumption.getVal().getValue() + "\r\n" + "}" + "\r\n";
 			} else if (namedElement instanceof ClaimJustification) {
 				ClaimJustification claimJustification = (ClaimJustification) namedElement;
-				buildAttribute = buildAttribute + "Justification " + claimJustification.getName() + " {" + "\r\n"
+				buildAttribute += "Justification " + claimJustification.getName() + " {" + "\r\n"
 						+ "\tdescription "
 						+ claimJustification.getVal().getValue() + "\r\n" + "}" + "\r\n";
 			} else if (namedElement instanceof ClaimStrategy) {
 				ClaimStrategy claimStrategy = (ClaimStrategy) namedElement;
-				buildAttribute = buildAttribute + "Strategy " + claimStrategy.getName() + " {" + "\r\n"
+				buildAttribute += "Strategy " + claimStrategy.getName() + " {" + "\r\n"
 						+ "\tdescription "
 						+ claimStrategy.getVal().getValue() + "\r\n" + "}" + "\r\n";
 			}
 		}
 		System.out.println(buildAttribute);
 		return buildAttribute;
+	}
+
+	private static boolean isUndevelopedExpr(Expr expr) {
+		if (expr instanceof UndevelopedExpr) {
+			return true;
+		} else if (expr instanceof LetExpr) {
+			LetExpr lExpr = (LetExpr) expr;
+			return isUndevelopedExpr(lExpr.getExpr());
+		}
+		return false;
 	}
 
 //	public static StringBuilder exportBuilder(Expr expr, StringBuilder s) {

@@ -106,7 +106,7 @@ public class AssuranceCaseView extends ViewPart {
 
         manager.add(createExportDOTAction(claim));
         manager.add(createExportCAZAction(claim));
-		manager.add(createExportTextFileAction(claim));
+		manager.add(createAdvocateExportAction(claim));
         return manager;
     }
 
@@ -129,7 +129,7 @@ public class AssuranceCaseView extends ViewPart {
         }
     }
 
-	private IAction createExportTextFileAction(final ClaimResult claim) {
+	private IAction createAdvocateExportAction(final ClaimResult claim) {
 		return new Action("Export to AdvoCATE Tool") {
 			@Override
 			public void run() {
