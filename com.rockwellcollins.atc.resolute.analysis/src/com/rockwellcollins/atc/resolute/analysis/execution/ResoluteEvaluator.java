@@ -383,7 +383,7 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 
 	@Override
 	public ResoluteValue caseClaimContext(ClaimContext object) {
-		return doSwitch(object.getExpr());
+		return varStack.peek().get(object);
 	}
 
 	@Override

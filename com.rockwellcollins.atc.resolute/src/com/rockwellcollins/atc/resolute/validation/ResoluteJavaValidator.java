@@ -1,6 +1,8 @@
 package com.rockwellcollins.atc.resolute.validation;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -100,6 +102,10 @@ import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 
 //TODO: How do we handle arithmetic operations of complex types (e.g., Time in ms)?
 public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
+
+	// Map a Function to the Claim Contexts that are visible in it
+	Map<FunctionDefinition, Set<String>> contextScope = new HashMap<>();
+
 	@Override
 	protected List<EPackage> getEPackages() {
 		// initialize the types for the external analysis calls
@@ -174,8 +180,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 
 	@Check
 	public void checkIdExpr(IdExpr expr) {
-		NamedElement refElement = expr.getId();
-		NamedElement idFuncDef = null;
+		NamedElement refElement = expr.getId(); // Element this IdExpr is referencing
+		NamedElement idFuncDef = null; // Function containing this IdExpr
 		EObject parent = expr;
 
 		// Get the FunctionDefinition containing the IdExpr
@@ -190,7 +196,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		// If IdExpr is in a function definition
 		if (idFuncDef != null) {
 			boolean inResoluteAnnex = false;
-			NamedElement refFuncDef = null;
+			NamedElement refFuncDef = null; // Resolute function containing the referenced element
 			parent = refElement;
 
 			while (parent.eContainer() != null) {
@@ -204,7 +210,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 					break;
 				}
 			}
-			// If a constant or AADL native element (anything outside the Resolute annex)
+			// If not a constant or AADL native element (anything outside the Resolute annex)
 			if (inResoluteAnnex && !(refElement instanceof ConstantDefinition)) {
 				if (!(refElement instanceof Arg || refElement instanceof LetBinding
 						|| refElement instanceof ClaimContext)) {
@@ -215,8 +221,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 					if (!idFuncDef.equals(refFuncDef)) {
 						if (refElement instanceof ClaimContext) {
 							ClaimBody claimBody = (ClaimBody) refElement.eContainer();
-							Set<String> funcNames = buildContextScope(claimBody.getExpr());
-							if (!funcNames.contains(idFuncDef.getName())) {
+							Set<FunctionDefinition> funcDefs = buildContextScope(claimBody.getExpr());
+							if (!funcDefs.contains(idFuncDef)) {
 								error(expr, "Couldn't resolve reference to " + expr.getId().getName());
 							}
 						} else {
@@ -234,28 +240,59 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	 * @param expr
 	 * @return
 	 */
-	private Set<String> buildContextScope(Expr expr) {
-		Set<String> functionNames = new HashSet<>();
+	private Set<FunctionDefinition> buildContextScope(Expr expr) {
+		Set<FunctionDefinition> funcDefs = new HashSet<>();
 		if (expr instanceof BinaryExpr) {
 			BinaryExpr binaryExpr = (BinaryExpr) expr;
-			functionNames = buildContextScope(binaryExpr.getLeft());
-			functionNames.addAll(buildContextScope(binaryExpr.getRight()));
+			funcDefs = buildContextScope(binaryExpr.getLeft());
+			funcDefs.addAll(buildContextScope(binaryExpr.getRight()));
 		} else if (expr instanceof IfThenElseExpr) {
 			IfThenElseExpr ifThenElseExpr = (IfThenElseExpr) expr;
-			functionNames = buildContextScope(ifThenElseExpr.getCond());
-			functionNames.addAll(buildContextScope(ifThenElseExpr.getThen()));
-			functionNames.addAll(buildContextScope(ifThenElseExpr.getElse()));
+			funcDefs = buildContextScope(ifThenElseExpr.getCond());
+			funcDefs.addAll(buildContextScope(ifThenElseExpr.getThen()));
+			funcDefs.addAll(buildContextScope(ifThenElseExpr.getElse()));
 		} else if (expr instanceof QuantifiedExpr) {
 			QuantifiedExpr quantifiedExpr = (QuantifiedExpr) expr;
-			functionNames = buildContextScope(quantifiedExpr.getExpr());
+			funcDefs = buildContextScope(quantifiedExpr.getExpr());
 		} else if (expr instanceof FnCallExpr) {
 			FnCallExpr fnCallExpr = (FnCallExpr) expr;
 			if (fnCallExpr.getFn().getBody() instanceof ClaimBody) {
-				functionNames.add(fnCallExpr.getFn().getName());
-				functionNames.addAll(buildContextScope(fnCallExpr.getFn().getBody().getExpr()));
+				funcDefs.add(fnCallExpr.getFn());
+				funcDefs.addAll(buildContextScope(fnCallExpr.getFn().getBody().getExpr()));
 			}
 		}
-		return functionNames;
+		return funcDefs;
+	}
+
+	@Check
+	public void checkClaimContext(ClaimContext claimContext) {
+		// Get containing claim
+		EObject parent = claimContext;
+		FunctionDefinition funcDef = null;
+		while (parent != null) {
+			parent = parent.eContainer();
+			if (parent instanceof FunctionDefinition) {
+				funcDef = (FunctionDefinition) parent;
+				break;
+			}
+		}
+
+		if (funcDef != null) {
+			// Check if an existing context with this name exists in this scope
+			if (contextScope.getOrDefault(funcDef, Collections.emptySet()).contains(claimContext.getName())) {
+				error(claimContext, "Context " + claimContext.getName() + " has already been declared");
+			}
+		}
+
+		// Build the scope for this context
+		Set<FunctionDefinition> funcDefs = buildContextScope(funcDef.getBody().getExpr());
+		funcDefs.add(funcDef);
+		for (FunctionDefinition fd : funcDefs) {
+			if (contextScope.get(fd) == null) {
+				contextScope.put(fd, new HashSet<>());
+			}
+			contextScope.get(fd).add(claimContext.getName());
+		}
 	}
 
 	@Check
@@ -359,20 +396,6 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		}
 	}
 
-//	@Check
-//	public void checkClaimContext(ClaimContext claimContext) {
-//		if (!isValidClaimContextExpr(claimContext.getExpr())) {
-//			error(claimContext.getExpr(), "Not a valid expression for a claim context");
-//		}
-//	}
-//
-//	private boolean isValidClaimContextExpr(Expr expr) {
-//		if (expr instanceof IdExpr || expr instanceof ThisExpr || expr instanceof StringExpr || expr instanceof ListExpr
-//				|| expr instanceof SetExpr) {
-//			return true;
-//		}
-//		return false;
-//	}
 
 	@Check
 	public void checkFuncDef(FunctionDefinition funcDef) {

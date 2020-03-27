@@ -39,6 +39,7 @@ import com.rockwellcollins.atc.resolute.analysis.export.ResoluteDOTUtils;
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.FailResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
+import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
 import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 
 public class AssuranceCaseView extends ViewPart {
@@ -75,8 +76,11 @@ public class AssuranceCaseView extends ViewPart {
 
 		        Map<String, EObject> references = claim.getReferences();
 		        for (String name : new TreeSet<String>(references.keySet())) {
-		            manager1.add(createHyperlinkAction("Go to '" + name + "'",
+					if (!(references.get(name) instanceof ClaimContext)) {
+						manager1.add(createHyperlinkAction("Go to '" + name
+								+ "'",
 		                    references.get(name)));
+					}
 		        }
 
 		        manager1.add(new Action("Copy Claim Text") {

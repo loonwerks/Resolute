@@ -33,6 +33,7 @@ import com.rockwellcollins.atc.resolute.resolute.Arg;
 import com.rockwellcollins.atc.resolute.resolute.BinaryExpr;
 import com.rockwellcollins.atc.resolute.resolute.ClaimArg;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
+import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
 import com.rockwellcollins.atc.resolute.resolute.ClaimString;
 import com.rockwellcollins.atc.resolute.resolute.ClaimText;
 import com.rockwellcollins.atc.resolute.resolute.ClaimTextVar;
@@ -263,7 +264,27 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 		}
 
 		claimCallContexts.add(context);
-		varStack.push(ResoluteEvaluator.pairArguments(funcDef.getArgs(), argVals));
+
+		// Copy ClaimContexts from calling claim
+		Map<NamedElement, ResoluteValue> claimContexts = new HashMap<>();
+		if (!varStack.isEmpty()) {
+			for (Map.Entry<NamedElement, ResoluteValue> var : varStack.peek().entrySet()) {
+				if (var.getKey() instanceof ClaimContext) {
+					claimContexts.put(var.getKey(), var.getValue());
+				}
+			}
+		}
+		varStack.push(claimContexts);
+
+		varStack.peek().putAll(ResoluteEvaluator.pairArguments(funcDef.getArgs(), argVals));
+
+		// Add any ClaimContexts from this claim
+		for (NamedElement claimAttribute : body.getAttributes()) {
+			if (claimAttribute instanceof ClaimContext) {
+				ClaimContext claimContext = (ClaimContext) claimAttribute;
+				varStack.peek().put(claimAttribute, eval(claimContext.getExpr()));
+			}
+		}
 
 		String text = createClaimText(body.getClaim());
 		Map<String, EObject> references = createClaimReferences(body);
@@ -371,6 +392,13 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 						result.put(argVal.toString(), modelElement);
 					}
 				}
+			}
+		}
+
+		for (NamedElement claimAttribute : body.getAttributes()) {
+			if (claimAttribute instanceof ClaimContext) {
+				ResoluteValue val = varStack.peek().get(claimAttribute);
+				result.put(val.toString(), claimAttribute);
 			}
 		}
 
