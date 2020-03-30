@@ -6,7 +6,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
 
+import org.eclipse.emf.ecore.EObject;
 import org.osate.aadl2.NamedElement;
 
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
@@ -59,7 +62,7 @@ public class AdvocateExport {
 				if (functionDefinition.getBody() instanceof ClaimBody) {
 					claim = "  <nodes xsi:type=\"argument:Argument";
 					ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
-					attributes = buildClaimAttributes(claimBody.getAttributes());
+					attributes = buildClaimAttributes(claimBody.getAttributes(), claimResult);
 					String claimText = claimResult.getText();
 					if (functionDefinition.getClaimType() == "goal" || functionDefinition.getClaimType() == null) {
 //						claim += "Goal ";
@@ -95,14 +98,19 @@ public class AdvocateExport {
 		return s;
 	}
 
-	private static String buildClaimAttributes(List<NamedElement> claimAttributes) {
+	private static String buildClaimAttributes(List<NamedElement> claimAttributes, ClaimResult res) {
 		String buildAttribute = "";
 		for (NamedElement namedElement : claimAttributes) {
 			buildAttribute += "  <nodes xsi:type=\"argument:Argument";
 			if (namedElement instanceof ClaimContext) {
 				ClaimContext claimContext = (ClaimContext) namedElement;
-				buildAttribute += "Context\" name=\"" + claimContext.getName() + "\" description=\""
-						+ claimContext.getExpr().toString() + "\"/>" + "\r\n";
+				Map<String, EObject> refs = res.getReferences();
+				for (String description : new TreeSet<String>(refs.keySet())) {
+					if (refs.get(description).equals(claimContext)) {
+						buildAttribute += "Context\" name=\"" + claimContext.getName() + "\" description=\""
+								+ description + "\"/>" + "\r\n";
+					}
+				}
 //				buildAttribute += "Context " + claimContext.getName() + " {" + "\r\n" + "\tdescription "
 //						+ "\"" + claimContext.getExpr().toString() + "\"" + "\r\n" + "}" + "\r\n";
 			} else if (namedElement instanceof ClaimAssumption) {
