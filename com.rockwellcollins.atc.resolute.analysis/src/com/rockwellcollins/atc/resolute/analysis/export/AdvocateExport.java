@@ -2,9 +2,6 @@ package com.rockwellcollins.atc.resolute.analysis.export;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
@@ -41,9 +38,9 @@ public class AdvocateExport {
 //		if (claimResult.getLocation() instanceof ProveStatement) {
 //			ProveStatement proveStatement = (ProveStatement) claimResult.getLocation();
 ////			StringBuilder s = exportBuilder(proveStatement.getExpr(), str);
-		Path fileToDeletePath = Paths.get("C:\\Saqib\\Resolute\\docs\\AdvocateText.txt");
-		Files.delete(fileToDeletePath);
-		FileWriter writer = new FileWriter("C:\\Saqib\\Resolute\\docs\\AdvocateText.txt", true);
+//		Path fileToDeletePath = Paths.get("C:\\Saqib\\Resolute\\docs\\AdvocateText1.txt");
+//		Files.delete(fileToDeletePath);
+		FileWriter writer = new FileWriter("C:\\Saqib\\Resolute\\docs\\AdvocateText1.txt", true);
 		str.append("</argument:Argument>");
 		writer.write(str.toString());
 		writer.close();
