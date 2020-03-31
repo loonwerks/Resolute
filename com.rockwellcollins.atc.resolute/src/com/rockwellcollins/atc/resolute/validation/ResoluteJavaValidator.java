@@ -428,13 +428,14 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 
-		if (claimType == "strategy" && body instanceof ClaimBody) {
+		if (claimType.equalsIgnoreCase("strategy") && body instanceof ClaimBody) {
 			ClaimBody claimBody = (ClaimBody) body;
-			if (containsStrategyAttribute(claimBody)) {
-				error("Keyword " + claimType
-						+ " cannot be used along with a strategy claim attribute inside claim body", funcDef,
-						ResolutePackage.Literals.FUNCTION_DEFINITION__CLAIM_TYPE);
-			} else if (!isValidStrategyExpr(claimBody.getExpr())) {
+			for (NamedElement attr : claimBody.getAttributes()) {
+				if (attr instanceof ClaimStrategy) {
+					error(attr, "A strategy cannot contain a strategy attribute");
+				}
+			}
+			if (!isValidStrategyExpr(claimBody.getExpr())) {
 				error(claimBody.getExpr(), "Strategies can only make calls to other goals");
 			}
 		}
@@ -473,7 +474,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		} else if (expr instanceof FnCallExpr) {
 			FnCallExpr fnCallExpr = (FnCallExpr) expr;
 			FunctionDefinition funcDef = fnCallExpr.getFn();
-			if (funcDef.getClaimType() != "strategy" && !(funcDef.getBody() instanceof FunctionBody)) {
+			if (!funcDef.getClaimType().equalsIgnoreCase("strategy") && !(funcDef.getBody() instanceof FunctionBody)) {
 				return true;
 			}
 		} else if (expr instanceof LetExpr) {
@@ -485,15 +486,15 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		return false;
 	}
 
-	private boolean containsStrategyAttribute(ClaimBody body) {
-
-		for (NamedElement attr : body.getAttributes()) {
-			if (attr instanceof ClaimStrategy) {
-				return true;
-			}
-		}
-		return false;
-	}
+//	private boolean containsStrategyAttribute(ClaimBody body) {
+//
+//		for (NamedElement attr : body.getAttributes()) {
+//			if (attr instanceof ClaimStrategy) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
 
 	@Check
 	public void checkQuantArg(QuantArg quantArg) {
