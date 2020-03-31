@@ -2,14 +2,18 @@ package com.rockwellcollins.atc.resolute.analysis.export;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.xtext.ui.util.ResourceUtil;
 import org.osate.aadl2.NamedElement;
 
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
@@ -30,23 +34,56 @@ public class AdvocateExport {
 
 //		ClaimResult claimResult = cr;
 //		HashSet<String> funcNames = new HashSet<>();
+		HashMap<String, Integer> Map = new HashMap<>();
+		List<String> claimNodes = new ArrayList<>();
+		List<String> claimLinks = new ArrayList<>();
+//		StringBuilder str = new StringBuilder();
+//		List<ResoluteResult> result = cr.getChildren();
+//		ClaimResult cResult = (ClaimResult) result.get(0);
 		StringBuilder str = new StringBuilder();
 		List<ResoluteResult> result = cr.getChildren();
 		ClaimResult cResult = (ClaimResult) result.get(0);
+		String claimName = ((FunctionDefinition) cResult.getLocation()).getName();
+
+		FileDialog dialog = new FileDialog(Display.getCurrent().getActiveShell(), SWT.SAVE);
+		dialog.setText("Resolute - Export to Advocate");
+		dialog.setFileName(claimName);
+		dialog.setFilterExtensions(new String[] { "*.argument", "*.xml", "*.txt", "*.*" });
+		dialog.setFilterIndex(0);
+		dialog.setOverwrite(true);
+		dialog.setFilterPath(
+				ResourceUtil.getFile(cr.getLocation().eResource()).getFullPath().makeAbsolute().toString());
+		String fileName = dialog.open();
+		if (fileName == null) {
+			return;
+		}
+
+		FileWriter writer = new FileWriter(fileName, false);
+
 		str.append("<?xml version=\"1.0\" encoding=\"ASCII\"?>" + "\r\n");
+//		str.append(
+//				"<argument:Argument xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:argument=\"http://www.advocate.arc.nasa.gov/argument\" xmlns:egsn=\"http://www.advocate.arc.nasa.gov/egsn\">"
+//						+ "\r\n");
 		str.append(
-				"<argument:Argument xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:argument=\"http://www.advocate.arc.nasa.gov/argument\" xmlns:egsn=\"http://www.advocate.arc.nasa.gov/egsn\">"
-						+ "\r\n");
-		exportBuilder(cResult, str);
+				"<argument:Argument xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:argument=\"http://www.advocate.arc.nasa.gov/argument\" xmlns:egsn=\"http://www.advocate.arc.nasa.gov/egsn\" name=\""
+						+ claimName + "\">" + "\r\n");
+		exportBuilder(cResult, Map, claimNodes, claimLinks);
 //		if (claimResult.getLocation() instanceof ProveStatement) {
 //			ProveStatement proveStatement = (ProveStatement) claimResult.getLocation();
 ////			StringBuilder s = exportBuilder(proveStatement.getExpr(), str);
 //		Path fileToDeletePath = Paths.get("C:\\Saqib\\Resolute\\docs\\AdvocateText1.txt");
 //		Files.delete(fileToDeletePath);
 
-		Path fileToDeletePath = Paths.get("C:\\Saqib\\Resolute\\docs\\AdvocateText.txt");
-		Files.delete(fileToDeletePath);
-		FileWriter writer = new FileWriter("C:\\Saqib\\Resolute\\docs\\AdvocateText.txt", true);
+//		Path fileToDeletePath = Paths.get("C:\\Saqib\\Resolute\\docs\\AdvocateText.txt");
+//		Files.delete(fileToDeletePath);
+//		FileWriter writer = new FileWriter("C:\\Saqib\\Resolute\\docs\\AdvocateText.txt", true);
+//		System.out.println(claimNodes);
+		for (String node : claimNodes) {
+			str.append(node);
+		}
+		for (String link : claimLinks) {
+			str.append(link);
+		}
 		str.append("</argument:Argument>");
 		writer.write(str.toString());
 		writer.close();
@@ -54,10 +91,11 @@ public class AdvocateExport {
 		System.out.println("Hello AdvoCATE!!");
 	}
 
-	public static StringBuilder exportBuilder(ResoluteResult resoluteResult, StringBuilder s) {
+	public static void exportBuilder(ResoluteResult resoluteResult, HashMap<String, Integer> claimMap,
+			List<String> nodes, List<String> links) {
 		String claim = "";
 		if (resoluteResult instanceof ClaimResult) {
-			String attributes = "";
+//			String attributes = "";
 			String undeveloped = "";
 			ClaimResult claimResult = (ClaimResult) resoluteResult;
 			if (claimResult.getLocation() instanceof FunctionDefinition) {
@@ -65,8 +103,21 @@ public class AdvocateExport {
 				if (functionDefinition.getBody() instanceof ClaimBody) {
 					claim = "  <nodes xsi:type=\"argument:Argument";
 					ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
-					attributes = buildClaimAttributes(claimBody.getAttributes(), claimResult);
 					String claimText = claimResult.getText();
+					if (!claimMap.containsKey(functionDefinition.getName())) {
+						Collection<Integer> funcNameValues = claimMap.values();
+						int index = findMaxVal(funcNameValues);
+//						for (Integer val : values) {
+//							if (index < val) {
+//								index = val;
+//							}
+//						}
+						if (index == 0) {
+							claimMap.put(functionDefinition.getName(), index);
+						} else {
+							claimMap.put(functionDefinition.getName(), index + 1);
+						}
+					}
 					if (functionDefinition.getClaimType() == "goal" || functionDefinition.getClaimType() == null) {
 //						claim += "Goal ";
 						claim += "Goal\" ";
@@ -83,64 +134,129 @@ public class AdvocateExport {
 //							+ claimText
 //							+ "\""
 //							+ "\r\n" + "}" + "\r\n";
+					if (!claim.isEmpty()) {
+						nodes.add(claim);
+					}
+					buildClaimAttributes(claimBody.getAttributes(), claimResult, claimMap, functionDefinition.getName(),
+							nodes, links);
 				}
 			}
-			System.out.println(claim);
-			s.append(claim);
-			s.append(attributes);
+//			System.out.println(claim);
+//			s.append(claim);
+//			s.append(attributes);
+//			if (!attributes.isEmpty()) {
+//				nodes.add(attributes);
+//			}
 			List<ResoluteResult> children = claimResult.getChildren();
 			for (ResoluteResult child : children) {
-				exportBuilder(child, s);
+				exportBuilder(child, claimMap, nodes, links);
 			}
 		} else if (resoluteResult instanceof ResoluteResult) {
 			List<ResoluteResult> children = resoluteResult.getChildren();
 			for (ResoluteResult child : children) {
-				exportBuilder(child, s);
+				exportBuilder(child, claimMap, nodes, links);
 			}
 		}
-		return s;
+		System.out.println(claimMap);
 	}
 
-	private static String buildClaimAttributes(List<NamedElement> claimAttributes, ClaimResult res) {
-		String buildAttribute = "";
+	private static void buildClaimAttributes(List<NamedElement> claimAttributes, ClaimResult res,
+			HashMap<String, Integer> claimIndexMap, String funcDefName, List<String> cNode, List<String> cLink) {
+//		String buildAttribute = "";
+		String buildNode = "";
+		String buildLink = "";
 		for (NamedElement namedElement : claimAttributes) {
-			buildAttribute += "  <nodes xsi:type=\"argument:Argument";
+//			buildAttribute += "  <nodes xsi:type=\"argument:Argument";
+			buildNode = "  <nodes xsi:type=\"argument:Argument";
+			buildLink = "  <links xsi:type=\"egsn:";
+			if (!claimIndexMap.containsKey(namedElement.getName())) {
+				int index = findMaxVal(claimIndexMap.values());
+				claimIndexMap.put(namedElement.getName(), index + 1);
+			}
 			if (namedElement instanceof ClaimContext) {
 				ClaimContext claimContext = (ClaimContext) namedElement;
 				Map<String, EObject> refs = res.getReferences();
 				for (String description : new TreeSet<String>(refs.keySet())) {
 					if (refs.get(description).equals(claimContext)) {
-						buildAttribute += "Context\" name=\"" + claimContext.getName() + "\" description=\""
+//						buildAttribute += "Context\" name=\"" + claimContext.getName() + "\" description=\""
+//								+ description + "\"/>" + "\r\n";
+						buildNode += "Context\" name=\"" + claimContext.getName() + "\" description=\""
 								+ description + "\"/>" + "\r\n";
+						cNode.add(buildNode);
 					}
+				}
+				if (claimIndexMap.containsKey(funcDefName)) {
+					buildLink += "InContextOf\" name=\"" + funcDefName + "_"
+							+ claimContext.getName() + "\" " + "to=\"//@nodes."
+							+ claimIndexMap.get(claimContext.getName()) + "\" " + "from=\"//@nodes."
+							+ claimIndexMap.get(funcDefName) + "\"/>" + "\r\n";
+					cLink.add(buildLink);
+//					buildAttribute += "  <links xsi:type=\"egsn:InContextOf\" name=\"" + funcDefName + "_"
+//							+ claimContext.getName() + "\" " + "to=\"//@nodes."
+//							+ claimIndexMap.get(claimContext.getName()) + "\" " + "from=\"//@nodes."
+//							+ claimIndexMap.get(funcDefName) + "\"/>" + "\r\n";
+//					System.out.println(buildAttribute);
 				}
 //				buildAttribute += "Context " + claimContext.getName() + " {" + "\r\n" + "\tdescription "
 //						+ "\"" + claimContext.getExpr().toString() + "\"" + "\r\n" + "}" + "\r\n";
 			} else if (namedElement instanceof ClaimAssumption) {
 				ClaimAssumption claimAssumption = (ClaimAssumption) namedElement;
-				buildAttribute += "Assumption\" name=\"" + claimAssumption.getName() + "\" description="
+				buildNode += "Assumption\" name=\"" + claimAssumption.getName() + "\" description="
 						+ claimAssumption.getVal().getValue() + "/>" + "\r\n";
+				cNode.add(buildNode);
+//				buildAttribute += "Assumption\" name=\"" + claimAssumption.getName() + "\" description="
+//						+ claimAssumption.getVal().getValue() + "/>" + "\r\n";
 //				buildAttribute += "Assumption " + claimAssumption.getName() + " {" + "\r\n"
 //						+ "\tdescription "
 //						+ claimAssumption.getVal().getValue() + "\r\n" + "}" + "\r\n";
+				if (claimIndexMap.containsKey(funcDefName)) {
+					buildLink += "InContextOf\" name=\"" + funcDefName + "_"
+							+ claimAssumption.getName() + "\" " + "to=\"//@nodes."
+							+ claimIndexMap.get(claimAssumption.getName()) + "\" " + "from=\"//@nodes."
+							+ claimIndexMap.get(funcDefName) + "\"/>" + "\r\n";
+					cLink.add(buildLink);
+//					buildAttribute += "  <links xsi:type=\"egsn:InContextOf\" name=\"" + funcDefName + "_"
+//							+ claimAssumption.getName() + "\" " + "to=\"//@nodes."
+//							+ claimIndexMap.get(claimAssumption.getName()) + "\" " + "from=\"//@nodes."
+//							+ claimIndexMap.get(funcDefName) + "\"/>" + "\r\n";
+//					System.out.println(buildAttribute);
+				}
 			} else if (namedElement instanceof ClaimJustification) {
 				ClaimJustification claimJustification = (ClaimJustification) namedElement;
-				buildAttribute += "Justification\" name=\"" + claimJustification.getName() + "\" description="
+				buildNode += "Justification\" name=\"" + claimJustification.getName() + "\" description="
 						+ claimJustification.getVal().getValue() + "/>" + "\r\n";
+				cNode.add(buildNode);
+//				buildAttribute += "Justification\" name=\"" + claimJustification.getName() + "\" description="
+//						+ claimJustification.getVal().getValue() + "/>" + "\r\n";
 //				buildAttribute += "Justification " + claimJustification.getName() + " {" + "\r\n"
 //						+ "\tdescription "
 //						+ claimJustification.getVal().getValue() + "\r\n" + "}" + "\r\n";
+				if (claimIndexMap.containsKey(funcDefName)) {
+					buildLink += "InContextOf\" name=\"" + funcDefName + "_"
+							+ claimJustification.getName() + "\" " + "to=\"//@nodes."
+							+ claimIndexMap.get(claimJustification.getName()) + "\" " + "from=\"//@nodes."
+							+ claimIndexMap.get(funcDefName) + "\"/>" + "\r\n";
+					cLink.add(buildLink);
+//					buildAttribute += "  <links xsi:type=\"egsn:InContextOf\" name=\"" + funcDefName + "_"
+//							+ claimJustification.getName() + "\" " + "to=\"//@nodes."
+//							+ claimIndexMap.get(claimJustification.getName()) + "\" " + "from=\"//@nodes."
+//							+ claimIndexMap.get(funcDefName) + "\"/>" + "\r\n";
+//					System.out.println(buildAttribute);
+				}
 			} else if (namedElement instanceof ClaimStrategy) {
 				ClaimStrategy claimStrategy = (ClaimStrategy) namedElement;
-				buildAttribute += "Strategy\" name=\"" + claimStrategy.getName() + "\" description="
+				buildNode += "Strategy\" name=\"" + claimStrategy.getName() + "\" description="
 						+ claimStrategy.getVal().getValue() + "/>" + "\r\n";
+				cNode.add(buildNode);
+//				buildAttribute += "Strategy\" name=\"" + claimStrategy.getName() + "\" description="
+//						+ claimStrategy.getVal().getValue() + "/>" + "\r\n";
 //				buildAttribute += "Strategy " + claimStrategy.getName() + " {" + "\r\n"
 //						+ "\tdescription "
 //						+ claimStrategy.getVal().getValue() + "\r\n" + "}" + "\r\n";
 			}
 		}
-		System.out.println(buildAttribute);
-		return buildAttribute;
+//		System.out.println(buildAttribute);
+//		return buildAttribute;
 	}
 
 	private static boolean isUndevelopedExpr(Expr expr) {
@@ -151,6 +267,16 @@ public class AdvocateExport {
 			return isUndevelopedExpr(lExpr.getExpr());
 		}
 		return false;
+	}
+
+	private static int findMaxVal(Collection<Integer> values) {
+		int max = 0;
+		for (Integer value : values) {
+			if (max < value) {
+				max = value;
+			}
+		}
+		return max;
 	}
 
 //	public static StringBuilder exportBuilder(Expr expr, StringBuilder s) {
