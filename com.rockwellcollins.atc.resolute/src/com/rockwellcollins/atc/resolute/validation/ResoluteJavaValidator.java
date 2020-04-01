@@ -448,11 +448,23 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 					claimStrategyCount++;
 					if (claimStrategyCount > 1) {
 						error(attr, "Strategy claim attribute can only be declared once inside a claim");
+					} else if (claimStrategyCount > 0 && containsSolutionExpr(body.getExpr())) {
+						error(body.getExpr(), "A solution expression cannot be defined with an inline strategy");
 					}
 				}
 			}
 		}
 
+	}
+
+	private boolean containsSolutionExpr(Expr expr) {
+		if (expr instanceof SolutionExpr) {
+			return true;
+		} else if (expr instanceof LetExpr) {
+			LetExpr letExpr = (LetExpr) expr;
+			return containsSolutionExpr(letExpr.getExpr());
+		}
+		return false;
 	}
 
 	private boolean isValidStrategyExpr(Expr expr) {

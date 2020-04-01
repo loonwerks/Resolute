@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
@@ -34,7 +33,7 @@ public class AdvocateExport {
 
 //		ClaimResult claimResult = cr;
 //		HashSet<String> funcNames = new HashSet<>();
-		HashMap<String, Integer> Map = new HashMap<>();
+//		HashMap<String, Integer> Map = new HashMap<>();
 		List<String> claimNodes = new ArrayList<>();
 		List<String> claimLinks = new ArrayList<>();
 //		StringBuilder str = new StringBuilder();
@@ -147,8 +146,7 @@ public class AdvocateExport {
 					}
 					currentNodeIndex = nodes.size() - 1;
 					int strategyIndex = buildClaimAttributes(claimBody.getAttributes(), claimResult, currentNodeIndex,
-							functionDefinition.getName(),
-							nodes, links);
+							functionDefinition.getName(), nodes, links);
 					if (strategyIndex >= 0) {
 						currentNodeIndex = strategyIndex;
 					}
