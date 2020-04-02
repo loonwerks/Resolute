@@ -17,6 +17,8 @@ import org.osate.aadl2.NamedElement;
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
 import com.rockwellcollins.atc.resolute.resolute.BinaryExpr;
+import com.rockwellcollins.atc.resolute.resolute.BoolExpr;
+import com.rockwellcollins.atc.resolute.resolute.BuiltInFnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
@@ -26,8 +28,11 @@ import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.FunctionBody;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
+import com.rockwellcollins.atc.resolute.resolute.IntExpr;
 import com.rockwellcollins.atc.resolute.resolute.LetExpr;
+import com.rockwellcollins.atc.resolute.resolute.RealExpr;
 import com.rockwellcollins.atc.resolute.resolute.SolutionExpr;
+import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 
 public class AdvocateExport {
@@ -106,10 +111,10 @@ public class AdvocateExport {
 			ClaimResult claimResult = (ClaimResult) resoluteResult;
 			if (claimResult.getLocation() instanceof FunctionDefinition) {
 				FunctionDefinition functionDefinition = (FunctionDefinition) claimResult.getLocation();
-//				if (functionDefinition.getName().equalsIgnoreCase("filter_not_bypassed")) {
-//					int a = 1;
-//					int b = 2;
-//				}
+				if (functionDefinition.getName().equalsIgnoreCase("implementation_language_assurance")) {
+					int a = 1;
+					int b = 2;
+				}
 				if (functionDefinition.getBody() instanceof ClaimBody) {
 					String claim = "  <nodes xsi:type=\"argument:Argument";
 					ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
@@ -162,7 +167,18 @@ public class AdvocateExport {
 
 					// build solution node for the claim if any
 					if (claimResult.isValid()) {
-						buildSolutionNode(claimBody.getExpr(), currentNodeIndex, nodes, links, claimText);
+						if (isSolutionExpression(claimBody.getExpr())) {
+							String buildNode = "  <nodes xsi:type=\"argument:ArgumentSolution\" name=\"SLN:"
+									+ functionDefinition.getName() + "\" description=\"" + claimText + "\"/>"
+									+ "\r\n";
+							nodes.add(buildNode);
+							String buildLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISBSLN_"
+									+ functionDefinition.getName() + "\" to=\"//@nodes." + (nodes.size() - 1)
+									+ "\" from=\"//@nodes." + currentNodeIndex + "\"/>" + "\r\n";
+							links.add(buildLink);
+						} else {
+							buildSolutionNode(claimBody.getExpr(), currentNodeIndex, nodes, links);
+						}
 					}
 
 //					buildClaimAttributes(claimBody.getAttributes(), claimResult, claimMap, functionDefinition.getName(),
@@ -243,35 +259,42 @@ public class AdvocateExport {
 		return currentNodeIndex;
 	}
 
-	private static void buildSolutionNode(Expr expr, int parentNodeIndex, List<String> cNode, List<String> cLink,
-			String nodeText) {
-		String buildNode = "  <nodes xsi:type=\"argument:ArgumentSolution\" name=\"";
-		String buildLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISBSOL_";
-		if (expr instanceof BinaryExpr) {
-			BinaryExpr binaryExpr = (BinaryExpr) expr;
-			buildSolutionNode(binaryExpr.getLeft(), parentNodeIndex, cNode, cLink, nodeText);
-			buildSolutionNode(binaryExpr.getRight(), parentNodeIndex, cNode, cLink, nodeText);
-		} else if (expr instanceof LetExpr) {
+	private static void buildSolutionNode(Expr expr, int parentNodeIndex, List<String> cNode, List<String> cLink) {
+		if (expr instanceof LetExpr) {
 			LetExpr letExpr = (LetExpr) expr;
-			buildSolutionNode(letExpr.getExpr(), parentNodeIndex, cNode, cLink, nodeText);
+			buildSolutionNode(letExpr.getExpr(), parentNodeIndex, cNode, cLink);
 		} else if (expr instanceof SolutionExpr) {
 			SolutionExpr solutionExpr = (SolutionExpr) expr;
-			buildNode += solutionExpr.getName() + "\" description=" + solutionExpr.getVal().getValue() + "/>" + "\r\n";
+			String buildNode = "  <nodes xsi:type=\"argument:ArgumentSolution\" name=\"" + solutionExpr.getName()
+					+ "\" description=" + solutionExpr.getVal().getValue() + "/>" + "\r\n";
 			cNode.add(buildNode);
-			buildLink += solutionExpr.getName() + "\" to=\"//@nodes." + (cNode.size() - 1) + "\" from=\"//@nodes."
+			String buildLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISBSLN_" + solutionExpr.getName()
+					+ "\" to=\"//@nodes." + (cNode.size() - 1) + "\" from=\"//@nodes."
 					+ parentNodeIndex + "\"/>" + "\r\n";
 			cLink.add(buildLink);
+		}
+	}
+
+	private static boolean isSolutionExpression(Expr expr) {
+		if (expr instanceof BinaryExpr) {
+			BinaryExpr binaryExpr = (BinaryExpr) expr;
+			return isSolutionExpression(binaryExpr.getLeft()) && isSolutionExpression(binaryExpr.getRight());
+		} else if (expr instanceof LetExpr) {
+			LetExpr letExpr = (LetExpr) expr;
+			return isSolutionExpression(letExpr.getExpr());
 		} else if (expr instanceof FnCallExpr) {
 			FnCallExpr fnCallExpr = (FnCallExpr) expr;
 			FunctionDefinition functionDefinition = fnCallExpr.getFn();
 			if (functionDefinition.getBody() instanceof FunctionBody) {
-				buildNode += functionDefinition.getName() + "\" description=\"" + nodeText + "\"/>" + "\r\n";
-				cNode.add(buildNode);
-				buildLink += functionDefinition.getName() + "\" to=\"//@nodes." + (cNode.size() - 1)
-						+ "\" from=\"//@nodes." + parentNodeIndex + "\"/>" + "\r\n";
-				cLink.add(buildLink);
+				return true;
 			}
+		} else if (expr instanceof BuiltInFnCallExpr) {
+			return true;
+		} else if (expr instanceof IntExpr || expr instanceof RealExpr || expr instanceof BoolExpr
+				|| expr instanceof StringExpr) {
+			return true;
 		}
+		return false;
 	}
 
 //	private static void buildClaimAttributes(List<NamedElement> claimAttributes, ClaimResult res,
