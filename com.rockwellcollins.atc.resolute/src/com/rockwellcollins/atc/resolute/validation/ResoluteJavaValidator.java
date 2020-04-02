@@ -448,8 +448,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 					claimStrategyCount++;
 					if (claimStrategyCount > 1) {
 						error(attr, "Strategy claim attribute can only be declared once inside a claim");
-					} else if (claimStrategyCount > 0 && containsSolutionExpr(body.getExpr())) {
-						error(body.getExpr(), "A solution expression cannot be defined with an inline strategy");
+					} else if (claimStrategyCount > 0 && !isValidInLineStrategyExpr(body.getExpr())) {
+						error(attr, "An inline startegy can only be used with a goal claim call expression");
 					}
 				}
 			}
@@ -457,14 +457,27 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 
 	}
 
-	private boolean containsSolutionExpr(Expr expr) {
-		if (expr instanceof SolutionExpr) {
-			return true;
+	private boolean isValidInLineStrategyExpr(Expr expr) {
+		if (expr instanceof BinaryExpr) {
+			BinaryExpr binaryExpr = (BinaryExpr) expr;
+			return isValidInLineStrategyExpr(binaryExpr.getLeft()) && isValidInLineStrategyExpr(binaryExpr.getRight());
 		} else if (expr instanceof LetExpr) {
 			LetExpr letExpr = (LetExpr) expr;
-			return containsSolutionExpr(letExpr.getExpr());
+			return isValidInLineStrategyExpr(letExpr.getExpr());
+		} else if (expr instanceof FnCallExpr) {
+			FnCallExpr fnCallExpr = (FnCallExpr) expr;
+			FunctionDefinition functionDefinition = fnCallExpr.getFn();
+			if (functionDefinition.getBody() instanceof ClaimBody) {
+				if (functionDefinition.getClaimType().equalsIgnoreCase("strategy")) {
+					return false;
+				}
+			} else if (functionDefinition.getBody() instanceof FunctionBody) {
+				return false;
+			}
+		} else if (expr instanceof SolutionExpr) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	private boolean isValidStrategyExpr(Expr expr) {
@@ -559,7 +572,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 					+ "The binding is of type '" + resLetType + "' but the expression is of type '" + exprType + "'",
 					letExpr, ResolutePackage.Literals.LET_EXPR__BINDING);
 		} else if (letExpr.getExpr() instanceof UndevelopedExpr || letExpr.getExpr() instanceof SolutionExpr) {
-			warning(letExpr, "Let expression is never used");
+			warning(letExpr.getBinding(), "Let expression is never used");
 		}
 
 		// System.out.println("binding=" + letExpr.getBinding());
