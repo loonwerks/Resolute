@@ -3,7 +3,6 @@ package com.rockwellcollins.atc.resolute.analysis.export;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
@@ -17,14 +16,18 @@ import org.osate.aadl2.NamedElement;
 
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
+import com.rockwellcollins.atc.resolute.resolute.BinaryExpr;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
 import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.Expr;
+import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
+import com.rockwellcollins.atc.resolute.resolute.FunctionBody;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
 import com.rockwellcollins.atc.resolute.resolute.LetExpr;
+import com.rockwellcollins.atc.resolute.resolute.SolutionExpr;
 import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 
 public class AdvocateExport {
@@ -103,6 +106,10 @@ public class AdvocateExport {
 			ClaimResult claimResult = (ClaimResult) resoluteResult;
 			if (claimResult.getLocation() instanceof FunctionDefinition) {
 				FunctionDefinition functionDefinition = (FunctionDefinition) claimResult.getLocation();
+//				if (functionDefinition.getName().equalsIgnoreCase("filter_not_bypassed")) {
+//					int a = 1;
+//					int b = 2;
+//				}
 				if (functionDefinition.getBody() instanceof ClaimBody) {
 					String claim = "  <nodes xsi:type=\"argument:Argument";
 					ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
@@ -150,6 +157,14 @@ public class AdvocateExport {
 					if (strategyIndex >= 0) {
 						currentNodeIndex = strategyIndex;
 					}
+
+					// check for undeveloped and add it accordingly
+
+					// build solution node for the claim if any
+					if (claimResult.isValid()) {
+						buildSolutionNode(claimBody.getExpr(), currentNodeIndex, nodes, links, claimText);
+					}
+
 //					buildClaimAttributes(claimBody.getAttributes(), claimResult, claimMap, functionDefinition.getName(),
 //							nodes, links);
 //					buildChildLinks(claimResult, claimMap, functionDefinition.getName(), nodes, links);
@@ -226,6 +241,37 @@ public class AdvocateExport {
 			}
 		}
 		return currentNodeIndex;
+	}
+
+	private static void buildSolutionNode(Expr expr, int parentNodeIndex, List<String> cNode, List<String> cLink,
+			String nodeText) {
+		String buildNode = "  <nodes xsi:type=\"argument:ArgumentSolution\" name=\"";
+		String buildLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISBSOL_";
+		if (expr instanceof BinaryExpr) {
+			BinaryExpr binaryExpr = (BinaryExpr) expr;
+			buildSolutionNode(binaryExpr.getLeft(), parentNodeIndex, cNode, cLink, nodeText);
+			buildSolutionNode(binaryExpr.getRight(), parentNodeIndex, cNode, cLink, nodeText);
+		} else if (expr instanceof LetExpr) {
+			LetExpr letExpr = (LetExpr) expr;
+			buildSolutionNode(letExpr.getExpr(), parentNodeIndex, cNode, cLink, nodeText);
+		} else if (expr instanceof SolutionExpr) {
+			SolutionExpr solutionExpr = (SolutionExpr) expr;
+			buildNode += solutionExpr.getName() + "\" description=" + solutionExpr.getVal().getValue() + "/>" + "\r\n";
+			cNode.add(buildNode);
+			buildLink += solutionExpr.getName() + "\" to=\"//@nodes." + (cNode.size() - 1) + "\" from=\"//@nodes."
+					+ parentNodeIndex + "\"/>" + "\r\n";
+			cLink.add(buildLink);
+		} else if (expr instanceof FnCallExpr) {
+			FnCallExpr fnCallExpr = (FnCallExpr) expr;
+			FunctionDefinition functionDefinition = fnCallExpr.getFn();
+			if (functionDefinition.getBody() instanceof FunctionBody) {
+				buildNode += functionDefinition.getName() + "\" description=\"" + nodeText + "\"/>" + "\r\n";
+				cNode.add(buildNode);
+				buildLink += functionDefinition.getName() + "\" to=\"//@nodes." + (cNode.size() - 1)
+						+ "\" from=\"//@nodes." + parentNodeIndex + "\"/>" + "\r\n";
+				cLink.add(buildLink);
+			}
+		}
 	}
 
 //	private static void buildClaimAttributes(List<NamedElement> claimAttributes, ClaimResult res,
@@ -362,21 +408,21 @@ public class AdvocateExport {
 		if (expr instanceof UndevelopedExpr) {
 			return true;
 		} else if (expr instanceof LetExpr) {
-			LetExpr lExpr = (LetExpr) expr;
-			return isUndevelopedExpr(lExpr.getExpr());
+			LetExpr letExpr = (LetExpr) expr;
+			return isUndevelopedExpr(letExpr.getExpr());
 		}
 		return false;
 	}
 
-	private static int findMaxVal(Collection<Integer> values) {
-		int max = 0;
-		for (Integer value : values) {
-			if (max < value) {
-				max = value;
-			}
-		}
-		return max;
-	}
+//	private static int findMaxVal(Collection<Integer> values) {
+//		int max = 0;
+//		for (Integer value : values) {
+//			if (max < value) {
+//				max = value;
+//			}
+//		}
+//		return max;
+//	}
 
 //	public static StringBuilder exportBuilder(Expr expr, StringBuilder s) {
 //		if (expr instanceof BinaryExpr) {
