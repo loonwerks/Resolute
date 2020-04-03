@@ -483,7 +483,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	private boolean isValidStrategyExpr(Expr expr) {
 		if (expr instanceof BinaryExpr) {
 			BinaryExpr binaryExpr = (BinaryExpr) expr;
-			if (binaryExpr.getOp() == "=>") {
+			if (binaryExpr.getOp().equals("=>")) {
 				return false;
 			}
 			return isValidStrategyExpr(binaryExpr.getLeft()) && isValidStrategyExpr(binaryExpr.getRight());
