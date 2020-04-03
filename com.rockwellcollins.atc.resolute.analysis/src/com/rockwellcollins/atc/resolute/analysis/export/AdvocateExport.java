@@ -76,11 +76,11 @@ public class AdvocateExport {
 		str.append("</argument:Argument>");
 		writer.write(str.toString());
 		writer.close();
-		System.out.println("Assurance case exported to AdvoCATE successfully!");
+		System.out.println("Resolute result exported to AdvoCATE successfully!");
 	}
 
 	/**
-	 * Recursive method to walk the Resolute result tree and build nodes and links for export
+	 * Recursive method to walk over the Resolute result tree and build nodes and links for export.
 	 * Keeps track of the parentNodeIndex and passes it to the other recursive calls to ensure
 	 * correct link building.
 	 *
