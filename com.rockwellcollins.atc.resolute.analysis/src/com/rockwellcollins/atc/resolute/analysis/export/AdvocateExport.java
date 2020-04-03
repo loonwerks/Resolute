@@ -30,6 +30,7 @@ import com.rockwellcollins.atc.resolute.resolute.FunctionBody;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
 import com.rockwellcollins.atc.resolute.resolute.IntExpr;
 import com.rockwellcollins.atc.resolute.resolute.LetExpr;
+import com.rockwellcollins.atc.resolute.resolute.LibraryFnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.RealExpr;
 import com.rockwellcollins.atc.resolute.resolute.SolutionExpr;
 import com.rockwellcollins.atc.resolute.resolute.StringExpr;
@@ -107,13 +108,12 @@ public class AdvocateExport {
 		int currentNodeIndex = -1;
 		if (resoluteResult instanceof ClaimResult) {
 //			String attributes = "";
-			String undeveloped = "";
+//			String undeveloped = "";
 			ClaimResult claimResult = (ClaimResult) resoluteResult;
 			if (claimResult.getLocation() instanceof FunctionDefinition) {
 				FunctionDefinition functionDefinition = (FunctionDefinition) claimResult.getLocation();
-				if (functionDefinition.getName().equalsIgnoreCase("implementation_language_assurance")) {
+				if (functionDefinition.getName().equalsIgnoreCase("agree_property_checked")) {
 					int a = 1;
-					int b = 2;
 				}
 				if (functionDefinition.getBody() instanceof ClaimBody) {
 					String claim = "  <nodes xsi:type=\"argument:Argument";
@@ -140,9 +140,9 @@ public class AdvocateExport {
 //						claim += "Strategy ";
 						claim += "Strategy\" ";
 					}
-					if (isUndevelopedExpr(claimBody.getExpr())) {
-						undeveloped = "toBeDeveloped ";
-					}
+//					if (isUndevelopedExpr(claimBody.getExpr())) {
+//						undeveloped = "toBeDeveloped ";
+//					}
 					claim += "name=\"" + functionDefinition.getName() + "\" description=\"" + claimText + "\"/>"
 							+ "\r\n";
 //					claim += undeveloped + functionDefinition.getName() + " {" + "\r\n" + "\tdescription " + "\""
@@ -163,7 +163,12 @@ public class AdvocateExport {
 						currentNodeIndex = strategyIndex;
 					}
 
-					// check for undeveloped and add it accordingly
+					// check for undeveloped expression and add it accordingly
+					if (isUndevelopedExpr(claimBody.getExpr())) {
+						String currNode = nodes.get(currentNodeIndex);
+						String undevelopedNode = currNode.replace("/>", " toBeDeveloped=\"true\"/>");
+						nodes.set(currentNodeIndex, undevelopedNode);
+					}
 
 					// build solution node for the claim if any
 					if (claimResult.isValid()) {
@@ -290,9 +295,21 @@ public class AdvocateExport {
 			}
 		} else if (expr instanceof BuiltInFnCallExpr) {
 			return true;
+		} else if (expr instanceof LibraryFnCallExpr) {
+			return true;
 		} else if (expr instanceof IntExpr || expr instanceof RealExpr || expr instanceof BoolExpr
 				|| expr instanceof StringExpr) {
 			return true;
+		}
+		return false;
+	}
+
+	private static boolean isUndevelopedExpr(Expr expr) {
+		if (expr instanceof UndevelopedExpr) {
+			return true;
+		} else if (expr instanceof LetExpr) {
+			LetExpr letExpr = (LetExpr) expr;
+			return isUndevelopedExpr(letExpr.getExpr());
 		}
 		return false;
 	}
@@ -426,16 +443,6 @@ public class AdvocateExport {
 //		}
 //
 //	}
-
-	private static boolean isUndevelopedExpr(Expr expr) {
-		if (expr instanceof UndevelopedExpr) {
-			return true;
-		} else if (expr instanceof LetExpr) {
-			LetExpr letExpr = (LetExpr) expr;
-			return isUndevelopedExpr(letExpr.getExpr());
-		}
-		return false;
-	}
 
 //	private static int findMaxVal(Collection<Integer> values) {
 //		int max = 0;
