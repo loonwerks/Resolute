@@ -43,7 +43,7 @@ public class AdvocateExport {
 		List<String> claimLinks = new ArrayList<>();
 		StringBuilder str = new StringBuilder();
 
-		// Getting the root resolute result creating a file dialog
+		// Getting the root resolute result and creating a file dialog
 		List<ResoluteResult> result = cr.getChildren();
 		ClaimResult cResult = (ClaimResult) result.get(0);
 		String claimName = ((FunctionDefinition) cResult.getLocation()).getName();
@@ -109,7 +109,8 @@ public class AdvocateExport {
 					String claim = "  <nodes xsi:type=\"argument:Argument";
 					ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
 					String claimText = claimResult.getText();
-					if (functionDefinition.getClaimType() == "goal" || functionDefinition.getClaimType() == null) {
+					if (functionDefinition.getClaimType() == null
+							|| functionDefinition.getClaimType().equalsIgnoreCase("goal")) {
 						claim += "Goal\" ";
 					} else {
 						claim += "Strategy\" ";
@@ -141,7 +142,8 @@ public class AdvocateExport {
 					if (claimResult.isValid()) {
 						if (isSolutionExpression(claimBody.getExpr())) {
 							String buildNode = "  <nodes xsi:type=\"argument:ArgumentSolution\" name=\"SLN:"
-									+ functionDefinition.getName() + "\" description=\"" + claimText + "\"/>"
+									+ functionDefinition.getName() + "\" description=\"" + claimText
+									+ " (Verified by Resolute)" + "\"/>"
 									+ "\r\n";
 							nodes.add(buildNode);
 							String buildLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISBSLN_"
