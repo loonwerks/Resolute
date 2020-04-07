@@ -121,12 +121,12 @@ public class AdvocateExport {
 								+ "from=\"//@nodes." + parentNodeIndex + "\"/>" + "\r\n";
 						links.add(childLink);
 					}
-					currentNodeIndex = nodes.size() - 1;
-					int strategyIndex = buildClaimAttributes(claimBody.getAttributes(), claimResult, currentNodeIndex,
+//					currentNodeIndex = nodes.size() - 1;
+					currentNodeIndex = buildClaimAttributes(claimBody.getAttributes(), claimResult, nodes.size() - 1,
 							functionDefinition.getName(), nodes, links);
-					if (strategyIndex >= 0) {
-						currentNodeIndex = strategyIndex;
-					}
+//					if (strategyIndex >= 0) {
+//						currentNodeIndex = strategyIndex;
+//					}
 
 					// check for undeveloped expression and add it accordingly
 					if (isUndevelopedExpr(claimBody.getExpr())) {
@@ -169,7 +169,7 @@ public class AdvocateExport {
 
 	private static int buildClaimAttributes(List<NamedElement> claimAttributes, ClaimResult res,
 			int parentNodeIndex, String funcDefName, List<String> cNode, List<String> cLink) {
-		int currentNodeIndex = -1;
+//		int currentNodeIndex = -1;
 		for (NamedElement namedElement : claimAttributes) {
 			String buildNode = "  <nodes xsi:type=\"argument:Argument";
 			String buildLink = "  <links xsi:type=\"egsn:";
@@ -211,14 +211,14 @@ public class AdvocateExport {
 				buildNode += "Strategy\" name=\"" + claimStrategy.getName() + "\" description="
 						+ claimStrategy.getVal().getValue() + "/>" + "\r\n";
 				cNode.add(buildNode);
-				currentNodeIndex = cNode.size() - 1;
 				buildLink += "IsSupportedBy\" name=\"" + funcDefName + "_" + claimStrategy.getName() + "\" "
 						+ "to=\"//@nodes." + (cNode.size() - 1) + "\" " + "from=\"//@nodes." + parentNodeIndex + "\"/>"
 						+ "\r\n";
 				cLink.add(buildLink);
+				parentNodeIndex = cNode.size() - 1;
 			}
 		}
-		return currentNodeIndex;
+		return parentNodeIndex;
 	}
 
 	private static void buildSolutionNode(Expr expr, int parentNodeIndex, List<String> cNode, List<String> cLink) {
