@@ -134,64 +134,6 @@ public class ResoluteHandler extends AadlHandler {
 		return result;
 	}
 
-//	private List<ComponentImplementation> getComponentImplementations(ComponentType ct) {
-//		List<ComponentImplementation> result = new ArrayList<>();
-//		AadlPackage pkg = AadlUtil.getContainingPackage(ct);
-//		for (ComponentImplementation ci : EcoreUtil2.getAllContentsOfType(pkg, ComponentImplementation.class)) {
-//			if (ci.getType().equals(ct)) {
-//				result.add(ci);
-//			}
-//		}
-//		return result;
-//	}
-//
-//	private Classifier getOutermostClassifier(Element element) {
-//		List<EObject> containers = new ArrayList<>();
-//		EObject curr = element;
-//		while (curr != null) {
-//			containers.add(curr);
-//			curr = curr.eContainer();
-//		}
-//		Collections.reverse(containers);
-//		for (EObject container : containers) {
-//			if (container instanceof Classifier) {
-//				// System.out.println(container);
-//				return (Classifier) container;
-//			}
-//		}
-//		return null;
-//	}
-//
-//	private ComponentImplementation getComponentImplementation(Element root) {
-//		Classifier classifier = getOutermostClassifier(root);
-//
-//		if (classifier instanceof ComponentImplementation) {
-//			return (ComponentImplementation) classifier;
-//		}
-//		if (!(classifier instanceof ComponentType)) {
-//			Dialog.showError("Model Instantiate", "Must select an AADL Component Type or Implementation");
-//			return null;
-//		}
-//		ComponentType ct = (ComponentType) classifier;
-//		List<ComponentImplementation> cis = getComponentImplementations(ct);
-//		if (cis.size() == 0) {
-//			Dialog.showError("Model Instantiate", "AADL Component Type has no implementation to check");
-//			return null;
-//		} else if (cis.size() == 1) {
-//			ComponentImplementation ci = cis.get(0);
-//			String message = "User selected " + ct.getFullName() + ". Run checks on " + ci.getFullName() + " instead?";
-//			if (Dialog.askQuestion("Model Instantiation", message)) {
-//				return ci;
-//			} else {
-//				return null;
-//			}
-//		} else {
-//			Dialog.showError("Model Instantiate",
-//					"AADL Component Type has multiple implementation to verify: please select just one");
-//			return null;
-//		}
-//
-//	}
 
 	@Override
 	protected IStatus runJob(Element root, IProgressMonitor monitor) {
@@ -239,21 +181,12 @@ public class ResoluteHandler extends AadlHandler {
 			fnCallExpr.getArgs().add(ResoluteFactory.eINSTANCE.createThisExpr());
 			fnCallExpr.setFn(functionDefinition);
 
-			// Arg a = ResoluteFactory.eINSTANCE.createArg();
-			// com.rockwellcollins.atc.resolute.resolute.BaseType t =
-			// ResoluteFactory.eINSTANCE.createBaseType();
-			// a.setName("s");
-			// t.setType("system");
-			// a.setType(t);
-			// fnCallExpr.getFn().getArgs().clear();
-			// fnCallExpr.getFn().getArgs().add(a);
 			proveStatement.setExpr(fnCallExpr);
 			resoluteSubclause.getProves().add(proveStatement);
 			si.getComponentClassifier().getOwnedAnnexSubclauses().add(resoluteSubclause);
-			//
+
 			ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
 
-//			for (ProveStatement ps : resoluteSubclause.getProves()) {
 			for (AnalysisStatement as : resoluteSubclause.getProves()) {
 				if (as instanceof ProveStatement) {
 					ProveStatement ps = (ProveStatement) as;
@@ -277,7 +210,6 @@ public class ResoluteHandler extends AadlHandler {
 						ResoluteSubclause resoluteSubclause = (ResoluteSubclause) subclause;
 						EvaluationContext context = new EvaluationContext(compInst, sets, featToConnsMap);
 						ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
-//						for (ProveStatement ps : resoluteSubclause.getProves()) {
 						for (AnalysisStatement as : resoluteSubclause.getProves()) {
 							if (as instanceof ProveStatement) {
 								ProveStatement ps = (ProveStatement) as;
@@ -293,59 +225,6 @@ public class ResoluteHandler extends AadlHandler {
 				}
 			}
 		}
-
-		// else {
-		// ResoluteSubclause subclause;
-		// ProveStatement proveStatement;
-		// FnCallExpr fnCallExpr;
-		//
-		// subclause = ResoluteFactory.eINSTANCE.createResoluteSubclause();
-		// proveStatement = ResoluteFactory.eINSTANCE.createProveStatement();
-		// fnCallExpr = ResoluteFactory.eINSTANCE.createFnCallExpr();
-		// fnCallExpr.getArgs().add(ResoluteFactory.eINSTANCE.createThisExpr());
-		// subclause.s
-		// for (IEObjectDescription tmp :
-		// EMFIndexRetrieval.getAllEObjectsOfTypeInWorkspace(ResolutePackage.eINSTANCE
-		// .getFunctionDefinition())) {
-		//
-		// if (tmp.getName().getLastSegment().equalsIgnoreCase(theorem)) {
-		// EObject eobj = tmp.getEObjectOrProxy();
-		//
-		// EObject resolved = EcoreUtil.resolve(eobj,
-		// root.eResource().getResourceSet());
-		//// System.out.println("resolved=" + resolved);
-		//
-		// FunctionDefinition functionDefinition = (FunctionDefinition)
-		// resolved;
-		//
-		// fnCallExpr.setFn(functionDefinition);
-		//
-		// }
-		// }
-		// Arg a = ResoluteFactory.eINSTANCE.createArg();
-		// com.rockwellcollins.atc.resolute.resolute.BaseType t =
-		// ResoluteFactory.eINSTANCE.createBaseType();
-		// a.setName("s");
-		// t.setType("system");
-		// a.setType(t);
-		// fnCallExpr.getFn().getArgs().clear();
-		// fnCallExpr.getFn().getArgs().add(a);
-		// proveStatement.setExpr(fnCallExpr);
-		// subclause.getProves().add(proveStatement);
-		//
-		// EvaluationContext context = new EvaluationContext((ComponentInstance)
-		// si.getComponentInstance(), sets,
-		// featToConnsMap);
-		// ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
-		// for (ProveStatement ps : subclause.getProves()) {
-		// try {
-		// proofTrees.add(interpreter.evaluateProveStatement(ps));
-		// drawProofs(proofTrees);
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-		// }
-		// }
 
 		stop = System.currentTimeMillis();
 		System.out.println("Evaluation time: " + (stop - start) / 1000.0 + "s");

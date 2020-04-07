@@ -178,7 +178,6 @@ public class LinterHandler extends AadlHandler {
 						}
 					}
 				} catch (Exception e) {
-//					e.printStackTrace();
 					continue;
 				}
 			}

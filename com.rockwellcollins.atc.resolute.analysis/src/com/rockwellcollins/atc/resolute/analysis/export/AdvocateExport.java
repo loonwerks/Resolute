@@ -17,8 +17,6 @@ import org.osate.aadl2.NamedElement;
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
 import com.rockwellcollins.atc.resolute.resolute.BinaryExpr;
-import com.rockwellcollins.atc.resolute.resolute.BoolExpr;
-import com.rockwellcollins.atc.resolute.resolute.BuiltInFnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
@@ -26,14 +24,9 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
-import com.rockwellcollins.atc.resolute.resolute.FunctionBody;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
-import com.rockwellcollins.atc.resolute.resolute.IntExpr;
 import com.rockwellcollins.atc.resolute.resolute.LetExpr;
-import com.rockwellcollins.atc.resolute.resolute.LibraryFnCallExpr;
-import com.rockwellcollins.atc.resolute.resolute.RealExpr;
 import com.rockwellcollins.atc.resolute.resolute.SolutionExpr;
-import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 
 public class AdvocateExport {
@@ -121,12 +114,9 @@ public class AdvocateExport {
 								+ "from=\"//@nodes." + parentNodeIndex + "\"/>" + "\r\n";
 						links.add(childLink);
 					}
-//					currentNodeIndex = nodes.size() - 1;
+
 					currentNodeIndex = buildClaimAttributes(claimBody.getAttributes(), claimResult, nodes.size() - 1,
 							functionDefinition.getName(), nodes, links);
-//					if (strategyIndex >= 0) {
-//						currentNodeIndex = strategyIndex;
-//					}
 
 					// check for undeveloped expression and add it accordingly
 					if (isUndevelopedExpr(claimBody.getExpr())) {
@@ -169,7 +159,7 @@ public class AdvocateExport {
 
 	private static int buildClaimAttributes(List<NamedElement> claimAttributes, ClaimResult res,
 			int parentNodeIndex, String funcDefName, List<String> cNode, List<String> cLink) {
-//		int currentNodeIndex = -1;
+
 		for (NamedElement namedElement : claimAttributes) {
 			String buildNode = "  <nodes xsi:type=\"argument:Argument";
 			String buildLink = "  <links xsi:type=\"egsn:";
@@ -244,21 +234,16 @@ public class AdvocateExport {
 		} else if (expr instanceof LetExpr) {
 			LetExpr letExpr = (LetExpr) expr;
 			return isSolutionExpression(letExpr.getExpr());
+		} else if (expr instanceof UndevelopedExpr) {
+			return false;
 		} else if (expr instanceof FnCallExpr) {
 			FnCallExpr fnCallExpr = (FnCallExpr) expr;
 			FunctionDefinition functionDefinition = fnCallExpr.getFn();
-			if (functionDefinition.getBody() instanceof FunctionBody) {
-				return true;
+			if (functionDefinition.getBody() instanceof ClaimBody) {
+				return false;
 			}
-		} else if (expr instanceof BuiltInFnCallExpr) {
-			return true;
-		} else if (expr instanceof LibraryFnCallExpr) {
-			return true;
-		} else if (expr instanceof IntExpr || expr instanceof RealExpr || expr instanceof BoolExpr
-				|| expr instanceof StringExpr) {
-			return true;
 		}
-		return false;
+		return true;
 	}
 
 	private static boolean isUndevelopedExpr(Expr expr) {

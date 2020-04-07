@@ -512,16 +512,6 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		return false;
 	}
 
-//	private boolean containsStrategyAttribute(ClaimBody body) {
-//
-//		for (NamedElement attr : body.getAttributes()) {
-//			if (attr instanceof ClaimStrategy) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-
 	@Check
 	public void checkQuantArg(QuantArg quantArg) {
 		// The definition of a quantifier arg expression must not reference
@@ -575,15 +565,6 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		} else if (letExpr.getExpr() instanceof UndevelopedExpr || letExpr.getExpr() instanceof SolutionExpr) {
 			warning(letExpr.getBinding(), "Let expression is never used");
 		}
-
-		// System.out.println("binding=" + letExpr.getBinding());
-		//
-		// System.out.println("binding=" + letExpr.getBinding().getType());
-		// System.out.println("binding=" + letExpr.getBinding().getExpr());
-		// System.out.println("expr =" + letExpr.getExpr());
-		// System.out.println("exprType =" + exprType);
-		// System.out.println("letType =" + letType);
-
 	}
 
 	@Check
@@ -676,7 +657,6 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	private boolean inClaimContext(EObject obj) {
 		EObject context = obj.eContainer();
 
-//		if (context instanceof ClaimBody || context instanceof ProveStatement) {
 		if (context instanceof ClaimBody || context instanceof ProveStatement || context instanceof LintStatement) {
 			return true;
 		}
@@ -1483,16 +1463,10 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 
 			if (expr instanceof UndevelopedExpr) {
-//				if (!(expr.eContainer() instanceof ClaimBody)) {
-//					error(expr, "Undeveloped element can only be defined inside a Claim or a Strategy");
-//				}
 				return BaseType.BOOL;
 			}
 
 			if (expr instanceof SolutionExpr) {
-//				if (!(expr.eContainer() instanceof ClaimBody)) {
-//					error(expr, "Solution element can only be defined inside a Claim");
-//				}
 				return BaseType.BOOL;
 			}
 
@@ -1503,13 +1477,6 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		}
 	}
 
-//	private boolean checkDef(FunctionDefinition funcDef) {
-//		String claimType = funcDef.getClaimType();
-//		if (claimType.equals("strategy")) {
-//			return true;
-//		}
-//		return false;
-//	}
 
 	public ResoluteType getBinaryExprType(BinaryExpr binExpr) {
 		ResoluteType leftType = getExprType(binExpr.getLeft());

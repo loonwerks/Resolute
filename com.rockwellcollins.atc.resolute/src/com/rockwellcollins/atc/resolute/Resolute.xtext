@@ -24,7 +24,6 @@ NamedElement returns aadl2::NamedElement:
 
 Element returns aadl2::Element:
 	Expr
-//|	ProveStatement
 | 	AnalysisStatement
 |   ClaimText
 |   DefinitionBody
@@ -335,7 +334,6 @@ UnsignedInt returns aadl2::Integer:
 ResoluteSubclause:
 	{ResoluteSubclause}
 	proves+=AnalysisStatement*
-//	proves+=ProveStatement*
 
 ;
 
@@ -349,10 +347,6 @@ LintStatement:
 |	{InfoStatement} 'info' expr=Expr
 ;
 
-//RuleDefinition:
-//	'rule' name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
-//;
-
 Ruleset:
 	'ruleset' name=ID '{' body=RulesetBody '}'
 ;
@@ -361,10 +355,6 @@ RulesetBody:
 	{RulesetBody}
 	lintStatements+=LintStatement*
 ;
-
-//ProveStatement:
-//	'prove' expr=Expr
-//;
 
 AnalysisStatement:
 	{ProveStatement} 'prove' expr=Expr
