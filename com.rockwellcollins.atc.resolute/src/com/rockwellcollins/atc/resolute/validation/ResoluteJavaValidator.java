@@ -474,7 +474,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			} else if (functionDefinition.getBody() instanceof FunctionBody) {
 				return false;
 			}
-		} else if (expr instanceof SolutionExpr) {
+		} else if (expr instanceof LibraryFnCallExpr || expr instanceof BuiltInFnCallExpr
+				|| expr instanceof SolutionExpr) {
 			return false;
 		}
 		return true;
