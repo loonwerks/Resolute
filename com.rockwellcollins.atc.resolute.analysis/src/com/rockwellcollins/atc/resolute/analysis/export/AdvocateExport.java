@@ -128,7 +128,7 @@ public class AdvocateExport {
 					// build solution node for the claim if any
 					if (claimResult.isValid()) {
 						if (isSolutionExpression(claimBody.getExpr())) {
-							String buildNode = "  <nodes xsi:type=\"argument:ArgumentSolution\" name=\"SLN:"
+							String buildNode = "  <nodes xsi:type=\"argument:ArgumentSolution\" name=\"SLN_"
 									+ functionDefinition.getName() + "\" description=\"" + claimText
 									+ " (Verified by Resolute)" + "\"/>"
 									+ "\r\n";
