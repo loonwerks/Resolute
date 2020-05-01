@@ -26,6 +26,7 @@ import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
 import com.rockwellcollins.atc.resolute.resolute.LetExpr;
+import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
 import com.rockwellcollins.atc.resolute.resolute.SolutionExpr;
 import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 
@@ -95,6 +96,9 @@ public class AdvocateExport {
 			ClaimResult claimResult = (ClaimResult) resoluteResult;
 			if (claimResult.getLocation() instanceof FunctionDefinition) {
 				FunctionDefinition functionDefinition = (FunctionDefinition) claimResult.getLocation();
+				if (functionDefinition.getName().equalsIgnoreCase("S1")) {
+					int a = 1;
+				}
 				if (functionDefinition.getBody() instanceof ClaimBody) {
 					String claim = "  <nodes xsi:type=\"argument:Argument";
 					ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
@@ -242,6 +246,11 @@ public class AdvocateExport {
 			if (functionDefinition.getBody() instanceof ClaimBody) {
 				return false;
 			}
+		} else if (expr instanceof QuantifiedExpr) {
+			QuantifiedExpr quantifiedExpr = (QuantifiedExpr) expr;
+			return isSolutionExpression(quantifiedExpr.getExpr());
+		} else if (expr instanceof SolutionExpr) {
+			return false;
 		}
 		return true;
 	}
