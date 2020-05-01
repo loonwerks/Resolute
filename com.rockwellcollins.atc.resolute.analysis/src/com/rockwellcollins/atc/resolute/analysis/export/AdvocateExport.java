@@ -96,9 +96,6 @@ public class AdvocateExport {
 			ClaimResult claimResult = (ClaimResult) resoluteResult;
 			if (claimResult.getLocation() instanceof FunctionDefinition) {
 				FunctionDefinition functionDefinition = (FunctionDefinition) claimResult.getLocation();
-				if (functionDefinition.getName().equalsIgnoreCase("S1")) {
-					int a = 1;
-				}
 				if (functionDefinition.getBody() instanceof ClaimBody) {
 					String claim = "  <nodes xsi:type=\"argument:Argument";
 					ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
