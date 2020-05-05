@@ -3,6 +3,7 @@ package com.rockwellcollins.atc.resolute.analysis.export;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
@@ -14,6 +15,8 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.xtext.ui.util.ResourceUtil;
 import org.osate.aadl2.NamedElement;
 
+import com.rockwellcollins.atc.resolute.analysis.Activator;
+import com.rockwellcollins.atc.resolute.analysis.preferences.ResolutePreferenceConstants;
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
 import com.rockwellcollins.atc.resolute.resolute.BinaryExpr;
@@ -35,7 +38,10 @@ public class AdvocateExport {
 	public static void export(ClaimResult cr) throws IOException {
 		List<String> claimNodes = new ArrayList<>();
 		List<String> claimLinks = new ArrayList<>();
+		HashMap<String, Integer> nodeMap = new HashMap<>();
+//		int count = 0;
 		StringBuilder str = new StringBuilder();
+		boolean isUnique = false;
 
 		// Getting the root resolute result and creating a file dialog
 		List<ResoluteResult> result = cr.getChildren();
@@ -59,8 +65,13 @@ public class AdvocateExport {
 				"<argument:Argument xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:argument=\"http://www.advocate.arc.nasa.gov/argument\" xmlns:egsn=\"http://www.advocate.arc.nasa.gov/egsn\" name=\""
 						+ claimName + "\">" + "\r\n");
 
+		String exportPreference = Activator.getDefault().getPreferenceStore()
+				.getString(ResolutePreferenceConstants.EXPORT_NODES_PREFERENCE);
+		if (exportPreference.equals(ResolutePreferenceConstants.UNIQUE_NODES)) {
+			isUnique = true;
+		}
 		// Method call to build the nodes and links for export to AdvoCATE
-		exportBuilder(cResult, -1, claimNodes, claimLinks);
+		exportBuilder(cResult, -1, claimNodes, claimLinks, isUnique, nodeMap);
 		for (String node : claimNodes) {
 			str.append(node);
 		}
@@ -90,7 +101,7 @@ public class AdvocateExport {
 	 * @param links
 	 **/
 	public static void exportBuilder(ResoluteResult resoluteResult, int parentNodeIndex,
-			List<String> nodes, List<String> links) {
+			List<String> nodes, List<String> links, boolean isUniqueNodes, HashMap<String, Integer> nodeNames) {
 		int currentNodeIndex = -1;
 		if (resoluteResult instanceof ClaimResult) {
 			ClaimResult claimResult = (ClaimResult) resoluteResult;
@@ -109,15 +120,27 @@ public class AdvocateExport {
 					claim += "name=\"" + functionDefinition.getName() + "\" description=\"" + claimText + "\"/>"
 							+ "\r\n";
 					nodes.add(claim);
+					if (nodeNames.containsKey(functionDefinition.getName())) {
+						if (isUniqueNodes) {
+							createUniqueNodeName(nodes, functionDefinition.getName());
+						}
+					} else {
+						nodeNames.put(functionDefinition.getName(), nodes.size() - 1);
+					}
 					if (parentNodeIndex >= 0) {
 						String childLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISB_"
 								+ functionDefinition.getName() + "\" " + "to=\"//@nodes." + (nodes.size() - 1) + "\" "
 								+ "from=\"//@nodes." + parentNodeIndex + "\"/>" + "\r\n";
 						links.add(childLink);
+						if (nodeNames.containsKey(functionDefinition.getName())) {
+							if (isUniqueNodes) {
+								createUniqueLinkName(links, functionDefinition.getName(), nodes.size());
+							}
+						}
 					}
 
 					currentNodeIndex = buildClaimAttributes(claimBody.getAttributes(), claimResult, nodes.size() - 1,
-							functionDefinition.getName(), nodes, links);
+							functionDefinition.getName(), nodes, links, nodeNames, isUniqueNodes);
 
 					// check for undeveloped expression and add it accordingly
 					if (isUndevelopedExpr(claimBody.getExpr())) {
@@ -138,8 +161,17 @@ public class AdvocateExport {
 									+ functionDefinition.getName() + "\" to=\"//@nodes." + (nodes.size() - 1)
 									+ "\" from=\"//@nodes." + currentNodeIndex + "\"/>" + "\r\n";
 							links.add(buildLink);
+							if (nodeNames.containsKey(functionDefinition.getName())) {
+								if (isUniqueNodes) {
+								createUniqueNodeName(nodes, functionDefinition.getName());
+								createUniqueLinkName(links, functionDefinition.getName(), nodes.size());
+								}
+							} else {
+								nodeNames.put(functionDefinition.getName(), nodes.size() - 1);
+							}
 						} else {
-							buildSolutionNode(claimBody.getExpr(), currentNodeIndex, nodes, links);
+							buildSolutionNode(claimBody.getExpr(), currentNodeIndex, nodes, links, nodeNames,
+									isUniqueNodes);
 						}
 					}
 				}
@@ -148,18 +180,18 @@ public class AdvocateExport {
 			// check for a claim's children and recursively build the nodes and links
 			List<ResoluteResult> children = claimResult.getChildren();
 			for (ResoluteResult child : children) {
-				exportBuilder(child, currentNodeIndex, nodes, links);
+				exportBuilder(child, currentNodeIndex, nodes, links, isUniqueNodes, nodeNames);
 			}
 		} else if (resoluteResult instanceof ResoluteResult) {
 			List<ResoluteResult> children = resoluteResult.getChildren();
 			for (ResoluteResult child : children) {
-				exportBuilder(child, parentNodeIndex, nodes, links);
+				exportBuilder(child, parentNodeIndex, nodes, links, isUniqueNodes, nodeNames);
 			}
 		}
 	}
 
 	private static int buildClaimAttributes(List<NamedElement> claimAttributes, ClaimResult res,
-			int parentNodeIndex, String funcDefName, List<String> cNode, List<String> cLink) {
+			int parentNodeIndex, String funcDefName, List<String> cNode, List<String> cLink, HashMap<String, Integer> nodeNameMap, boolean isUniqueNodes) {
 
 		for (NamedElement namedElement : claimAttributes) {
 			String buildNode = "  <nodes xsi:type=\"argument:Argument";
@@ -208,23 +240,40 @@ public class AdvocateExport {
 				cLink.add(buildLink);
 				parentNodeIndex = cNode.size() - 1;
 			}
+			if (nodeNameMap.containsKey(namedElement.getName())) {
+				if (isUniqueNodes) {
+					createUniqueNodeName(cNode, namedElement.getName());
+					createUniqueLinkName(cLink, namedElement.getName(), cNode.size());
+				}
+			} else {
+				nodeNameMap.put(namedElement.getName(), cNode.size() - 1);
+			}
 		}
 		return parentNodeIndex;
 	}
 
-	private static void buildSolutionNode(Expr expr, int parentNodeIndex, List<String> cNode, List<String> cLink) {
+	private static void buildSolutionNode(Expr expr, int parentNodeIndex, List<String> cNode, List<String> cLink,
+			HashMap<String, Integer> nodeNameMap, boolean isUniqueNodes) {
 		if (expr instanceof LetExpr) {
 			LetExpr letExpr = (LetExpr) expr;
-			buildSolutionNode(letExpr.getExpr(), parentNodeIndex, cNode, cLink);
+			buildSolutionNode(letExpr.getExpr(), parentNodeIndex, cNode, cLink, nodeNameMap, isUniqueNodes);
 		} else if (expr instanceof SolutionExpr) {
 			SolutionExpr solutionExpr = (SolutionExpr) expr;
 			String buildNode = "  <nodes xsi:type=\"argument:ArgumentSolution\" name=\"" + solutionExpr.getName()
 					+ "\" description=" + solutionExpr.getVal().getValue() + "/>" + "\r\n";
 			cNode.add(buildNode);
 			String buildLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISBSLN_" + solutionExpr.getName()
-					+ "\" to=\"//@nodes." + (cNode.size() - 1) + "\" from=\"//@nodes."
-					+ parentNodeIndex + "\"/>" + "\r\n";
+					+ "\" to=\"//@nodes." + (cNode.size() - 1) + "\" from=\"//@nodes." + parentNodeIndex + "\"/>"
+					+ "\r\n";
 			cLink.add(buildLink);
+			if (nodeNameMap.containsKey(solutionExpr.getName())) {
+				if (isUniqueNodes) {
+				createUniqueNodeName(cNode, solutionExpr.getName());
+				createUniqueLinkName(cLink, solutionExpr.getName(), cNode.size());
+				}
+			} else {
+				nodeNameMap.put(solutionExpr.getName(), cNode.size() - 1);
+			}
 		}
 	}
 
@@ -262,4 +311,17 @@ public class AdvocateExport {
 		return false;
 	}
 
+	private static void createUniqueNodeName(List<String> cNode, String currNodeName) {
+		String currNode = cNode.get(cNode.size() - 1);
+		String updatedNodeName = currNodeName + "_" + cNode.size();
+		String updatedNode = currNode.replace(currNodeName, updatedNodeName);
+		cNode.set(cNode.size() - 1, updatedNode);
+	}
+
+	private static void createUniqueLinkName(List<String> cLink, String currNodeName, int cNodeSize) {
+		String currNode = cLink.get(cLink.size() - 1);
+		String updatedNodeName = currNodeName + "_" + cNodeSize;
+		String updatedNode = currNode.replace(currNodeName, updatedNodeName);
+		cLink.set(cLink.size() - 1, updatedNode);
+	}
 }
