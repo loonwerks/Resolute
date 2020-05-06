@@ -224,4 +224,19 @@
             value="false">
       </persistent>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="com.rockwellcollins.atc.resolute.Resolute"
+            class="com.rockwellcollins.atc.resolute.analysis.preferences.ResoluteExportPreferencePage"
+            id="com.rockwellcollins.atc.resolute.analysis.Export"
+            name="Export">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.rockwellcollins.atc.resolute.analysis.preferences.ResolutePreferenceInitializer">
+      </initializer>
+   </extension>
 </plugin>
