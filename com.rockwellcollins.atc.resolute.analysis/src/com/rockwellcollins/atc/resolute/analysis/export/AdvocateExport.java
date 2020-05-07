@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
@@ -35,7 +36,10 @@ import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 
 public class AdvocateExport {
 
+	private static HashSet<String> uniqueLinks = new HashSet<>();
+
 	public static void export(ClaimResult cr) throws IOException {
+		uniqueLinks = new HashSet<>();
 		List<String> claimNodes = new ArrayList<>();
 		List<String> claimLinks = new ArrayList<>();
 		HashMap<String, Integer> nodeMap = new HashMap<>();
@@ -122,11 +126,6 @@ public class AdvocateExport {
 								+ "\r\n";
 						nodes.add(claim);
 					}
-//					else if (isUniqueNodes) {
-//						claim += "name=\"" + functionDefinition.getName() + "\" description=\"" + claimText + "\"/>"
-//								+ "\r\n";
-//						nodes.add(claim);
-//					}
 					if (nodeNames.containsKey(functionDefinition.getName())) {
 						if (isUniqueNodes) {
 							createUniqueNodeName(nodes, functionDefinition.getName());
@@ -137,7 +136,7 @@ public class AdvocateExport {
 					if (parentNodeIndex >= 0) {
 						String childLink = "";
 						if (nodeNames.containsKey(functionDefinition.getName()) && !isUniqueNodes) {
-							childLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISB_"
+							childLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISBBBBBBB_"
 									+ functionDefinition.getName() + "\" " + "to=\"//@nodes."
 									+ nodeNames.get(functionDefinition.getName())
 									+ "\" " + "from=\"//@nodes." + parentNodeIndex + "\"/>" + "\r\n";
@@ -146,11 +145,14 @@ public class AdvocateExport {
 								+ functionDefinition.getName() + "\" " + "to=\"//@nodes." + (nodes.size() - 1) + "\" "
 								+ "from=\"//@nodes." + parentNodeIndex + "\"/>" + "\r\n";
 						}
-						links.add(childLink);
-						if (nodeNames.containsKey(functionDefinition.getName())) {
-							if (isUniqueNodes) {
+						if (!uniqueLinks.contains(childLink) && !isUniqueNodes) {
+							links.add(childLink);
+							uniqueLinks.add(childLink);
+						} else if (isUniqueNodes) {
+							links.add(childLink);
+						}
+						if (nodeNames.containsKey(functionDefinition.getName()) && isUniqueNodes) {
 								createUniqueLinkName(links, functionDefinition.getName(), nodes.size());
-							}
 						}
 					}
 
@@ -175,17 +177,28 @@ public class AdvocateExport {
 									+ "\r\n";
 								nodes.add(buildNode);
 							}
-							String buildLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISBSLN_"
-									+ functionDefinition.getName() + "\" to=\"//@nodes." + (nodes.size() - 1)
+							String buildLink = "";
+							if (nodeNames.containsKey("SLN_" + functionDefinition.getName()) && !isUniqueNodes) {
+								buildLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISBSLN_"
+										+ functionDefinition.getName() + "\" to=\"//@nodes."
+										+ nodeNames.get("SLN_" + functionDefinition.getName())
 									+ "\" from=\"//@nodes." + currentNodeIndex + "\"/>" + "\r\n";
-							links.add(buildLink);
-							if (nodeNames.containsKey("SLN_" + functionDefinition.getName())) {
-								if (isUniqueNodes) {
+							} else {
+								buildLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISBSLN_"
+										+ functionDefinition.getName() + "\" to=\"//@nodes." + (nodes.size() - 1)
+										+ "\" from=\"//@nodes." + currentNodeIndex + "\"/>" + "\r\n";
+							}
+							if (!uniqueLinks.contains(buildLink) && !isUniqueNodes) {
+								links.add(buildLink);
+								uniqueLinks.add(buildLink);
+							} else if (isUniqueNodes) {
+								links.add(buildLink);
+							}
+							if (nodeNames.containsKey("SLN_" + functionDefinition.getName()) && isUniqueNodes) {
 								createUniqueNodeName(nodes, functionDefinition.getName());
 								createUniqueLinkName(links, functionDefinition.getName(), nodes.size());
-								}
 							} else {
-								nodeNames.put(functionDefinition.getName(), nodes.size() - 1);
+								nodeNames.put("SLN_" + functionDefinition.getName(), nodes.size() - 1);
 							}
 						} else {
 							buildSolutionNode(claimBody.getExpr(), currentNodeIndex, nodes, links, nodeNames,
@@ -225,22 +238,8 @@ public class AdvocateExport {
 							cNode.add(buildNode);
 							break;
 						}
-//						else if (isUniqueNodes) {
-//							buildNode += "Context\" name=\"" + claimContext.getName() + "\" description=\""
-//									+ description + "\"/>" + "\r\n";
-//							cNode.add(buildNode);
-//							break;
-//						}
 					}
 				}
-
-//				if (nodeNameMap.containsKey(claimContext.getName())) {
-//					if (isUniqueNodes) {
-//						createUniqueNodeName(cNode, claimContext.getName());
-//					}
-//				} else {
-//					nodeNameMap.put(claimContext.getName(), cNode.size() - 1);
-//				}
 
 				if (nodeNameMap.containsKey(claimContext.getName()) && !isUniqueNodes) {
 					buildLink += "InContextOf\" name=\"" + funcDefName + "_" + claimContext.getName() + "\" "
@@ -251,7 +250,12 @@ public class AdvocateExport {
 						+ "to=\"//@nodes." + (cNode.size() - 1) + "\" " + "from=\"//@nodes." + parentNodeIndex + "\"/>"
 						+ "\r\n";
 				}
-				cLink.add(buildLink);
+				if (!uniqueLinks.contains(buildLink) && !isUniqueNodes) {
+					cLink.add(buildLink);
+					uniqueLinks.add(buildLink);
+				} else if (isUniqueNodes) {
+					cLink.add(buildLink);
+				}
 				if (nodeNameMap.containsKey(claimContext.getName()) && isUniqueNodes) {
 					createUniqueNodeName(cNode, claimContext.getName());
 					createUniqueLinkName(cLink, claimContext.getName(), cNode.size());
@@ -265,19 +269,6 @@ public class AdvocateExport {
 							+ claimAssumption.getVal().getValue() + "/>" + "\r\n";
 					cNode.add(buildNode);
 				}
-//				else if (isUniqueNodes) {
-//					buildNode += "Assumption\" name=\"" + claimAssumption.getName() + "\" description="
-//							+ claimAssumption.getVal().getValue() + "/>" + "\r\n";
-//					cNode.add(buildNode);
-//				}
-
-//				if (nodeNameMap.containsKey(claimAssumption.getName())) {
-//					if (isUniqueNodes) {
-//						createUniqueNodeName(cNode, claimAssumption.getName());
-//					}
-//				} else {
-//					nodeNameMap.put(claimAssumption.getName(), cNode.size() - 1);
-//				}
 
 				if (nodeNameMap.containsKey(claimAssumption.getName()) && !isUniqueNodes) {
 					buildLink += "InContextOf\" name=\"" + funcDefName + "_" + claimAssumption.getName() + "\" "
@@ -289,7 +280,12 @@ public class AdvocateExport {
 							+ "to=\"//@nodes." + (cNode.size() - 1) + "\" " + "from=\"//@nodes." + parentNodeIndex
 							+ "\"/>" + "\r\n";
 				}
-				cLink.add(buildLink);
+				if (!uniqueLinks.contains(buildLink) && !isUniqueNodes) {
+					cLink.add(buildLink);
+					uniqueLinks.add(buildLink);
+				} else if (isUniqueNodes) {
+					cLink.add(buildLink);
+				}
 				if (nodeNameMap.containsKey(claimAssumption.getName()) && isUniqueNodes) {
 					createUniqueNodeName(cNode, claimAssumption.getName());
 					createUniqueLinkName(cLink, claimAssumption.getName(), cNode.size());
@@ -303,19 +299,6 @@ public class AdvocateExport {
 						+ claimJustification.getVal().getValue() + "/>" + "\r\n";
 					cNode.add(buildNode);
 				}
-//				else if (isUniqueNodes) {
-//					buildNode += "Justification\" name=\"" + claimJustification.getName() + "\" description="
-//							+ claimJustification.getVal().getValue() + "/>" + "\r\n";
-//					cNode.add(buildNode);
-//				}
-
-//				if (nodeNameMap.containsKey(claimJustification.getName())) {
-//					if (isUniqueNodes) {
-//						createUniqueNodeName(cNode, claimJustification.getName());
-//					}
-//				} else {
-//					nodeNameMap.put(claimJustification.getName(), cNode.size() - 1);
-//				}
 
 				if (nodeNameMap.containsKey(claimJustification.getName()) && !isUniqueNodes) {
 					buildLink += "InContextOf\" name=\"" + funcDefName + "_" + claimJustification.getName() + "\" "
@@ -327,7 +310,12 @@ public class AdvocateExport {
 							+ "to=\"//@nodes." + (cNode.size() - 1) + "\" " + "from=\"//@nodes." + parentNodeIndex
 							+ "\"/>" + "\r\n";
 				}
-				cLink.add(buildLink);
+				if (!uniqueLinks.contains(buildLink) && !isUniqueNodes) {
+					cLink.add(buildLink);
+					uniqueLinks.add(buildLink);
+				} else if (isUniqueNodes) {
+					cLink.add(buildLink);
+				}
 				if (nodeNameMap.containsKey(claimJustification.getName()) && isUniqueNodes) {
 					createUniqueNodeName(cNode, claimJustification.getName());
 					createUniqueLinkName(cLink, claimJustification.getName(), cNode.size());
@@ -341,19 +329,6 @@ public class AdvocateExport {
 						+ claimStrategy.getVal().getValue() + "/>" + "\r\n";
 					cNode.add(buildNode);
 				}
-//				else if (isUniqueNodes) {
-//					buildNode += "Strategy\" name=\"" + claimStrategy.getName() + "\" description="
-//							+ claimStrategy.getVal().getValue() + "/>" + "\r\n";
-//					cNode.add(buildNode);
-//				}
-
-//				if (nodeNameMap.containsKey(claimStrategy.getName())) {
-//					if (isUniqueNodes) {
-//						createUniqueNodeName(cNode, claimStrategy.getName());
-//					}
-//				} else {
-//					nodeNameMap.put(claimStrategy.getName(), cNode.size() - 1);
-//				}
 
 				if (nodeNameMap.containsKey(claimStrategy.getName()) && !isUniqueNodes) {
 					buildLink += "IsSupportedBy\" name=\"" + funcDefName + "_" + claimStrategy.getName() + "\" "
@@ -365,7 +340,12 @@ public class AdvocateExport {
 							+ "to=\"//@nodes." + (cNode.size() - 1) + "\" " + "from=\"//@nodes." + parentNodeIndex
 							+ "\"/>" + "\r\n";
 				}
-				cLink.add(buildLink);
+				if (!uniqueLinks.contains(buildLink) && !isUniqueNodes) {
+					cLink.add(buildLink);
+					uniqueLinks.add(buildLink);
+				} else if (isUniqueNodes) {
+					cLink.add(buildLink);
+				}
 				if (nodeNameMap.containsKey(claimStrategy.getName()) && isUniqueNodes) {
 					createUniqueNodeName(cNode, claimStrategy.getName());
 					createUniqueLinkName(cLink, claimStrategy.getName(), cNode.size());
@@ -378,14 +358,6 @@ public class AdvocateExport {
 					parentNodeIndex = cNode.size() - 1;
 				}
 			}
-//			if (nodeNameMap.containsKey(namedElement.getName())) {
-//				if (isUniqueNodes) {
-//					createUniqueNodeName(cNode, namedElement.getName());
-//					createUniqueLinkName(cLink, namedElement.getName(), cNode.size());
-//				}
-//			} else {
-//				nodeNameMap.put(namedElement.getName(), cNode.size() - 1);
-//			}
 		}
 		return parentNodeIndex;
 	}
@@ -397,18 +369,12 @@ public class AdvocateExport {
 			buildSolutionNode(letExpr.getExpr(), parentNodeIndex, cNode, cLink, nodeNameMap, isUniqueNodes);
 		} else if (expr instanceof SolutionExpr) {
 			SolutionExpr solutionExpr = (SolutionExpr) expr;
-			String buildNode = "";
 			String buildLink = "";
 			if ((!nodeNameMap.containsKey(solutionExpr.getName()) && !isUniqueNodes) || isUniqueNodes) {
-				buildNode = "  <nodes xsi:type=\"argument:ArgumentSolution\" name=\"" + solutionExpr.getName()
+				String buildNode = "  <nodes xsi:type=\"argument:ArgumentSolution\" name=\"" + solutionExpr.getName()
 					+ "\" description=" + solutionExpr.getVal().getValue() + "/>" + "\r\n";
 				cNode.add(buildNode);
 			}
-//			else if (isUniqueNodes) {
-//				buildNode = "  <nodes xsi:type=\"argument:ArgumentSolution\" name=\"" + solutionExpr.getName()
-//						+ "\" description=" + solutionExpr.getVal().getValue() + "/>" + "\r\n";
-//				cNode.add(buildNode);
-//			}
 			if (nodeNameMap.containsKey(solutionExpr.getName()) && !isUniqueNodes) {
 				buildLink = "  <links xsi:type=\"egsn:IsSupportedBy\" name=\"ISBSLN_" + solutionExpr.getName()
 						+ "\" to=\"//@nodes." + nodeNameMap.get(solutionExpr.getName()) + "\" from=\"//@nodes."
@@ -419,12 +385,15 @@ public class AdvocateExport {
 						+ "\" to=\"//@nodes." + (cNode.size() - 1) + "\" from=\"//@nodes." + parentNodeIndex + "\"/>"
 						+ "\r\n";
 			}
-			cLink.add(buildLink);
-			if (nodeNameMap.containsKey(solutionExpr.getName())) {
-				if (isUniqueNodes) {
+			if (!uniqueLinks.contains(buildLink) && !isUniqueNodes) {
+				cLink.add(buildLink);
+				uniqueLinks.add(buildLink);
+			} else if (isUniqueNodes) {
+				cLink.add(buildLink);
+			}
+			if (nodeNameMap.containsKey(solutionExpr.getName()) && isUniqueNodes) {
 				createUniqueNodeName(cNode, solutionExpr.getName());
 				createUniqueLinkName(cLink, solutionExpr.getName(), cNode.size());
-				}
 			} else {
 				nodeNameMap.put(solutionExpr.getName(), cNode.size() - 1);
 			}
