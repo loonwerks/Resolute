@@ -281,8 +281,8 @@ public class AdvocateExport {
 			} else if (namedElement instanceof ClaimAssumption) {
 				ClaimAssumption claimAssumption = (ClaimAssumption) namedElement;
 				if ((!nodeNameMap.containsKey(claimAssumption.getName()) && !isUniqueNodes) || isUniqueNodes) {
-					buildNode += "Assumption\" name=\"" + claimAssumption.getName() + "\" description="
-							+ claimAssumption.getVal().getValue() + "/>" + "\r\n";
+					buildNode += "Assumption\" name=\"" + claimAssumption.getName() + "\" description=\""
+							+ claimAssumption.getExpr() + "\"/>" + "\r\n";
 					cNode.add(buildNode);
 				}
 

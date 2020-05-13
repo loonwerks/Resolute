@@ -1377,20 +1377,21 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 * Contexts:
 	 *     ClaimAttribute returns ClaimAssumption
 	 *     ClaimAssumption returns ClaimAssumption
+	 *     ClaimTextVar returns ClaimAssumption
 	 *
 	 * Constraint:
-	 *     (name=ID val=StringTerm)
+	 *     (name=ID expr=Expr)
 	 */
 	protected void sequence_ClaimAssumption(ISerializationContext context, ClaimAssumption semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, Aadl2Package.eINSTANCE.getNamedElement_Name()) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, Aadl2Package.eINSTANCE.getNamedElement_Name()));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__VAL));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_ASSUMPTION__EXPR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimAssumptionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getClaimAssumptionAccess().getValStringTermParserRuleCall_3_0(), semanticObject.getVal());
+		feeder.accept(grammarAccess.getClaimAssumptionAccess().getExprExprParserRuleCall_3_0(), semanticObject.getExpr());
 		feeder.finish();
 	}
 	
@@ -1399,6 +1400,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 * Contexts:
 	 *     ClaimAttribute returns ClaimContext
 	 *     ClaimContext returns ClaimContext
+	 *     ClaimTextVar returns ClaimContext
 	 *
 	 * Constraint:
 	 *     (name=ID expr=Expr)

@@ -90,14 +90,12 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Element aadl2::Element:
 		//	Expr
-		//	//|	ProveStatement
 		//	| AnalysisStatement
 		//	| ClaimText
 		//	| DefinitionBody;
 		@Override public ParserRule getRule() { return rule; }
 
-		//Expr //|	ProveStatement
-		//| AnalysisStatement | ClaimText | DefinitionBody
+		//Expr | AnalysisStatement | ClaimText | DefinitionBody
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Expr
@@ -939,15 +937,15 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cValAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cValStringTermParserRuleCall_3_0 = (RuleCall)cValAssignment_3.eContents().get(0);
+		private final Assignment cExprAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cExprExprParserRuleCall_3_0 = (RuleCall)cExprAssignment_3.eContents().get(0);
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//ClaimAssumption:
-		//	'assumption' name=ID ':' val=StringTerm ';';
+		//	'assumption' name=ID ':' expr=Expr ';';
 		@Override public ParserRule getRule() { return rule; }
 
-		//'assumption' name=ID ':' val=StringTerm ';'
+		//'assumption' name=ID ':' expr=Expr ';'
 		public Group getGroup() { return cGroup; }
 
 		//'assumption'
@@ -962,11 +960,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
-		//val=StringTerm
-		public Assignment getValAssignment_3() { return cValAssignment_3; }
+		//expr=Expr
+		public Assignment getExprAssignment_3() { return cExprAssignment_3; }
 
-		//StringTerm
-		public RuleCall getValStringTermParserRuleCall_3_0() { return cValStringTermParserRuleCall_3_0; }
+		//Expr
+		public RuleCall getExprExprParserRuleCall_3_0() { return cExprExprParserRuleCall_3_0; }
 
 		//';'
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
@@ -1087,12 +1085,14 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cArgParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cConstantDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cLetBindingParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cClaimContextParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cClaimAssumptionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//ClaimTextVar:
-		//	Arg | ConstantDefinition | LetBinding;
+		//	Arg | ConstantDefinition | LetBinding | ClaimContext | ClaimAssumption;
 		@Override public ParserRule getRule() { return rule; }
 
-		//Arg | ConstantDefinition | LetBinding
+		//Arg | ConstantDefinition | LetBinding | ClaimContext | ClaimAssumption
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Arg
@@ -1103,6 +1103,12 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//LetBinding
 		public RuleCall getLetBindingParserRuleCall_2() { return cLetBindingParserRuleCall_2; }
+
+		//ClaimContext
+		public RuleCall getClaimContextParserRuleCall_3() { return cClaimContextParserRuleCall_3; }
+
+		//ClaimAssumption
+		public RuleCall getClaimAssumptionParserRuleCall_4() { return cClaimAssumptionParserRuleCall_4; }
 	}
 
 	public class ExprElements extends AbstractParserRuleElementFinder {
@@ -2917,9 +2923,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cProvesAnalysisStatementParserRuleCall_1_0 = (RuleCall)cProvesAssignment_1.eContents().get(0);
 		
 		//ResoluteSubclause:
-		//	{ResoluteSubclause} proves+=AnalysisStatement*
-		//	//	proves+=ProveStatement*
-		//;
+		//	{ResoluteSubclause} proves+=AnalysisStatement*;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{ResoluteSubclause} proves+=AnalysisStatement*
@@ -3060,9 +3064,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBodyRulesetBodyParserRuleCall_3_0 = (RuleCall)cBodyAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		////RuleDefinition:
-		////	'rule' name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
-		////;
 		//Ruleset:
 		//	'ruleset' name=ID '{' body=RulesetBody '}';
 		@Override public ParserRule getRule() { return rule; }
@@ -3130,9 +3131,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExprAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cExprExprParserRuleCall_1_2_0 = (RuleCall)cExprAssignment_1_2.eContents().get(0);
 		
-		////ProveStatement:
-		////	'prove' expr=Expr
-		////;
 		//AnalysisStatement:
 		//	{ProveStatement} 'prove' expr=Expr
 		//	| {CheckStatement} 'check' expr=Expr;
@@ -3344,7 +3342,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Element aadl2::Element:
 	//	Expr
-	//	//|	ProveStatement
 	//	| AnalysisStatement
 	//	| ClaimText
 	//	| DefinitionBody;
@@ -3520,7 +3517,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ClaimAssumption:
-	//	'assumption' name=ID ':' val=StringTerm ';';
+	//	'assumption' name=ID ':' expr=Expr ';';
 	public ClaimAssumptionElements getClaimAssumptionAccess() {
 		return pClaimAssumption;
 	}
@@ -3551,7 +3548,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ClaimTextVar:
-	//	Arg | ConstantDefinition | LetBinding;
+	//	Arg | ConstantDefinition | LetBinding | ClaimContext | ClaimAssumption;
 	public ClaimTextVarElements getClaimTextVarAccess() {
 		return pClaimTextVar;
 	}
@@ -3783,9 +3780,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ResoluteSubclause:
-	//	{ResoluteSubclause} proves+=AnalysisStatement*
-	//	//	proves+=ProveStatement*
-	//;
+	//	{ResoluteSubclause} proves+=AnalysisStatement*;
 	public ResoluteSubclauseElements getResoluteSubclauseAccess() {
 		return pResoluteSubclause;
 	}
@@ -3816,9 +3811,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getLintStatementAccess().getRule();
 	}
 
-	////RuleDefinition:
-	////	'rule' name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
-	////;
 	//Ruleset:
 	//	'ruleset' name=ID '{' body=RulesetBody '}';
 	public RulesetElements getRulesetAccess() {
@@ -3839,9 +3831,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getRulesetBodyAccess().getRule();
 	}
 
-	////ProveStatement:
-	////	'prove' expr=Expr
-	////;
 	//AnalysisStatement:
 	//	{ProveStatement} 'prove' expr=Expr
 	//	| {CheckStatement} 'check' expr=Expr;

@@ -3,6 +3,7 @@
 package com.rockwellcollins.atc.resolute.resolute.impl;
 
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
+import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -12,8 +13,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.osate.aadl2.StringLiteral;
 
 import org.osate.aadl2.impl.NamedElementImpl;
 
@@ -25,7 +24,7 @@ import org.osate.aadl2.impl.NamedElementImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimAssumptionImpl#getVal <em>Val</em>}</li>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimAssumptionImpl#getExpr <em>Expr</em>}</li>
  * </ul>
  *
  * @generated
@@ -33,14 +32,14 @@ import org.osate.aadl2.impl.NamedElementImpl;
 public class ClaimAssumptionImpl extends NamedElementImpl implements ClaimAssumption
 {
   /**
-   * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
+   * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVal()
+   * @see #getExpr()
    * @generated
    * @ordered
    */
-  protected StringLiteral val;
+  protected Expr expr;
 
   /**
    * <!-- begin-user-doc -->
@@ -69,9 +68,9 @@ public class ClaimAssumptionImpl extends NamedElementImpl implements ClaimAssump
    * @generated
    */
   @Override
-  public StringLiteral getVal()
+  public Expr getExpr()
   {
-    return val;
+    return expr;
   }
 
   /**
@@ -79,13 +78,13 @@ public class ClaimAssumptionImpl extends NamedElementImpl implements ClaimAssump
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVal(StringLiteral newVal, NotificationChain msgs)
+  public NotificationChain basicSetExpr(Expr newExpr, NotificationChain msgs)
   {
-    StringLiteral oldVal = val;
-    val = newVal;
+    Expr oldExpr = expr;
+    expr = newExpr;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_ASSUMPTION__VAL, oldVal, newVal);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_ASSUMPTION__EXPR, oldExpr, newExpr);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -97,20 +96,20 @@ public class ClaimAssumptionImpl extends NamedElementImpl implements ClaimAssump
    * @generated
    */
   @Override
-  public void setVal(StringLiteral newVal)
+  public void setExpr(Expr newExpr)
   {
-    if (newVal != val)
+    if (newExpr != expr)
     {
       NotificationChain msgs = null;
-      if (val != null)
-        msgs = ((InternalEObject)val).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_ASSUMPTION__VAL, null, msgs);
-      if (newVal != null)
-        msgs = ((InternalEObject)newVal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_ASSUMPTION__VAL, null, msgs);
-      msgs = basicSetVal(newVal, msgs);
+      if (expr != null)
+        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_ASSUMPTION__EXPR, null, msgs);
+      if (newExpr != null)
+        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_ASSUMPTION__EXPR, null, msgs);
+      msgs = basicSetExpr(newExpr, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_ASSUMPTION__VAL, newVal, newVal));
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_ASSUMPTION__EXPR, newExpr, newExpr));
   }
 
   /**
@@ -123,8 +122,8 @@ public class ClaimAssumptionImpl extends NamedElementImpl implements ClaimAssump
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_ASSUMPTION__VAL:
-        return basicSetVal(null, msgs);
+      case ResolutePackage.CLAIM_ASSUMPTION__EXPR:
+        return basicSetExpr(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -139,8 +138,8 @@ public class ClaimAssumptionImpl extends NamedElementImpl implements ClaimAssump
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_ASSUMPTION__VAL:
-        return getVal();
+      case ResolutePackage.CLAIM_ASSUMPTION__EXPR:
+        return getExpr();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -155,8 +154,8 @@ public class ClaimAssumptionImpl extends NamedElementImpl implements ClaimAssump
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_ASSUMPTION__VAL:
-        setVal((StringLiteral)newValue);
+      case ResolutePackage.CLAIM_ASSUMPTION__EXPR:
+        setExpr((Expr)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -172,8 +171,8 @@ public class ClaimAssumptionImpl extends NamedElementImpl implements ClaimAssump
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_ASSUMPTION__VAL:
-        setVal((StringLiteral)null);
+      case ResolutePackage.CLAIM_ASSUMPTION__EXPR:
+        setExpr((Expr)null);
         return;
     }
     super.eUnset(featureID);
@@ -189,8 +188,8 @@ public class ClaimAssumptionImpl extends NamedElementImpl implements ClaimAssump
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_ASSUMPTION__VAL:
-        return val != null;
+      case ResolutePackage.CLAIM_ASSUMPTION__EXPR:
+        return expr != null;
     }
     return super.eIsSet(featureID);
   }

@@ -129,7 +129,7 @@ ClaimJustification:
 ;
 
 ClaimAssumption:
-	'assumption' name=ID ':' val=StringTerm ';'
+	'assumption' name=ID ':' expr=Expr ';'
 ;
 
 ClaimStrategy:
@@ -141,7 +141,7 @@ ClaimText:
 | 	 {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?
 ;
 
-ClaimTextVar: Arg | ConstantDefinition | LetBinding;
+ClaimTextVar: Arg | ConstantDefinition | LetBinding | ClaimContext | ClaimAssumption;
 
 Expr:
 	ImpliesExpr
@@ -212,8 +212,8 @@ AtomicExpr returns Expr:
 |   {LetExpr} 'let' binding=LetBinding ';' expr=Expr
 |	'(' Expr ')'
 
-| {UndevelopedExpr} 'undeveloped'
-| {SolutionExpr} 'solution' name=ID ':' val=StringTerm
+| {UndevelopedExpr} 'undeveloped' 
+| {SolutionExpr} 'solution' name=ID ':' val=StringTerm 
 ;
 
 LetBinding:

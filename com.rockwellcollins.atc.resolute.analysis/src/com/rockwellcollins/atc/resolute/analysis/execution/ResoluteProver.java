@@ -32,6 +32,7 @@ import com.rockwellcollins.atc.resolute.analysis.values.StringValue;
 import com.rockwellcollins.atc.resolute.resolute.Arg;
 import com.rockwellcollins.atc.resolute.resolute.BinaryExpr;
 import com.rockwellcollins.atc.resolute.resolute.ClaimArg;
+import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
 import com.rockwellcollins.atc.resolute.resolute.ClaimString;
@@ -278,11 +279,14 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 
 		varStack.peek().putAll(ResoluteEvaluator.pairArguments(funcDef.getArgs(), argVals));
 
-		// Add any ClaimContexts from this claim
+		// Add any ClaimContexts and ClaimAssumption from this claim
 		for (NamedElement claimAttribute : body.getAttributes()) {
 			if (claimAttribute instanceof ClaimContext) {
 				ClaimContext claimContext = (ClaimContext) claimAttribute;
 				varStack.peek().put(claimAttribute, eval(claimContext.getExpr()));
+			} else if (claimAttribute instanceof ClaimAssumption) {
+				ClaimAssumption claimAssumption = (ClaimAssumption) claimAttribute;
+				varStack.peek().put(claimAttribute, eval(claimAssumption.getExpr()));
 			}
 		}
 
@@ -371,6 +375,12 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 				// text.append("'");
 			} else if (claim instanceof ClaimString) {
 				text.append(((ClaimString) claim).getStr());
+			} else if (claim instanceof ClaimContext) {
+				ResoluteValue val = eval(((ClaimContext) claim).getExpr());
+				text.append(val);
+			} else if (claim instanceof ClaimAssumption) {
+				ResoluteValue val = eval(((ClaimAssumption) claim).getExpr());
+				text.append(val);
 			} else {
 				throw new IllegalArgumentException("Unknown claim type: " + claim.getClass());
 			}
@@ -397,6 +407,9 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 
 		for (NamedElement claimAttribute : body.getAttributes()) {
 			if (claimAttribute instanceof ClaimContext) {
+				ResoluteValue val = varStack.peek().get(claimAttribute);
+				result.put(val.toString(), claimAttribute);
+			} else if (claimAttribute instanceof ClaimAssumption) {
 				ResoluteValue val = varStack.peek().get(claimAttribute);
 				result.put(val.toString(), claimAttribute);
 			}

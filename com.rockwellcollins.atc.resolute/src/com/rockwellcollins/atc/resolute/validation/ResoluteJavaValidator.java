@@ -1,7 +1,6 @@
 package com.rockwellcollins.atc.resolute.validation;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -49,6 +48,7 @@ import org.osate.aadl2.ThreadGroupType;
 import org.osate.aadl2.ThreadType;
 import org.osate.aadl2.VirtualBusType;
 import org.osate.aadl2.VirtualProcessorType;
+import org.osate.aadl2.modelsupport.scoping.Aadl2GlobalScopeUtil;
 
 import com.rockwellcollins.atc.resolute.analysis.external.EvaluateLibraryTypeExtension;
 import com.rockwellcollins.atc.resolute.analysis.external.EvaluateTypeExtention;
@@ -60,8 +60,10 @@ import com.rockwellcollins.atc.resolute.resolute.BoolExpr;
 import com.rockwellcollins.atc.resolute.resolute.BuiltInFnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.CastExpr;
 import com.rockwellcollins.atc.resolute.resolute.CheckStatement;
+import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
+import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
@@ -213,7 +215,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			// If not a constant or AADL native element (anything outside the Resolute annex)
 			if (inResoluteAnnex && !(refElement instanceof ConstantDefinition)) {
 				if (!(refElement instanceof Arg || refElement instanceof LetBinding
-						|| refElement instanceof ClaimContext)) {
+						|| refElement instanceof ClaimContext || refElement instanceof ClaimAssumption)) {
 					error(expr, "Couldn't resolve reference to " + expr.getId().getName());
 				} else {
 					// It must be a FunctionDefinition Arg, QuantifiedExpr Arg, LetExpr Arg, ListFilterMapExpr Arg, SetFilterMapExpr Arg
@@ -276,13 +278,14 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				break;
 			}
 		}
+//		if (funcDef != null) {
+//			// Check if an existing context with this name exists in this scope
+//			if (contextScope.getOrDefault(funcDef, Collections.emptySet()).contains(claimContext.getName())) {
+//				error(claimContext, "Context " + claimContext.getName() + " has already been declared");
+//			}
+//		}
 
-		if (funcDef != null) {
-			// Check if an existing context with this name exists in this scope
-			if (contextScope.getOrDefault(funcDef, Collections.emptySet()).contains(claimContext.getName())) {
-				error(claimContext, "Context " + claimContext.getName() + " has already been declared");
-			}
-		}
+		checkDuplicateAttributeNames(claimContext);
 
 		// Build the scope for this context
 		Set<FunctionDefinition> funcDefs = buildContextScope(funcDef.getBody().getExpr());
@@ -292,6 +295,50 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				contextScope.put(fd, new HashSet<>());
 			}
 			contextScope.get(fd).add(claimContext.getName());
+		}
+	}
+
+	@Check
+	public void checkClaimJustification(ClaimAssumption claimJustification) {
+		checkDuplicateAttributeNames(claimJustification);
+	}
+
+	@Check
+	public void checkClaimAssumption(ClaimAssumption claimAssumption) {
+		checkDuplicateAttributeNames(claimAssumption);
+	}
+
+	private void checkDuplicateAttributeNames(NamedElement namedElement) {
+		EObject parent = namedElement;
+		FunctionDefinition funcDef = null;
+		while (parent != null) {
+			parent = parent.eContainer();
+			if (parent instanceof FunctionDefinition) {
+				funcDef = (FunctionDefinition) parent;
+				break;
+			}
+		}
+		for (EObject claim : Aadl2GlobalScopeUtil.getAll(funcDef,
+				ResolutePackage.eINSTANCE.getFunctionDefinition())) {
+			FunctionDefinition functionDefinition = (FunctionDefinition) claim;
+			if (!funcDef.getName().equalsIgnoreCase(functionDefinition.getName())
+					&& functionDefinition.getBody() instanceof ClaimBody) {
+				ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
+				for (NamedElement attr : claimBody.getAttributes()) {
+					if (attr.getName().equalsIgnoreCase(namedElement.getName())) {
+						String attributeType = "";
+						if (attr instanceof ClaimJustification) {
+							attributeType = "Justification element ";
+						} else if (attr instanceof ClaimAssumption) {
+							attributeType = "Assumption element ";
+						}else if (attr instanceof ClaimContext) {
+							attributeType = "Context element ";
+						}
+						error(namedElement, attributeType + namedElement.getName() + " has already been declared");
+						break;
+					}
+				}
+			}
 		}
 	}
 
@@ -1521,6 +1568,11 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		if (idClass instanceof ClaimContext) {
 			ClaimContext claimContext = (ClaimContext) idClass;
 			return getExprType(claimContext.getExpr());
+		}
+
+		if (idClass instanceof ClaimAssumption) {
+			ClaimAssumption claimAssumption = (ClaimAssumption) idClass;
+			return getExprType(claimAssumption.getExpr());
 		}
 
 		if (idClass instanceof ComponentClassifier) {

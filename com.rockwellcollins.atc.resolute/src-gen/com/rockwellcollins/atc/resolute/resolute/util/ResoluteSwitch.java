@@ -158,6 +158,7 @@ public class ResoluteSwitch<T> extends Switch<T>
         ClaimContext claimContext = (ClaimContext)theEObject;
         T result = caseClaimContext(claimContext);
         if (result == null) result = caseNamedElement(claimContext);
+        if (result == null) result = caseClaimTextVar(claimContext);
         if (result == null) result = caseElement(claimContext);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -176,6 +177,7 @@ public class ResoluteSwitch<T> extends Switch<T>
         ClaimAssumption claimAssumption = (ClaimAssumption)theEObject;
         T result = caseClaimAssumption(claimAssumption);
         if (result == null) result = caseNamedElement(claimAssumption);
+        if (result == null) result = caseClaimTextVar(claimAssumption);
         if (result == null) result = caseElement(claimAssumption);
         if (result == null) result = defaultCase(theEObject);
         return result;

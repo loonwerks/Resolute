@@ -6119,9 +6119,9 @@ rule__ClaimAssumption__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getClaimAssumptionAccess().getValAssignment_3()); }
-(rule__ClaimAssumption__ValAssignment_3)
-{ after(grammarAccess.getClaimAssumptionAccess().getValAssignment_3()); }
+{ before(grammarAccess.getClaimAssumptionAccess().getExprAssignment_3()); }
+(rule__ClaimAssumption__ExprAssignment_3)
+{ after(grammarAccess.getClaimAssumptionAccess().getExprAssignment_3()); }
 )
 
 ;
@@ -17145,14 +17145,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ClaimAssumption__ValAssignment_3
+rule__ClaimAssumption__ExprAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getClaimAssumptionAccess().getValStringTermParserRuleCall_3_0()); }
-	ruleStringTerm{ after(grammarAccess.getClaimAssumptionAccess().getValStringTermParserRuleCall_3_0()); }
+{ before(grammarAccess.getClaimAssumptionAccess().getExprExprParserRuleCall_3_0()); }
+	ruleExpr{ after(grammarAccess.getClaimAssumptionAccess().getExprExprParserRuleCall_3_0()); }
 )
 
 ;

@@ -821,7 +821,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
-  public EReference getClaimAssumption_Val()
+  public EReference getClaimAssumption_Expr()
   {
     return (EReference)claimAssumptionEClass.getEStructuralFeatures().get(0);
   }
@@ -2122,7 +2122,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     createEReference(claimJustificationEClass, CLAIM_JUSTIFICATION__VAL);
 
     claimAssumptionEClass = createEClass(CLAIM_ASSUMPTION);
-    createEReference(claimAssumptionEClass, CLAIM_ASSUMPTION__VAL);
+    createEReference(claimAssumptionEClass, CLAIM_ASSUMPTION__EXPR);
 
     claimStrategyEClass = createEClass(CLAIM_STRATEGY);
     createEReference(claimStrategyEClass, CLAIM_STRATEGY__VAL);
@@ -2329,8 +2329,10 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     functionDefinitionEClass.getESuperTypes().add(this.getDefinition());
     definitionBodyEClass.getESuperTypes().add(theAadl2Package.getElement());
     claimContextEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
+    claimContextEClass.getESuperTypes().add(this.getClaimTextVar());
     claimJustificationEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
     claimAssumptionEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
+    claimAssumptionEClass.getESuperTypes().add(this.getClaimTextVar());
     claimStrategyEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
     claimTextEClass.getESuperTypes().add(theAadl2Package.getElement());
     exprEClass.getESuperTypes().add(theAadl2Package.getElement());
@@ -2411,7 +2413,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEReference(getClaimJustification_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimJustification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(claimAssumptionEClass, ClaimAssumption.class, "ClaimAssumption", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getClaimAssumption_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimAssumption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClaimAssumption_Expr(), this.getExpr(), null, "expr", null, 0, 1, ClaimAssumption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(claimStrategyEClass, ClaimStrategy.class, "ClaimStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getClaimStrategy_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

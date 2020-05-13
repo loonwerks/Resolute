@@ -763,13 +763,13 @@ public interface ResolutePackage extends EPackage
   int CLAIM_ASSUMPTION__OWNED_PROPERTY_ASSOCIATION = Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION;
 
   /**
-   * The feature id for the '<em><b>Val</b></em>' containment reference.
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLAIM_ASSUMPTION__VAL = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 0;
+  int CLAIM_ASSUMPTION__EXPR = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Claim Assumption</em>' class.
@@ -3412,15 +3412,15 @@ public interface ResolutePackage extends EPackage
   EClass getClaimAssumption();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.ClaimAssumption#getVal <em>Val</em>}'.
+   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.ClaimAssumption#getExpr <em>Expr</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Val</em>'.
-   * @see com.rockwellcollins.atc.resolute.resolute.ClaimAssumption#getVal()
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimAssumption#getExpr()
    * @see #getClaimAssumption()
    * @generated
    */
-  EReference getClaimAssumption_Val();
+  EReference getClaimAssumption_Expr();
 
   /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimStrategy <em>Claim Strategy</em>}'.
@@ -4836,12 +4836,12 @@ public interface ResolutePackage extends EPackage
     EClass CLAIM_ASSUMPTION = eINSTANCE.getClaimAssumption();
 
     /**
-     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CLAIM_ASSUMPTION__VAL = eINSTANCE.getClaimAssumption_Val();
+    EReference CLAIM_ASSUMPTION__EXPR = eINSTANCE.getClaimAssumption_Expr();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimStrategyImpl <em>Claim Strategy</em>}' class.
