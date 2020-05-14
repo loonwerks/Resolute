@@ -299,7 +299,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	}
 
 	@Check
-	public void checkClaimJustification(ClaimAssumption claimJustification) {
+	public void checkClaimJustification(ClaimJustification claimJustification) {
 		checkDuplicateAttributeNames(claimJustification);
 	}
 
@@ -318,8 +318,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				break;
 			}
 		}
-		for (EObject claim : Aadl2GlobalScopeUtil.getAll(funcDef,
-				ResolutePackage.eINSTANCE.getFunctionDefinition())) {
+		List<EObject> claims = Aadl2GlobalScopeUtil.getAll(funcDef, ResolutePackage.eINSTANCE.getFunctionDefinition());
+		claims.addAll(EcoreUtil2.getAllContentsOfType(funcDef.eContainer(), FunctionDefinition.class));
+		for (EObject claim : claims) {
 			FunctionDefinition functionDefinition = (FunctionDefinition) claim;
 			if (!funcDef.getName().equalsIgnoreCase(functionDefinition.getName())
 					&& functionDefinition.getBody() instanceof ClaimBody) {
