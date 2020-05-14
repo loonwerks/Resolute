@@ -280,10 +280,16 @@ public class AdvocateExport {
 				}
 			} else if (namedElement instanceof ClaimAssumption) {
 				ClaimAssumption claimAssumption = (ClaimAssumption) namedElement;
-				if ((!nodeNameMap.containsKey(claimAssumption.getName()) && !isUniqueNodes) || isUniqueNodes) {
-					buildNode += "Assumption\" name=\"" + claimAssumption.getName() + "\" description=\""
-							+ claimAssumption.getExpr() + "\"/>" + "\r\n";
-					cNode.add(buildNode);
+				Map<String, EObject> refs = res.getReferences();
+				for (String description : new TreeSet<String>(refs.keySet())) {
+					if (refs.get(description).equals(claimAssumption)) {
+						if ((!nodeNameMap.containsKey(claimAssumption.getName()) && !isUniqueNodes) || isUniqueNodes) {
+							buildNode += "Assumption\" name=\"" + claimAssumption.getName() + "\" description=\""
+									+ description + "\"/>" + "\r\n";
+							cNode.add(buildNode);
+							break;
+						}
+					}
 				}
 
 				if (nodeNameMap.containsKey(claimAssumption.getName()) && !isUniqueNodes) {
