@@ -24,6 +24,7 @@ import com.rockwellcollins.atc.resolute.resolute.FailExpr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.FunctionBody;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
+import com.rockwellcollins.atc.resolute.resolute.GuaranteeExpr;
 import com.rockwellcollins.atc.resolute.resolute.IdExpr;
 import com.rockwellcollins.atc.resolute.resolute.IfThenElseExpr;
 import com.rockwellcollins.atc.resolute.resolute.InfoStatement;
@@ -264,6 +265,9 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 				return; 
 			case ResolutePackage.FUNCTION_DEFINITION:
 				sequence_FunctionDefinition(context, (FunctionDefinition) semanticObject); 
+				return; 
+			case ResolutePackage.GUARANTEE_EXPR:
+				sequence_AtomicExpr(context, (GuaranteeExpr) semanticObject); 
 				return; 
 			case ResolutePackage.ID_EXPR:
 				sequence_AtomicExpr(context, (IdExpr) semanticObject); 
@@ -633,6 +637,50 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 */
 	protected void sequence_AtomicExpr(ISerializationContext context, FnCallExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Element returns GuaranteeExpr
+	 *     Expr returns GuaranteeExpr
+	 *     ImpliesExpr returns GuaranteeExpr
+	 *     ImpliesExpr.BinaryExpr_1_0_0_0 returns GuaranteeExpr
+	 *     OrExpr returns GuaranteeExpr
+	 *     OrExpr.BinaryExpr_1_0_0_0 returns GuaranteeExpr
+	 *     AndExpr returns GuaranteeExpr
+	 *     AndExpr.BinaryExpr_1_0_0_0 returns GuaranteeExpr
+	 *     InstanceOfExpr returns GuaranteeExpr
+	 *     InstanceOfExpr.InstanceOfExpr_1_0_0_0 returns GuaranteeExpr
+	 *     RelationalExpr returns GuaranteeExpr
+	 *     RelationalExpr.BinaryExpr_1_0_0_0 returns GuaranteeExpr
+	 *     PlusExpr returns GuaranteeExpr
+	 *     PlusExpr.BinaryExpr_1_0_0_0 returns GuaranteeExpr
+	 *     TimesExpr returns GuaranteeExpr
+	 *     TimesExpr.BinaryExpr_1_0_0_0 returns GuaranteeExpr
+	 *     ExpExpr returns GuaranteeExpr
+	 *     ExpExpr.BinaryExpr_1_0_0_0 returns GuaranteeExpr
+	 *     PrefixExpr returns GuaranteeExpr
+	 *     AtomicExpr returns GuaranteeExpr
+	 *     AtomicExpr.ListFilterMapExpr_13_2_0_0 returns GuaranteeExpr
+	 *     AtomicExpr.ListExpr_13_2_1_0 returns GuaranteeExpr
+	 *     AtomicExpr.SetFilterMapExpr_14_2_0_0 returns GuaranteeExpr
+	 *     AtomicExpr.SetExpr_14_2_1_0 returns GuaranteeExpr
+	 *
+	 * Constraint:
+	 *     (name=ID expr=Expr)
+	 */
+	protected void sequence_AtomicExpr(ISerializationContext context, GuaranteeExpr semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.GUARANTEE_EXPR__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.GUARANTEE_EXPR__NAME));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.GUARANTEE_EXPR__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.GUARANTEE_EXPR__EXPR));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicExprAccess().getNameIDTerminalRuleCall_21_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getAtomicExprAccess().getExprExprParserRuleCall_21_4_0(), semanticObject.getExpr());
+		feeder.finish();
 	}
 	
 	
@@ -1565,7 +1613,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     FunctionDefinition returns FunctionDefinition
 	 *
 	 * Constraint:
-	 *     ((claimType='goal' | claimType='strategy')? name=ID (args+=Arg args+=Arg*)? body=DefinitionBody)
+	 *     ((claimType='goal' | claimType='strategy' | claimType='contract')? name=ID (args+=Arg args+=Arg*)? body=DefinitionBody)
 	 */
 	protected void sequence_FunctionDefinition(ISerializationContext context, FunctionDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

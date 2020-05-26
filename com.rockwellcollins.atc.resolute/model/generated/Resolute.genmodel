@@ -188,6 +188,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//SolutionExpr/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//SolutionExpr/val"/>
     </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//GuaranteeExpr">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//GuaranteeExpr/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//GuaranteeExpr/expr"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//WarningStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//ErrorStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//InfoStatement"/>

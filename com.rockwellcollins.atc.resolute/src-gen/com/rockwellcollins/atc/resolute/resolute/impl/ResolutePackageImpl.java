@@ -28,6 +28,7 @@ import com.rockwellcollins.atc.resolute.resolute.FailExpr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.FunctionBody;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
+import com.rockwellcollins.atc.resolute.resolute.GuaranteeExpr;
 import com.rockwellcollins.atc.resolute.resolute.IdExpr;
 import com.rockwellcollins.atc.resolute.resolute.IfThenElseExpr;
 import com.rockwellcollins.atc.resolute.resolute.InfoStatement;
@@ -459,6 +460,13 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   private EClass solutionExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass guaranteeExprEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -2009,6 +2017,39 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
+  public EClass getGuaranteeExpr()
+  {
+    return guaranteeExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGuaranteeExpr_Name()
+  {
+    return (EAttribute)guaranteeExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGuaranteeExpr_Expr()
+  {
+    return (EReference)guaranteeExprEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getWarningStatement()
   {
     return warningStatementEClass;
@@ -2274,6 +2315,10 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     createEAttribute(solutionExprEClass, SOLUTION_EXPR__NAME);
     createEReference(solutionExprEClass, SOLUTION_EXPR__VAL);
 
+    guaranteeExprEClass = createEClass(GUARANTEE_EXPR);
+    createEAttribute(guaranteeExprEClass, GUARANTEE_EXPR__NAME);
+    createEReference(guaranteeExprEClass, GUARANTEE_EXPR__EXPR);
+
     warningStatementEClass = createEClass(WARNING_STATEMENT);
 
     errorStatementEClass = createEClass(ERROR_STATEMENT);
@@ -2373,6 +2418,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     letExprEClass.getESuperTypes().add(this.getExpr());
     undevelopedExprEClass.getESuperTypes().add(this.getExpr());
     solutionExprEClass.getESuperTypes().add(this.getExpr());
+    guaranteeExprEClass.getESuperTypes().add(this.getExpr());
     warningStatementEClass.getESuperTypes().add(this.getLintStatement());
     errorStatementEClass.getESuperTypes().add(this.getLintStatement());
     infoStatementEClass.getESuperTypes().add(this.getLintStatement());
@@ -2564,6 +2610,10 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEClass(solutionExprEClass, SolutionExpr.class, "SolutionExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSolutionExpr_Name(), theEcorePackage.getEString(), "name", null, 0, 1, SolutionExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSolutionExpr_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, SolutionExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(guaranteeExprEClass, GuaranteeExpr.class, "GuaranteeExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGuaranteeExpr_Name(), theEcorePackage.getEString(), "name", null, 0, 1, GuaranteeExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGuaranteeExpr_Expr(), this.getExpr(), null, "expr", null, 0, 1, GuaranteeExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(warningStatementEClass, WarningStatement.class, "WarningStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

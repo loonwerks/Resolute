@@ -216,6 +216,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="val" eType="ecore:EClass platform:/resource/org.osate.aadl2/model/aadl2.ecore#//StringLiteral"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GuaranteeExpr" eSuperTypes="#//Expr">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//Expr" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WarningStatement" eSuperTypes="#//LintStatement"/>
   <eClassifiers xsi:type="ecore:EClass" name="ErrorStatement" eSuperTypes="#//LintStatement"/>
   <eClassifiers xsi:type="ecore:EClass" name="InfoStatement" eSuperTypes="#//LintStatement"/>

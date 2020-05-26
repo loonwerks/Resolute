@@ -105,7 +105,7 @@ ConstantDefinition:
 ;
 
 FunctionDefinition:
-	(claimType='goal' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
+	(claimType='goal' | claimType='strategy' | claimType='contract')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
 ;
 
 DefinitionBody:
@@ -129,7 +129,7 @@ ClaimJustification:
 ;
 
 ClaimAssumption:
-	'assumption' name=ID ':' expr=Expr ';'
+	('assumption' | 'assume') name=ID ':' expr=Expr ';'
 ;
 
 ClaimStrategy:
@@ -214,6 +214,7 @@ AtomicExpr returns Expr:
 
 | {UndevelopedExpr} 'undeveloped' 
 | {SolutionExpr} 'solution' name=ID ':' val=StringTerm 
+| {GuaranteeExpr} 'guarantee' name=ID ':' expr=Expr ';'
 ;
 
 LetBinding:

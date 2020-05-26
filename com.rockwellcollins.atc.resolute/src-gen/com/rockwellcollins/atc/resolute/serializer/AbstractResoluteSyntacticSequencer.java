@@ -11,6 +11,7 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
@@ -22,12 +23,14 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	protected ResoluteGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_AtomicExpr_LeftParenthesisKeyword_18_0_a;
 	protected AbstractElementAlias match_AtomicExpr_LeftParenthesisKeyword_18_0_p;
+	protected AbstractElementAlias match_ClaimAssumption_AssumeKeyword_0_1_or_AssumptionKeyword_0_0;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ResoluteGrammarAccess) access;
 		match_AtomicExpr_LeftParenthesisKeyword_18_0_a = new TokenAlias(true, true, grammarAccess.getAtomicExprAccess().getLeftParenthesisKeyword_18_0());
 		match_AtomicExpr_LeftParenthesisKeyword_18_0_p = new TokenAlias(true, false, grammarAccess.getAtomicExprAccess().getLeftParenthesisKeyword_18_0());
+		match_ClaimAssumption_AssumeKeyword_0_1_or_AssumptionKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getClaimAssumptionAccess().getAssumeKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getClaimAssumptionAccess().getAssumptionKeyword_0_0()));
 	}
 	
 	@Override
@@ -84,6 +87,8 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 				emit_AtomicExpr_LeftParenthesisKeyword_18_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_AtomicExpr_LeftParenthesisKeyword_18_0_p.equals(syntax))
 				emit_AtomicExpr_LeftParenthesisKeyword_18_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ClaimAssumption_AssumeKeyword_0_1_or_AssumptionKeyword_0_0.equals(syntax))
+				emit_ClaimAssumption_AssumeKeyword_0_1_or_AssumptionKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -97,6 +102,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '[' (ambiguity) '[' ']' (rule start)
 	 *     (rule start) '[' (ambiguity) 'fail' '**' failmsg+=ClaimText
 	 *     (rule start) '[' (ambiguity) 'fail' val=Expr
+	 *     (rule start) '[' (ambiguity) 'guarantee' name=ID
 	 *     (rule start) '[' (ambiguity) 'if' cond=Expr
 	 *     (rule start) '[' (ambiguity) 'let' binding=LetBinding
 	 *     (rule start) '[' (ambiguity) 'solution' name=ID
@@ -127,6 +133,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '{' (ambiguity) '[' ']' (rule start)
 	 *     (rule start) '{' (ambiguity) 'fail' '**' failmsg+=ClaimText
 	 *     (rule start) '{' (ambiguity) 'fail' val=Expr
+	 *     (rule start) '{' (ambiguity) 'guarantee' name=ID
 	 *     (rule start) '{' (ambiguity) 'if' cond=Expr
 	 *     (rule start) '{' (ambiguity) 'let' binding=LetBinding
 	 *     (rule start) '{' (ambiguity) 'solution' name=ID
@@ -157,6 +164,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) (ambiguity) '[' ']' (rule start)
 	 *     (rule start) (ambiguity) 'fail' '**' failmsg+=ClaimText
 	 *     (rule start) (ambiguity) 'fail' val=Expr
+	 *     (rule start) (ambiguity) 'guarantee' name=ID
 	 *     (rule start) (ambiguity) 'if' cond=Expr
 	 *     (rule start) (ambiguity) 'let' binding=LetBinding
 	 *     (rule start) (ambiguity) 'solution' name=ID
@@ -200,6 +208,17 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) (ambiguity) {InstanceOfExpr.expr=}
 	 */
 	protected void emit_AtomicExpr_LeftParenthesisKeyword_18_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'assumption' | 'assume'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) name=ID
+	 */
+	protected void emit_ClaimAssumption_AssumeKeyword_0_1_or_AssumptionKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
