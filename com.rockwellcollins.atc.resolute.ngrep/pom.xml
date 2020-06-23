@@ -7,6 +7,5 @@
     <version>2.4.4-SNAPSHOT</version>
   </parent>
   <artifactId>com.rockwellcollins.atc.resolute.ngrep</artifactId>
-  <version>2.4.4-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>
