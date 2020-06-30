@@ -621,6 +621,70 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	}
 
 	@Check
+	public void checkCliamUsageDomain(ClaimUsageDomain claimUsageDomain) {
+		EObject parent = claimUsageDomain;
+		FunctionDefinition funcDef = null;
+		while (parent != null) {
+			parent = parent.eContainer();
+			if (parent instanceof FunctionDefinition) {
+				funcDef = (FunctionDefinition) parent;
+				break;
+			}
+		}
+		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("goal")) {
+			error(claimUsageDomain, "A goal cannot contain a Domain element");
+		}
+	}
+
+	@Check
+	public void checkCliamRationale(ClaimRationale claimRationale) {
+		EObject parent = claimRationale;
+		FunctionDefinition funcDef = null;
+		while (parent != null) {
+			parent = parent.eContainer();
+			if (parent instanceof FunctionDefinition) {
+				funcDef = (FunctionDefinition) parent;
+				break;
+			}
+		}
+		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("goal")) {
+			error(claimRationale, "A goal cannot contain a Rationale element");
+		}
+	}
+
+	@Check
+	public void checkCliamRestriction(ClaimRestriction claimRestriction) {
+		EObject parent = claimRestriction;
+		FunctionDefinition funcDef = null;
+		while (parent != null) {
+			parent = parent.eContainer();
+			if (parent instanceof FunctionDefinition) {
+				funcDef = (FunctionDefinition) parent;
+				break;
+			}
+		}
+		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("goal")) {
+			error(claimRestriction, "A goal cannot contain a Restriction element");
+		}
+	}
+
+	@Check
+	public void checkEvidenceExpr(EvidenceExpr evidenceExpr) {
+		EObject parent = evidenceExpr;
+		FunctionDefinition funcDef = null;
+		while (parent != null) {
+			parent = parent.eContainer();
+			if (parent instanceof FunctionDefinition) {
+				funcDef = (FunctionDefinition) parent;
+				break;
+			}
+		}
+		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("goal")) {
+			error(evidenceExpr, "A goal cannot contain an Evidence element");
+		}
+	}
+
+	@Check
 	public void checkQuantArg(QuantArg quantArg) {
 		// The definition of a quantifier arg expression must not reference
 		// the quantified arg being defined.
