@@ -163,6 +163,33 @@ public class ResoluteSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ResolutePackage.CLAIM_USAGE_DOMAIN:
+      {
+        ClaimUsageDomain claimUsageDomain = (ClaimUsageDomain)theEObject;
+        T result = caseClaimUsageDomain(claimUsageDomain);
+        if (result == null) result = caseNamedElement(claimUsageDomain);
+        if (result == null) result = caseElement(claimUsageDomain);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ResolutePackage.CLAIM_RATIONALE:
+      {
+        ClaimRationale claimRationale = (ClaimRationale)theEObject;
+        T result = caseClaimRationale(claimRationale);
+        if (result == null) result = caseNamedElement(claimRationale);
+        if (result == null) result = caseElement(claimRationale);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ResolutePackage.CLAIM_RESTRICTION:
+      {
+        ClaimRestriction claimRestriction = (ClaimRestriction)theEObject;
+        T result = caseClaimRestriction(claimRestriction);
+        if (result == null) result = caseNamedElement(claimRestriction);
+        if (result == null) result = caseElement(claimRestriction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ResolutePackage.CLAIM_JUSTIFICATION:
       {
         ClaimJustification claimJustification = (ClaimJustification)theEObject;
@@ -552,6 +579,15 @@ public class ResoluteSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ResolutePackage.EVIDENCE_EXPR:
+      {
+        EvidenceExpr evidenceExpr = (EvidenceExpr)theEObject;
+        T result = caseEvidenceExpr(evidenceExpr);
+        if (result == null) result = caseExpr(evidenceExpr);
+        if (result == null) result = caseElement(evidenceExpr);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ResolutePackage.SOLUTION_EXPR:
       {
         SolutionExpr solutionExpr = (SolutionExpr)theEObject;
@@ -756,6 +792,54 @@ public class ResoluteSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseClaimContext(ClaimContext object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Claim Usage Domain</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Claim Usage Domain</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseClaimUsageDomain(ClaimUsageDomain object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Claim Rationale</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Claim Rationale</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseClaimRationale(ClaimRationale object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Claim Restriction</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Claim Restriction</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseClaimRestriction(ClaimRestriction object)
   {
     return null;
   }
@@ -1460,6 +1544,22 @@ public class ResoluteSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseUndevelopedExpr(UndevelopedExpr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Evidence Expr</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Evidence Expr</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEvidenceExpr(EvidenceExpr object)
   {
     return null;
   }

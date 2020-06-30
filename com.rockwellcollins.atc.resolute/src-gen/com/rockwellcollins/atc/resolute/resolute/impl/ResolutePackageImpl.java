@@ -15,14 +15,18 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
 import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
+import com.rockwellcollins.atc.resolute.resolute.ClaimRationale;
+import com.rockwellcollins.atc.resolute.resolute.ClaimRestriction;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ClaimString;
 import com.rockwellcollins.atc.resolute.resolute.ClaimText;
 import com.rockwellcollins.atc.resolute.resolute.ClaimTextVar;
+import com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
 import com.rockwellcollins.atc.resolute.resolute.Definition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
 import com.rockwellcollins.atc.resolute.resolute.ErrorStatement;
+import com.rockwellcollins.atc.resolute.resolute.EvidenceExpr;
 import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.FailExpr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
@@ -145,6 +149,27 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   private EClass claimContextEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass claimUsageDomainEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass claimRationaleEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass claimRestrictionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -453,6 +478,13 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   private EClass undevelopedExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass evidenceExprEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -788,6 +820,72 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
   public EReference getClaimContext_Expr()
   {
     return (EReference)claimContextEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getClaimUsageDomain()
+  {
+    return claimUsageDomainEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getClaimUsageDomain_Val()
+  {
+    return (EReference)claimUsageDomainEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getClaimRationale()
+  {
+    return claimRationaleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getClaimRationale_Val()
+  {
+    return (EReference)claimRationaleEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getClaimRestriction()
+  {
+    return claimRestrictionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getClaimRestriction_Val()
+  {
+    return (EReference)claimRestrictionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1984,6 +2082,39 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
+  public EClass getEvidenceExpr()
+  {
+    return evidenceExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEvidenceExpr_Name()
+  {
+    return (EAttribute)evidenceExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEvidenceExpr_Val()
+  {
+    return (EReference)evidenceExprEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getSolutionExpr()
   {
     return solutionExprEClass;
@@ -2159,6 +2290,15 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     claimContextEClass = createEClass(CLAIM_CONTEXT);
     createEReference(claimContextEClass, CLAIM_CONTEXT__EXPR);
 
+    claimUsageDomainEClass = createEClass(CLAIM_USAGE_DOMAIN);
+    createEReference(claimUsageDomainEClass, CLAIM_USAGE_DOMAIN__VAL);
+
+    claimRationaleEClass = createEClass(CLAIM_RATIONALE);
+    createEReference(claimRationaleEClass, CLAIM_RATIONALE__VAL);
+
+    claimRestrictionEClass = createEClass(CLAIM_RESTRICTION);
+    createEReference(claimRestrictionEClass, CLAIM_RESTRICTION__VAL);
+
     claimJustificationEClass = createEClass(CLAIM_JUSTIFICATION);
     createEReference(claimJustificationEClass, CLAIM_JUSTIFICATION__VAL);
 
@@ -2311,6 +2451,10 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
 
     undevelopedExprEClass = createEClass(UNDEVELOPED_EXPR);
 
+    evidenceExprEClass = createEClass(EVIDENCE_EXPR);
+    createEAttribute(evidenceExprEClass, EVIDENCE_EXPR__NAME);
+    createEReference(evidenceExprEClass, EVIDENCE_EXPR__VAL);
+
     solutionExprEClass = createEClass(SOLUTION_EXPR);
     createEAttribute(solutionExprEClass, SOLUTION_EXPR__NAME);
     createEReference(solutionExprEClass, SOLUTION_EXPR__VAL);
@@ -2375,6 +2519,9 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     definitionBodyEClass.getESuperTypes().add(theAadl2Package.getElement());
     claimContextEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
     claimContextEClass.getESuperTypes().add(this.getClaimTextVar());
+    claimUsageDomainEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
+    claimRationaleEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
+    claimRestrictionEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
     claimJustificationEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
     claimAssumptionEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
     claimAssumptionEClass.getESuperTypes().add(this.getClaimTextVar());
@@ -2417,6 +2564,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     setExprEClass.getESuperTypes().add(this.getExpr());
     letExprEClass.getESuperTypes().add(this.getExpr());
     undevelopedExprEClass.getESuperTypes().add(this.getExpr());
+    evidenceExprEClass.getESuperTypes().add(this.getExpr());
     solutionExprEClass.getESuperTypes().add(this.getExpr());
     guaranteeExprEClass.getESuperTypes().add(this.getExpr());
     warningStatementEClass.getESuperTypes().add(this.getLintStatement());
@@ -2454,6 +2602,15 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
 
     initEClass(claimContextEClass, ClaimContext.class, "ClaimContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getClaimContext_Expr(), this.getExpr(), null, "expr", null, 0, 1, ClaimContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(claimUsageDomainEClass, ClaimUsageDomain.class, "ClaimUsageDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getClaimUsageDomain_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimUsageDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(claimRationaleEClass, ClaimRationale.class, "ClaimRationale", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getClaimRationale_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimRationale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(claimRestrictionEClass, ClaimRestriction.class, "ClaimRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getClaimRestriction_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(claimJustificationEClass, ClaimJustification.class, "ClaimJustification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getClaimJustification_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimJustification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2606,6 +2763,10 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEReference(getLetExpr_Expr(), this.getExpr(), null, "expr", null, 0, 1, LetExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(undevelopedExprEClass, UndevelopedExpr.class, "UndevelopedExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(evidenceExprEClass, EvidenceExpr.class, "EvidenceExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEvidenceExpr_Name(), theEcorePackage.getEString(), "name", null, 0, 1, EvidenceExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEvidenceExpr_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, EvidenceExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(solutionExprEClass, SolutionExpr.class, "SolutionExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSolutionExpr_Name(), theEcorePackage.getEString(), "name", null, 0, 1, SolutionExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

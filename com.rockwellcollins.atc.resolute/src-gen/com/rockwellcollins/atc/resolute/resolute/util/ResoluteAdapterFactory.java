@@ -127,6 +127,21 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
         return createClaimContextAdapter();
       }
       @Override
+      public Adapter caseClaimUsageDomain(ClaimUsageDomain object)
+      {
+        return createClaimUsageDomainAdapter();
+      }
+      @Override
+      public Adapter caseClaimRationale(ClaimRationale object)
+      {
+        return createClaimRationaleAdapter();
+      }
+      @Override
+      public Adapter caseClaimRestriction(ClaimRestriction object)
+      {
+        return createClaimRestrictionAdapter();
+      }
+      @Override
       public Adapter caseClaimJustification(ClaimJustification object)
       {
         return createClaimJustificationAdapter();
@@ -347,6 +362,11 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
         return createUndevelopedExprAdapter();
       }
       @Override
+      public Adapter caseEvidenceExpr(EvidenceExpr object)
+      {
+        return createEvidenceExprAdapter();
+      }
+      @Override
       public Adapter caseSolutionExpr(SolutionExpr object)
       {
         return createSolutionExprAdapter();
@@ -564,6 +584,51 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createClaimContextAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain <em>Claim Usage Domain</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain
+   * @generated
+   */
+  public Adapter createClaimUsageDomainAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimRationale <em>Claim Rationale</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimRationale
+   * @generated
+   */
+  public Adapter createClaimRationaleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimRestriction <em>Claim Restriction</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimRestriction
+   * @generated
+   */
+  public Adapter createClaimRestrictionAdapter()
   {
     return null;
   }
@@ -1224,6 +1289,21 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createUndevelopedExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.EvidenceExpr <em>Evidence Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.EvidenceExpr
+   * @generated
+   */
+  public Adapter createEvidenceExprAdapter()
   {
     return null;
   }

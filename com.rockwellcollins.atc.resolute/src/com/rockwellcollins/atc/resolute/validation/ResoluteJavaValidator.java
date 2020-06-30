@@ -64,9 +64,13 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
 import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
+import com.rockwellcollins.atc.resolute.resolute.ClaimRationale;
+import com.rockwellcollins.atc.resolute.resolute.ClaimRestriction;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
+import com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
+import com.rockwellcollins.atc.resolute.resolute.EvidenceExpr;
 import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.FailExpr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
@@ -482,6 +486,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			for (NamedElement attr : claimBody.getAttributes()) {
 				if (attr instanceof ClaimStrategy) {
 					error(attr, "A strategy cannot contain a strategy attribute");
+				} else if (attr instanceof ClaimRestriction) {
+					error(attr, "A strategy cannot contain a Restriction element");
 				}
 			}
 			if (!isValidStrategyExpr(claimBody.getExpr())) {
@@ -501,6 +507,28 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 						error(attr, "An inline startegy can only be used with a goal claim call expression");
 					}
 				}
+			}
+		}
+
+		// check if a claim is a conclusion then make sure it can only make call to other
+		// strategies or conclusions.
+		if (claimType.equalsIgnoreCase("conclusion") && body instanceof ClaimBody) {
+			ClaimBody claimBody = (ClaimBody) body;
+			for (NamedElement attr : claimBody.getAttributes()) {
+				if (!(attr instanceof ClaimRestriction)) {
+					String attributeType = "";
+					if (attr instanceof ClaimUsageDomain) {
+						attributeType = "Domain element";
+					} else if (attr instanceof ClaimRationale) {
+						attributeType = "Rationale element";
+					} else if (attr instanceof ClaimStrategy) {
+						attributeType = "Strategy element";
+					}
+					error(attr, "A conclusion cannot contain a " + attributeType);
+				}
+			}
+			if (!isValidConclusionExpr(claimBody.getExpr())) {
+				error(claimBody.getExpr(), "Conclusions can only make calls to other conclusions or strategies");
 			}
 		}
 
@@ -557,6 +585,37 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			return isValidStrategyExpr(letExpr.getExpr());
 		} else if (expr instanceof UndevelopedExpr) {
 			return true;
+		} else if (expr instanceof EvidenceExpr) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean isValidConclusionExpr(Expr expr) {
+		if (expr instanceof BinaryExpr) {
+			BinaryExpr binaryExpr = (BinaryExpr) expr;
+			if (binaryExpr.getOp().equals("=>")) {
+				return false;
+			}
+			return isValidConclusionExpr(binaryExpr.getLeft()) && isValidConclusionExpr(binaryExpr.getRight());
+		} else if (expr instanceof UnaryExpr) {
+			UnaryExpr unaryExpr = (UnaryExpr) expr;
+			return isValidConclusionExpr(unaryExpr.getExpr());
+		} else if (expr instanceof IfThenElseExpr) {
+			IfThenElseExpr ifThenElseExpr = (IfThenElseExpr) expr;
+			return isValidConclusionExpr(ifThenElseExpr.getThen()) && isValidConclusionExpr(ifThenElseExpr.getElse());
+		} else if (expr instanceof QuantifiedExpr) {
+			QuantifiedExpr quantifiedExpr = (QuantifiedExpr) expr;
+			return isValidConclusionExpr(quantifiedExpr.getExpr());
+		} else if (expr instanceof FnCallExpr) {
+			FnCallExpr fnCallExpr = (FnCallExpr) expr;
+			FunctionDefinition funcDef = fnCallExpr.getFn();
+			if (funcDef.getBody() instanceof ClaimBody) {
+				return true;
+			}
+		} else if (expr instanceof LetExpr) {
+			LetExpr letExpr = (LetExpr) expr;
+			return isValidConclusionExpr(letExpr.getExpr());
 		}
 		return false;
 	}
@@ -1516,6 +1575,10 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 
 			if (expr instanceof SolutionExpr) {
+				return BaseType.BOOL;
+			}
+
+			if (expr instanceof EvidenceExpr) {
 				return BaseType.BOOL;
 			}
 

@@ -635,6 +635,225 @@ public interface ResolutePackage extends EPackage
   int CLAIM_CONTEXT_FEATURE_COUNT = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimUsageDomainImpl <em>Claim Usage Domain</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ClaimUsageDomainImpl
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimUsageDomain()
+   * @generated
+   */
+  int CLAIM_USAGE_DOMAIN = 9;
+
+  /**
+   * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_USAGE_DOMAIN__OWNED_ELEMENT = Aadl2Package.NAMED_ELEMENT__OWNED_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_USAGE_DOMAIN__OWNED_COMMENT = Aadl2Package.NAMED_ELEMENT__OWNED_COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_USAGE_DOMAIN__NAME = Aadl2Package.NAMED_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_USAGE_DOMAIN__QUALIFIED_NAME = Aadl2Package.NAMED_ELEMENT__QUALIFIED_NAME;
+
+  /**
+   * The feature id for the '<em><b>Owned Property Association</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_USAGE_DOMAIN__OWNED_PROPERTY_ASSOCIATION = Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_USAGE_DOMAIN__VAL = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Claim Usage Domain</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_USAGE_DOMAIN_FEATURE_COUNT = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimRationaleImpl <em>Claim Rationale</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ClaimRationaleImpl
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimRationale()
+   * @generated
+   */
+  int CLAIM_RATIONALE = 10;
+
+  /**
+   * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RATIONALE__OWNED_ELEMENT = Aadl2Package.NAMED_ELEMENT__OWNED_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RATIONALE__OWNED_COMMENT = Aadl2Package.NAMED_ELEMENT__OWNED_COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RATIONALE__NAME = Aadl2Package.NAMED_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RATIONALE__QUALIFIED_NAME = Aadl2Package.NAMED_ELEMENT__QUALIFIED_NAME;
+
+  /**
+   * The feature id for the '<em><b>Owned Property Association</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RATIONALE__OWNED_PROPERTY_ASSOCIATION = Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RATIONALE__VAL = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Claim Rationale</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RATIONALE_FEATURE_COUNT = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimRestrictionImpl <em>Claim Restriction</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ClaimRestrictionImpl
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimRestriction()
+   * @generated
+   */
+  int CLAIM_RESTRICTION = 11;
+
+  /**
+   * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RESTRICTION__OWNED_ELEMENT = Aadl2Package.NAMED_ELEMENT__OWNED_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RESTRICTION__OWNED_COMMENT = Aadl2Package.NAMED_ELEMENT__OWNED_COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RESTRICTION__NAME = Aadl2Package.NAMED_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RESTRICTION__QUALIFIED_NAME = Aadl2Package.NAMED_ELEMENT__QUALIFIED_NAME;
+
+  /**
+   * The feature id for the '<em><b>Owned Property Association</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RESTRICTION__OWNED_PROPERTY_ASSOCIATION = Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RESTRICTION__VAL = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Claim Restriction</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLAIM_RESTRICTION_FEATURE_COUNT = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimJustificationImpl <em>Claim Justification</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -642,7 +861,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimJustification()
    * @generated
    */
-  int CLAIM_JUSTIFICATION = 9;
+  int CLAIM_JUSTIFICATION = 12;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -715,7 +934,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimAssumption()
    * @generated
    */
-  int CLAIM_ASSUMPTION = 10;
+  int CLAIM_ASSUMPTION = 13;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -788,7 +1007,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimStrategy()
    * @generated
    */
-  int CLAIM_STRATEGY = 11;
+  int CLAIM_STRATEGY = 14;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -861,7 +1080,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimText()
    * @generated
    */
-  int CLAIM_TEXT = 12;
+  int CLAIM_TEXT = 15;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -898,7 +1117,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimTextVar()
    * @generated
    */
-  int CLAIM_TEXT_VAR = 13;
+  int CLAIM_TEXT_VAR = 16;
 
   /**
    * The number of structural features of the '<em>Claim Text Var</em>' class.
@@ -917,7 +1136,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getExpr()
    * @generated
    */
-  int EXPR = 14;
+  int EXPR = 17;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -954,7 +1173,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getLetBinding()
    * @generated
    */
-  int LET_BINDING = 15;
+  int LET_BINDING = 18;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1036,7 +1255,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getResoluteSubclause()
    * @generated
    */
-  int RESOLUTE_SUBCLAUSE = 16;
+  int RESOLUTE_SUBCLAUSE = 19;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1118,7 +1337,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getNestedDotID()
    * @generated
    */
-  int NESTED_DOT_ID = 17;
+  int NESTED_DOT_ID = 20;
 
   /**
    * The feature id for the '<em><b>Base</b></em>' reference.
@@ -1155,7 +1374,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getLintStatement()
    * @generated
    */
-  int LINT_STATEMENT = 18;
+  int LINT_STATEMENT = 21;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -1183,7 +1402,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getRuleset()
    * @generated
    */
-  int RULESET = 19;
+  int RULESET = 22;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1256,7 +1475,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getRulesetBody()
    * @generated
    */
-  int RULESET_BODY = 20;
+  int RULESET_BODY = 23;
 
   /**
    * The feature id for the '<em><b>Lint Statements</b></em>' containment reference list.
@@ -1284,7 +1503,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getAnalysisStatement()
    * @generated
    */
-  int ANALYSIS_STATEMENT = 21;
+  int ANALYSIS_STATEMENT = 24;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1330,7 +1549,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getListType()
    * @generated
    */
-  int LIST_TYPE = 22;
+  int LIST_TYPE = 25;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -1358,7 +1577,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getSetType()
    * @generated
    */
-  int SET_TYPE = 23;
+  int SET_TYPE = 26;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -1386,7 +1605,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getLibraryFnType()
    * @generated
    */
-  int LIBRARY_FN_TYPE = 24;
+  int LIBRARY_FN_TYPE = 27;
 
   /**
    * The feature id for the '<em><b>Lib Name</b></em>' attribute.
@@ -1423,7 +1642,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getQuantArg()
    * @generated
    */
-  int QUANT_ARG = 25;
+  int QUANT_ARG = 28;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1505,7 +1724,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getFunctionBody()
    * @generated
    */
-  int FUNCTION_BODY = 26;
+  int FUNCTION_BODY = 29;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1560,7 +1779,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimBody()
    * @generated
    */
-  int CLAIM_BODY = 27;
+  int CLAIM_BODY = 30;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1624,7 +1843,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimString()
    * @generated
    */
-  int CLAIM_STRING = 28;
+  int CLAIM_STRING = 31;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1670,7 +1889,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimArg()
    * @generated
    */
-  int CLAIM_ARG = 29;
+  int CLAIM_ARG = 32;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1725,7 +1944,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getBinaryExpr()
    * @generated
    */
-  int BINARY_EXPR = 30;
+  int BINARY_EXPR = 33;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1789,7 +2008,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getInstanceOfExpr()
    * @generated
    */
-  int INSTANCE_OF_EXPR = 31;
+  int INSTANCE_OF_EXPR = 34;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1844,7 +2063,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getUnaryExpr()
    * @generated
    */
-  int UNARY_EXPR = 32;
+  int UNARY_EXPR = 35;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1899,7 +2118,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getCastExpr()
    * @generated
    */
-  int CAST_EXPR = 33;
+  int CAST_EXPR = 36;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -1954,7 +2173,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getIdExpr()
    * @generated
    */
-  int ID_EXPR = 34;
+  int ID_EXPR = 37;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2000,7 +2219,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getThisExpr()
    * @generated
    */
-  int THIS_EXPR = 35;
+  int THIS_EXPR = 38;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2046,7 +2265,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getFailExpr()
    * @generated
    */
-  int FAIL_EXPR = 36;
+  int FAIL_EXPR = 39;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2101,7 +2320,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getIntExpr()
    * @generated
    */
-  int INT_EXPR = 37;
+  int INT_EXPR = 40;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2147,7 +2366,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getRealExpr()
    * @generated
    */
-  int REAL_EXPR = 38;
+  int REAL_EXPR = 41;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2193,7 +2412,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getBoolExpr()
    * @generated
    */
-  int BOOL_EXPR = 39;
+  int BOOL_EXPR = 42;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2239,7 +2458,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getStringExpr()
    * @generated
    */
-  int STRING_EXPR = 40;
+  int STRING_EXPR = 43;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2285,7 +2504,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getIfThenElseExpr()
    * @generated
    */
-  int IF_THEN_ELSE_EXPR = 41;
+  int IF_THEN_ELSE_EXPR = 44;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2349,7 +2568,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getQuantifiedExpr()
    * @generated
    */
-  int QUANTIFIED_EXPR = 42;
+  int QUANTIFIED_EXPR = 45;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2413,7 +2632,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getLibraryFnCallExpr()
    * @generated
    */
-  int LIBRARY_FN_CALL_EXPR = 43;
+  int LIBRARY_FN_CALL_EXPR = 46;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2477,7 +2696,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getBuiltInFnCallExpr()
    * @generated
    */
-  int BUILT_IN_FN_CALL_EXPR = 44;
+  int BUILT_IN_FN_CALL_EXPR = 47;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2532,7 +2751,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getFnCallExpr()
    * @generated
    */
-  int FN_CALL_EXPR = 45;
+  int FN_CALL_EXPR = 48;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2587,7 +2806,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getLintExpr()
    * @generated
    */
-  int LINT_EXPR = 46;
+  int LINT_EXPR = 49;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2633,7 +2852,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getListFilterMapExpr()
    * @generated
    */
-  int LIST_FILTER_MAP_EXPR = 47;
+  int LIST_FILTER_MAP_EXPR = 50;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2697,7 +2916,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getListExpr()
    * @generated
    */
-  int LIST_EXPR = 48;
+  int LIST_EXPR = 51;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2743,7 +2962,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getSetFilterMapExpr()
    * @generated
    */
-  int SET_FILTER_MAP_EXPR = 49;
+  int SET_FILTER_MAP_EXPR = 52;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2807,7 +3026,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getSetExpr()
    * @generated
    */
-  int SET_EXPR = 50;
+  int SET_EXPR = 53;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2853,7 +3072,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getLetExpr()
    * @generated
    */
-  int LET_EXPR = 51;
+  int LET_EXPR = 54;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2908,7 +3127,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getUndevelopedExpr()
    * @generated
    */
-  int UNDEVELOPED_EXPR = 52;
+  int UNDEVELOPED_EXPR = 55;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2938,6 +3157,61 @@ public interface ResolutePackage extends EPackage
   int UNDEVELOPED_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.EvidenceExprImpl <em>Evidence Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.EvidenceExprImpl
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getEvidenceExpr()
+   * @generated
+   */
+  int EVIDENCE_EXPR = 56;
+
+  /**
+   * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVIDENCE_EXPR__OWNED_ELEMENT = EXPR__OWNED_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVIDENCE_EXPR__OWNED_COMMENT = EXPR__OWNED_COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVIDENCE_EXPR__NAME = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVIDENCE_EXPR__VAL = EXPR_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Evidence Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVIDENCE_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.SolutionExprImpl <em>Solution Expr</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2945,7 +3219,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getSolutionExpr()
    * @generated
    */
-  int SOLUTION_EXPR = 53;
+  int SOLUTION_EXPR = 57;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3000,7 +3274,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getGuaranteeExpr()
    * @generated
    */
-  int GUARANTEE_EXPR = 54;
+  int GUARANTEE_EXPR = 58;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3055,7 +3329,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getWarningStatement()
    * @generated
    */
-  int WARNING_STATEMENT = 55;
+  int WARNING_STATEMENT = 59;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3083,7 +3357,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getErrorStatement()
    * @generated
    */
-  int ERROR_STATEMENT = 56;
+  int ERROR_STATEMENT = 60;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3111,7 +3385,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getInfoStatement()
    * @generated
    */
-  int INFO_STATEMENT = 57;
+  int INFO_STATEMENT = 61;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3139,7 +3413,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getProveStatement()
    * @generated
    */
-  int PROVE_STATEMENT = 58;
+  int PROVE_STATEMENT = 62;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3185,7 +3459,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getCheckStatement()
    * @generated
    */
-  int CHECK_STATEMENT = 59;
+  int CHECK_STATEMENT = 63;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3434,6 +3708,69 @@ public interface ResolutePackage extends EPackage
    * @generated
    */
   EReference getClaimContext_Expr();
+
+  /**
+   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain <em>Claim Usage Domain</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Claim Usage Domain</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain
+   * @generated
+   */
+  EClass getClaimUsageDomain();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Val</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain#getVal()
+   * @see #getClaimUsageDomain()
+   * @generated
+   */
+  EReference getClaimUsageDomain_Val();
+
+  /**
+   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimRationale <em>Claim Rationale</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Claim Rationale</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimRationale
+   * @generated
+   */
+  EClass getClaimRationale();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.ClaimRationale#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Val</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimRationale#getVal()
+   * @see #getClaimRationale()
+   * @generated
+   */
+  EReference getClaimRationale_Val();
+
+  /**
+   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimRestriction <em>Claim Restriction</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Claim Restriction</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimRestriction
+   * @generated
+   */
+  EClass getClaimRestriction();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.ClaimRestriction#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Val</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimRestriction#getVal()
+   * @see #getClaimRestriction()
+   * @generated
+   */
+  EReference getClaimRestriction_Val();
 
   /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimJustification <em>Claim Justification</em>}'.
@@ -4580,6 +4917,38 @@ public interface ResolutePackage extends EPackage
   EClass getUndevelopedExpr();
 
   /**
+   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.EvidenceExpr <em>Evidence Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Evidence Expr</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.EvidenceExpr
+   * @generated
+   */
+  EClass getEvidenceExpr();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.rockwellcollins.atc.resolute.resolute.EvidenceExpr#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.EvidenceExpr#getName()
+   * @see #getEvidenceExpr()
+   * @generated
+   */
+  EAttribute getEvidenceExpr_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.EvidenceExpr#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Val</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.EvidenceExpr#getVal()
+   * @see #getEvidenceExpr()
+   * @generated
+   */
+  EReference getEvidenceExpr_Val();
+
+  /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.SolutionExpr <em>Solution Expr</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4893,6 +5262,60 @@ public interface ResolutePackage extends EPackage
      * @generated
      */
     EReference CLAIM_CONTEXT__EXPR = eINSTANCE.getClaimContext_Expr();
+
+    /**
+     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimUsageDomainImpl <em>Claim Usage Domain</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ClaimUsageDomainImpl
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimUsageDomain()
+     * @generated
+     */
+    EClass CLAIM_USAGE_DOMAIN = eINSTANCE.getClaimUsageDomain();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLAIM_USAGE_DOMAIN__VAL = eINSTANCE.getClaimUsageDomain_Val();
+
+    /**
+     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimRationaleImpl <em>Claim Rationale</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ClaimRationaleImpl
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimRationale()
+     * @generated
+     */
+    EClass CLAIM_RATIONALE = eINSTANCE.getClaimRationale();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLAIM_RATIONALE__VAL = eINSTANCE.getClaimRationale_Val();
+
+    /**
+     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimRestrictionImpl <em>Claim Restriction</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ClaimRestrictionImpl
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimRestriction()
+     * @generated
+     */
+    EClass CLAIM_RESTRICTION = eINSTANCE.getClaimRestriction();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLAIM_RESTRICTION__VAL = eINSTANCE.getClaimRestriction_Val();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimJustificationImpl <em>Claim Justification</em>}' class.
@@ -5845,6 +6268,32 @@ public interface ResolutePackage extends EPackage
      * @generated
      */
     EClass UNDEVELOPED_EXPR = eINSTANCE.getUndevelopedExpr();
+
+    /**
+     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.EvidenceExprImpl <em>Evidence Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.EvidenceExprImpl
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getEvidenceExpr()
+     * @generated
+     */
+    EClass EVIDENCE_EXPR = eINSTANCE.getEvidenceExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EVIDENCE_EXPR__NAME = eINSTANCE.getEvidenceExpr_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EVIDENCE_EXPR__VAL = eINSTANCE.getEvidenceExpr_Val();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.SolutionExprImpl <em>Solution Expr</em>}' class.

@@ -104,6 +104,33 @@ public interface ResoluteFactory extends EFactory
   ClaimContext createClaimContext();
 
   /**
+   * Returns a new object of class '<em>Claim Usage Domain</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Claim Usage Domain</em>'.
+   * @generated
+   */
+  ClaimUsageDomain createClaimUsageDomain();
+
+  /**
+   * Returns a new object of class '<em>Claim Rationale</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Claim Rationale</em>'.
+   * @generated
+   */
+  ClaimRationale createClaimRationale();
+
+  /**
+   * Returns a new object of class '<em>Claim Restriction</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Claim Restriction</em>'.
+   * @generated
+   */
+  ClaimRestriction createClaimRestriction();
+
+  /**
    * Returns a new object of class '<em>Claim Justification</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -498,6 +525,15 @@ public interface ResoluteFactory extends EFactory
    * @generated
    */
   UndevelopedExpr createUndevelopedExpr();
+
+  /**
+   * Returns a new object of class '<em>Evidence Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Evidence Expr</em>'.
+   * @generated
+   */
+  EvidenceExpr createEvidenceExpr();
 
   /**
    * Returns a new object of class '<em>Solution Expr</em>'.

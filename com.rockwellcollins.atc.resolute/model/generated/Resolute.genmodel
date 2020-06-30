@@ -35,6 +35,15 @@
     <genClasses ecoreClass="Resolute.ecore#//ClaimContext">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimContext/expr"/>
     </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimUsageDomain">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimUsageDomain/val"/>
+    </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimRationale">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimRationale/val"/>
+    </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimRestriction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimRestriction/val"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimJustification">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimJustification/val"/>
     </genClasses>
@@ -184,6 +193,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//LetExpr/expr"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//UndevelopedExpr"/>
+    <genClasses ecoreClass="Resolute.ecore#//EvidenceExpr">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//EvidenceExpr/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//EvidenceExpr/val"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//SolutionExpr">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//SolutionExpr/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//SolutionExpr/val"/>

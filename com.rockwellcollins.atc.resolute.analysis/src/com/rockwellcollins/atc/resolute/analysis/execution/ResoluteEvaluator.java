@@ -43,6 +43,7 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimText;
 import com.rockwellcollins.atc.resolute.resolute.ClaimTextVar;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
+import com.rockwellcollins.atc.resolute.resolute.EvidenceExpr;
 import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.FailExpr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
@@ -102,6 +103,11 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 
 	@Override
 	public ResoluteValue caseSolutionExpr(SolutionExpr expr) {
+		return TRUE;
+	}
+
+	@Override
+	public ResoluteValue caseEvidenceExpr(EvidenceExpr expr) {
 		return TRUE;
 	}
 

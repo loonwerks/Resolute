@@ -105,7 +105,7 @@ ConstantDefinition:
 ;
 
 FunctionDefinition:
-	(claimType='goal' | claimType='strategy' | claimType='contract')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
+	(claimType='goal' | claimType='conclusion' | claimType='strategy' | claimType='contract')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
 ;
 
 DefinitionBody:
@@ -118,10 +118,25 @@ ClaimAttribute returns aadl2::NamedElement:
 |	ClaimJustification
 |	ClaimAssumption
 |	ClaimStrategy
+|	ClaimUsageDomain
+|	ClaimRationale
+| 	ClaimRestriction
 ;
 
 ClaimContext:
 	'context' name=ID ':' expr=Expr ';'
+;
+
+ClaimUsageDomain:
+	'domain' name=ID ':' val=StringTerm ';'
+;
+
+ClaimRationale:
+	'rationale' name=ID ':' val=StringTerm ';'
+;
+
+ClaimRestriction:
+	'restriction' name=ID ':' val=StringTerm ';'
 ;
 
 ClaimJustification:
@@ -213,6 +228,7 @@ AtomicExpr returns Expr:
 |	'(' Expr ')'
 
 | {UndevelopedExpr} 'undeveloped' 
+| {EvidenceExpr} 'evidence' name=ID ':' val=StringTerm 
 | {SolutionExpr} 'solution' name=ID ':' val=StringTerm 
 | {GuaranteeExpr} 'guarantee' name=ID ':' expr=Expr ';'
 ;

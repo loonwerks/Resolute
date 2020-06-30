@@ -73,6 +73,9 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.FUNCTION_DEFINITION: return createFunctionDefinition();
       case ResolutePackage.DEFINITION_BODY: return createDefinitionBody();
       case ResolutePackage.CLAIM_CONTEXT: return createClaimContext();
+      case ResolutePackage.CLAIM_USAGE_DOMAIN: return createClaimUsageDomain();
+      case ResolutePackage.CLAIM_RATIONALE: return createClaimRationale();
+      case ResolutePackage.CLAIM_RESTRICTION: return createClaimRestriction();
       case ResolutePackage.CLAIM_JUSTIFICATION: return createClaimJustification();
       case ResolutePackage.CLAIM_ASSUMPTION: return createClaimAssumption();
       case ResolutePackage.CLAIM_STRATEGY: return createClaimStrategy();
@@ -117,6 +120,7 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.SET_EXPR: return createSetExpr();
       case ResolutePackage.LET_EXPR: return createLetExpr();
       case ResolutePackage.UNDEVELOPED_EXPR: return createUndevelopedExpr();
+      case ResolutePackage.EVIDENCE_EXPR: return createEvidenceExpr();
       case ResolutePackage.SOLUTION_EXPR: return createSolutionExpr();
       case ResolutePackage.GUARANTEE_EXPR: return createGuaranteeExpr();
       case ResolutePackage.WARNING_STATEMENT: return createWarningStatement();
@@ -235,6 +239,42 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
   {
     ClaimContextImpl claimContext = new ClaimContextImpl();
     return claimContext;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ClaimUsageDomain createClaimUsageDomain()
+  {
+    ClaimUsageDomainImpl claimUsageDomain = new ClaimUsageDomainImpl();
+    return claimUsageDomain;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ClaimRationale createClaimRationale()
+  {
+    ClaimRationaleImpl claimRationale = new ClaimRationaleImpl();
+    return claimRationale;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ClaimRestriction createClaimRestriction()
+  {
+    ClaimRestrictionImpl claimRestriction = new ClaimRestrictionImpl();
+    return claimRestriction;
   }
 
   /**
@@ -763,6 +803,18 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
   {
     UndevelopedExprImpl undevelopedExpr = new UndevelopedExprImpl();
     return undevelopedExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EvidenceExpr createEvidenceExpr()
+  {
+    EvidenceExprImpl evidenceExpr = new EvidenceExprImpl();
+    return evidenceExpr;
   }
 
   /**
