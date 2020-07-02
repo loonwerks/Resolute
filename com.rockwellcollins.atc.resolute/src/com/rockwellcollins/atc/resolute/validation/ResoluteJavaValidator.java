@@ -484,7 +484,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				}
 			}
 			if (!isValidStrategyExpr(claimBody.getExpr())) {
-				error(claimBody.getExpr(), "Strategies can only make calls to other goals");
+				error(claimBody.getExpr(), "Invalid strategy expression");
 			}
 		}
 
@@ -533,7 +533,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		if (expr instanceof BinaryExpr) {
 			BinaryExpr binaryExpr = (BinaryExpr) expr;
 			if (binaryExpr.getOp().equals("=>")) {
-				return false;
+				return isValidStrategyExpr(binaryExpr.getRight());
 			}
 			return isValidStrategyExpr(binaryExpr.getLeft()) && isValidStrategyExpr(binaryExpr.getRight());
 		} else if (expr instanceof UnaryExpr) {
@@ -731,6 +731,13 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			LetExpr le = (LetExpr) context;
 			if (le.getExpr().equals(obj)) {
 				return inClaimContext(le);
+			}
+		}
+
+		if (context instanceof IfThenElseExpr) {
+			IfThenElseExpr ite = (IfThenElseExpr) context;
+			if (ite.getThen().equals(obj) || ite.getElse().equals(obj)) {
+				return inClaimContext(ite);
 			}
 		}
 
