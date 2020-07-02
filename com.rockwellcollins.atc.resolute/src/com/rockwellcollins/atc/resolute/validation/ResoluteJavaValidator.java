@@ -285,7 +285,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 //			}
 //		}
 
-		checkDuplicateAttributeNames(claimContext);
+//		checkDuplicateAttributeNames(claimContext);
 
 		// Build the scope for this context
 		Set<FunctionDefinition> funcDefs = buildContextScope(funcDef.getBody().getExpr());
