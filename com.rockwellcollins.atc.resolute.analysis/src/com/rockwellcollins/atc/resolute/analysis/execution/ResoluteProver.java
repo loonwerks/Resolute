@@ -44,6 +44,7 @@ import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.FailExpr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
+import com.rockwellcollins.atc.resolute.resolute.IfThenElseExpr;
 import com.rockwellcollins.atc.resolute.resolute.LetBinding;
 import com.rockwellcollins.atc.resolute.resolute.LetExpr;
 import com.rockwellcollins.atc.resolute.resolute.LintStatement;
@@ -148,6 +149,15 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 			}
 		} else {
 			return new ResoluteResult(eval(object).getBool());
+		}
+	}
+
+	@Override
+	public ResoluteResult caseIfThenElseExpr(IfThenElseExpr object) {
+		if (eval(object.getCond()).getBool()) {
+			return doSwitch(object.getThen());
+		} else {
+			return doSwitch(object.getElse());
 		}
 	}
 
