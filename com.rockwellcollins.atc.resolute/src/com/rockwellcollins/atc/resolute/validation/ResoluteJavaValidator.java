@@ -483,11 +483,17 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 
 		if (claimType.equalsIgnoreCase("strategy") && body instanceof ClaimBody) {
 			ClaimBody claimBody = (ClaimBody) body;
+			int rationaleElementCount = 0;
 			for (NamedElement attr : claimBody.getAttributes()) {
 				if (attr instanceof ClaimStrategy) {
 					error(attr, "A strategy cannot contain a strategy attribute");
 				} else if (attr instanceof ClaimRestriction) {
 					error(attr, "A strategy cannot contain a Restriction element");
+				} else if (attr instanceof ClaimRationale) {
+					rationaleElementCount++;
+					if (rationaleElementCount > 1) {
+						error(attr, "A strategy cannot contain more than one Rationale Element");
+					}
 				}
 			}
 			if (!isValidStrategyExpr(claimBody.getExpr())) {
