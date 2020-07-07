@@ -548,8 +548,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		// check if a claim is a conclusion then make sure it can only make call to other
 		// strategies or conclusions.
 		if (claimType.equalsIgnoreCase("conclusion") && body instanceof ClaimBody) {
-			ClaimBody claimBody = (ClaimBody) body;
 			int restrictionElementCount = 0;
+			ClaimBody claimBody = (ClaimBody) body;
 			for (NamedElement attr : claimBody.getAttributes()) {
 				if (attr instanceof ClaimRestriction) {
 					restrictionElementCount++;
