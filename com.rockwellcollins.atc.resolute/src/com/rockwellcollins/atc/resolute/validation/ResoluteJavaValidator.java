@@ -283,6 +283,10 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				break;
 			}
 		}
+
+		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
+			error(claimContext, "A conclusion cannot contain a Context element");
+		}
 //		if (funcDef != null) {
 //			// Check if an existing context with this name exists in this scope
 //			if (contextScope.getOrDefault(funcDef, Collections.emptySet()).contains(claimContext.getName())) {
@@ -305,11 +309,35 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 
 	@Check
 	public void checkClaimJustification(ClaimJustification claimJustification) {
+		EObject parent = claimJustification;
+		FunctionDefinition funcDef = null;
+		while (parent != null) {
+			parent = parent.eContainer();
+			if (parent instanceof FunctionDefinition) {
+				funcDef = (FunctionDefinition) parent;
+				break;
+			}
+		}
+		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
+			error(claimJustification, "A conclusion cannot contain a Justification element");
+		}
 		checkDuplicateAttributeNames(claimJustification);
 	}
 
 	@Check
 	public void checkClaimAssumption(ClaimAssumption claimAssumption) {
+		EObject parent = claimAssumption;
+		FunctionDefinition funcDef = null;
+		while (parent != null) {
+			parent = parent.eContainer();
+			if (parent instanceof FunctionDefinition) {
+				funcDef = (FunctionDefinition) parent;
+				break;
+			}
+		}
+		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
+			error(claimAssumption, "A conclusion cannot contain an Assumption element");
+		}
 		checkDuplicateAttributeNames(claimAssumption);
 	}
 
@@ -323,6 +351,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				break;
 			}
 		}
+
 		List<EObject> claims = Aadl2GlobalScopeUtil.getAll(funcDef, ResolutePackage.eINSTANCE.getFunctionDefinition());
 		claims.addAll(EcoreUtil2.getAllContentsOfType(funcDef.eContainer(), FunctionDefinition.class));
 		for (EObject claim : claims) {
@@ -492,7 +521,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				} else if (attr instanceof ClaimRationale) {
 					rationaleElementCount++;
 					if (rationaleElementCount > 1) {
-						error(attr, "A strategy cannot contain more than one Rationale Element");
+						error(attr, "A strategy cannot contain more than one Rationale element");
 					}
 				}
 			}
@@ -501,7 +530,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 
-		if (body instanceof ClaimBody) {
+		if (!claimType.equalsIgnoreCase("conclusion") && body instanceof ClaimBody) {
 			ClaimBody claimBody = (ClaimBody) body;
 			int claimStrategyCount = 0;
 			for (NamedElement attr : claimBody.getAttributes()) {
@@ -520,17 +549,15 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		// strategies or conclusions.
 		if (claimType.equalsIgnoreCase("conclusion") && body instanceof ClaimBody) {
 			ClaimBody claimBody = (ClaimBody) body;
+			int restrictionElementCount = 0;
 			for (NamedElement attr : claimBody.getAttributes()) {
-				if (!(attr instanceof ClaimRestriction)) {
-					String attributeType = "";
-					if (attr instanceof ClaimUsageDomain) {
-						attributeType = "Domain element";
-					} else if (attr instanceof ClaimRationale) {
-						attributeType = "Rationale element";
-					} else if (attr instanceof ClaimStrategy) {
-						attributeType = "Strategy element";
+				if (attr instanceof ClaimRestriction) {
+					restrictionElementCount++;
+					if (restrictionElementCount > 1) {
+						error(attr, "A conclusion cannot contain more than one Restriction element");
 					}
-					error(attr, "A conclusion cannot contain a " + attributeType);
+				} else if (attr instanceof ClaimStrategy) {
+					error(attr, "A conclusion cannot contain an inline Strategy");
 				}
 			}
 			if (!isValidConclusionExpr(claimBody.getExpr())) {
@@ -639,6 +666,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		}
 		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("goal")) {
 			error(claimUsageDomain, "A goal cannot contain a Domain element");
+		} else if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
+			error(claimUsageDomain, "A conclusion cannot contain a Domain element");
 		}
 	}
 
@@ -655,6 +684,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		}
 		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("goal")) {
 			error(claimRationale, "A goal cannot contain a Rationale element");
+		} else if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
+			error(claimRationale, "A conclusion cannot contain a Rationale element");
 		}
 	}
 
