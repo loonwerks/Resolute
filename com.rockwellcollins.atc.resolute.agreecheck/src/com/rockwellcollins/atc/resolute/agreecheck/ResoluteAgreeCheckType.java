@@ -16,6 +16,7 @@ public class ResoluteAgreeCheckType implements ResoluteExternalAnalysisType {
 	@Override
 	public List<ResoluteType> getArgTypes() {
 		ArrayList<ResoluteType> list = new ArrayList<ResoluteType>();
+		list.add(BaseType.AADL);
 		return list;
 	}
 }
