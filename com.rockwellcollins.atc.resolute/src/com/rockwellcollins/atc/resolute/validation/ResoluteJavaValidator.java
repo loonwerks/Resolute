@@ -284,9 +284,14 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 
-		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
-			error(claimContext, "A conclusion cannot contain a Context element");
-		}
+		// check if a context is defined inside a strategy and the parent of this strategy is a conclusion
+//		if (isValidContextUsage(funcDef.getBody().getExpr())) {
+//			error(claimContext,
+//					"A context element cannot be defined for a strategy with a parent claim as a conclusion");
+//		}
+//		if (funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
+//			error(claimContext, "A conclusion cannot contain a Context element");
+//		}
 //		if (funcDef != null) {
 //			// Check if an existing context with this name exists in this scope
 //			if (contextScope.getOrDefault(funcDef, Collections.emptySet()).contains(claimContext.getName())) {
@@ -318,7 +323,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				break;
 			}
 		}
-		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
+		if (funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
 			error(claimJustification, "A conclusion cannot contain a Justification element");
 		}
 		checkDuplicateAttributeNames(claimJustification);
@@ -335,7 +340,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				break;
 			}
 		}
-		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
+		if (funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
 			error(claimAssumption, "A conclusion cannot contain an Assumption element");
 		}
 		checkDuplicateAttributeNames(claimAssumption);
