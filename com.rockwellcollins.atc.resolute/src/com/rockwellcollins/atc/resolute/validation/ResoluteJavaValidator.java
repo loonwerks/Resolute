@@ -628,7 +628,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		if (expr instanceof BinaryExpr) {
 			BinaryExpr binaryExpr = (BinaryExpr) expr;
 			if (binaryExpr.getOp().equals("=>")) {
-				return false;
+				return isValidConclusionExpr(binaryExpr.getRight());
 			}
 			return isValidConclusionExpr(binaryExpr.getLeft()) && isValidConclusionExpr(binaryExpr.getRight());
 		} else if (expr instanceof UnaryExpr) {
