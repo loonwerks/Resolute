@@ -39,7 +39,9 @@ public class ResoluteAgreeCheck implements ResoluteExternalAnalysis {
 		// Get the hash representing the current model
 		try {
 			NamedElement root = null;
-			if (evalContext.getThisInstance() instanceof SystemInstance) {
+			if (args.get(0).getNamedElement() != null) {
+				root = args.get(0).getNamedElement();
+			} else if (evalContext.getThisInstance() instanceof SystemInstance) {
 				SystemInstance si = (SystemInstance) evalContext.getThisInstance();
 				root = si.getComponentImplementation();
 			} else if (evalContext.getThisInstance() instanceof ComponentInstance) {
@@ -64,7 +66,9 @@ public class ResoluteAgreeCheck implements ResoluteExternalAnalysis {
 		// Get the name of the verification to check
 		// It will be the name of the implementation that was selected to run Resolute
 		String verificationName = "Verification for ";
-		if (evalContext.getThisInstance() instanceof SystemInstance) {
+		if (args.get(0).getNamedElement() != null) {
+			verificationName += args.get(0).getNamedElement().getName();
+		} else if (evalContext.getThisInstance() instanceof SystemInstance) {
 			SystemInstance si = (SystemInstance) evalContext.getThisInstance();
 			verificationName = verificationName.concat(si.getComponentImplementation().getName());
 
@@ -103,9 +107,10 @@ public class ResoluteAgreeCheck implements ResoluteExternalAnalysis {
 				if (!logResult.getResult().equalsIgnoreCase(Status.VALID.toString())) {
 					throw new ResoluteFailException("AGREE analysis passed", evalContext.getThisInstance());
 				}
-				break;
+				return;
 			}
 		}
+		throw new ResoluteFailException("AGREE analysis was run", evalContext.getThisInstance());
 	}
 
 }
