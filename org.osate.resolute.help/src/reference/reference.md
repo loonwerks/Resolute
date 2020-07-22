@@ -875,10 +875,10 @@ The return value must be one of the ResoluteValue subclasses: Boolvalue, IntValu
 While the `analysis` capability in Resolute enables the execution of external plugins, a separate plugin is required for each analysis call.  This is an inefficient mechanism for encapsulating a group of related functions.  For example, a library of string manipulation functions (such as concat(), length(), substring(), etc.) would each require an individual plugin using the analysis() call, as in analysis(concat, str1, str2).  
 
 Resolute external function library support provides a mechanism for packaging multiple functions into a single plugin, which can then be called in a Resolute claim using the syntax
-> `\<LibraryName\>.\<LibraryFunction\>(Arg1, Arg2, …)`
+\<`LibraryName`\>`.`\<`LibraryFunction`\>`(Arg1, Arg2, ...)`
   
 For example, the concat function in string manipulation library is called as 
-> `StringLib.concat(str1, str2)` 
+`StringLib.concat(str1, str2)` 
 
 and returns a string.
 
