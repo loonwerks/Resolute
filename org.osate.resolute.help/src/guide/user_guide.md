@@ -467,6 +467,27 @@ specific model element. However, you should place them in the top-level
 component implementation to which the *Resolute* command is applied;
 otherwise, they may be invoked multiple times.
 
+
+Export to AdvoCATE
+==================
+
+Resolute provides the ability to export an evaluated assurance argument to the AdvoCATE graphical assurance case tool. Both *assurance patterns* and *assurance arguments* can be exported.  An *assurance pattern* collapses multiple instances of assurance argument elements into a single element.  The export format of a Resolute assurance case can be specified by clicking the *Windows -> Preferences* menu item, then choosing the *Resolute -> Export* preference page.
+
+![Resolute Export preference page](images/preference.png)
+
+To export the assurance case, from the *Assurance Case* tab in OSATE right click on the top-level goal as shown below.
+
+![Assurance case export menu](images/export.png)
+
+From the pop-up menu, select *Export -> Export to AdvoCATE Tool*.  A *Resolute – Export to Advocate* dialog box will open (as shown below). Navigate to an AdvoCATE workspace folder (you may wish to create a new AdvoCATE project first if it does not already exist, but this is not required).  Enter a file name and select *Save*.  This will generate a *.argument* file that can be imported directly into AdvoCATE.
+
+![Assurance case export dialog](images/save.png)
+
+Open AdvoCATE and refresh the project where the .argument file is located. Next, open the exported file using the diagram representation in AdvoCATE to visualize the generated export. Expand the *.argument* filename in the *Model Explorer* pane and double-click the argument (marked with the red oval in the figure below) to visualize the assurance pattern in AdvoCATE. 
+
+![AdvoCATE](images/advocate.png)
+
+
 Debugging Resolute
 ==================
 
