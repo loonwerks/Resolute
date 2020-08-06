@@ -134,7 +134,7 @@
 						<artifact>
 							<groupId>com.rockwellcollins.atc.resolute</groupId>
 							<artifactId>com.rockwellcollins.atc.resolute.target</artifactId>
-							<version>2.4.4-SNAPSHOT</version>
+							<version>${project.parent.version}</version>
 						</artifact>
 					</target>
 					<environments>
