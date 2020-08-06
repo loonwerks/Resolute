@@ -21,7 +21,7 @@ public class ResoluteScheduleAnalysis implements ResoluteExternalAnalysis {
         double sched_ratio = 0;
         Set<NamedElement> threadList = context.getSet("thread");
         for (NamedElement el : threadList) {
-            assert (el instanceof ComponentInstance);
+			assert (el instanceof ComponentInstance);
             ComponentInstance comp = (ComponentInstance) el;
             EList<PropertyExpression> prop = comp.getPropertyValues("Timing_Properties", "Period");
 
