@@ -20,9 +20,9 @@ public class ResoluteExportPreferencePage extends FieldEditorPreferencePage impl
 	@Override
 	protected void createFieldEditors() {
 		resoluteCheckNamePreferenceFieldEditor = new RadioGroupFieldEditor(
-				ResolutePreferenceConstants.EXPORT_NODES_PREFERENCE, "Node name preference", 2,
-				new String[][] { { "Unique", ResolutePreferenceConstants.UNIQUE_NODES },
-						{ "Duplicate", ResolutePreferenceConstants.DUPLICATE_NODES } },
+				ResolutePreferenceConstants.EXPORT_NODES_PREFERENCE, "Export Format", 2,
+				new String[][] { { "Assurance Argument", ResolutePreferenceConstants.UNIQUE_NODES },
+						{ "Assurance Pattern", ResolutePreferenceConstants.DUPLICATE_NODES } },
 			getFieldEditorParent(), true);
 		addField(resoluteCheckNamePreferenceFieldEditor);
 
