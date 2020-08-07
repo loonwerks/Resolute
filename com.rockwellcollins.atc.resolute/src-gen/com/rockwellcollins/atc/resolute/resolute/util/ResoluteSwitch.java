@@ -98,6 +98,16 @@ public class ResoluteSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ResolutePackage.NOTATION_DEFINITION:
+      {
+        NotationDefinition notationDefinition = (NotationDefinition)theEObject;
+        T result = caseNotationDefinition(notationDefinition);
+        if (result == null) result = caseDefinition(notationDefinition);
+        if (result == null) result = caseNamedElement(notationDefinition);
+        if (result == null) result = caseElement(notationDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ResolutePackage.TYPE:
       {
         Type type = (Type)theEObject;
@@ -680,6 +690,22 @@ public class ResoluteSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDefinition(Definition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Notation Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Notation Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNotationDefinition(NotationDefinition object)
   {
     return null;
   }

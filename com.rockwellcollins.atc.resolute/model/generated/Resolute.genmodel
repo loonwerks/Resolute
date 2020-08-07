@@ -12,6 +12,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ResoluteLibrary/definitions"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//Definition"/>
+    <genClasses ecoreClass="Resolute.ecore#//NotationDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//NotationDefinition/notation"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//Type"/>
     <genClasses ecoreClass="Resolute.ecore#//BaseType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//BaseType/paramType"/>

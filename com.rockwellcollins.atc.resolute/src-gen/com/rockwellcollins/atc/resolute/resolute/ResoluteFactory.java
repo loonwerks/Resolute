@@ -41,6 +41,15 @@ public interface ResoluteFactory extends EFactory
   Definition createDefinition();
 
   /**
+   * Returns a new object of class '<em>Notation Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Notation Definition</em>'.
+   * @generated
+   */
+  NotationDefinition createNotationDefinition();
+
+  /**
    * Returns a new object of class '<em>Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

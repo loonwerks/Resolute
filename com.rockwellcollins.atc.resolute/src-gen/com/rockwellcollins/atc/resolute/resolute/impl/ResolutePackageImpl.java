@@ -48,6 +48,7 @@ import com.rockwellcollins.atc.resolute.resolute.ListExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListType;
 import com.rockwellcollins.atc.resolute.resolute.NestedDotID;
+import com.rockwellcollins.atc.resolute.resolute.NotationDefinition;
 import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.QuantArg;
 import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
@@ -100,6 +101,13 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   private EClass definitionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass notationDefinitionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -633,6 +641,28 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
   public EClass getDefinition()
   {
     return definitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNotationDefinition()
+  {
+    return notationDefinitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNotationDefinition_Notation()
+  {
+    return (EAttribute)notationDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2266,6 +2296,9 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
 
     definitionEClass = createEClass(DEFINITION);
 
+    notationDefinitionEClass = createEClass(NOTATION_DEFINITION);
+    createEAttribute(notationDefinitionEClass, NOTATION_DEFINITION__NOTATION);
+
     typeEClass = createEClass(TYPE);
 
     baseTypeEClass = createEClass(BASE_TYPE);
@@ -2509,6 +2542,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     // Add supertypes to classes
     resoluteLibraryEClass.getESuperTypes().add(theAadl2Package.getAnnexLibrary());
     definitionEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
+    notationDefinitionEClass.getESuperTypes().add(this.getDefinition());
     baseTypeEClass.getESuperTypes().add(this.getType());
     argEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
     argEClass.getESuperTypes().add(this.getClaimTextVar());
@@ -2578,6 +2612,9 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEReference(getResoluteLibrary_Definitions(), this.getDefinition(), null, "definitions", null, 0, -1, ResoluteLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(definitionEClass, Definition.class, "Definition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(notationDefinitionEClass, NotationDefinition.class, "NotationDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNotationDefinition_Notation(), theEcorePackage.getEString(), "notation", null, 0, 1, NotationDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

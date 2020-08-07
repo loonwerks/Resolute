@@ -69,6 +69,7 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimRestriction;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
+import com.rockwellcollins.atc.resolute.resolute.Definition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
 import com.rockwellcollins.atc.resolute.resolute.EvidenceExpr;
 import com.rockwellcollins.atc.resolute.resolute.Expr;
@@ -90,6 +91,7 @@ import com.rockwellcollins.atc.resolute.resolute.LintStatement;
 import com.rockwellcollins.atc.resolute.resolute.ListExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.NestedDotID;
+import com.rockwellcollins.atc.resolute.resolute.NotationDefinition;
 import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.QuantArg;
 import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
@@ -272,6 +274,57 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	}
 
 	@Check
+	public void checkResoluteLibrary(ResoluteLibrary resoluteLibrary) {
+		List<Definition> definitions = resoluteLibrary.getDefinitions();
+		boolean isConclusion = false;
+		boolean isGoal = false;
+		for (Definition definition : definitions) {
+			if (definition instanceof FunctionDefinition) {
+				FunctionDefinition functionDefinition = (FunctionDefinition) definition;
+				if (functionDefinition.getBody() instanceof ClaimBody) {
+					if (functionDefinition.getClaimType() == null
+							|| functionDefinition.getClaimType().equalsIgnoreCase("goal")) {
+						isGoal = true;
+					} else if (functionDefinition.getClaimType().equalsIgnoreCase("Conclusion")) {
+						isConclusion = true;
+					}
+					if ((functionDefinition.getClaimType() == null
+							|| !functionDefinition.getClaimType().equalsIgnoreCase("strategy"))
+									&& (isConclusion && isGoal)) {
+						error(functionDefinition, "A resolute library can not contain both conclusion and goal");
+					}
+				}
+			}
+		}
+	}
+
+	@Check
+	public void checkNotationDefinition(NotationDefinition notationDefinition) {
+		int jpCount = 0;
+		int gsnCount = 0;
+
+		if (notationDefinition.getNotation() == null) {
+			error(notationDefinition, "A NotationDefinition should contain a notation description");
+		}
+
+		List<NotationDefinition> notations = Aadl2GlobalScopeUtil.getAll(notationDefinition.eContainer(),
+				ResolutePackage.eINSTANCE.getNotationDefinition());
+		notations.addAll(EcoreUtil2.getAllContentsOfType(notationDefinition.eContainer(), NotationDefinition.class));
+		for (NotationDefinition notation : notations) {
+			if (notation.getNotation().equalsIgnoreCase("justification pattern")
+					|| notation.getNotation().equalsIgnoreCase("jp")) {
+				jpCount++;
+			} else {
+				gsnCount++;
+			}
+		}
+		if (jpCount > 0 && gsnCount > 0) {
+			error(notationDefinition, "A resolute project should have a consistent notation");
+		}
+
+	}
+
+	@Check
 	public void checkClaimContext(ClaimContext claimContext) {
 		// Get containing claim
 		EObject parent = claimContext;
@@ -311,6 +364,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			contextScope.get(fd).add(claimContext.getName());
 		}
 	}
+
 
 	@Check
 	public void checkClaimJustification(ClaimJustification claimJustification) {
@@ -486,6 +540,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 
 	@Check
 	public void checkFuncDef(FunctionDefinition funcDef) {
+		boolean isJustificationPattern = false;
 		DefinitionBody body = funcDef.getBody();
 		String claimType = funcDef.getClaimType();
 		if (body == null) {
@@ -496,6 +551,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			claimType = "goal";
 		}
 
+		if (funcDef.getName().equalsIgnoreCase("Objective512aStr")) {
+			int a = 1;
+		}
 		ResoluteType exprType = getExprType(body.getExpr());
 
 		if (body instanceof FunctionBody) {
@@ -515,6 +573,16 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 
+		// get the notation description and ensure the strategy expression correctness accordingly
+		List<NotationDefinition> notationDefinitions = EcoreUtil2.getAllContentsOfType(funcDef.eContainer(),
+				NotationDefinition.class);
+		if (!notationDefinitions.isEmpty()) {
+			NotationDefinition notationDefinition = notationDefinitions.get(0);
+			if (notationDefinition.getNotation().equalsIgnoreCase("justification pattern")
+					|| notationDefinition.getNotation().equalsIgnoreCase("jp")) {
+				isJustificationPattern = true;
+			}
+		}
 		if (claimType.equalsIgnoreCase("strategy") && body instanceof ClaimBody) {
 			ClaimBody claimBody = (ClaimBody) body;
 			int rationaleElementCount = 0;
@@ -530,7 +598,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 					}
 				}
 			}
-			if (!isValidStrategyExpr(claimBody.getExpr())) {
+			if (!isValidStrategyExpr(claimBody.getExpr(), isJustificationPattern)) {
 				error(claimBody.getExpr(), "Invalid strategy expression");
 			}
 		}
@@ -596,34 +664,41 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		return true;
 	}
 
-	private boolean isValidStrategyExpr(Expr expr) {
+	private boolean isValidStrategyExpr(Expr expr, boolean isJustificationPattern) {
 		if (expr instanceof BinaryExpr) {
 			BinaryExpr binaryExpr = (BinaryExpr) expr;
 			if (binaryExpr.getOp().equals("=>")) {
-				return isValidStrategyExpr(binaryExpr.getRight());
+				return isValidStrategyExpr(binaryExpr.getRight(), isJustificationPattern);
 			}
-			return isValidStrategyExpr(binaryExpr.getLeft()) && isValidStrategyExpr(binaryExpr.getRight());
+			return isValidStrategyExpr(binaryExpr.getLeft(), isJustificationPattern)
+					&& isValidStrategyExpr(binaryExpr.getRight(), isJustificationPattern);
 		} else if (expr instanceof UnaryExpr) {
 			UnaryExpr unaryExpr = (UnaryExpr) expr;
-			return isValidStrategyExpr(unaryExpr.getExpr());
+			return isValidStrategyExpr(unaryExpr.getExpr(), isJustificationPattern);
 		} else if (expr instanceof IfThenElseExpr) {
 			IfThenElseExpr ifThenElseExpr = (IfThenElseExpr) expr;
-			return isValidStrategyExpr(ifThenElseExpr.getThen()) && isValidStrategyExpr(ifThenElseExpr.getElse());
+			return isValidStrategyExpr(ifThenElseExpr.getThen(), isJustificationPattern)
+					&& isValidStrategyExpr(ifThenElseExpr.getElse(), isJustificationPattern);
 		} else if (expr instanceof QuantifiedExpr) {
 			QuantifiedExpr quantifiedExpr = (QuantifiedExpr) expr;
-			return isValidStrategyExpr(quantifiedExpr.getExpr());
+			return isValidStrategyExpr(quantifiedExpr.getExpr(), isJustificationPattern);
 		} else if (expr instanceof FnCallExpr) {
 			FnCallExpr fnCallExpr = (FnCallExpr) expr;
 			FunctionDefinition funcDef = fnCallExpr.getFn();
-			if (!funcDef.getClaimType().equalsIgnoreCase("strategy") && !(funcDef.getBody() instanceof FunctionBody)) {
+			if ((funcDef.getClaimType() == null || !funcDef.getClaimType().equalsIgnoreCase("strategy"))
+					&& !(funcDef.getBody() instanceof FunctionBody)) {
+				return true;
+			} else if ((funcDef.getClaimType() == null || !funcDef.getClaimType().equalsIgnoreCase("strategy"))
+					&& (funcDef.getBody() instanceof FunctionBody && isJustificationPattern)) {
 				return true;
 			}
 		} else if (expr instanceof LetExpr) {
 			LetExpr letExpr = (LetExpr) expr;
-			return isValidStrategyExpr(letExpr.getExpr());
-		} else if (expr instanceof UndevelopedExpr) {
+			return isValidStrategyExpr(letExpr.getExpr(), isJustificationPattern);
+		} else if ((expr instanceof IdExpr || expr instanceof LibraryFnCallExpr || expr instanceof BuiltInFnCallExpr
+				|| expr instanceof EvidenceExpr) && isJustificationPattern) {
 			return true;
-		} else if (expr instanceof EvidenceExpr) {
+		} else if (expr instanceof UndevelopedExpr) {
 			return true;
 		}
 		return false;

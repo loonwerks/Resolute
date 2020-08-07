@@ -43,6 +43,7 @@ import com.rockwellcollins.atc.resolute.resolute.ListExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListType;
 import com.rockwellcollins.atc.resolute.resolute.NestedDotID;
+import com.rockwellcollins.atc.resolute.resolute.NotationDefinition;
 import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.QuantArg;
 import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
@@ -326,6 +327,9 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 				return; 
 			case ResolutePackage.NESTED_DOT_ID:
 				sequence_NestedDotID(context, (NestedDotID) semanticObject); 
+				return; 
+			case ResolutePackage.NOTATION_DEFINITION:
+				sequence_NotationDefinition(context, (NotationDefinition) semanticObject); 
 				return; 
 			case ResolutePackage.PROVE_STATEMENT:
 				sequence_AnalysisStatement(context, (ProveStatement) semanticObject); 
@@ -1893,6 +1897,29 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 */
 	protected void sequence_NestedDotID(ISerializationContext context, NestedDotID semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     NamedElement returns NotationDefinition
+	 *     Definition returns NotationDefinition
+	 *     NotationDefinition returns NotationDefinition
+	 *
+	 * Constraint:
+	 *     (name='notation' notation=Notation)
+	 */
+	protected void sequence_NotationDefinition(ISerializationContext context, NotationDefinition semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, Aadl2Package.eINSTANCE.getNamedElement_Name()) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, Aadl2Package.eINSTANCE.getNamedElement_Name()));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.NOTATION_DEFINITION__NOTATION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.NOTATION_DEFINITION__NOTATION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getNotationDefinitionAccess().getNameNotationKeyword_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getNotationDefinitionAccess().getNotationNotationParserRuleCall_1_0(), semanticObject.getNotation());
+		feeder.finish();
 	}
 	
 	

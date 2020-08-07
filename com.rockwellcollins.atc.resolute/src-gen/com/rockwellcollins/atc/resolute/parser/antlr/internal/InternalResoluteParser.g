@@ -183,8 +183,140 @@ ruleDefinition returns [EObject current=null]
         $current = $this_Ruleset_2.current;
         afterParserOrEnumRuleCall();
     }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDefinitionAccess().getNotationDefinitionParserRuleCall_3()); 
+    }
+    this_NotationDefinition_3=ruleNotationDefinition
+    {
+        $current = $this_NotationDefinition_3.current;
+        afterParserOrEnumRuleCall();
+    }
 )
 ;
+
+
+
+
+
+// Entry rule entryRuleNotationDefinition
+entryRuleNotationDefinition returns [EObject current=null]
+	:
+	{ newCompositeNode(grammarAccess.getNotationDefinitionRule()); }
+	 iv_ruleNotationDefinition=ruleNotationDefinition 
+	 { $current=$iv_ruleNotationDefinition.current; } 
+	 EOF 
+;
+
+// Rule NotationDefinition
+ruleNotationDefinition returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		lv_name_0_0=
+	Notation
+    {
+        newLeafNode(lv_name_0_0, grammarAccess.getNotationDefinitionAccess().getNameNotationKeyword_0_0());
+    }
+
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getNotationDefinitionRule());
+	        }
+       		setWithLastConsumed($current, "name", lv_name_0_0, "notation");
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getNotationDefinitionAccess().getNotationNotationParserRuleCall_1_0()); 
+	    }
+		lv_notation_1_0=ruleNotation		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getNotationDefinitionRule());
+	        }
+       		set(
+       			$current, 
+       			"notation",
+        		lv_notation_1_0, 
+        		"com.rockwellcollins.atc.resolute.Resolute.Notation");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRuleNotation
+entryRuleNotation returns [String current=null] 
+:
+	{ newCompositeNode(grammarAccess.getNotationRule()); } 
+	 iv_ruleNotation=ruleNotation 
+	 { $current=$iv_ruleNotation.current.getText(); }  
+	 EOF 
+;
+
+// Rule Notation
+ruleNotation returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule();
+    }:
+((
+	kw=Justification 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getNotationAccess().getJustificationKeyword_0_0()); 
+    }
+
+	kw=Pattern 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getNotationAccess().getPatternKeyword_0_1()); 
+    }
+)
+    |
+	kw=Jp 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getNotationAccess().getJpKeyword_1()); 
+    }
+
+    |
+	kw=Gsn 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getNotationAccess().getGsnKeyword_2()); 
+    }
+
+    |(
+	kw=Goal 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getNotationAccess().getGoalKeyword_3_0()); 
+    }
+
+	kw=Structuring 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getNotationAccess().getStructuringKeyword_3_1()); 
+    }
+
+	kw=Notation 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getNotationAccess().getNotationKeyword_3_2()); 
+    }
+))
+    ;
 
 
 

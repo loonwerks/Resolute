@@ -66,6 +66,7 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
     {
       case ResolutePackage.RESOLUTE_LIBRARY: return createResoluteLibrary();
       case ResolutePackage.DEFINITION: return createDefinition();
+      case ResolutePackage.NOTATION_DEFINITION: return createNotationDefinition();
       case ResolutePackage.TYPE: return createType();
       case ResolutePackage.BASE_TYPE: return createBaseType();
       case ResolutePackage.ARG: return createArg();
@@ -155,6 +156,18 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
   {
     DefinitionImpl definition = new DefinitionImpl();
     return definition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotationDefinition createNotationDefinition()
+  {
+    NotationDefinitionImpl notationDefinition = new NotationDefinitionImpl();
+    return notationDefinition;
   }
 
   /**

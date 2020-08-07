@@ -40,6 +40,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getNamedElementAccess().getAlternatives(), "rule__NamedElement__Alternatives");
 					put(grammarAccess.getElementAccess().getAlternatives(), "rule__Element__Alternatives");
 					put(grammarAccess.getDefinitionAccess().getAlternatives(), "rule__Definition__Alternatives");
+					put(grammarAccess.getNotationAccess().getAlternatives(), "rule__Notation__Alternatives");
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 					put(grammarAccess.getBaseTypeAccess().getTypeAlternatives_0(), "rule__BaseType__TypeAlternatives_0");
 					put(grammarAccess.getArgAccess().getAlternatives(), "rule__Arg__Alternatives");
@@ -73,6 +74,9 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getSignedRealAccess().getAlternatives_0(), "rule__SignedReal__Alternatives_0");
 					put(grammarAccess.getNumAltAccess().getAlternatives(), "rule__NumAlt__Alternatives");
 					put(grammarAccess.getResoluteLibraryAccess().getGroup(), "rule__ResoluteLibrary__Group__0");
+					put(grammarAccess.getNotationDefinitionAccess().getGroup(), "rule__NotationDefinition__Group__0");
+					put(grammarAccess.getNotationAccess().getGroup_0(), "rule__Notation__Group_0__0");
+					put(grammarAccess.getNotationAccess().getGroup_3(), "rule__Notation__Group_3__0");
 					put(grammarAccess.getTypeAccess().getGroup_0(), "rule__Type__Group_0__0");
 					put(grammarAccess.getTypeAccess().getGroup_1(), "rule__Type__Group_1__0");
 					put(grammarAccess.getTypeAccess().getGroup_2(), "rule__Type__Group_2__0");
@@ -235,6 +239,8 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getQCREFAccess().getGroup_0(), "rule__QCREF__Group_0__0");
 					put(grammarAccess.getQCREFAccess().getGroup_2(), "rule__QCREF__Group_2__0");
 					put(grammarAccess.getResoluteLibraryAccess().getDefinitionsAssignment_1(), "rule__ResoluteLibrary__DefinitionsAssignment_1");
+					put(grammarAccess.getNotationDefinitionAccess().getNameAssignment_0(), "rule__NotationDefinition__NameAssignment_0");
+					put(grammarAccess.getNotationDefinitionAccess().getNotationAssignment_1(), "rule__NotationDefinition__NotationAssignment_1");
 					put(grammarAccess.getTypeAccess().getTypeAssignment_0_2(), "rule__Type__TypeAssignment_0_2");
 					put(grammarAccess.getTypeAccess().getTypeAssignment_1_2(), "rule__Type__TypeAssignment_1_2");
 					put(grammarAccess.getTypeAccess().getParamTypeAssignment_2_1_1(), "rule__Type__ParamTypeAssignment_2_1_1");

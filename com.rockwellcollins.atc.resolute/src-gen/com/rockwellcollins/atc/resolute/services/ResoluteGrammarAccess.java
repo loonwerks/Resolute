@@ -141,14 +141,16 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cConstantDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cFunctionDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cRulesetParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cNotationDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Definition:
 		//	ConstantDefinition
 		//	| FunctionDefinition
-		//	| Ruleset;
+		//	| Ruleset
+		//	| NotationDefinition;
 		@Override public ParserRule getRule() { return rule; }
 
-		//ConstantDefinition | FunctionDefinition | Ruleset
+		//ConstantDefinition | FunctionDefinition | Ruleset | NotationDefinition
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ConstantDefinition
@@ -159,6 +161,85 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//Ruleset
 		public RuleCall getRulesetParserRuleCall_2() { return cRulesetParserRuleCall_2; }
+
+		//NotationDefinition
+		public RuleCall getNotationDefinitionParserRuleCall_3() { return cNotationDefinitionParserRuleCall_3; }
+	}
+
+	public class NotationDefinitionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.NotationDefinition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cNameNotationKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
+		private final Assignment cNotationAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNotationNotationParserRuleCall_1_0 = (RuleCall)cNotationAssignment_1.eContents().get(0);
+		
+		//NotationDefinition:
+		//	name='notation' notation=Notation;
+		@Override public ParserRule getRule() { return rule; }
+
+		//name='notation' notation=Notation
+		public Group getGroup() { return cGroup; }
+
+		//name='notation'
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
+		//'notation'
+		public Keyword getNameNotationKeyword_0_0() { return cNameNotationKeyword_0_0; }
+
+		//notation=Notation
+		public Assignment getNotationAssignment_1() { return cNotationAssignment_1; }
+
+		//Notation
+		public RuleCall getNotationNotationParserRuleCall_1_0() { return cNotationNotationParserRuleCall_1_0; }
+	}
+
+	public class NotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.Notation");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cJustificationKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Keyword cPatternKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Keyword cJpKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cGsnKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Keyword cGoalKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Keyword cStructuringKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Keyword cNotationKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		
+		//Notation:
+		//	'justification' 'pattern' | 'jp' | 'gsn' | 'goal' 'structuring' 'notation';
+		@Override public ParserRule getRule() { return rule; }
+
+		//'justification' 'pattern' | 'jp' | 'gsn' | 'goal' 'structuring' 'notation'
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//'justification' 'pattern'
+		public Group getGroup_0() { return cGroup_0; }
+
+		//'justification'
+		public Keyword getJustificationKeyword_0_0() { return cJustificationKeyword_0_0; }
+
+		//'pattern'
+		public Keyword getPatternKeyword_0_1() { return cPatternKeyword_0_1; }
+
+		//'jp'
+		public Keyword getJpKeyword_1() { return cJpKeyword_1; }
+
+		//'gsn'
+		public Keyword getGsnKeyword_2() { return cGsnKeyword_2; }
+
+		//'goal' 'structuring' 'notation'
+		public Group getGroup_3() { return cGroup_3; }
+
+		//'goal'
+		public Keyword getGoalKeyword_3_0() { return cGoalKeyword_3_0; }
+
+		//'structuring'
+		public Keyword getStructuringKeyword_3_1() { return cStructuringKeyword_3_1; }
+
+		//'notation'
+		public Keyword getNotationKeyword_3_2() { return cNotationKeyword_3_2; }
 	}
 
 	public class TypeElements extends AbstractParserRuleElementFinder {
@@ -3411,6 +3492,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	private final ElementElements pElement;
 	private final ResoluteLibraryElements pResoluteLibrary;
 	private final DefinitionElements pDefinition;
+	private final NotationDefinitionElements pNotationDefinition;
+	private final NotationElements pNotation;
 	private final TypeElements pType;
 	private final BaseTypeElements pBaseType;
 	private final ArgElements pArg;
@@ -3468,6 +3551,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		this.pElement = new ElementElements();
 		this.pResoluteLibrary = new ResoluteLibraryElements();
 		this.pDefinition = new DefinitionElements();
+		this.pNotationDefinition = new NotationDefinitionElements();
+		this.pNotation = new NotationElements();
 		this.pType = new TypeElements();
 		this.pBaseType = new BaseTypeElements();
 		this.pArg = new ArgElements();
@@ -3605,13 +3690,34 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//Definition:
 	//	ConstantDefinition
 	//	| FunctionDefinition
-	//	| Ruleset;
+	//	| Ruleset
+	//	| NotationDefinition;
 	public DefinitionElements getDefinitionAccess() {
 		return pDefinition;
 	}
 	
 	public ParserRule getDefinitionRule() {
 		return getDefinitionAccess().getRule();
+	}
+
+	//NotationDefinition:
+	//	name='notation' notation=Notation;
+	public NotationDefinitionElements getNotationDefinitionAccess() {
+		return pNotationDefinition;
+	}
+	
+	public ParserRule getNotationDefinitionRule() {
+		return getNotationDefinitionAccess().getRule();
+	}
+
+	//Notation:
+	//	'justification' 'pattern' | 'jp' | 'gsn' | 'goal' 'structuring' 'notation';
+	public NotationElements getNotationAccess() {
+		return pNotation;
+	}
+	
+	public ParserRule getNotationRule() {
+		return getNotationAccess().getRule();
 	}
 
 	//Type:

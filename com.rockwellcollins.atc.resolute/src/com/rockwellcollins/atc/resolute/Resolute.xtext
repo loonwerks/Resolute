@@ -38,6 +38,15 @@ Definition:
 	ConstantDefinition 
 |	FunctionDefinition
 |	Ruleset
+|	NotationDefinition
+;
+
+NotationDefinition:
+ 	name='notation' notation=Notation
+;
+
+Notation:
+	'justification' 'pattern' | 'jp' | 'gsn' | 'goal' 'structuring' 'notation'
 ;
 
 Type:
