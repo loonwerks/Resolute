@@ -11,8 +11,10 @@ import java.util.Stack;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.validation.Check;
 import org.osate.aadl2.AadlBoolean;
@@ -307,21 +309,37 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			error(notationDefinition, "A NotationDefinition should contain a notation description");
 		}
 
-		List<NotationDefinition> notations = Aadl2GlobalScopeUtil.getAll(notationDefinition.eContainer(),
-				ResolutePackage.eINSTANCE.getNotationDefinition());
-		notations.addAll(EcoreUtil2.getAllContentsOfType(notationDefinition.eContainer(), NotationDefinition.class));
-		for (NotationDefinition notation : notations) {
-			if (notation.getNotation().equalsIgnoreCase("justification pattern")
-					|| notation.getNotation().equalsIgnoreCase("jp")) {
-				jpCount++;
-			} else {
-				gsnCount++;
+		List<ResoluteLibrary> resoluteLibraries = Aadl2GlobalScopeUtil.getAll(notationDefinition.eContainer(),
+				ResolutePackage.eINSTANCE.getResoluteLibrary());
+		resoluteLibraries
+				.addAll(EcoreUtil2.getAllContentsOfType(notationDefinition.eContainer().eContainer(),
+						ResoluteLibrary.class));
+		for (ResoluteLibrary library : resoluteLibraries) {
+			URI uri = EcoreUtil.getURI(library);
+			if (!uri.segment(0).equalsIgnoreCase("plugin")) {
+				List<Definition> definitions = library.getDefinitions();
+				String notation = getNotation(definitions);
+				if (notation.equalsIgnoreCase("justification pattern") || notation.equalsIgnoreCase("jp")) {
+					jpCount++;
+				} else {
+					gsnCount++;
+				}
 			}
 		}
 		if (jpCount > 0 && gsnCount > 0) {
 			error(notationDefinition, "A resolute project should have a consistent notation");
 		}
 
+	}
+
+	private String getNotation(List<Definition> defs) {
+		for (Definition def : defs) {
+			if (def instanceof NotationDefinition) {
+				NotationDefinition nd = (NotationDefinition) def;
+				return nd.getNotation();
+			}
+		}
+		return new String();
 	}
 
 	@Check
@@ -551,9 +569,6 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			claimType = "goal";
 		}
 
-		if (funcDef.getName().equalsIgnoreCase("Objective512aStr")) {
-			int a = 1;
-		}
 		ResoluteType exprType = getExprType(body.getExpr());
 
 		if (body instanceof FunctionBody) {
