@@ -79,7 +79,6 @@ import com.rockwellcollins.atc.resolute.resolute.FailExpr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.FunctionBody;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
-import com.rockwellcollins.atc.resolute.resolute.GuaranteeExpr;
 import com.rockwellcollins.atc.resolute.resolute.IdExpr;
 import com.rockwellcollins.atc.resolute.resolute.IfThenElseExpr;
 import com.rockwellcollins.atc.resolute.resolute.InstanceOfExpr;
@@ -327,7 +326,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 		if (jpCount > 0 && gsnCount > 0) {
-			error(notationDefinition, "A resolute project should have a consistent notation");
+			error(notationDefinition, "A resolute project should have consistent notations");
 		}
 
 	}
@@ -1783,11 +1782,6 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 
 			if (expr instanceof EvidenceExpr) {
 				return BaseType.BOOL;
-			}
-
-			if (expr instanceof GuaranteeExpr) {
-				GuaranteeExpr guaranteeExpr = (GuaranteeExpr) expr;
-				return getExprType(guaranteeExpr.getExpr());
 			}
 
 			error(expr, "Unable to get type for expression");

@@ -3340,61 +3340,6 @@ public interface ResolutePackage extends EPackage
   int SOLUTION_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.GuaranteeExprImpl <em>Guarantee Expr</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.rockwellcollins.atc.resolute.resolute.impl.GuaranteeExprImpl
-   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getGuaranteeExpr()
-   * @generated
-   */
-  int GUARANTEE_EXPR = 59;
-
-  /**
-   * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GUARANTEE_EXPR__OWNED_ELEMENT = EXPR__OWNED_ELEMENT;
-
-  /**
-   * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GUARANTEE_EXPR__OWNED_COMMENT = EXPR__OWNED_COMMENT;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GUARANTEE_EXPR__NAME = EXPR_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GUARANTEE_EXPR__EXPR = EXPR_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Guarantee Expr</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GUARANTEE_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.WarningStatementImpl <em>Warning Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3402,7 +3347,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getWarningStatement()
    * @generated
    */
-  int WARNING_STATEMENT = 60;
+  int WARNING_STATEMENT = 59;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3430,7 +3375,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getErrorStatement()
    * @generated
    */
-  int ERROR_STATEMENT = 61;
+  int ERROR_STATEMENT = 60;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3458,7 +3403,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getInfoStatement()
    * @generated
    */
-  int INFO_STATEMENT = 62;
+  int INFO_STATEMENT = 61;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3486,7 +3431,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getProveStatement()
    * @generated
    */
-  int PROVE_STATEMENT = 63;
+  int PROVE_STATEMENT = 62;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3532,7 +3477,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getCheckStatement()
    * @generated
    */
-  int CHECK_STATEMENT = 64;
+  int CHECK_STATEMENT = 63;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -5075,38 +5020,6 @@ public interface ResolutePackage extends EPackage
   EReference getSolutionExpr_Val();
 
   /**
-   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.GuaranteeExpr <em>Guarantee Expr</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Guarantee Expr</em>'.
-   * @see com.rockwellcollins.atc.resolute.resolute.GuaranteeExpr
-   * @generated
-   */
-  EClass getGuaranteeExpr();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.rockwellcollins.atc.resolute.resolute.GuaranteeExpr#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see com.rockwellcollins.atc.resolute.resolute.GuaranteeExpr#getName()
-   * @see #getGuaranteeExpr()
-   * @generated
-   */
-  EAttribute getGuaranteeExpr_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.GuaranteeExpr#getExpr <em>Expr</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Expr</em>'.
-   * @see com.rockwellcollins.atc.resolute.resolute.GuaranteeExpr#getExpr()
-   * @see #getGuaranteeExpr()
-   * @generated
-   */
-  EReference getGuaranteeExpr_Expr();
-
-  /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.WarningStatement <em>Warning Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6432,32 +6345,6 @@ public interface ResolutePackage extends EPackage
      * @generated
      */
     EReference SOLUTION_EXPR__VAL = eINSTANCE.getSolutionExpr_Val();
-
-    /**
-     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.GuaranteeExprImpl <em>Guarantee Expr</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.rockwellcollins.atc.resolute.resolute.impl.GuaranteeExprImpl
-     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getGuaranteeExpr()
-     * @generated
-     */
-    EClass GUARANTEE_EXPR = eINSTANCE.getGuaranteeExpr();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GUARANTEE_EXPR__NAME = eINSTANCE.getGuaranteeExpr_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference GUARANTEE_EXPR__EXPR = eINSTANCE.getGuaranteeExpr_Expr();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.WarningStatementImpl <em>Warning Statement</em>}' class.

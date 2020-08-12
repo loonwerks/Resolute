@@ -607,15 +607,6 @@ public class ResoluteSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ResolutePackage.GUARANTEE_EXPR:
-      {
-        GuaranteeExpr guaranteeExpr = (GuaranteeExpr)theEObject;
-        T result = caseGuaranteeExpr(guaranteeExpr);
-        if (result == null) result = caseExpr(guaranteeExpr);
-        if (result == null) result = caseElement(guaranteeExpr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ResolutePackage.WARNING_STATEMENT:
       {
         WarningStatement warningStatement = (WarningStatement)theEObject;
@@ -1602,22 +1593,6 @@ public class ResoluteSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSolutionExpr(SolutionExpr object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Guarantee Expr</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Guarantee Expr</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseGuaranteeExpr(GuaranteeExpr object)
   {
     return null;
   }

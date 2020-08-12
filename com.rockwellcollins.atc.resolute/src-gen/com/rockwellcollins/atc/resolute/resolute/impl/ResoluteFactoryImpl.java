@@ -123,7 +123,6 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.UNDEVELOPED_EXPR: return createUndevelopedExpr();
       case ResolutePackage.EVIDENCE_EXPR: return createEvidenceExpr();
       case ResolutePackage.SOLUTION_EXPR: return createSolutionExpr();
-      case ResolutePackage.GUARANTEE_EXPR: return createGuaranteeExpr();
       case ResolutePackage.WARNING_STATEMENT: return createWarningStatement();
       case ResolutePackage.ERROR_STATEMENT: return createErrorStatement();
       case ResolutePackage.INFO_STATEMENT: return createInfoStatement();
@@ -840,18 +839,6 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
   {
     SolutionExprImpl solutionExpr = new SolutionExprImpl();
     return solutionExpr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public GuaranteeExpr createGuaranteeExpr()
-  {
-    GuaranteeExprImpl guaranteeExpr = new GuaranteeExprImpl();
-    return guaranteeExpr;
   }
 
   /**
