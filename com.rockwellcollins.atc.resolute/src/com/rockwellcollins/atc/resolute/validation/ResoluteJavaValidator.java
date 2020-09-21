@@ -705,9 +705,6 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			} else if ((funcDef.getClaimType() == null || !funcDef.getClaimType().equalsIgnoreCase("strategy"))
 					&& (funcDef.getBody() instanceof FunctionBody && isJustificationPattern)) {
 				return true;
-			} else if ((funcDef.getClaimType().equalsIgnoreCase("strategy"))
-					&& (funcDef.getBody() instanceof ClaimBody && isJustificationPattern)) {
-				return true;
 			}
 		} else if (expr instanceof LetExpr) {
 			LetExpr letExpr = (LetExpr) expr;
