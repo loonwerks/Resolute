@@ -43,7 +43,7 @@ deploy:
   file:
   - "${RELEASE_PKG_FILE}"
   name: Nightly development build ($SNAPSHOT_NUMBER)
-  body: Automated AGREE integration build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built
+  body: Automated Resolute integration build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built
     by Travis CI on $(date +'%F %T %Z').
   prerelease: true
   overwrite: false
@@ -56,4 +56,23 @@ deploy:
   script: python3 .travis/manage_daily_builds.py
   on:
     branch: master
+    condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
+- provider: releases
+  api-key: "$GH_TOKEN"
+  file:
+  - "${RELEASE_PKG_FILE}"
+  name: Nightly development build - ARCOS ONLY ($SNAPSHOT_NUMBER)
+  body: Automated Resolute integration build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built
+    by Travis CI on $(date +'%F %T %Z').
+  prerelease: true
+  overwrite: false
+  skip_cleanup: true
+  target_commitish: "$TRAVIS_COMMIT"
+  on:
+    branch: ac-formal-language
+    condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
+- provider: script
+  script: python3 .travis/manage_daily_builds.py
+  on:
+    branch: ac-formal-language
     condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
