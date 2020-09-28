@@ -32,7 +32,7 @@ script:
 - mvn clean verify
 
 before_deploy:
-- git clone --depth 1 https://github.com/loonwerks/s3-tools.git
+- rm -rf s3-tools && git clone --depth 1 https://github.com/loonwerks/s3-tools.git
 - export RELEASE_PKG_FILE=$(ls repository/target/com.rockwellcollins.atc.resolute.repository-*.zip)
 - echo "deploying $RELEASE_PKG_FILE to GitHub releases"
 - export SNAPSHOT_NUMBER=$(ls repository/target/repository/plugins/com.rockwellcollins.atc.resolute_*.jar | grep -o "[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]\\{12\\}")
