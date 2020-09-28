@@ -63,4 +63,4 @@ def manage_daily_builds(val):
                         asset.delete()
 
 if __name__ == '__main__':
-    manage_daily_builds(val)
+    manage_daily_builds(argv[1])
