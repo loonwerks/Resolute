@@ -23,7 +23,7 @@ env:
 
 before_install:
 - pip3 install --user --upgrade setuptools
-- pip3 install --user boto3 GitPython github3.py pandocfilters
+- pip3 install --user boto3 GitPython github3.py mako pandocfilters
 - "./git-setup.sh"
 
 install: /bin/true
