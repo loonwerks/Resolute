@@ -79,10 +79,12 @@ deploy:
     condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
 - provider: script
   script: python3 s3-tools/s3tools/DeployToP2CompositeRepository.py --path repository/target/repository --prefix p2/snapshots/resolute --child-name resolute_$SNAPSHOT_NUMBER --logging DEBUG
+  skip_cleanup: true
   on:
     branch: master
 - provider: script
   script: python3 s3-tools/s3tools/DeployToP2CompositeRepository.py --path repository/target/repository --prefix p2/snapshots/resolute-jp --child-name resolute-jp_$SNAPSHOT_NUMBER --logging DEBUG
+  skip_cleanup: true
   on:
     branch: ac-formal-language
 - provider: script
