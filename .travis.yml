@@ -43,7 +43,7 @@ deploy:
   api-key: "$GH_TOKEN"
   file:
   - "${RELEASE_PKG_FILE}"
-  name: Nightly development build ($SNAPSHOT_NUMBER)
+  name: Continuous Integration Build ($SNAPSHOT_NUMBER)
   body: Automated Resolute integration build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built
     by Travis CI on $(date +'%F %T %Z').
   prerelease: true
@@ -54,10 +54,9 @@ deploy:
     branch: master
     condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
 - provider: script
-  script: python3 .travis/manage_daily_builds.py "Nightly development build"
+  script: python3 .travis/manage_daily_builds.py "Continuous Integration Build"
   on:
     branch: master
-    condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
 - provider: releases
   api-key: "$GH_TOKEN"
   file:
@@ -71,7 +70,6 @@ deploy:
   target_commitish: "$TRAVIS_COMMIT"
   on:
     branch: ac-formal-language
-    condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
 - provider: script
   script: python3 .travis/manage_daily_builds.py "Experimental build"
   on:
