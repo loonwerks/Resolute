@@ -7,6 +7,7 @@ Created on May 16, 2019
 
 import os
 import re
+import sys
 
 from github3 import GitHub
 from pprint import pformat
@@ -21,6 +22,7 @@ REPOSITORY_REPO = 'Resolute'
 PRODUCT_ASSET_PATTERN = re.compile(r'com.rockwellcollins.atc.resolute.repository-\d+\.\d+\.\d+(-(\d{12}))?-.*')
 
 def manage_daily_builds(val):
+    print('Managing builds matching %s' % (val))
     # obtain git handle
     gh = GitHub(GITHUB_API, token=AUTH_TOKEN)
     repository = gh.repository(REPOSITORY_OWNER, REPOSITORY_REPO)
@@ -63,4 +65,4 @@ def manage_daily_builds(val):
                         asset.delete()
 
 if __name__ == '__main__':
-    manage_daily_builds(argv[1])
+    manage_daily_builds(sys.argv[1])
