@@ -106,19 +106,8 @@
         <unit id="org.osate.ge.feature.feature.group" version="0.0.0"/>
         <unit id="org.osate.plugins.feature.feature.group" version="0.0.0"/>
         <unit id="org.osate.utils.feature.feature.group" version="0.0.0"/>
+        <unit id="org.osate.xtext.aadl2.errormodel.feature.feature.group" version="0.0.0"/>
         <repository location="https://osate-build.sei.cmu.edu/download/osate/stable/2.8.0/updates/"/>
-    </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <unit id="com.collins.trustedsystems.z3.feature.feature.group" version="4.7.1"/>
-      <repository location="https://raw.githubusercontent.com/loonwerks/z3-plugin/master/com.collins.trustedsystems.z3.updates/target/repository"/>
-    </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
-      <unit id="com.rockwellcollins.atc.agree.feature.feature.group" version="0.0.0"/>
-      <repository location="https://raw.githubusercontent.com/loonwerks/AGREE-Updates/master/"/>
-    </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
-      <unit id="com.collins.trustedsystems.jkindapi.feature.feature.group" version="0.0.0"/>
-      <repository location="https://raw.githubusercontent.com/loonwerks/jkind-plugin/master/compositeRepository/"/>
     </location>
   </locations>
 </target>
