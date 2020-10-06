@@ -23,7 +23,7 @@ env:
 
 before_install:
 - pip3 install --user --upgrade setuptools
-- pip3 install --user GitPython github3.py pandocfilters
+- pip3 install --user boto3 GitPython github3.py mako pandocfilters
 - "./git-setup.sh"
 
 install: /bin/true
@@ -32,9 +32,10 @@ script:
 - mvn clean verify
 
 before_deploy:
+- rm -rf s3-tools && git clone --depth 1 https://github.com/loonwerks/s3-tools.git
 - export RELEASE_PKG_FILE=$(ls repository/target/com.rockwellcollins.atc.resolute.repository-*.zip)
 - echo "deploying $RELEASE_PKG_FILE to GitHub releases"
-- export SNAPSHOT_NUMBER=$(ls repository/target/repository/plugins/com.rockwellcollins.atc.resolute_*.jar | grep -o "[0-9]\\{12\\}")
+- export SNAPSHOT_NUMBER=$(ls repository/target/repository/plugins/com.rockwellcollins.atc.resolute_*.jar | grep -o "[0-9]\\+\\.[0-9]\\+\\.[0-9]\\+\\.[0-9]\\{12\\}")
 - echo "deploying snapshot number $SNAPSHOT_NUMBER"
 
 deploy:
@@ -42,7 +43,7 @@ deploy:
   api-key: "$GH_TOKEN"
   file:
   - "${RELEASE_PKG_FILE}"
-  name: Nightly development build ($SNAPSHOT_NUMBER)
+  name: Continuous Integration Build ($SNAPSHOT_NUMBER)
   body: Automated Resolute integration build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built
     by Travis CI on $(date +'%F %T %Z').
   prerelease: true
@@ -51,12 +52,10 @@ deploy:
   target_commitish: "$TRAVIS_COMMIT"
   on:
     branch: master
-    condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
 - provider: script
-  script: python3 .travis/manage_daily_builds.py "Nightly development build"
+  script: python3 .travis/manage_daily_builds.py "Continuous Integration Build"
   on:
     branch: master
-    condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
 - provider: releases
   api-key: "$GH_TOKEN"
   file:
@@ -70,9 +69,25 @@ deploy:
   target_commitish: "$TRAVIS_COMMIT"
   on:
     branch: ac-formal-language
-    condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
 - provider: script
   script: python3 .travis/manage_daily_builds.py "Experimental build"
   on:
     branch: ac-formal-language
-    condition: "$TRAVIS_EVENT_TYPE =~ ^(api|cron)$"
+- provider: script
+  script: python3 s3-tools/s3tools/DeployToP2CompositeRepository.py --path repository/target/repository --prefix p2/snapshots/resolute --child-name resolute_$SNAPSHOT_NUMBER --logging DEBUG
+  skip_cleanup: true
+  on:
+    branch: master
+- provider: script
+  script: python3 s3-tools/s3tools/DeployToP2CompositeRepository.py --path repository/target/repository --prefix p2/snapshots/resolute-jp --child-name resolute-jp_$SNAPSHOT_NUMBER --logging DEBUG
+  skip_cleanup: true
+  on:
+    branch: ac-formal-language
+- provider: script
+  script: python3 s3-tools/s3tools/ManageSnapshots.py --prefix p2/snapshots/resolute --logging=DEBUG
+  on:
+    branch: master
+- provider: script
+  script: python3 s3-tools/s3tools/ManageSnapshots.py --prefix p2/snapshots/resolute-jp --logging=DEBUG
+  on:
+    branch: ac-formal-language
