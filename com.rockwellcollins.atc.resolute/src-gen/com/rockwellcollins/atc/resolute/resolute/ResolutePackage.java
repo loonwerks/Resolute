@@ -2386,6 +2386,52 @@ public interface ResolutePackage extends EPackage
   int FAIL_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.EvidenceValueExprImpl <em>Evidence Value Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.EvidenceValueExprImpl
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getEvidenceValueExpr()
+   * @generated
+   */
+  int EVIDENCE_VALUE_EXPR = 41;
+
+  /**
+   * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVIDENCE_VALUE_EXPR__OWNED_ELEMENT = EXPR__OWNED_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVIDENCE_VALUE_EXPR__OWNED_COMMENT = EXPR__OWNED_COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVIDENCE_VALUE_EXPR__VAL = EXPR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Evidence Value Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVIDENCE_VALUE_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.IntExprImpl <em>Int Expr</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2393,7 +2439,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getIntExpr()
    * @generated
    */
-  int INT_EXPR = 41;
+  int INT_EXPR = 42;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2439,7 +2485,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getRealExpr()
    * @generated
    */
-  int REAL_EXPR = 42;
+  int REAL_EXPR = 43;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2485,7 +2531,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getBoolExpr()
    * @generated
    */
-  int BOOL_EXPR = 43;
+  int BOOL_EXPR = 44;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2531,7 +2577,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getStringExpr()
    * @generated
    */
-  int STRING_EXPR = 44;
+  int STRING_EXPR = 45;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2577,7 +2623,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getIfThenElseExpr()
    * @generated
    */
-  int IF_THEN_ELSE_EXPR = 45;
+  int IF_THEN_ELSE_EXPR = 46;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2641,7 +2687,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getQuantifiedExpr()
    * @generated
    */
-  int QUANTIFIED_EXPR = 46;
+  int QUANTIFIED_EXPR = 47;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2705,7 +2751,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getLibraryFnCallExpr()
    * @generated
    */
-  int LIBRARY_FN_CALL_EXPR = 47;
+  int LIBRARY_FN_CALL_EXPR = 48;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2769,7 +2815,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getBuiltInFnCallExpr()
    * @generated
    */
-  int BUILT_IN_FN_CALL_EXPR = 48;
+  int BUILT_IN_FN_CALL_EXPR = 49;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2824,7 +2870,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getFnCallExpr()
    * @generated
    */
-  int FN_CALL_EXPR = 49;
+  int FN_CALL_EXPR = 50;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2879,7 +2925,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getLintExpr()
    * @generated
    */
-  int LINT_EXPR = 50;
+  int LINT_EXPR = 51;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2925,7 +2971,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getListFilterMapExpr()
    * @generated
    */
-  int LIST_FILTER_MAP_EXPR = 51;
+  int LIST_FILTER_MAP_EXPR = 52;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2989,7 +3035,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getListExpr()
    * @generated
    */
-  int LIST_EXPR = 52;
+  int LIST_EXPR = 53;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3035,7 +3081,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getSetFilterMapExpr()
    * @generated
    */
-  int SET_FILTER_MAP_EXPR = 53;
+  int SET_FILTER_MAP_EXPR = 54;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3099,7 +3145,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getSetExpr()
    * @generated
    */
-  int SET_EXPR = 54;
+  int SET_EXPR = 55;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3145,7 +3191,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getLetExpr()
    * @generated
    */
-  int LET_EXPR = 55;
+  int LET_EXPR = 56;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3200,7 +3246,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getUndevelopedExpr()
    * @generated
    */
-  int UNDEVELOPED_EXPR = 56;
+  int UNDEVELOPED_EXPR = 57;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3237,7 +3283,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getEvidenceExpr()
    * @generated
    */
-  int EVIDENCE_EXPR = 57;
+  int EVIDENCE_EXPR = 58;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3292,7 +3338,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getSolutionExpr()
    * @generated
    */
-  int SOLUTION_EXPR = 58;
+  int SOLUTION_EXPR = 59;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3347,7 +3393,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getWarningStatement()
    * @generated
    */
-  int WARNING_STATEMENT = 59;
+  int WARNING_STATEMENT = 60;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3375,7 +3421,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getErrorStatement()
    * @generated
    */
-  int ERROR_STATEMENT = 60;
+  int ERROR_STATEMENT = 61;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3403,7 +3449,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getInfoStatement()
    * @generated
    */
-  int INFO_STATEMENT = 61;
+  int INFO_STATEMENT = 62;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3431,7 +3477,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getProveStatement()
    * @generated
    */
-  int PROVE_STATEMENT = 62;
+  int PROVE_STATEMENT = 63;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3477,7 +3523,7 @@ public interface ResolutePackage extends EPackage
    * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getCheckStatement()
    * @generated
    */
-  int CHECK_STATEMENT = 63;
+  int CHECK_STATEMENT = 64;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -4486,6 +4532,27 @@ public interface ResolutePackage extends EPackage
    * @generated
    */
   EReference getFailExpr_Failmsg();
+
+  /**
+   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr <em>Evidence Value Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Evidence Value Expr</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr
+   * @generated
+   */
+  EClass getEvidenceValueExpr();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Val</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr#getVal()
+   * @see #getEvidenceValueExpr()
+   * @generated
+   */
+  EAttribute getEvidenceValueExpr_Val();
 
   /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.IntExpr <em>Int Expr</em>}'.
@@ -5909,6 +5976,24 @@ public interface ResolutePackage extends EPackage
      * @generated
      */
     EReference FAIL_EXPR__FAILMSG = eINSTANCE.getFailExpr_Failmsg();
+
+    /**
+     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.EvidenceValueExprImpl <em>Evidence Value Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.EvidenceValueExprImpl
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getEvidenceValueExpr()
+     * @generated
+     */
+    EClass EVIDENCE_VALUE_EXPR = eINSTANCE.getEvidenceValueExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EVIDENCE_VALUE_EXPR__VAL = eINSTANCE.getEvidenceValueExpr_Val();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.IntExprImpl <em>Int Expr</em>}' class.

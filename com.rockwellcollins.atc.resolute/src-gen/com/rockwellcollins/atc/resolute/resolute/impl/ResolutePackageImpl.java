@@ -27,6 +27,7 @@ import com.rockwellcollins.atc.resolute.resolute.Definition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
 import com.rockwellcollins.atc.resolute.resolute.ErrorStatement;
 import com.rockwellcollins.atc.resolute.resolute.EvidenceExpr;
+import com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr;
 import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.FailExpr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
@@ -373,6 +374,13 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   private EClass failExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass evidenceValueExprEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1620,6 +1628,28 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
+  public EClass getEvidenceValueExpr()
+  {
+    return evidenceValueExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEvidenceValueExpr_Val()
+  {
+    return (EAttribute)evidenceValueExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getIntExpr()
   {
     return intExprEClass;
@@ -2383,6 +2413,9 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     createEReference(failExprEClass, FAIL_EXPR__VAL);
     createEReference(failExprEClass, FAIL_EXPR__FAILMSG);
 
+    evidenceValueExprEClass = createEClass(EVIDENCE_VALUE_EXPR);
+    createEAttribute(evidenceValueExprEClass, EVIDENCE_VALUE_EXPR__VAL);
+
     intExprEClass = createEClass(INT_EXPR);
     createEReference(intExprEClass, INT_EXPR__VAL);
 
@@ -2537,6 +2570,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     idExprEClass.getESuperTypes().add(this.getExpr());
     thisExprEClass.getESuperTypes().add(this.getExpr());
     failExprEClass.getESuperTypes().add(this.getExpr());
+    evidenceValueExprEClass.getESuperTypes().add(this.getExpr());
     intExprEClass.getESuperTypes().add(this.getExpr());
     realExprEClass.getESuperTypes().add(this.getExpr());
     boolExprEClass.getESuperTypes().add(this.getExpr());
@@ -2694,6 +2728,9 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEClass(failExprEClass, FailExpr.class, "FailExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFailExpr_Val(), this.getExpr(), null, "val", null, 0, 1, FailExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFailExpr_Failmsg(), this.getClaimText(), null, "failmsg", null, 0, -1, FailExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(evidenceValueExprEClass, EvidenceValueExpr.class, "EvidenceValueExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEvidenceValueExpr_Val(), theEcorePackage.getEString(), "val", null, 0, 1, EvidenceValueExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intExprEClass, IntExpr.class, "IntExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getIntExpr_Val(), theAadl2Package.getIntegerLiteral(), null, "val", null, 0, 1, IntExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

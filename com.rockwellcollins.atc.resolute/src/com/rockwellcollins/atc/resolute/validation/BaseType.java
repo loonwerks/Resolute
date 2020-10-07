@@ -65,9 +65,61 @@ public class BaseType extends ResoluteType {
 	public static final BaseType SUBPROGRAM_GROUP_ACCESS = new BaseType("subprogram_group_access");
 	public static final BaseType PROVIDES_SUBPROGRAM_GROUP_ACCESS = new BaseType("provides_subprogram_group_access");
 	public static final BaseType REQUIRES_SUBPROGRAM_GROUP_ACCESS = new BaseType("requires_subprogram_group_access");
-	
+
 	public static final BaseType FLOW_SPECIFICATION = new BaseType("flow_specification");
 	public static final BaseType END_TO_END_FLOW = new BaseType("end_to_end_flow");
+
+	public static final BaseType ENTITY = new BaseType("entity");
+	public static final BaseType ACTIVITY = new BaseType("activity");
+	public static final BaseType AGENT = new BaseType("agent");
+	public static final BaseType THING = new BaseType("thing");
+	public static final BaseType ANALYSIS_ACTIVITY = new BaseType("analysis_activity");
+	public static final BaseType ANALYSIS_REPORT = new BaseType("analysis_report");
+	public static final BaseType ANALYSIS_RESULT = new BaseType("analysis_result");
+	public static final BaseType PASSED = new BaseType("passed");
+	public static final BaseType FAILED = new BaseType("failed");
+	public static final BaseType INDETERMINATE = new BaseType("indeterminate");
+	public static final BaseType ANALYSIS_ANNOTATION_TYPE = new BaseType("analysis_annotation_type");
+	public static final BaseType PRECONDITION = new BaseType("precondition");
+	public static final BaseType POSTCONDITION = new BaseType("postcondition");
+	public static final BaseType INVARIANT = new BaseType("invariant");
+	public static final BaseType ANALYSIS_ANNOTATION = new BaseType("analysis_annotation");
+	public static final BaseType HAZARD = new BaseType("hazard");
+	public static final BaseType HAZARD_IDENTIFICATION = new BaseType("hazard_identification");
+	public static final BaseType REQUIREMENT = new BaseType("requirement");
+	public static final BaseType DATA_DICTIONARY_TERM = new BaseType("data_dictionary_term");
+	public static final BaseType REQUIREMENT_DEVELOPMENT = new BaseType("requirement_development");
+	public static final BaseType REVIEW = new BaseType("review");
+	public static final BaseType REVIEW_LOG = new BaseType("review_log");
+	public static final BaseType REVIEW_STATE = new BaseType("review_state");
+	public static final BaseType REVISED_WITHOUT_REVIEW = new BaseType("revised_without_review");
+	public static final BaseType REVISED_WITH_REVIEW = new BaseType("revised_with_review");
+	public static final BaseType FILE = new BaseType("file");
+	public static final BaseType FORMAT = new BaseType("format");
+	public static final BaseType CODE_DEVELOPMENT = new BaseType("code_development");
+	public static final BaseType BUILD = new BaseType("build");
+	public static final BaseType CODE_GEN = new BaseType("code_gen");
+	public static final BaseType COMPILE = new BaseType("compile");
+	public static final BaseType PACKAGE_FILE = new BaseType("package_file");
+	public static final BaseType COMPONENT_TYPE = new BaseType("component_type");
+	public static final BaseType SOURCE_FUNCTION = new BaseType("source_function");
+	public static final BaseType BINARY_FUNCTION = new BaseType("binary_function");
+	public static final BaseType SOURCE_GLOBAL_VARIABLE = new BaseType("source_global_variable");
+	public static final BaseType BINARY_GLOBAL_VARIABLE = new BaseType("binary_global_variable");
+	public static final BaseType BINARY_BASIC_BLOCK = new BaseType("binary_basic_block");
+	public static final BaseType CLASS_DEFINITION = new BaseType("class_definition");
+	public static final BaseType CLASS_METHOD = new BaseType("class_method");
+	public static final BaseType CLASS_MEMBER_VARIABLE = new BaseType("class_member_variable");
+	public static final BaseType CLASS_CONSTRUCTOR = new BaseType("class_constructor");
+	public static final BaseType MODULE = new BaseType("module");
+	public static final BaseType NAMESPACE = new BaseType("namespace");
+	public static final BaseType INTERFACE = new BaseType("interface");
+	public static final BaseType SYSTEM_DEVELOPMENT = new BaseType("system_development");
+	public static final BaseType TEST = new BaseType("test");
+	public static final BaseType TEST_RESULT = new BaseType("test_result");
+	public static final BaseType TEST_DEVELOPMENT = new BaseType("test_developmemt");
+	public static final BaseType TEST_EXECUTION = new BaseType("test_execution");
+	public static final BaseType TEST_STATUS = new BaseType("test_status");
 
 	final public String name;
 
@@ -187,6 +239,40 @@ public class BaseType extends ResoluteType {
 			case "subprogram_group_access":
 				return subtypeOf(PROVIDES_SUBPROGRAM_GROUP_ACCESS) || subtypeOf(REQUIRES_SUBPROGRAM_GROUP_ACCESS);
 
+			case "entity":
+				return subtypeOf(ANALYSIS_REPORT) || subtypeOf(ANALYSIS_ANNOTATION) || subtypeOf(HAZARD)
+						|| subtypeOf(REQUIREMENT) || subtypeOf(DATA_DICTIONARY_TERM) || subtypeOf(REVIEW_LOG)
+						|| subtypeOf(FILE) || subtypeOf(INTERFACE) || subtypeOf(TEST) || subtypeOf(TEST_RESULT)
+						|| subtypeOf(COMPONENT) || subtypeOf(SYSTEM);
+
+			case "activity":
+				return subtypeOf(ANALYSIS_ACTIVITY) || subtypeOf(HAZARD_IDENTIFICATION)
+						|| subtypeOf(REQUIREMENT_DEVELOPMENT) || subtypeOf(REVIEW) || subtypeOf(CODE_DEVELOPMENT)
+						|| subtypeOf(BUILD) || subtypeOf(CODE_GEN) || subtypeOf(COMPILE) || subtypeOf(PACKAGE_FILE)
+						|| subtypeOf(SYSTEM_DEVELOPMENT) || subtypeOf(TEST_DEVELOPMENT) || subtypeOf(TEST_EXECUTION);
+
+			case "thing":
+				return subtypeOf(FORMAT) || subtypeOf(COMPONENT_TYPE);
+
+			case "analysis_result":
+			case "test_status":
+				return subtypeOf(PASSED) || subtypeOf(FAILED) || subtypeOf(INDETERMINATE);
+
+			case "analysis_annotation_type":
+				return subtypeOf(PRECONDITION) || subtypeOf(POSTCONDITION) || subtypeOf(INVARIANT);
+
+			case "review_state":
+				return subtypeOf(PASSED) || subtypeOf(REVISED_WITHOUT_REVIEW) || subtypeOf(REVISED_WITH_REVIEW);
+
+			case "component_type":
+				return subtypeOf(SOURCE_FUNCTION) || subtypeOf(BINARY_FUNCTION) || subtypeOf(SOURCE_GLOBAL_VARIABLE)
+						|| subtypeOf(BINARY_GLOBAL_VARIABLE) || subtypeOf(BINARY_BASIC_BLOCK)
+						|| subtypeOf(CLASS_DEFINITION) || subtypeOf(CLASS_METHOD) || subtypeOf(CLASS_MEMBER_VARIABLE)
+						|| subtypeOf(CLASS_CONSTRUCTOR) || subtypeOf(MODULE) || subtypeOf(NAMESPACE);
+
+			case "agent":
+				return false;
+
 			default: {
 				// System.out.println("this=" + this.name);
 				// System.out.println("other=" + otherType.toString());
@@ -216,6 +302,10 @@ public class BaseType extends ResoluteType {
 			return AADL;
 		}
 
+		if (subtypeOf(TEST_STATUS) && otherType.subtypeOf(TEST_STATUS)) {
+			return TEST_STATUS;
+		}
+
 		return null;
 	}
 
@@ -234,6 +324,7 @@ public class BaseType extends ResoluteType {
 		return false;
 	}
 
+	@Override
 	public boolean similar(Type otherType) {
 		if (otherType instanceof com.rockwellcollins.atc.resolute.resolute.BaseType) {
 			com.rockwellcollins.atc.resolute.resolute.BaseType bt = (com.rockwellcollins.atc.resolute.resolute.BaseType) otherType;

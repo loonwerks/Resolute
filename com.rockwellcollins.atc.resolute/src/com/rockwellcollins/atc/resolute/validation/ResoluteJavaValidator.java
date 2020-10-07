@@ -74,6 +74,7 @@ import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
 import com.rockwellcollins.atc.resolute.resolute.Definition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
 import com.rockwellcollins.atc.resolute.resolute.EvidenceExpr;
+import com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr;
 import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.FailExpr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
@@ -748,7 +749,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	}
 
 	@Check
-	public void checkCliamUsageDomain(ClaimUsageDomain claimUsageDomain) {
+	public void checkClaimUsageDomain(ClaimUsageDomain claimUsageDomain) {
 		EObject parent = claimUsageDomain;
 		FunctionDefinition funcDef = null;
 		while (parent != null) {
@@ -766,7 +767,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	}
 
 	@Check
-	public void checkCliamRationale(ClaimRationale claimRationale) {
+	public void checkClaimRationale(ClaimRationale claimRationale) {
 		EObject parent = claimRationale;
 		FunctionDefinition funcDef = null;
 		while (parent != null) {
@@ -784,7 +785,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	}
 
 	@Check
-	public void checkCliamRestriction(ClaimRestriction claimRestriction) {
+	public void checkClaimRestriction(ClaimRestriction claimRestriction) {
 		EObject parent = claimRestriction;
 		FunctionDefinition funcDef = null;
 		while (parent != null) {
@@ -1046,6 +1047,11 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			return;
 		}
 
+		// Check for evidence functions first
+		if (checkEvidenceCall(funCall, actualTypes)) {
+			return;
+		}
+
 		// Special cases that require a little polymorphism
 		switch (funCall.getFn()) {
 		case "analysis":
@@ -1090,13 +1096,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			return;
 
 		case "debug":
-		{
 			return;
+
 		}
-		}
-
-
-
 
 		List<ResoluteType> expectedTypes = getExpectedTypes(funCall);
 		if (expectedTypes == null) {
@@ -1120,6 +1122,260 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				error(funCall.getArgs().get(i), "Expected type " + expected + " but found type " + actual);
 			}
 		}
+	}
+
+	private void checkNumArgs(BuiltInFnCallExpr funCall, int expectedNumArgs) {
+		if (funCall.getArgs().size() != expectedNumArgs) {
+			error(funCall, "Function '" + funCall.getFn() + "' expects " + expectedNumArgs + " argument"
+					+ (expectedNumArgs > 1 ? "s" : "") + ", but found " + funCall.getArgs().size() + ".");
+		}
+	}
+
+	private void checkArgType(BuiltInFnCallExpr funCall, int argNum, ResoluteType actualType,
+			List<ResoluteType> expectedTypes) {
+		boolean match = false;
+		String expected = "";
+		for (ResoluteType expectedType : expectedTypes) {
+			expected += expectedType.toString() + ", ";
+			if (actualType.subtypeOf(expectedType)) {
+				match = true;
+				break;
+			}
+		}
+		if (!match) {
+			expected = expected.trim().substring(0, expected.length() - 2);
+			if (expectedTypes.size() > 1) {
+				expected = "may only be one of the following types: [ " + expected + " ].";
+			} else {
+				expected = "may only be of type [ " + expected + " ].";
+			}
+			error(funCall, "Argument " + argNum + " of function '" + funCall.getFn() + "' " + expected);
+		}
+	}
+
+	private boolean checkEvidenceCall(BuiltInFnCallExpr funCall, List<ResoluteType> actualTypes) {
+		List<ResoluteType> expectedTypes = new ArrayList<>();
+		switch (funCall.getFn()) {
+		case "result_of":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.ANALYSIS_REPORT);
+			expectedTypes.add(BaseType.TEST_RESULT);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "metric":
+		case "analyzes":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.ANALYSIS_REPORT);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "produced_by":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.ANALYSIS_REPORT);
+			expectedTypes.add(BaseType.SYSTEM);
+			expectedTypes.add(BaseType.TEST);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "performed_by":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.ANALYSIS_ACTIVITY);
+			expectedTypes.add(BaseType.CODE_GEN);
+			expectedTypes.add(BaseType.COMPILE);
+			expectedTypes.add(BaseType.PACKAGE_FILE);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "from_report":
+		case "description":
+		case "annotation_type":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.ANALYSIS_ANNOTATION);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "definition":
+		case "identified":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.HAZARD);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "source_of":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.HAZARD);
+			expectedTypes.add(BaseType.INTERFACE);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "author":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.HAZARD_IDENTIFICATION);
+			expectedTypes.add(BaseType.REQUIREMENT_DEVELOPMENT);
+			expectedTypes.add(BaseType.REVIEW);
+			expectedTypes.add(BaseType.CODE_DEVELOPMENT);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "text":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.REQUIREMENT);
+			expectedTypes.add(BaseType.DATA_DICTIONARY_TERM);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "given_text":
+		case "if_text":
+		case "then_text":
+		case "governs":
+		case "mitigates":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.REQUIREMENT);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "satisfies":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.REQUIREMENT);
+			expectedTypes.add(BaseType.FILE);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "created_by":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.REQUIREMENT);
+			expectedTypes.add(BaseType.DATA_DICTIONARY_TERM);
+			expectedTypes.add(BaseType.REVIEW_LOG);
+			expectedTypes.add(BaseType.FILE);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "provided_by":
+		case "consumed_by":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.DATA_DICTIONARY_TERM);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "referenced":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.REQUIREMENT_DEVELOPMENT);
+			expectedTypes.add(BaseType.CODE_DEVELOPMENT);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "governed_by":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.REQUIREMENT_DEVELOPMENT);
+			expectedTypes.add(BaseType.REVIEW);
+			expectedTypes.add(BaseType.CODE_DEVELOPMENT);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "reviews":
+		case "review_result":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.REVIEW_LOG);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "reviewer":
+		case "reviewed":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.REVIEW);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "filename":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.FILE);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "step":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.BUILD);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "compiled_by":
+		case "compile_input":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.COMPILE);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "packaged_by":
+		case "package_input":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.PACKAGE_FILE);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "type_of":
+		case "value_type":
+		case "instantiates":
+		case "defined_in":
+		case "mentions":
+		case "subcomponent_of":
+		case "requirements":
+		case "annotations":
+		case "control_flows_to_unconditionally":
+		case "control_flows_to_conditionally":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.COMPONENT);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "part_of":
+		case "provides":
+		case "requires":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.SYSTEM);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "destination_of":
+		case "identified_by":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.INTERFACE);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "developed_by":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.SYSTEM_DEVELOPMENT);
+			expectedTypes.add(BaseType.TEST_DEVELOPMENT);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "verifies":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.TEST);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "confirms":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.TEST_RESULT);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "executed_by":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.TEST_RESULT);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		case "executed_on":
+			checkNumArgs(funCall, 1);
+			expectedTypes.add(BaseType.TEST_EXECUTION);
+			checkArgType(funCall, 1, actualTypes.get(0), expectedTypes);
+			return true;
+
+		}
+		return false;
 	}
 
 	private void checkAsListCall(BuiltInFnCallExpr funCall, List<ResoluteType> actualTypes) {
@@ -1784,6 +2040,11 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				return BaseType.BOOL;
 			}
 
+			if (expr instanceof EvidenceValueExpr) {
+				EvidenceValueExpr evidenceValueExpr = (EvidenceValueExpr) expr;
+				return new BaseType(evidenceValueExpr.getVal());
+			}
+
 			error(expr, "Unable to get type for expression");
 			return BaseType.FAIL;
 		} finally {
@@ -2015,6 +2276,85 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		case "propagate_error":
 		case "error_state_reachable":
 			return BaseType.BOOL;
+
+		// Evidence
+		case "result_of":
+			return BaseType.TEST_STATUS;
+
+		case "metric":
+			return BaseType.REAL;
+
+		case "analyzes":
+		case "from_report":
+		case "source_of":
+		case "governs":
+		case "mitigates":
+		case "satisfies":
+		case "provided_by":
+		case "consumed_by":
+		case "referenced":
+		case "governed_by":
+		case "reviews":
+		case "reviewed":
+		case "instantiates":
+		case "defined_in":
+		case "mentions":
+		case "subcomponent_of":
+		case "requirements":
+		case "annotations":
+		case "part_of":
+		case "provides":
+		case "requires":
+		case "destination_of":
+		case "verifies":
+		case "confirms":
+			return BaseType.ENTITY;
+
+		case "produced_by":
+		case "created_by":
+		case "step":
+		case "identified_by":
+		case "executed_by":
+			return BaseType.ACTIVITY;
+
+		case "performed_by":
+		case "author":
+		case "reviewer":
+		case "developed_by":
+		case "executed_on":
+			return BaseType.AGENT;
+
+		case "description":
+		case "definition":
+		case "text":
+		case "given_text":
+		case "if_text":
+		case "then_text":
+		case "filename":
+		case "value_type":
+			return BaseType.STRING;
+
+		case "annotation_type":
+			return BaseType.ANALYSIS_ANNOTATION_TYPE;
+
+		case "identified":
+			return BaseType.HAZARD_IDENTIFICATION;
+
+		case "review_result":
+			return BaseType.REVIEW_STATE;
+
+		case "compiled_by":
+		case "compile_input":
+		case "packaged_by":
+		case "package_input":
+			return BaseType.FILE;
+
+		case "type_of":
+			return BaseType.COMPONENT_TYPE;
+
+		case "control_flows_to_unconditionally":
+		case "control_flows_to_conditionally":
+			return BaseType.COMPONENT;
 
 		default:
 			return BaseType.FAIL;
