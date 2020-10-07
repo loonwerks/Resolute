@@ -3462,23 +3462,23 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "ruleLetBinding"
 
 
-    // $ANTLR start "entryRuleEvidenceValueTerm"
-    // InternalResoluteParser.g:1290:1: entryRuleEvidenceValueTerm : ruleEvidenceValueTerm EOF ;
-    public final void entryRuleEvidenceValueTerm() throws RecognitionException {
+    // $ANTLR start "entryRuleResult"
+    // InternalResoluteParser.g:1290:1: entryRuleResult : ruleResult EOF ;
+    public final void entryRuleResult() throws RecognitionException {
         try {
-            // InternalResoluteParser.g:1291:1: ( ruleEvidenceValueTerm EOF )
-            // InternalResoluteParser.g:1292:1: ruleEvidenceValueTerm EOF
+            // InternalResoluteParser.g:1291:1: ( ruleResult EOF )
+            // InternalResoluteParser.g:1292:1: ruleResult EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getEvidenceValueTermRule()); 
+               before(grammarAccess.getResultRule()); 
             }
             pushFollow(FollowSets000.FOLLOW_1);
-            ruleEvidenceValueTerm();
+            ruleResult();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getEvidenceValueTermRule()); 
+               after(grammarAccess.getResultRule()); 
             }
             match(input,EOF,FollowSets000.FOLLOW_2); if (state.failed) return ;
 
@@ -3493,30 +3493,30 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "entryRuleEvidenceValueTerm"
+    // $ANTLR end "entryRuleResult"
 
 
-    // $ANTLR start "ruleEvidenceValueTerm"
-    // InternalResoluteParser.g:1299:1: ruleEvidenceValueTerm : ( ( rule__EvidenceValueTerm__Alternatives ) ) ;
-    public final void ruleEvidenceValueTerm() throws RecognitionException {
+    // $ANTLR start "ruleResult"
+    // InternalResoluteParser.g:1299:1: ruleResult : ( ( rule__Result__Alternatives ) ) ;
+    public final void ruleResult() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:1303:5: ( ( ( rule__EvidenceValueTerm__Alternatives ) ) )
-            // InternalResoluteParser.g:1304:1: ( ( rule__EvidenceValueTerm__Alternatives ) )
+            // InternalResoluteParser.g:1303:5: ( ( ( rule__Result__Alternatives ) ) )
+            // InternalResoluteParser.g:1304:1: ( ( rule__Result__Alternatives ) )
             {
-            // InternalResoluteParser.g:1304:1: ( ( rule__EvidenceValueTerm__Alternatives ) )
-            // InternalResoluteParser.g:1305:1: ( rule__EvidenceValueTerm__Alternatives )
+            // InternalResoluteParser.g:1304:1: ( ( rule__Result__Alternatives ) )
+            // InternalResoluteParser.g:1305:1: ( rule__Result__Alternatives )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getEvidenceValueTermAccess().getAlternatives()); 
+               before(grammarAccess.getResultAccess().getAlternatives()); 
             }
-            // InternalResoluteParser.g:1306:1: ( rule__EvidenceValueTerm__Alternatives )
-            // InternalResoluteParser.g:1306:2: rule__EvidenceValueTerm__Alternatives
+            // InternalResoluteParser.g:1306:1: ( rule__Result__Alternatives )
+            // InternalResoluteParser.g:1306:2: rule__Result__Alternatives
             {
             pushFollow(FollowSets000.FOLLOW_2);
-            rule__EvidenceValueTerm__Alternatives();
+            rule__Result__Alternatives();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3524,7 +3524,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getEvidenceValueTermAccess().getAlternatives()); 
+               after(grammarAccess.getResultAccess().getAlternatives()); 
             }
 
             }
@@ -3544,7 +3544,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "ruleEvidenceValueTerm"
+    // $ANTLR end "ruleResult"
 
 
     // $ANTLR start "entryRuleBuiltInFn"
@@ -12622,9 +12622,9 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__AtomicExpr__Alternatives_15_2"
 
 
-    // $ANTLR start "rule__EvidenceValueTerm__Alternatives"
-    // InternalResoluteParser.g:3899:1: rule__EvidenceValueTerm__Alternatives : ( ( Passed ) | ( Failed ) | ( Indeterminate ) | ( Revised_with_review ) | ( Revised_without_review ) );
-    public final void rule__EvidenceValueTerm__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__Result__Alternatives"
+    // InternalResoluteParser.g:3899:1: rule__Result__Alternatives : ( ( Passed ) | ( Failed ) | ( Indeterminate ) | ( Revised_with_review ) | ( Revised_without_review ) );
+    public final void rule__Result__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -12673,11 +12673,11 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                     // InternalResoluteParser.g:3905:1: Passed
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getEvidenceValueTermAccess().getPassedKeyword_0()); 
+                       before(grammarAccess.getResultAccess().getPassedKeyword_0()); 
                     }
                     match(input,Passed,FollowSets000.FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getEvidenceValueTermAccess().getPassedKeyword_0()); 
+                       after(grammarAccess.getResultAccess().getPassedKeyword_0()); 
                     }
 
                     }
@@ -12692,11 +12692,11 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                     // InternalResoluteParser.g:3913:1: Failed
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getEvidenceValueTermAccess().getFailedKeyword_1()); 
+                       before(grammarAccess.getResultAccess().getFailedKeyword_1()); 
                     }
                     match(input,Failed,FollowSets000.FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getEvidenceValueTermAccess().getFailedKeyword_1()); 
+                       after(grammarAccess.getResultAccess().getFailedKeyword_1()); 
                     }
 
                     }
@@ -12711,11 +12711,11 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                     // InternalResoluteParser.g:3921:1: Indeterminate
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getEvidenceValueTermAccess().getIndeterminateKeyword_2()); 
+                       before(grammarAccess.getResultAccess().getIndeterminateKeyword_2()); 
                     }
                     match(input,Indeterminate,FollowSets000.FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getEvidenceValueTermAccess().getIndeterminateKeyword_2()); 
+                       after(grammarAccess.getResultAccess().getIndeterminateKeyword_2()); 
                     }
 
                     }
@@ -12730,11 +12730,11 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                     // InternalResoluteParser.g:3929:1: Revised_with_review
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getEvidenceValueTermAccess().getRevised_with_reviewKeyword_3()); 
+                       before(grammarAccess.getResultAccess().getRevised_with_reviewKeyword_3()); 
                     }
                     match(input,Revised_with_review,FollowSets000.FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getEvidenceValueTermAccess().getRevised_with_reviewKeyword_3()); 
+                       after(grammarAccess.getResultAccess().getRevised_with_reviewKeyword_3()); 
                     }
 
                     }
@@ -12749,11 +12749,11 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                     // InternalResoluteParser.g:3937:1: Revised_without_review
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getEvidenceValueTermAccess().getRevised_without_reviewKeyword_4()); 
+                       before(grammarAccess.getResultAccess().getRevised_without_reviewKeyword_4()); 
                     }
                     match(input,Revised_without_review,FollowSets000.FOLLOW_2); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getEvidenceValueTermAccess().getRevised_without_reviewKeyword_4()); 
+                       after(grammarAccess.getResultAccess().getRevised_without_reviewKeyword_4()); 
                     }
 
                     }
@@ -12775,7 +12775,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__EvidenceValueTerm__Alternatives"
+    // $ANTLR end "rule__Result__Alternatives"
 
 
     // $ANTLR start "rule__BuiltInFn__Alternatives"
@@ -32096,7 +32096,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:10885:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAtomicExprAccess().getEvidenceValueExprAction_3_0()); 
+               before(grammarAccess.getAtomicExprAccess().getResultExprAction_3_0()); 
             }
             // InternalResoluteParser.g:10886:1: ()
             // InternalResoluteParser.g:10888:1: 
@@ -32104,7 +32104,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAtomicExprAccess().getEvidenceValueExprAction_3_0()); 
+               after(grammarAccess.getAtomicExprAccess().getResultExprAction_3_0()); 
             }
 
             }
@@ -32157,26 +32157,26 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__AtomicExpr__Group_3__1__Impl"
-    // InternalResoluteParser.g:10909:1: rule__AtomicExpr__Group_3__1__Impl : ( ( rule__AtomicExpr__ValAssignment_3_1 ) ) ;
+    // InternalResoluteParser.g:10909:1: rule__AtomicExpr__Group_3__1__Impl : ( ( rule__AtomicExpr__ResultAssignment_3_1 ) ) ;
     public final void rule__AtomicExpr__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:10913:1: ( ( ( rule__AtomicExpr__ValAssignment_3_1 ) ) )
-            // InternalResoluteParser.g:10914:1: ( ( rule__AtomicExpr__ValAssignment_3_1 ) )
+            // InternalResoluteParser.g:10913:1: ( ( ( rule__AtomicExpr__ResultAssignment_3_1 ) ) )
+            // InternalResoluteParser.g:10914:1: ( ( rule__AtomicExpr__ResultAssignment_3_1 ) )
             {
-            // InternalResoluteParser.g:10914:1: ( ( rule__AtomicExpr__ValAssignment_3_1 ) )
-            // InternalResoluteParser.g:10915:1: ( rule__AtomicExpr__ValAssignment_3_1 )
+            // InternalResoluteParser.g:10914:1: ( ( rule__AtomicExpr__ResultAssignment_3_1 ) )
+            // InternalResoluteParser.g:10915:1: ( rule__AtomicExpr__ResultAssignment_3_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAtomicExprAccess().getValAssignment_3_1()); 
+               before(grammarAccess.getAtomicExprAccess().getResultAssignment_3_1()); 
             }
-            // InternalResoluteParser.g:10916:1: ( rule__AtomicExpr__ValAssignment_3_1 )
-            // InternalResoluteParser.g:10916:2: rule__AtomicExpr__ValAssignment_3_1
+            // InternalResoluteParser.g:10916:1: ( rule__AtomicExpr__ResultAssignment_3_1 )
+            // InternalResoluteParser.g:10916:2: rule__AtomicExpr__ResultAssignment_3_1
             {
             pushFollow(FollowSets000.FOLLOW_2);
-            rule__AtomicExpr__ValAssignment_3_1();
+            rule__AtomicExpr__ResultAssignment_3_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -32184,7 +32184,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAtomicExprAccess().getValAssignment_3_1()); 
+               after(grammarAccess.getAtomicExprAccess().getResultAssignment_3_1()); 
             }
 
             }
@@ -56407,29 +56407,29 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__AtomicExpr__FailmsgAssignment_2_2_1_1"
 
 
-    // $ANTLR start "rule__AtomicExpr__ValAssignment_3_1"
-    // InternalResoluteParser.g:19967:1: rule__AtomicExpr__ValAssignment_3_1 : ( ruleEvidenceValueTerm ) ;
-    public final void rule__AtomicExpr__ValAssignment_3_1() throws RecognitionException {
+    // $ANTLR start "rule__AtomicExpr__ResultAssignment_3_1"
+    // InternalResoluteParser.g:19967:1: rule__AtomicExpr__ResultAssignment_3_1 : ( ruleResult ) ;
+    public final void rule__AtomicExpr__ResultAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:19971:1: ( ( ruleEvidenceValueTerm ) )
-            // InternalResoluteParser.g:19972:1: ( ruleEvidenceValueTerm )
+            // InternalResoluteParser.g:19971:1: ( ( ruleResult ) )
+            // InternalResoluteParser.g:19972:1: ( ruleResult )
             {
-            // InternalResoluteParser.g:19972:1: ( ruleEvidenceValueTerm )
-            // InternalResoluteParser.g:19973:1: ruleEvidenceValueTerm
+            // InternalResoluteParser.g:19972:1: ( ruleResult )
+            // InternalResoluteParser.g:19973:1: ruleResult
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAtomicExprAccess().getValEvidenceValueTermParserRuleCall_3_1_0()); 
+               before(grammarAccess.getAtomicExprAccess().getResultResultParserRuleCall_3_1_0()); 
             }
             pushFollow(FollowSets000.FOLLOW_2);
-            ruleEvidenceValueTerm();
+            ruleResult();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAtomicExprAccess().getValEvidenceValueTermParserRuleCall_3_1_0()); 
+               after(grammarAccess.getAtomicExprAccess().getResultResultParserRuleCall_3_1_0()); 
             }
 
             }
@@ -56449,7 +56449,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__AtomicExpr__ValAssignment_3_1"
+    // $ANTLR end "rule__AtomicExpr__ResultAssignment_3_1"
 
 
     // $ANTLR start "rule__AtomicExpr__ValAssignment_4_1"

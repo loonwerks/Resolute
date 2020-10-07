@@ -105,7 +105,7 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.ID_EXPR: return createIdExpr();
       case ResolutePackage.THIS_EXPR: return createThisExpr();
       case ResolutePackage.FAIL_EXPR: return createFailExpr();
-      case ResolutePackage.EVIDENCE_VALUE_EXPR: return createEvidenceValueExpr();
+      case ResolutePackage.RESULT_EXPR: return createResultExpr();
       case ResolutePackage.INT_EXPR: return createIntExpr();
       case ResolutePackage.REAL_EXPR: return createRealExpr();
       case ResolutePackage.BOOL_EXPR: return createBoolExpr();
@@ -632,10 +632,10 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
    * @generated
    */
   @Override
-  public EvidenceValueExpr createEvidenceValueExpr()
+  public ResultExpr createResultExpr()
   {
-    EvidenceValueExprImpl evidenceValueExpr = new EvidenceValueExprImpl();
-    return evidenceValueExpr;
+    ResultExprImpl resultExpr = new ResultExprImpl();
+    return resultExpr;
   }
 
   /**

@@ -3974,23 +3974,23 @@ ruleAtomicExpr returns [EObject current=null]
     |((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getAtomicExprAccess().getEvidenceValueExprAction_3_0(),
+            grammarAccess.getAtomicExprAccess().getResultExprAction_3_0(),
             $current);
     }
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getAtomicExprAccess().getValEvidenceValueTermParserRuleCall_3_1_0()); 
+	        newCompositeNode(grammarAccess.getAtomicExprAccess().getResultResultParserRuleCall_3_1_0()); 
 	    }
-		lv_val_13_0=ruleEvidenceValueTerm		{
+		lv_result_13_0=ruleResult		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getAtomicExprRule());
 	        }
        		set(
        			$current, 
-       			"val",
-        		lv_val_13_0, 
-        		"com.rockwellcollins.atc.resolute.Resolute.EvidenceValueTerm");
+       			"result",
+        		lv_result_13_0, 
+        		"com.rockwellcollins.atc.resolute.Resolute.Result");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -5100,17 +5100,17 @@ ruleLetBinding returns [EObject current=null]
 
 
 
-// Entry rule entryRuleEvidenceValueTerm
-entryRuleEvidenceValueTerm returns [String current=null] 
+// Entry rule entryRuleResult
+entryRuleResult returns [String current=null] 
 :
-	{ newCompositeNode(grammarAccess.getEvidenceValueTermRule()); } 
-	 iv_ruleEvidenceValueTerm=ruleEvidenceValueTerm 
-	 { $current=$iv_ruleEvidenceValueTerm.current.getText(); }  
+	{ newCompositeNode(grammarAccess.getResultRule()); } 
+	 iv_ruleResult=ruleResult 
+	 { $current=$iv_ruleResult.current.getText(); }  
 	 EOF 
 ;
 
-// Rule EvidenceValueTerm
-ruleEvidenceValueTerm returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+// Rule Result
+ruleResult returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
     @init { enterRule(); 
     }
     @after { leaveRule();
@@ -5119,35 +5119,35 @@ ruleEvidenceValueTerm returns [AntlrDatatypeRuleToken current=new AntlrDatatypeR
 	kw=Passed 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getEvidenceValueTermAccess().getPassedKeyword_0()); 
+        newLeafNode(kw, grammarAccess.getResultAccess().getPassedKeyword_0()); 
     }
 
     |
 	kw=Failed 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getEvidenceValueTermAccess().getFailedKeyword_1()); 
+        newLeafNode(kw, grammarAccess.getResultAccess().getFailedKeyword_1()); 
     }
 
     |
 	kw=Indeterminate 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getEvidenceValueTermAccess().getIndeterminateKeyword_2()); 
+        newLeafNode(kw, grammarAccess.getResultAccess().getIndeterminateKeyword_2()); 
     }
 
     |
 	kw=Revised_with_review 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getEvidenceValueTermAccess().getRevised_with_reviewKeyword_3()); 
+        newLeafNode(kw, grammarAccess.getResultAccess().getRevised_with_reviewKeyword_3()); 
     }
 
     |
 	kw=Revised_without_review 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getEvidenceValueTermAccess().getRevised_without_reviewKeyword_4()); 
+        newLeafNode(kw, grammarAccess.getResultAccess().getRevised_without_reviewKeyword_4()); 
     }
 )
     ;

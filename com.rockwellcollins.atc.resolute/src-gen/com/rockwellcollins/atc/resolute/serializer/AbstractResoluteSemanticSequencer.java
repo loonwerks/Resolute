@@ -24,7 +24,6 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
 import com.rockwellcollins.atc.resolute.resolute.ErrorStatement;
 import com.rockwellcollins.atc.resolute.resolute.EvidenceExpr;
-import com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr;
 import com.rockwellcollins.atc.resolute.resolute.FailExpr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.FunctionBody;
@@ -51,6 +50,7 @@ import com.rockwellcollins.atc.resolute.resolute.RealExpr;
 import com.rockwellcollins.atc.resolute.resolute.ResoluteLibrary;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
 import com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause;
+import com.rockwellcollins.atc.resolute.resolute.ResultExpr;
 import com.rockwellcollins.atc.resolute.resolute.Ruleset;
 import com.rockwellcollins.atc.resolute.resolute.RulesetBody;
 import com.rockwellcollins.atc.resolute.resolute.SetExpr;
@@ -271,9 +271,6 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 			case ResolutePackage.EVIDENCE_EXPR:
 				sequence_AtomicExpr(context, (EvidenceExpr) semanticObject); 
 				return; 
-			case ResolutePackage.EVIDENCE_VALUE_EXPR:
-				sequence_AtomicExpr(context, (EvidenceValueExpr) semanticObject); 
-				return; 
 			case ResolutePackage.FAIL_EXPR:
 				sequence_AtomicExpr(context, (FailExpr) semanticObject); 
 				return; 
@@ -348,6 +345,9 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 				return; 
 			case ResolutePackage.RESOLUTE_SUBCLAUSE:
 				sequence_ResoluteSubclause(context, (ResoluteSubclause) semanticObject); 
+				return; 
+			case ResolutePackage.RESULT_EXPR:
+				sequence_AtomicExpr(context, (ResultExpr) semanticObject); 
 				return; 
 			case ResolutePackage.RULESET:
 				sequence_Ruleset(context, (Ruleset) semanticObject); 
@@ -630,47 +630,6 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAtomicExprAccess().getNameIDTerminalRuleCall_21_2_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getAtomicExprAccess().getValStringTermParserRuleCall_21_4_0(), semanticObject.getVal());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Element returns EvidenceValueExpr
-	 *     Expr returns EvidenceValueExpr
-	 *     ImpliesExpr returns EvidenceValueExpr
-	 *     ImpliesExpr.BinaryExpr_1_0_0_0 returns EvidenceValueExpr
-	 *     OrExpr returns EvidenceValueExpr
-	 *     OrExpr.BinaryExpr_1_0_0_0 returns EvidenceValueExpr
-	 *     AndExpr returns EvidenceValueExpr
-	 *     AndExpr.BinaryExpr_1_0_0_0 returns EvidenceValueExpr
-	 *     InstanceOfExpr returns EvidenceValueExpr
-	 *     InstanceOfExpr.InstanceOfExpr_1_0_0_0 returns EvidenceValueExpr
-	 *     RelationalExpr returns EvidenceValueExpr
-	 *     RelationalExpr.BinaryExpr_1_0_0_0 returns EvidenceValueExpr
-	 *     PlusExpr returns EvidenceValueExpr
-	 *     PlusExpr.BinaryExpr_1_0_0_0 returns EvidenceValueExpr
-	 *     TimesExpr returns EvidenceValueExpr
-	 *     TimesExpr.BinaryExpr_1_0_0_0 returns EvidenceValueExpr
-	 *     ExpExpr returns EvidenceValueExpr
-	 *     ExpExpr.BinaryExpr_1_0_0_0 returns EvidenceValueExpr
-	 *     PrefixExpr returns EvidenceValueExpr
-	 *     AtomicExpr returns EvidenceValueExpr
-	 *     AtomicExpr.ListFilterMapExpr_14_2_0_0 returns EvidenceValueExpr
-	 *     AtomicExpr.ListExpr_14_2_1_0 returns EvidenceValueExpr
-	 *     AtomicExpr.SetFilterMapExpr_15_2_0_0 returns EvidenceValueExpr
-	 *     AtomicExpr.SetExpr_15_2_1_0 returns EvidenceValueExpr
-	 *
-	 * Constraint:
-	 *     val=EvidenceValueTerm
-	 */
-	protected void sequence_AtomicExpr(ISerializationContext context, EvidenceValueExpr semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.EVIDENCE_VALUE_EXPR__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.EVIDENCE_VALUE_EXPR__VAL));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicExprAccess().getValEvidenceValueTermParserRuleCall_3_1_0(), semanticObject.getVal());
 		feeder.finish();
 	}
 	
@@ -1136,6 +1095,47 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAtomicExprAccess().getValRealTermParserRuleCall_5_1_0(), semanticObject.getVal());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Element returns ResultExpr
+	 *     Expr returns ResultExpr
+	 *     ImpliesExpr returns ResultExpr
+	 *     ImpliesExpr.BinaryExpr_1_0_0_0 returns ResultExpr
+	 *     OrExpr returns ResultExpr
+	 *     OrExpr.BinaryExpr_1_0_0_0 returns ResultExpr
+	 *     AndExpr returns ResultExpr
+	 *     AndExpr.BinaryExpr_1_0_0_0 returns ResultExpr
+	 *     InstanceOfExpr returns ResultExpr
+	 *     InstanceOfExpr.InstanceOfExpr_1_0_0_0 returns ResultExpr
+	 *     RelationalExpr returns ResultExpr
+	 *     RelationalExpr.BinaryExpr_1_0_0_0 returns ResultExpr
+	 *     PlusExpr returns ResultExpr
+	 *     PlusExpr.BinaryExpr_1_0_0_0 returns ResultExpr
+	 *     TimesExpr returns ResultExpr
+	 *     TimesExpr.BinaryExpr_1_0_0_0 returns ResultExpr
+	 *     ExpExpr returns ResultExpr
+	 *     ExpExpr.BinaryExpr_1_0_0_0 returns ResultExpr
+	 *     PrefixExpr returns ResultExpr
+	 *     AtomicExpr returns ResultExpr
+	 *     AtomicExpr.ListFilterMapExpr_14_2_0_0 returns ResultExpr
+	 *     AtomicExpr.ListExpr_14_2_1_0 returns ResultExpr
+	 *     AtomicExpr.SetFilterMapExpr_15_2_0_0 returns ResultExpr
+	 *     AtomicExpr.SetExpr_15_2_1_0 returns ResultExpr
+	 *
+	 * Constraint:
+	 *     result=Result
+	 */
+	protected void sequence_AtomicExpr(ISerializationContext context, ResultExpr semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.RESULT_EXPR__RESULT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.RESULT_EXPR__RESULT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicExprAccess().getResultResultParserRuleCall_3_1_0(), semanticObject.getResult());
 		feeder.finish();
 	}
 	

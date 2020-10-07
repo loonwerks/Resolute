@@ -445,12 +445,12 @@ public class ResoluteSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ResolutePackage.EVIDENCE_VALUE_EXPR:
+      case ResolutePackage.RESULT_EXPR:
       {
-        EvidenceValueExpr evidenceValueExpr = (EvidenceValueExpr)theEObject;
-        T result = caseEvidenceValueExpr(evidenceValueExpr);
-        if (result == null) result = caseExpr(evidenceValueExpr);
-        if (result == null) result = caseElement(evidenceValueExpr);
+        ResultExpr resultExpr = (ResultExpr)theEObject;
+        T result = caseResultExpr(resultExpr);
+        if (result == null) result = caseExpr(resultExpr);
+        if (result == null) result = caseElement(resultExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1319,17 +1319,17 @@ public class ResoluteSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Evidence Value Expr</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Result Expr</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Evidence Value Expr</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Result Expr</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEvidenceValueExpr(EvidenceValueExpr object)
+  public T caseResultExpr(ResultExpr object)
   {
     return null;
   }

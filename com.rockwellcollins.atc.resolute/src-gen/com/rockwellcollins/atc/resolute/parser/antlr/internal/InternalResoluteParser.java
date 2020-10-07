@@ -10274,7 +10274,7 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomicExpr"
-    // InternalResoluteParser.g:3853:1: ruleAtomicExpr returns [EObject current=null] : ( ( () ( ( ruleQCREF ) ) ) | ( () otherlv_3= This (otherlv_4= FullStop ( (lv_sub_5_0= ruleNestedDotID ) ) )? ) | ( () otherlv_7= Fail ( ( (lv_val_8_0= ruleExpr ) ) | (otherlv_9= AsteriskAsterisk ( (lv_failmsg_10_0= ruleClaimText ) )+ otherlv_11= AsteriskAsterisk ) ) ) | ( () ( (lv_val_13_0= ruleEvidenceValueTerm ) ) ) | ( () ( (lv_val_15_0= ruleIntegerTerm ) ) ) | ( () ( (lv_val_17_0= ruleRealTerm ) ) ) | ( () ( (lv_val_19_0= ruleBooleanLiteral ) ) ) | ( () ( (lv_val_21_0= ruleStringTerm ) ) ) | ( () otherlv_23= If ( (lv_cond_24_0= ruleExpr ) ) otherlv_25= Then ( (lv_then_26_0= ruleExpr ) ) otherlv_27= Else ( (lv_else_28_0= ruleExpr ) ) ) | ( () ( ( (lv_quant_30_1= Forall | lv_quant_30_2= Exists ) ) ) (otherlv_31= LeftParenthesis ( (lv_args_32_0= ruleArg ) ) otherlv_33= RightParenthesis )+ otherlv_34= FullStop ( (lv_expr_35_0= ruleExpr ) ) ) | ( ( ( () ( ( RULE_ID ) ) FullStop ( ( RULE_ID ) ) LeftParenthesis ( ( ( ruleExpr ) ) ( Comma ( ( ruleExpr ) ) )* )? RightParenthesis ) )=> ( () ( (lv_libName_37_0= RULE_ID ) ) otherlv_38= FullStop ( (lv_fnName_39_0= RULE_ID ) ) otherlv_40= LeftParenthesis ( ( (lv_args_41_0= ruleExpr ) ) (otherlv_42= Comma ( (lv_args_43_0= ruleExpr ) ) )* )? otherlv_44= RightParenthesis ) ) | ( () ( (lv_fn_46_0= ruleBuiltInFn ) ) otherlv_47= LeftParenthesis ( ( (lv_args_48_0= ruleExpr ) ) (otherlv_49= Comma ( (lv_args_50_0= ruleExpr ) ) )* )? otherlv_51= RightParenthesis ) | ( () ( (otherlv_53= RULE_ID ) ) otherlv_54= LeftParenthesis ( ( (lv_args_55_0= ruleExpr ) ) (otherlv_56= Comma ( (lv_args_57_0= ruleExpr ) ) )* )? otherlv_58= RightParenthesis ) | ( () ( (lv_lintStmt_60_0= ruleLintStatement ) ) ) | (otherlv_61= LeftSquareBracket this_Expr_62= ruleExpr ( ( () otherlv_64= For (otherlv_65= LeftParenthesis ( (lv_args_66_0= ruleArg ) ) otherlv_67= RightParenthesis )+ (otherlv_68= VerticalLine ( (lv_filter_69_0= ruleExpr ) ) )? ) | ( () (otherlv_71= Comma ( (lv_exprs_72_0= ruleExpr ) ) )* ) ) otherlv_73= RightSquareBracket ) | (otherlv_74= LeftCurlyBracket this_Expr_75= ruleExpr ( ( () otherlv_77= For (otherlv_78= LeftParenthesis ( (lv_args_79_0= ruleArg ) ) otherlv_80= RightParenthesis )+ (otherlv_81= VerticalLine ( (lv_filter_82_0= ruleExpr ) ) )? ) | ( () (otherlv_84= Comma ( (lv_exprs_85_0= ruleExpr ) ) )* ) ) otherlv_86= RightCurlyBracket ) | ( () otherlv_88= LeftSquareBracket otherlv_89= RightSquareBracket ) | ( () otherlv_91= LeftCurlyBracket otherlv_92= RightCurlyBracket ) | ( () otherlv_94= Let ( (lv_binding_95_0= ruleLetBinding ) ) otherlv_96= Semicolon ( (lv_expr_97_0= ruleExpr ) ) ) | (otherlv_98= LeftParenthesis this_Expr_99= ruleExpr otherlv_100= RightParenthesis ) | ( () otherlv_102= Undeveloped ) | ( () otherlv_104= Evidence ( (lv_name_105_0= RULE_ID ) ) otherlv_106= Colon ( (lv_val_107_0= ruleStringTerm ) ) ) | ( () otherlv_109= Solution ( (lv_name_110_0= RULE_ID ) ) otherlv_111= Colon ( (lv_val_112_0= ruleStringTerm ) ) ) ) ;
+    // InternalResoluteParser.g:3853:1: ruleAtomicExpr returns [EObject current=null] : ( ( () ( ( ruleQCREF ) ) ) | ( () otherlv_3= This (otherlv_4= FullStop ( (lv_sub_5_0= ruleNestedDotID ) ) )? ) | ( () otherlv_7= Fail ( ( (lv_val_8_0= ruleExpr ) ) | (otherlv_9= AsteriskAsterisk ( (lv_failmsg_10_0= ruleClaimText ) )+ otherlv_11= AsteriskAsterisk ) ) ) | ( () ( (lv_result_13_0= ruleResult ) ) ) | ( () ( (lv_val_15_0= ruleIntegerTerm ) ) ) | ( () ( (lv_val_17_0= ruleRealTerm ) ) ) | ( () ( (lv_val_19_0= ruleBooleanLiteral ) ) ) | ( () ( (lv_val_21_0= ruleStringTerm ) ) ) | ( () otherlv_23= If ( (lv_cond_24_0= ruleExpr ) ) otherlv_25= Then ( (lv_then_26_0= ruleExpr ) ) otherlv_27= Else ( (lv_else_28_0= ruleExpr ) ) ) | ( () ( ( (lv_quant_30_1= Forall | lv_quant_30_2= Exists ) ) ) (otherlv_31= LeftParenthesis ( (lv_args_32_0= ruleArg ) ) otherlv_33= RightParenthesis )+ otherlv_34= FullStop ( (lv_expr_35_0= ruleExpr ) ) ) | ( ( ( () ( ( RULE_ID ) ) FullStop ( ( RULE_ID ) ) LeftParenthesis ( ( ( ruleExpr ) ) ( Comma ( ( ruleExpr ) ) )* )? RightParenthesis ) )=> ( () ( (lv_libName_37_0= RULE_ID ) ) otherlv_38= FullStop ( (lv_fnName_39_0= RULE_ID ) ) otherlv_40= LeftParenthesis ( ( (lv_args_41_0= ruleExpr ) ) (otherlv_42= Comma ( (lv_args_43_0= ruleExpr ) ) )* )? otherlv_44= RightParenthesis ) ) | ( () ( (lv_fn_46_0= ruleBuiltInFn ) ) otherlv_47= LeftParenthesis ( ( (lv_args_48_0= ruleExpr ) ) (otherlv_49= Comma ( (lv_args_50_0= ruleExpr ) ) )* )? otherlv_51= RightParenthesis ) | ( () ( (otherlv_53= RULE_ID ) ) otherlv_54= LeftParenthesis ( ( (lv_args_55_0= ruleExpr ) ) (otherlv_56= Comma ( (lv_args_57_0= ruleExpr ) ) )* )? otherlv_58= RightParenthesis ) | ( () ( (lv_lintStmt_60_0= ruleLintStatement ) ) ) | (otherlv_61= LeftSquareBracket this_Expr_62= ruleExpr ( ( () otherlv_64= For (otherlv_65= LeftParenthesis ( (lv_args_66_0= ruleArg ) ) otherlv_67= RightParenthesis )+ (otherlv_68= VerticalLine ( (lv_filter_69_0= ruleExpr ) ) )? ) | ( () (otherlv_71= Comma ( (lv_exprs_72_0= ruleExpr ) ) )* ) ) otherlv_73= RightSquareBracket ) | (otherlv_74= LeftCurlyBracket this_Expr_75= ruleExpr ( ( () otherlv_77= For (otherlv_78= LeftParenthesis ( (lv_args_79_0= ruleArg ) ) otherlv_80= RightParenthesis )+ (otherlv_81= VerticalLine ( (lv_filter_82_0= ruleExpr ) ) )? ) | ( () (otherlv_84= Comma ( (lv_exprs_85_0= ruleExpr ) ) )* ) ) otherlv_86= RightCurlyBracket ) | ( () otherlv_88= LeftSquareBracket otherlv_89= RightSquareBracket ) | ( () otherlv_91= LeftCurlyBracket otherlv_92= RightCurlyBracket ) | ( () otherlv_94= Let ( (lv_binding_95_0= ruleLetBinding ) ) otherlv_96= Semicolon ( (lv_expr_97_0= ruleExpr ) ) ) | (otherlv_98= LeftParenthesis this_Expr_99= ruleExpr otherlv_100= RightParenthesis ) | ( () otherlv_102= Undeveloped ) | ( () otherlv_104= Evidence ( (lv_name_105_0= RULE_ID ) ) otherlv_106= Colon ( (lv_val_107_0= ruleStringTerm ) ) ) | ( () otherlv_109= Solution ( (lv_name_110_0= RULE_ID ) ) otherlv_111= Colon ( (lv_val_112_0= ruleStringTerm ) ) ) ) ;
     public final EObject ruleAtomicExpr() throws RecognitionException {
         EObject current = null;
 
@@ -10339,7 +10339,7 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
 
         EObject lv_failmsg_10_0 = null;
 
-        AntlrDatatypeRuleToken lv_val_13_0 = null;
+        AntlrDatatypeRuleToken lv_result_13_0 = null;
 
         EObject lv_val_15_0 = null;
 
@@ -10405,10 +10405,10 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // InternalResoluteParser.g:3856:28: ( ( ( () ( ( ruleQCREF ) ) ) | ( () otherlv_3= This (otherlv_4= FullStop ( (lv_sub_5_0= ruleNestedDotID ) ) )? ) | ( () otherlv_7= Fail ( ( (lv_val_8_0= ruleExpr ) ) | (otherlv_9= AsteriskAsterisk ( (lv_failmsg_10_0= ruleClaimText ) )+ otherlv_11= AsteriskAsterisk ) ) ) | ( () ( (lv_val_13_0= ruleEvidenceValueTerm ) ) ) | ( () ( (lv_val_15_0= ruleIntegerTerm ) ) ) | ( () ( (lv_val_17_0= ruleRealTerm ) ) ) | ( () ( (lv_val_19_0= ruleBooleanLiteral ) ) ) | ( () ( (lv_val_21_0= ruleStringTerm ) ) ) | ( () otherlv_23= If ( (lv_cond_24_0= ruleExpr ) ) otherlv_25= Then ( (lv_then_26_0= ruleExpr ) ) otherlv_27= Else ( (lv_else_28_0= ruleExpr ) ) ) | ( () ( ( (lv_quant_30_1= Forall | lv_quant_30_2= Exists ) ) ) (otherlv_31= LeftParenthesis ( (lv_args_32_0= ruleArg ) ) otherlv_33= RightParenthesis )+ otherlv_34= FullStop ( (lv_expr_35_0= ruleExpr ) ) ) | ( ( ( () ( ( RULE_ID ) ) FullStop ( ( RULE_ID ) ) LeftParenthesis ( ( ( ruleExpr ) ) ( Comma ( ( ruleExpr ) ) )* )? RightParenthesis ) )=> ( () ( (lv_libName_37_0= RULE_ID ) ) otherlv_38= FullStop ( (lv_fnName_39_0= RULE_ID ) ) otherlv_40= LeftParenthesis ( ( (lv_args_41_0= ruleExpr ) ) (otherlv_42= Comma ( (lv_args_43_0= ruleExpr ) ) )* )? otherlv_44= RightParenthesis ) ) | ( () ( (lv_fn_46_0= ruleBuiltInFn ) ) otherlv_47= LeftParenthesis ( ( (lv_args_48_0= ruleExpr ) ) (otherlv_49= Comma ( (lv_args_50_0= ruleExpr ) ) )* )? otherlv_51= RightParenthesis ) | ( () ( (otherlv_53= RULE_ID ) ) otherlv_54= LeftParenthesis ( ( (lv_args_55_0= ruleExpr ) ) (otherlv_56= Comma ( (lv_args_57_0= ruleExpr ) ) )* )? otherlv_58= RightParenthesis ) | ( () ( (lv_lintStmt_60_0= ruleLintStatement ) ) ) | (otherlv_61= LeftSquareBracket this_Expr_62= ruleExpr ( ( () otherlv_64= For (otherlv_65= LeftParenthesis ( (lv_args_66_0= ruleArg ) ) otherlv_67= RightParenthesis )+ (otherlv_68= VerticalLine ( (lv_filter_69_0= ruleExpr ) ) )? ) | ( () (otherlv_71= Comma ( (lv_exprs_72_0= ruleExpr ) ) )* ) ) otherlv_73= RightSquareBracket ) | (otherlv_74= LeftCurlyBracket this_Expr_75= ruleExpr ( ( () otherlv_77= For (otherlv_78= LeftParenthesis ( (lv_args_79_0= ruleArg ) ) otherlv_80= RightParenthesis )+ (otherlv_81= VerticalLine ( (lv_filter_82_0= ruleExpr ) ) )? ) | ( () (otherlv_84= Comma ( (lv_exprs_85_0= ruleExpr ) ) )* ) ) otherlv_86= RightCurlyBracket ) | ( () otherlv_88= LeftSquareBracket otherlv_89= RightSquareBracket ) | ( () otherlv_91= LeftCurlyBracket otherlv_92= RightCurlyBracket ) | ( () otherlv_94= Let ( (lv_binding_95_0= ruleLetBinding ) ) otherlv_96= Semicolon ( (lv_expr_97_0= ruleExpr ) ) ) | (otherlv_98= LeftParenthesis this_Expr_99= ruleExpr otherlv_100= RightParenthesis ) | ( () otherlv_102= Undeveloped ) | ( () otherlv_104= Evidence ( (lv_name_105_0= RULE_ID ) ) otherlv_106= Colon ( (lv_val_107_0= ruleStringTerm ) ) ) | ( () otherlv_109= Solution ( (lv_name_110_0= RULE_ID ) ) otherlv_111= Colon ( (lv_val_112_0= ruleStringTerm ) ) ) ) )
-            // InternalResoluteParser.g:3857:1: ( ( () ( ( ruleQCREF ) ) ) | ( () otherlv_3= This (otherlv_4= FullStop ( (lv_sub_5_0= ruleNestedDotID ) ) )? ) | ( () otherlv_7= Fail ( ( (lv_val_8_0= ruleExpr ) ) | (otherlv_9= AsteriskAsterisk ( (lv_failmsg_10_0= ruleClaimText ) )+ otherlv_11= AsteriskAsterisk ) ) ) | ( () ( (lv_val_13_0= ruleEvidenceValueTerm ) ) ) | ( () ( (lv_val_15_0= ruleIntegerTerm ) ) ) | ( () ( (lv_val_17_0= ruleRealTerm ) ) ) | ( () ( (lv_val_19_0= ruleBooleanLiteral ) ) ) | ( () ( (lv_val_21_0= ruleStringTerm ) ) ) | ( () otherlv_23= If ( (lv_cond_24_0= ruleExpr ) ) otherlv_25= Then ( (lv_then_26_0= ruleExpr ) ) otherlv_27= Else ( (lv_else_28_0= ruleExpr ) ) ) | ( () ( ( (lv_quant_30_1= Forall | lv_quant_30_2= Exists ) ) ) (otherlv_31= LeftParenthesis ( (lv_args_32_0= ruleArg ) ) otherlv_33= RightParenthesis )+ otherlv_34= FullStop ( (lv_expr_35_0= ruleExpr ) ) ) | ( ( ( () ( ( RULE_ID ) ) FullStop ( ( RULE_ID ) ) LeftParenthesis ( ( ( ruleExpr ) ) ( Comma ( ( ruleExpr ) ) )* )? RightParenthesis ) )=> ( () ( (lv_libName_37_0= RULE_ID ) ) otherlv_38= FullStop ( (lv_fnName_39_0= RULE_ID ) ) otherlv_40= LeftParenthesis ( ( (lv_args_41_0= ruleExpr ) ) (otherlv_42= Comma ( (lv_args_43_0= ruleExpr ) ) )* )? otherlv_44= RightParenthesis ) ) | ( () ( (lv_fn_46_0= ruleBuiltInFn ) ) otherlv_47= LeftParenthesis ( ( (lv_args_48_0= ruleExpr ) ) (otherlv_49= Comma ( (lv_args_50_0= ruleExpr ) ) )* )? otherlv_51= RightParenthesis ) | ( () ( (otherlv_53= RULE_ID ) ) otherlv_54= LeftParenthesis ( ( (lv_args_55_0= ruleExpr ) ) (otherlv_56= Comma ( (lv_args_57_0= ruleExpr ) ) )* )? otherlv_58= RightParenthesis ) | ( () ( (lv_lintStmt_60_0= ruleLintStatement ) ) ) | (otherlv_61= LeftSquareBracket this_Expr_62= ruleExpr ( ( () otherlv_64= For (otherlv_65= LeftParenthesis ( (lv_args_66_0= ruleArg ) ) otherlv_67= RightParenthesis )+ (otherlv_68= VerticalLine ( (lv_filter_69_0= ruleExpr ) ) )? ) | ( () (otherlv_71= Comma ( (lv_exprs_72_0= ruleExpr ) ) )* ) ) otherlv_73= RightSquareBracket ) | (otherlv_74= LeftCurlyBracket this_Expr_75= ruleExpr ( ( () otherlv_77= For (otherlv_78= LeftParenthesis ( (lv_args_79_0= ruleArg ) ) otherlv_80= RightParenthesis )+ (otherlv_81= VerticalLine ( (lv_filter_82_0= ruleExpr ) ) )? ) | ( () (otherlv_84= Comma ( (lv_exprs_85_0= ruleExpr ) ) )* ) ) otherlv_86= RightCurlyBracket ) | ( () otherlv_88= LeftSquareBracket otherlv_89= RightSquareBracket ) | ( () otherlv_91= LeftCurlyBracket otherlv_92= RightCurlyBracket ) | ( () otherlv_94= Let ( (lv_binding_95_0= ruleLetBinding ) ) otherlv_96= Semicolon ( (lv_expr_97_0= ruleExpr ) ) ) | (otherlv_98= LeftParenthesis this_Expr_99= ruleExpr otherlv_100= RightParenthesis ) | ( () otherlv_102= Undeveloped ) | ( () otherlv_104= Evidence ( (lv_name_105_0= RULE_ID ) ) otherlv_106= Colon ( (lv_val_107_0= ruleStringTerm ) ) ) | ( () otherlv_109= Solution ( (lv_name_110_0= RULE_ID ) ) otherlv_111= Colon ( (lv_val_112_0= ruleStringTerm ) ) ) )
+            // InternalResoluteParser.g:3856:28: ( ( ( () ( ( ruleQCREF ) ) ) | ( () otherlv_3= This (otherlv_4= FullStop ( (lv_sub_5_0= ruleNestedDotID ) ) )? ) | ( () otherlv_7= Fail ( ( (lv_val_8_0= ruleExpr ) ) | (otherlv_9= AsteriskAsterisk ( (lv_failmsg_10_0= ruleClaimText ) )+ otherlv_11= AsteriskAsterisk ) ) ) | ( () ( (lv_result_13_0= ruleResult ) ) ) | ( () ( (lv_val_15_0= ruleIntegerTerm ) ) ) | ( () ( (lv_val_17_0= ruleRealTerm ) ) ) | ( () ( (lv_val_19_0= ruleBooleanLiteral ) ) ) | ( () ( (lv_val_21_0= ruleStringTerm ) ) ) | ( () otherlv_23= If ( (lv_cond_24_0= ruleExpr ) ) otherlv_25= Then ( (lv_then_26_0= ruleExpr ) ) otherlv_27= Else ( (lv_else_28_0= ruleExpr ) ) ) | ( () ( ( (lv_quant_30_1= Forall | lv_quant_30_2= Exists ) ) ) (otherlv_31= LeftParenthesis ( (lv_args_32_0= ruleArg ) ) otherlv_33= RightParenthesis )+ otherlv_34= FullStop ( (lv_expr_35_0= ruleExpr ) ) ) | ( ( ( () ( ( RULE_ID ) ) FullStop ( ( RULE_ID ) ) LeftParenthesis ( ( ( ruleExpr ) ) ( Comma ( ( ruleExpr ) ) )* )? RightParenthesis ) )=> ( () ( (lv_libName_37_0= RULE_ID ) ) otherlv_38= FullStop ( (lv_fnName_39_0= RULE_ID ) ) otherlv_40= LeftParenthesis ( ( (lv_args_41_0= ruleExpr ) ) (otherlv_42= Comma ( (lv_args_43_0= ruleExpr ) ) )* )? otherlv_44= RightParenthesis ) ) | ( () ( (lv_fn_46_0= ruleBuiltInFn ) ) otherlv_47= LeftParenthesis ( ( (lv_args_48_0= ruleExpr ) ) (otherlv_49= Comma ( (lv_args_50_0= ruleExpr ) ) )* )? otherlv_51= RightParenthesis ) | ( () ( (otherlv_53= RULE_ID ) ) otherlv_54= LeftParenthesis ( ( (lv_args_55_0= ruleExpr ) ) (otherlv_56= Comma ( (lv_args_57_0= ruleExpr ) ) )* )? otherlv_58= RightParenthesis ) | ( () ( (lv_lintStmt_60_0= ruleLintStatement ) ) ) | (otherlv_61= LeftSquareBracket this_Expr_62= ruleExpr ( ( () otherlv_64= For (otherlv_65= LeftParenthesis ( (lv_args_66_0= ruleArg ) ) otherlv_67= RightParenthesis )+ (otherlv_68= VerticalLine ( (lv_filter_69_0= ruleExpr ) ) )? ) | ( () (otherlv_71= Comma ( (lv_exprs_72_0= ruleExpr ) ) )* ) ) otherlv_73= RightSquareBracket ) | (otherlv_74= LeftCurlyBracket this_Expr_75= ruleExpr ( ( () otherlv_77= For (otherlv_78= LeftParenthesis ( (lv_args_79_0= ruleArg ) ) otherlv_80= RightParenthesis )+ (otherlv_81= VerticalLine ( (lv_filter_82_0= ruleExpr ) ) )? ) | ( () (otherlv_84= Comma ( (lv_exprs_85_0= ruleExpr ) ) )* ) ) otherlv_86= RightCurlyBracket ) | ( () otherlv_88= LeftSquareBracket otherlv_89= RightSquareBracket ) | ( () otherlv_91= LeftCurlyBracket otherlv_92= RightCurlyBracket ) | ( () otherlv_94= Let ( (lv_binding_95_0= ruleLetBinding ) ) otherlv_96= Semicolon ( (lv_expr_97_0= ruleExpr ) ) ) | (otherlv_98= LeftParenthesis this_Expr_99= ruleExpr otherlv_100= RightParenthesis ) | ( () otherlv_102= Undeveloped ) | ( () otherlv_104= Evidence ( (lv_name_105_0= RULE_ID ) ) otherlv_106= Colon ( (lv_val_107_0= ruleStringTerm ) ) ) | ( () otherlv_109= Solution ( (lv_name_110_0= RULE_ID ) ) otherlv_111= Colon ( (lv_val_112_0= ruleStringTerm ) ) ) ) )
+            // InternalResoluteParser.g:3857:1: ( ( () ( ( ruleQCREF ) ) ) | ( () otherlv_3= This (otherlv_4= FullStop ( (lv_sub_5_0= ruleNestedDotID ) ) )? ) | ( () otherlv_7= Fail ( ( (lv_val_8_0= ruleExpr ) ) | (otherlv_9= AsteriskAsterisk ( (lv_failmsg_10_0= ruleClaimText ) )+ otherlv_11= AsteriskAsterisk ) ) ) | ( () ( (lv_result_13_0= ruleResult ) ) ) | ( () ( (lv_val_15_0= ruleIntegerTerm ) ) ) | ( () ( (lv_val_17_0= ruleRealTerm ) ) ) | ( () ( (lv_val_19_0= ruleBooleanLiteral ) ) ) | ( () ( (lv_val_21_0= ruleStringTerm ) ) ) | ( () otherlv_23= If ( (lv_cond_24_0= ruleExpr ) ) otherlv_25= Then ( (lv_then_26_0= ruleExpr ) ) otherlv_27= Else ( (lv_else_28_0= ruleExpr ) ) ) | ( () ( ( (lv_quant_30_1= Forall | lv_quant_30_2= Exists ) ) ) (otherlv_31= LeftParenthesis ( (lv_args_32_0= ruleArg ) ) otherlv_33= RightParenthesis )+ otherlv_34= FullStop ( (lv_expr_35_0= ruleExpr ) ) ) | ( ( ( () ( ( RULE_ID ) ) FullStop ( ( RULE_ID ) ) LeftParenthesis ( ( ( ruleExpr ) ) ( Comma ( ( ruleExpr ) ) )* )? RightParenthesis ) )=> ( () ( (lv_libName_37_0= RULE_ID ) ) otherlv_38= FullStop ( (lv_fnName_39_0= RULE_ID ) ) otherlv_40= LeftParenthesis ( ( (lv_args_41_0= ruleExpr ) ) (otherlv_42= Comma ( (lv_args_43_0= ruleExpr ) ) )* )? otherlv_44= RightParenthesis ) ) | ( () ( (lv_fn_46_0= ruleBuiltInFn ) ) otherlv_47= LeftParenthesis ( ( (lv_args_48_0= ruleExpr ) ) (otherlv_49= Comma ( (lv_args_50_0= ruleExpr ) ) )* )? otherlv_51= RightParenthesis ) | ( () ( (otherlv_53= RULE_ID ) ) otherlv_54= LeftParenthesis ( ( (lv_args_55_0= ruleExpr ) ) (otherlv_56= Comma ( (lv_args_57_0= ruleExpr ) ) )* )? otherlv_58= RightParenthesis ) | ( () ( (lv_lintStmt_60_0= ruleLintStatement ) ) ) | (otherlv_61= LeftSquareBracket this_Expr_62= ruleExpr ( ( () otherlv_64= For (otherlv_65= LeftParenthesis ( (lv_args_66_0= ruleArg ) ) otherlv_67= RightParenthesis )+ (otherlv_68= VerticalLine ( (lv_filter_69_0= ruleExpr ) ) )? ) | ( () (otherlv_71= Comma ( (lv_exprs_72_0= ruleExpr ) ) )* ) ) otherlv_73= RightSquareBracket ) | (otherlv_74= LeftCurlyBracket this_Expr_75= ruleExpr ( ( () otherlv_77= For (otherlv_78= LeftParenthesis ( (lv_args_79_0= ruleArg ) ) otherlv_80= RightParenthesis )+ (otherlv_81= VerticalLine ( (lv_filter_82_0= ruleExpr ) ) )? ) | ( () (otherlv_84= Comma ( (lv_exprs_85_0= ruleExpr ) ) )* ) ) otherlv_86= RightCurlyBracket ) | ( () otherlv_88= LeftSquareBracket otherlv_89= RightSquareBracket ) | ( () otherlv_91= LeftCurlyBracket otherlv_92= RightCurlyBracket ) | ( () otherlv_94= Let ( (lv_binding_95_0= ruleLetBinding ) ) otherlv_96= Semicolon ( (lv_expr_97_0= ruleExpr ) ) ) | (otherlv_98= LeftParenthesis this_Expr_99= ruleExpr otherlv_100= RightParenthesis ) | ( () otherlv_102= Undeveloped ) | ( () otherlv_104= Evidence ( (lv_name_105_0= RULE_ID ) ) otherlv_106= Colon ( (lv_val_107_0= ruleStringTerm ) ) ) | ( () otherlv_109= Solution ( (lv_name_110_0= RULE_ID ) ) otherlv_111= Colon ( (lv_val_112_0= ruleStringTerm ) ) ) )
             {
-            // InternalResoluteParser.g:3857:1: ( ( () ( ( ruleQCREF ) ) ) | ( () otherlv_3= This (otherlv_4= FullStop ( (lv_sub_5_0= ruleNestedDotID ) ) )? ) | ( () otherlv_7= Fail ( ( (lv_val_8_0= ruleExpr ) ) | (otherlv_9= AsteriskAsterisk ( (lv_failmsg_10_0= ruleClaimText ) )+ otherlv_11= AsteriskAsterisk ) ) ) | ( () ( (lv_val_13_0= ruleEvidenceValueTerm ) ) ) | ( () ( (lv_val_15_0= ruleIntegerTerm ) ) ) | ( () ( (lv_val_17_0= ruleRealTerm ) ) ) | ( () ( (lv_val_19_0= ruleBooleanLiteral ) ) ) | ( () ( (lv_val_21_0= ruleStringTerm ) ) ) | ( () otherlv_23= If ( (lv_cond_24_0= ruleExpr ) ) otherlv_25= Then ( (lv_then_26_0= ruleExpr ) ) otherlv_27= Else ( (lv_else_28_0= ruleExpr ) ) ) | ( () ( ( (lv_quant_30_1= Forall | lv_quant_30_2= Exists ) ) ) (otherlv_31= LeftParenthesis ( (lv_args_32_0= ruleArg ) ) otherlv_33= RightParenthesis )+ otherlv_34= FullStop ( (lv_expr_35_0= ruleExpr ) ) ) | ( ( ( () ( ( RULE_ID ) ) FullStop ( ( RULE_ID ) ) LeftParenthesis ( ( ( ruleExpr ) ) ( Comma ( ( ruleExpr ) ) )* )? RightParenthesis ) )=> ( () ( (lv_libName_37_0= RULE_ID ) ) otherlv_38= FullStop ( (lv_fnName_39_0= RULE_ID ) ) otherlv_40= LeftParenthesis ( ( (lv_args_41_0= ruleExpr ) ) (otherlv_42= Comma ( (lv_args_43_0= ruleExpr ) ) )* )? otherlv_44= RightParenthesis ) ) | ( () ( (lv_fn_46_0= ruleBuiltInFn ) ) otherlv_47= LeftParenthesis ( ( (lv_args_48_0= ruleExpr ) ) (otherlv_49= Comma ( (lv_args_50_0= ruleExpr ) ) )* )? otherlv_51= RightParenthesis ) | ( () ( (otherlv_53= RULE_ID ) ) otherlv_54= LeftParenthesis ( ( (lv_args_55_0= ruleExpr ) ) (otherlv_56= Comma ( (lv_args_57_0= ruleExpr ) ) )* )? otherlv_58= RightParenthesis ) | ( () ( (lv_lintStmt_60_0= ruleLintStatement ) ) ) | (otherlv_61= LeftSquareBracket this_Expr_62= ruleExpr ( ( () otherlv_64= For (otherlv_65= LeftParenthesis ( (lv_args_66_0= ruleArg ) ) otherlv_67= RightParenthesis )+ (otherlv_68= VerticalLine ( (lv_filter_69_0= ruleExpr ) ) )? ) | ( () (otherlv_71= Comma ( (lv_exprs_72_0= ruleExpr ) ) )* ) ) otherlv_73= RightSquareBracket ) | (otherlv_74= LeftCurlyBracket this_Expr_75= ruleExpr ( ( () otherlv_77= For (otherlv_78= LeftParenthesis ( (lv_args_79_0= ruleArg ) ) otherlv_80= RightParenthesis )+ (otherlv_81= VerticalLine ( (lv_filter_82_0= ruleExpr ) ) )? ) | ( () (otherlv_84= Comma ( (lv_exprs_85_0= ruleExpr ) ) )* ) ) otherlv_86= RightCurlyBracket ) | ( () otherlv_88= LeftSquareBracket otherlv_89= RightSquareBracket ) | ( () otherlv_91= LeftCurlyBracket otherlv_92= RightCurlyBracket ) | ( () otherlv_94= Let ( (lv_binding_95_0= ruleLetBinding ) ) otherlv_96= Semicolon ( (lv_expr_97_0= ruleExpr ) ) ) | (otherlv_98= LeftParenthesis this_Expr_99= ruleExpr otherlv_100= RightParenthesis ) | ( () otherlv_102= Undeveloped ) | ( () otherlv_104= Evidence ( (lv_name_105_0= RULE_ID ) ) otherlv_106= Colon ( (lv_val_107_0= ruleStringTerm ) ) ) | ( () otherlv_109= Solution ( (lv_name_110_0= RULE_ID ) ) otherlv_111= Colon ( (lv_val_112_0= ruleStringTerm ) ) ) )
+            // InternalResoluteParser.g:3857:1: ( ( () ( ( ruleQCREF ) ) ) | ( () otherlv_3= This (otherlv_4= FullStop ( (lv_sub_5_0= ruleNestedDotID ) ) )? ) | ( () otherlv_7= Fail ( ( (lv_val_8_0= ruleExpr ) ) | (otherlv_9= AsteriskAsterisk ( (lv_failmsg_10_0= ruleClaimText ) )+ otherlv_11= AsteriskAsterisk ) ) ) | ( () ( (lv_result_13_0= ruleResult ) ) ) | ( () ( (lv_val_15_0= ruleIntegerTerm ) ) ) | ( () ( (lv_val_17_0= ruleRealTerm ) ) ) | ( () ( (lv_val_19_0= ruleBooleanLiteral ) ) ) | ( () ( (lv_val_21_0= ruleStringTerm ) ) ) | ( () otherlv_23= If ( (lv_cond_24_0= ruleExpr ) ) otherlv_25= Then ( (lv_then_26_0= ruleExpr ) ) otherlv_27= Else ( (lv_else_28_0= ruleExpr ) ) ) | ( () ( ( (lv_quant_30_1= Forall | lv_quant_30_2= Exists ) ) ) (otherlv_31= LeftParenthesis ( (lv_args_32_0= ruleArg ) ) otherlv_33= RightParenthesis )+ otherlv_34= FullStop ( (lv_expr_35_0= ruleExpr ) ) ) | ( ( ( () ( ( RULE_ID ) ) FullStop ( ( RULE_ID ) ) LeftParenthesis ( ( ( ruleExpr ) ) ( Comma ( ( ruleExpr ) ) )* )? RightParenthesis ) )=> ( () ( (lv_libName_37_0= RULE_ID ) ) otherlv_38= FullStop ( (lv_fnName_39_0= RULE_ID ) ) otherlv_40= LeftParenthesis ( ( (lv_args_41_0= ruleExpr ) ) (otherlv_42= Comma ( (lv_args_43_0= ruleExpr ) ) )* )? otherlv_44= RightParenthesis ) ) | ( () ( (lv_fn_46_0= ruleBuiltInFn ) ) otherlv_47= LeftParenthesis ( ( (lv_args_48_0= ruleExpr ) ) (otherlv_49= Comma ( (lv_args_50_0= ruleExpr ) ) )* )? otherlv_51= RightParenthesis ) | ( () ( (otherlv_53= RULE_ID ) ) otherlv_54= LeftParenthesis ( ( (lv_args_55_0= ruleExpr ) ) (otherlv_56= Comma ( (lv_args_57_0= ruleExpr ) ) )* )? otherlv_58= RightParenthesis ) | ( () ( (lv_lintStmt_60_0= ruleLintStatement ) ) ) | (otherlv_61= LeftSquareBracket this_Expr_62= ruleExpr ( ( () otherlv_64= For (otherlv_65= LeftParenthesis ( (lv_args_66_0= ruleArg ) ) otherlv_67= RightParenthesis )+ (otherlv_68= VerticalLine ( (lv_filter_69_0= ruleExpr ) ) )? ) | ( () (otherlv_71= Comma ( (lv_exprs_72_0= ruleExpr ) ) )* ) ) otherlv_73= RightSquareBracket ) | (otherlv_74= LeftCurlyBracket this_Expr_75= ruleExpr ( ( () otherlv_77= For (otherlv_78= LeftParenthesis ( (lv_args_79_0= ruleArg ) ) otherlv_80= RightParenthesis )+ (otherlv_81= VerticalLine ( (lv_filter_82_0= ruleExpr ) ) )? ) | ( () (otherlv_84= Comma ( (lv_exprs_85_0= ruleExpr ) ) )* ) ) otherlv_86= RightCurlyBracket ) | ( () otherlv_88= LeftSquareBracket otherlv_89= RightSquareBracket ) | ( () otherlv_91= LeftCurlyBracket otherlv_92= RightCurlyBracket ) | ( () otherlv_94= Let ( (lv_binding_95_0= ruleLetBinding ) ) otherlv_96= Semicolon ( (lv_expr_97_0= ruleExpr ) ) ) | (otherlv_98= LeftParenthesis this_Expr_99= ruleExpr otherlv_100= RightParenthesis ) | ( () otherlv_102= Undeveloped ) | ( () otherlv_104= Evidence ( (lv_name_105_0= RULE_ID ) ) otherlv_106= Colon ( (lv_val_107_0= ruleStringTerm ) ) ) | ( () otherlv_109= Solution ( (lv_name_110_0= RULE_ID ) ) otherlv_111= Colon ( (lv_val_112_0= ruleStringTerm ) ) ) )
             int alt51=23;
             alt51 = dfa51.predict(input);
             switch (alt51) {
@@ -10737,10 +10737,10 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalResoluteParser.g:3974:6: ( () ( (lv_val_13_0= ruleEvidenceValueTerm ) ) )
+                    // InternalResoluteParser.g:3974:6: ( () ( (lv_result_13_0= ruleResult ) ) )
                     {
-                    // InternalResoluteParser.g:3974:6: ( () ( (lv_val_13_0= ruleEvidenceValueTerm ) ) )
-                    // InternalResoluteParser.g:3974:7: () ( (lv_val_13_0= ruleEvidenceValueTerm ) )
+                    // InternalResoluteParser.g:3974:6: ( () ( (lv_result_13_0= ruleResult ) ) )
+                    // InternalResoluteParser.g:3974:7: () ( (lv_result_13_0= ruleResult ) )
                     {
                     // InternalResoluteParser.g:3974:7: ()
                     // InternalResoluteParser.g:3975:5: 
@@ -10748,26 +10748,26 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                               current = forceCreateModelElement(
-                                  grammarAccess.getAtomicExprAccess().getEvidenceValueExprAction_3_0(),
+                                  grammarAccess.getAtomicExprAccess().getResultExprAction_3_0(),
                                   current);
                           
                     }
 
                     }
 
-                    // InternalResoluteParser.g:3980:2: ( (lv_val_13_0= ruleEvidenceValueTerm ) )
-                    // InternalResoluteParser.g:3981:1: (lv_val_13_0= ruleEvidenceValueTerm )
+                    // InternalResoluteParser.g:3980:2: ( (lv_result_13_0= ruleResult ) )
+                    // InternalResoluteParser.g:3981:1: (lv_result_13_0= ruleResult )
                     {
-                    // InternalResoluteParser.g:3981:1: (lv_val_13_0= ruleEvidenceValueTerm )
-                    // InternalResoluteParser.g:3982:3: lv_val_13_0= ruleEvidenceValueTerm
+                    // InternalResoluteParser.g:3981:1: (lv_result_13_0= ruleResult )
+                    // InternalResoluteParser.g:3982:3: lv_result_13_0= ruleResult
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getAtomicExprAccess().getValEvidenceValueTermParserRuleCall_3_1_0()); 
+                      	        newCompositeNode(grammarAccess.getAtomicExprAccess().getResultResultParserRuleCall_3_1_0()); 
                       	    
                     }
                     pushFollow(FollowSets000.FOLLOW_2);
-                    lv_val_13_0=ruleEvidenceValueTerm();
+                    lv_result_13_0=ruleResult();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10778,9 +10778,9 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
                       	        }
                              		set(
                              			current, 
-                             			"val",
-                              		lv_val_13_0, 
-                              		"com.rockwellcollins.atc.resolute.Resolute.EvidenceValueTerm");
+                             			"result",
+                              		lv_result_13_0, 
+                              		"com.rockwellcollins.atc.resolute.Resolute.Result");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -13362,28 +13362,28 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleLetBinding"
 
 
-    // $ANTLR start "entryRuleEvidenceValueTerm"
-    // InternalResoluteParser.g:5104:1: entryRuleEvidenceValueTerm returns [String current=null] : iv_ruleEvidenceValueTerm= ruleEvidenceValueTerm EOF ;
-    public final String entryRuleEvidenceValueTerm() throws RecognitionException {
+    // $ANTLR start "entryRuleResult"
+    // InternalResoluteParser.g:5104:1: entryRuleResult returns [String current=null] : iv_ruleResult= ruleResult EOF ;
+    public final String entryRuleResult() throws RecognitionException {
         String current = null;
 
-        AntlrDatatypeRuleToken iv_ruleEvidenceValueTerm = null;
+        AntlrDatatypeRuleToken iv_ruleResult = null;
 
 
         try {
-            // InternalResoluteParser.g:5105:1: (iv_ruleEvidenceValueTerm= ruleEvidenceValueTerm EOF )
-            // InternalResoluteParser.g:5106:2: iv_ruleEvidenceValueTerm= ruleEvidenceValueTerm EOF
+            // InternalResoluteParser.g:5105:1: (iv_ruleResult= ruleResult EOF )
+            // InternalResoluteParser.g:5106:2: iv_ruleResult= ruleResult EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getEvidenceValueTermRule()); 
+               newCompositeNode(grammarAccess.getResultRule()); 
             }
             pushFollow(FollowSets000.FOLLOW_1);
-            iv_ruleEvidenceValueTerm=ruleEvidenceValueTerm();
+            iv_ruleResult=ruleResult();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleEvidenceValueTerm.getText(); 
+               current =iv_ruleResult.getText(); 
             }
             match(input,EOF,FollowSets000.FOLLOW_2); if (state.failed) return current;
 
@@ -13399,12 +13399,12 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleEvidenceValueTerm"
+    // $ANTLR end "entryRuleResult"
 
 
-    // $ANTLR start "ruleEvidenceValueTerm"
-    // InternalResoluteParser.g:5113:1: ruleEvidenceValueTerm returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Passed | kw= Failed | kw= Indeterminate | kw= Revised_with_review | kw= Revised_without_review ) ;
-    public final AntlrDatatypeRuleToken ruleEvidenceValueTerm() throws RecognitionException {
+    // $ANTLR start "ruleResult"
+    // InternalResoluteParser.g:5113:1: ruleResult returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= Passed | kw= Failed | kw= Indeterminate | kw= Revised_with_review | kw= Revised_without_review ) ;
+    public final AntlrDatatypeRuleToken ruleResult() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
         Token kw=null;
@@ -13459,7 +13459,7 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getEvidenceValueTermAccess().getPassedKeyword_0()); 
+                              newLeafNode(kw, grammarAccess.getResultAccess().getPassedKeyword_0()); 
                           
                     }
 
@@ -13472,7 +13472,7 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getEvidenceValueTermAccess().getFailedKeyword_1()); 
+                              newLeafNode(kw, grammarAccess.getResultAccess().getFailedKeyword_1()); 
                           
                     }
 
@@ -13485,7 +13485,7 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getEvidenceValueTermAccess().getIndeterminateKeyword_2()); 
+                              newLeafNode(kw, grammarAccess.getResultAccess().getIndeterminateKeyword_2()); 
                           
                     }
 
@@ -13498,7 +13498,7 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getEvidenceValueTermAccess().getRevised_with_reviewKeyword_3()); 
+                              newLeafNode(kw, grammarAccess.getResultAccess().getRevised_with_reviewKeyword_3()); 
                           
                     }
 
@@ -13511,7 +13511,7 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getEvidenceValueTermAccess().getRevised_without_reviewKeyword_4()); 
+                              newLeafNode(kw, grammarAccess.getResultAccess().getRevised_without_reviewKeyword_4()); 
                           
                     }
 
@@ -13537,7 +13537,7 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleEvidenceValueTerm"
+    // $ANTLR end "ruleResult"
 
 
     // $ANTLR start "entryRuleBuiltInFn"
@@ -22883,7 +22883,7 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
             this.transition = dfa_7;
         }
         public String getDescription() {
-            return "3857:1: ( ( () ( ( ruleQCREF ) ) ) | ( () otherlv_3= This (otherlv_4= FullStop ( (lv_sub_5_0= ruleNestedDotID ) ) )? ) | ( () otherlv_7= Fail ( ( (lv_val_8_0= ruleExpr ) ) | (otherlv_9= AsteriskAsterisk ( (lv_failmsg_10_0= ruleClaimText ) )+ otherlv_11= AsteriskAsterisk ) ) ) | ( () ( (lv_val_13_0= ruleEvidenceValueTerm ) ) ) | ( () ( (lv_val_15_0= ruleIntegerTerm ) ) ) | ( () ( (lv_val_17_0= ruleRealTerm ) ) ) | ( () ( (lv_val_19_0= ruleBooleanLiteral ) ) ) | ( () ( (lv_val_21_0= ruleStringTerm ) ) ) | ( () otherlv_23= If ( (lv_cond_24_0= ruleExpr ) ) otherlv_25= Then ( (lv_then_26_0= ruleExpr ) ) otherlv_27= Else ( (lv_else_28_0= ruleExpr ) ) ) | ( () ( ( (lv_quant_30_1= Forall | lv_quant_30_2= Exists ) ) ) (otherlv_31= LeftParenthesis ( (lv_args_32_0= ruleArg ) ) otherlv_33= RightParenthesis )+ otherlv_34= FullStop ( (lv_expr_35_0= ruleExpr ) ) ) | ( ( ( () ( ( RULE_ID ) ) FullStop ( ( RULE_ID ) ) LeftParenthesis ( ( ( ruleExpr ) ) ( Comma ( ( ruleExpr ) ) )* )? RightParenthesis ) )=> ( () ( (lv_libName_37_0= RULE_ID ) ) otherlv_38= FullStop ( (lv_fnName_39_0= RULE_ID ) ) otherlv_40= LeftParenthesis ( ( (lv_args_41_0= ruleExpr ) ) (otherlv_42= Comma ( (lv_args_43_0= ruleExpr ) ) )* )? otherlv_44= RightParenthesis ) ) | ( () ( (lv_fn_46_0= ruleBuiltInFn ) ) otherlv_47= LeftParenthesis ( ( (lv_args_48_0= ruleExpr ) ) (otherlv_49= Comma ( (lv_args_50_0= ruleExpr ) ) )* )? otherlv_51= RightParenthesis ) | ( () ( (otherlv_53= RULE_ID ) ) otherlv_54= LeftParenthesis ( ( (lv_args_55_0= ruleExpr ) ) (otherlv_56= Comma ( (lv_args_57_0= ruleExpr ) ) )* )? otherlv_58= RightParenthesis ) | ( () ( (lv_lintStmt_60_0= ruleLintStatement ) ) ) | (otherlv_61= LeftSquareBracket this_Expr_62= ruleExpr ( ( () otherlv_64= For (otherlv_65= LeftParenthesis ( (lv_args_66_0= ruleArg ) ) otherlv_67= RightParenthesis )+ (otherlv_68= VerticalLine ( (lv_filter_69_0= ruleExpr ) ) )? ) | ( () (otherlv_71= Comma ( (lv_exprs_72_0= ruleExpr ) ) )* ) ) otherlv_73= RightSquareBracket ) | (otherlv_74= LeftCurlyBracket this_Expr_75= ruleExpr ( ( () otherlv_77= For (otherlv_78= LeftParenthesis ( (lv_args_79_0= ruleArg ) ) otherlv_80= RightParenthesis )+ (otherlv_81= VerticalLine ( (lv_filter_82_0= ruleExpr ) ) )? ) | ( () (otherlv_84= Comma ( (lv_exprs_85_0= ruleExpr ) ) )* ) ) otherlv_86= RightCurlyBracket ) | ( () otherlv_88= LeftSquareBracket otherlv_89= RightSquareBracket ) | ( () otherlv_91= LeftCurlyBracket otherlv_92= RightCurlyBracket ) | ( () otherlv_94= Let ( (lv_binding_95_0= ruleLetBinding ) ) otherlv_96= Semicolon ( (lv_expr_97_0= ruleExpr ) ) ) | (otherlv_98= LeftParenthesis this_Expr_99= ruleExpr otherlv_100= RightParenthesis ) | ( () otherlv_102= Undeveloped ) | ( () otherlv_104= Evidence ( (lv_name_105_0= RULE_ID ) ) otherlv_106= Colon ( (lv_val_107_0= ruleStringTerm ) ) ) | ( () otherlv_109= Solution ( (lv_name_110_0= RULE_ID ) ) otherlv_111= Colon ( (lv_val_112_0= ruleStringTerm ) ) ) )";
+            return "3857:1: ( ( () ( ( ruleQCREF ) ) ) | ( () otherlv_3= This (otherlv_4= FullStop ( (lv_sub_5_0= ruleNestedDotID ) ) )? ) | ( () otherlv_7= Fail ( ( (lv_val_8_0= ruleExpr ) ) | (otherlv_9= AsteriskAsterisk ( (lv_failmsg_10_0= ruleClaimText ) )+ otherlv_11= AsteriskAsterisk ) ) ) | ( () ( (lv_result_13_0= ruleResult ) ) ) | ( () ( (lv_val_15_0= ruleIntegerTerm ) ) ) | ( () ( (lv_val_17_0= ruleRealTerm ) ) ) | ( () ( (lv_val_19_0= ruleBooleanLiteral ) ) ) | ( () ( (lv_val_21_0= ruleStringTerm ) ) ) | ( () otherlv_23= If ( (lv_cond_24_0= ruleExpr ) ) otherlv_25= Then ( (lv_then_26_0= ruleExpr ) ) otherlv_27= Else ( (lv_else_28_0= ruleExpr ) ) ) | ( () ( ( (lv_quant_30_1= Forall | lv_quant_30_2= Exists ) ) ) (otherlv_31= LeftParenthesis ( (lv_args_32_0= ruleArg ) ) otherlv_33= RightParenthesis )+ otherlv_34= FullStop ( (lv_expr_35_0= ruleExpr ) ) ) | ( ( ( () ( ( RULE_ID ) ) FullStop ( ( RULE_ID ) ) LeftParenthesis ( ( ( ruleExpr ) ) ( Comma ( ( ruleExpr ) ) )* )? RightParenthesis ) )=> ( () ( (lv_libName_37_0= RULE_ID ) ) otherlv_38= FullStop ( (lv_fnName_39_0= RULE_ID ) ) otherlv_40= LeftParenthesis ( ( (lv_args_41_0= ruleExpr ) ) (otherlv_42= Comma ( (lv_args_43_0= ruleExpr ) ) )* )? otherlv_44= RightParenthesis ) ) | ( () ( (lv_fn_46_0= ruleBuiltInFn ) ) otherlv_47= LeftParenthesis ( ( (lv_args_48_0= ruleExpr ) ) (otherlv_49= Comma ( (lv_args_50_0= ruleExpr ) ) )* )? otherlv_51= RightParenthesis ) | ( () ( (otherlv_53= RULE_ID ) ) otherlv_54= LeftParenthesis ( ( (lv_args_55_0= ruleExpr ) ) (otherlv_56= Comma ( (lv_args_57_0= ruleExpr ) ) )* )? otherlv_58= RightParenthesis ) | ( () ( (lv_lintStmt_60_0= ruleLintStatement ) ) ) | (otherlv_61= LeftSquareBracket this_Expr_62= ruleExpr ( ( () otherlv_64= For (otherlv_65= LeftParenthesis ( (lv_args_66_0= ruleArg ) ) otherlv_67= RightParenthesis )+ (otherlv_68= VerticalLine ( (lv_filter_69_0= ruleExpr ) ) )? ) | ( () (otherlv_71= Comma ( (lv_exprs_72_0= ruleExpr ) ) )* ) ) otherlv_73= RightSquareBracket ) | (otherlv_74= LeftCurlyBracket this_Expr_75= ruleExpr ( ( () otherlv_77= For (otherlv_78= LeftParenthesis ( (lv_args_79_0= ruleArg ) ) otherlv_80= RightParenthesis )+ (otherlv_81= VerticalLine ( (lv_filter_82_0= ruleExpr ) ) )? ) | ( () (otherlv_84= Comma ( (lv_exprs_85_0= ruleExpr ) ) )* ) ) otherlv_86= RightCurlyBracket ) | ( () otherlv_88= LeftSquareBracket otherlv_89= RightSquareBracket ) | ( () otherlv_91= LeftCurlyBracket otherlv_92= RightCurlyBracket ) | ( () otherlv_94= Let ( (lv_binding_95_0= ruleLetBinding ) ) otherlv_96= Semicolon ( (lv_expr_97_0= ruleExpr ) ) ) | (otherlv_98= LeftParenthesis this_Expr_99= ruleExpr otherlv_100= RightParenthesis ) | ( () otherlv_102= Undeveloped ) | ( () otherlv_104= Evidence ( (lv_name_105_0= RULE_ID ) ) otherlv_106= Colon ( (lv_val_107_0= ruleStringTerm ) ) ) | ( () otherlv_109= Solution ( (lv_name_110_0= RULE_ID ) ) otherlv_111= Colon ( (lv_val_112_0= ruleStringTerm ) ) ) )";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;

@@ -275,7 +275,7 @@ AtomicExpr returns Expr:
 	{IdExpr} id=[aadl2::NamedElement | QCREF]
 |	{ThisExpr} 'this' ('.' sub=NestedDotID)?
 |   {FailExpr} 'fail' ( val=Expr | ( '**' (failmsg+=ClaimText)+  '**')) 
-|	{EvidenceValueExpr} val=EvidenceValueTerm
+|	{ResultExpr} result=Result
 |	{IntExpr} val=IntegerTerm
 |   {RealExpr} val=RealTerm
 |	{BoolExpr} val=BooleanLiteral
@@ -304,7 +304,7 @@ LetBinding:
 	name=ID ':' type=Type '=' expr=Expr
 ;
 
-EvidenceValueTerm:
+Result:
 	'passed'
 |	'failed'
 |	'indeterminate'

@@ -392,13 +392,13 @@ public interface ResoluteFactory extends EFactory
   FailExpr createFailExpr();
 
   /**
-   * Returns a new object of class '<em>Evidence Value Expr</em>'.
+   * Returns a new object of class '<em>Result Expr</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Evidence Value Expr</em>'.
+   * @return a new object of class '<em>Result Expr</em>'.
    * @generated
    */
-  EvidenceValueExpr createEvidenceValueExpr();
+  ResultExpr createResultExpr();
 
   /**
    * Returns a new object of class '<em>Int Expr</em>'.

@@ -1286,25 +1286,25 @@ finally {
 
 
 
-// Entry rule entryRuleEvidenceValueTerm
-entryRuleEvidenceValueTerm 
+// Entry rule entryRuleResult
+entryRuleResult 
 :
-{ before(grammarAccess.getEvidenceValueTermRule()); }
-	 ruleEvidenceValueTerm
-{ after(grammarAccess.getEvidenceValueTermRule()); } 
+{ before(grammarAccess.getResultRule()); }
+	 ruleResult
+{ after(grammarAccess.getResultRule()); } 
 	 EOF 
 ;
 
-// Rule EvidenceValueTerm
-ruleEvidenceValueTerm 
+// Rule Result
+ruleResult 
     @init {
 		int stackSize = keepStackSize();
     }
     :
 (
-{ before(grammarAccess.getEvidenceValueTermAccess().getAlternatives()); }
-(rule__EvidenceValueTerm__Alternatives)
-{ after(grammarAccess.getEvidenceValueTermAccess().getAlternatives()); }
+{ before(grammarAccess.getResultAccess().getAlternatives()); }
+(rule__Result__Alternatives)
+{ after(grammarAccess.getResultAccess().getAlternatives()); }
 )
 
 ;
@@ -3896,49 +3896,49 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EvidenceValueTerm__Alternatives
+rule__Result__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getEvidenceValueTermAccess().getPassedKeyword_0()); }
+{ before(grammarAccess.getResultAccess().getPassedKeyword_0()); }
 
 	Passed 
 
-{ after(grammarAccess.getEvidenceValueTermAccess().getPassedKeyword_0()); }
+{ after(grammarAccess.getResultAccess().getPassedKeyword_0()); }
 )
 
     |(
-{ before(grammarAccess.getEvidenceValueTermAccess().getFailedKeyword_1()); }
+{ before(grammarAccess.getResultAccess().getFailedKeyword_1()); }
 
 	Failed 
 
-{ after(grammarAccess.getEvidenceValueTermAccess().getFailedKeyword_1()); }
+{ after(grammarAccess.getResultAccess().getFailedKeyword_1()); }
 )
 
     |(
-{ before(grammarAccess.getEvidenceValueTermAccess().getIndeterminateKeyword_2()); }
+{ before(grammarAccess.getResultAccess().getIndeterminateKeyword_2()); }
 
 	Indeterminate 
 
-{ after(grammarAccess.getEvidenceValueTermAccess().getIndeterminateKeyword_2()); }
+{ after(grammarAccess.getResultAccess().getIndeterminateKeyword_2()); }
 )
 
     |(
-{ before(grammarAccess.getEvidenceValueTermAccess().getRevised_with_reviewKeyword_3()); }
+{ before(grammarAccess.getResultAccess().getRevised_with_reviewKeyword_3()); }
 
 	Revised_with_review 
 
-{ after(grammarAccess.getEvidenceValueTermAccess().getRevised_with_reviewKeyword_3()); }
+{ after(grammarAccess.getResultAccess().getRevised_with_reviewKeyword_3()); }
 )
 
     |(
-{ before(grammarAccess.getEvidenceValueTermAccess().getRevised_without_reviewKeyword_4()); }
+{ before(grammarAccess.getResultAccess().getRevised_without_reviewKeyword_4()); }
 
 	Revised_without_review 
 
-{ after(grammarAccess.getEvidenceValueTermAccess().getRevised_without_reviewKeyword_4()); }
+{ after(grammarAccess.getResultAccess().getRevised_without_reviewKeyword_4()); }
 )
 
 ;
@@ -10882,11 +10882,11 @@ rule__AtomicExpr__Group_3__0__Impl
     }
 :
 (
-{ before(grammarAccess.getAtomicExprAccess().getEvidenceValueExprAction_3_0()); }
+{ before(grammarAccess.getAtomicExprAccess().getResultExprAction_3_0()); }
 (
 
 )
-{ after(grammarAccess.getAtomicExprAccess().getEvidenceValueExprAction_3_0()); }
+{ after(grammarAccess.getAtomicExprAccess().getResultExprAction_3_0()); }
 )
 
 ;
@@ -10912,9 +10912,9 @@ rule__AtomicExpr__Group_3__1__Impl
     }
 :
 (
-{ before(grammarAccess.getAtomicExprAccess().getValAssignment_3_1()); }
-(rule__AtomicExpr__ValAssignment_3_1)
-{ after(grammarAccess.getAtomicExprAccess().getValAssignment_3_1()); }
+{ before(grammarAccess.getAtomicExprAccess().getResultAssignment_3_1()); }
+(rule__AtomicExpr__ResultAssignment_3_1)
+{ after(grammarAccess.getAtomicExprAccess().getResultAssignment_3_1()); }
 )
 
 ;
@@ -19964,14 +19964,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__AtomicExpr__ValAssignment_3_1
+rule__AtomicExpr__ResultAssignment_3_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getAtomicExprAccess().getValEvidenceValueTermParserRuleCall_3_1_0()); }
-	ruleEvidenceValueTerm{ after(grammarAccess.getAtomicExprAccess().getValEvidenceValueTermParserRuleCall_3_1_0()); }
+{ before(grammarAccess.getAtomicExprAccess().getResultResultParserRuleCall_3_1_0()); }
+	ruleResult{ after(grammarAccess.getAtomicExprAccess().getResultResultParserRuleCall_3_1_0()); }
 )
 
 ;

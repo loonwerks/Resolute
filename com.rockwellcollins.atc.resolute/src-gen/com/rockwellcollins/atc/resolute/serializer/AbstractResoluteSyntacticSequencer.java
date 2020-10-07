@@ -114,8 +114,8 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '[' (ambiguity) op='not'
 	 *     (rule start) '[' (ambiguity) quant='exists'
 	 *     (rule start) '[' (ambiguity) quant='forall'
+	 *     (rule start) '[' (ambiguity) result=Result
 	 *     (rule start) '[' (ambiguity) val=BooleanLiteral
-	 *     (rule start) '[' (ambiguity) val=EvidenceValueTerm
 	 *     (rule start) '[' (ambiguity) val=IntegerTerm
 	 *     (rule start) '[' (ambiguity) val=RealTerm
 	 *     (rule start) '[' (ambiguity) val=StringTerm
@@ -146,8 +146,8 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '{' (ambiguity) op='not'
 	 *     (rule start) '{' (ambiguity) quant='exists'
 	 *     (rule start) '{' (ambiguity) quant='forall'
+	 *     (rule start) '{' (ambiguity) result=Result
 	 *     (rule start) '{' (ambiguity) val=BooleanLiteral
-	 *     (rule start) '{' (ambiguity) val=EvidenceValueTerm
 	 *     (rule start) '{' (ambiguity) val=IntegerTerm
 	 *     (rule start) '{' (ambiguity) val=RealTerm
 	 *     (rule start) '{' (ambiguity) val=StringTerm
@@ -178,8 +178,8 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) (ambiguity) op='not'
 	 *     (rule start) (ambiguity) quant='exists'
 	 *     (rule start) (ambiguity) quant='forall'
+	 *     (rule start) (ambiguity) result=Result
 	 *     (rule start) (ambiguity) val=BooleanLiteral
-	 *     (rule start) (ambiguity) val=EvidenceValueTerm
 	 *     (rule start) (ambiguity) val=IntegerTerm
 	 *     (rule start) (ambiguity) val=RealTerm
 	 *     (rule start) (ambiguity) val=StringTerm

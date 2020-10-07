@@ -74,7 +74,6 @@ import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
 import com.rockwellcollins.atc.resolute.resolute.Definition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
 import com.rockwellcollins.atc.resolute.resolute.EvidenceExpr;
-import com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr;
 import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.FailExpr;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
@@ -101,6 +100,7 @@ import com.rockwellcollins.atc.resolute.resolute.RealExpr;
 import com.rockwellcollins.atc.resolute.resolute.ResoluteLibrary;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
 import com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause;
+import com.rockwellcollins.atc.resolute.resolute.ResultExpr;
 import com.rockwellcollins.atc.resolute.resolute.Ruleset;
 import com.rockwellcollins.atc.resolute.resolute.SetExpr;
 import com.rockwellcollins.atc.resolute.resolute.SetFilterMapExpr;
@@ -744,6 +744,20 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		} else if (expr instanceof LetExpr) {
 			LetExpr letExpr = (LetExpr) expr;
 			return isValidConclusionExpr(letExpr.getExpr());
+		} else if (expr instanceof ResultExpr) {
+			return true;
+		}
+		// TODO: these should only return true if part of some expressions (like =)
+		else if (expr instanceof IdExpr) {
+			return true;
+		} else if (expr instanceof IntExpr) {
+			return true;
+		} else if (expr instanceof RealExpr) {
+			return true;
+		} else if (expr instanceof BoolExpr) {
+			return true;
+		} else if (expr instanceof StringExpr) {
+			return true;
 		}
 		return false;
 	}
@@ -2040,9 +2054,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				return BaseType.BOOL;
 			}
 
-			if (expr instanceof EvidenceValueExpr) {
-				EvidenceValueExpr evidenceValueExpr = (EvidenceValueExpr) expr;
-				return new BaseType(evidenceValueExpr.getVal());
+			if (expr instanceof ResultExpr) {
+				ResultExpr resultExpr = (ResultExpr) expr;
+				return new BaseType(resultExpr.getResult().toLowerCase());
 			}
 
 			error(expr, "Unable to get type for expression");

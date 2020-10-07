@@ -2386,14 +2386,14 @@ public interface ResolutePackage extends EPackage
   int FAIL_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.EvidenceValueExprImpl <em>Evidence Value Expr</em>}' class.
+   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ResultExprImpl <em>Result Expr</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.rockwellcollins.atc.resolute.resolute.impl.EvidenceValueExprImpl
-   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getEvidenceValueExpr()
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResultExprImpl
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getResultExpr()
    * @generated
    */
-  int EVIDENCE_VALUE_EXPR = 41;
+  int RESULT_EXPR = 41;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -2402,7 +2402,7 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int EVIDENCE_VALUE_EXPR__OWNED_ELEMENT = EXPR__OWNED_ELEMENT;
+  int RESULT_EXPR__OWNED_ELEMENT = EXPR__OWNED_ELEMENT;
 
   /**
    * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -2411,25 +2411,25 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int EVIDENCE_VALUE_EXPR__OWNED_COMMENT = EXPR__OWNED_COMMENT;
+  int RESULT_EXPR__OWNED_COMMENT = EXPR__OWNED_COMMENT;
 
   /**
-   * The feature id for the '<em><b>Val</b></em>' attribute.
+   * The feature id for the '<em><b>Result</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EVIDENCE_VALUE_EXPR__VAL = EXPR_FEATURE_COUNT + 0;
+  int RESULT_EXPR__RESULT = EXPR_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Evidence Value Expr</em>' class.
+   * The number of structural features of the '<em>Result Expr</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EVIDENCE_VALUE_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
+  int RESULT_EXPR_FEATURE_COUNT = EXPR_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.IntExprImpl <em>Int Expr</em>}' class.
@@ -4534,25 +4534,25 @@ public interface ResolutePackage extends EPackage
   EReference getFailExpr_Failmsg();
 
   /**
-   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr <em>Evidence Value Expr</em>}'.
+   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ResultExpr <em>Result Expr</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Evidence Value Expr</em>'.
-   * @see com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr
+   * @return the meta object for class '<em>Result Expr</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ResultExpr
    * @generated
    */
-  EClass getEvidenceValueExpr();
+  EClass getResultExpr();
 
   /**
-   * Returns the meta object for the attribute '{@link com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr#getVal <em>Val</em>}'.
+   * Returns the meta object for the attribute '{@link com.rockwellcollins.atc.resolute.resolute.ResultExpr#getResult <em>Result</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Val</em>'.
-   * @see com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr#getVal()
-   * @see #getEvidenceValueExpr()
+   * @return the meta object for the attribute '<em>Result</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ResultExpr#getResult()
+   * @see #getResultExpr()
    * @generated
    */
-  EAttribute getEvidenceValueExpr_Val();
+  EAttribute getResultExpr_Result();
 
   /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.IntExpr <em>Int Expr</em>}'.
@@ -5978,22 +5978,22 @@ public interface ResolutePackage extends EPackage
     EReference FAIL_EXPR__FAILMSG = eINSTANCE.getFailExpr_Failmsg();
 
     /**
-     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.EvidenceValueExprImpl <em>Evidence Value Expr</em>}' class.
+     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ResultExprImpl <em>Result Expr</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.rockwellcollins.atc.resolute.resolute.impl.EvidenceValueExprImpl
-     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getEvidenceValueExpr()
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResultExprImpl
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getResultExpr()
      * @generated
      */
-    EClass EVIDENCE_VALUE_EXPR = eINSTANCE.getEvidenceValueExpr();
+    EClass RESULT_EXPR = eINSTANCE.getResultExpr();
 
     /**
-     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Result</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EVIDENCE_VALUE_EXPR__VAL = eINSTANCE.getEvidenceValueExpr_Val();
+    EAttribute RESULT_EXPR__RESULT = eINSTANCE.getResultExpr_Result();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.IntExprImpl <em>Int Expr</em>}' class.

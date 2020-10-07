@@ -2,8 +2,8 @@
  */
 package com.rockwellcollins.atc.resolute.resolute.impl;
 
-import com.rockwellcollins.atc.resolute.resolute.EvidenceValueExpr;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
+import com.rockwellcollins.atc.resolute.resolute.ResultExpr;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,45 +13,45 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Evidence Value Expr</b></em>'.
+ * An implementation of the model object '<em><b>Result Expr</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.EvidenceValueExprImpl#getVal <em>Val</em>}</li>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ResultExprImpl#getResult <em>Result</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EvidenceValueExprImpl extends ExprImpl implements EvidenceValueExpr
+public class ResultExprImpl extends ExprImpl implements ResultExpr
 {
   /**
-   * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
+   * The default value of the '{@link #getResult() <em>Result</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVal()
+   * @see #getResult()
    * @generated
    * @ordered
    */
-  protected static final String VAL_EDEFAULT = null;
+  protected static final String RESULT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getVal() <em>Val</em>}' attribute.
+   * The cached value of the '{@link #getResult() <em>Result</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVal()
+   * @see #getResult()
    * @generated
    * @ordered
    */
-  protected String val = VAL_EDEFAULT;
+  protected String result = RESULT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EvidenceValueExprImpl()
+  protected ResultExprImpl()
   {
     super();
   }
@@ -64,7 +64,7 @@ public class EvidenceValueExprImpl extends ExprImpl implements EvidenceValueExpr
   @Override
   protected EClass eStaticClass()
   {
-    return ResolutePackage.Literals.EVIDENCE_VALUE_EXPR;
+    return ResolutePackage.Literals.RESULT_EXPR;
   }
 
   /**
@@ -73,9 +73,9 @@ public class EvidenceValueExprImpl extends ExprImpl implements EvidenceValueExpr
    * @generated
    */
   @Override
-  public String getVal()
+  public String getResult()
   {
-    return val;
+    return result;
   }
 
   /**
@@ -84,12 +84,12 @@ public class EvidenceValueExprImpl extends ExprImpl implements EvidenceValueExpr
    * @generated
    */
   @Override
-  public void setVal(String newVal)
+  public void setResult(String newResult)
   {
-    String oldVal = val;
-    val = newVal;
+    String oldResult = result;
+    result = newResult;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.EVIDENCE_VALUE_EXPR__VAL, oldVal, val));
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.RESULT_EXPR__RESULT, oldResult, result));
   }
 
   /**
@@ -102,8 +102,8 @@ public class EvidenceValueExprImpl extends ExprImpl implements EvidenceValueExpr
   {
     switch (featureID)
     {
-      case ResolutePackage.EVIDENCE_VALUE_EXPR__VAL:
-        return getVal();
+      case ResolutePackage.RESULT_EXPR__RESULT:
+        return getResult();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,8 +118,8 @@ public class EvidenceValueExprImpl extends ExprImpl implements EvidenceValueExpr
   {
     switch (featureID)
     {
-      case ResolutePackage.EVIDENCE_VALUE_EXPR__VAL:
-        setVal((String)newValue);
+      case ResolutePackage.RESULT_EXPR__RESULT:
+        setResult((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,8 +135,8 @@ public class EvidenceValueExprImpl extends ExprImpl implements EvidenceValueExpr
   {
     switch (featureID)
     {
-      case ResolutePackage.EVIDENCE_VALUE_EXPR__VAL:
-        setVal(VAL_EDEFAULT);
+      case ResolutePackage.RESULT_EXPR__RESULT:
+        setResult(RESULT_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -152,8 +152,8 @@ public class EvidenceValueExprImpl extends ExprImpl implements EvidenceValueExpr
   {
     switch (featureID)
     {
-      case ResolutePackage.EVIDENCE_VALUE_EXPR__VAL:
-        return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
+      case ResolutePackage.RESULT_EXPR__RESULT:
+        return RESULT_EDEFAULT == null ? result != null : !RESULT_EDEFAULT.equals(result);
     }
     return super.eIsSet(featureID);
   }
@@ -169,10 +169,10 @@ public class EvidenceValueExprImpl extends ExprImpl implements EvidenceValueExpr
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (val: ");
-    result.append(val);
+    result.append(" (result: ");
+    result.append(result);
     result.append(')');
     return result.toString();
   }
 
-} //EvidenceValueExprImpl
+} //ResultExprImpl

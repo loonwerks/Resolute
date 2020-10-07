@@ -61,7 +61,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getAtomicExprAccess().getQuantAlternatives_9_1_0(), "rule__AtomicExpr__QuantAlternatives_9_1_0");
 					put(grammarAccess.getAtomicExprAccess().getAlternatives_14_2(), "rule__AtomicExpr__Alternatives_14_2");
 					put(grammarAccess.getAtomicExprAccess().getAlternatives_15_2(), "rule__AtomicExpr__Alternatives_15_2");
-					put(grammarAccess.getEvidenceValueTermAccess().getAlternatives(), "rule__EvidenceValueTerm__Alternatives");
+					put(grammarAccess.getResultAccess().getAlternatives(), "rule__Result__Alternatives");
 					put(grammarAccess.getBuiltInFnAccess().getAlternatives(), "rule__BuiltInFn__Alternatives");
 					put(grammarAccess.getLintStatementAccess().getAlternatives(), "rule__LintStatement__Alternatives");
 					put(grammarAccess.getAnalysisStatementAccess().getAlternatives(), "rule__AnalysisStatement__Alternatives");
@@ -308,7 +308,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getAtomicExprAccess().getSubAssignment_1_2_1(), "rule__AtomicExpr__SubAssignment_1_2_1");
 					put(grammarAccess.getAtomicExprAccess().getValAssignment_2_2_0(), "rule__AtomicExpr__ValAssignment_2_2_0");
 					put(grammarAccess.getAtomicExprAccess().getFailmsgAssignment_2_2_1_1(), "rule__AtomicExpr__FailmsgAssignment_2_2_1_1");
-					put(grammarAccess.getAtomicExprAccess().getValAssignment_3_1(), "rule__AtomicExpr__ValAssignment_3_1");
+					put(grammarAccess.getAtomicExprAccess().getResultAssignment_3_1(), "rule__AtomicExpr__ResultAssignment_3_1");
 					put(grammarAccess.getAtomicExprAccess().getValAssignment_4_1(), "rule__AtomicExpr__ValAssignment_4_1");
 					put(grammarAccess.getAtomicExprAccess().getValAssignment_5_1(), "rule__AtomicExpr__ValAssignment_5_1");
 					put(grammarAccess.getAtomicExprAccess().getValAssignment_6_1(), "rule__AtomicExpr__ValAssignment_6_1");

@@ -302,8 +302,40 @@ public class BaseType extends ResoluteType {
 			return AADL;
 		}
 
+		if (subtypeOf(ENTITY) && otherType.subtypeOf(ENTITY)) {
+			return ENTITY;
+		}
+
+		if (subtypeOf(ACTIVITY) && otherType.subtypeOf(ACTIVITY)) {
+			return ACTIVITY;
+		}
+
+		if (subtypeOf(AGENT) && otherType.subtypeOf(AGENT)) {
+			return AGENT;
+		}
+
+		if (subtypeOf(THING) && otherType.subtypeOf(THING)) {
+			return THING;
+		}
+
+		if (subtypeOf(ANALYSIS_ANNOTATION_TYPE) && otherType.subtypeOf(ANALYSIS_ANNOTATION_TYPE)) {
+			return ANALYSIS_ANNOTATION_TYPE;
+		}
+
+		if (subtypeOf(ANALYSIS_RESULT) && otherType.subtypeOf(ANALYSIS_RESULT)) {
+			return ANALYSIS_RESULT;
+		}
+
 		if (subtypeOf(TEST_STATUS) && otherType.subtypeOf(TEST_STATUS)) {
 			return TEST_STATUS;
+		}
+
+		if (subtypeOf(REVIEW_STATE) && otherType.subtypeOf(REVIEW_STATE)) {
+			return TEST_STATUS;
+		}
+
+		if (subtypeOf(COMPONENT_TYPE) && otherType.subtypeOf(COMPONENT_TYPE)) {
+			return COMPONENT_TYPE;
 		}
 
 		return null;
