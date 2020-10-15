@@ -3,7 +3,6 @@
  */
 package com.rockwellcollins.atc.resolute.formatting2;
 
-import com.google.inject.Inject
 import com.rockwellcollins.atc.resolute.resolute.Arg
 import com.rockwellcollins.atc.resolute.resolute.BaseType
 import com.rockwellcollins.atc.resolute.resolute.BinaryExpr
@@ -40,20 +39,15 @@ import com.rockwellcollins.atc.resolute.resolute.SetType
 import com.rockwellcollins.atc.resolute.resolute.StringExpr
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr
 import com.rockwellcollins.atc.resolute.resolute.UnaryExpr
-import com.rockwellcollins.atc.resolute.services.ResoluteGrammarAccess
 import org.eclipse.xtext.formatting2.IFormattableDocument
 import org.osate.xtext.aadl2.properties.formatting2.PropertiesFormatter
 import com.rockwellcollins.atc.resolute.resolute.AnalysisStatement
-import org.eclipse.xtext.formatting2.regionaccess.ISemanticRegion
-import java.util.List
-import com.rockwellcollins.atc.resolute.resolute.ClaimContext
-import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption
 import com.rockwellcollins.atc.resolute.resolute.CheckStatement
 import org.osate.aadl2.NamedElement
 
 class ResoluteFormatter extends PropertiesFormatter {
 	
-	@Inject extension ResoluteGrammarAccess
+	// @Inject extension ResoluteGrammarAccess
 
 	def dispatch void format(ResoluteLibrary resolutelibrary, extension IFormattableDocument document) {
 		resolutelibrary.surround[noSpace];

@@ -370,7 +370,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 //			}
 //		}
 
-		checkDuplicateAttributeNames(claimContext);
+//		checkDuplicateAttributeNames(claimContext);
 
 		// Build the scope for this context
 		Set<FunctionDefinition> funcDefs = buildContextScope(funcDef.getBody().getExpr());
@@ -613,6 +613,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 					}
 				}
 			}
+
 			if (!isValidStrategyExpr(claimBody.getExpr(), isJustificationPattern)) {
 				error(claimBody.getExpr(), "Invalid strategy expression");
 			}

@@ -2,10 +2,11 @@ package com.rockwellcollins.atc.resolute.schedule.analysis;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import org.eclipse.emf.common.util.EList;
 import org.osate.aadl2.IntegerLiteral;
 import org.osate.aadl2.NamedElement;
+import org.osate.aadl2.PropertyAssociation;
 import org.osate.aadl2.PropertyExpression;
 import org.osate.aadl2.instance.ComponentInstance;
 
@@ -21,9 +22,15 @@ public class ResoluteScheduleAnalysis implements ResoluteExternalAnalysis {
         double sched_ratio = 0;
         Set<NamedElement> threadList = context.getSet("thread");
         for (NamedElement el : threadList) {
-            assert (el instanceof ComponentInstance);
+			assert (el instanceof ComponentInstance);
+
             ComponentInstance comp = (ComponentInstance) el;
-            EList<PropertyExpression> prop = comp.getPropertyValues("Timing_Properties", "Period");
+
+			List<PropertyExpression> prop = comp.getComponentClassifier().getAllPropertyAssociations().stream()
+					.map(PropertyAssociation::getProperty)
+					.filter(it -> "Timing_Properties::Period".equals(it.getQualifiedName()))
+					.map(it -> comp.getPropertyValueList(it))
+					.flatMap(List::stream).collect(Collectors.toList());
 
             if (prop.size() != 1) {
                 throw new ResoluteFailException("Thread '" + comp.getName()
@@ -41,7 +48,10 @@ public class ResoluteScheduleAnalysis implements ResoluteExternalAnalysis {
             IntegerLiteral intLit = (IntegerLiteral) propExpr;
             double period_ps = intLit.getScaledValue(); // this is in pico seconds
 
-            //prop = comp.getPropertyValues("Timing_Properties", "Deadline");
+			// prop = comp.getComponentClassifier().getAllPropertyAssociations().stream()
+			// .map(PropertyAssociation::getProperty)
+			// .filter(it -> "Timing_Properties::Deadline".equals(it.getQualifiedName()))
+			// .map(it -> comp.getPropertyValueList(it)).flatMap(List::stream).collect(Collectors.toList());
 
             //if (prop.size() != 1) {
             //    throw new ResoluteFailException("Thread '" + comp.getName()
@@ -58,7 +68,10 @@ public class ResoluteScheduleAnalysis implements ResoluteExternalAnalysis {
             //assert (propExpr instanceof IntegerLiteral);
             //intLit = (IntegerLiteral) propExpr;
 
-            prop = comp.getPropertyValues("SMACCM", "WC_Execution_Time");
+			prop = comp.getComponentClassifier().getAllPropertyAssociations().stream()
+					.map(PropertyAssociation::getProperty)
+					.filter(it -> "SMACCM::WC_Execution_Time".equals(it.getQualifiedName()))
+					.map(it -> comp.getPropertyValueList(it)).flatMap(List::stream).collect(Collectors.toList());
 
             if (prop.size() != 1) {
                 throw new ResoluteFailException(

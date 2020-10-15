@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Resolute back-end
 Bundle-Vendor: Collins Aerospace, Inc.
-Bundle-Version: 2.4.4.qualifier
+Bundle-Version: 2.5.1.qualifier
 Bundle-SymbolicName: com.rockwellcollins.atc.resolute; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
@@ -17,9 +17,9 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.common,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
- org.osate.xtext.aadl2.properties;bundle-version="[1.1.0,2.0.0)",
+ org.osate.xtext.aadl2.properties;bundle-version="[2.0.0,3.0.0)",
  org.osate.xtext.aadl2;bundle-version="[2.0.0,5.0.0)",
- org.osate.aadl2;bundle-version="[2.0.0,4.0.0)"
+ org.osate.aadl2;bundle-version="[4.0.0,5.0.0)"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
  org.osate.pluginsupport

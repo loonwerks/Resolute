@@ -10,6 +10,7 @@
 	<property name="user_guide_output.dir" value="doc-gen/html" />
 	<property name="reference.dir" value="src/reference" />
 	<property name="reference_output.dir" value="doc-gen/html" />
+	<property name="pdf_output.dir" value="doc-gen/pdf" />
 
 	<!-- - target: usage -->
 	<target name="usage" description="Prints help">
@@ -20,9 +21,19 @@
 	<target name="clean" description="Cleans up generated files.">
 		<delete dir="${user_guide_output.dir}" />
 		<delete dir="${reference_output.dir}" />
+		<delete dir="${pdf_output.dir}" />
 	</target>
 
-	<target name="build-help" depends="clean, build_user_guide_eclipse, build_user_guide_pdf, build_reference_eclipse, build_reference_pdf">
+	<target name="build-help" depends="clean, build_user_guide_eclipse, build_reference_eclipse">
+	</target>
+
+	<target name="build-pdf" depends="build_user_guide_pdf, build_reference_pdf">
+	</target>
+
+	<target name="build-all" depends="build-help, build-pdf">
+	</target>
+
+	<target name="rebuild-all" depends="clean, build-all">
 	</target>
 
 	<target name="build_user_guide_eclipse" description="Build the user guide">
@@ -33,8 +44,6 @@
 			<arg value="--toc"/>
 			<arg value="--number-sections"/>
 			<arg value="-s"/>
-			<arg value="--filter"/>
-			<arg value="pandoc-crossref"/>
 			<arg value="-f"/>
 			<arg value="markdown"/>
 			<arg value="--mathml"/>
@@ -59,14 +68,14 @@
 			<arg value="${basedir}/${user_guide_output.dir}/images" />
 		</exec>
 
-		<apply executable="cp">
+		<apply executable="cp" dir="${basedir}">
 			<srcfile/>
 			<targetfile/>
 
 			<fileset dir="${user_guide.dir}/images" includes="*"/>
 			<mapper type="glob"
 				from="*"
-				to="${user_guide_output.dir}/images/*"/>
+				to="${basedir}/${user_guide_output.dir}/images/*"/>
 		</apply>
 
 	</target>
@@ -88,13 +97,13 @@
 			<arg value="--listings"/>
 			<arg value="-H"/>
 			<arg value="../../tex-listings-setup.txt"/>
-			<arg value="--latex-engine=xelatex"/>
+			<arg value="--pdf-engine=xelatex"/>
 			<arg value="-V"/>
 			<arg value="links-as-notes"/>
 			<arg value="-V"/>
 			<arg value="documentclass=report"/>
 			<arg value="-o"/>
-			<arg value="${basedir}/doc-gen/pdf/user_guide.pdf"/>
+			<arg value="${basedir}/${pdf_output.dir}/user_guide.pdf"/>
 		</exec>
 	</target>
 
@@ -106,8 +115,6 @@
 			<arg value="--toc" />
 			<arg value="--number-sections" />
 			<arg value="-s" />
-			<arg value="--filter" />
-			<arg value="pandoc-crossref" />
 			<arg value="-f" />
 			<arg value="markdown" />
 			<arg value="--mathml" />
@@ -132,14 +139,14 @@
 			<arg value="${basedir}/${reference_output.dir}/images" />
 		</exec>
 
-		<apply executable="cp">
+		<apply executable="cp" dir="${basedir}">
 			<srcfile/>
 			<targetfile/>
 
 			<fileset dir="${reference.dir}/images" includes="*"/>
 			<mapper type="glob"
 				from="*"
-				to="${reference_output.dir}/images/*"/>
+				to="${basedir}/${reference_output.dir}/images/*"/>
 		</apply>
 
 	</target>
@@ -161,13 +168,13 @@
 			<arg value="--listings" />
 			<arg value="-H" />
 			<arg value="../../tex-listings-setup.txt" />
-			<arg value="--latex-engine=xelatex" />
+			<arg value="--pdf-engine=xelatex" />
 			<arg value="-V"/>
 			<arg value="links-as-notes"/>
 			<arg value="-V" />
 			<arg value="documentclass=report" />
 			<arg value="-o" />
-			<arg value="${basedir}/doc-gen/pdf/reference.pdf" />
+			<arg value="${basedir}/${pdf_output.dir}/reference.pdf" />
 		</exec>
 	</target>
 </project>
