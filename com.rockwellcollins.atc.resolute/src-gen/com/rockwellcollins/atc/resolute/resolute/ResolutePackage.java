@@ -909,13 +909,13 @@ public interface ResolutePackage extends EPackage
   int CLAIM_RESTRICTION__OWNED_PROPERTY_ASSOCIATION = Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION;
 
   /**
-   * The feature id for the '<em><b>Val</b></em>' containment reference.
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLAIM_RESTRICTION__VAL = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 0;
+  int CLAIM_RESTRICTION__EXPR = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Claim Restriction</em>' class.
@@ -3847,15 +3847,15 @@ public interface ResolutePackage extends EPackage
   EClass getClaimRestriction();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.ClaimRestriction#getVal <em>Val</em>}'.
+   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.ClaimRestriction#getExpr <em>Expr</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Val</em>'.
-   * @see com.rockwellcollins.atc.resolute.resolute.ClaimRestriction#getVal()
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimRestriction#getExpr()
    * @see #getClaimRestriction()
    * @generated
    */
-  EReference getClaimRestriction_Val();
+  EReference getClaimRestriction_Expr();
 
   /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimJustification <em>Claim Justification</em>}'.
@@ -5402,12 +5402,12 @@ public interface ResolutePackage extends EPackage
     EClass CLAIM_RESTRICTION = eINSTANCE.getClaimRestriction();
 
     /**
-     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CLAIM_RESTRICTION__VAL = eINSTANCE.getClaimRestriction_Val();
+    EReference CLAIM_RESTRICTION__EXPR = eINSTANCE.getClaimRestriction_Expr();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimJustificationImpl <em>Claim Justification</em>}' class.

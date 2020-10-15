@@ -273,7 +273,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getClaimRationaleAccess().getNameAssignment_1(), "rule__ClaimRationale__NameAssignment_1");
 					put(grammarAccess.getClaimRationaleAccess().getValAssignment_3(), "rule__ClaimRationale__ValAssignment_3");
 					put(grammarAccess.getClaimRestrictionAccess().getNameAssignment_1(), "rule__ClaimRestriction__NameAssignment_1");
-					put(grammarAccess.getClaimRestrictionAccess().getValAssignment_3(), "rule__ClaimRestriction__ValAssignment_3");
+					put(grammarAccess.getClaimRestrictionAccess().getExprAssignment_3(), "rule__ClaimRestriction__ExprAssignment_3");
 					put(grammarAccess.getClaimJustificationAccess().getNameAssignment_1(), "rule__ClaimJustification__NameAssignment_1");
 					put(grammarAccess.getClaimJustificationAccess().getValAssignment_3(), "rule__ClaimJustification__ValAssignment_3");
 					put(grammarAccess.getClaimAssumptionAccess().getNameAssignment_1(), "rule__ClaimAssumption__NameAssignment_1");

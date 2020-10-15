@@ -45,6 +45,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimRationale/val"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimRestriction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimRestriction/expr"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimRestriction/val"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimJustification">

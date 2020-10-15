@@ -62,7 +62,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLetBindingParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//NamedElement aadl2::NamedElement:
-		//	Definition | Arg | LetBinding;
+		//	Definition
+		//	| Arg
+		//	| LetBinding;
 		@Override public ParserRule getRule() { return rule; }
 
 		//Definition | Arg | LetBinding
@@ -87,7 +89,10 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDefinitionBodyParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Element aadl2::Element:
-		//	Expr | AnalysisStatement | ClaimText | DefinitionBody;
+		//	Expr
+		//	| AnalysisStatement
+		//	| ClaimText
+		//	| DefinitionBody;
 		@Override public ParserRule getRule() { return rule; }
 
 		//Expr | AnalysisStatement | ClaimText | DefinitionBody
@@ -139,7 +144,10 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNotationDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Definition:
-		//	ConstantDefinition | FunctionDefinition | Ruleset | NotationDefinition;
+		//	ConstantDefinition
+		//	| FunctionDefinition
+		//	| Ruleset
+		//	| NotationDefinition;
 		@Override public ParserRule getRule() { return rule; }
 
 		//ConstantDefinition | FunctionDefinition | Ruleset | NotationDefinition
@@ -265,8 +273,10 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFnTypeIDTerminalRuleCall_3_3_0 = (RuleCall)cFnTypeAssignment_3_3.eContents().get(0);
 		
 		//Type:
-		//	{ListType} '[' type=Type ']' | {SetType} '{' type=Type '}' | BaseType ('<' paramType=Type '>')? | {LibraryFnType}
-		//	libName=ID '.' fnType=ID;
+		//	{ListType} '[' type=Type ']'
+		//	| {SetType} '{' type=Type '}'
+		//	| BaseType ('<' paramType=Type '>')?
+		//	| {LibraryFnType} libName=ID '.' fnType=ID;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{ListType} '[' type=Type ']' | {SetType} '{' type=Type '}' | BaseType ('<' paramType=Type '>')? | {LibraryFnType}
@@ -448,85 +458,107 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTypeTest_executionKeyword_0_89 = (Keyword)cTypeAlternatives_0.eContents().get(89);
 		
 		//BaseType:
-		//	type=('int' | 'real' | 'string' | 'bool' | 'range' | 'aadl' | 'component' | 'abstract' | 'bus' | 'data' | 'device' |
-		//	'memory' | 'processor' | 'process' | 'subprogram_group' | 'subprogram' | 'system' | 'thread_group' | 'thread' |
-		//	'virtual_bus' | 'virtual_processor' | 'connection' | 'property' | 'feature' | 'port' | 'data_port' | 'event_port' |
-		//	'event_data_port' | 'feature_group' | 'access' | 'bus_access' | 'provides_bus_access' | 'requires_bus_access' |
-		//	'data_access' | 'provides_data_access' | 'requires_data_access' | 'subprogram_access' | 'provides_subprogram_access'
-		//	| 'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
-		//	'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
-		// // W3C-PROV
-		// |
-		//	'entity' | 'agent' | 'activity' | 'thing' // ANALYSIS
-		// | 'analysis_activity'
-		//	// corresponds to ANALYSIS class, type of activity
-		// | 'analysis_report' | 'analysis_result'
-		//	// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'analysis_annotation_type' // class
-		// | 'precondition'
-		//	// type of analysis_annotation_type
-		// | 'postcondition' // type of analysis_annotation_type
-		// | 'invariant'
-		//	// type of analysis_annotation_type
-		// | 'analysis_annotation' // type of entity
-		// // HAZARD
-		// | 'hazard' // entity
-		// |
-		//	'hazard_identification' // type of activity
-		// // REQUIREMENT
-		// | 'requirement' // type of entity
-		// |
-		//	'data_dictionary_term' // type of entity
-		// | 'requirement_development' // type of activity
-		// // REVIEW
-		// | 'review'
-		//	// type of activity
-		// | 'review_log' // type of entity
-		// | 'review_state'
-		//	// class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		// // SOFTWARE
-		// | 'file' // type of entity
-		//
+		//	type=('int'
+		//	| 'real'
+		//	| 'string'
+		//	| 'bool'
+		//	| 'range'
+		//	| 'aadl'
+		//	| 'component'
+		//	| 'abstract'
+		//	| 'bus'
+		//	| 'data'
+		//	| 'device'
+		//	| 'memory'
+		//	| 'processor'
+		//	| 'process'
+		//	| 'subprogram_group'
+		//	| 'subprogram'
+		//	| 'system'
+		//	| 'thread_group'
+		//	| 'thread'
+		//	| 'virtual_bus'
+		//	| 'virtual_processor'
+		//	| 'connection'
+		//	| 'property'
+		//	| 'feature'
+		//	| 'port'
+		//	| 'data_port'
+		//	| 'event_port'
+		//	| 'event_data_port'
+		//	| 'feature_group'
+		//	| 'access'
+		//	| 'bus_access'
+		//	| 'provides_bus_access'
+		//	| 'requires_bus_access'
+		//	| 'data_access'
+		//	| 'provides_data_access'
+		//	| 'requires_data_access'
+		//	| 'subprogram_access'
+		//	| 'provides_subprogram_access'
+		//	| 'requires_subprogram_access'
+		//	| 'subprogram_group_access'
+		//	| 'provides_subprogram_group_access'
+		//	| 'requires_subprogram_group_access'
+		//	| 'flow_specification'
+		//	| 'end_to_end_flow'
+		//	// Evidence types
+		//	// W3C-PROV
+		//	| 'entity'
+		//	| 'agent'
+		//	| 'activity'
+		//	| 'thing'
+		//	// ANALYSIS
+		//	| 'analysis_activity' // corresponds to ANALYSIS class, type of activity
+		//	| 'analysis_report'
+		//	| 'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
+		//	| 'analysis_annotation_type' // class
+		//	| 'precondition' // type of analysis_annotation_type
+		//	| 'postcondition' // type of analysis_annotation_type
+		//	| 'invariant' // type of analysis_annotation_type
+		//	| 'analysis_annotation' // type of entity
+		//	// HAZARD
+		//	| 'hazard' // entity
+		//	| 'hazard_identification' // type of activity
+		//	// REQUIREMENT
+		//	| 'requirement' // type of entity
+		//	| 'data_dictionary_term' // type of entity
+		//	| 'requirement_development' // type of activity
+		//	// REVIEW
+		//	| 'review' // type of activity
+		//	| 'review_log' // type of entity
+		//	| 'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
+		//	// SOFTWARE
+		//	| 'file' // type of entity
 		//	| 'format' // type of thing
-		// | 'code_development' // type of activity
-		// | 'build' // type of activity
-		// | 'code_gen'
-		//	// type of activity
-		// | 'compile' // type of activity
-		// | 'package_file' // corresponds to PACKAGE, type of activity
-		// |
-		//	'component_type' // type of thing
-		// | 'source_function' // type of component_type
-		// | 'binary_function'
-		//	// type of component_type
-		// | 'source_global_variable' // type of component_type
-		// | 'binary_global_variable'
-		//	// type of component_type
-		// | 'binary_basic_block' // type of component_type
-		// | 'class_definition'
-		//	// type of component_type
-		// | 'class_method' // type of component_type
-		// | 'class_member_variable'
-		//	// type of component_type
-		// | 'class_constructor' // type of component_type
-		// | 'module' // type of component_type
-		// |
-		//	'namespace' // type of component_type
-		// //		|	'component' // type of entity
-		// // SYSTEM
-		//
+		//	| 'code_development' // type of activity
+		//	| 'build' // type of activity
+		//	| 'code_gen' // type of activity
+		//	| 'compile' // type of activity
+		//	| 'package_file' // corresponds to PACKAGE, type of activity
+		//	| 'component_type' // type of thing
+		//	| 'source_function' // type of component_type
+		//	| 'binary_function' // type of component_type
+		//	| 'source_global_variable' // type of component_type
+		//	| 'binary_global_variable' // type of component_type
+		//	| 'binary_basic_block' // type of component_type
+		//	| 'class_definition' // type of component_type
+		//	| 'class_method' // type of component_type
+		//	| 'class_member_variable' // type of component_type
+		//	| 'class_constructor' // type of component_type
+		//	| 'module' // type of component_type
+		//	| 'namespace' // type of component_type
+		//	//		|	'component' // type of entity
+		//	// SYSTEM
 		//	//		|	'system' // type of entity
-		// | 'interface' // type of entity
-		// | 'system_development' // type of activity
-		//
+		//	| 'interface' // type of entity
+		//	| 'system_development' // type of activity
 		//	// TESTING
-		// | 'test' // type of entity
-		// | 'test_result' // type of entity
-		// | 'test_status'
-		//	// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'test_developmemt' // type of activity
-		// |
-		//	'test_execution' // type of activity
+		//	| 'test' // type of entity
+		//	| 'test_result' // type of entity
+		//	| 'test_status' // class, must be one of {Passed, Failed, Indeterminate}
+		//	| 'test_developmemt' // type of activity
+		//	| 'test_execution' // type of activity
 		//);
 		@Override public ParserRule getRule() { return rule; }
 
@@ -537,78 +569,57 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'data_access' | 'provides_data_access' | 'requires_data_access' | 'subprogram_access' | 'provides_subprogram_access' |
 		//'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
 		//'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
-		// // W3C-PROV
-		// |
-		//'entity' | 'agent' | 'activity' | 'thing' // ANALYSIS
-		// | 'analysis_activity'
-		//// corresponds to ANALYSIS class, type of activity
-		// | 'analysis_report' | 'analysis_result'
-		//// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'analysis_annotation_type' // class
-		// | 'precondition'
-		//// type of analysis_annotation_type
-		// | 'postcondition' // type of analysis_annotation_type
-		// | 'invariant'
-		//// type of analysis_annotation_type
-		// | 'analysis_annotation' // type of entity
-		// // HAZARD
-		// | 'hazard' // entity
-		// |
-		//'hazard_identification' // type of activity
-		// // REQUIREMENT
-		// | 'requirement' // type of entity
-		// |
-		//'data_dictionary_term' // type of entity
-		// | 'requirement_development' // type of activity
-		// // REVIEW
-		// | 'review'
-		//// type of activity
-		// | 'review_log' // type of entity
-		// | 'review_state'
-		//// class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		// // SOFTWARE
-		// | 'file' // type of entity
-		// |
-		//'format' // type of thing
-		// | 'code_development' // type of activity
-		// | 'build' // type of activity
-		// | 'code_gen'
-		//// type of activity
-		// | 'compile' // type of activity
-		// | 'package_file' // corresponds to PACKAGE, type of activity
-		// |
-		//'component_type' // type of thing
-		// | 'source_function' // type of component_type
-		// | 'binary_function'
-		//// type of component_type
-		// | 'source_global_variable' // type of component_type
-		// | 'binary_global_variable'
-		//// type of component_type
-		// | 'binary_basic_block' // type of component_type
-		// | 'class_definition'
-		//// type of component_type
-		// | 'class_method' // type of component_type
-		// | 'class_member_variable'
-		//// type of component_type
-		// | 'class_constructor' // type of component_type
-		// | 'module' // type of component_type
-		// |
-		//'namespace' // type of component_type
-		// //		|	'component' // type of entity
-		// // SYSTEM
-		//
+		//// W3C-PROV
+		//| 'entity' | 'agent' | 'activity' | 'thing' // ANALYSIS
+		//| 'analysis_activity' // corresponds to ANALYSIS class, type of activity
+		//| 'analysis_report' | 'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
+		//| 'analysis_annotation_type' // class
+		//| 'precondition' // type of analysis_annotation_type
+		//| 'postcondition' // type of analysis_annotation_type
+		//| 'invariant' // type of analysis_annotation_type
+		//| 'analysis_annotation' // type of entity
+		//// HAZARD
+		//| 'hazard' // entity
+		//| 'hazard_identification' // type of activity
+		//// REQUIREMENT
+		//| 'requirement' // type of entity
+		//| 'data_dictionary_term' // type of entity
+		//| 'requirement_development' // type of activity
+		//// REVIEW
+		//| 'review' // type of activity
+		//| 'review_log' // type of entity
+		//| 'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
+		//// SOFTWARE
+		//| 'file' // type of entity
+		//| 'format' // type of thing
+		//| 'code_development' // type of activity
+		//| 'build' // type of activity
+		//| 'code_gen' // type of activity
+		//| 'compile' // type of activity
+		//| 'package_file' // corresponds to PACKAGE, type of activity
+		//| 'component_type' // type of thing
+		//| 'source_function' // type of component_type
+		//| 'binary_function' // type of component_type
+		//| 'source_global_variable' // type of component_type
+		//| 'binary_global_variable' // type of component_type
+		//| 'binary_basic_block' // type of component_type
+		//| 'class_definition' // type of component_type
+		//| 'class_method' // type of component_type
+		//| 'class_member_variable' // type of component_type
+		//| 'class_constructor' // type of component_type
+		//| 'module' // type of component_type
+		//| 'namespace' // type of component_type
+		////		|	'component' // type of entity
+		//// SYSTEM
 		////		|	'system' // type of entity
-		// | 'interface' // type of entity
-		// | 'system_development' // type of activity
-		//
+		//| 'interface' // type of entity
+		//| 'system_development' // type of activity
 		//// TESTING
-		// | 'test' // type of entity
-		// | 'test_result' // type of entity
-		// | 'test_status'
-		//// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'test_developmemt' // type of activity
-		// | 'test_execution'
-		//// type of activity
+		//| 'test' // type of entity
+		//| 'test_result' // type of entity
+		//| 'test_status' // class, must be one of {Passed, Failed, Indeterminate}
+		//| 'test_developmemt' // type of activity
+		//| 'test_execution' // type of activity
 		//)
 		public Assignment getTypeAssignment() { return cTypeAssignment; }
 
@@ -619,78 +630,57 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'provides_data_access' | 'requires_data_access' | 'subprogram_access' | 'provides_subprogram_access' |
 		//'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
 		//'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
-		// // W3C-PROV
-		// |
-		//'entity' | 'agent' | 'activity' | 'thing' // ANALYSIS
-		// | 'analysis_activity'
-		//// corresponds to ANALYSIS class, type of activity
-		// | 'analysis_report' | 'analysis_result'
-		//// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'analysis_annotation_type' // class
-		// | 'precondition'
-		//// type of analysis_annotation_type
-		// | 'postcondition' // type of analysis_annotation_type
-		// | 'invariant'
-		//// type of analysis_annotation_type
-		// | 'analysis_annotation' // type of entity
-		// // HAZARD
-		// | 'hazard' // entity
-		// |
-		//'hazard_identification' // type of activity
-		// // REQUIREMENT
-		// | 'requirement' // type of entity
-		// |
-		//'data_dictionary_term' // type of entity
-		// | 'requirement_development' // type of activity
-		// // REVIEW
-		// | 'review'
-		//// type of activity
-		// | 'review_log' // type of entity
-		// | 'review_state'
-		//// class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		// // SOFTWARE
-		// | 'file' // type of entity
-		// |
-		//'format' // type of thing
-		// | 'code_development' // type of activity
-		// | 'build' // type of activity
-		// | 'code_gen'
-		//// type of activity
-		// | 'compile' // type of activity
-		// | 'package_file' // corresponds to PACKAGE, type of activity
-		// |
-		//'component_type' // type of thing
-		// | 'source_function' // type of component_type
-		// | 'binary_function'
-		//// type of component_type
-		// | 'source_global_variable' // type of component_type
-		// | 'binary_global_variable'
-		//// type of component_type
-		// | 'binary_basic_block' // type of component_type
-		// | 'class_definition'
-		//// type of component_type
-		// | 'class_method' // type of component_type
-		// | 'class_member_variable'
-		//// type of component_type
-		// | 'class_constructor' // type of component_type
-		// | 'module' // type of component_type
-		// |
-		//'namespace' // type of component_type
-		// //		|	'component' // type of entity
-		// // SYSTEM
-		//
+		//// W3C-PROV
+		//| 'entity' | 'agent' | 'activity' | 'thing' // ANALYSIS
+		//| 'analysis_activity' // corresponds to ANALYSIS class, type of activity
+		//| 'analysis_report' | 'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
+		//| 'analysis_annotation_type' // class
+		//| 'precondition' // type of analysis_annotation_type
+		//| 'postcondition' // type of analysis_annotation_type
+		//| 'invariant' // type of analysis_annotation_type
+		//| 'analysis_annotation' // type of entity
+		//// HAZARD
+		//| 'hazard' // entity
+		//| 'hazard_identification' // type of activity
+		//// REQUIREMENT
+		//| 'requirement' // type of entity
+		//| 'data_dictionary_term' // type of entity
+		//| 'requirement_development' // type of activity
+		//// REVIEW
+		//| 'review' // type of activity
+		//| 'review_log' // type of entity
+		//| 'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
+		//// SOFTWARE
+		//| 'file' // type of entity
+		//| 'format' // type of thing
+		//| 'code_development' // type of activity
+		//| 'build' // type of activity
+		//| 'code_gen' // type of activity
+		//| 'compile' // type of activity
+		//| 'package_file' // corresponds to PACKAGE, type of activity
+		//| 'component_type' // type of thing
+		//| 'source_function' // type of component_type
+		//| 'binary_function' // type of component_type
+		//| 'source_global_variable' // type of component_type
+		//| 'binary_global_variable' // type of component_type
+		//| 'binary_basic_block' // type of component_type
+		//| 'class_definition' // type of component_type
+		//| 'class_method' // type of component_type
+		//| 'class_member_variable' // type of component_type
+		//| 'class_constructor' // type of component_type
+		//| 'module' // type of component_type
+		//| 'namespace' // type of component_type
+		////		|	'component' // type of entity
+		//// SYSTEM
 		////		|	'system' // type of entity
-		// | 'interface' // type of entity
-		// | 'system_development' // type of activity
-		//
+		//| 'interface' // type of entity
+		//| 'system_development' // type of activity
 		//// TESTING
-		// | 'test' // type of entity
-		// | 'test_result' // type of entity
-		// | 'test_status'
-		//// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'test_developmemt' // type of activity
-		// | 'test_execution'
-		//// type of activity
+		//| 'test' // type of entity
+		//| 'test_result' // type of entity
+		//| 'test_status' // class, must be one of {Passed, Failed, Indeterminate}
+		//| 'test_developmemt' // type of activity
+		//| 'test_execution' // type of activity
 		//)
 		public Alternatives getTypeAlternatives_0() { return cTypeAlternatives_0; }
 
@@ -984,7 +974,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprExprParserRuleCall_1_3_0 = (RuleCall)cExprAssignment_1_3.eContents().get(0);
 		
 		////Arg types are used for functions, claims, and quantifiers
-		// Arg:
+		//Arg:
 		//	=> (name=ID ':' type=Type) | {QuantArg} name=ID ':' expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
@@ -1197,8 +1187,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprExprParserRuleCall_1_4_0 = (RuleCall)cExprAssignment_1_4.eContents().get(0);
 		
 		//DefinitionBody:
-		//	{FunctionBody} ':' type=Type '=' expr=Expr | {ClaimBody} '<=' ('**' claim+=ClaimText+ '**')
-		//	attributes+=ClaimAttribute* expr=Expr;
+		//	{FunctionBody} ':' type=Type '=' expr=Expr
+		//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{FunctionBody} ':' type=Type '=' expr=Expr | {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute*
@@ -1278,8 +1268,13 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cClaimRestrictionParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
 		//ClaimAttribute aadl2::NamedElement:
-		//	ClaimContext | ClaimJustification | ClaimAssumption | ClaimStrategy | ClaimUsageDomain | ClaimRationale |
-		//	ClaimRestriction;
+		//	ClaimContext
+		//	| ClaimJustification
+		//	| ClaimAssumption
+		//	| ClaimStrategy
+		//	| ClaimUsageDomain
+		//	| ClaimRationale
+		//	| ClaimRestriction;
 		@Override public ParserRule getRule() { return rule; }
 
 		//ClaimContext | ClaimJustification | ClaimAssumption | ClaimStrategy | ClaimUsageDomain | ClaimRationale |
@@ -1435,15 +1430,15 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cValAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cValStringTermParserRuleCall_3_0 = (RuleCall)cValAssignment_3.eContents().get(0);
+		private final Assignment cExprAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cExprExprParserRuleCall_3_0 = (RuleCall)cExprAssignment_3.eContents().get(0);
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//ClaimRestriction:
-		//	'restriction' name=ID ':' val=StringTerm ';';
+		//	'restriction' name=ID ':' expr=Expr ';';
 		@Override public ParserRule getRule() { return rule; }
 
-		//'restriction' name=ID ':' val=StringTerm ';'
+		//'restriction' name=ID ':' expr=Expr ';'
 		public Group getGroup() { return cGroup; }
 
 		//'restriction'
@@ -1458,11 +1453,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
-		//val=StringTerm
-		public Assignment getValAssignment_3() { return cValAssignment_3; }
+		//expr=Expr
+		public Assignment getExprAssignment_3() { return cExprAssignment_3; }
 
-		//StringTerm
-		public RuleCall getValStringTermParserRuleCall_3_0() { return cValStringTermParserRuleCall_3_0; }
+		//Expr
+		public RuleCall getExprExprParserRuleCall_3_0() { return cExprExprParserRuleCall_3_0; }
 
 		//';'
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
@@ -1607,7 +1602,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUnitUnitLiteralIDTerminalRuleCall_1_2_1_0_1 = (RuleCall)cUnitUnitLiteralCrossReference_1_2_1_0.eContents().get(1);
 		
 		//ClaimText:
-		//	{ClaimString} str=STRING | {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?;
+		//	{ClaimString} str=STRING
+		//	| {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{ClaimString} str=STRING | {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?
@@ -2182,7 +2178,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAtomicExprParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//PrefixExpr Expr:
-		//	{UnaryExpr} op=('-' | 'not') expr=PrefixExpr | {CastExpr} '(' type=BaseType ')' expr=PrefixExpr | AtomicExpr;
+		//	{UnaryExpr} op=('-' | 'not') expr=PrefixExpr
+		//	| {CastExpr} '(' type=BaseType ')' expr=PrefixExpr
+		//	| AtomicExpr;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{UnaryExpr} op=('-' | 'not') expr=PrefixExpr | {CastExpr} '(' type=BaseType ')' expr=PrefixExpr | AtomicExpr
@@ -2446,17 +2444,29 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValStringTermParserRuleCall_22_4_0 = (RuleCall)cValAssignment_22_4.eContents().get(0);
 		
 		//AtomicExpr Expr:
-		//	{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)? | {FailExpr} 'fail' (val=Expr |
-		//	'**' failmsg+=ClaimText+ '**') | {ResultExpr} result=Result | {IntExpr} val=IntegerTerm | {RealExpr} val=RealTerm |
-		//	{BoolExpr} val=BooleanLiteral | {StringExpr} val=StringTerm | {IfThenElseExpr} 'if' cond=Expr 'then' then=Expr 'else'
-		//	else=Expr | {QuantifiedExpr} quant=('forall' | 'exists') ('(' args+=Arg ')')+ '.' expr=Expr | => ({LibraryFnCallExpr}
-		//	libName=ID '.' fnName=ID '(' (args+=Expr (',' args+=Expr)*)? ')') | {BuiltInFnCallExpr} fn=BuiltInFn '(' (args+=Expr
-		//	(',' args+=Expr)*)? ')' | {FnCallExpr} fn=[FunctionDefinition] '(' (args+=Expr (',' args+=Expr)*)? ')' | {LintExpr}
-		//	lintStmt=LintStatement | '[' Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? |
-		//	{ListExpr.exprs+=current} (',' exprs+=Expr)*) ']' | '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg
-		//	')')+ ('|' filter=Expr)? | {SetExpr.exprs+=current} (',' exprs+=Expr)*) '}' | {ListExpr} '[' ']' | {SetExpr} '{' '}'
-		//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr} 'undeveloped' | {EvidenceExpr}
-		//	'evidence' name=ID ':' val=StringTerm | {SolutionExpr} 'solution' name=ID ':' val=StringTerm;
+		//	{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)?
+		//	| {FailExpr} 'fail' (val=Expr | '**' failmsg+=ClaimText+ '**') | {ResultExpr} result=Result
+		//	| {IntExpr} val=IntegerTerm
+		//	| {RealExpr} val=RealTerm
+		//	| {BoolExpr} val=BooleanLiteral
+		//	| {StringExpr} val=StringTerm
+		//	| {IfThenElseExpr} 'if' cond=Expr 'then' then=Expr 'else' else=Expr
+		//	| {QuantifiedExpr} quant=('forall' | 'exists') ('(' args+=Arg ')')+ '.' expr=Expr
+		//	| => ({LibraryFnCallExpr} libName=ID '.' fnName=ID '(' (args+=Expr (',' args+=Expr)*)? ')') | {BuiltInFnCallExpr}
+		//	fn=BuiltInFn '(' (args+=Expr (',' args+=Expr)*)? ')'
+		//	| {FnCallExpr} fn=[FunctionDefinition] '(' (args+=Expr (',' args+=Expr)*)? ')'
+		//	| {LintExpr} lintStmt=LintStatement
+		//	| '[' Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {ListExpr.exprs+=current}
+		//	(',' exprs+=Expr)*) ']'
+		//	| '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {SetExpr.exprs+=current}
+		//	(',' exprs+=Expr)*) '}'
+		//	| {ListExpr} '[' ']'
+		//	| {SetExpr} '{' '}'
+		//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
+		//	| '(' Expr ')'
+		//	| {UndevelopedExpr} 'undeveloped'
+		//	| {EvidenceExpr} 'evidence' name=ID ':' val=StringTerm
+		//	| {SolutionExpr} 'solution' name=ID ':' val=StringTerm;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)? | {FailExpr} 'fail' (val=Expr | '**'
@@ -3134,7 +3144,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRevised_without_reviewKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
 		
 		//Result:
-		//	'passed' | 'failed' | 'indeterminate' | 'revised_with_review' | 'revised_without_review';
+		//	'passed'
+		//	| 'failed'
+		//	| 'indeterminate'
+		//	| 'revised_with_review'
+		//	| 'revised_without_review';
 		@Override public ParserRule getRule() { return rule; }
 
 		//'passed' | 'failed' | 'indeterminate' | 'revised_with_review' | 'revised_without_review'
@@ -3281,283 +3295,174 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cExecuted_onKeyword_119 = (Keyword)cAlternatives.eContents().get(119);
 		
 		//BuiltInFn: // Primary type: aadl
-		// 'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' |
-		//	'type' | 'has_type' | 'is_in_array' | 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' |
-		//	'is_system' | 'is_bus' | 'is_virtual_bus' | 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' |
-		//	'is_process' | 'is_data' | 'is_subprogram' | 'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections'
-		//	// Primary type: property
-		// | 'enumerated_values' // Primary type: component
-		// | 'subcomponents'
-		//	// Primary type: connection
-		// | 'source' | 'destination' | 'is_bidirectional' // Primary type: feature
-		// | 'direction'
-		//	| 'is_event_port' | 'is_abstract_feature' | 'is_data_port' | 'is_port' | 'is_data_access' | 'is_bus_access'
-		//	// Primary type: range
-		// | 'lower_bound' | 'upper_bound' // Primary type: set or list
-		// | 'member' | 'length' | 'size'
-		//	// Primary type: list
-		// | 'sum' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
-		// | 'union' | 'intersect'
-		//	| 'as_list' // Other
-		// | 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
-		// | 'receive_error'
-		//	// the component can receive an incoming error
-		// | 'contain_error' // the component contain the error
-		// |
-		//	'propagate_error' // the component propagate an error
-		// | 'error_state_reachable' // the error state is reachable
-		// |
-		//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
-		//
+		//	'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' | 'type' | 'has_type' |
+		//	'is_in_array' | 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' | 'is_system' | 'is_bus' |
+		//	'is_virtual_bus' | 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' | 'is_process' | 'is_data' |
+		//	'is_subprogram' | 'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections' // Primary type: property
+		//	| 'enumerated_values' // Primary type: component
+		//	| 'subcomponents' // Primary type: connection
+		//	| 'source' | 'destination' | 'is_bidirectional' // Primary type: feature
+		//	| 'direction' | 'is_event_port' | 'is_abstract_feature' | 'is_data_port' | 'is_port' | 'is_data_access' |
+		//	'is_bus_access' // Primary type: range
+		//	| 'lower_bound' | 'upper_bound' // Primary type: set or list
+		//	| 'member' | 'length' | 'size' // Primary type: list
+		//	| 'sum' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
+		//	| 'union' | 'intersect' | 'as_list' // Other
+		//	| 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
+		//	| 'receive_error' // the component can receive an incoming error
+		//	| 'contain_error' // the component contain the error
+		//	| 'propagate_error' // the component propagate an error
+		//	| 'error_state_reachable' // the error state is reachable
+		//	| 'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
 		//	// ANALYSIS
-		// | 'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
-		// | 'metric'
-		//	// describes ANALYSIS_REPORT with values of type float
-		// | 'analyzes'
-		//	// describes ANALYSIS_REPORT with values of type ENTITY
-		// | 'produced_by'
-		//	// describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
-		// | 'performed_by'
-		//	// describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
-		// | 'from_report'
-		//	// describes ANALYSIS_ANNOTATION with values of type ENTITY
-		// | 'description'
-		//	// describes ANALYSIS_ANNOTATION with values of type string
-		// | 'annotation_type'
-		//	// describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
-		// // HAZARD
-		// | 'definition'
-		//	// describes HAZARD with values of type string
-		// | 'source_of'
-		//	// corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
-		// | 'identified'
-		//	// describes HAZARD with values of type HAZARD_IDENTIFICATION
-		// | 'author'
-		//	// describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
-		// |
-		//	'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
-		// | 'given_text'
-		//	// describes REQUIREMENT with values of type string
-		// | 'if_text' // describes REQUIREMENT with values of type string
-		//
+		//	| 'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
+		//	| 'metric' // describes ANALYSIS_REPORT with values of type float
+		//	| 'analyzes' // describes ANALYSIS_REPORT with values of type ENTITY
+		//	| 'produced_by' // describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
+		//	| 'performed_by' // describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
+		//	| 'from_report' // describes ANALYSIS_ANNOTATION with values of type ENTITY
+		//	| 'description' // describes ANALYSIS_ANNOTATION with values of type string
+		//	| 'annotation_type' // describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
+		//	// HAZARD
+		//	| 'definition' // describes HAZARD with values of type string
+		//	| 'source_of' // corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
+		//	| 'identified' // describes HAZARD with values of type HAZARD_IDENTIFICATION
+		//	| 'author' // describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
+		//	| 'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
+		//	| 'given_text' // describes REQUIREMENT with values of type string
+		//	| 'if_text' // describes REQUIREMENT with values of type string
 		//	| 'then_text' // describes REQUIREMENT with values of type string
-		// | 'governs'
-		//	// describes REQUIREMENT with values of type ENTITY
-		// | 'satisfies'
-		//	// describes REQUIREMENT, FILE with values of type ENTITY
-		// | 'mitigates'
-		//	// describes REQUIREMENT with values of type ENTITY
-		// | 'created_by'
-		//	// describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
-		// | 'provided_by'
-		//	// describes DATA_DICTIONARY_TERM with values of type ENTITY
-		// | 'consumed_by'
-		//	// describes DATA_DICTIONARY_TERM with values of type ENTITY
-		// | 'referenced'
-		//	// describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
-		// | 'governed_by'
-		//	// describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
-		// // REVIEW
-		// | 'reviews'
-		//	// describes REVIEW_LOG with values of type ENTITY
-		// | 'review_result'
-		//	// describes REVIEW_LOG with values of type REVIEW_STATE
-		// | 'reviewer' // describes REVIEW with values of type AGENT
-		//
+		//	| 'governs' // describes REQUIREMENT with values of type ENTITY
+		//	| 'satisfies' // describes REQUIREMENT, FILE with values of type ENTITY
+		//	| 'mitigates' // describes REQUIREMENT with values of type ENTITY
+		//	| 'created_by' // describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
+		//	| 'provided_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
+		//	| 'consumed_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
+		//	| 'referenced' // describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
+		//	| 'governed_by' // describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
+		//	// REVIEW
+		//	| 'reviews' // describes REVIEW_LOG with values of type ENTITY
+		//	| 'review_result' // describes REVIEW_LOG with values of type REVIEW_STATE
+		//	| 'reviewer' // describes REVIEW with values of type AGENT
 		//	| 'reviewed' // describes REVIEW with values of type ENTITY
-		// // SOFTWARE
-		// | 'filename'
-		//	// describes FILE with values of type string
-		// | 'step' // describes BUILD with values of type ACTIVITY
-		// |
-		//	'compiled_by' // describes COMPILE with values of type FILE
-		// | 'compile_input'
-		//	// describes COMPILE with values of type FILE
-		// | 'packaged_by' // describes PACKAGE_FILE with values of type FILE
-		// |
-		//	'package_input' // describes PACKAGE_FILE with values of type FILE
-		//
+		//	// SOFTWARE
+		//	| 'filename' // describes FILE with values of type string
+		//	| 'step' // describes BUILD with values of type ACTIVITY
+		//	| 'compiled_by' // describes COMPILE with values of type FILE
+		//	| 'compile_input' // describes COMPILE with values of type FILE
+		//	| 'packaged_by' // describes PACKAGE_FILE with values of type FILE
+		//	| 'package_input' // describes PACKAGE_FILE with values of type FILE
 		//	//|	'name' // describes COMPONENT with values of type string
-		// | 'type_of'
-		//	// corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
-		// | 'value_type'
-		//	// describes COMPONENT with values of type string
-		// | 'instantiates'
-		//	// describes COMPONENT with values of type ENTITY
-		// | 'defined_in' // describes COMPONENT with values of type ENTITY
-		//
+		//	| 'type_of' // corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
+		//	| 'value_type' // describes COMPONENT with values of type string
+		//	| 'instantiates' // describes COMPONENT with values of type ENTITY
+		//	| 'defined_in' // describes COMPONENT with values of type ENTITY
 		//	| 'mentions' // describes COMPONENT with values of type ENTITY
-		// | 'subcomponent_of'
-		//	// describes COMPONENT with values of type ENTITY
-		// | 'requirements'
-		//	// describes COMPONENT with values of type ENTITY
-		// | 'annotations' // describes COMPONENT with values of type ENTITY
-		//
+		//	| 'subcomponent_of' // describes COMPONENT with values of type ENTITY
+		//	| 'requirements' // describes COMPONENT with values of type ENTITY
+		//	| 'annotations' // describes COMPONENT with values of type ENTITY
 		//	| 'control_flows_to_unconditionally' // describes COMPONENT with values of type COMPONENT
-		// |
-		//	'control_flows_to_conditionally' // describes COMPONENT with values of type COMPONENT
-		// // SYSTEM
-		// | 'part_of'
-		//	// describes SYSTEM with values of type ENTITY
-		// | 'provides' // describes SYSTEM with values of type ENTITY
-		// |
-		//	'requires' // describes SYSTEM with values of type ENTITY
-		// | 'destination_of'
-		//	// describes INTERFACE with values of type ENTITY
-		// | 'identified_by'
-		//	// describes INTERFACE with values of type ACTIVITY
-		// | 'developed_by'
-		//	// describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
-		// // TESTING
-		// | 'verifies'
-		//	// describes TEST with values of type ENTITY
-		// | 'confirms' // describes TEST_RESULT with values of type ENTITY
-		// |
-		//	'executed_by' // describes TEST_RESULT with values of type ACTIVITY
-		// | 'executed_on'
-		//	// describes TEST_EXECUTION with values of type AGENT
+		//	| 'control_flows_to_conditionally' // describes COMPONENT with values of type COMPONENT
+		//	// SYSTEM
+		//	| 'part_of' // describes SYSTEM with values of type ENTITY
+		//	| 'provides' // describes SYSTEM with values of type ENTITY
+		//	| 'requires' // describes SYSTEM with values of type ENTITY
+		//	| 'destination_of' // describes INTERFACE with values of type ENTITY
+		//	| 'identified_by' // describes INTERFACE with values of type ACTIVITY
+		//	| 'developed_by' // describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
+		//	// TESTING
+		//	| 'verifies' // describes TEST with values of type ENTITY
+		//	| 'confirms' // describes TEST_RESULT with values of type ENTITY
+		//	| 'executed_by' // describes TEST_RESULT with values of type ACTIVITY
+		//	| 'executed_on' // describes TEST_EXECUTION with values of type AGENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 
 		//// Primary type: aadl
-		// 'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' | 'type' |
-		//'has_type' | 'is_in_array' | 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' | 'is_system' |
-		//'is_bus' | 'is_virtual_bus' | 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' | 'is_process' | 'is_data' |
-		//'is_subprogram' | 'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections' // Primary type: property
-		//
+		//'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' | 'type' | 'has_type' | 'is_in_array'
+		//| 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' | 'is_system' | 'is_bus' | 'is_virtual_bus'
+		//| 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' | 'is_process' | 'is_data' | 'is_subprogram' |
+		//'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections' // Primary type: property
 		//| 'enumerated_values' // Primary type: component
-		// | 'subcomponents' // Primary type: connection
-		// | 'source' |
-		//'destination' | 'is_bidirectional' // Primary type: feature
-		// | 'direction' | 'is_event_port' | 'is_abstract_feature' |
-		//'is_data_port' | 'is_port' | 'is_data_access' | 'is_bus_access' // Primary type: range
-		// | 'lower_bound' |
-		//'upper_bound' // Primary type: set or list
-		// | 'member' | 'length' | 'size' // Primary type: list
-		// | 'sum' | 'append' |
-		//'head' | 'tail' | 'as_set' // Primary type: set
-		// | 'union' | 'intersect' | 'as_list' // Other
-		// | 'instance' |
-		//'instances' | 'debug' | 'analysis' // Error Annex
-		// | 'receive_error' // the component can receive an incoming error
-		// |
-		//'contain_error' // the component contain the error
-		// | 'propagate_error' // the component propagate an error
-		// |
-		//'error_state_reachable' // the error state is reachable
-		// | 'flow_source' | 'flow_destination' | 'flow_elements' |
-		//'flow_specifications' | 'end_to_end_flows' // Evidences
-		// // ANALYSIS
-		// | 'result_of'
-		//// describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
-		// | 'metric'
-		//// describes ANALYSIS_REPORT with values of type float
-		// | 'analyzes'
-		//// describes ANALYSIS_REPORT with values of type ENTITY
-		// | 'produced_by'
-		//// describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
-		// | 'performed_by'
-		//// describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
-		// | 'from_report'
-		//// describes ANALYSIS_ANNOTATION with values of type ENTITY
-		// | 'description'
-		//// describes ANALYSIS_ANNOTATION with values of type string
-		// | 'annotation_type'
-		//// describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
-		// // HAZARD
-		// | 'definition'
-		//// describes HAZARD with values of type string
-		// | 'source_of'
-		//// corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
-		// | 'identified'
-		//// describes HAZARD with values of type HAZARD_IDENTIFICATION
-		// | 'author'
-		//// describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
-		// |
-		//'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
-		// | 'given_text'
-		//// describes REQUIREMENT with values of type string
-		// | 'if_text' // describes REQUIREMENT with values of type string
-		//
+		//| 'subcomponents' // Primary type: connection
+		//| 'source' | 'destination' | 'is_bidirectional' // Primary type: feature
+		//| 'direction' | 'is_event_port' | 'is_abstract_feature' | 'is_data_port' | 'is_port' | 'is_data_access' |
+		//'is_bus_access' // Primary type: range
+		//| 'lower_bound' | 'upper_bound' // Primary type: set or list
+		//| 'member' | 'length' | 'size' // Primary type: list
+		//| 'sum' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
+		//| 'union' | 'intersect' | 'as_list' // Other
+		//| 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
+		//| 'receive_error' // the component can receive an incoming error
+		//| 'contain_error' // the component contain the error
+		//| 'propagate_error' // the component propagate an error
+		//| 'error_state_reachable' // the error state is reachable
+		//| 'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
+		//// ANALYSIS
+		//| 'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
+		//| 'metric' // describes ANALYSIS_REPORT with values of type float
+		//| 'analyzes' // describes ANALYSIS_REPORT with values of type ENTITY
+		//| 'produced_by' // describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
+		//| 'performed_by' // describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
+		//| 'from_report' // describes ANALYSIS_ANNOTATION with values of type ENTITY
+		//| 'description' // describes ANALYSIS_ANNOTATION with values of type string
+		//| 'annotation_type' // describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
+		//// HAZARD
+		//| 'definition' // describes HAZARD with values of type string
+		//| 'source_of' // corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
+		//| 'identified' // describes HAZARD with values of type HAZARD_IDENTIFICATION
+		//| 'author' // describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
+		//| 'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
+		//| 'given_text' // describes REQUIREMENT with values of type string
+		//| 'if_text' // describes REQUIREMENT with values of type string
 		//| 'then_text' // describes REQUIREMENT with values of type string
-		// | 'governs'
-		//// describes REQUIREMENT with values of type ENTITY
-		// | 'satisfies'
-		//// describes REQUIREMENT, FILE with values of type ENTITY
-		// | 'mitigates'
-		//// describes REQUIREMENT with values of type ENTITY
-		// | 'created_by'
-		//// describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
-		// | 'provided_by'
-		//// describes DATA_DICTIONARY_TERM with values of type ENTITY
-		// | 'consumed_by'
-		//// describes DATA_DICTIONARY_TERM with values of type ENTITY
-		// | 'referenced'
-		//// describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
-		// | 'governed_by'
-		//// describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
-		// // REVIEW
-		// | 'reviews'
-		//// describes REVIEW_LOG with values of type ENTITY
-		// | 'review_result'
-		//// describes REVIEW_LOG with values of type REVIEW_STATE
-		// | 'reviewer' // describes REVIEW with values of type AGENT
-		//
+		//| 'governs' // describes REQUIREMENT with values of type ENTITY
+		//| 'satisfies' // describes REQUIREMENT, FILE with values of type ENTITY
+		//| 'mitigates' // describes REQUIREMENT with values of type ENTITY
+		//| 'created_by' // describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
+		//| 'provided_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
+		//| 'consumed_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
+		//| 'referenced' // describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
+		//| 'governed_by' // describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
+		//// REVIEW
+		//| 'reviews' // describes REVIEW_LOG with values of type ENTITY
+		//| 'review_result' // describes REVIEW_LOG with values of type REVIEW_STATE
+		//| 'reviewer' // describes REVIEW with values of type AGENT
 		//| 'reviewed' // describes REVIEW with values of type ENTITY
-		// // SOFTWARE
-		// | 'filename'
-		//// describes FILE with values of type string
-		// | 'step' // describes BUILD with values of type ACTIVITY
-		// |
-		//'compiled_by' // describes COMPILE with values of type FILE
-		// | 'compile_input'
-		//// describes COMPILE with values of type FILE
-		// | 'packaged_by' // describes PACKAGE_FILE with values of type FILE
-		// |
-		//'package_input' // describes PACKAGE_FILE with values of type FILE
-		//
+		//// SOFTWARE
+		//| 'filename' // describes FILE with values of type string
+		//| 'step' // describes BUILD with values of type ACTIVITY
+		//| 'compiled_by' // describes COMPILE with values of type FILE
+		//| 'compile_input' // describes COMPILE with values of type FILE
+		//| 'packaged_by' // describes PACKAGE_FILE with values of type FILE
+		//| 'package_input' // describes PACKAGE_FILE with values of type FILE
 		////|	'name' // describes COMPONENT with values of type string
-		// | 'type_of'
-		//// corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
-		// | 'value_type'
-		//// describes COMPONENT with values of type string
-		// | 'instantiates' // describes COMPONENT with values of type ENTITY
-		//
+		//| 'type_of' // corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
+		//| 'value_type' // describes COMPONENT with values of type string
+		//| 'instantiates' // describes COMPONENT with values of type ENTITY
 		//| 'defined_in' // describes COMPONENT with values of type ENTITY
-		// | 'mentions'
-		//// describes COMPONENT with values of type ENTITY
-		// | 'subcomponent_of'
-		//// describes COMPONENT with values of type ENTITY
-		// | 'requirements' // describes COMPONENT with values of type ENTITY
-		//
+		//| 'mentions' // describes COMPONENT with values of type ENTITY
+		//| 'subcomponent_of' // describes COMPONENT with values of type ENTITY
+		//| 'requirements' // describes COMPONENT with values of type ENTITY
 		//| 'annotations' // describes COMPONENT with values of type ENTITY
-		// | 'control_flows_to_unconditionally'
-		//// describes COMPONENT with values of type COMPONENT
-		// | 'control_flows_to_conditionally'
-		//// describes COMPONENT with values of type COMPONENT
-		// // SYSTEM
-		// | 'part_of'
-		//// describes SYSTEM with values of type ENTITY
-		// | 'provides' // describes SYSTEM with values of type ENTITY
-		// |
-		//'requires' // describes SYSTEM with values of type ENTITY
-		// | 'destination_of'
-		//// describes INTERFACE with values of type ENTITY
-		// | 'identified_by'
-		//// describes INTERFACE with values of type ACTIVITY
-		// | 'developed_by'
-		//// describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
-		// // TESTING
-		// | 'verifies'
-		//// describes TEST with values of type ENTITY
-		// | 'confirms' // describes TEST_RESULT with values of type ENTITY
-		// |
-		//'executed_by' // describes TEST_RESULT with values of type ACTIVITY
-		// | 'executed_on'
+		//| 'control_flows_to_unconditionally' // describes COMPONENT with values of type COMPONENT
+		//| 'control_flows_to_conditionally' // describes COMPONENT with values of type COMPONENT
+		//// SYSTEM
+		//| 'part_of' // describes SYSTEM with values of type ENTITY
+		//| 'provides' // describes SYSTEM with values of type ENTITY
+		//| 'requires' // describes SYSTEM with values of type ENTITY
+		//| 'destination_of' // describes INTERFACE with values of type ENTITY
+		//| 'identified_by' // describes INTERFACE with values of type ACTIVITY
+		//| 'developed_by' // describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
+		//// TESTING
+		//| 'verifies' // describes TEST with values of type ENTITY
+		//| 'confirms' // describes TEST_RESULT with values of type ENTITY
+		//| 'executed_by' // describes TEST_RESULT with values of type ACTIVITY
+		//| 'executed_on'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//// Primary type: aadl
-		// 'has_property'
+		//'has_property'
 		public Keyword getHas_propertyKeyword_0() { return cHas_propertyKeyword_0; }
 
 		//'property'
@@ -4065,10 +3970,10 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/NestedDotID'
+		//sub=NestedDotID
 		public Assignment getSubAssignment_1_1() { return cSubAssignment_1_1; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.45/@alternatives/@elements.1/@elements.1/@terminal'
+		//NestedDotID
 		public RuleCall getSubNestedDotIDParserRuleCall_1_1_0() { return cSubNestedDotIDParserRuleCall_1_1_0; }
 	}
 
@@ -4091,55 +3996,58 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExprAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
 		private final RuleCall cExprExprParserRuleCall_2_2_0 = (RuleCall)cExprAssignment_2_2.eContents().get(0);
 		
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/LintStatement'
+		//LintStatement:
+		//	{WarningStatement} 'warning' expr=Expr
+		//	| {ErrorStatement} 'error' expr=Expr
+		//	| {InfoStatement} 'info' expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives'
+		//{WarningStatement} 'warning' expr=Expr | {ErrorStatement} 'error' expr=Expr | {InfoStatement} 'info' expr=Expr
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.0'
+		//{WarningStatement} 'warning' expr=Expr
 		public Group getGroup_0() { return cGroup_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.0/@elements.0'
+		//{WarningStatement}
 		public Action getWarningStatementAction_0_0() { return cWarningStatementAction_0_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.0/@elements.1'
+		//'warning'
 		public Keyword getWarningKeyword_0_1() { return cWarningKeyword_0_1; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.0/@elements.2'
+		//expr=Expr
 		public Assignment getExprAssignment_0_2() { return cExprAssignment_0_2; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.0/@elements.2/@terminal'
+		//Expr
 		public RuleCall getExprExprParserRuleCall_0_2_0() { return cExprExprParserRuleCall_0_2_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.1'
+		//{ErrorStatement} 'error' expr=Expr
 		public Group getGroup_1() { return cGroup_1; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.1/@elements.0'
+		//{ErrorStatement}
 		public Action getErrorStatementAction_1_0() { return cErrorStatementAction_1_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.1/@elements.1'
+		//'error'
 		public Keyword getErrorKeyword_1_1() { return cErrorKeyword_1_1; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.1/@elements.2'
+		//expr=Expr
 		public Assignment getExprAssignment_1_2() { return cExprAssignment_1_2; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.1/@elements.2/@terminal'
+		//Expr
 		public RuleCall getExprExprParserRuleCall_1_2_0() { return cExprExprParserRuleCall_1_2_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.2'
+		//{InfoStatement} 'info' expr=Expr
 		public Group getGroup_2() { return cGroup_2; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.2/@elements.0'
+		//{InfoStatement}
 		public Action getInfoStatementAction_2_0() { return cInfoStatementAction_2_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.2/@elements.1'
+		//'info'
 		public Keyword getInfoKeyword_2_1() { return cInfoKeyword_2_1; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.2/@elements.2'
+		//expr=Expr
 		public Assignment getExprAssignment_2_2() { return cExprAssignment_2_2; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.46/@alternatives/@elements.2/@elements.2/@terminal'
+		//Expr
 		public RuleCall getExprExprParserRuleCall_2_2_0() { return cExprExprParserRuleCall_2_2_0; }
 	}
 
@@ -4154,31 +4062,32 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBodyRulesetBodyParserRuleCall_3_0 = (RuleCall)cBodyAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/Ruleset'
+		//Ruleset:
+		//	'ruleset' name=ID '{' body=RulesetBody '}';
 		@Override public ParserRule getRule() { return rule; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.47/@alternatives'
+		//'ruleset' name=ID '{' body=RulesetBody '}'
 		public Group getGroup() { return cGroup; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.47/@alternatives/@elements.0'
+		//'ruleset'
 		public Keyword getRulesetKeyword_0() { return cRulesetKeyword_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.47/@alternatives/@elements.1'
+		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.47/@alternatives/@elements.1/@terminal'
+		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.47/@alternatives/@elements.2'
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.47/@alternatives/@elements.3'
+		//body=RulesetBody
 		public Assignment getBodyAssignment_3() { return cBodyAssignment_3; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.47/@alternatives/@elements.3/@terminal'
+		//RulesetBody
 		public RuleCall getBodyRulesetBodyParserRuleCall_3_0() { return cBodyRulesetBodyParserRuleCall_3_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.47/@alternatives/@elements.4'
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 
@@ -4189,19 +4098,20 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cLintStatementsAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cLintStatementsLintStatementParserRuleCall_1_0 = (RuleCall)cLintStatementsAssignment_1.eContents().get(0);
 		
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/RulesetBody'
+		//RulesetBody:
+		//	{RulesetBody} lintStatements+=LintStatement*;
 		@Override public ParserRule getRule() { return rule; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.48/@alternatives'
+		//{RulesetBody} lintStatements+=LintStatement*
 		public Group getGroup() { return cGroup; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.48/@alternatives/@elements.0'
+		//{RulesetBody}
 		public Action getRulesetBodyAction_0() { return cRulesetBodyAction_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.48/@alternatives/@elements.1'
+		//lintStatements+=LintStatement*
 		public Assignment getLintStatementsAssignment_1() { return cLintStatementsAssignment_1; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.48/@alternatives/@elements.1/@terminal'
+		//LintStatement
 		public RuleCall getLintStatementsLintStatementParserRuleCall_1_0() { return cLintStatementsLintStatementParserRuleCall_1_0; }
 	}
 
@@ -4219,40 +4129,42 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExprAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cExprExprParserRuleCall_1_2_0 = (RuleCall)cExprAssignment_1_2.eContents().get(0);
 		
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/AnalysisStatement'
+		//AnalysisStatement:
+		//	{ProveStatement} 'prove' expr=Expr
+		//	| {CheckStatement} 'check' expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.49/@alternatives'
+		//{ProveStatement} 'prove' expr=Expr | {CheckStatement} 'check' expr=Expr
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.49/@alternatives/@elements.0'
+		//{ProveStatement} 'prove' expr=Expr
 		public Group getGroup_0() { return cGroup_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.49/@alternatives/@elements.0/@elements.0'
+		//{ProveStatement}
 		public Action getProveStatementAction_0_0() { return cProveStatementAction_0_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.49/@alternatives/@elements.0/@elements.1'
+		//'prove'
 		public Keyword getProveKeyword_0_1() { return cProveKeyword_0_1; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.49/@alternatives/@elements.0/@elements.2'
+		//expr=Expr
 		public Assignment getExprAssignment_0_2() { return cExprAssignment_0_2; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.49/@alternatives/@elements.0/@elements.2/@terminal'
+		//Expr
 		public RuleCall getExprExprParserRuleCall_0_2_0() { return cExprExprParserRuleCall_0_2_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.49/@alternatives/@elements.1'
+		//{CheckStatement} 'check' expr=Expr
 		public Group getGroup_1() { return cGroup_1; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.49/@alternatives/@elements.1/@elements.0'
+		//{CheckStatement}
 		public Action getCheckStatementAction_1_0() { return cCheckStatementAction_1_0; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.49/@alternatives/@elements.1/@elements.1'
+		//'check'
 		public Keyword getCheckKeyword_1_1() { return cCheckKeyword_1_1; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.49/@alternatives/@elements.1/@elements.2'
+		//expr=Expr
 		public Assignment getExprAssignment_1_2() { return cExprAssignment_1_2; }
 
-		//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#/0/@rules.49/@alternatives/@elements.1/@elements.2/@terminal'
+		//Expr
 		public RuleCall getExprExprParserRuleCall_1_2_0() { return cExprExprParserRuleCall_1_2_0; }
 	}
 	
@@ -4396,7 +4308,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/AnnexLibrary'
+	//AnnexLibrary aadl2::AnnexLibrary:
+	//	ResoluteLibrary;
 	public AnnexLibraryElements getAnnexLibraryAccess() {
 		return pAnnexLibrary;
 	}
@@ -4405,7 +4318,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getAnnexLibraryAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/AnnexSubclause'
+	//AnnexSubclause aadl2::AnnexSubclause:
+	//	ResoluteSubclause;
 	public AnnexSubclauseElements getAnnexSubclauseAccess() {
 		return pAnnexSubclause;
 	}
@@ -4414,7 +4328,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getAnnexSubclauseAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/Namespace'
+	//Namespace aadl2::Namespace:
+	//	FunctionDefinition;
 	public NamespaceElements getNamespaceAccess() {
 		return pNamespace;
 	}
@@ -4423,7 +4338,10 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getNamespaceAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/NamedElement'
+	//NamedElement aadl2::NamedElement:
+	//	Definition
+	//	| Arg
+	//	| LetBinding;
 	public NamedElementElements getNamedElementAccess() {
 		return pNamedElement;
 	}
@@ -4432,7 +4350,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getNamedElementAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/Element'
+	//Element aadl2::Element:
+	//	Expr
+	//	| AnalysisStatement
+	//	| ClaimText
+	//	| DefinitionBody;
 	public ElementElements getElementAccess() {
 		return pElement;
 	}
@@ -4441,7 +4363,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getElementAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ResoluteLibrary'
+	//ResoluteLibrary:
+	//	{ResoluteLibrary} definitions+=Definition*;
 	public ResoluteLibraryElements getResoluteLibraryAccess() {
 		return pResoluteLibrary;
 	}
@@ -4450,7 +4373,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getResoluteLibraryAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/Definition'
+	//Definition:
+	//	ConstantDefinition
+	//	| FunctionDefinition
+	//	| Ruleset
+	//	| NotationDefinition;
 	public DefinitionElements getDefinitionAccess() {
 		return pDefinition;
 	}
@@ -4459,7 +4386,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getDefinitionAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/NotationDefinition'
+	//NotationDefinition:
+	//	name='notation' notation=Notation;
 	public NotationDefinitionElements getNotationDefinitionAccess() {
 		return pNotationDefinition;
 	}
@@ -4468,7 +4396,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getNotationDefinitionAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/Notation'
+	//Notation:
+	//	'justification' 'pattern' | 'jp' | 'gsn' | 'goal' 'structuring' 'notation';
 	public NotationElements getNotationAccess() {
 		return pNotation;
 	}
@@ -4477,7 +4406,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getNotationAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/Type'
+	//Type:
+	//	{ListType} '[' type=Type ']'
+	//	| {SetType} '{' type=Type '}'
+	//	| BaseType ('<' paramType=Type '>')?
+	//	| {LibraryFnType} libName=ID '.' fnType=ID;
 	public TypeElements getTypeAccess() {
 		return pType;
 	}
@@ -4486,7 +4419,109 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getTypeAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/BaseType'
+	//BaseType:
+	//	type=('int'
+	//	| 'real'
+	//	| 'string'
+	//	| 'bool'
+	//	| 'range'
+	//	| 'aadl'
+	//	| 'component'
+	//	| 'abstract'
+	//	| 'bus'
+	//	| 'data'
+	//	| 'device'
+	//	| 'memory'
+	//	| 'processor'
+	//	| 'process'
+	//	| 'subprogram_group'
+	//	| 'subprogram'
+	//	| 'system'
+	//	| 'thread_group'
+	//	| 'thread'
+	//	| 'virtual_bus'
+	//	| 'virtual_processor'
+	//	| 'connection'
+	//	| 'property'
+	//	| 'feature'
+	//	| 'port'
+	//	| 'data_port'
+	//	| 'event_port'
+	//	| 'event_data_port'
+	//	| 'feature_group'
+	//	| 'access'
+	//	| 'bus_access'
+	//	| 'provides_bus_access'
+	//	| 'requires_bus_access'
+	//	| 'data_access'
+	//	| 'provides_data_access'
+	//	| 'requires_data_access'
+	//	| 'subprogram_access'
+	//	| 'provides_subprogram_access'
+	//	| 'requires_subprogram_access'
+	//	| 'subprogram_group_access'
+	//	| 'provides_subprogram_group_access'
+	//	| 'requires_subprogram_group_access'
+	//	| 'flow_specification'
+	//	| 'end_to_end_flow'
+	//	// Evidence types
+	//	// W3C-PROV
+	//	| 'entity'
+	//	| 'agent'
+	//	| 'activity'
+	//	| 'thing'
+	//	// ANALYSIS
+	//	| 'analysis_activity' // corresponds to ANALYSIS class, type of activity
+	//	| 'analysis_report'
+	//	| 'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
+	//	| 'analysis_annotation_type' // class
+	//	| 'precondition' // type of analysis_annotation_type
+	//	| 'postcondition' // type of analysis_annotation_type
+	//	| 'invariant' // type of analysis_annotation_type
+	//	| 'analysis_annotation' // type of entity
+	//	// HAZARD
+	//	| 'hazard' // entity
+	//	| 'hazard_identification' // type of activity
+	//	// REQUIREMENT
+	//	| 'requirement' // type of entity
+	//	| 'data_dictionary_term' // type of entity
+	//	| 'requirement_development' // type of activity
+	//	// REVIEW
+	//	| 'review' // type of activity
+	//	| 'review_log' // type of entity
+	//	| 'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
+	//	// SOFTWARE
+	//	| 'file' // type of entity
+	//	| 'format' // type of thing
+	//	| 'code_development' // type of activity
+	//	| 'build' // type of activity
+	//	| 'code_gen' // type of activity
+	//	| 'compile' // type of activity
+	//	| 'package_file' // corresponds to PACKAGE, type of activity
+	//	| 'component_type' // type of thing
+	//	| 'source_function' // type of component_type
+	//	| 'binary_function' // type of component_type
+	//	| 'source_global_variable' // type of component_type
+	//	| 'binary_global_variable' // type of component_type
+	//	| 'binary_basic_block' // type of component_type
+	//	| 'class_definition' // type of component_type
+	//	| 'class_method' // type of component_type
+	//	| 'class_member_variable' // type of component_type
+	//	| 'class_constructor' // type of component_type
+	//	| 'module' // type of component_type
+	//	| 'namespace' // type of component_type
+	//	//		|	'component' // type of entity
+	//	// SYSTEM
+	//	//		|	'system' // type of entity
+	//	| 'interface' // type of entity
+	//	| 'system_development' // type of activity
+	//	// TESTING
+	//	| 'test' // type of entity
+	//	| 'test_result' // type of entity
+	//	| 'test_status' // class, must be one of {Passed, Failed, Indeterminate}
+	//	| 'test_developmemt' // type of activity
+	//	| 'test_execution' // type of activity
+	//);
 	public BaseTypeElements getBaseTypeAccess() {
 		return pBaseType;
 	}
@@ -4495,7 +4530,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getBaseTypeAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/Arg'
+	////Arg types are used for functions, claims, and quantifiers
+	//Arg:
+	//	=> (name=ID ':' type=Type) | {QuantArg} name=ID ':' expr=Expr;
 	public ArgElements getArgAccess() {
 		return pArg;
 	}
@@ -4504,7 +4541,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getArgAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ConstantDefinition'
+	//ConstantDefinition:
+	//	name=ID ':' type=Type '=' expr=Expr;
 	public ConstantDefinitionElements getConstantDefinitionAccess() {
 		return pConstantDefinition;
 	}
@@ -4513,7 +4551,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getConstantDefinitionAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/FunctionDefinition'
+	//FunctionDefinition:
+	//	(claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')'
+	//	body=DefinitionBody;
 	public FunctionDefinitionElements getFunctionDefinitionAccess() {
 		return pFunctionDefinition;
 	}
@@ -4522,7 +4562,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getFunctionDefinitionAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/DefinitionBody'
+	//DefinitionBody:
+	//	{FunctionBody} ':' type=Type '=' expr=Expr
+	//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr;
 	public DefinitionBodyElements getDefinitionBodyAccess() {
 		return pDefinitionBody;
 	}
@@ -4531,7 +4573,14 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getDefinitionBodyAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ClaimAttribute'
+	//ClaimAttribute aadl2::NamedElement:
+	//	ClaimContext
+	//	| ClaimJustification
+	//	| ClaimAssumption
+	//	| ClaimStrategy
+	//	| ClaimUsageDomain
+	//	| ClaimRationale
+	//	| ClaimRestriction;
 	public ClaimAttributeElements getClaimAttributeAccess() {
 		return pClaimAttribute;
 	}
@@ -4540,7 +4589,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getClaimAttributeAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ClaimContext'
+	//ClaimContext:
+	//	'context' name=ID ':' expr=Expr ';';
 	public ClaimContextElements getClaimContextAccess() {
 		return pClaimContext;
 	}
@@ -4549,7 +4599,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getClaimContextAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ClaimUsageDomain'
+	//ClaimUsageDomain:
+	//	'domain' name=ID ':' val=StringTerm ';';
 	public ClaimUsageDomainElements getClaimUsageDomainAccess() {
 		return pClaimUsageDomain;
 	}
@@ -4558,7 +4609,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getClaimUsageDomainAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ClaimRationale'
+	//ClaimRationale:
+	//	'rationale' name=ID ':' val=StringTerm ';';
 	public ClaimRationaleElements getClaimRationaleAccess() {
 		return pClaimRationale;
 	}
@@ -4567,7 +4619,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getClaimRationaleAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ClaimRestriction'
+	//ClaimRestriction:
+	//	'restriction' name=ID ':' expr=Expr ';';
 	public ClaimRestrictionElements getClaimRestrictionAccess() {
 		return pClaimRestriction;
 	}
@@ -4576,7 +4629,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getClaimRestrictionAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ClaimJustification'
+	//ClaimJustification:
+	//	'justification' name=ID ':' val=StringTerm ';';
 	public ClaimJustificationElements getClaimJustificationAccess() {
 		return pClaimJustification;
 	}
@@ -4585,7 +4639,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getClaimJustificationAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ClaimAssumption'
+	//ClaimAssumption:
+	//	'assumption' name=ID ':' expr=Expr ';';
 	public ClaimAssumptionElements getClaimAssumptionAccess() {
 		return pClaimAssumption;
 	}
@@ -4594,7 +4649,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getClaimAssumptionAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ClaimStrategy'
+	//ClaimStrategy:
+	//	'strategy' name=ID ':' val=StringTerm ';';
 	public ClaimStrategyElements getClaimStrategyAccess() {
 		return pClaimStrategy;
 	}
@@ -4603,7 +4659,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getClaimStrategyAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ClaimText'
+	//ClaimText:
+	//	{ClaimString} str=STRING
+	//	| {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?;
 	public ClaimTextElements getClaimTextAccess() {
 		return pClaimText;
 	}
@@ -4612,7 +4670,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getClaimTextAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ClaimTextVar'
+	//ClaimTextVar:
+	//	Arg | ConstantDefinition | LetBinding | ClaimContext | ClaimAssumption;
 	public ClaimTextVarElements getClaimTextVarAccess() {
 		return pClaimTextVar;
 	}
@@ -4621,7 +4680,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getClaimTextVarAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/Expr'
+	//Expr:
+	//	ImpliesExpr;
 	public ExprElements getExprAccess() {
 		return pExpr;
 	}
@@ -4630,7 +4690,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ImpliesExpr'
+	//ImpliesExpr Expr:
+	//	OrExpr (=> ({BinaryExpr.left=current} op='=>') right=ImpliesExpr)?;
 	public ImpliesExprElements getImpliesExprAccess() {
 		return pImpliesExpr;
 	}
@@ -4639,7 +4700,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getImpliesExprAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/OrExpr'
+	//OrExpr Expr:
+	//	AndExpr (=> ({BinaryExpr.left=current} (op='or' | op='orelse')) right=AndExpr)*;
 	public OrExprElements getOrExprAccess() {
 		return pOrExpr;
 	}
@@ -4648,7 +4710,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getOrExprAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/AndExpr'
+	//AndExpr Expr:
+	//	InstanceOfExpr (=> ({BinaryExpr.left=current} (op='and' | op='andthen')) right=InstanceOfExpr)*;
 	public AndExprElements getAndExprAccess() {
 		return pAndExpr;
 	}
@@ -4657,7 +4720,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getAndExprAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/InstanceOfExpr'
+	//InstanceOfExpr Expr:
+	//	RelationalExpr (=> ({InstanceOfExpr.expr=current} 'instanceof') type=BaseType)?;
 	public InstanceOfExprElements getInstanceOfExprAccess() {
 		return pInstanceOfExpr;
 	}
@@ -4666,7 +4730,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getInstanceOfExprAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/RelationalOp'
+	//RelationalOp:
+	//	'<' | '<=' | '>' | '>=' | '=' | '<>';
 	public RelationalOpElements getRelationalOpAccess() {
 		return pRelationalOp;
 	}
@@ -4675,7 +4740,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getRelationalOpAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/RelationalExpr'
+	//RelationalExpr Expr:
+	//	PlusExpr (=> ({BinaryExpr.left=current} op=RelationalOp) right=PlusExpr)?;
 	public RelationalExprElements getRelationalExprAccess() {
 		return pRelationalExpr;
 	}
@@ -4684,7 +4750,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getRelationalExprAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/PlusExpr'
+	//PlusExpr Expr:
+	//	TimesExpr (=> ({BinaryExpr.left=current} op=('+' | '-')) right=TimesExpr)*;
 	public PlusExprElements getPlusExprAccess() {
 		return pPlusExpr;
 	}
@@ -4693,7 +4760,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getPlusExprAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/TimesExpr'
+	//TimesExpr Expr:
+	//	ExpExpr (=> ({BinaryExpr.left=current} op=('*' | '/' | '%')) right=ExpExpr)*;
 	public TimesExprElements getTimesExprAccess() {
 		return pTimesExpr;
 	}
@@ -4702,7 +4770,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getTimesExprAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/ExpExpr'
+	//ExpExpr Expr:
+	//	PrefixExpr (=> ({BinaryExpr.left=current} op='^') right=PrefixExpr)*;
 	public ExpExprElements getExpExprAccess() {
 		return pExpExpr;
 	}
@@ -4711,7 +4780,10 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getExpExprAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/PrefixExpr'
+	//PrefixExpr Expr:
+	//	{UnaryExpr} op=('-' | 'not') expr=PrefixExpr
+	//	| {CastExpr} '(' type=BaseType ')' expr=PrefixExpr
+	//	| AtomicExpr;
 	public PrefixExprElements getPrefixExprAccess() {
 		return pPrefixExpr;
 	}
@@ -4720,7 +4792,30 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getPrefixExprAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/AtomicExpr'
+	//AtomicExpr Expr:
+	//	{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)?
+	//	| {FailExpr} 'fail' (val=Expr | '**' failmsg+=ClaimText+ '**') | {ResultExpr} result=Result
+	//	| {IntExpr} val=IntegerTerm
+	//	| {RealExpr} val=RealTerm
+	//	| {BoolExpr} val=BooleanLiteral
+	//	| {StringExpr} val=StringTerm
+	//	| {IfThenElseExpr} 'if' cond=Expr 'then' then=Expr 'else' else=Expr
+	//	| {QuantifiedExpr} quant=('forall' | 'exists') ('(' args+=Arg ')')+ '.' expr=Expr
+	//	| => ({LibraryFnCallExpr} libName=ID '.' fnName=ID '(' (args+=Expr (',' args+=Expr)*)? ')') | {BuiltInFnCallExpr}
+	//	fn=BuiltInFn '(' (args+=Expr (',' args+=Expr)*)? ')'
+	//	| {FnCallExpr} fn=[FunctionDefinition] '(' (args+=Expr (',' args+=Expr)*)? ')'
+	//	| {LintExpr} lintStmt=LintStatement
+	//	| '[' Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {ListExpr.exprs+=current}
+	//	(',' exprs+=Expr)*) ']'
+	//	| '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {SetExpr.exprs+=current}
+	//	(',' exprs+=Expr)*) '}'
+	//	| {ListExpr} '[' ']'
+	//	| {SetExpr} '{' '}'
+	//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
+	//	| '(' Expr ')'
+	//	| {UndevelopedExpr} 'undeveloped'
+	//	| {EvidenceExpr} 'evidence' name=ID ':' val=StringTerm
+	//	| {SolutionExpr} 'solution' name=ID ':' val=StringTerm;
 	public AtomicExprElements getAtomicExprAccess() {
 		return pAtomicExpr;
 	}
@@ -4729,7 +4824,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getAtomicExprAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/LetBinding'
+	//LetBinding:
+	//	name=ID ':' type=Type '=' expr=Expr;
 	public LetBindingElements getLetBindingAccess() {
 		return pLetBinding;
 	}
@@ -4738,7 +4834,12 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getLetBindingAccess().getRule();
 	}
 
-	//org.eclipse.xtext.resource.ClasspathUriResolutionException: org.eclipse.xtext.resource.FileNotFoundOnClasspathException: Couldn't find resource on classpath. URI was 'classpath:/com/rockwellcollins/atc/resolute/Resolute.xtext#XtextFragmentProvider_com.rockwellcollins.atc.resolute.Resolute/Result'
+	//Result:
+	//	'passed'
+	//	| 'failed'
+	//	| 'indeterminate'
+	//	| 'revised_with_review'
+	//	| 'revised_without_review';
 	public ResultElements getResultAccess() {
 		return pResult;
 	}
@@ -4748,141 +4849,86 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BuiltInFn: // Primary type: aadl
-	// 'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' |
-	//	'type' | 'has_type' | 'is_in_array' | 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' |
-	//	'is_system' | 'is_bus' | 'is_virtual_bus' | 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' |
-	//	'is_process' | 'is_data' | 'is_subprogram' | 'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections'
-	//	// Primary type: property
-	// | 'enumerated_values' // Primary type: component
-	// | 'subcomponents'
-	//	// Primary type: connection
-	// | 'source' | 'destination' | 'is_bidirectional' // Primary type: feature
-	// | 'direction'
-	//	| 'is_event_port' | 'is_abstract_feature' | 'is_data_port' | 'is_port' | 'is_data_access' | 'is_bus_access'
-	//	// Primary type: range
-	// | 'lower_bound' | 'upper_bound' // Primary type: set or list
-	// | 'member' | 'length' | 'size'
-	//	// Primary type: list
-	// | 'sum' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
-	// | 'union' | 'intersect'
-	//	| 'as_list' // Other
-	// | 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
-	// | 'receive_error'
-	//	// the component can receive an incoming error
-	// | 'contain_error' // the component contain the error
-	// |
-	//	'propagate_error' // the component propagate an error
-	// | 'error_state_reachable' // the error state is reachable
-	// |
-	//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
-	//
+	//	'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' | 'type' | 'has_type' |
+	//	'is_in_array' | 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' | 'is_system' | 'is_bus' |
+	//	'is_virtual_bus' | 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' | 'is_process' | 'is_data' |
+	//	'is_subprogram' | 'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections' // Primary type: property
+	//	| 'enumerated_values' // Primary type: component
+	//	| 'subcomponents' // Primary type: connection
+	//	| 'source' | 'destination' | 'is_bidirectional' // Primary type: feature
+	//	| 'direction' | 'is_event_port' | 'is_abstract_feature' | 'is_data_port' | 'is_port' | 'is_data_access' |
+	//	'is_bus_access' // Primary type: range
+	//	| 'lower_bound' | 'upper_bound' // Primary type: set or list
+	//	| 'member' | 'length' | 'size' // Primary type: list
+	//	| 'sum' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
+	//	| 'union' | 'intersect' | 'as_list' // Other
+	//	| 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
+	//	| 'receive_error' // the component can receive an incoming error
+	//	| 'contain_error' // the component contain the error
+	//	| 'propagate_error' // the component propagate an error
+	//	| 'error_state_reachable' // the error state is reachable
+	//	| 'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
 	//	// ANALYSIS
-	// | 'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
-	// | 'metric'
-	//	// describes ANALYSIS_REPORT with values of type float
-	// | 'analyzes'
-	//	// describes ANALYSIS_REPORT with values of type ENTITY
-	// | 'produced_by'
-	//	// describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
-	// | 'performed_by'
-	//	// describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
-	// | 'from_report'
-	//	// describes ANALYSIS_ANNOTATION with values of type ENTITY
-	// | 'description'
-	//	// describes ANALYSIS_ANNOTATION with values of type string
-	// | 'annotation_type'
-	//	// describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
-	// // HAZARD
-	// | 'definition'
-	//	// describes HAZARD with values of type string
-	// | 'source_of'
-	//	// corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
-	// | 'identified'
-	//	// describes HAZARD with values of type HAZARD_IDENTIFICATION
-	// | 'author'
-	//	// describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
-	// |
-	//	'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
-	// | 'given_text'
-	//	// describes REQUIREMENT with values of type string
-	// | 'if_text' // describes REQUIREMENT with values of type string
-	//
+	//	| 'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
+	//	| 'metric' // describes ANALYSIS_REPORT with values of type float
+	//	| 'analyzes' // describes ANALYSIS_REPORT with values of type ENTITY
+	//	| 'produced_by' // describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
+	//	| 'performed_by' // describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
+	//	| 'from_report' // describes ANALYSIS_ANNOTATION with values of type ENTITY
+	//	| 'description' // describes ANALYSIS_ANNOTATION with values of type string
+	//	| 'annotation_type' // describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
+	//	// HAZARD
+	//	| 'definition' // describes HAZARD with values of type string
+	//	| 'source_of' // corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
+	//	| 'identified' // describes HAZARD with values of type HAZARD_IDENTIFICATION
+	//	| 'author' // describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
+	//	| 'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
+	//	| 'given_text' // describes REQUIREMENT with values of type string
+	//	| 'if_text' // describes REQUIREMENT with values of type string
 	//	| 'then_text' // describes REQUIREMENT with values of type string
-	// | 'governs'
-	//	// describes REQUIREMENT with values of type ENTITY
-	// | 'satisfies'
-	//	// describes REQUIREMENT, FILE with values of type ENTITY
-	// | 'mitigates'
-	//	// describes REQUIREMENT with values of type ENTITY
-	// | 'created_by'
-	//	// describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
-	// | 'provided_by'
-	//	// describes DATA_DICTIONARY_TERM with values of type ENTITY
-	// | 'consumed_by'
-	//	// describes DATA_DICTIONARY_TERM with values of type ENTITY
-	// | 'referenced'
-	//	// describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
-	// | 'governed_by'
-	//	// describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
-	// // REVIEW
-	// | 'reviews'
-	//	// describes REVIEW_LOG with values of type ENTITY
-	// | 'review_result'
-	//	// describes REVIEW_LOG with values of type REVIEW_STATE
-	// | 'reviewer' // describes REVIEW with values of type AGENT
-	//
+	//	| 'governs' // describes REQUIREMENT with values of type ENTITY
+	//	| 'satisfies' // describes REQUIREMENT, FILE with values of type ENTITY
+	//	| 'mitigates' // describes REQUIREMENT with values of type ENTITY
+	//	| 'created_by' // describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
+	//	| 'provided_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
+	//	| 'consumed_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
+	//	| 'referenced' // describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
+	//	| 'governed_by' // describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
+	//	// REVIEW
+	//	| 'reviews' // describes REVIEW_LOG with values of type ENTITY
+	//	| 'review_result' // describes REVIEW_LOG with values of type REVIEW_STATE
+	//	| 'reviewer' // describes REVIEW with values of type AGENT
 	//	| 'reviewed' // describes REVIEW with values of type ENTITY
-	// // SOFTWARE
-	// | 'filename'
-	//	// describes FILE with values of type string
-	// | 'step' // describes BUILD with values of type ACTIVITY
-	// |
-	//	'compiled_by' // describes COMPILE with values of type FILE
-	// | 'compile_input'
-	//	// describes COMPILE with values of type FILE
-	// | 'packaged_by' // describes PACKAGE_FILE with values of type FILE
-	// |
-	//	'package_input' // describes PACKAGE_FILE with values of type FILE
-	//
+	//	// SOFTWARE
+	//	| 'filename' // describes FILE with values of type string
+	//	| 'step' // describes BUILD with values of type ACTIVITY
+	//	| 'compiled_by' // describes COMPILE with values of type FILE
+	//	| 'compile_input' // describes COMPILE with values of type FILE
+	//	| 'packaged_by' // describes PACKAGE_FILE with values of type FILE
+	//	| 'package_input' // describes PACKAGE_FILE with values of type FILE
 	//	//|	'name' // describes COMPONENT with values of type string
-	// | 'type_of'
-	//	// corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
-	// | 'value_type'
-	//	// describes COMPONENT with values of type string
-	// | 'instantiates'
-	//	// describes COMPONENT with values of type ENTITY
-	// | 'defined_in' // describes COMPONENT with values of type ENTITY
-	//
+	//	| 'type_of' // corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
+	//	| 'value_type' // describes COMPONENT with values of type string
+	//	| 'instantiates' // describes COMPONENT with values of type ENTITY
+	//	| 'defined_in' // describes COMPONENT with values of type ENTITY
 	//	| 'mentions' // describes COMPONENT with values of type ENTITY
-	// | 'subcomponent_of'
-	//	// describes COMPONENT with values of type ENTITY
-	// | 'requirements'
-	//	// describes COMPONENT with values of type ENTITY
-	// | 'annotations' // describes COMPONENT with values of type ENTITY
-	//
+	//	| 'subcomponent_of' // describes COMPONENT with values of type ENTITY
+	//	| 'requirements' // describes COMPONENT with values of type ENTITY
+	//	| 'annotations' // describes COMPONENT with values of type ENTITY
 	//	| 'control_flows_to_unconditionally' // describes COMPONENT with values of type COMPONENT
-	// |
-	//	'control_flows_to_conditionally' // describes COMPONENT with values of type COMPONENT
-	// // SYSTEM
-	// | 'part_of'
-	//	// describes SYSTEM with values of type ENTITY
-	// | 'provides' // describes SYSTEM with values of type ENTITY
-	// |
-	//	'requires' // describes SYSTEM with values of type ENTITY
-	// | 'destination_of'
-	//	// describes INTERFACE with values of type ENTITY
-	// | 'identified_by'
-	//	// describes INTERFACE with values of type ACTIVITY
-	// | 'developed_by'
-	//	// describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
-	// // TESTING
-	// | 'verifies'
-	//	// describes TEST with values of type ENTITY
-	// | 'confirms' // describes TEST_RESULT with values of type ENTITY
-	// |
-	//	'executed_by' // describes TEST_RESULT with values of type ACTIVITY
-	// | 'executed_on'
-	//	// describes TEST_EXECUTION with values of type AGENT
+	//	| 'control_flows_to_conditionally' // describes COMPONENT with values of type COMPONENT
+	//	// SYSTEM
+	//	| 'part_of' // describes SYSTEM with values of type ENTITY
+	//	| 'provides' // describes SYSTEM with values of type ENTITY
+	//	| 'requires' // describes SYSTEM with values of type ENTITY
+	//	| 'destination_of' // describes INTERFACE with values of type ENTITY
+	//	| 'identified_by' // describes INTERFACE with values of type ACTIVITY
+	//	| 'developed_by' // describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
+	//	// TESTING
+	//	| 'verifies' // describes TEST with values of type ENTITY
+	//	| 'confirms' // describes TEST_RESULT with values of type ENTITY
+	//	| 'executed_by' // describes TEST_RESULT with values of type ACTIVITY
+	//	| 'executed_on' // describes TEST_EXECUTION with values of type AGENT
 	//;
 	public BuiltInFnElements getBuiltInFnAccess() {
 		return pBuiltInFn;
@@ -4955,7 +5001,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LintStatement:
-	//	{WarningStatement} 'warning' expr=Expr | {ErrorStatement} 'error' expr=Expr | {InfoStatement} 'info' expr=Expr;
+	//	{WarningStatement} 'warning' expr=Expr
+	//	| {ErrorStatement} 'error' expr=Expr
+	//	| {InfoStatement} 'info' expr=Expr;
 	public LintStatementElements getLintStatementAccess() {
 		return pLintStatement;
 	}
@@ -4985,7 +5033,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AnalysisStatement:
-	//	{ProveStatement} 'prove' expr=Expr | {CheckStatement} 'check' expr=Expr;
+	//	{ProveStatement} 'prove' expr=Expr
+	//	| {CheckStatement} 'check' expr=Expr;
 	public AnalysisStatementElements getAnalysisStatementAccess() {
 		return pAnalysisStatement;
 	}

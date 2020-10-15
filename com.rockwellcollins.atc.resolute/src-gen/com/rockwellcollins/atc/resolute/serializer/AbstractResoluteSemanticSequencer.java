@@ -1670,18 +1670,18 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     ClaimRestriction returns ClaimRestriction
 	 *
 	 * Constraint:
-	 *     (name=ID val=StringTerm)
+	 *     (name=ID expr=Expr)
 	 */
 	protected void sequence_ClaimRestriction(ISerializationContext context, ClaimRestriction semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, Aadl2Package.eINSTANCE.getNamedElement_Name()) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, Aadl2Package.eINSTANCE.getNamedElement_Name()));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_RESTRICTION__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_RESTRICTION__VAL));
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.CLAIM_RESTRICTION__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.CLAIM_RESTRICTION__EXPR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getClaimRestrictionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getClaimRestrictionAccess().getValStringTermParserRuleCall_3_0(), semanticObject.getVal());
+		feeder.accept(grammarAccess.getClaimRestrictionAccess().getExprExprParserRuleCall_3_0(), semanticObject.getExpr());
 		feeder.finish();
 	}
 	

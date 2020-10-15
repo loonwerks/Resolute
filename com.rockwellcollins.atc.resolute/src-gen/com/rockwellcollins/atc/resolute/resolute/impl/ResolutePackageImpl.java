@@ -913,7 +913,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
-  public EReference getClaimRestriction_Val()
+  public EReference getClaimRestriction_Expr()
   {
     return (EReference)claimRestrictionEClass.getEStructuralFeatures().get(0);
   }
@@ -2319,7 +2319,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     createEReference(claimRationaleEClass, CLAIM_RATIONALE__VAL);
 
     claimRestrictionEClass = createEClass(CLAIM_RESTRICTION);
-    createEReference(claimRestrictionEClass, CLAIM_RESTRICTION__VAL);
+    createEReference(claimRestrictionEClass, CLAIM_RESTRICTION__EXPR);
 
     claimJustificationEClass = createEClass(CLAIM_JUSTIFICATION);
     createEReference(claimJustificationEClass, CLAIM_JUSTIFICATION__VAL);
@@ -2635,7 +2635,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEReference(getClaimRationale_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimRationale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(claimRestrictionEClass, ClaimRestriction.class, "ClaimRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getClaimRestriction_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClaimRestriction_Expr(), this.getExpr(), null, "expr", null, 0, 1, ClaimRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(claimJustificationEClass, ClaimJustification.class, "ClaimJustification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getClaimJustification_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimJustification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -2559,17 +2559,17 @@ ruleClaimRestriction returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClaimRestrictionAccess().getValStringTermParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getClaimRestrictionAccess().getExprExprParserRuleCall_3_0()); 
 	    }
-		lv_val_3_0=ruleStringTerm		{
+		lv_expr_3_0=ruleExpr		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClaimRestrictionRule());
 	        }
        		set(
        			$current, 
-       			"val",
-        		lv_val_3_0, 
-        		"org.osate.xtext.aadl2.properties.Properties.StringTerm");
+       			"expr",
+        		lv_expr_3_0, 
+        		"com.rockwellcollins.atc.resolute.Resolute.Expr");
 	        afterParserOrEnumRuleCall();
 	    }
 

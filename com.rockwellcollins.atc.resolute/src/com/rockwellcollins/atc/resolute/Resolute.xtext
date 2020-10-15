@@ -203,7 +203,7 @@ ClaimRationale:
 ;
 
 ClaimRestriction:
-	'restriction' name=ID ':' val=StringTerm ';'
+	'restriction' name=ID ':' expr=Expr ';'
 ;
 
 ClaimJustification:

@@ -6265,7 +6265,7 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleClaimRestriction"
-    // InternalResoluteParser.g:2527:1: ruleClaimRestriction returns [EObject current=null] : (otherlv_0= Restriction ( (lv_name_1_0= RULE_ID ) ) otherlv_2= Colon ( (lv_val_3_0= ruleStringTerm ) ) otherlv_4= Semicolon ) ;
+    // InternalResoluteParser.g:2527:1: ruleClaimRestriction returns [EObject current=null] : (otherlv_0= Restriction ( (lv_name_1_0= RULE_ID ) ) otherlv_2= Colon ( (lv_expr_3_0= ruleExpr ) ) otherlv_4= Semicolon ) ;
     public final EObject ruleClaimRestriction() throws RecognitionException {
         EObject current = null;
 
@@ -6273,17 +6273,17 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
         Token lv_name_1_0=null;
         Token otherlv_2=null;
         Token otherlv_4=null;
-        EObject lv_val_3_0 = null;
+        EObject lv_expr_3_0 = null;
 
 
          enterRule(); 
             
         try {
-            // InternalResoluteParser.g:2530:28: ( (otherlv_0= Restriction ( (lv_name_1_0= RULE_ID ) ) otherlv_2= Colon ( (lv_val_3_0= ruleStringTerm ) ) otherlv_4= Semicolon ) )
-            // InternalResoluteParser.g:2531:1: (otherlv_0= Restriction ( (lv_name_1_0= RULE_ID ) ) otherlv_2= Colon ( (lv_val_3_0= ruleStringTerm ) ) otherlv_4= Semicolon )
+            // InternalResoluteParser.g:2530:28: ( (otherlv_0= Restriction ( (lv_name_1_0= RULE_ID ) ) otherlv_2= Colon ( (lv_expr_3_0= ruleExpr ) ) otherlv_4= Semicolon ) )
+            // InternalResoluteParser.g:2531:1: (otherlv_0= Restriction ( (lv_name_1_0= RULE_ID ) ) otherlv_2= Colon ( (lv_expr_3_0= ruleExpr ) ) otherlv_4= Semicolon )
             {
-            // InternalResoluteParser.g:2531:1: (otherlv_0= Restriction ( (lv_name_1_0= RULE_ID ) ) otherlv_2= Colon ( (lv_val_3_0= ruleStringTerm ) ) otherlv_4= Semicolon )
-            // InternalResoluteParser.g:2532:2: otherlv_0= Restriction ( (lv_name_1_0= RULE_ID ) ) otherlv_2= Colon ( (lv_val_3_0= ruleStringTerm ) ) otherlv_4= Semicolon
+            // InternalResoluteParser.g:2531:1: (otherlv_0= Restriction ( (lv_name_1_0= RULE_ID ) ) otherlv_2= Colon ( (lv_expr_3_0= ruleExpr ) ) otherlv_4= Semicolon )
+            // InternalResoluteParser.g:2532:2: otherlv_0= Restriction ( (lv_name_1_0= RULE_ID ) ) otherlv_2= Colon ( (lv_expr_3_0= ruleExpr ) ) otherlv_4= Semicolon
             {
             otherlv_0=(Token)match(input,Restriction,FollowSets000.FOLLOW_14); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -6321,25 +6321,25 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,Colon,FollowSets000.FOLLOW_27); if (state.failed) return current;
+            otherlv_2=(Token)match(input,Colon,FollowSets000.FOLLOW_16); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getClaimRestrictionAccess().getColonKeyword_2());
                   
             }
-            // InternalResoluteParser.g:2559:1: ( (lv_val_3_0= ruleStringTerm ) )
-            // InternalResoluteParser.g:2560:1: (lv_val_3_0= ruleStringTerm )
+            // InternalResoluteParser.g:2559:1: ( (lv_expr_3_0= ruleExpr ) )
+            // InternalResoluteParser.g:2560:1: (lv_expr_3_0= ruleExpr )
             {
-            // InternalResoluteParser.g:2560:1: (lv_val_3_0= ruleStringTerm )
-            // InternalResoluteParser.g:2561:3: lv_val_3_0= ruleStringTerm
+            // InternalResoluteParser.g:2560:1: (lv_expr_3_0= ruleExpr )
+            // InternalResoluteParser.g:2561:3: lv_expr_3_0= ruleExpr
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getClaimRestrictionAccess().getValStringTermParserRuleCall_3_0()); 
+              	        newCompositeNode(grammarAccess.getClaimRestrictionAccess().getExprExprParserRuleCall_3_0()); 
               	    
             }
             pushFollow(FollowSets000.FOLLOW_26);
-            lv_val_3_0=ruleStringTerm();
+            lv_expr_3_0=ruleExpr();
 
             state._fsp--;
             if (state.failed) return current;
@@ -6350,9 +6350,9 @@ public class InternalResoluteParser extends AbstractInternalAntlrParser {
               	        }
                      		set(
                      			current, 
-                     			"val",
-                      		lv_val_3_0, 
-                      		"org.osate.xtext.aadl2.properties.Properties.StringTerm");
+                     			"expr",
+                      		lv_expr_3_0, 
+                      		"com.rockwellcollins.atc.resolute.Resolute.Expr");
               	        afterParserOrEnumRuleCall();
               	    
             }

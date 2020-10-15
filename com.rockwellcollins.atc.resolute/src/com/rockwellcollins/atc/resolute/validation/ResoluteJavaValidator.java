@@ -2117,6 +2117,11 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			return getExprType(claimAssumption.getExpr());
 		}
 
+		if (idClass instanceof ClaimRestriction) {
+			ClaimRestriction claimRestriction = (ClaimRestriction) idClass;
+			return getExprType(claimRestriction.getExpr());
+		}
+
 		if (idClass instanceof ComponentClassifier) {
 			ComponentClassifier component = (ComponentClassifier) idClass;
 			return new BaseType(component.getCategory());

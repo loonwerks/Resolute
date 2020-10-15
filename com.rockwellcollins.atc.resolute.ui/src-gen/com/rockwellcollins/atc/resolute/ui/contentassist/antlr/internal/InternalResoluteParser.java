@@ -23271,7 +23271,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:7674:1: ( rule__ClaimRestriction__Group__2__Impl rule__ClaimRestriction__Group__3 )
             // InternalResoluteParser.g:7675:2: rule__ClaimRestriction__Group__2__Impl rule__ClaimRestriction__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_33);
+            pushFollow(FollowSets000.FOLLOW_19);
             rule__ClaimRestriction__Group__2__Impl();
 
             state._fsp--;
@@ -23379,26 +23379,26 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ClaimRestriction__Group__3__Impl"
-    // InternalResoluteParser.g:7713:1: rule__ClaimRestriction__Group__3__Impl : ( ( rule__ClaimRestriction__ValAssignment_3 ) ) ;
+    // InternalResoluteParser.g:7713:1: rule__ClaimRestriction__Group__3__Impl : ( ( rule__ClaimRestriction__ExprAssignment_3 ) ) ;
     public final void rule__ClaimRestriction__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:7717:1: ( ( ( rule__ClaimRestriction__ValAssignment_3 ) ) )
-            // InternalResoluteParser.g:7718:1: ( ( rule__ClaimRestriction__ValAssignment_3 ) )
+            // InternalResoluteParser.g:7717:1: ( ( ( rule__ClaimRestriction__ExprAssignment_3 ) ) )
+            // InternalResoluteParser.g:7718:1: ( ( rule__ClaimRestriction__ExprAssignment_3 ) )
             {
-            // InternalResoluteParser.g:7718:1: ( ( rule__ClaimRestriction__ValAssignment_3 ) )
-            // InternalResoluteParser.g:7719:1: ( rule__ClaimRestriction__ValAssignment_3 )
+            // InternalResoluteParser.g:7718:1: ( ( rule__ClaimRestriction__ExprAssignment_3 ) )
+            // InternalResoluteParser.g:7719:1: ( rule__ClaimRestriction__ExprAssignment_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClaimRestrictionAccess().getValAssignment_3()); 
+               before(grammarAccess.getClaimRestrictionAccess().getExprAssignment_3()); 
             }
-            // InternalResoluteParser.g:7720:1: ( rule__ClaimRestriction__ValAssignment_3 )
-            // InternalResoluteParser.g:7720:2: rule__ClaimRestriction__ValAssignment_3
+            // InternalResoluteParser.g:7720:1: ( rule__ClaimRestriction__ExprAssignment_3 )
+            // InternalResoluteParser.g:7720:2: rule__ClaimRestriction__ExprAssignment_3
             {
             pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimRestriction__ValAssignment_3();
+            rule__ClaimRestriction__ExprAssignment_3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -23406,7 +23406,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClaimRestrictionAccess().getValAssignment_3()); 
+               after(grammarAccess.getClaimRestrictionAccess().getExprAssignment_3()); 
             }
 
             }
@@ -54754,29 +54754,29 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__ClaimRestriction__NameAssignment_1"
 
 
-    // $ANTLR start "rule__ClaimRestriction__ValAssignment_3"
-    // InternalResoluteParser.g:19379:1: rule__ClaimRestriction__ValAssignment_3 : ( ruleStringTerm ) ;
-    public final void rule__ClaimRestriction__ValAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__ClaimRestriction__ExprAssignment_3"
+    // InternalResoluteParser.g:19379:1: rule__ClaimRestriction__ExprAssignment_3 : ( ruleExpr ) ;
+    public final void rule__ClaimRestriction__ExprAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:19383:1: ( ( ruleStringTerm ) )
-            // InternalResoluteParser.g:19384:1: ( ruleStringTerm )
+            // InternalResoluteParser.g:19383:1: ( ( ruleExpr ) )
+            // InternalResoluteParser.g:19384:1: ( ruleExpr )
             {
-            // InternalResoluteParser.g:19384:1: ( ruleStringTerm )
-            // InternalResoluteParser.g:19385:1: ruleStringTerm
+            // InternalResoluteParser.g:19384:1: ( ruleExpr )
+            // InternalResoluteParser.g:19385:1: ruleExpr
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClaimRestrictionAccess().getValStringTermParserRuleCall_3_0()); 
+               before(grammarAccess.getClaimRestrictionAccess().getExprExprParserRuleCall_3_0()); 
             }
             pushFollow(FollowSets000.FOLLOW_2);
-            ruleStringTerm();
+            ruleExpr();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClaimRestrictionAccess().getValStringTermParserRuleCall_3_0()); 
+               after(grammarAccess.getClaimRestrictionAccess().getExprExprParserRuleCall_3_0()); 
             }
 
             }
@@ -54796,7 +54796,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__ValAssignment_3"
+    // $ANTLR end "rule__ClaimRestriction__ExprAssignment_3"
 
 
     // $ANTLR start "rule__ClaimJustification__NameAssignment_1"
