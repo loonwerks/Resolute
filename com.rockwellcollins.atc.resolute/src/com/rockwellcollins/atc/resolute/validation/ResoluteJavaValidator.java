@@ -65,6 +65,7 @@ import com.rockwellcollins.atc.resolute.resolute.CheckStatement;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
+import com.rockwellcollins.atc.resolute.resolute.ClaimGuarantee;
 import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
 import com.rockwellcollins.atc.resolute.resolute.ClaimRationale;
 import com.rockwellcollins.atc.resolute.resolute.ClaimRestriction;
@@ -396,7 +397,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 		if (funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
-			error(claimJustification, "A conclusion cannot contain a Justification element");
+			error(claimJustification,
+					"A conclusion cannot contain a Justification element.  Consider using a Rationale element instead.");
 		}
 		checkDuplicateAttributeNames(claimJustification);
 	}
@@ -413,7 +415,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 		if (funcDef.getClaimType().equalsIgnoreCase("conclusion")) {
-			error(claimAssumption, "A conclusion cannot contain an Assumption element");
+			error(claimAssumption,
+					"A conclusion cannot contain an Assumption element.  Consider using a Restriction element instead.");
 		}
 		checkDuplicateAttributeNames(claimAssumption);
 	}
@@ -606,6 +609,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 					error(attr, "A strategy cannot contain a strategy attribute");
 				} else if (attr instanceof ClaimRestriction) {
 					error(attr, "A strategy cannot contain a Restriction element");
+				} else if (attr instanceof ClaimGuarantee) {
+					error(attr, "A strategy cannot contain a Guarantee element");
 				} else if (attr instanceof ClaimRationale) {
 					rationaleElementCount++;
 					if (rationaleElementCount > 1) {
@@ -634,10 +639,11 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 
-		// check if a claim is a conclusion then make sure it can only make call to other
+		// check if a claim is a conclusion, then make sure it can only make calls to other
 		// strategies or conclusions.
 		if (claimType.equalsIgnoreCase("conclusion") && body instanceof ClaimBody) {
 			int restrictionElementCount = 0;
+			int guaranteeElementCount = 0;
 			ClaimBody claimBody = (ClaimBody) body;
 			for (NamedElement attr : claimBody.getAttributes()) {
 				if (attr instanceof ClaimRestriction) {
@@ -645,8 +651,13 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 					if (restrictionElementCount > 1) {
 						error(attr, "A conclusion cannot contain more than one Restriction element");
 					}
-				} else if (attr instanceof ClaimStrategy) {
-					error(attr, "A conclusion cannot contain an inline Strategy");
+				} else if (attr instanceof ClaimGuarantee) {
+					guaranteeElementCount++;
+					if (guaranteeElementCount > 1) {
+						error(attr, "A conclusion cannot contain more than one Guarantee element");
+					}
+//				} else if (attr instanceof ClaimStrategy) {
+//					error(attr, "A conclusion cannot contain an inline Strategy");
 				}
 			}
 			if (!isValidConclusionExpr(claimBody.getExpr())) {
@@ -747,6 +758,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			return isValidConclusionExpr(letExpr.getExpr());
 		} else if (expr instanceof ResultExpr) {
 			return true;
+		} else if (expr instanceof EvidenceExpr) {
+			return true;
 		}
 		// TODO: these should only return true if part of some expressions (like =)
 		else if (expr instanceof IdExpr) {
@@ -812,6 +825,22 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		}
 		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("goal")) {
 			error(claimRestriction, "A goal cannot contain a Restriction element");
+		}
+	}
+
+	@Check
+	public void checkClaimGuarantee(ClaimGuarantee claimGuarantee) {
+		EObject parent = claimGuarantee;
+		FunctionDefinition funcDef = null;
+		while (parent != null) {
+			parent = parent.eContainer();
+			if (parent instanceof FunctionDefinition) {
+				funcDef = (FunctionDefinition) parent;
+				break;
+			}
+		}
+		if (funcDef.getClaimType() == null || funcDef.getClaimType().equalsIgnoreCase("goal")) {
+			error(claimGuarantee, "A goal cannot contain a Guarantee element");
 		}
 	}
 
@@ -2121,6 +2150,11 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		if (idClass instanceof ClaimRestriction) {
 			ClaimRestriction claimRestriction = (ClaimRestriction) idClass;
 			return getExprType(claimRestriction.getExpr());
+		}
+
+		if (idClass instanceof ClaimGuarantee) {
+			ClaimGuarantee claimGuarantee = (ClaimGuarantee) idClass;
+			return getExprType(claimGuarantee.getExpr());
 		}
 
 		if (idClass instanceof ComponentClassifier) {

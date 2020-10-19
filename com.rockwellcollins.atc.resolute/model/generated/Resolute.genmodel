@@ -58,6 +58,9 @@
     <genClasses ecoreClass="Resolute.ecore#//ClaimStrategy">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimStrategy/val"/>
     </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimGuarantee">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimGuarantee/expr"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimText"/>
     <genClasses ecoreClass="Resolute.ecore#//ClaimTextVar"/>
     <genClasses ecoreClass="Resolute.ecore#//Expr"/>

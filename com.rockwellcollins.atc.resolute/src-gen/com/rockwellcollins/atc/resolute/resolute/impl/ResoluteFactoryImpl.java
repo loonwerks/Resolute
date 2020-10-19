@@ -80,6 +80,7 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.CLAIM_JUSTIFICATION: return createClaimJustification();
       case ResolutePackage.CLAIM_ASSUMPTION: return createClaimAssumption();
       case ResolutePackage.CLAIM_STRATEGY: return createClaimStrategy();
+      case ResolutePackage.CLAIM_GUARANTEE: return createClaimGuarantee();
       case ResolutePackage.CLAIM_TEXT: return createClaimText();
       case ResolutePackage.CLAIM_TEXT_VAR: return createClaimTextVar();
       case ResolutePackage.EXPR: return createExpr();
@@ -324,6 +325,18 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
   {
     ClaimStrategyImpl claimStrategy = new ClaimStrategyImpl();
     return claimStrategy;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ClaimGuarantee createClaimGuarantee()
+  {
+    ClaimGuaranteeImpl claimGuarantee = new ClaimGuaranteeImpl();
+    return claimGuarantee;
   }
 
   /**

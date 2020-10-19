@@ -99,6 +99,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getClaimJustificationAccess().getGroup(), "rule__ClaimJustification__Group__0");
 					put(grammarAccess.getClaimAssumptionAccess().getGroup(), "rule__ClaimAssumption__Group__0");
 					put(grammarAccess.getClaimStrategyAccess().getGroup(), "rule__ClaimStrategy__Group__0");
+					put(grammarAccess.getClaimGuaranteeAccess().getGroup(), "rule__ClaimGuarantee__Group__0");
 					put(grammarAccess.getClaimTextAccess().getGroup_0(), "rule__ClaimText__Group_0__0");
 					put(grammarAccess.getClaimTextAccess().getGroup_1(), "rule__ClaimText__Group_1__0");
 					put(grammarAccess.getClaimTextAccess().getGroup_1_2(), "rule__ClaimText__Group_1_2__0");
@@ -280,6 +281,8 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getClaimAssumptionAccess().getExprAssignment_3(), "rule__ClaimAssumption__ExprAssignment_3");
 					put(grammarAccess.getClaimStrategyAccess().getNameAssignment_1(), "rule__ClaimStrategy__NameAssignment_1");
 					put(grammarAccess.getClaimStrategyAccess().getValAssignment_3(), "rule__ClaimStrategy__ValAssignment_3");
+					put(grammarAccess.getClaimGuaranteeAccess().getNameAssignment_1(), "rule__ClaimGuarantee__NameAssignment_1");
+					put(grammarAccess.getClaimGuaranteeAccess().getExprAssignment_3(), "rule__ClaimGuarantee__ExprAssignment_3");
 					put(grammarAccess.getClaimTextAccess().getStrAssignment_0_1(), "rule__ClaimText__StrAssignment_0_1");
 					put(grammarAccess.getClaimTextAccess().getArgAssignment_1_1(), "rule__ClaimText__ArgAssignment_1_1");
 					put(grammarAccess.getClaimTextAccess().getUnitAssignment_1_2_1(), "rule__ClaimText__UnitAssignment_1_2_1");
@@ -338,8 +341,6 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getAtomicExprAccess().getExprsAssignment_15_2_1_1_1(), "rule__AtomicExpr__ExprsAssignment_15_2_1_1_1");
 					put(grammarAccess.getAtomicExprAccess().getBindingAssignment_18_2(), "rule__AtomicExpr__BindingAssignment_18_2");
 					put(grammarAccess.getAtomicExprAccess().getExprAssignment_18_4(), "rule__AtomicExpr__ExprAssignment_18_4");
-					put(grammarAccess.getAtomicExprAccess().getNameAssignment_21_2(), "rule__AtomicExpr__NameAssignment_21_2");
-					put(grammarAccess.getAtomicExprAccess().getValAssignment_21_4(), "rule__AtomicExpr__ValAssignment_21_4");
 					put(grammarAccess.getAtomicExprAccess().getNameAssignment_22_2(), "rule__AtomicExpr__NameAssignment_22_2");
 					put(grammarAccess.getAtomicExprAccess().getValAssignment_22_4(), "rule__AtomicExpr__ValAssignment_22_4");
 					put(grammarAccess.getLetBindingAccess().getNameAssignment_0(), "rule__LetBinding__NameAssignment_0");

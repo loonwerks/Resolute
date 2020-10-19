@@ -95,7 +95,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) '[' (ambiguity) '(' type=BaseType
 	 *     (rule start) '[' (ambiguity) '[' ']' (rule start)
-	 *     (rule start) '[' (ambiguity) 'evidence' name=ID
+	 *     (rule start) '[' (ambiguity) 'evidence' (rule start)
 	 *     (rule start) '[' (ambiguity) 'fail' '**' failmsg+=ClaimText
 	 *     (rule start) '[' (ambiguity) 'fail' val=Expr
 	 *     (rule start) '[' (ambiguity) 'if' cond=Expr
@@ -127,7 +127,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '[' (ambiguity) {SetFilterMapExpr.map=}
 	 *     (rule start) '{' (ambiguity) '(' type=BaseType
 	 *     (rule start) '{' (ambiguity) '[' ']' (rule start)
-	 *     (rule start) '{' (ambiguity) 'evidence' name=ID
+	 *     (rule start) '{' (ambiguity) 'evidence' (rule start)
 	 *     (rule start) '{' (ambiguity) 'fail' '**' failmsg+=ClaimText
 	 *     (rule start) '{' (ambiguity) 'fail' val=Expr
 	 *     (rule start) '{' (ambiguity) 'if' cond=Expr
@@ -159,7 +159,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '{' (ambiguity) {SetFilterMapExpr.map=}
 	 *     (rule start) (ambiguity) '(' type=BaseType
 	 *     (rule start) (ambiguity) '[' ']' (rule start)
-	 *     (rule start) (ambiguity) 'evidence' name=ID
+	 *     (rule start) (ambiguity) 'evidence' (rule start)
 	 *     (rule start) (ambiguity) 'fail' '**' failmsg+=ClaimText
 	 *     (rule start) (ambiguity) 'fail' val=Expr
 	 *     (rule start) (ambiguity) 'if' cond=Expr

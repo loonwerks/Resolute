@@ -188,6 +188,7 @@ ClaimAttribute returns aadl2::NamedElement:
 |	ClaimUsageDomain
 |	ClaimRationale
 | 	ClaimRestriction
+|	ClaimGuarantee
 ;
 
 ClaimContext:
@@ -216,6 +217,10 @@ ClaimAssumption:
 
 ClaimStrategy:
 	'strategy' name=ID ':' val=StringTerm ';' 
+;
+
+ClaimGuarantee:
+	'claim' name=ID ':' expr=Expr ';'
 ;
 
 ClaimText:
@@ -296,7 +301,8 @@ AtomicExpr returns Expr:
 |	'(' Expr ')'
 
 | {UndevelopedExpr} 'undeveloped' 
-| {EvidenceExpr} 'evidence' name=ID ':' val=StringTerm 
+//| {EvidenceExpr} 'evidence' name=ID ':' val=StringTerm 
+| {EvidenceExpr} 'evidence'
 | {SolutionExpr} 'solution' name=ID ':' val=StringTerm 
 ;
 
