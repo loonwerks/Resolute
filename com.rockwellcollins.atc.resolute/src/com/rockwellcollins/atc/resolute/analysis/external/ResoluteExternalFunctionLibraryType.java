@@ -7,8 +7,8 @@ import com.rockwellcollins.atc.resolute.validation.ResoluteType;
 
 public class ResoluteExternalFunctionLibraryType {
 
-	// This method returns the return type for the specified library function
-	public ResoluteType getType(String function) {
+	// This method returns the return type for the specified library function or type
+	public ResoluteType getType(String name) {
 		return BaseType.FAIL;
 	}
 

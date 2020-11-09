@@ -83,7 +83,6 @@ import com.rockwellcollins.atc.resolute.services.ResoluteGrammarAccess;
 		tokenNameToValue.put("Data", "'data'");
 		tokenNameToValue.put("Else", "'else'");
 		tokenNameToValue.put("Fail", "'fail'");
-		tokenNameToValue.put("File", "'file'");
 		tokenNameToValue.put("Goal", "'goal'");
 		tokenNameToValue.put("Head", "'head'");
 		tokenNameToValue.put("Info", "'info'");
@@ -91,16 +90,12 @@ import com.rockwellcollins.atc.resolute.services.ResoluteGrammarAccess;
 		tokenNameToValue.put("Port", "'port'");
 		tokenNameToValue.put("Real", "'real'");
 		tokenNameToValue.put("Size", "'size'");
-		tokenNameToValue.put("Step", "'step'");
 		tokenNameToValue.put("Tail", "'tail'");
-		tokenNameToValue.put("Test", "'test'");
-		tokenNameToValue.put("Text", "'text'");
 		tokenNameToValue.put("Then", "'then'");
 		tokenNameToValue.put("This", "'this'");
 		tokenNameToValue.put("True", "'true'");
 		tokenNameToValue.put("Type", "'type'");
 		tokenNameToValue.put("Agent", "'agent'");
-		tokenNameToValue.put("Build", "'build'");
 		tokenNameToValue.put("Check", "'check'");
 		tokenNameToValue.put("Claim", "'claim'");
 		tokenNameToValue.put("Debug", "'debug'");
@@ -115,25 +110,19 @@ import com.rockwellcollins.atc.resolute.services.ResoluteGrammarAccess;
 		tokenNameToValue.put("Access", "'access'");
 		tokenNameToValue.put("Append", "'append'");
 		tokenNameToValue.put("As_set", "'as_set'");
-		tokenNameToValue.put("Author", "'author'");
 		tokenNameToValue.put("Device", "'device'");
 		tokenNameToValue.put("Domain", "'domain'");
 		tokenNameToValue.put("Entity", "'entity'");
 		tokenNameToValue.put("Exists", "'exists'");
 		tokenNameToValue.put("Failed", "'failed'");
 		tokenNameToValue.put("Forall", "'forall'");
-		tokenNameToValue.put("Format", "'format'");
-		tokenNameToValue.put("Hazard", "'hazard'");
 		tokenNameToValue.put("Is_bus", "'is_bus'");
 		tokenNameToValue.put("Length", "'length'");
 		tokenNameToValue.put("Member", "'member'");
 		tokenNameToValue.put("Memory", "'memory'");
-		tokenNameToValue.put("Metric", "'metric'");
-		tokenNameToValue.put("Module", "'module'");
 		tokenNameToValue.put("Orelse", "'orelse'");
 		tokenNameToValue.put("Parent", "'parent'");
 		tokenNameToValue.put("Passed", "'passed'");
-		tokenNameToValue.put("Review", "'review'");
 		tokenNameToValue.put("Source", "'source'");
 		tokenNameToValue.put("String", "'string'");
 		tokenNameToValue.put("KW_System", "'system'");
@@ -142,192 +131,107 @@ import com.rockwellcollins.atc.resolute.services.ResoluteGrammarAccess;
 		tokenNameToValue.put("Applies", "'applies'");
 		tokenNameToValue.put("As_list", "'as_list'");
 		tokenNameToValue.put("Binding", "'binding'");
-		tokenNameToValue.put("Compile", "'compile'");
 		tokenNameToValue.put("Compute", "'compute'");
 		tokenNameToValue.put("Context", "'context'");
 		tokenNameToValue.put("Feature", "'feature'");
-		tokenNameToValue.put("Governs", "'governs'");
-		tokenNameToValue.put("If_text", "'if_text'");
 		tokenNameToValue.put("Is_data", "'is_data'");
 		tokenNameToValue.put("Is_port", "'is_port'");
-		tokenNameToValue.put("Part_of", "'part_of'");
 		tokenNameToValue.put("Pattern", "'pattern'");
 		tokenNameToValue.put("Process", "'process'");
-		tokenNameToValue.put("Reviews", "'reviews'");
 		tokenNameToValue.put("Ruleset", "'ruleset'");
-		tokenNameToValue.put("Type_of", "'type_of'");
 		tokenNameToValue.put("Warning", "'warning'");
 		tokenNameToValue.put("Abstract", "'abstract'");
 		tokenNameToValue.put("Activity", "'activity'");
 		tokenNameToValue.put("Analysis", "'analysis'");
-		tokenNameToValue.put("Analyzes", "'analyzes'");
-		tokenNameToValue.put("Code_gen", "'code_gen'");
-		tokenNameToValue.put("Confirms", "'confirms'");
 		tokenNameToValue.put("Constant", "'constant'");
 		tokenNameToValue.put("Evidence", "'evidence'");
 		tokenNameToValue.put("Features", "'features'");
-		tokenNameToValue.put("Filename", "'filename'");
 		tokenNameToValue.put("Has_type", "'has_type'");
 		tokenNameToValue.put("Instance", "'instance'");
-		tokenNameToValue.put("Mentions", "'mentions'");
 		tokenNameToValue.put("Notation", "'notation'");
 		tokenNameToValue.put("Property", "'property'");
-		tokenNameToValue.put("Provides", "'provides'");
-		tokenNameToValue.put("Requires", "'requires'");
-		tokenNameToValue.put("Reviewed", "'reviewed'");
-		tokenNameToValue.put("Reviewer", "'reviewer'");
 		tokenNameToValue.put("Solution", "'solution'");
 		tokenNameToValue.put("Strategy", "'strategy'");
-		tokenNameToValue.put("Verifies", "'verifies'");
 		tokenNameToValue.put("Component", "'component'");
 		tokenNameToValue.put("Data_port", "'data_port'");
 		tokenNameToValue.put("Direction", "'direction'");
 		tokenNameToValue.put("Has_modes", "'has_modes'");
 		tokenNameToValue.put("Instances", "'instances'");
-		tokenNameToValue.put("Interface", "'interface'");
 		tokenNameToValue.put("Intersect", "'intersect'");
-		tokenNameToValue.put("Invariant", "'invariant'");
 		tokenNameToValue.put("Is_device", "'is_device'");
 		tokenNameToValue.put("Is_memory", "'is_memory'");
 		tokenNameToValue.put("Is_system", "'is_system'");
 		tokenNameToValue.put("Is_thread", "'is_thread'");
-		tokenNameToValue.put("Mitigates", "'mitigates'");
-		tokenNameToValue.put("Namespace", "'namespace'");
 		tokenNameToValue.put("Processor", "'processor'");
 		tokenNameToValue.put("Rationale", "'rationale'");
 		tokenNameToValue.put("Reference", "'reference'");
-		tokenNameToValue.put("Result_of", "'result_of'");
-		tokenNameToValue.put("Satisfies", "'satisfies'");
-		tokenNameToValue.put("Source_of", "'source_of'");
-		tokenNameToValue.put("Then_text", "'then_text'");
 		tokenNameToValue.put("Assumption", "'assumption'");
 		tokenNameToValue.put("Bus_access", "'bus_access'");
 		tokenNameToValue.put("Classifier", "'classifier'");
 		tokenNameToValue.put("Conclusion", "'conclusion'");
 		tokenNameToValue.put("Connection", "'connection'");
-		tokenNameToValue.put("Created_by", "'created_by'");
-		tokenNameToValue.put("Defined_in", "'defined_in'");
-		tokenNameToValue.put("Definition", "'definition'");
 		tokenNameToValue.put("Event_port", "'event_port'");
-		tokenNameToValue.put("Given_text", "'given_text'");
 		tokenNameToValue.put("Has_member", "'has_member'");
 		tokenNameToValue.put("Has_parent", "'has_parent'");
-		tokenNameToValue.put("Identified", "'identified'");
 		tokenNameToValue.put("Instanceof", "'instanceof'");
 		tokenNameToValue.put("Is_of_type", "'is_of_type'");
 		tokenNameToValue.put("Is_process", "'is_process'");
-		tokenNameToValue.put("Referenced", "'referenced'");
-		tokenNameToValue.put("Review_log", "'review_log'");
 		tokenNameToValue.put("Subprogram", "'subprogram'");
-		tokenNameToValue.put("Value_type", "'value_type'");
-		tokenNameToValue.put("Annotations", "'annotations'");
-		tokenNameToValue.put("Compiled_by", "'compiled_by'");
 		tokenNameToValue.put("Connections", "'connections'");
-		tokenNameToValue.put("Consumed_by", "'consumed_by'");
 		tokenNameToValue.put("Data_access", "'data_access'");
-		tokenNameToValue.put("Description", "'description'");
 		tokenNameToValue.put("Destination", "'destination'");
-		tokenNameToValue.put("Executed_by", "'executed_by'");
-		tokenNameToValue.put("Executed_on", "'executed_on'");
 		tokenNameToValue.put("Flow_source", "'flow_source'");
-		tokenNameToValue.put("From_report", "'from_report'");
-		tokenNameToValue.put("Governed_by", "'governed_by'");
 		tokenNameToValue.put("Is_bound_to", "'is_bound_to'");
 		tokenNameToValue.put("Is_in_array", "'is_in_array'");
 		tokenNameToValue.put("Lower_bound", "'lower_bound'");
-		tokenNameToValue.put("Packaged_by", "'packaged_by'");
-		tokenNameToValue.put("Produced_by", "'produced_by'");
-		tokenNameToValue.put("Provided_by", "'provided_by'");
-		tokenNameToValue.put("Requirement", "'requirement'");
 		tokenNameToValue.put("Restriction", "'restriction'");
 		tokenNameToValue.put("Structuring", "'structuring'");
-		tokenNameToValue.put("Test_result", "'test_result'");
-		tokenNameToValue.put("Test_status", "'test_status'");
 		tokenNameToValue.put("Undeveloped", "'undeveloped'");
 		tokenNameToValue.put("Upper_bound", "'upper_bound'");
 		tokenNameToValue.put("Virtual_bus", "'virtual_bus'");
-		tokenNameToValue.put("Class_method", "'class_method'");
-		tokenNameToValue.put("Developed_by", "'developed_by'");
 		tokenNameToValue.put("Has_property", "'has_property'");
-		tokenNameToValue.put("Instantiates", "'instantiates'");
 		tokenNameToValue.put("Is_data_port", "'is_data_port'");
 		tokenNameToValue.put("Is_processor", "'is_processor'");
-		tokenNameToValue.put("Package_file", "'package_file'");
-		tokenNameToValue.put("Performed_by", "'performed_by'");
-		tokenNameToValue.put("Precondition", "'precondition'");
-		tokenNameToValue.put("Requirements", "'requirements'");
-		tokenNameToValue.put("Review_state", "'review_state'");
 		tokenNameToValue.put("Thread_group", "'thread_group'");
-		tokenNameToValue.put("Compile_input", "'compile_input'");
 		tokenNameToValue.put("Contain_error", "'contain_error'");
 		tokenNameToValue.put("Feature_group", "'feature_group'");
 		tokenNameToValue.put("Flow_elements", "'flow_elements'");
-		tokenNameToValue.put("Identified_by", "'identified_by'");
 		tokenNameToValue.put("Indeterminate", "'indeterminate'");
 		tokenNameToValue.put("Is_bus_access", "'is_bus_access'");
 		tokenNameToValue.put("Is_event_port", "'is_event_port'");
 		tokenNameToValue.put("Is_subprogram", "'is_subprogram'");
 		tokenNameToValue.put("Justification", "'justification'");
-		tokenNameToValue.put("Package_input", "'package_input'");
-		tokenNameToValue.put("Postcondition", "'postcondition'");
 		tokenNameToValue.put("Receive_error", "'receive_error'");
-		tokenNameToValue.put("Review_result", "'review_result'");
 		tokenNameToValue.put("Subcomponents", "'subcomponents'");
-		tokenNameToValue.put("Component_type", "'component_type'");
-		tokenNameToValue.put("Destination_of", "'destination_of'");
 		tokenNameToValue.put("Has_prototypes", "'has_prototypes'");
 		tokenNameToValue.put("Is_data_access", "'is_data_access'");
 		tokenNameToValue.put("Is_virtual_bus", "'is_virtual_bus'");
-		tokenNameToValue.put("Test_execution", "'test_execution'");
-		tokenNameToValue.put("Analysis_report", "'analysis_report'");
-		tokenNameToValue.put("Analysis_result", "'analysis_result'");
-		tokenNameToValue.put("Annotation_type", "'annotation_type'");
-		tokenNameToValue.put("Binary_function", "'binary_function'");
 		tokenNameToValue.put("End_to_end_flow", "'end_to_end_flow'");
 		tokenNameToValue.put("Event_data_port", "'event_data_port'");
 		tokenNameToValue.put("Is_thread_group", "'is_thread_group'");
 		tokenNameToValue.put("Propagate_error", "'propagate_error'");
 		tokenNameToValue.put("Property_member", "'property_member'");
-		tokenNameToValue.put("Source_function", "'source_function'");
-		tokenNameToValue.put("Subcomponent_of", "'subcomponent_of'");
-		tokenNameToValue.put("Class_definition", "'class_definition'");
-		tokenNameToValue.put("Code_development", "'code_development'");
 		tokenNameToValue.put("End_to_end_flows", "'end_to_end_flows'");
 		tokenNameToValue.put("Flow_destination", "'flow_destination'");
 		tokenNameToValue.put("Is_bidirectional", "'is_bidirectional'");
 		tokenNameToValue.put("Subprogram_group", "'subprogram_group'");
-		tokenNameToValue.put("Test_developmemt", "'test_developmemt'");
-		tokenNameToValue.put("Analysis_activity", "'analysis_activity'");
-		tokenNameToValue.put("Class_constructor", "'class_constructor'");
 		tokenNameToValue.put("Enumerated_values", "'enumerated_values'");
 		tokenNameToValue.put("Subprogram_access", "'subprogram_access'");
 		tokenNameToValue.put("Virtual_processor", "'virtual_processor'");
-		tokenNameToValue.put("Binary_basic_block", "'binary_basic_block'");
 		tokenNameToValue.put("Flow_specification", "'flow_specification'");
-		tokenNameToValue.put("System_development", "'system_development'");
-		tokenNameToValue.put("Analysis_annotation", "'analysis_annotation'");
 		tokenNameToValue.put("Flow_specifications", "'flow_specifications'");
 		tokenNameToValue.put("Is_abstract_feature", "'is_abstract_feature'");
 		tokenNameToValue.put("Provides_bus_access", "'provides_bus_access'");
 		tokenNameToValue.put("Requires_bus_access", "'requires_bus_access'");
 		tokenNameToValue.put("Revised_with_review", "'revised_with_review'");
-		tokenNameToValue.put("Data_dictionary_term", "'data_dictionary_term'");
 		tokenNameToValue.put("Is_virtual_processor", "'is_virtual_processor'");
 		tokenNameToValue.put("Provides_data_access", "'provides_data_access'");
 		tokenNameToValue.put("Requires_data_access", "'requires_data_access'");
-		tokenNameToValue.put("Class_member_variable", "'class_member_variable'");
 		tokenNameToValue.put("Error_state_reachable", "'error_state_reachable'");
-		tokenNameToValue.put("Hazard_identification", "'hazard_identification'");
-		tokenNameToValue.put("Binary_global_variable", "'binary_global_variable'");
 		tokenNameToValue.put("Revised_without_review", "'revised_without_review'");
-		tokenNameToValue.put("Source_global_variable", "'source_global_variable'");
-		tokenNameToValue.put("Requirement_development", "'requirement_development'");
 		tokenNameToValue.put("Subprogram_group_access", "'subprogram_group_access'");
-		tokenNameToValue.put("Analysis_annotation_type", "'analysis_annotation_type'");
 		tokenNameToValue.put("Provides_subprogram_access", "'provides_subprogram_access'");
 		tokenNameToValue.put("Requires_subprogram_access", "'requires_subprogram_access'");
-		tokenNameToValue.put("Control_flows_to_conditionally", "'control_flows_to_conditionally'");
-		tokenNameToValue.put("Control_flows_to_unconditionally", "'control_flows_to_unconditionally'");
 		tokenNameToValue.put("Provides_subprogram_group_access", "'provides_subprogram_group_access'");
 		tokenNameToValue.put("Requires_subprogram_group_access", "'requires_subprogram_group_access'");
  	}
@@ -2981,342 +2885,6 @@ rule__BaseType__TypeAlternatives_0
 { after(grammarAccess.getBaseTypeAccess().getTypeThingKeyword_0_47()); }
 )
 
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeAnalysis_activityKeyword_0_48()); }
-
-	Analysis_activity 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeAnalysis_activityKeyword_0_48()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeAnalysis_reportKeyword_0_49()); }
-
-	Analysis_report 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeAnalysis_reportKeyword_0_49()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeAnalysis_resultKeyword_0_50()); }
-
-	Analysis_result 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeAnalysis_resultKeyword_0_50()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeAnalysis_annotation_typeKeyword_0_51()); }
-
-	Analysis_annotation_type 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeAnalysis_annotation_typeKeyword_0_51()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypePreconditionKeyword_0_52()); }
-
-	Precondition 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypePreconditionKeyword_0_52()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypePostconditionKeyword_0_53()); }
-
-	Postcondition 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypePostconditionKeyword_0_53()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeInvariantKeyword_0_54()); }
-
-	Invariant 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeInvariantKeyword_0_54()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeAnalysis_annotationKeyword_0_55()); }
-
-	Analysis_annotation 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeAnalysis_annotationKeyword_0_55()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeHazardKeyword_0_56()); }
-
-	Hazard 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeHazardKeyword_0_56()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeHazard_identificationKeyword_0_57()); }
-
-	Hazard_identification 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeHazard_identificationKeyword_0_57()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeRequirementKeyword_0_58()); }
-
-	Requirement 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeRequirementKeyword_0_58()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeData_dictionary_termKeyword_0_59()); }
-
-	Data_dictionary_term 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeData_dictionary_termKeyword_0_59()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeRequirement_developmentKeyword_0_60()); }
-
-	Requirement_development 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeRequirement_developmentKeyword_0_60()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeReviewKeyword_0_61()); }
-
-	Review 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeReviewKeyword_0_61()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeReview_logKeyword_0_62()); }
-
-	Review_log 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeReview_logKeyword_0_62()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeReview_stateKeyword_0_63()); }
-
-	Review_state 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeReview_stateKeyword_0_63()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeFileKeyword_0_64()); }
-
-	File 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeFileKeyword_0_64()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeFormatKeyword_0_65()); }
-
-	Format 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeFormatKeyword_0_65()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeCode_developmentKeyword_0_66()); }
-
-	Code_development 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeCode_developmentKeyword_0_66()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeBuildKeyword_0_67()); }
-
-	Build 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeBuildKeyword_0_67()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeCode_genKeyword_0_68()); }
-
-	Code_gen 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeCode_genKeyword_0_68()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeCompileKeyword_0_69()); }
-
-	Compile 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeCompileKeyword_0_69()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypePackage_fileKeyword_0_70()); }
-
-	Package_file 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypePackage_fileKeyword_0_70()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeComponent_typeKeyword_0_71()); }
-
-	Component_type 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeComponent_typeKeyword_0_71()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeSource_functionKeyword_0_72()); }
-
-	Source_function 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeSource_functionKeyword_0_72()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeBinary_functionKeyword_0_73()); }
-
-	Binary_function 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeBinary_functionKeyword_0_73()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeSource_global_variableKeyword_0_74()); }
-
-	Source_global_variable 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeSource_global_variableKeyword_0_74()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeBinary_global_variableKeyword_0_75()); }
-
-	Binary_global_variable 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeBinary_global_variableKeyword_0_75()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeBinary_basic_blockKeyword_0_76()); }
-
-	Binary_basic_block 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeBinary_basic_blockKeyword_0_76()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeClass_definitionKeyword_0_77()); }
-
-	Class_definition 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeClass_definitionKeyword_0_77()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeClass_methodKeyword_0_78()); }
-
-	Class_method 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeClass_methodKeyword_0_78()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeClass_member_variableKeyword_0_79()); }
-
-	Class_member_variable 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeClass_member_variableKeyword_0_79()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeClass_constructorKeyword_0_80()); }
-
-	Class_constructor 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeClass_constructorKeyword_0_80()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeModuleKeyword_0_81()); }
-
-	Module 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeModuleKeyword_0_81()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeNamespaceKeyword_0_82()); }
-
-	Namespace 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeNamespaceKeyword_0_82()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeInterfaceKeyword_0_83()); }
-
-	Interface 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeInterfaceKeyword_0_83()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeSystem_developmentKeyword_0_84()); }
-
-	System_development 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeSystem_developmentKeyword_0_84()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeTestKeyword_0_85()); }
-
-	Test 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeTestKeyword_0_85()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeTest_resultKeyword_0_86()); }
-
-	Test_result 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeTest_resultKeyword_0_86()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeTest_statusKeyword_0_87()); }
-
-	Test_status 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeTest_statusKeyword_0_87()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeTest_developmemtKeyword_0_88()); }
-
-	Test_developmemt 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeTest_developmemtKeyword_0_88()); }
-)
-
-    |(
-{ before(grammarAccess.getBaseTypeAccess().getTypeTest_executionKeyword_0_89()); }
-
-	Test_execution 
-
-{ after(grammarAccess.getBaseTypeAccess().getTypeTest_executionKeyword_0_89()); }
-)
-
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4512,438 +4080,6 @@ rule__BuiltInFn__Alternatives
 	End_to_end_flows 
 
 { after(grammarAccess.getBuiltInFnAccess().getEnd_to_end_flowsKeyword_65()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getResult_ofKeyword_66()); }
-
-	Result_of 
-
-{ after(grammarAccess.getBuiltInFnAccess().getResult_ofKeyword_66()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getMetricKeyword_67()); }
-
-	Metric 
-
-{ after(grammarAccess.getBuiltInFnAccess().getMetricKeyword_67()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getAnalyzesKeyword_68()); }
-
-	Analyzes 
-
-{ after(grammarAccess.getBuiltInFnAccess().getAnalyzesKeyword_68()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getProduced_byKeyword_69()); }
-
-	Produced_by 
-
-{ after(grammarAccess.getBuiltInFnAccess().getProduced_byKeyword_69()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getPerformed_byKeyword_70()); }
-
-	Performed_by 
-
-{ after(grammarAccess.getBuiltInFnAccess().getPerformed_byKeyword_70()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getFrom_reportKeyword_71()); }
-
-	From_report 
-
-{ after(grammarAccess.getBuiltInFnAccess().getFrom_reportKeyword_71()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getDescriptionKeyword_72()); }
-
-	Description 
-
-{ after(grammarAccess.getBuiltInFnAccess().getDescriptionKeyword_72()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getAnnotation_typeKeyword_73()); }
-
-	Annotation_type 
-
-{ after(grammarAccess.getBuiltInFnAccess().getAnnotation_typeKeyword_73()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getDefinitionKeyword_74()); }
-
-	Definition 
-
-{ after(grammarAccess.getBuiltInFnAccess().getDefinitionKeyword_74()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getSource_ofKeyword_75()); }
-
-	Source_of 
-
-{ after(grammarAccess.getBuiltInFnAccess().getSource_ofKeyword_75()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getIdentifiedKeyword_76()); }
-
-	Identified 
-
-{ after(grammarAccess.getBuiltInFnAccess().getIdentifiedKeyword_76()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getAuthorKeyword_77()); }
-
-	Author 
-
-{ after(grammarAccess.getBuiltInFnAccess().getAuthorKeyword_77()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getTextKeyword_78()); }
-
-	Text 
-
-{ after(grammarAccess.getBuiltInFnAccess().getTextKeyword_78()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getGiven_textKeyword_79()); }
-
-	Given_text 
-
-{ after(grammarAccess.getBuiltInFnAccess().getGiven_textKeyword_79()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getIf_textKeyword_80()); }
-
-	If_text 
-
-{ after(grammarAccess.getBuiltInFnAccess().getIf_textKeyword_80()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getThen_textKeyword_81()); }
-
-	Then_text 
-
-{ after(grammarAccess.getBuiltInFnAccess().getThen_textKeyword_81()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getGovernsKeyword_82()); }
-
-	Governs 
-
-{ after(grammarAccess.getBuiltInFnAccess().getGovernsKeyword_82()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getSatisfiesKeyword_83()); }
-
-	Satisfies 
-
-{ after(grammarAccess.getBuiltInFnAccess().getSatisfiesKeyword_83()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getMitigatesKeyword_84()); }
-
-	Mitigates 
-
-{ after(grammarAccess.getBuiltInFnAccess().getMitigatesKeyword_84()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getCreated_byKeyword_85()); }
-
-	Created_by 
-
-{ after(grammarAccess.getBuiltInFnAccess().getCreated_byKeyword_85()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getProvided_byKeyword_86()); }
-
-	Provided_by 
-
-{ after(grammarAccess.getBuiltInFnAccess().getProvided_byKeyword_86()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getConsumed_byKeyword_87()); }
-
-	Consumed_by 
-
-{ after(grammarAccess.getBuiltInFnAccess().getConsumed_byKeyword_87()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getReferencedKeyword_88()); }
-
-	Referenced 
-
-{ after(grammarAccess.getBuiltInFnAccess().getReferencedKeyword_88()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getGoverned_byKeyword_89()); }
-
-	Governed_by 
-
-{ after(grammarAccess.getBuiltInFnAccess().getGoverned_byKeyword_89()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getReviewsKeyword_90()); }
-
-	Reviews 
-
-{ after(grammarAccess.getBuiltInFnAccess().getReviewsKeyword_90()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getReview_resultKeyword_91()); }
-
-	Review_result 
-
-{ after(grammarAccess.getBuiltInFnAccess().getReview_resultKeyword_91()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getReviewerKeyword_92()); }
-
-	Reviewer 
-
-{ after(grammarAccess.getBuiltInFnAccess().getReviewerKeyword_92()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getReviewedKeyword_93()); }
-
-	Reviewed 
-
-{ after(grammarAccess.getBuiltInFnAccess().getReviewedKeyword_93()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getFilenameKeyword_94()); }
-
-	Filename 
-
-{ after(grammarAccess.getBuiltInFnAccess().getFilenameKeyword_94()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getStepKeyword_95()); }
-
-	Step 
-
-{ after(grammarAccess.getBuiltInFnAccess().getStepKeyword_95()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getCompiled_byKeyword_96()); }
-
-	Compiled_by 
-
-{ after(grammarAccess.getBuiltInFnAccess().getCompiled_byKeyword_96()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getCompile_inputKeyword_97()); }
-
-	Compile_input 
-
-{ after(grammarAccess.getBuiltInFnAccess().getCompile_inputKeyword_97()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getPackaged_byKeyword_98()); }
-
-	Packaged_by 
-
-{ after(grammarAccess.getBuiltInFnAccess().getPackaged_byKeyword_98()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getPackage_inputKeyword_99()); }
-
-	Package_input 
-
-{ after(grammarAccess.getBuiltInFnAccess().getPackage_inputKeyword_99()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getType_ofKeyword_100()); }
-
-	Type_of 
-
-{ after(grammarAccess.getBuiltInFnAccess().getType_ofKeyword_100()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getValue_typeKeyword_101()); }
-
-	Value_type 
-
-{ after(grammarAccess.getBuiltInFnAccess().getValue_typeKeyword_101()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getInstantiatesKeyword_102()); }
-
-	Instantiates 
-
-{ after(grammarAccess.getBuiltInFnAccess().getInstantiatesKeyword_102()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getDefined_inKeyword_103()); }
-
-	Defined_in 
-
-{ after(grammarAccess.getBuiltInFnAccess().getDefined_inKeyword_103()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getMentionsKeyword_104()); }
-
-	Mentions 
-
-{ after(grammarAccess.getBuiltInFnAccess().getMentionsKeyword_104()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getSubcomponent_ofKeyword_105()); }
-
-	Subcomponent_of 
-
-{ after(grammarAccess.getBuiltInFnAccess().getSubcomponent_ofKeyword_105()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getRequirementsKeyword_106()); }
-
-	Requirements 
-
-{ after(grammarAccess.getBuiltInFnAccess().getRequirementsKeyword_106()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getAnnotationsKeyword_107()); }
-
-	Annotations 
-
-{ after(grammarAccess.getBuiltInFnAccess().getAnnotationsKeyword_107()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getControl_flows_to_unconditionallyKeyword_108()); }
-
-	Control_flows_to_unconditionally 
-
-{ after(grammarAccess.getBuiltInFnAccess().getControl_flows_to_unconditionallyKeyword_108()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getControl_flows_to_conditionallyKeyword_109()); }
-
-	Control_flows_to_conditionally 
-
-{ after(grammarAccess.getBuiltInFnAccess().getControl_flows_to_conditionallyKeyword_109()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getPart_ofKeyword_110()); }
-
-	Part_of 
-
-{ after(grammarAccess.getBuiltInFnAccess().getPart_ofKeyword_110()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getProvidesKeyword_111()); }
-
-	Provides 
-
-{ after(grammarAccess.getBuiltInFnAccess().getProvidesKeyword_111()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getRequiresKeyword_112()); }
-
-	Requires 
-
-{ after(grammarAccess.getBuiltInFnAccess().getRequiresKeyword_112()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getDestination_ofKeyword_113()); }
-
-	Destination_of 
-
-{ after(grammarAccess.getBuiltInFnAccess().getDestination_ofKeyword_113()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getIdentified_byKeyword_114()); }
-
-	Identified_by 
-
-{ after(grammarAccess.getBuiltInFnAccess().getIdentified_byKeyword_114()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getDeveloped_byKeyword_115()); }
-
-	Developed_by 
-
-{ after(grammarAccess.getBuiltInFnAccess().getDeveloped_byKeyword_115()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getVerifiesKeyword_116()); }
-
-	Verifies 
-
-{ after(grammarAccess.getBuiltInFnAccess().getVerifiesKeyword_116()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getConfirmsKeyword_117()); }
-
-	Confirms 
-
-{ after(grammarAccess.getBuiltInFnAccess().getConfirmsKeyword_117()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getExecuted_byKeyword_118()); }
-
-	Executed_by 
-
-{ after(grammarAccess.getBuiltInFnAccess().getExecuted_byKeyword_118()); }
-)
-
-    |(
-{ before(grammarAccess.getBuiltInFnAccess().getExecuted_onKeyword_119()); }
-
-	Executed_on 
-
-{ after(grammarAccess.getBuiltInFnAccess().getExecuted_onKeyword_119()); }
 )
 
 ;

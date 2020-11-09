@@ -404,48 +404,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTypeAgentKeyword_0_45 = (Keyword)cTypeAlternatives_0.eContents().get(45);
 		private final Keyword cTypeActivityKeyword_0_46 = (Keyword)cTypeAlternatives_0.eContents().get(46);
 		private final Keyword cTypeThingKeyword_0_47 = (Keyword)cTypeAlternatives_0.eContents().get(47);
-		private final Keyword cTypeAnalysis_activityKeyword_0_48 = (Keyword)cTypeAlternatives_0.eContents().get(48);
-		private final Keyword cTypeAnalysis_reportKeyword_0_49 = (Keyword)cTypeAlternatives_0.eContents().get(49);
-		private final Keyword cTypeAnalysis_resultKeyword_0_50 = (Keyword)cTypeAlternatives_0.eContents().get(50);
-		private final Keyword cTypeAnalysis_annotation_typeKeyword_0_51 = (Keyword)cTypeAlternatives_0.eContents().get(51);
-		private final Keyword cTypePreconditionKeyword_0_52 = (Keyword)cTypeAlternatives_0.eContents().get(52);
-		private final Keyword cTypePostconditionKeyword_0_53 = (Keyword)cTypeAlternatives_0.eContents().get(53);
-		private final Keyword cTypeInvariantKeyword_0_54 = (Keyword)cTypeAlternatives_0.eContents().get(54);
-		private final Keyword cTypeAnalysis_annotationKeyword_0_55 = (Keyword)cTypeAlternatives_0.eContents().get(55);
-		private final Keyword cTypeHazardKeyword_0_56 = (Keyword)cTypeAlternatives_0.eContents().get(56);
-		private final Keyword cTypeHazard_identificationKeyword_0_57 = (Keyword)cTypeAlternatives_0.eContents().get(57);
-		private final Keyword cTypeRequirementKeyword_0_58 = (Keyword)cTypeAlternatives_0.eContents().get(58);
-		private final Keyword cTypeData_dictionary_termKeyword_0_59 = (Keyword)cTypeAlternatives_0.eContents().get(59);
-		private final Keyword cTypeRequirement_developmentKeyword_0_60 = (Keyword)cTypeAlternatives_0.eContents().get(60);
-		private final Keyword cTypeReviewKeyword_0_61 = (Keyword)cTypeAlternatives_0.eContents().get(61);
-		private final Keyword cTypeReview_logKeyword_0_62 = (Keyword)cTypeAlternatives_0.eContents().get(62);
-		private final Keyword cTypeReview_stateKeyword_0_63 = (Keyword)cTypeAlternatives_0.eContents().get(63);
-		private final Keyword cTypeFileKeyword_0_64 = (Keyword)cTypeAlternatives_0.eContents().get(64);
-		private final Keyword cTypeFormatKeyword_0_65 = (Keyword)cTypeAlternatives_0.eContents().get(65);
-		private final Keyword cTypeCode_developmentKeyword_0_66 = (Keyword)cTypeAlternatives_0.eContents().get(66);
-		private final Keyword cTypeBuildKeyword_0_67 = (Keyword)cTypeAlternatives_0.eContents().get(67);
-		private final Keyword cTypeCode_genKeyword_0_68 = (Keyword)cTypeAlternatives_0.eContents().get(68);
-		private final Keyword cTypeCompileKeyword_0_69 = (Keyword)cTypeAlternatives_0.eContents().get(69);
-		private final Keyword cTypePackage_fileKeyword_0_70 = (Keyword)cTypeAlternatives_0.eContents().get(70);
-		private final Keyword cTypeComponent_typeKeyword_0_71 = (Keyword)cTypeAlternatives_0.eContents().get(71);
-		private final Keyword cTypeSource_functionKeyword_0_72 = (Keyword)cTypeAlternatives_0.eContents().get(72);
-		private final Keyword cTypeBinary_functionKeyword_0_73 = (Keyword)cTypeAlternatives_0.eContents().get(73);
-		private final Keyword cTypeSource_global_variableKeyword_0_74 = (Keyword)cTypeAlternatives_0.eContents().get(74);
-		private final Keyword cTypeBinary_global_variableKeyword_0_75 = (Keyword)cTypeAlternatives_0.eContents().get(75);
-		private final Keyword cTypeBinary_basic_blockKeyword_0_76 = (Keyword)cTypeAlternatives_0.eContents().get(76);
-		private final Keyword cTypeClass_definitionKeyword_0_77 = (Keyword)cTypeAlternatives_0.eContents().get(77);
-		private final Keyword cTypeClass_methodKeyword_0_78 = (Keyword)cTypeAlternatives_0.eContents().get(78);
-		private final Keyword cTypeClass_member_variableKeyword_0_79 = (Keyword)cTypeAlternatives_0.eContents().get(79);
-		private final Keyword cTypeClass_constructorKeyword_0_80 = (Keyword)cTypeAlternatives_0.eContents().get(80);
-		private final Keyword cTypeModuleKeyword_0_81 = (Keyword)cTypeAlternatives_0.eContents().get(81);
-		private final Keyword cTypeNamespaceKeyword_0_82 = (Keyword)cTypeAlternatives_0.eContents().get(82);
-		private final Keyword cTypeInterfaceKeyword_0_83 = (Keyword)cTypeAlternatives_0.eContents().get(83);
-		private final Keyword cTypeSystem_developmentKeyword_0_84 = (Keyword)cTypeAlternatives_0.eContents().get(84);
-		private final Keyword cTypeTestKeyword_0_85 = (Keyword)cTypeAlternatives_0.eContents().get(85);
-		private final Keyword cTypeTest_resultKeyword_0_86 = (Keyword)cTypeAlternatives_0.eContents().get(86);
-		private final Keyword cTypeTest_statusKeyword_0_87 = (Keyword)cTypeAlternatives_0.eContents().get(87);
-		private final Keyword cTypeTest_developmemtKeyword_0_88 = (Keyword)cTypeAlternatives_0.eContents().get(88);
-		private final Keyword cTypeTest_executionKeyword_0_89 = (Keyword)cTypeAlternatives_0.eContents().get(89);
 		
 		//BaseType:
 		//	type=('int' | 'real' | 'string' | 'bool' | 'range' | 'aadl' | 'component' | 'abstract' | 'bus' | 'data' | 'device' |
@@ -457,76 +415,79 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//	'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
 		// // W3C-PROV
 		// |
-		//	'entity' | 'agent' | 'activity' | 'thing' // ANALYSIS
-		// | 'analysis_activity'
-		//	// corresponds to ANALYSIS class, type of activity
-		// | 'analysis_report' | 'analysis_result'
-		//	// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'analysis_annotation_type' // class
-		// | 'precondition'
-		//	// type of analysis_annotation_type
-		// | 'postcondition' // type of analysis_annotation_type
-		// | 'invariant'
-		//	// type of analysis_annotation_type
-		// | 'analysis_annotation' // type of entity
-		// // HAZARD
-		// | 'hazard' // entity
-		// |
-		//	'hazard_identification' // type of activity
-		// // REQUIREMENT
-		// | 'requirement' // type of entity
-		// |
-		//	'data_dictionary_term' // type of entity
-		// | 'requirement_development' // type of activity
-		// // REVIEW
-		// | 'review'
-		//	// type of activity
-		// | 'review_log' // type of entity
-		// | 'review_state'
-		//	// class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		// // SOFTWARE
-		// | 'file' // type of entity
+		//	'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
 		//
-		//	| 'format' // type of thing
-		// | 'code_development' // type of activity
-		// | 'build' // type of activity
-		// | 'code_gen'
-		//	// type of activity
-		// | 'compile' // type of activity
-		// | 'package_file' // corresponds to PACKAGE, type of activity
-		// |
-		//	'component_type' // type of thing
-		// | 'source_function' // type of component_type
-		// | 'binary_function'
-		//	// type of component_type
-		// | 'source_global_variable' // type of component_type
-		// | 'binary_global_variable'
-		//	// type of component_type
-		// | 'binary_basic_block' // type of component_type
-		// | 'class_definition'
-		//	// type of component_type
-		// | 'class_method' // type of component_type
-		// | 'class_member_variable'
-		//	// type of component_type
-		// | 'class_constructor' // type of component_type
-		// | 'module' // type of component_type
-		// |
-		//	'namespace' // type of component_type
-		// //		|	'component' // type of entity
-		// // SYSTEM
+		//	//		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
+		// //		|	'analysis_report' 
 		//
-		//	//		|	'system' // type of entity
-		// | 'interface' // type of entity
-		// | 'system_development' // type of activity
+		//	//		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
 		//
-		//	// TESTING
-		// | 'test' // type of entity
-		// | 'test_result' // type of entity
-		// | 'test_status'
-		//	// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'test_developmemt' // type of activity
-		// |
-		//	'test_execution' // type of activity
+		//	//		|	'analysis_annotation_type' // class
+		// //		|	'precondition'	// type of analysis_annotation_type
+		//
+		//	//		|	'postcondition'	// type of analysis_annotation_type
+		// //		|	'invariant'	// type of analysis_annotation_type
+		//
+		//	//		|	'analysis_annotation' // type of entity
+		// //		 // HAZARD
+		// //		|	'hazard' // entity
+		//
+		//	//		|	'hazard_identification' // type of activity
+		// //		 // REQUIREMENT
+		// //		|	'requirement' // type of entity
+		//
+		//	//		|	'data_dictionary_term' // type of entity
+		// //		|	'requirement_development' // type of activity
+		// //		 // REVIEW
+		//
+		//	//		|	'review' // type of activity
+		// //		|	'review_log' // type of entity
+		//
+		//	//		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
+		// //		 // SOFTWARE
+		//
+		//	//		|	'file' // type of entity
+		// //		|	'format' // type of thing
+		// //		|	'code_development' // type of activity
+		//
+		//	//		|	'build' // type of activity
+		// //		|	'code_gen' // type of activity
+		// //		|	'compile' // type of activity
+		//
+		//	//		|	'package_file' // corresponds to PACKAGE, type of activity
+		// //		|	'component_type' // type of thing
+		//
+		//	//		|	'source_function' // type of component_type
+		// //		|	'binary_function' // type of component_type
+		//
+		//	//		|	'source_global_variable' // type of component_type
+		// //		|	'binary_global_variable' // type of component_type
+		//
+		//	//		|	'binary_basic_block' // type of component_type
+		// //		|	'class_definition' // type of component_type
+		//
+		//	//		|	'class_method' // type of component_type
+		// //		|	'class_member_variable' // type of component_type
+		//
+		//	//		|	'class_constructor' // type of component_type
+		// //		|	'module' // type of component_type
+		//
+		//	//		|	'namespace' // type of component_type
+		// ////		|	'component' // type of entity
+		// //		 // SYSTEM
+		//
+		//	////		|	'system' // type of entity
+		// //		|	'interface' // type of entity
+		//
+		//	//		|	'system_development' // type of activity
+		// //		 // TESTING
+		// //		|	'test' // type of entity
+		//
+		//	//		|	'test_result' // type of entity
+		// //		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
+		//
+		//	//		|	'test_developmemt' // type of activity
+		// //		|	'test_execution' // type of activity
 		//);
 		@Override public ParserRule getRule() { return rule; }
 
@@ -539,76 +500,79 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
 		// // W3C-PROV
 		// |
-		//'entity' | 'agent' | 'activity' | 'thing' // ANALYSIS
-		// | 'analysis_activity'
-		//// corresponds to ANALYSIS class, type of activity
-		// | 'analysis_report' | 'analysis_result'
-		//// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'analysis_annotation_type' // class
-		// | 'precondition'
-		//// type of analysis_annotation_type
-		// | 'postcondition' // type of analysis_annotation_type
-		// | 'invariant'
-		//// type of analysis_annotation_type
-		// | 'analysis_annotation' // type of entity
-		// // HAZARD
-		// | 'hazard' // entity
-		// |
-		//'hazard_identification' // type of activity
-		// // REQUIREMENT
-		// | 'requirement' // type of entity
-		// |
-		//'data_dictionary_term' // type of entity
-		// | 'requirement_development' // type of activity
-		// // REVIEW
-		// | 'review'
-		//// type of activity
-		// | 'review_log' // type of entity
-		// | 'review_state'
-		//// class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		// // SOFTWARE
-		// | 'file' // type of entity
-		// |
-		//'format' // type of thing
-		// | 'code_development' // type of activity
-		// | 'build' // type of activity
-		// | 'code_gen'
-		//// type of activity
-		// | 'compile' // type of activity
-		// | 'package_file' // corresponds to PACKAGE, type of activity
-		// |
-		//'component_type' // type of thing
-		// | 'source_function' // type of component_type
-		// | 'binary_function'
-		//// type of component_type
-		// | 'source_global_variable' // type of component_type
-		// | 'binary_global_variable'
-		//// type of component_type
-		// | 'binary_basic_block' // type of component_type
-		// | 'class_definition'
-		//// type of component_type
-		// | 'class_method' // type of component_type
-		// | 'class_member_variable'
-		//// type of component_type
-		// | 'class_constructor' // type of component_type
-		// | 'module' // type of component_type
-		// |
-		//'namespace' // type of component_type
-		// //		|	'component' // type of entity
-		// // SYSTEM
+		//'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
 		//
-		////		|	'system' // type of entity
-		// | 'interface' // type of entity
-		// | 'system_development' // type of activity
+		////		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
+		// //		|	'analysis_report' 
 		//
-		//// TESTING
-		// | 'test' // type of entity
-		// | 'test_result' // type of entity
-		// | 'test_status'
-		//// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'test_developmemt' // type of activity
-		// | 'test_execution'
-		//// type of activity
+		////		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
+		//
+		////		|	'analysis_annotation_type' // class
+		// //		|	'precondition'	// type of analysis_annotation_type
+		//
+		////		|	'postcondition'	// type of analysis_annotation_type
+		// //		|	'invariant'	// type of analysis_annotation_type
+		//
+		////		|	'analysis_annotation' // type of entity
+		// //		 // HAZARD
+		// //		|	'hazard' // entity
+		//
+		////		|	'hazard_identification' // type of activity
+		// //		 // REQUIREMENT
+		// //		|	'requirement' // type of entity
+		//
+		////		|	'data_dictionary_term' // type of entity
+		// //		|	'requirement_development' // type of activity
+		// //		 // REVIEW
+		//
+		////		|	'review' // type of activity
+		// //		|	'review_log' // type of entity
+		//
+		////		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
+		// //		 // SOFTWARE
+		//
+		////		|	'file' // type of entity
+		// //		|	'format' // type of thing
+		// //		|	'code_development' // type of activity
+		//
+		////		|	'build' // type of activity
+		// //		|	'code_gen' // type of activity
+		// //		|	'compile' // type of activity
+		//
+		////		|	'package_file' // corresponds to PACKAGE, type of activity
+		// //		|	'component_type' // type of thing
+		//
+		////		|	'source_function' // type of component_type
+		// //		|	'binary_function' // type of component_type
+		//
+		////		|	'source_global_variable' // type of component_type
+		// //		|	'binary_global_variable' // type of component_type
+		//
+		////		|	'binary_basic_block' // type of component_type
+		// //		|	'class_definition' // type of component_type
+		//
+		////		|	'class_method' // type of component_type
+		// //		|	'class_member_variable' // type of component_type
+		//
+		////		|	'class_constructor' // type of component_type
+		// //		|	'module' // type of component_type
+		//
+		////		|	'namespace' // type of component_type
+		// ////		|	'component' // type of entity
+		// //		 // SYSTEM
+		//
+		//////		|	'system' // type of entity
+		// //		|	'interface' // type of entity
+		//
+		////		|	'system_development' // type of activity
+		// //		 // TESTING
+		// //		|	'test' // type of entity
+		//
+		////		|	'test_result' // type of entity
+		// //		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
+		//
+		////		|	'test_developmemt' // type of activity
+		// //		|	'test_execution' // type of activity
 		//)
 		public Assignment getTypeAssignment() { return cTypeAssignment; }
 
@@ -621,76 +585,79 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
 		// // W3C-PROV
 		// |
-		//'entity' | 'agent' | 'activity' | 'thing' // ANALYSIS
-		// | 'analysis_activity'
-		//// corresponds to ANALYSIS class, type of activity
-		// | 'analysis_report' | 'analysis_result'
-		//// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'analysis_annotation_type' // class
-		// | 'precondition'
-		//// type of analysis_annotation_type
-		// | 'postcondition' // type of analysis_annotation_type
-		// | 'invariant'
-		//// type of analysis_annotation_type
-		// | 'analysis_annotation' // type of entity
-		// // HAZARD
-		// | 'hazard' // entity
-		// |
-		//'hazard_identification' // type of activity
-		// // REQUIREMENT
-		// | 'requirement' // type of entity
-		// |
-		//'data_dictionary_term' // type of entity
-		// | 'requirement_development' // type of activity
-		// // REVIEW
-		// | 'review'
-		//// type of activity
-		// | 'review_log' // type of entity
-		// | 'review_state'
-		//// class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		// // SOFTWARE
-		// | 'file' // type of entity
-		// |
-		//'format' // type of thing
-		// | 'code_development' // type of activity
-		// | 'build' // type of activity
-		// | 'code_gen'
-		//// type of activity
-		// | 'compile' // type of activity
-		// | 'package_file' // corresponds to PACKAGE, type of activity
-		// |
-		//'component_type' // type of thing
-		// | 'source_function' // type of component_type
-		// | 'binary_function'
-		//// type of component_type
-		// | 'source_global_variable' // type of component_type
-		// | 'binary_global_variable'
-		//// type of component_type
-		// | 'binary_basic_block' // type of component_type
-		// | 'class_definition'
-		//// type of component_type
-		// | 'class_method' // type of component_type
-		// | 'class_member_variable'
-		//// type of component_type
-		// | 'class_constructor' // type of component_type
-		// | 'module' // type of component_type
-		// |
-		//'namespace' // type of component_type
-		// //		|	'component' // type of entity
-		// // SYSTEM
+		//'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
 		//
-		////		|	'system' // type of entity
-		// | 'interface' // type of entity
-		// | 'system_development' // type of activity
+		////		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
+		// //		|	'analysis_report' 
 		//
-		//// TESTING
-		// | 'test' // type of entity
-		// | 'test_result' // type of entity
-		// | 'test_status'
-		//// class, must be one of {Passed, Failed, Indeterminate}
-		// | 'test_developmemt' // type of activity
-		// | 'test_execution'
-		//// type of activity
+		////		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
+		//
+		////		|	'analysis_annotation_type' // class
+		// //		|	'precondition'	// type of analysis_annotation_type
+		//
+		////		|	'postcondition'	// type of analysis_annotation_type
+		// //		|	'invariant'	// type of analysis_annotation_type
+		//
+		////		|	'analysis_annotation' // type of entity
+		// //		 // HAZARD
+		// //		|	'hazard' // entity
+		//
+		////		|	'hazard_identification' // type of activity
+		// //		 // REQUIREMENT
+		// //		|	'requirement' // type of entity
+		//
+		////		|	'data_dictionary_term' // type of entity
+		// //		|	'requirement_development' // type of activity
+		// //		 // REVIEW
+		//
+		////		|	'review' // type of activity
+		// //		|	'review_log' // type of entity
+		//
+		////		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
+		// //		 // SOFTWARE
+		//
+		////		|	'file' // type of entity
+		// //		|	'format' // type of thing
+		// //		|	'code_development' // type of activity
+		//
+		////		|	'build' // type of activity
+		// //		|	'code_gen' // type of activity
+		// //		|	'compile' // type of activity
+		//
+		////		|	'package_file' // corresponds to PACKAGE, type of activity
+		// //		|	'component_type' // type of thing
+		//
+		////		|	'source_function' // type of component_type
+		// //		|	'binary_function' // type of component_type
+		//
+		////		|	'source_global_variable' // type of component_type
+		// //		|	'binary_global_variable' // type of component_type
+		//
+		////		|	'binary_basic_block' // type of component_type
+		// //		|	'class_definition' // type of component_type
+		//
+		////		|	'class_method' // type of component_type
+		// //		|	'class_member_variable' // type of component_type
+		//
+		////		|	'class_constructor' // type of component_type
+		// //		|	'module' // type of component_type
+		//
+		////		|	'namespace' // type of component_type
+		// ////		|	'component' // type of entity
+		// //		 // SYSTEM
+		//
+		//////		|	'system' // type of entity
+		// //		|	'interface' // type of entity
+		//
+		////		|	'system_development' // type of activity
+		// //		 // TESTING
+		// //		|	'test' // type of entity
+		//
+		////		|	'test_result' // type of entity
+		// //		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
+		//
+		////		|	'test_developmemt' // type of activity
+		// //		|	'test_execution' // type of activity
 		//)
 		public Alternatives getTypeAlternatives_0() { return cTypeAlternatives_0; }
 
@@ -837,132 +804,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//'thing'
 		public Keyword getTypeThingKeyword_0_47() { return cTypeThingKeyword_0_47; }
-
-		//'analysis_activity'
-		public Keyword getTypeAnalysis_activityKeyword_0_48() { return cTypeAnalysis_activityKeyword_0_48; }
-
-		//'analysis_report'
-		public Keyword getTypeAnalysis_reportKeyword_0_49() { return cTypeAnalysis_reportKeyword_0_49; }
-
-		//'analysis_result'
-		public Keyword getTypeAnalysis_resultKeyword_0_50() { return cTypeAnalysis_resultKeyword_0_50; }
-
-		//'analysis_annotation_type'
-		public Keyword getTypeAnalysis_annotation_typeKeyword_0_51() { return cTypeAnalysis_annotation_typeKeyword_0_51; }
-
-		//'precondition'
-		public Keyword getTypePreconditionKeyword_0_52() { return cTypePreconditionKeyword_0_52; }
-
-		//'postcondition'
-		public Keyword getTypePostconditionKeyword_0_53() { return cTypePostconditionKeyword_0_53; }
-
-		//'invariant'
-		public Keyword getTypeInvariantKeyword_0_54() { return cTypeInvariantKeyword_0_54; }
-
-		//'analysis_annotation'
-		public Keyword getTypeAnalysis_annotationKeyword_0_55() { return cTypeAnalysis_annotationKeyword_0_55; }
-
-		//'hazard'
-		public Keyword getTypeHazardKeyword_0_56() { return cTypeHazardKeyword_0_56; }
-
-		//'hazard_identification'
-		public Keyword getTypeHazard_identificationKeyword_0_57() { return cTypeHazard_identificationKeyword_0_57; }
-
-		//'requirement'
-		public Keyword getTypeRequirementKeyword_0_58() { return cTypeRequirementKeyword_0_58; }
-
-		//'data_dictionary_term'
-		public Keyword getTypeData_dictionary_termKeyword_0_59() { return cTypeData_dictionary_termKeyword_0_59; }
-
-		//'requirement_development'
-		public Keyword getTypeRequirement_developmentKeyword_0_60() { return cTypeRequirement_developmentKeyword_0_60; }
-
-		//'review'
-		public Keyword getTypeReviewKeyword_0_61() { return cTypeReviewKeyword_0_61; }
-
-		//'review_log'
-		public Keyword getTypeReview_logKeyword_0_62() { return cTypeReview_logKeyword_0_62; }
-
-		//'review_state'
-		public Keyword getTypeReview_stateKeyword_0_63() { return cTypeReview_stateKeyword_0_63; }
-
-		//'file'
-		public Keyword getTypeFileKeyword_0_64() { return cTypeFileKeyword_0_64; }
-
-		//'format'
-		public Keyword getTypeFormatKeyword_0_65() { return cTypeFormatKeyword_0_65; }
-
-		//'code_development'
-		public Keyword getTypeCode_developmentKeyword_0_66() { return cTypeCode_developmentKeyword_0_66; }
-
-		//'build'
-		public Keyword getTypeBuildKeyword_0_67() { return cTypeBuildKeyword_0_67; }
-
-		//'code_gen'
-		public Keyword getTypeCode_genKeyword_0_68() { return cTypeCode_genKeyword_0_68; }
-
-		//'compile'
-		public Keyword getTypeCompileKeyword_0_69() { return cTypeCompileKeyword_0_69; }
-
-		//'package_file'
-		public Keyword getTypePackage_fileKeyword_0_70() { return cTypePackage_fileKeyword_0_70; }
-
-		//'component_type'
-		public Keyword getTypeComponent_typeKeyword_0_71() { return cTypeComponent_typeKeyword_0_71; }
-
-		//'source_function'
-		public Keyword getTypeSource_functionKeyword_0_72() { return cTypeSource_functionKeyword_0_72; }
-
-		//'binary_function'
-		public Keyword getTypeBinary_functionKeyword_0_73() { return cTypeBinary_functionKeyword_0_73; }
-
-		//'source_global_variable'
-		public Keyword getTypeSource_global_variableKeyword_0_74() { return cTypeSource_global_variableKeyword_0_74; }
-
-		//'binary_global_variable'
-		public Keyword getTypeBinary_global_variableKeyword_0_75() { return cTypeBinary_global_variableKeyword_0_75; }
-
-		//'binary_basic_block'
-		public Keyword getTypeBinary_basic_blockKeyword_0_76() { return cTypeBinary_basic_blockKeyword_0_76; }
-
-		//'class_definition'
-		public Keyword getTypeClass_definitionKeyword_0_77() { return cTypeClass_definitionKeyword_0_77; }
-
-		//'class_method'
-		public Keyword getTypeClass_methodKeyword_0_78() { return cTypeClass_methodKeyword_0_78; }
-
-		//'class_member_variable'
-		public Keyword getTypeClass_member_variableKeyword_0_79() { return cTypeClass_member_variableKeyword_0_79; }
-
-		//'class_constructor'
-		public Keyword getTypeClass_constructorKeyword_0_80() { return cTypeClass_constructorKeyword_0_80; }
-
-		//'module'
-		public Keyword getTypeModuleKeyword_0_81() { return cTypeModuleKeyword_0_81; }
-
-		//'namespace'
-		public Keyword getTypeNamespaceKeyword_0_82() { return cTypeNamespaceKeyword_0_82; }
-
-		//'interface'
-		public Keyword getTypeInterfaceKeyword_0_83() { return cTypeInterfaceKeyword_0_83; }
-
-		//'system_development'
-		public Keyword getTypeSystem_developmentKeyword_0_84() { return cTypeSystem_developmentKeyword_0_84; }
-
-		//'test'
-		public Keyword getTypeTestKeyword_0_85() { return cTypeTestKeyword_0_85; }
-
-		//'test_result'
-		public Keyword getTypeTest_resultKeyword_0_86() { return cTypeTest_resultKeyword_0_86; }
-
-		//'test_status'
-		public Keyword getTypeTest_statusKeyword_0_87() { return cTypeTest_statusKeyword_0_87; }
-
-		//'test_developmemt'
-		public Keyword getTypeTest_developmemtKeyword_0_88() { return cTypeTest_developmemtKeyword_0_88; }
-
-		//'test_execution'
-		public Keyword getTypeTest_executionKeyword_0_89() { return cTypeTest_executionKeyword_0_89; }
 	}
 
 	public class ArgElements extends AbstractParserRuleElementFinder {
@@ -3253,60 +3094,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFlow_elementsKeyword_63 = (Keyword)cAlternatives.eContents().get(63);
 		private final Keyword cFlow_specificationsKeyword_64 = (Keyword)cAlternatives.eContents().get(64);
 		private final Keyword cEnd_to_end_flowsKeyword_65 = (Keyword)cAlternatives.eContents().get(65);
-		private final Keyword cResult_ofKeyword_66 = (Keyword)cAlternatives.eContents().get(66);
-		private final Keyword cMetricKeyword_67 = (Keyword)cAlternatives.eContents().get(67);
-		private final Keyword cAnalyzesKeyword_68 = (Keyword)cAlternatives.eContents().get(68);
-		private final Keyword cProduced_byKeyword_69 = (Keyword)cAlternatives.eContents().get(69);
-		private final Keyword cPerformed_byKeyword_70 = (Keyword)cAlternatives.eContents().get(70);
-		private final Keyword cFrom_reportKeyword_71 = (Keyword)cAlternatives.eContents().get(71);
-		private final Keyword cDescriptionKeyword_72 = (Keyword)cAlternatives.eContents().get(72);
-		private final Keyword cAnnotation_typeKeyword_73 = (Keyword)cAlternatives.eContents().get(73);
-		private final Keyword cDefinitionKeyword_74 = (Keyword)cAlternatives.eContents().get(74);
-		private final Keyword cSource_ofKeyword_75 = (Keyword)cAlternatives.eContents().get(75);
-		private final Keyword cIdentifiedKeyword_76 = (Keyword)cAlternatives.eContents().get(76);
-		private final Keyword cAuthorKeyword_77 = (Keyword)cAlternatives.eContents().get(77);
-		private final Keyword cTextKeyword_78 = (Keyword)cAlternatives.eContents().get(78);
-		private final Keyword cGiven_textKeyword_79 = (Keyword)cAlternatives.eContents().get(79);
-		private final Keyword cIf_textKeyword_80 = (Keyword)cAlternatives.eContents().get(80);
-		private final Keyword cThen_textKeyword_81 = (Keyword)cAlternatives.eContents().get(81);
-		private final Keyword cGovernsKeyword_82 = (Keyword)cAlternatives.eContents().get(82);
-		private final Keyword cSatisfiesKeyword_83 = (Keyword)cAlternatives.eContents().get(83);
-		private final Keyword cMitigatesKeyword_84 = (Keyword)cAlternatives.eContents().get(84);
-		private final Keyword cCreated_byKeyword_85 = (Keyword)cAlternatives.eContents().get(85);
-		private final Keyword cProvided_byKeyword_86 = (Keyword)cAlternatives.eContents().get(86);
-		private final Keyword cConsumed_byKeyword_87 = (Keyword)cAlternatives.eContents().get(87);
-		private final Keyword cReferencedKeyword_88 = (Keyword)cAlternatives.eContents().get(88);
-		private final Keyword cGoverned_byKeyword_89 = (Keyword)cAlternatives.eContents().get(89);
-		private final Keyword cReviewsKeyword_90 = (Keyword)cAlternatives.eContents().get(90);
-		private final Keyword cReview_resultKeyword_91 = (Keyword)cAlternatives.eContents().get(91);
-		private final Keyword cReviewerKeyword_92 = (Keyword)cAlternatives.eContents().get(92);
-		private final Keyword cReviewedKeyword_93 = (Keyword)cAlternatives.eContents().get(93);
-		private final Keyword cFilenameKeyword_94 = (Keyword)cAlternatives.eContents().get(94);
-		private final Keyword cStepKeyword_95 = (Keyword)cAlternatives.eContents().get(95);
-		private final Keyword cCompiled_byKeyword_96 = (Keyword)cAlternatives.eContents().get(96);
-		private final Keyword cCompile_inputKeyword_97 = (Keyword)cAlternatives.eContents().get(97);
-		private final Keyword cPackaged_byKeyword_98 = (Keyword)cAlternatives.eContents().get(98);
-		private final Keyword cPackage_inputKeyword_99 = (Keyword)cAlternatives.eContents().get(99);
-		private final Keyword cType_ofKeyword_100 = (Keyword)cAlternatives.eContents().get(100);
-		private final Keyword cValue_typeKeyword_101 = (Keyword)cAlternatives.eContents().get(101);
-		private final Keyword cInstantiatesKeyword_102 = (Keyword)cAlternatives.eContents().get(102);
-		private final Keyword cDefined_inKeyword_103 = (Keyword)cAlternatives.eContents().get(103);
-		private final Keyword cMentionsKeyword_104 = (Keyword)cAlternatives.eContents().get(104);
-		private final Keyword cSubcomponent_ofKeyword_105 = (Keyword)cAlternatives.eContents().get(105);
-		private final Keyword cRequirementsKeyword_106 = (Keyword)cAlternatives.eContents().get(106);
-		private final Keyword cAnnotationsKeyword_107 = (Keyword)cAlternatives.eContents().get(107);
-		private final Keyword cControl_flows_to_unconditionallyKeyword_108 = (Keyword)cAlternatives.eContents().get(108);
-		private final Keyword cControl_flows_to_conditionallyKeyword_109 = (Keyword)cAlternatives.eContents().get(109);
-		private final Keyword cPart_ofKeyword_110 = (Keyword)cAlternatives.eContents().get(110);
-		private final Keyword cProvidesKeyword_111 = (Keyword)cAlternatives.eContents().get(111);
-		private final Keyword cRequiresKeyword_112 = (Keyword)cAlternatives.eContents().get(112);
-		private final Keyword cDestination_ofKeyword_113 = (Keyword)cAlternatives.eContents().get(113);
-		private final Keyword cIdentified_byKeyword_114 = (Keyword)cAlternatives.eContents().get(114);
-		private final Keyword cDeveloped_byKeyword_115 = (Keyword)cAlternatives.eContents().get(115);
-		private final Keyword cVerifiesKeyword_116 = (Keyword)cAlternatives.eContents().get(116);
-		private final Keyword cConfirmsKeyword_117 = (Keyword)cAlternatives.eContents().get(117);
-		private final Keyword cExecuted_byKeyword_118 = (Keyword)cAlternatives.eContents().get(118);
-		private final Keyword cExecuted_onKeyword_119 = (Keyword)cAlternatives.eContents().get(119);
 		
 		//BuiltInFn: // Primary type: aadl
 		// 'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' |
@@ -3335,115 +3122,123 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//	'propagate_error' // the component propagate an error
 		// | 'error_state_reachable' // the error state is reachable
 		// |
-		//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
+		//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' //// Evidences
 		//
-		//	// ANALYSIS
-		// | 'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
-		// | 'metric'
-		//	// describes ANALYSIS_REPORT with values of type float
-		// | 'analyzes'
-		//	// describes ANALYSIS_REPORT with values of type ENTITY
-		// | 'produced_by'
-		//	// describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
-		// | 'performed_by'
-		//	// describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
-		// | 'from_report'
-		//	// describes ANALYSIS_ANNOTATION with values of type ENTITY
-		// | 'description'
-		//	// describes ANALYSIS_ANNOTATION with values of type string
-		// | 'annotation_type'
-		//	// describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
-		// // HAZARD
-		// | 'definition'
-		//	// describes HAZARD with values of type string
-		// | 'source_of'
-		//	// corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
-		// | 'identified'
-		//	// describes HAZARD with values of type HAZARD_IDENTIFICATION
-		// | 'author'
-		//	// describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
-		// |
-		//	'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
-		// | 'given_text'
-		//	// describes REQUIREMENT with values of type string
-		// | 'if_text' // describes REQUIREMENT with values of type string
+		//	//	// ANALYSIS
+		// //|	'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
 		//
-		//	| 'then_text' // describes REQUIREMENT with values of type string
-		// | 'governs'
-		//	// describes REQUIREMENT with values of type ENTITY
-		// | 'satisfies'
-		//	// describes REQUIREMENT, FILE with values of type ENTITY
-		// | 'mitigates'
-		//	// describes REQUIREMENT with values of type ENTITY
-		// | 'created_by'
-		//	// describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
-		// | 'provided_by'
-		//	// describes DATA_DICTIONARY_TERM with values of type ENTITY
-		// | 'consumed_by'
-		//	// describes DATA_DICTIONARY_TERM with values of type ENTITY
-		// | 'referenced'
-		//	// describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
-		// | 'governed_by'
-		//	// describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
-		// // REVIEW
-		// | 'reviews'
-		//	// describes REVIEW_LOG with values of type ENTITY
-		// | 'review_result'
-		//	// describes REVIEW_LOG with values of type REVIEW_STATE
-		// | 'reviewer' // describes REVIEW with values of type AGENT
+		//	//|	'metric' // describes ANALYSIS_REPORT with values of type float
 		//
-		//	| 'reviewed' // describes REVIEW with values of type ENTITY
-		// // SOFTWARE
-		// | 'filename'
-		//	// describes FILE with values of type string
-		// | 'step' // describes BUILD with values of type ACTIVITY
-		// |
-		//	'compiled_by' // describes COMPILE with values of type FILE
-		// | 'compile_input'
-		//	// describes COMPILE with values of type FILE
-		// | 'packaged_by' // describes PACKAGE_FILE with values of type FILE
-		// |
-		//	'package_input' // describes PACKAGE_FILE with values of type FILE
+		//	//|	'analyzes' // describes ANALYSIS_REPORT with values of type ENTITY
 		//
-		//	//|	'name' // describes COMPONENT with values of type string
-		// | 'type_of'
-		//	// corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
-		// | 'value_type'
-		//	// describes COMPONENT with values of type string
-		// | 'instantiates'
-		//	// describes COMPONENT with values of type ENTITY
-		// | 'defined_in' // describes COMPONENT with values of type ENTITY
+		//	//|	'produced_by' // describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
 		//
-		//	| 'mentions' // describes COMPONENT with values of type ENTITY
-		// | 'subcomponent_of'
-		//	// describes COMPONENT with values of type ENTITY
-		// | 'requirements'
-		//	// describes COMPONENT with values of type ENTITY
-		// | 'annotations' // describes COMPONENT with values of type ENTITY
+		//	//|	'performed_by' // describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
 		//
-		//	| 'control_flows_to_unconditionally' // describes COMPONENT with values of type COMPONENT
-		// |
-		//	'control_flows_to_conditionally' // describes COMPONENT with values of type COMPONENT
-		// // SYSTEM
-		// | 'part_of'
-		//	// describes SYSTEM with values of type ENTITY
-		// | 'provides' // describes SYSTEM with values of type ENTITY
-		// |
-		//	'requires' // describes SYSTEM with values of type ENTITY
-		// | 'destination_of'
-		//	// describes INTERFACE with values of type ENTITY
-		// | 'identified_by'
-		//	// describes INTERFACE with values of type ACTIVITY
-		// | 'developed_by'
-		//	// describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
-		// // TESTING
-		// | 'verifies'
-		//	// describes TEST with values of type ENTITY
-		// | 'confirms' // describes TEST_RESULT with values of type ENTITY
-		// |
-		//	'executed_by' // describes TEST_RESULT with values of type ACTIVITY
-		// | 'executed_on'
-		//	// describes TEST_EXECUTION with values of type AGENT
+		//	//|	'from_report' // describes ANALYSIS_ANNOTATION with values of type ENTITY
+		//
+		//	//|	'description' // describes ANALYSIS_ANNOTATION with values of type string
+		//
+		//	//|	'annotation_type' // describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
+		// //	// HAZARD
+		//
+		//	//|	'definition' // describes HAZARD with values of type string
+		//
+		//	//|	'source_of' // corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
+		//
+		//	//|	'identified' // describes HAZARD with values of type HAZARD_IDENTIFICATION
+		//
+		//	//|	'author' // describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
+		//
+		//	//|	'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
+		//
+		//	//|	'given_text' // describes REQUIREMENT with values of type string
+		//
+		//	//|	'if_text' // describes REQUIREMENT with values of type string
+		//
+		//	//|	'then_text' // describes REQUIREMENT with values of type string
+		//
+		//	//|	'governs' // describes REQUIREMENT with values of type ENTITY
+		//
+		//	//|	'satisfies' // describes REQUIREMENT, FILE with values of type ENTITY
+		//
+		//	//|	'mitigates' // describes REQUIREMENT with values of type ENTITY
+		//
+		//	//|	'created_by' // describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
+		//
+		//	//|	'provided_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
+		//
+		//	//|	'consumed_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
+		//
+		//	//|	'referenced' // describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
+		//
+		//	//|	'governed_by' // describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
+		//
+		//	//	// REVIEW
+		// //|	'reviews' // describes REVIEW_LOG with values of type ENTITY
+		//
+		//	//|	'review_result' // describes REVIEW_LOG with values of type REVIEW_STATE
+		//
+		//	//|	'reviewer' // describes REVIEW with values of type AGENT
+		//
+		//	//|	'reviewed' // describes REVIEW with values of type ENTITY
+		// //	// SOFTWARE
+		//
+		//	//|	'filename' // describes FILE with values of type string
+		//
+		//	//|	'step' // describes BUILD with values of type ACTIVITY
+		//
+		//	//|	'compiled_by' // describes COMPILE with values of type FILE
+		//
+		//	//|	'compile_input' // describes COMPILE with values of type FILE
+		//
+		//	//|	'packaged_by' // describes PACKAGE_FILE with values of type FILE
+		//
+		//	//|	'package_input' // describes PACKAGE_FILE with values of type FILE
+		//
+		//	////|	'name' // describes COMPONENT with values of type string
+		//
+		//	//|	'type_of' // corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
+		//
+		//	//|	'value_type' // describes COMPONENT with values of type string
+		//
+		//	//|	'instantiates' // describes COMPONENT with values of type ENTITY
+		//
+		//	//|	'defined_in' // describes COMPONENT with values of type ENTITY
+		//
+		//	//|	'mentions' // describes COMPONENT with values of type ENTITY
+		//
+		//	//|	'subcomponent_of' // describes COMPONENT with values of type ENTITY
+		//
+		//	//|	'requirements' // describes COMPONENT with values of type ENTITY
+		//
+		//	//|	'annotations' // describes COMPONENT with values of type ENTITY
+		//
+		//	//|	'control_flows_to_unconditionally' // describes COMPONENT with values of type COMPONENT
+		//
+		//	//|	'control_flows_to_conditionally' // describes COMPONENT with values of type COMPONENT
+		// //	// SYSTEM
+		//
+		//	//|	'part_of' // describes SYSTEM with values of type ENTITY
+		//
+		//	//|	'provides' // describes SYSTEM with values of type ENTITY
+		//
+		//	//|	'requires' // describes SYSTEM with values of type ENTITY
+		//
+		//	//|	'destination_of' // describes INTERFACE with values of type ENTITY
+		//
+		//	//|	'identified_by' // describes INTERFACE with values of type ACTIVITY
+		//
+		//	//|	'developed_by' // describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
+		// //	// TESTING
+		//
+		//	//|	'verifies' // describes TEST with values of type ENTITY
+		//
+		//	//|	'confirms' // describes TEST_RESULT with values of type ENTITY
+		//
+		//	//|	'executed_by' // describes TEST_RESULT with values of type ACTIVITY
+		//
+		//	//|	'executed_on' // describes TEST_EXECUTION with values of type AGENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 
@@ -3474,114 +3269,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		// |
 		//'error_state_reachable' // the error state is reachable
 		// | 'flow_source' | 'flow_destination' | 'flow_elements' |
-		//'flow_specifications' | 'end_to_end_flows' // Evidences
-		// // ANALYSIS
-		// | 'result_of'
-		//// describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
-		// | 'metric'
-		//// describes ANALYSIS_REPORT with values of type float
-		// | 'analyzes'
-		//// describes ANALYSIS_REPORT with values of type ENTITY
-		// | 'produced_by'
-		//// describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
-		// | 'performed_by'
-		//// describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
-		// | 'from_report'
-		//// describes ANALYSIS_ANNOTATION with values of type ENTITY
-		// | 'description'
-		//// describes ANALYSIS_ANNOTATION with values of type string
-		// | 'annotation_type'
-		//// describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
-		// // HAZARD
-		// | 'definition'
-		//// describes HAZARD with values of type string
-		// | 'source_of'
-		//// corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
-		// | 'identified'
-		//// describes HAZARD with values of type HAZARD_IDENTIFICATION
-		// | 'author'
-		//// describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
-		// |
-		//'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
-		// | 'given_text'
-		//// describes REQUIREMENT with values of type string
-		// | 'if_text' // describes REQUIREMENT with values of type string
-		//
-		//| 'then_text' // describes REQUIREMENT with values of type string
-		// | 'governs'
-		//// describes REQUIREMENT with values of type ENTITY
-		// | 'satisfies'
-		//// describes REQUIREMENT, FILE with values of type ENTITY
-		// | 'mitigates'
-		//// describes REQUIREMENT with values of type ENTITY
-		// | 'created_by'
-		//// describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
-		// | 'provided_by'
-		//// describes DATA_DICTIONARY_TERM with values of type ENTITY
-		// | 'consumed_by'
-		//// describes DATA_DICTIONARY_TERM with values of type ENTITY
-		// | 'referenced'
-		//// describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
-		// | 'governed_by'
-		//// describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
-		// // REVIEW
-		// | 'reviews'
-		//// describes REVIEW_LOG with values of type ENTITY
-		// | 'review_result'
-		//// describes REVIEW_LOG with values of type REVIEW_STATE
-		// | 'reviewer' // describes REVIEW with values of type AGENT
-		//
-		//| 'reviewed' // describes REVIEW with values of type ENTITY
-		// // SOFTWARE
-		// | 'filename'
-		//// describes FILE with values of type string
-		// | 'step' // describes BUILD with values of type ACTIVITY
-		// |
-		//'compiled_by' // describes COMPILE with values of type FILE
-		// | 'compile_input'
-		//// describes COMPILE with values of type FILE
-		// | 'packaged_by' // describes PACKAGE_FILE with values of type FILE
-		// |
-		//'package_input' // describes PACKAGE_FILE with values of type FILE
-		//
-		////|	'name' // describes COMPONENT with values of type string
-		// | 'type_of'
-		//// corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
-		// | 'value_type'
-		//// describes COMPONENT with values of type string
-		// | 'instantiates' // describes COMPONENT with values of type ENTITY
-		//
-		//| 'defined_in' // describes COMPONENT with values of type ENTITY
-		// | 'mentions'
-		//// describes COMPONENT with values of type ENTITY
-		// | 'subcomponent_of'
-		//// describes COMPONENT with values of type ENTITY
-		// | 'requirements' // describes COMPONENT with values of type ENTITY
-		//
-		//| 'annotations' // describes COMPONENT with values of type ENTITY
-		// | 'control_flows_to_unconditionally'
-		//// describes COMPONENT with values of type COMPONENT
-		// | 'control_flows_to_conditionally'
-		//// describes COMPONENT with values of type COMPONENT
-		// // SYSTEM
-		// | 'part_of'
-		//// describes SYSTEM with values of type ENTITY
-		// | 'provides' // describes SYSTEM with values of type ENTITY
-		// |
-		//'requires' // describes SYSTEM with values of type ENTITY
-		// | 'destination_of'
-		//// describes INTERFACE with values of type ENTITY
-		// | 'identified_by'
-		//// describes INTERFACE with values of type ACTIVITY
-		// | 'developed_by'
-		//// describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
-		// // TESTING
-		// | 'verifies'
-		//// describes TEST with values of type ENTITY
-		// | 'confirms' // describes TEST_RESULT with values of type ENTITY
-		// |
-		//'executed_by' // describes TEST_RESULT with values of type ACTIVITY
-		// | 'executed_on'
+		//'flow_specifications' | 'end_to_end_flows'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//// Primary type: aadl
@@ -3782,168 +3470,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//'end_to_end_flows'
 		public Keyword getEnd_to_end_flowsKeyword_65() { return cEnd_to_end_flowsKeyword_65; }
-
-		//'result_of'
-		public Keyword getResult_ofKeyword_66() { return cResult_ofKeyword_66; }
-
-		//'metric'
-		public Keyword getMetricKeyword_67() { return cMetricKeyword_67; }
-
-		//'analyzes'
-		public Keyword getAnalyzesKeyword_68() { return cAnalyzesKeyword_68; }
-
-		//'produced_by'
-		public Keyword getProduced_byKeyword_69() { return cProduced_byKeyword_69; }
-
-		//'performed_by'
-		public Keyword getPerformed_byKeyword_70() { return cPerformed_byKeyword_70; }
-
-		//'from_report'
-		public Keyword getFrom_reportKeyword_71() { return cFrom_reportKeyword_71; }
-
-		//'description'
-		public Keyword getDescriptionKeyword_72() { return cDescriptionKeyword_72; }
-
-		//'annotation_type'
-		public Keyword getAnnotation_typeKeyword_73() { return cAnnotation_typeKeyword_73; }
-
-		//'definition'
-		public Keyword getDefinitionKeyword_74() { return cDefinitionKeyword_74; }
-
-		//'source_of'
-		public Keyword getSource_ofKeyword_75() { return cSource_ofKeyword_75; }
-
-		//'identified'
-		public Keyword getIdentifiedKeyword_76() { return cIdentifiedKeyword_76; }
-
-		//'author'
-		public Keyword getAuthorKeyword_77() { return cAuthorKeyword_77; }
-
-		//'text'
-		public Keyword getTextKeyword_78() { return cTextKeyword_78; }
-
-		//'given_text'
-		public Keyword getGiven_textKeyword_79() { return cGiven_textKeyword_79; }
-
-		//'if_text'
-		public Keyword getIf_textKeyword_80() { return cIf_textKeyword_80; }
-
-		//'then_text'
-		public Keyword getThen_textKeyword_81() { return cThen_textKeyword_81; }
-
-		//'governs'
-		public Keyword getGovernsKeyword_82() { return cGovernsKeyword_82; }
-
-		//'satisfies'
-		public Keyword getSatisfiesKeyword_83() { return cSatisfiesKeyword_83; }
-
-		//'mitigates'
-		public Keyword getMitigatesKeyword_84() { return cMitigatesKeyword_84; }
-
-		//'created_by'
-		public Keyword getCreated_byKeyword_85() { return cCreated_byKeyword_85; }
-
-		//'provided_by'
-		public Keyword getProvided_byKeyword_86() { return cProvided_byKeyword_86; }
-
-		//'consumed_by'
-		public Keyword getConsumed_byKeyword_87() { return cConsumed_byKeyword_87; }
-
-		//'referenced'
-		public Keyword getReferencedKeyword_88() { return cReferencedKeyword_88; }
-
-		//'governed_by'
-		public Keyword getGoverned_byKeyword_89() { return cGoverned_byKeyword_89; }
-
-		//'reviews'
-		public Keyword getReviewsKeyword_90() { return cReviewsKeyword_90; }
-
-		//'review_result'
-		public Keyword getReview_resultKeyword_91() { return cReview_resultKeyword_91; }
-
-		//'reviewer'
-		public Keyword getReviewerKeyword_92() { return cReviewerKeyword_92; }
-
-		//'reviewed'
-		public Keyword getReviewedKeyword_93() { return cReviewedKeyword_93; }
-
-		//'filename'
-		public Keyword getFilenameKeyword_94() { return cFilenameKeyword_94; }
-
-		//'step'
-		public Keyword getStepKeyword_95() { return cStepKeyword_95; }
-
-		//'compiled_by'
-		public Keyword getCompiled_byKeyword_96() { return cCompiled_byKeyword_96; }
-
-		//'compile_input'
-		public Keyword getCompile_inputKeyword_97() { return cCompile_inputKeyword_97; }
-
-		//'packaged_by'
-		public Keyword getPackaged_byKeyword_98() { return cPackaged_byKeyword_98; }
-
-		//'package_input'
-		public Keyword getPackage_inputKeyword_99() { return cPackage_inputKeyword_99; }
-
-		//'type_of'
-		public Keyword getType_ofKeyword_100() { return cType_ofKeyword_100; }
-
-		//'value_type'
-		public Keyword getValue_typeKeyword_101() { return cValue_typeKeyword_101; }
-
-		//'instantiates'
-		public Keyword getInstantiatesKeyword_102() { return cInstantiatesKeyword_102; }
-
-		//'defined_in'
-		public Keyword getDefined_inKeyword_103() { return cDefined_inKeyword_103; }
-
-		//'mentions'
-		public Keyword getMentionsKeyword_104() { return cMentionsKeyword_104; }
-
-		//'subcomponent_of'
-		public Keyword getSubcomponent_ofKeyword_105() { return cSubcomponent_ofKeyword_105; }
-
-		//'requirements'
-		public Keyword getRequirementsKeyword_106() { return cRequirementsKeyword_106; }
-
-		//'annotations'
-		public Keyword getAnnotationsKeyword_107() { return cAnnotationsKeyword_107; }
-
-		//'control_flows_to_unconditionally'
-		public Keyword getControl_flows_to_unconditionallyKeyword_108() { return cControl_flows_to_unconditionallyKeyword_108; }
-
-		//'control_flows_to_conditionally'
-		public Keyword getControl_flows_to_conditionallyKeyword_109() { return cControl_flows_to_conditionallyKeyword_109; }
-
-		//'part_of'
-		public Keyword getPart_ofKeyword_110() { return cPart_ofKeyword_110; }
-
-		//'provides'
-		public Keyword getProvidesKeyword_111() { return cProvidesKeyword_111; }
-
-		//'requires'
-		public Keyword getRequiresKeyword_112() { return cRequiresKeyword_112; }
-
-		//'destination_of'
-		public Keyword getDestination_ofKeyword_113() { return cDestination_ofKeyword_113; }
-
-		//'identified_by'
-		public Keyword getIdentified_byKeyword_114() { return cIdentified_byKeyword_114; }
-
-		//'developed_by'
-		public Keyword getDeveloped_byKeyword_115() { return cDeveloped_byKeyword_115; }
-
-		//'verifies'
-		public Keyword getVerifiesKeyword_116() { return cVerifiesKeyword_116; }
-
-		//'confirms'
-		public Keyword getConfirmsKeyword_117() { return cConfirmsKeyword_117; }
-
-		//'executed_by'
-		public Keyword getExecuted_byKeyword_118() { return cExecuted_byKeyword_118; }
-
-		//'executed_on'
-		public Keyword getExecuted_onKeyword_119() { return cExecuted_onKeyword_119; }
 	}
 
 	public class RealTermElements extends AbstractParserRuleElementFinder {
@@ -4541,76 +4067,79 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//	'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
 	// // W3C-PROV
 	// |
-	//	'entity' | 'agent' | 'activity' | 'thing' // ANALYSIS
-	// | 'analysis_activity'
-	//	// corresponds to ANALYSIS class, type of activity
-	// | 'analysis_report' | 'analysis_result'
-	//	// class, must be one of {Passed, Failed, Indeterminate}
-	// | 'analysis_annotation_type' // class
-	// | 'precondition'
-	//	// type of analysis_annotation_type
-	// | 'postcondition' // type of analysis_annotation_type
-	// | 'invariant'
-	//	// type of analysis_annotation_type
-	// | 'analysis_annotation' // type of entity
-	// // HAZARD
-	// | 'hazard' // entity
-	// |
-	//	'hazard_identification' // type of activity
-	// // REQUIREMENT
-	// | 'requirement' // type of entity
-	// |
-	//	'data_dictionary_term' // type of entity
-	// | 'requirement_development' // type of activity
-	// // REVIEW
-	// | 'review'
-	//	// type of activity
-	// | 'review_log' // type of entity
-	// | 'review_state'
-	//	// class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-	// // SOFTWARE
-	// | 'file' // type of entity
+	//	'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
 	//
-	//	| 'format' // type of thing
-	// | 'code_development' // type of activity
-	// | 'build' // type of activity
-	// | 'code_gen'
-	//	// type of activity
-	// | 'compile' // type of activity
-	// | 'package_file' // corresponds to PACKAGE, type of activity
-	// |
-	//	'component_type' // type of thing
-	// | 'source_function' // type of component_type
-	// | 'binary_function'
-	//	// type of component_type
-	// | 'source_global_variable' // type of component_type
-	// | 'binary_global_variable'
-	//	// type of component_type
-	// | 'binary_basic_block' // type of component_type
-	// | 'class_definition'
-	//	// type of component_type
-	// | 'class_method' // type of component_type
-	// | 'class_member_variable'
-	//	// type of component_type
-	// | 'class_constructor' // type of component_type
-	// | 'module' // type of component_type
-	// |
-	//	'namespace' // type of component_type
-	// //		|	'component' // type of entity
-	// // SYSTEM
+	//	//		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
+	// //		|	'analysis_report' 
 	//
-	//	//		|	'system' // type of entity
-	// | 'interface' // type of entity
-	// | 'system_development' // type of activity
+	//	//		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
 	//
-	//	// TESTING
-	// | 'test' // type of entity
-	// | 'test_result' // type of entity
-	// | 'test_status'
-	//	// class, must be one of {Passed, Failed, Indeterminate}
-	// | 'test_developmemt' // type of activity
-	// |
-	//	'test_execution' // type of activity
+	//	//		|	'analysis_annotation_type' // class
+	// //		|	'precondition'	// type of analysis_annotation_type
+	//
+	//	//		|	'postcondition'	// type of analysis_annotation_type
+	// //		|	'invariant'	// type of analysis_annotation_type
+	//
+	//	//		|	'analysis_annotation' // type of entity
+	// //		 // HAZARD
+	// //		|	'hazard' // entity
+	//
+	//	//		|	'hazard_identification' // type of activity
+	// //		 // REQUIREMENT
+	// //		|	'requirement' // type of entity
+	//
+	//	//		|	'data_dictionary_term' // type of entity
+	// //		|	'requirement_development' // type of activity
+	// //		 // REVIEW
+	//
+	//	//		|	'review' // type of activity
+	// //		|	'review_log' // type of entity
+	//
+	//	//		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
+	// //		 // SOFTWARE
+	//
+	//	//		|	'file' // type of entity
+	// //		|	'format' // type of thing
+	// //		|	'code_development' // type of activity
+	//
+	//	//		|	'build' // type of activity
+	// //		|	'code_gen' // type of activity
+	// //		|	'compile' // type of activity
+	//
+	//	//		|	'package_file' // corresponds to PACKAGE, type of activity
+	// //		|	'component_type' // type of thing
+	//
+	//	//		|	'source_function' // type of component_type
+	// //		|	'binary_function' // type of component_type
+	//
+	//	//		|	'source_global_variable' // type of component_type
+	// //		|	'binary_global_variable' // type of component_type
+	//
+	//	//		|	'binary_basic_block' // type of component_type
+	// //		|	'class_definition' // type of component_type
+	//
+	//	//		|	'class_method' // type of component_type
+	// //		|	'class_member_variable' // type of component_type
+	//
+	//	//		|	'class_constructor' // type of component_type
+	// //		|	'module' // type of component_type
+	//
+	//	//		|	'namespace' // type of component_type
+	// ////		|	'component' // type of entity
+	// //		 // SYSTEM
+	//
+	//	////		|	'system' // type of entity
+	// //		|	'interface' // type of entity
+	//
+	//	//		|	'system_development' // type of activity
+	// //		 // TESTING
+	// //		|	'test' // type of entity
+	//
+	//	//		|	'test_result' // type of entity
+	// //		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
+	//
+	//	//		|	'test_developmemt' // type of activity
+	// //		|	'test_execution' // type of activity
 	//);
 	public BaseTypeElements getBaseTypeAccess() {
 		return pBaseType;
@@ -4953,115 +4482,123 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//	'propagate_error' // the component propagate an error
 	// | 'error_state_reachable' // the error state is reachable
 	// |
-	//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
+	//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' //// Evidences
 	//
-	//	// ANALYSIS
-	// | 'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
-	// | 'metric'
-	//	// describes ANALYSIS_REPORT with values of type float
-	// | 'analyzes'
-	//	// describes ANALYSIS_REPORT with values of type ENTITY
-	// | 'produced_by'
-	//	// describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
-	// | 'performed_by'
-	//	// describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
-	// | 'from_report'
-	//	// describes ANALYSIS_ANNOTATION with values of type ENTITY
-	// | 'description'
-	//	// describes ANALYSIS_ANNOTATION with values of type string
-	// | 'annotation_type'
-	//	// describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
-	// // HAZARD
-	// | 'definition'
-	//	// describes HAZARD with values of type string
-	// | 'source_of'
-	//	// corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
-	// | 'identified'
-	//	// describes HAZARD with values of type HAZARD_IDENTIFICATION
-	// | 'author'
-	//	// describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
-	// |
-	//	'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
-	// | 'given_text'
-	//	// describes REQUIREMENT with values of type string
-	// | 'if_text' // describes REQUIREMENT with values of type string
+	//	//	// ANALYSIS
+	// //|	'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
 	//
-	//	| 'then_text' // describes REQUIREMENT with values of type string
-	// | 'governs'
-	//	// describes REQUIREMENT with values of type ENTITY
-	// | 'satisfies'
-	//	// describes REQUIREMENT, FILE with values of type ENTITY
-	// | 'mitigates'
-	//	// describes REQUIREMENT with values of type ENTITY
-	// | 'created_by'
-	//	// describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
-	// | 'provided_by'
-	//	// describes DATA_DICTIONARY_TERM with values of type ENTITY
-	// | 'consumed_by'
-	//	// describes DATA_DICTIONARY_TERM with values of type ENTITY
-	// | 'referenced'
-	//	// describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
-	// | 'governed_by'
-	//	// describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
-	// // REVIEW
-	// | 'reviews'
-	//	// describes REVIEW_LOG with values of type ENTITY
-	// | 'review_result'
-	//	// describes REVIEW_LOG with values of type REVIEW_STATE
-	// | 'reviewer' // describes REVIEW with values of type AGENT
+	//	//|	'metric' // describes ANALYSIS_REPORT with values of type float
 	//
-	//	| 'reviewed' // describes REVIEW with values of type ENTITY
-	// // SOFTWARE
-	// | 'filename'
-	//	// describes FILE with values of type string
-	// | 'step' // describes BUILD with values of type ACTIVITY
-	// |
-	//	'compiled_by' // describes COMPILE with values of type FILE
-	// | 'compile_input'
-	//	// describes COMPILE with values of type FILE
-	// | 'packaged_by' // describes PACKAGE_FILE with values of type FILE
-	// |
-	//	'package_input' // describes PACKAGE_FILE with values of type FILE
+	//	//|	'analyzes' // describes ANALYSIS_REPORT with values of type ENTITY
 	//
-	//	//|	'name' // describes COMPONENT with values of type string
-	// | 'type_of'
-	//	// corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
-	// | 'value_type'
-	//	// describes COMPONENT with values of type string
-	// | 'instantiates'
-	//	// describes COMPONENT with values of type ENTITY
-	// | 'defined_in' // describes COMPONENT with values of type ENTITY
+	//	//|	'produced_by' // describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
 	//
-	//	| 'mentions' // describes COMPONENT with values of type ENTITY
-	// | 'subcomponent_of'
-	//	// describes COMPONENT with values of type ENTITY
-	// | 'requirements'
-	//	// describes COMPONENT with values of type ENTITY
-	// | 'annotations' // describes COMPONENT with values of type ENTITY
+	//	//|	'performed_by' // describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
 	//
-	//	| 'control_flows_to_unconditionally' // describes COMPONENT with values of type COMPONENT
-	// |
-	//	'control_flows_to_conditionally' // describes COMPONENT with values of type COMPONENT
-	// // SYSTEM
-	// | 'part_of'
-	//	// describes SYSTEM with values of type ENTITY
-	// | 'provides' // describes SYSTEM with values of type ENTITY
-	// |
-	//	'requires' // describes SYSTEM with values of type ENTITY
-	// | 'destination_of'
-	//	// describes INTERFACE with values of type ENTITY
-	// | 'identified_by'
-	//	// describes INTERFACE with values of type ACTIVITY
-	// | 'developed_by'
-	//	// describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
-	// // TESTING
-	// | 'verifies'
-	//	// describes TEST with values of type ENTITY
-	// | 'confirms' // describes TEST_RESULT with values of type ENTITY
-	// |
-	//	'executed_by' // describes TEST_RESULT with values of type ACTIVITY
-	// | 'executed_on'
-	//	// describes TEST_EXECUTION with values of type AGENT
+	//	//|	'from_report' // describes ANALYSIS_ANNOTATION with values of type ENTITY
+	//
+	//	//|	'description' // describes ANALYSIS_ANNOTATION with values of type string
+	//
+	//	//|	'annotation_type' // describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
+	// //	// HAZARD
+	//
+	//	//|	'definition' // describes HAZARD with values of type string
+	//
+	//	//|	'source_of' // corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
+	//
+	//	//|	'identified' // describes HAZARD with values of type HAZARD_IDENTIFICATION
+	//
+	//	//|	'author' // describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
+	//
+	//	//|	'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
+	//
+	//	//|	'given_text' // describes REQUIREMENT with values of type string
+	//
+	//	//|	'if_text' // describes REQUIREMENT with values of type string
+	//
+	//	//|	'then_text' // describes REQUIREMENT with values of type string
+	//
+	//	//|	'governs' // describes REQUIREMENT with values of type ENTITY
+	//
+	//	//|	'satisfies' // describes REQUIREMENT, FILE with values of type ENTITY
+	//
+	//	//|	'mitigates' // describes REQUIREMENT with values of type ENTITY
+	//
+	//	//|	'created_by' // describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
+	//
+	//	//|	'provided_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
+	//
+	//	//|	'consumed_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
+	//
+	//	//|	'referenced' // describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
+	//
+	//	//|	'governed_by' // describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
+	//
+	//	//	// REVIEW
+	// //|	'reviews' // describes REVIEW_LOG with values of type ENTITY
+	//
+	//	//|	'review_result' // describes REVIEW_LOG with values of type REVIEW_STATE
+	//
+	//	//|	'reviewer' // describes REVIEW with values of type AGENT
+	//
+	//	//|	'reviewed' // describes REVIEW with values of type ENTITY
+	// //	// SOFTWARE
+	//
+	//	//|	'filename' // describes FILE with values of type string
+	//
+	//	//|	'step' // describes BUILD with values of type ACTIVITY
+	//
+	//	//|	'compiled_by' // describes COMPILE with values of type FILE
+	//
+	//	//|	'compile_input' // describes COMPILE with values of type FILE
+	//
+	//	//|	'packaged_by' // describes PACKAGE_FILE with values of type FILE
+	//
+	//	//|	'package_input' // describes PACKAGE_FILE with values of type FILE
+	//
+	//	////|	'name' // describes COMPONENT with values of type string
+	//
+	//	//|	'type_of' // corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
+	//
+	//	//|	'value_type' // describes COMPONENT with values of type string
+	//
+	//	//|	'instantiates' // describes COMPONENT with values of type ENTITY
+	//
+	//	//|	'defined_in' // describes COMPONENT with values of type ENTITY
+	//
+	//	//|	'mentions' // describes COMPONENT with values of type ENTITY
+	//
+	//	//|	'subcomponent_of' // describes COMPONENT with values of type ENTITY
+	//
+	//	//|	'requirements' // describes COMPONENT with values of type ENTITY
+	//
+	//	//|	'annotations' // describes COMPONENT with values of type ENTITY
+	//
+	//	//|	'control_flows_to_unconditionally' // describes COMPONENT with values of type COMPONENT
+	//
+	//	//|	'control_flows_to_conditionally' // describes COMPONENT with values of type COMPONENT
+	// //	// SYSTEM
+	//
+	//	//|	'part_of' // describes SYSTEM with values of type ENTITY
+	//
+	//	//|	'provides' // describes SYSTEM with values of type ENTITY
+	//
+	//	//|	'requires' // describes SYSTEM with values of type ENTITY
+	//
+	//	//|	'destination_of' // describes INTERFACE with values of type ENTITY
+	//
+	//	//|	'identified_by' // describes INTERFACE with values of type ACTIVITY
+	//
+	//	//|	'developed_by' // describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
+	// //	// TESTING
+	//
+	//	//|	'verifies' // describes TEST with values of type ENTITY
+	//
+	//	//|	'confirms' // describes TEST_RESULT with values of type ENTITY
+	//
+	//	//|	'executed_by' // describes TEST_RESULT with values of type ACTIVITY
+	//
+	//	//|	'executed_on' // describes TEST_EXECUTION with values of type AGENT
 	//;
 	public BuiltInFnElements getBuiltInFnAccess() {
 		return pBuiltInFn;
