@@ -23,6 +23,14 @@
 
 	<modules>
 		<module>com.rockwellcollins.atc.resolute</module>
+		<module>com.collins.trustedsystems.aace.agents</module>
+		<module>com.collins.trustedsystems.aace.analysis</module>
+		<module>com.collins.trustedsystems.aace.file</module>
+		<module>com.collins.trustedsystems.aace.requirements</module>
+		<module>com.collins.trustedsystems.aace.review</module>
+		<module>com.collins.trustedsystems.aace.software</module>
+		<module>com.collins.trustedsystems.aace.system</module>
+		<module>com.collins.trustedsystems.aace.testing</module>
 		<module>com.rockwellcollins.atc.resolute.agreecheck</module>
 		<module>com.rockwellcollins.atc.resolute.agreelib</module>
 		<module>com.rockwellcollins.atc.resolute.analysis</module>

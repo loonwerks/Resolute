@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: File
+Bundle-SymbolicName: com.collins.trustedsystems.aace.file;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: COLLINS
+Automatic-Module-Name: com.collins.trustedsystems.aace.file
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: com.rockwellcollins.atc.resolute;bundle-version="2.5.1",
+ com.rockwellcollins.atc.resolute.analysis;bundle-version="2.5.1",
+ org.osate.aadl2
+Export-Package: com.collins.trustedsystems.aace.file

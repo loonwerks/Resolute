@@ -13,7 +13,7 @@ public class TestingTypes extends ResoluteExternalFunctionLibraryType {
 	private static final BaseType TEST = new BaseType("test") {
 		@Override
 		public boolean subtypeOf(ResoluteType otherType) {
-			if (otherType.equals(TEST)) {
+			if (otherType.equals(ENTITY)) {
 				return true;
 			} else {
 				return super.subtypeOf(otherType);
@@ -24,7 +24,7 @@ public class TestingTypes extends ResoluteExternalFunctionLibraryType {
 	private static final BaseType TEST_STATUS = new BaseType("test_status") {
 		@Override
 		public boolean subtypeOf(ResoluteType otherType) {
-			if (otherType.equals(TEST_STATUS)) {
+			if (otherType.equals(THING)) {
 				return true;
 			} else {
 				return super.subtypeOf(otherType);
@@ -95,7 +95,7 @@ public class TestingTypes extends ResoluteExternalFunctionLibraryType {
 	private static final BaseType TEST_RESULT = new BaseType("test_result") {
 		@Override
 		public boolean subtypeOf(ResoluteType otherType) {
-			if (otherType.equals(TEST_RESULT)) {
+			if (otherType.equals(ENTITY)) {
 				return true;
 			} else {
 				return super.subtypeOf(otherType);
@@ -106,7 +106,7 @@ public class TestingTypes extends ResoluteExternalFunctionLibraryType {
 	private static final BaseType TEST_DEVELOPMENT = new BaseType("test_development") {
 		@Override
 		public boolean subtypeOf(ResoluteType otherType) {
-			if (otherType.equals(TEST_DEVELOPMENT)) {
+			if (otherType.equals(ACTIVITY)) {
 				return true;
 			} else {
 				return super.subtypeOf(otherType);
@@ -117,7 +117,7 @@ public class TestingTypes extends ResoluteExternalFunctionLibraryType {
 	private static final BaseType TEST_EXECUTION = new BaseType("test_execution") {
 		@Override
 		public boolean subtypeOf(ResoluteType otherType) {
-			if (otherType.equals(TEST_EXECUTION)) {
+			if (otherType.equals(ACTIVITY)) {
 				return true;
 			} else {
 				return super.subtypeOf(otherType);
