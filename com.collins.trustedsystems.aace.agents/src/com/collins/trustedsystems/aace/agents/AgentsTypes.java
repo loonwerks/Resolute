@@ -6,6 +6,7 @@ import java.util.List;
 import com.rockwellcollins.atc.resolute.analysis.external.ResoluteExternalFunctionLibraryType;
 import com.rockwellcollins.atc.resolute.validation.BaseType;
 import com.rockwellcollins.atc.resolute.validation.ResoluteType;
+import com.rockwellcollins.atc.resolute.validation.SetType;
 
 public class AgentsTypes extends ResoluteExternalFunctionLibraryType {
 
@@ -53,6 +54,18 @@ public class AgentsTypes extends ResoluteExternalFunctionLibraryType {
 		}
 	};
 
+	// Special type to handle polymorphism
+	private static final BaseType ORGANIZATION_PERSON = new BaseType("organization_person") {
+		@Override
+		public boolean subtypeOf(ResoluteType otherType) {
+			if (otherType.equals(ORGANIZATION) || otherType.equals(PERSON)) {
+				return true;
+			} else {
+				return super.subtypeOf(otherType);
+			}
+		}
+	};
+
 	@Override
 	public ResoluteType getType(String name) {
 
@@ -75,9 +88,9 @@ public class AgentsTypes extends ResoluteExternalFunctionLibraryType {
 
 		case "name":
 		case "emailaddress":
-			return BaseType.STRING;
+			return new SetType(BaseType.STRING);
 		case "employedby":
-			return BaseType.AGENT;
+			return new SetType(BaseType.AGENT);
 
 		default:
 			return BaseType.FAIL;
@@ -92,19 +105,17 @@ public class AgentsTypes extends ResoluteExternalFunctionLibraryType {
 		switch (function.toLowerCase()) {
 
 		case "name":
-			args.add(ORGANIZATION);
+			args.add(ORGANIZATION_PERSON);
 			break;
 		case "isname":
-			args.add(ORGANIZATION);
+			args.add(ORGANIZATION_PERSON);
 			args.add(BaseType.STRING);
 			break;
 
-//		case "name":
 		case "emailaddress":
 		case "employedby":
 			args.add(PERSON);
 			break;
-//		case "isname":
 		case "isemailaddress":
 			args.add(PERSON);
 			args.add(BaseType.STRING);

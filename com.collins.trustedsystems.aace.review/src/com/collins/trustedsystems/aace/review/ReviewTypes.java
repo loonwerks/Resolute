@@ -6,6 +6,7 @@ import java.util.List;
 import com.rockwellcollins.atc.resolute.analysis.external.ResoluteExternalFunctionLibraryType;
 import com.rockwellcollins.atc.resolute.validation.BaseType;
 import com.rockwellcollins.atc.resolute.validation.ResoluteType;
+import com.rockwellcollins.atc.resolute.validation.SetType;
 
 public class ReviewTypes extends ResoluteExternalFunctionLibraryType {
 
@@ -131,18 +132,18 @@ public class ReviewTypes extends ResoluteExternalFunctionLibraryType {
 			return BaseType.BOOL;
 
 		case "reviews":
-			return BaseType.ENTITY;
+			return new SetType(BaseType.ENTITY);
 		case "reviewresult":
-			return REVIEW_STATE;
+			return new SetType(REVIEW_STATE);
 		case "createdby":
-			return BaseType.ACTIVITY;
+			return new SetType(BaseType.ACTIVITY);
 
 		case "author":
 		case "reviewer":
-			return BaseType.AGENT;
+			return new SetType(BaseType.AGENT);
 		case "reviewed":
 		case "governedby":
-			return BaseType.ENTITY;
+			return new SetType(BaseType.ENTITY);
 
 		default:
 			return BaseType.FAIL;

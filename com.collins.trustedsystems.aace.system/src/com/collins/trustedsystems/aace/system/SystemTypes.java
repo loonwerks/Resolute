@@ -6,6 +6,7 @@ import java.util.List;
 import com.rockwellcollins.atc.resolute.analysis.external.ResoluteExternalFunctionLibraryType;
 import com.rockwellcollins.atc.resolute.validation.BaseType;
 import com.rockwellcollins.atc.resolute.validation.ResoluteType;
+import com.rockwellcollins.atc.resolute.validation.SetType;
 
 public class SystemTypes extends ResoluteExternalFunctionLibraryType {
 
@@ -53,21 +54,21 @@ public class SystemTypes extends ResoluteExternalFunctionLibraryType {
 			return BaseType.BOOL;
 
 		case "partof":
-			return BaseType.ENTITY;
+			return new SetType(BaseType.ENTITY);
 		case "producedby":
-			return BaseType.ACTIVITY;
+			return new SetType(BaseType.ACTIVITY);
 		case "provides":
 		case "requires":
-			return BaseType.ENTITY;
+			return new SetType(BaseType.ENTITY);
 
 		case "source":
 		case "destination":
-			return BaseType.ENTITY;
+			return new SetType(BaseType.ENTITY);
 		case "identifiedby":
-			return BaseType.ACTIVITY;
+			return new SetType(BaseType.ACTIVITY);
 
 		case "developedby":
-			return BaseType.AGENT;
+			return new SetType(BaseType.AGENT);
 
 		default:
 			return BaseType.FAIL;

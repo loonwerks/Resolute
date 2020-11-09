@@ -6,6 +6,7 @@ import java.util.List;
 import com.rockwellcollins.atc.resolute.analysis.external.ResoluteExternalFunctionLibraryType;
 import com.rockwellcollins.atc.resolute.validation.BaseType;
 import com.rockwellcollins.atc.resolute.validation.ResoluteType;
+import com.rockwellcollins.atc.resolute.validation.SetType;
 
 public class RequirementsTypes extends ResoluteExternalFunctionLibraryType {
 
@@ -35,6 +36,18 @@ public class RequirementsTypes extends ResoluteExternalFunctionLibraryType {
 		@Override
 		public boolean subtypeOf(ResoluteType otherType) {
 			if (otherType.equals(ACTIVITY)) {
+				return true;
+			} else {
+				return super.subtypeOf(otherType);
+			}
+		}
+	};
+
+	// Special type to handle polymorphism
+	private static final BaseType REQUIREMENT_DATA_DICTIONARY_TERM = new BaseType("requirement_data_dictionary_term") {
+		@Override
+		public boolean subtypeOf(ResoluteType otherType) {
+			if (otherType.equals(REQUIREMENT) || otherType.equals(DATA_DICTIONARY_TERM)) {
 				return true;
 			} else {
 				return super.subtypeOf(otherType);
@@ -74,22 +87,21 @@ public class RequirementsTypes extends ResoluteExternalFunctionLibraryType {
 		case "giventext":
 		case "iftext":
 		case "thentext":
-			// TODO: make SetType
-			return BaseType.STRING;
+			return new SetType(BaseType.STRING);
 		case "governs":
 		case "satisfies":
 		case "mitigates":
-			return BaseType.ENTITY;
+			return new SetType(BaseType.ENTITY);
 		case "createdby":
-			return BaseType.ACTIVITY;
+			return new SetType(BaseType.ACTIVITY);
 		case "providedby":
 		case "consumedby":
-			return BaseType.ENTITY;
+			return new SetType(BaseType.ENTITY);
 		case "author":
-			return BaseType.AGENT;
+			return new SetType(BaseType.AGENT);
 		case "referenced":
 		case "governedby":
-			return BaseType.ENTITY;
+			return new SetType(BaseType.ENTITY);
 
 		default:
 			return BaseType.FAIL;
@@ -104,16 +116,23 @@ public class RequirementsTypes extends ResoluteExternalFunctionLibraryType {
 		switch (function.toLowerCase()) {
 
 		case "text":
+			args.add(REQUIREMENT_DATA_DICTIONARY_TERM);
+			break;
 		case "giventext":
 		case "iftext":
 		case "thentext":
 		case "governs":
 		case "satisfies":
 		case "mitigates":
-		case "createdby":
 			args.add(REQUIREMENT);
 			break;
+		case "createdby":
+			args.add(REQUIREMENT_DATA_DICTIONARY_TERM);
+			break;
 		case "istext":
+			args.add(REQUIREMENT_DATA_DICTIONARY_TERM);
+			args.add(BaseType.STRING);
+			break;
 		case "isgiventext":
 		case "isiftext":
 		case "isthentext":
@@ -127,33 +146,24 @@ public class RequirementsTypes extends ResoluteExternalFunctionLibraryType {
 			args.add(BaseType.ENTITY);
 			break;
 		case "iscreatedby":
-			args.add(REQUIREMENT);
+			args.add(REQUIREMENT_DATA_DICTIONARY_TERM);
 			args.add(BaseType.ACTIVITY);
 			break;
 
-//		case "text":
 		case "providedby":
 		case "consumedby":
-//		case "createdby":
 			args.add(DATA_DICTIONARY_TERM);
 			break;
-//		case "istext":
-//			args.add(DATA_DICTIONARY_TERM);
-//			args.add(BaseType.STRING);
-//			break;
+
 		case "isprovidedby":
 		case "isconsumedby":
 			args.add(DATA_DICTIONARY_TERM);
 			args.add(BaseType.ENTITY);
 			break;
-//		case "iscreatedby":
-//			args.add(DATA_DICTIONARY_TERM);
-//			args.add(BaseType.ACTIVITY);
-//			break;
 
 		case "author":
 		case "referenced":
-//		case "consumedby":
+		case "governedby":
 			args.add(REQUIREMENT_DEVELOPMENT);
 			break;
 		case "isauthor":
@@ -161,7 +171,7 @@ public class RequirementsTypes extends ResoluteExternalFunctionLibraryType {
 			args.add(BaseType.AGENT);
 			break;
 		case "isreferenced":
-//		case "isconsumedby":
+		case "isgovernedby":
 			args.add(REQUIREMENT_DEVELOPMENT);
 			args.add(BaseType.ENTITY);
 

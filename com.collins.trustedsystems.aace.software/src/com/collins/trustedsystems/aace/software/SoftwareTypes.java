@@ -77,6 +77,18 @@ public class SoftwareTypes extends ResoluteExternalFunctionLibraryType {
 		}
 	};
 
+	// Special type to handle polymorphism
+	private static final BaseType PERFORMED_BY = new BaseType("performed_by") {
+		@Override
+		public boolean subtypeOf(ResoluteType otherType) {
+			if (otherType.equals(CODE_GEN) || otherType.equals(COMPILE) || otherType.equals(PACKAGE)) {
+				return true;
+			} else {
+				return super.subtypeOf(otherType);
+			}
+		}
+	};
+
 	@Override
 	public ResoluteType getType(String name) {
 
@@ -171,7 +183,7 @@ public class SoftwareTypes extends ResoluteExternalFunctionLibraryType {
 
 		switch (function.toLowerCase()) {
 
-//		case "author":
+		case "author":
 		case "referenced":
 		case "governedby":
 			args.add(CODE_DEVELOPMENT);
@@ -195,37 +207,28 @@ public class SoftwareTypes extends ResoluteExternalFunctionLibraryType {
 			break;
 
 		case "performedby":
-			args.add(CODE_GEN);
+			args.add(PERFORMED_BY);
 			break;
 		case "isperformedby":
-			args.add(CODE_GEN);
+			args.add(PERFORMED_BY);
 			args.add(BaseType.AGENT);
 			break;
 
-//		case "performedby":
 		case "compiledby":
 		case "compileinput":
 			args.add(COMPILE);
 			break;
-//		case "isperformedby":
-//			args.add(COMPILE);
-//			args.add(BaseType.AGENT);
-//			break;
+
 		case "iscompiledby":
 		case "iscompileinput":
 			args.add(COMPILE);
 			args.add(FileTypes.FILE);
 			break;
 
-//		case "performedby":
 		case "packagedby":
 		case "packageinput":
 			args.add(PACKAGE);
 			break;
-//		case "isperformedby":
-//			args.add(PACKAGE);
-//			args.add(BaseType.AGENT);
-//			break;
 		case "ispackagedby":
 		case "ispackageinput":
 			args.add(PACKAGE);
