@@ -10,7 +10,7 @@ import com.rockwellcollins.atc.resolute.validation.SetType;
 
 public class AnalysisTypes extends ResoluteExternalFunctionLibraryType {
 
-	private static final BaseType ANALYSIS = new BaseType("analysis") {
+	private static final BaseType ANALYSIS = new BaseType("analysis_activity") {
 		@Override
 		public boolean subtypeOf(ResoluteType otherType) {
 			if (otherType.equals(ACTIVITY)) {

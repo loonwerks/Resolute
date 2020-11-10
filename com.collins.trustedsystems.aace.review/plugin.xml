@@ -4,9 +4,9 @@
    <extension
          point="com.rockwellcollins.atc.resolute.analysis.external.resoluteExternalFunctionLibrary">
       <externalLibrary
-            libraryClass="com.collins.trustedsystems.aace.review.ReviewTypes"
+            libraryClass="com.collins.trustedsystems.aace.review.ReviewFunctions"
             name="rv"
-            typeClass="com.collins.trustedsystems.aace.review.ReviewFunctions">
+            typeClass="com.collins.trustedsystems.aace.review.ReviewTypes">
       </externalLibrary>
    </extension>
 

@@ -6,6 +6,7 @@ Bundle-Version: 2.5.1.qualifier
 Bundle-Vendor: COLLINS
 Automatic-Module-Name: com.collins.trustedsystems.aace.review
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: com.rockwellcollins.atc.resolute;bundle-version="2.5.1",
- com.rockwellcollins.atc.resolute.analysis;bundle-version="2.5.1",
+Require-Bundle: com.rockwellcollins.atc.resolute.analysis,
+ com.rockwellcollins.atc.resolute,
  org.osate.aadl2
+Bundle-ActivationPolicy: lazy
