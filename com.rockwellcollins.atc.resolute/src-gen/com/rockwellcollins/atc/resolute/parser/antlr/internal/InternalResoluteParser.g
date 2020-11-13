@@ -5127,6 +5127,13 @@ ruleBuiltInFn returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getEnd_to_end_flowsKeyword_65()); 
     }
+
+    |
+	kw=Identifier 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getIdentifierKeyword_66()); 
+    }
 )
     ;
 

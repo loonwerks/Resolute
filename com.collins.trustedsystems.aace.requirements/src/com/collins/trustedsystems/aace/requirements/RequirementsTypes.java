@@ -13,7 +13,7 @@ public class RequirementsTypes extends ResoluteExternalFunctionLibraryType {
 	private static final BaseType REQUIREMENT = new BaseType("requirement") {
 		@Override
 		public boolean subtypeOf(ResoluteType otherType) {
-			if (otherType.equals(ENTITY)) {
+			if (otherType.equals(ENTITY) || otherType.equals(REQUIREMENT_DATA_DICTIONARY_TERM)) {
 				return true;
 			} else {
 				return super.subtypeOf(otherType);
@@ -24,7 +24,7 @@ public class RequirementsTypes extends ResoluteExternalFunctionLibraryType {
 	private static final BaseType DATA_DICTIONARY_TERM = new BaseType("data_dictionary_term") {
 		@Override
 		public boolean subtypeOf(ResoluteType otherType) {
-			if (otherType.equals(ENTITY)) {
+			if (otherType.equals(ENTITY) || otherType.equals(REQUIREMENT_DATA_DICTIONARY_TERM)) {
 				return true;
 			} else {
 				return super.subtypeOf(otherType);
@@ -174,6 +174,7 @@ public class RequirementsTypes extends ResoluteExternalFunctionLibraryType {
 		case "isgovernedby":
 			args.add(REQUIREMENT_DEVELOPMENT);
 			args.add(BaseType.ENTITY);
+			break;
 
 		default:
 			args = null;

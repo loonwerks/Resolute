@@ -197,6 +197,7 @@ public class TestingTypes extends ResoluteExternalFunctionLibraryType {
 		case "isverifies":
 			args.add(TEST);
 			args.add(BaseType.ENTITY);
+			break;
 		case "isproducedby":
 			args.add(TEST);
 			args.add(BaseType.ACTIVITY);

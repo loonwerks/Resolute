@@ -410,7 +410,8 @@ BuiltInFn:
 |   'flow_specifications'
 |   'end_to_end_flows'
 
-//// Evidences
+// Evidences
+|	'identifier'
 //	// ANALYSIS
 //|	'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
 //|	'metric' // describes ANALYSIS_REPORT with values of type float

@@ -53,7 +53,7 @@ public class ProcessTypes extends ResoluteExternalFunctionLibraryType {
 		case "issatisfiedby":
 			args.add(OBJECTIVE);
 			args.add(BaseType.ACTIVITY);
-
+			break;
 		default:
 			args = null;
 		}

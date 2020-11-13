@@ -3094,6 +3094,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFlow_elementsKeyword_63 = (Keyword)cAlternatives.eContents().get(63);
 		private final Keyword cFlow_specificationsKeyword_64 = (Keyword)cAlternatives.eContents().get(64);
 		private final Keyword cEnd_to_end_flowsKeyword_65 = (Keyword)cAlternatives.eContents().get(65);
+		private final Keyword cIdentifierKeyword_66 = (Keyword)cAlternatives.eContents().get(66);
 		
 		//BuiltInFn: // Primary type: aadl
 		// 'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' |
@@ -3122,10 +3123,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//	'propagate_error' // the component propagate an error
 		// | 'error_state_reachable' // the error state is reachable
 		// |
-		//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' //// Evidences
+		//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
+		// |
+		//	'identifier' //	// ANALYSIS
 		//
-		//	//	// ANALYSIS
-		// //|	'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
+		//	//|	'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
 		//
 		//	//|	'metric' // describes ANALYSIS_REPORT with values of type float
 		//
@@ -3269,7 +3271,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		// |
 		//'error_state_reachable' // the error state is reachable
 		// | 'flow_source' | 'flow_destination' | 'flow_elements' |
-		//'flow_specifications' | 'end_to_end_flows'
+		//'flow_specifications' | 'end_to_end_flows' // Evidences
+		// | 'identifier'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//// Primary type: aadl
@@ -3470,6 +3473,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//'end_to_end_flows'
 		public Keyword getEnd_to_end_flowsKeyword_65() { return cEnd_to_end_flowsKeyword_65; }
+
+		//'identifier'
+		public Keyword getIdentifierKeyword_66() { return cIdentifierKeyword_66; }
 	}
 
 	public class RealTermElements extends AbstractParserRuleElementFinder {
@@ -4482,10 +4488,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//	'propagate_error' // the component propagate an error
 	// | 'error_state_reachable' // the error state is reachable
 	// |
-	//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' //// Evidences
+	//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
+	// |
+	//	'identifier' //	// ANALYSIS
 	//
-	//	//	// ANALYSIS
-	// //|	'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
+	//	//|	'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
 	//
 	//	//|	'metric' // describes ANALYSIS_REPORT with values of type float
 	//

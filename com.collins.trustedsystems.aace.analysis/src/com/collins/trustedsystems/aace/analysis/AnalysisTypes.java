@@ -234,6 +234,7 @@ public class AnalysisTypes extends ResoluteExternalFunctionLibraryType {
 		case "isresult":
 		case "ismetric":
 		case "isanalyzes":
+//		case "isconfirms":
 		case "isproducedby":
 		case "isfromreport":
 		case "isannotationtype":
@@ -246,10 +247,14 @@ public class AnalysisTypes extends ResoluteExternalFunctionLibraryType {
 			return new SetType(ANALYSIS_RESULT);
 
 		case "metric":
+		case "metric_set":
 			return new SetType(BaseType.REAL);
 
 		case "analyzes":
 			return new SetType(BaseType.ENTITY);
+
+//		case "confirms":
+//			return new SetType(BaseType.ENTITY);
 
 		case "producedby":
 			return new SetType(BaseType.ACTIVITY);
@@ -282,6 +287,7 @@ public class AnalysisTypes extends ResoluteExternalFunctionLibraryType {
 		case "result":
 		case "metric":
 		case "analyzes":
+//		case "confirms":
 		case "producedby":
 			args.add(ANALYSIS_REPORT);
 			break;
@@ -298,6 +304,10 @@ public class AnalysisTypes extends ResoluteExternalFunctionLibraryType {
 			args.add(ANALYSIS_REPORT);
 			args.add(BaseType.ENTITY);
 			break;
+//		case "isconfirms":
+//			args.add(ANALYSIS_REPORT);
+//			args.add(BaseType.ENTITY);
+//			break;
 		case "isproducedby":
 			args.add(ANALYSIS_REPORT);
 			args.add(BaseType.ACTIVITY);

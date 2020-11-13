@@ -173,6 +173,7 @@ import com.rockwellcollins.atc.resolute.services.ResoluteGrammarAccess;
 		tokenNameToValue.put("Event_port", "'event_port'");
 		tokenNameToValue.put("Has_member", "'has_member'");
 		tokenNameToValue.put("Has_parent", "'has_parent'");
+		tokenNameToValue.put("Identifier", "'identifier'");
 		tokenNameToValue.put("Instanceof", "'instanceof'");
 		tokenNameToValue.put("Is_of_type", "'is_of_type'");
 		tokenNameToValue.put("Is_process", "'is_process'");
@@ -4080,6 +4081,14 @@ rule__BuiltInFn__Alternatives
 	End_to_end_flows 
 
 { after(grammarAccess.getBuiltInFnAccess().getEnd_to_end_flowsKeyword_65()); }
+)
+
+    |(
+{ before(grammarAccess.getBuiltInFnAccess().getIdentifierKeyword_66()); }
+
+	Identifier 
+
+{ after(grammarAccess.getBuiltInFnAccess().getIdentifierKeyword_66()); }
 )
 
 ;

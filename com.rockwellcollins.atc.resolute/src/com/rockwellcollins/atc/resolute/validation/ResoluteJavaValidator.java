@@ -748,11 +748,12 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			QuantifiedExpr quantifiedExpr = (QuantifiedExpr) expr;
 			return isValidConclusionExpr(quantifiedExpr.getExpr());
 		} else if (expr instanceof FnCallExpr) {
-			FnCallExpr fnCallExpr = (FnCallExpr) expr;
-			FunctionDefinition funcDef = fnCallExpr.getFn();
-			if (funcDef.getBody() instanceof ClaimBody) {
-				return true;
-			}
+//			FnCallExpr fnCallExpr = (FnCallExpr) expr;
+//			FunctionDefinition funcDef = fnCallExpr.getFn();
+//			if (funcDef.getBody() instanceof ClaimBody) {
+//				return true;
+//			}
+			return true;
 		} else if (expr instanceof LetExpr) {
 			LetExpr letExpr = (LetExpr) expr;
 			return isValidConclusionExpr(letExpr.getExpr());
@@ -892,6 +893,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				}
 			} else {
 				ResoluteType argType = typeToResoluteType(arg.getType());
+				if (argType instanceof SetType) {
+					argType = ((SetType) argType).elementType;
+				}
 				if (!argType.subtypeOf(BaseType.AADL) && !argType.subtypeOf(BaseType.EVIDENCE)) {
 					error(arg, "Can only quantify over AADL types");
 				}
@@ -1076,7 +1080,15 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			ResoluteType actualType = getExprType(actuals.get(i));
 			ResoluteType expectedType = argTypes.get(i);
 
+			if (actualType instanceof SetType) {
+				SetType st = (SetType) actualType;
+				if (st.elementType.subtypeOf(BaseType.EVIDENCE)) {
+					actualType = st.elementType;
+				}
+			}
+
 			if (!actualType.subtypeOf(expectedType)) {
+
 				error(funCall.getArgs().get(i), "Expected type " + expectedType + " but found type " + actualType);
 			}
 		}
@@ -1778,6 +1790,11 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			expectedTypes.add(BaseType.COMPONENT);
 			break;
 
+		// Evidence
+		case "identifier":
+			expectedTypes.add(BaseType.EVIDENCE);
+			break;
+
 		default:
 			error(funCall, "Unknown built-in function '" + funCall.getFn() + "'");
 			return null;
@@ -1884,7 +1901,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		}
 
 		// Check if library defines the specified type
-		if (!libraryType.isTypeDefined(libFnType.getFnType())) {
+		ResoluteType fnType = libraryType.getType(libFnType.getFnType());
+		if (fnType.equals(BaseType.FAIL)) {
+//		if (!libraryType.isTypeDefined(libFnType.getFnType())) {
 			error(libFnType,
 					"User-defined type '" + libFnType.getFnType() + "' not defined in " + libFnType.getLibName());
 		}
@@ -2331,7 +2350,10 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		case "error_state_reachable":
 			return BaseType.BOOL;
 
-//		// Evidence
+		// Evidence
+		case "identifier":
+			return BaseType.STRING;
+
 //		case "result_of":
 //			return BaseType.TEST_STATUS;
 //
