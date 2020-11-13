@@ -106,6 +106,85 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
          unpack="false"/>
 
    <plugin
+         id="com.rockwellcollins.atc.resolute.agents"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+		 
+   
+   <plugin
+         id="com.rockwellcollins.atc.resolute.analysis"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+		 
+   
+   <plugin
+         id="com.rockwellcollins.atc.resolute.file"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+		 
+   
+   <plugin
+         id="com.rockwellcollins.atc.resolute.hazard"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+		 
+   
+   <plugin
+         id="com.rockwellcollins.atc.resolute.process"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+		 
+   
+   <plugin
+         id="com.rockwellcollins.atc.resolute.requirements"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+		 
+   
+   <plugin
+         id="com.rockwellcollins.atc.resolute.review"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+		 
+   
+   <plugin
+         id="com.rockwellcollins.atc.resolute.software"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+		 
+   
+   <plugin
+         id="com.rockwellcollins.atc.resolute.system"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+		 
+   
+   <plugin
+         id="com.rockwellcollins.atc.resolute.testing"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+		 
+   <plugin
          id="com.rockwellcollins.atc.resolute.agreelib"
          download-size="0"
          install-size="0"
