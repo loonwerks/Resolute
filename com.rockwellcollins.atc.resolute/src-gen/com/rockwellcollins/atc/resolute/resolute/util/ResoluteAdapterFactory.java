@@ -117,6 +117,11 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
         return createConstantDefinitionAdapter();
       }
       @Override
+      public Adapter caseTypeDefinition(TypeDefinition object)
+      {
+        return createTypeDefinitionAdapter();
+      }
+      @Override
       public Adapter caseFunctionDefinition(FunctionDefinition object)
       {
         return createFunctionDefinitionAdapter();
@@ -230,6 +235,11 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLibraryFnType(LibraryFnType object)
       {
         return createLibraryFnTypeAdapter();
+      }
+      @Override
+      public Adapter caseDefinedType(DefinedType object)
+      {
+        return createDefinedTypeAdapter();
       }
       @Override
       public Adapter caseQuantArg(QuantArg object)
@@ -564,6 +574,21 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConstantDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.TypeDefinition <em>Type Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.TypeDefinition
+   * @generated
+   */
+  public Adapter createTypeDefinitionAdapter()
   {
     return null;
   }
@@ -909,6 +934,21 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLibraryFnTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.DefinedType <em>Defined Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.DefinedType
+   * @generated
+   */
+  public Adapter createDefinedTypeAdapter()
   {
     return null;
   }

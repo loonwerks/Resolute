@@ -166,31 +166,41 @@ ruleDefinition returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getDefinitionAccess().getFunctionDefinitionParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getDefinitionAccess().getTypeDefinitionParserRuleCall_1()); 
     }
-    this_FunctionDefinition_1=ruleFunctionDefinition
+    this_TypeDefinition_1=ruleTypeDefinition
     {
-        $current = $this_FunctionDefinition_1.current;
+        $current = $this_TypeDefinition_1.current;
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getDefinitionAccess().getRulesetParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getDefinitionAccess().getFunctionDefinitionParserRuleCall_2()); 
     }
-    this_Ruleset_2=ruleRuleset
+    this_FunctionDefinition_2=ruleFunctionDefinition
     {
-        $current = $this_Ruleset_2.current;
+        $current = $this_FunctionDefinition_2.current;
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getDefinitionAccess().getNotationDefinitionParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getDefinitionAccess().getRulesetParserRuleCall_3()); 
     }
-    this_NotationDefinition_3=ruleNotationDefinition
+    this_Ruleset_3=ruleRuleset
     {
-        $current = $this_NotationDefinition_3.current;
+        $current = $this_Ruleset_3.current;
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDefinitionAccess().getNotationDefinitionParserRuleCall_4()); 
+    }
+    this_NotationDefinition_4=ruleNotationDefinition
+    {
+        $current = $this_NotationDefinition_4.current;
         afterParserOrEnumRuleCall();
     }
 )
@@ -489,6 +499,26 @@ ruleType returns [EObject current=null]
         		lv_fnType_15_0, 
         		"org.osate.xtext.aadl2.properties.Properties.ID");
 	    }
+
+)
+))
+    |((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getTypeAccess().getDefinedTypeAction_4_0(),
+            $current);
+    }
+)(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getTypeRule());
+	        }
+        }
+	otherlv_17=RULE_ID
+	{
+		newLeafNode(otherlv_17, grammarAccess.getTypeAccess().getTypeDefinitionTypeDefinitionCrossReference_4_1_0()); 
+	}
 
 )
 )))
@@ -1345,6 +1375,68 @@ ruleConstantDefinition returns [EObject current=null]
         		lv_expr_4_0, 
         		"com.rockwellcollins.atc.resolute.Resolute.Expr");
 	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRuleTypeDefinition
+entryRuleTypeDefinition returns [EObject current=null]
+	:
+	{ newCompositeNode(grammarAccess.getTypeDefinitionRule()); }
+	 iv_ruleTypeDefinition=ruleTypeDefinition 
+	 { $current=$iv_ruleTypeDefinition.current; } 
+	 EOF 
+;
+
+// Rule TypeDefinition
+ruleTypeDefinition returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+	otherlv_0=Typedef
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getTypeDefinitionAccess().getTypedefKeyword_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getTypeTypeParserRuleCall_1_0()); 
+	    }
+		lv_type_1_0=ruleType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getTypeDefinitionRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_1_0, 
+        		"com.rockwellcollins.atc.resolute.Resolute.Type");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		lv_name_2_0=RULE_ID
+		{
+			newLeafNode(lv_name_2_0, grammarAccess.getTypeDefinitionAccess().getNameIDTerminalRuleCall_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getTypeDefinitionRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_2_0, 
+        		"org.osate.xtext.aadl2.properties.Properties.ID");
 	    }
 
 )

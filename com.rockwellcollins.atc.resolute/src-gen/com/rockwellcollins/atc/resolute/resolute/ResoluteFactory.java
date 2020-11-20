@@ -86,6 +86,15 @@ public interface ResoluteFactory extends EFactory
   ConstantDefinition createConstantDefinition();
 
   /**
+   * Returns a new object of class '<em>Type Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type Definition</em>'.
+   * @generated
+   */
+  TypeDefinition createTypeDefinition();
+
+  /**
    * Returns a new object of class '<em>Function Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -291,6 +300,15 @@ public interface ResoluteFactory extends EFactory
    * @generated
    */
   LibraryFnType createLibraryFnType();
+
+  /**
+   * Returns a new object of class '<em>Defined Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Defined Type</em>'.
+   * @generated
+   */
+  DefinedType createDefinedType();
 
   /**
    * Returns a new object of class '<em>Quant Arg</em>'.

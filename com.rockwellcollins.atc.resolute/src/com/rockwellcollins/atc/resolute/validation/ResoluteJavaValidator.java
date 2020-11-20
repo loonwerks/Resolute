@@ -72,6 +72,7 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimRestriction;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
+import com.rockwellcollins.atc.resolute.resolute.DefinedType;
 import com.rockwellcollins.atc.resolute.resolute.Definition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
 import com.rockwellcollins.atc.resolute.resolute.EvidenceExpr;
@@ -2653,6 +2654,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				throw new IllegalArgumentException();
 			}
 			return libraryType.getType(libraryFnType.getFnType());
+		} else if (type instanceof DefinedType) {
+			DefinedType defType = (DefinedType) type;
+			return typeToResoluteType(defType.getTypeDefinition().getType());
 		} else {
 			error(type, "Unable to convert type");
 			throw new IllegalArgumentException();

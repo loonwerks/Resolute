@@ -71,6 +71,7 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.BASE_TYPE: return createBaseType();
       case ResolutePackage.ARG: return createArg();
       case ResolutePackage.CONSTANT_DEFINITION: return createConstantDefinition();
+      case ResolutePackage.TYPE_DEFINITION: return createTypeDefinition();
       case ResolutePackage.FUNCTION_DEFINITION: return createFunctionDefinition();
       case ResolutePackage.DEFINITION_BODY: return createDefinitionBody();
       case ResolutePackage.CLAIM_CONTEXT: return createClaimContext();
@@ -94,6 +95,7 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.LIST_TYPE: return createListType();
       case ResolutePackage.SET_TYPE: return createSetType();
       case ResolutePackage.LIBRARY_FN_TYPE: return createLibraryFnType();
+      case ResolutePackage.DEFINED_TYPE: return createDefinedType();
       case ResolutePackage.QUANT_ARG: return createQuantArg();
       case ResolutePackage.FUNCTION_BODY: return createFunctionBody();
       case ResolutePackage.CLAIM_BODY: return createClaimBody();
@@ -217,6 +219,18 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
   {
     ConstantDefinitionImpl constantDefinition = new ConstantDefinitionImpl();
     return constantDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeDefinition createTypeDefinition()
+  {
+    TypeDefinitionImpl typeDefinition = new TypeDefinitionImpl();
+    return typeDefinition;
   }
 
   /**
@@ -493,6 +507,18 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
   {
     LibraryFnTypeImpl libraryFnType = new LibraryFnTypeImpl();
     return libraryFnType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DefinedType createDefinedType()
+  {
+    DefinedTypeImpl definedType = new DefinedTypeImpl();
+    return definedType;
   }
 
   /**

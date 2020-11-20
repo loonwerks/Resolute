@@ -62,7 +62,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLetBindingParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//NamedElement aadl2::NamedElement:
-		//	Definition | Arg | LetBinding;
+		//	Definition
+		//	| Arg
+		//	| LetBinding;
 		@Override public ParserRule getRule() { return rule; }
 
 		//Definition | Arg | LetBinding
@@ -87,7 +89,10 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDefinitionBodyParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Element aadl2::Element:
-		//	Expr | AnalysisStatement | ClaimText | DefinitionBody;
+		//	Expr
+		//	| AnalysisStatement
+		//	| ClaimText
+		//	| DefinitionBody;
 		@Override public ParserRule getRule() { return rule; }
 
 		//Expr | AnalysisStatement | ClaimText | DefinitionBody
@@ -134,28 +139,36 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.Definition");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cConstantDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cFunctionDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cRulesetParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cNotationDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cTypeDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cFunctionDefinitionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cRulesetParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cNotationDefinitionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//Definition:
-		//	ConstantDefinition | FunctionDefinition | Ruleset | NotationDefinition;
+		//	ConstantDefinition
+		//	| TypeDefinition
+		//	| FunctionDefinition
+		//	| Ruleset
+		//	| NotationDefinition;
 		@Override public ParserRule getRule() { return rule; }
 
-		//ConstantDefinition | FunctionDefinition | Ruleset | NotationDefinition
+		//ConstantDefinition | TypeDefinition | FunctionDefinition | Ruleset | NotationDefinition
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ConstantDefinition
 		public RuleCall getConstantDefinitionParserRuleCall_0() { return cConstantDefinitionParserRuleCall_0; }
 
+		//TypeDefinition
+		public RuleCall getTypeDefinitionParserRuleCall_1() { return cTypeDefinitionParserRuleCall_1; }
+
 		//FunctionDefinition
-		public RuleCall getFunctionDefinitionParserRuleCall_1() { return cFunctionDefinitionParserRuleCall_1; }
+		public RuleCall getFunctionDefinitionParserRuleCall_2() { return cFunctionDefinitionParserRuleCall_2; }
 
 		//Ruleset
-		public RuleCall getRulesetParserRuleCall_2() { return cRulesetParserRuleCall_2; }
+		public RuleCall getRulesetParserRuleCall_3() { return cRulesetParserRuleCall_3; }
 
 		//NotationDefinition
-		public RuleCall getNotationDefinitionParserRuleCall_3() { return cNotationDefinitionParserRuleCall_3; }
+		public RuleCall getNotationDefinitionParserRuleCall_4() { return cNotationDefinitionParserRuleCall_4; }
 	}
 
 	public class NotationDefinitionElements extends AbstractParserRuleElementFinder {
@@ -263,14 +276,22 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFullStopKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		private final Assignment cFnTypeAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
 		private final RuleCall cFnTypeIDTerminalRuleCall_3_3_0 = (RuleCall)cFnTypeAssignment_3_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cDefinedTypeAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Assignment cTypeDefinitionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final CrossReference cTypeDefinitionTypeDefinitionCrossReference_4_1_0 = (CrossReference)cTypeDefinitionAssignment_4_1.eContents().get(0);
+		private final RuleCall cTypeDefinitionTypeDefinitionIDTerminalRuleCall_4_1_0_1 = (RuleCall)cTypeDefinitionTypeDefinitionCrossReference_4_1_0.eContents().get(1);
 		
 		//Type:
-		//	{ListType} '[' type=Type ']' | {SetType} '{' type=Type '}' | BaseType ('<' paramType=Type '>')? | {LibraryFnType}
-		//	libName=ID '.' fnType=ID;
+		//	{ListType} '[' type=Type ']'
+		//	| {SetType} '{' type=Type '}'
+		//	| BaseType ('<' paramType=Type '>')?
+		//	| {LibraryFnType} libName=ID '.' fnType=ID
+		//	| {DefinedType} typeDefinition=[TypeDefinition];
 		@Override public ParserRule getRule() { return rule; }
 
 		//{ListType} '[' type=Type ']' | {SetType} '{' type=Type '}' | BaseType ('<' paramType=Type '>')? | {LibraryFnType}
-		//libName=ID '.' fnType=ID
+		//libName=ID '.' fnType=ID | {DefinedType} typeDefinition=[TypeDefinition]
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{ListType} '[' type=Type ']'
@@ -350,6 +371,21 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getFnTypeIDTerminalRuleCall_3_3_0() { return cFnTypeIDTerminalRuleCall_3_3_0; }
+
+		//{DefinedType} typeDefinition=[TypeDefinition]
+		public Group getGroup_4() { return cGroup_4; }
+
+		//{DefinedType}
+		public Action getDefinedTypeAction_4_0() { return cDefinedTypeAction_4_0; }
+
+		//typeDefinition=[TypeDefinition]
+		public Assignment getTypeDefinitionAssignment_4_1() { return cTypeDefinitionAssignment_4_1; }
+
+		//[TypeDefinition]
+		public CrossReference getTypeDefinitionTypeDefinitionCrossReference_4_1_0() { return cTypeDefinitionTypeDefinitionCrossReference_4_1_0; }
+
+		//ID
+		public RuleCall getTypeDefinitionTypeDefinitionIDTerminalRuleCall_4_1_0_1() { return cTypeDefinitionTypeDefinitionIDTerminalRuleCall_4_1_0_1; }
 	}
 
 	public class BaseTypeElements extends AbstractParserRuleElementFinder {
@@ -406,88 +442,107 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTypeThingKeyword_0_47 = (Keyword)cTypeAlternatives_0.eContents().get(47);
 		
 		//BaseType:
-		//	type=('int' | 'real' | 'string' | 'bool' | 'range' | 'aadl' | 'component' | 'abstract' | 'bus' | 'data' | 'device' |
-		//	'memory' | 'processor' | 'process' | 'subprogram_group' | 'subprogram' | 'system' | 'thread_group' | 'thread' |
-		//	'virtual_bus' | 'virtual_processor' | 'connection' | 'property' | 'feature' | 'port' | 'data_port' | 'event_port' |
-		//	'event_data_port' | 'feature_group' | 'access' | 'bus_access' | 'provides_bus_access' | 'requires_bus_access' |
-		//	'data_access' | 'provides_data_access' | 'requires_data_access' | 'subprogram_access' | 'provides_subprogram_access'
-		//	| 'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
-		//	'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
-		// // W3C-PROV
-		// |
-		//	'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
-		//
+		//	type=('int'
+		//	| 'real'
+		//	| 'string'
+		//	| 'bool'
+		//	| 'range'
+		//	| 'aadl'
+		//	| 'component'
+		//	| 'abstract'
+		//	| 'bus'
+		//	| 'data'
+		//	| 'device'
+		//	| 'memory'
+		//	| 'processor'
+		//	| 'process'
+		//	| 'subprogram_group'
+		//	| 'subprogram'
+		//	| 'system'
+		//	| 'thread_group'
+		//	| 'thread'
+		//	| 'virtual_bus'
+		//	| 'virtual_processor'
+		//	| 'connection'
+		//	| 'property'
+		//	| 'feature'
+		//	| 'port'
+		//	| 'data_port'
+		//	| 'event_port'
+		//	| 'event_data_port'
+		//	| 'feature_group'
+		//	| 'access'
+		//	| 'bus_access'
+		//	| 'provides_bus_access'
+		//	| 'requires_bus_access'
+		//	| 'data_access'
+		//	| 'provides_data_access'
+		//	| 'requires_data_access'
+		//	| 'subprogram_access'
+		//	| 'provides_subprogram_access'
+		//	| 'requires_subprogram_access'
+		//	| 'subprogram_group_access'
+		//	| 'provides_subprogram_group_access'
+		//	| 'requires_subprogram_group_access'
+		//	| 'flow_specification'
+		//	| 'end_to_end_flow'
+		//	// Evidence types
+		//	// W3C-PROV
+		//	| 'entity'
+		//	| 'agent'
+		//	| 'activity'
+		//	| 'thing'
+		//	//		 // ANALYSIS
 		//	//		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
-		// //		|	'analysis_report' 
-		//
+		//	//		|	'analysis_report' 
 		//	//		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
-		//
 		//	//		|	'analysis_annotation_type' // class
-		// //		|	'precondition'	// type of analysis_annotation_type
-		//
+		//	//		|	'precondition'	// type of analysis_annotation_type
 		//	//		|	'postcondition'	// type of analysis_annotation_type
-		// //		|	'invariant'	// type of analysis_annotation_type
-		//
+		//	//		|	'invariant'	// type of analysis_annotation_type
 		//	//		|	'analysis_annotation' // type of entity
-		// //		 // HAZARD
-		// //		|	'hazard' // entity
-		//
+		//	//		 // HAZARD
+		//	//		|	'hazard' // entity
 		//	//		|	'hazard_identification' // type of activity
-		// //		 // REQUIREMENT
-		// //		|	'requirement' // type of entity
-		//
+		//	//		 // REQUIREMENT
+		//	//		|	'requirement' // type of entity
 		//	//		|	'data_dictionary_term' // type of entity
-		// //		|	'requirement_development' // type of activity
-		// //		 // REVIEW
-		//
+		//	//		|	'requirement_development' // type of activity
+		//	//		 // REVIEW
 		//	//		|	'review' // type of activity
-		// //		|	'review_log' // type of entity
-		//
+		//	//		|	'review_log' // type of entity
 		//	//		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		// //		 // SOFTWARE
-		//
+		//	//		 // SOFTWARE
 		//	//		|	'file' // type of entity
-		// //		|	'format' // type of thing
-		// //		|	'code_development' // type of activity
-		//
+		//	//		|	'format' // type of thing
+		//	//		|	'code_development' // type of activity
 		//	//		|	'build' // type of activity
-		// //		|	'code_gen' // type of activity
-		// //		|	'compile' // type of activity
-		//
+		//	//		|	'code_gen' // type of activity
+		//	//		|	'compile' // type of activity
 		//	//		|	'package_file' // corresponds to PACKAGE, type of activity
-		// //		|	'component_type' // type of thing
-		//
+		//	//		|	'component_type' // type of thing
 		//	//		|	'source_function' // type of component_type
-		// //		|	'binary_function' // type of component_type
-		//
+		//	//		|	'binary_function' // type of component_type
 		//	//		|	'source_global_variable' // type of component_type
-		// //		|	'binary_global_variable' // type of component_type
-		//
+		//	//		|	'binary_global_variable' // type of component_type
 		//	//		|	'binary_basic_block' // type of component_type
-		// //		|	'class_definition' // type of component_type
-		//
+		//	//		|	'class_definition' // type of component_type
 		//	//		|	'class_method' // type of component_type
-		// //		|	'class_member_variable' // type of component_type
-		//
+		//	//		|	'class_member_variable' // type of component_type
 		//	//		|	'class_constructor' // type of component_type
-		// //		|	'module' // type of component_type
-		//
+		//	//		|	'module' // type of component_type
 		//	//		|	'namespace' // type of component_type
-		// ////		|	'component' // type of entity
-		// //		 // SYSTEM
-		//
+		//	////		|	'component' // type of entity
+		//	//		 // SYSTEM
 		//	////		|	'system' // type of entity
-		// //		|	'interface' // type of entity
-		//
+		//	//		|	'interface' // type of entity
 		//	//		|	'system_development' // type of activity
-		// //		 // TESTING
-		// //		|	'test' // type of entity
-		//
+		//	//		 // TESTING
+		//	//		|	'test' // type of entity
 		//	//		|	'test_result' // type of entity
-		// //		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
-		//
+		//	//		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
 		//	//		|	'test_developmemt' // type of activity
-		// //		|	'test_execution' // type of activity
+		//	//		|	'test_execution' // type of activity
 		//);
 		@Override public ParserRule getRule() { return rule; }
 
@@ -498,81 +553,58 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'data_access' | 'provides_data_access' | 'requires_data_access' | 'subprogram_access' | 'provides_subprogram_access' |
 		//'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
 		//'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
-		// // W3C-PROV
-		// |
-		//'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
-		//
+		//// W3C-PROV
+		//| 'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
 		////		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
-		// //		|	'analysis_report' 
-		//
+		////		|	'analysis_report' 
 		////		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
-		//
 		////		|	'analysis_annotation_type' // class
-		// //		|	'precondition'	// type of analysis_annotation_type
-		//
+		////		|	'precondition'	// type of analysis_annotation_type
 		////		|	'postcondition'	// type of analysis_annotation_type
-		// //		|	'invariant'	// type of analysis_annotation_type
-		//
+		////		|	'invariant'	// type of analysis_annotation_type
 		////		|	'analysis_annotation' // type of entity
-		// //		 // HAZARD
-		// //		|	'hazard' // entity
-		//
+		////		 // HAZARD
+		////		|	'hazard' // entity
 		////		|	'hazard_identification' // type of activity
-		// //		 // REQUIREMENT
-		// //		|	'requirement' // type of entity
-		//
+		////		 // REQUIREMENT
+		////		|	'requirement' // type of entity
 		////		|	'data_dictionary_term' // type of entity
-		// //		|	'requirement_development' // type of activity
-		// //		 // REVIEW
-		//
+		////		|	'requirement_development' // type of activity
+		////		 // REVIEW
 		////		|	'review' // type of activity
-		// //		|	'review_log' // type of entity
-		//
+		////		|	'review_log' // type of entity
 		////		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		// //		 // SOFTWARE
-		//
+		////		 // SOFTWARE
 		////		|	'file' // type of entity
-		// //		|	'format' // type of thing
-		// //		|	'code_development' // type of activity
-		//
+		////		|	'format' // type of thing
+		////		|	'code_development' // type of activity
 		////		|	'build' // type of activity
-		// //		|	'code_gen' // type of activity
-		// //		|	'compile' // type of activity
-		//
+		////		|	'code_gen' // type of activity
+		////		|	'compile' // type of activity
 		////		|	'package_file' // corresponds to PACKAGE, type of activity
-		// //		|	'component_type' // type of thing
-		//
+		////		|	'component_type' // type of thing
 		////		|	'source_function' // type of component_type
-		// //		|	'binary_function' // type of component_type
-		//
+		////		|	'binary_function' // type of component_type
 		////		|	'source_global_variable' // type of component_type
-		// //		|	'binary_global_variable' // type of component_type
-		//
+		////		|	'binary_global_variable' // type of component_type
 		////		|	'binary_basic_block' // type of component_type
-		// //		|	'class_definition' // type of component_type
-		//
+		////		|	'class_definition' // type of component_type
 		////		|	'class_method' // type of component_type
-		// //		|	'class_member_variable' // type of component_type
-		//
+		////		|	'class_member_variable' // type of component_type
 		////		|	'class_constructor' // type of component_type
-		// //		|	'module' // type of component_type
-		//
+		////		|	'module' // type of component_type
 		////		|	'namespace' // type of component_type
-		// ////		|	'component' // type of entity
-		// //		 // SYSTEM
-		//
+		//////		|	'component' // type of entity
+		////		 // SYSTEM
 		//////		|	'system' // type of entity
-		// //		|	'interface' // type of entity
-		//
+		////		|	'interface' // type of entity
 		////		|	'system_development' // type of activity
-		// //		 // TESTING
-		// //		|	'test' // type of entity
-		//
+		////		 // TESTING
+		////		|	'test' // type of entity
 		////		|	'test_result' // type of entity
-		// //		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
-		//
+		////		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
 		////		|	'test_developmemt' // type of activity
-		// //		|	'test_execution' // type of activity
+		////		|	'test_execution' // type of activity
 		//)
 		public Assignment getTypeAssignment() { return cTypeAssignment; }
 
@@ -583,81 +615,58 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'provides_data_access' | 'requires_data_access' | 'subprogram_access' | 'provides_subprogram_access' |
 		//'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
 		//'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
-		// // W3C-PROV
-		// |
-		//'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
-		//
+		//// W3C-PROV
+		//| 'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
 		////		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
-		// //		|	'analysis_report' 
-		//
+		////		|	'analysis_report' 
 		////		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
-		//
 		////		|	'analysis_annotation_type' // class
-		// //		|	'precondition'	// type of analysis_annotation_type
-		//
+		////		|	'precondition'	// type of analysis_annotation_type
 		////		|	'postcondition'	// type of analysis_annotation_type
-		// //		|	'invariant'	// type of analysis_annotation_type
-		//
+		////		|	'invariant'	// type of analysis_annotation_type
 		////		|	'analysis_annotation' // type of entity
-		// //		 // HAZARD
-		// //		|	'hazard' // entity
-		//
+		////		 // HAZARD
+		////		|	'hazard' // entity
 		////		|	'hazard_identification' // type of activity
-		// //		 // REQUIREMENT
-		// //		|	'requirement' // type of entity
-		//
+		////		 // REQUIREMENT
+		////		|	'requirement' // type of entity
 		////		|	'data_dictionary_term' // type of entity
-		// //		|	'requirement_development' // type of activity
-		// //		 // REVIEW
-		//
+		////		|	'requirement_development' // type of activity
+		////		 // REVIEW
 		////		|	'review' // type of activity
-		// //		|	'review_log' // type of entity
-		//
+		////		|	'review_log' // type of entity
 		////		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		// //		 // SOFTWARE
-		//
+		////		 // SOFTWARE
 		////		|	'file' // type of entity
-		// //		|	'format' // type of thing
-		// //		|	'code_development' // type of activity
-		//
+		////		|	'format' // type of thing
+		////		|	'code_development' // type of activity
 		////		|	'build' // type of activity
-		// //		|	'code_gen' // type of activity
-		// //		|	'compile' // type of activity
-		//
+		////		|	'code_gen' // type of activity
+		////		|	'compile' // type of activity
 		////		|	'package_file' // corresponds to PACKAGE, type of activity
-		// //		|	'component_type' // type of thing
-		//
+		////		|	'component_type' // type of thing
 		////		|	'source_function' // type of component_type
-		// //		|	'binary_function' // type of component_type
-		//
+		////		|	'binary_function' // type of component_type
 		////		|	'source_global_variable' // type of component_type
-		// //		|	'binary_global_variable' // type of component_type
-		//
+		////		|	'binary_global_variable' // type of component_type
 		////		|	'binary_basic_block' // type of component_type
-		// //		|	'class_definition' // type of component_type
-		//
+		////		|	'class_definition' // type of component_type
 		////		|	'class_method' // type of component_type
-		// //		|	'class_member_variable' // type of component_type
-		//
+		////		|	'class_member_variable' // type of component_type
 		////		|	'class_constructor' // type of component_type
-		// //		|	'module' // type of component_type
-		//
+		////		|	'module' // type of component_type
 		////		|	'namespace' // type of component_type
-		// ////		|	'component' // type of entity
-		// //		 // SYSTEM
-		//
+		//////		|	'component' // type of entity
+		////		 // SYSTEM
 		//////		|	'system' // type of entity
-		// //		|	'interface' // type of entity
-		//
+		////		|	'interface' // type of entity
 		////		|	'system_development' // type of activity
-		// //		 // TESTING
-		// //		|	'test' // type of entity
-		//
+		////		 // TESTING
+		////		|	'test' // type of entity
 		////		|	'test_result' // type of entity
-		// //		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
-		//
+		////		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
 		////		|	'test_developmemt' // type of activity
-		// //		|	'test_execution' // type of activity
+		////		|	'test_execution' // type of activity
 		//)
 		public Alternatives getTypeAlternatives_0() { return cTypeAlternatives_0; }
 
@@ -825,7 +834,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprExprParserRuleCall_1_3_0 = (RuleCall)cExprAssignment_1_3.eContents().get(0);
 		
 		////Arg types are used for functions, claims, and quantifiers
-		// Arg:
+		//Arg:
 		//	=> (name=ID ':' type=Type) | {QuantArg} name=ID ':' expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
@@ -917,6 +926,38 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//Expr
 		public RuleCall getExprExprParserRuleCall_4_0() { return cExprExprParserRuleCall_4_0; }
+	}
+
+	public class TypeDefinitionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.TypeDefinition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTypedefKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		
+		//TypeDefinition:
+		//	'typedef' type=Type name=ID;
+		@Override public ParserRule getRule() { return rule; }
+
+		//'typedef' type=Type name=ID
+		public Group getGroup() { return cGroup; }
+
+		//'typedef'
+		public Keyword getTypedefKeyword_0() { return cTypedefKeyword_0; }
+
+		//type=Type
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		//Type
+		public RuleCall getTypeTypeParserRuleCall_1_0() { return cTypeTypeParserRuleCall_1_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
 
 	public class FunctionDefinitionElements extends AbstractParserRuleElementFinder {
@@ -1038,8 +1079,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprExprParserRuleCall_1_4_0 = (RuleCall)cExprAssignment_1_4.eContents().get(0);
 		
 		//DefinitionBody:
-		//	{FunctionBody} ':' type=Type '=' expr=Expr | {ClaimBody} '<=' ('**' claim+=ClaimText+ '**')
-		//	attributes+=ClaimAttribute* expr=Expr;
+		//	{FunctionBody} ':' type=Type '=' expr=Expr
+		//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{FunctionBody} ':' type=Type '=' expr=Expr | {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute*
@@ -1120,8 +1161,14 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cClaimGuaranteeParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
 		
 		//ClaimAttribute aadl2::NamedElement:
-		//	ClaimContext | ClaimJustification | ClaimAssumption | ClaimStrategy | ClaimUsageDomain | ClaimRationale |
-		//	ClaimRestriction | ClaimGuarantee;
+		//	ClaimContext
+		//	| ClaimJustification
+		//	| ClaimAssumption
+		//	| ClaimStrategy
+		//	| ClaimUsageDomain
+		//	| ClaimRationale
+		//	| ClaimRestriction
+		//	| ClaimGuarantee;
 		@Override public ParserRule getRule() { return rule; }
 
 		//ClaimContext | ClaimJustification | ClaimAssumption | ClaimStrategy | ClaimUsageDomain | ClaimRationale |
@@ -1492,7 +1539,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUnitUnitLiteralIDTerminalRuleCall_1_2_1_0_1 = (RuleCall)cUnitUnitLiteralCrossReference_1_2_1_0.eContents().get(1);
 		
 		//ClaimText:
-		//	{ClaimString} str=STRING | {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?;
+		//	{ClaimString} str=STRING
+		//	| {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{ClaimString} str=STRING | {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?
@@ -2067,7 +2115,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAtomicExprParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//PrefixExpr Expr:
-		//	{UnaryExpr} op=('-' | 'not') expr=PrefixExpr | {CastExpr} '(' type=BaseType ')' expr=PrefixExpr | AtomicExpr;
+		//	{UnaryExpr} op=('-' | 'not') expr=PrefixExpr
+		//	| {CastExpr} '(' type=BaseType ')' expr=PrefixExpr
+		//	| AtomicExpr;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{UnaryExpr} op=('-' | 'not') expr=PrefixExpr | {CastExpr} '(' type=BaseType ')' expr=PrefixExpr | AtomicExpr
@@ -2326,19 +2376,30 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValStringTermParserRuleCall_22_4_0 = (RuleCall)cValAssignment_22_4.eContents().get(0);
 		
 		//AtomicExpr Expr:
-		//	{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)? | {FailExpr} 'fail' (val=Expr |
-		//	'**' failmsg+=ClaimText+ '**') | {ResultExpr} result=Result | {IntExpr} val=IntegerTerm | {RealExpr} val=RealTerm |
-		//	{BoolExpr} val=BooleanLiteral | {StringExpr} val=StringTerm | {IfThenElseExpr} 'if' cond=Expr 'then' then=Expr 'else'
-		//	else=Expr | {QuantifiedExpr} quant=('forall' | 'exists') ('(' args+=Arg ')')+ '.' expr=Expr | => ({LibraryFnCallExpr}
-		//	libName=ID '.' fnName=ID '(' (args+=Expr (',' args+=Expr)*)? ')') | {BuiltInFnCallExpr} fn=BuiltInFn '(' (args+=Expr
-		//	(',' args+=Expr)*)? ')' | {FnCallExpr} fn=[FunctionDefinition] '(' (args+=Expr (',' args+=Expr)*)? ')' | {LintExpr}
-		//	lintStmt=LintStatement | '[' Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? |
-		//	{ListExpr.exprs+=current} (',' exprs+=Expr)*) ']' | '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg
-		//	')')+ ('|' filter=Expr)? | {SetExpr.exprs+=current} (',' exprs+=Expr)*) '}' | {ListExpr} '[' ']' | {SetExpr} '{' '}'
-		//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr} 'undeveloped'
+		//	{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)?
+		//	| {FailExpr} 'fail' (val=Expr | '**' failmsg+=ClaimText+ '**') | {ResultExpr} result=Result
+		//	| {IntExpr} val=IntegerTerm
+		//	| {RealExpr} val=RealTerm
+		//	| {BoolExpr} val=BooleanLiteral
+		//	| {StringExpr} val=StringTerm
+		//	| {IfThenElseExpr} 'if' cond=Expr 'then' then=Expr 'else' else=Expr
+		//	| {QuantifiedExpr} quant=('forall' | 'exists') ('(' args+=Arg ')')+ '.' expr=Expr
+		//	| => ({LibraryFnCallExpr} libName=ID '.' fnName=ID '(' (args+=Expr (',' args+=Expr)*)? ')') | {BuiltInFnCallExpr}
+		//	fn=BuiltInFn '(' (args+=Expr (',' args+=Expr)*)? ')'
+		//	| {FnCallExpr} fn=[FunctionDefinition] '(' (args+=Expr (',' args+=Expr)*)? ')'
+		//	| {LintExpr} lintStmt=LintStatement
+		//	| '[' Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {ListExpr.exprs+=current}
+		//	(',' exprs+=Expr)*) ']'
+		//	| '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {SetExpr.exprs+=current}
+		//	(',' exprs+=Expr)*) '}'
+		//	| {ListExpr} '[' ']'
+		//	| {SetExpr} '{' '}'
+		//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
+		//	| '(' Expr ')'
+		//	| {UndevelopedExpr} 'undeveloped'
 		//	//| {EvidenceExpr} 'evidence' name=ID ':' val=StringTerm 
-		// | {EvidenceExpr} 'evidence' | {SolutionExpr} 'solution'
-		//	name=ID ':' val=StringTerm;
+		//	| {EvidenceExpr} 'evidence'
+		//	| {SolutionExpr} 'solution' name=ID ':' val=StringTerm;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)? | {FailExpr} 'fail' (val=Expr | '**'
@@ -2350,10 +2411,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//lintStmt=LintStatement | '[' Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? |
 		//{ListExpr.exprs+=current} (',' exprs+=Expr)*) ']' | '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg
 		//')')+ ('|' filter=Expr)? | {SetExpr.exprs+=current} (',' exprs+=Expr)*) '}' | {ListExpr} '[' ']' | {SetExpr} '{' '}' |
-		//{LetExpr} 'let' binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr} 'undeveloped'
-		////| {EvidenceExpr} 'evidence' name=ID ':' val=StringTerm 
-		// | {EvidenceExpr} 'evidence' | {SolutionExpr} 'solution'
-		//name=ID ':' val=StringTerm
+		//{LetExpr} 'let' binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr} 'undeveloped' //| {EvidenceExpr} 'evidence' name=ID ':' val=StringTerm 
+		//| {EvidenceExpr} 'evidence' | {SolutionExpr} 'solution' name=ID ':' val=StringTerm
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{IdExpr} id=[aadl2::NamedElement|QCREF]
@@ -3003,7 +3062,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRevised_without_reviewKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
 		
 		//Result:
-		//	'passed' | 'failed' | 'indeterminate' | 'revised_with_review' | 'revised_without_review';
+		//	'passed'
+		//	| 'failed'
+		//	| 'indeterminate'
+		//	| 'revised_with_review'
+		//	| 'revised_without_review';
 		@Override public ParserRule getRule() { return rule; }
 
 		//'passed' | 'failed' | 'indeterminate' | 'revised_with_review' | 'revised_without_review'
@@ -3097,186 +3160,114 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIdentifierKeyword_66 = (Keyword)cAlternatives.eContents().get(66);
 		
 		//BuiltInFn: // Primary type: aadl
-		// 'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' |
-		//	'type' | 'has_type' | 'is_in_array' | 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' |
-		//	'is_system' | 'is_bus' | 'is_virtual_bus' | 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' |
-		//	'is_process' | 'is_data' | 'is_subprogram' | 'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections'
-		//	// Primary type: property
-		// | 'enumerated_values' // Primary type: component
-		// | 'subcomponents'
-		//	// Primary type: connection
-		// | 'source' | 'destination' | 'is_bidirectional' // Primary type: feature
-		// | 'direction'
-		//	| 'is_event_port' | 'is_abstract_feature' | 'is_data_port' | 'is_port' | 'is_data_access' | 'is_bus_access'
-		//	// Primary type: range
-		// | 'lower_bound' | 'upper_bound' // Primary type: set or list
-		// | 'member' | 'length' | 'size'
-		//	// Primary type: list
-		// | 'sum' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
-		// | 'union' | 'intersect'
-		//	| 'as_list' // Other
-		// | 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
-		// | 'receive_error'
-		//	// the component can receive an incoming error
-		// | 'contain_error' // the component contain the error
-		// |
-		//	'propagate_error' // the component propagate an error
-		// | 'error_state_reachable' // the error state is reachable
-		// |
-		//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
-		// |
-		//	'identifier' //	// ANALYSIS
-		//
+		//	'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' | 'type' | 'has_type' |
+		//	'is_in_array' | 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' | 'is_system' | 'is_bus' |
+		//	'is_virtual_bus' | 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' | 'is_process' | 'is_data' |
+		//	'is_subprogram' | 'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections' // Primary type: property
+		//	| 'enumerated_values' // Primary type: component
+		//	| 'subcomponents' // Primary type: connection
+		//	| 'source' | 'destination' | 'is_bidirectional' // Primary type: feature
+		//	| 'direction' | 'is_event_port' | 'is_abstract_feature' | 'is_data_port' | 'is_port' | 'is_data_access' |
+		//	'is_bus_access' // Primary type: range
+		//	| 'lower_bound' | 'upper_bound' // Primary type: set or list
+		//	| 'member' | 'length' | 'size' // Primary type: list
+		//	| 'sum' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
+		//	| 'union' | 'intersect' | 'as_list' // Other
+		//	| 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
+		//	| 'receive_error' // the component can receive an incoming error
+		//	| 'contain_error' // the component contain the error
+		//	| 'propagate_error' // the component propagate an error
+		//	| 'error_state_reachable' // the error state is reachable
+		//	| 'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
+		//	| 'identifier' //	// ANALYSIS
 		//	//|	'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
-		//
 		//	//|	'metric' // describes ANALYSIS_REPORT with values of type float
-		//
 		//	//|	'analyzes' // describes ANALYSIS_REPORT with values of type ENTITY
-		//
 		//	//|	'produced_by' // describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
-		//
 		//	//|	'performed_by' // describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
-		//
 		//	//|	'from_report' // describes ANALYSIS_ANNOTATION with values of type ENTITY
-		//
 		//	//|	'description' // describes ANALYSIS_ANNOTATION with values of type string
-		//
 		//	//|	'annotation_type' // describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
-		// //	// HAZARD
-		//
+		//	//	// HAZARD
 		//	//|	'definition' // describes HAZARD with values of type string
-		//
 		//	//|	'source_of' // corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
-		//
 		//	//|	'identified' // describes HAZARD with values of type HAZARD_IDENTIFICATION
-		//
 		//	//|	'author' // describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
-		//
 		//	//|	'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
-		//
 		//	//|	'given_text' // describes REQUIREMENT with values of type string
-		//
 		//	//|	'if_text' // describes REQUIREMENT with values of type string
-		//
 		//	//|	'then_text' // describes REQUIREMENT with values of type string
-		//
 		//	//|	'governs' // describes REQUIREMENT with values of type ENTITY
-		//
 		//	//|	'satisfies' // describes REQUIREMENT, FILE with values of type ENTITY
-		//
 		//	//|	'mitigates' // describes REQUIREMENT with values of type ENTITY
-		//
 		//	//|	'created_by' // describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
-		//
 		//	//|	'provided_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
-		//
 		//	//|	'consumed_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
-		//
 		//	//|	'referenced' // describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
-		//
 		//	//|	'governed_by' // describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
-		//
 		//	//	// REVIEW
-		// //|	'reviews' // describes REVIEW_LOG with values of type ENTITY
-		//
+		//	//|	'reviews' // describes REVIEW_LOG with values of type ENTITY
 		//	//|	'review_result' // describes REVIEW_LOG with values of type REVIEW_STATE
-		//
 		//	//|	'reviewer' // describes REVIEW with values of type AGENT
-		//
 		//	//|	'reviewed' // describes REVIEW with values of type ENTITY
-		// //	// SOFTWARE
-		//
+		//	//	// SOFTWARE
 		//	//|	'filename' // describes FILE with values of type string
-		//
 		//	//|	'step' // describes BUILD with values of type ACTIVITY
-		//
 		//	//|	'compiled_by' // describes COMPILE with values of type FILE
-		//
 		//	//|	'compile_input' // describes COMPILE with values of type FILE
-		//
 		//	//|	'packaged_by' // describes PACKAGE_FILE with values of type FILE
-		//
 		//	//|	'package_input' // describes PACKAGE_FILE with values of type FILE
-		//
 		//	////|	'name' // describes COMPONENT with values of type string
-		//
 		//	//|	'type_of' // corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
-		//
 		//	//|	'value_type' // describes COMPONENT with values of type string
-		//
 		//	//|	'instantiates' // describes COMPONENT with values of type ENTITY
-		//
 		//	//|	'defined_in' // describes COMPONENT with values of type ENTITY
-		//
 		//	//|	'mentions' // describes COMPONENT with values of type ENTITY
-		//
 		//	//|	'subcomponent_of' // describes COMPONENT with values of type ENTITY
-		//
 		//	//|	'requirements' // describes COMPONENT with values of type ENTITY
-		//
 		//	//|	'annotations' // describes COMPONENT with values of type ENTITY
-		//
 		//	//|	'control_flows_to_unconditionally' // describes COMPONENT with values of type COMPONENT
-		//
 		//	//|	'control_flows_to_conditionally' // describes COMPONENT with values of type COMPONENT
-		// //	// SYSTEM
-		//
+		//	//	// SYSTEM
 		//	//|	'part_of' // describes SYSTEM with values of type ENTITY
-		//
 		//	//|	'provides' // describes SYSTEM with values of type ENTITY
-		//
 		//	//|	'requires' // describes SYSTEM with values of type ENTITY
-		//
 		//	//|	'destination_of' // describes INTERFACE with values of type ENTITY
-		//
 		//	//|	'identified_by' // describes INTERFACE with values of type ACTIVITY
-		//
 		//	//|	'developed_by' // describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
-		// //	// TESTING
-		//
+		//	//	// TESTING
 		//	//|	'verifies' // describes TEST with values of type ENTITY
-		//
 		//	//|	'confirms' // describes TEST_RESULT with values of type ENTITY
-		//
 		//	//|	'executed_by' // describes TEST_RESULT with values of type ACTIVITY
-		//
 		//	//|	'executed_on' // describes TEST_EXECUTION with values of type AGENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 
 		//// Primary type: aadl
-		// 'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' | 'type' |
-		//'has_type' | 'is_in_array' | 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' | 'is_system' |
-		//'is_bus' | 'is_virtual_bus' | 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' | 'is_process' | 'is_data' |
-		//'is_subprogram' | 'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections' // Primary type: property
-		//
+		//'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' | 'type' | 'has_type' | 'is_in_array'
+		//| 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' | 'is_system' | 'is_bus' | 'is_virtual_bus'
+		//| 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' | 'is_process' | 'is_data' | 'is_subprogram' |
+		//'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections' // Primary type: property
 		//| 'enumerated_values' // Primary type: component
-		// | 'subcomponents' // Primary type: connection
-		// | 'source' |
-		//'destination' | 'is_bidirectional' // Primary type: feature
-		// | 'direction' | 'is_event_port' | 'is_abstract_feature' |
-		//'is_data_port' | 'is_port' | 'is_data_access' | 'is_bus_access' // Primary type: range
-		// | 'lower_bound' |
-		//'upper_bound' // Primary type: set or list
-		// | 'member' | 'length' | 'size' // Primary type: list
-		// | 'sum' | 'append' |
-		//'head' | 'tail' | 'as_set' // Primary type: set
-		// | 'union' | 'intersect' | 'as_list' // Other
-		// | 'instance' |
-		//'instances' | 'debug' | 'analysis' // Error Annex
-		// | 'receive_error' // the component can receive an incoming error
-		// |
-		//'contain_error' // the component contain the error
-		// | 'propagate_error' // the component propagate an error
-		// |
-		//'error_state_reachable' // the error state is reachable
-		// | 'flow_source' | 'flow_destination' | 'flow_elements' |
-		//'flow_specifications' | 'end_to_end_flows' // Evidences
-		// | 'identifier'
+		//| 'subcomponents' // Primary type: connection
+		//| 'source' | 'destination' | 'is_bidirectional' // Primary type: feature
+		//| 'direction' | 'is_event_port' | 'is_abstract_feature' | 'is_data_port' | 'is_port' | 'is_data_access' |
+		//'is_bus_access' // Primary type: range
+		//| 'lower_bound' | 'upper_bound' // Primary type: set or list
+		//| 'member' | 'length' | 'size' // Primary type: list
+		//| 'sum' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
+		//| 'union' | 'intersect' | 'as_list' // Other
+		//| 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
+		//| 'receive_error' // the component can receive an incoming error
+		//| 'contain_error' // the component contain the error
+		//| 'propagate_error' // the component propagate an error
+		//| 'error_state_reachable' // the error state is reachable
+		//| 'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
+		//| 'identifier'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//// Primary type: aadl
-		// 'has_property'
+		//'has_property'
 		public Keyword getHas_propertyKeyword_0() { return cHas_propertyKeyword_0; }
 
 		//'property'
@@ -3652,7 +3643,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprExprParserRuleCall_2_2_0 = (RuleCall)cExprAssignment_2_2.eContents().get(0);
 		
 		//LintStatement:
-		//	{WarningStatement} 'warning' expr=Expr | {ErrorStatement} 'error' expr=Expr | {InfoStatement} 'info' expr=Expr;
+		//	{WarningStatement} 'warning' expr=Expr
+		//	| {ErrorStatement} 'error' expr=Expr
+		//	| {InfoStatement} 'info' expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{WarningStatement} 'warning' expr=Expr | {ErrorStatement} 'error' expr=Expr | {InfoStatement} 'info' expr=Expr
@@ -3783,7 +3776,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprExprParserRuleCall_1_2_0 = (RuleCall)cExprAssignment_1_2.eContents().get(0);
 		
 		//AnalysisStatement:
-		//	{ProveStatement} 'prove' expr=Expr | {CheckStatement} 'check' expr=Expr;
+		//	{ProveStatement} 'prove' expr=Expr
+		//	| {CheckStatement} 'check' expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{ProveStatement} 'prove' expr=Expr | {CheckStatement} 'check' expr=Expr
@@ -3834,6 +3828,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	private final BaseTypeElements pBaseType;
 	private final ArgElements pArg;
 	private final ConstantDefinitionElements pConstantDefinition;
+	private final TypeDefinitionElements pTypeDefinition;
 	private final FunctionDefinitionElements pFunctionDefinition;
 	private final DefinitionBodyElements pDefinitionBody;
 	private final ClaimAttributeElements pClaimAttribute;
@@ -3895,6 +3890,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		this.pBaseType = new BaseTypeElements();
 		this.pArg = new ArgElements();
 		this.pConstantDefinition = new ConstantDefinitionElements();
+		this.pTypeDefinition = new TypeDefinitionElements();
 		this.pFunctionDefinition = new FunctionDefinitionElements();
 		this.pDefinitionBody = new DefinitionBodyElements();
 		this.pClaimAttribute = new ClaimAttributeElements();
@@ -3993,7 +3989,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//NamedElement aadl2::NamedElement:
-	//	Definition | Arg | LetBinding;
+	//	Definition
+	//	| Arg
+	//	| LetBinding;
 	public NamedElementElements getNamedElementAccess() {
 		return pNamedElement;
 	}
@@ -4003,7 +4001,10 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Element aadl2::Element:
-	//	Expr | AnalysisStatement | ClaimText | DefinitionBody;
+	//	Expr
+	//	| AnalysisStatement
+	//	| ClaimText
+	//	| DefinitionBody;
 	public ElementElements getElementAccess() {
 		return pElement;
 	}
@@ -4023,7 +4024,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Definition:
-	//	ConstantDefinition | FunctionDefinition | Ruleset | NotationDefinition;
+	//	ConstantDefinition
+	//	| TypeDefinition
+	//	| FunctionDefinition
+	//	| Ruleset
+	//	| NotationDefinition;
 	public DefinitionElements getDefinitionAccess() {
 		return pDefinition;
 	}
@@ -4053,8 +4058,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Type:
-	//	{ListType} '[' type=Type ']' | {SetType} '{' type=Type '}' | BaseType ('<' paramType=Type '>')? | {LibraryFnType}
-	//	libName=ID '.' fnType=ID;
+	//	{ListType} '[' type=Type ']'
+	//	| {SetType} '{' type=Type '}'
+	//	| BaseType ('<' paramType=Type '>')?
+	//	| {LibraryFnType} libName=ID '.' fnType=ID
+	//	| {DefinedType} typeDefinition=[TypeDefinition];
 	public TypeElements getTypeAccess() {
 		return pType;
 	}
@@ -4064,88 +4072,107 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BaseType:
-	//	type=('int' | 'real' | 'string' | 'bool' | 'range' | 'aadl' | 'component' | 'abstract' | 'bus' | 'data' | 'device' |
-	//	'memory' | 'processor' | 'process' | 'subprogram_group' | 'subprogram' | 'system' | 'thread_group' | 'thread' |
-	//	'virtual_bus' | 'virtual_processor' | 'connection' | 'property' | 'feature' | 'port' | 'data_port' | 'event_port' |
-	//	'event_data_port' | 'feature_group' | 'access' | 'bus_access' | 'provides_bus_access' | 'requires_bus_access' |
-	//	'data_access' | 'provides_data_access' | 'requires_data_access' | 'subprogram_access' | 'provides_subprogram_access'
-	//	| 'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
-	//	'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
-	// // W3C-PROV
-	// |
-	//	'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
-	//
+	//	type=('int'
+	//	| 'real'
+	//	| 'string'
+	//	| 'bool'
+	//	| 'range'
+	//	| 'aadl'
+	//	| 'component'
+	//	| 'abstract'
+	//	| 'bus'
+	//	| 'data'
+	//	| 'device'
+	//	| 'memory'
+	//	| 'processor'
+	//	| 'process'
+	//	| 'subprogram_group'
+	//	| 'subprogram'
+	//	| 'system'
+	//	| 'thread_group'
+	//	| 'thread'
+	//	| 'virtual_bus'
+	//	| 'virtual_processor'
+	//	| 'connection'
+	//	| 'property'
+	//	| 'feature'
+	//	| 'port'
+	//	| 'data_port'
+	//	| 'event_port'
+	//	| 'event_data_port'
+	//	| 'feature_group'
+	//	| 'access'
+	//	| 'bus_access'
+	//	| 'provides_bus_access'
+	//	| 'requires_bus_access'
+	//	| 'data_access'
+	//	| 'provides_data_access'
+	//	| 'requires_data_access'
+	//	| 'subprogram_access'
+	//	| 'provides_subprogram_access'
+	//	| 'requires_subprogram_access'
+	//	| 'subprogram_group_access'
+	//	| 'provides_subprogram_group_access'
+	//	| 'requires_subprogram_group_access'
+	//	| 'flow_specification'
+	//	| 'end_to_end_flow'
+	//	// Evidence types
+	//	// W3C-PROV
+	//	| 'entity'
+	//	| 'agent'
+	//	| 'activity'
+	//	| 'thing'
+	//	//		 // ANALYSIS
 	//	//		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
-	// //		|	'analysis_report' 
-	//
+	//	//		|	'analysis_report' 
 	//	//		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
-	//
 	//	//		|	'analysis_annotation_type' // class
-	// //		|	'precondition'	// type of analysis_annotation_type
-	//
+	//	//		|	'precondition'	// type of analysis_annotation_type
 	//	//		|	'postcondition'	// type of analysis_annotation_type
-	// //		|	'invariant'	// type of analysis_annotation_type
-	//
+	//	//		|	'invariant'	// type of analysis_annotation_type
 	//	//		|	'analysis_annotation' // type of entity
-	// //		 // HAZARD
-	// //		|	'hazard' // entity
-	//
+	//	//		 // HAZARD
+	//	//		|	'hazard' // entity
 	//	//		|	'hazard_identification' // type of activity
-	// //		 // REQUIREMENT
-	// //		|	'requirement' // type of entity
-	//
+	//	//		 // REQUIREMENT
+	//	//		|	'requirement' // type of entity
 	//	//		|	'data_dictionary_term' // type of entity
-	// //		|	'requirement_development' // type of activity
-	// //		 // REVIEW
-	//
+	//	//		|	'requirement_development' // type of activity
+	//	//		 // REVIEW
 	//	//		|	'review' // type of activity
-	// //		|	'review_log' // type of entity
-	//
+	//	//		|	'review_log' // type of entity
 	//	//		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-	// //		 // SOFTWARE
-	//
+	//	//		 // SOFTWARE
 	//	//		|	'file' // type of entity
-	// //		|	'format' // type of thing
-	// //		|	'code_development' // type of activity
-	//
+	//	//		|	'format' // type of thing
+	//	//		|	'code_development' // type of activity
 	//	//		|	'build' // type of activity
-	// //		|	'code_gen' // type of activity
-	// //		|	'compile' // type of activity
-	//
+	//	//		|	'code_gen' // type of activity
+	//	//		|	'compile' // type of activity
 	//	//		|	'package_file' // corresponds to PACKAGE, type of activity
-	// //		|	'component_type' // type of thing
-	//
+	//	//		|	'component_type' // type of thing
 	//	//		|	'source_function' // type of component_type
-	// //		|	'binary_function' // type of component_type
-	//
+	//	//		|	'binary_function' // type of component_type
 	//	//		|	'source_global_variable' // type of component_type
-	// //		|	'binary_global_variable' // type of component_type
-	//
+	//	//		|	'binary_global_variable' // type of component_type
 	//	//		|	'binary_basic_block' // type of component_type
-	// //		|	'class_definition' // type of component_type
-	//
+	//	//		|	'class_definition' // type of component_type
 	//	//		|	'class_method' // type of component_type
-	// //		|	'class_member_variable' // type of component_type
-	//
+	//	//		|	'class_member_variable' // type of component_type
 	//	//		|	'class_constructor' // type of component_type
-	// //		|	'module' // type of component_type
-	//
+	//	//		|	'module' // type of component_type
 	//	//		|	'namespace' // type of component_type
-	// ////		|	'component' // type of entity
-	// //		 // SYSTEM
-	//
+	//	////		|	'component' // type of entity
+	//	//		 // SYSTEM
 	//	////		|	'system' // type of entity
-	// //		|	'interface' // type of entity
-	//
+	//	//		|	'interface' // type of entity
 	//	//		|	'system_development' // type of activity
-	// //		 // TESTING
-	// //		|	'test' // type of entity
-	//
+	//	//		 // TESTING
+	//	//		|	'test' // type of entity
 	//	//		|	'test_result' // type of entity
-	// //		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
-	//
+	//	//		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
 	//	//		|	'test_developmemt' // type of activity
-	// //		|	'test_execution' // type of activity
+	//	//		|	'test_execution' // type of activity
 	//);
 	public BaseTypeElements getBaseTypeAccess() {
 		return pBaseType;
@@ -4156,7 +4183,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////Arg types are used for functions, claims, and quantifiers
-	// Arg:
+	//Arg:
 	//	=> (name=ID ':' type=Type) | {QuantArg} name=ID ':' expr=Expr;
 	public ArgElements getArgAccess() {
 		return pArg;
@@ -4176,6 +4203,16 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getConstantDefinitionAccess().getRule();
 	}
 
+	//TypeDefinition:
+	//	'typedef' type=Type name=ID;
+	public TypeDefinitionElements getTypeDefinitionAccess() {
+		return pTypeDefinition;
+	}
+	
+	public ParserRule getTypeDefinitionRule() {
+		return getTypeDefinitionAccess().getRule();
+	}
+
 	//FunctionDefinition:
 	//	(claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')'
 	//	body=DefinitionBody;
@@ -4188,8 +4225,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DefinitionBody:
-	//	{FunctionBody} ':' type=Type '=' expr=Expr | {ClaimBody} '<=' ('**' claim+=ClaimText+ '**')
-	//	attributes+=ClaimAttribute* expr=Expr;
+	//	{FunctionBody} ':' type=Type '=' expr=Expr
+	//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr;
 	public DefinitionBodyElements getDefinitionBodyAccess() {
 		return pDefinitionBody;
 	}
@@ -4199,8 +4236,14 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ClaimAttribute aadl2::NamedElement:
-	//	ClaimContext | ClaimJustification | ClaimAssumption | ClaimStrategy | ClaimUsageDomain | ClaimRationale |
-	//	ClaimRestriction | ClaimGuarantee;
+	//	ClaimContext
+	//	| ClaimJustification
+	//	| ClaimAssumption
+	//	| ClaimStrategy
+	//	| ClaimUsageDomain
+	//	| ClaimRationale
+	//	| ClaimRestriction
+	//	| ClaimGuarantee;
 	public ClaimAttributeElements getClaimAttributeAccess() {
 		return pClaimAttribute;
 	}
@@ -4290,7 +4333,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ClaimText:
-	//	{ClaimString} str=STRING | {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?;
+	//	{ClaimString} str=STRING
+	//	| {ClaimArg} arg=[ClaimTextVar] ('%' unit=[aadl2::UnitLiteral])?;
 	public ClaimTextElements getClaimTextAccess() {
 		return pClaimText;
 	}
@@ -4410,7 +4454,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PrefixExpr Expr:
-	//	{UnaryExpr} op=('-' | 'not') expr=PrefixExpr | {CastExpr} '(' type=BaseType ')' expr=PrefixExpr | AtomicExpr;
+	//	{UnaryExpr} op=('-' | 'not') expr=PrefixExpr
+	//	| {CastExpr} '(' type=BaseType ')' expr=PrefixExpr
+	//	| AtomicExpr;
 	public PrefixExprElements getPrefixExprAccess() {
 		return pPrefixExpr;
 	}
@@ -4420,19 +4466,30 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AtomicExpr Expr:
-	//	{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)? | {FailExpr} 'fail' (val=Expr |
-	//	'**' failmsg+=ClaimText+ '**') | {ResultExpr} result=Result | {IntExpr} val=IntegerTerm | {RealExpr} val=RealTerm |
-	//	{BoolExpr} val=BooleanLiteral | {StringExpr} val=StringTerm | {IfThenElseExpr} 'if' cond=Expr 'then' then=Expr 'else'
-	//	else=Expr | {QuantifiedExpr} quant=('forall' | 'exists') ('(' args+=Arg ')')+ '.' expr=Expr | => ({LibraryFnCallExpr}
-	//	libName=ID '.' fnName=ID '(' (args+=Expr (',' args+=Expr)*)? ')') | {BuiltInFnCallExpr} fn=BuiltInFn '(' (args+=Expr
-	//	(',' args+=Expr)*)? ')' | {FnCallExpr} fn=[FunctionDefinition] '(' (args+=Expr (',' args+=Expr)*)? ')' | {LintExpr}
-	//	lintStmt=LintStatement | '[' Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? |
-	//	{ListExpr.exprs+=current} (',' exprs+=Expr)*) ']' | '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg
-	//	')')+ ('|' filter=Expr)? | {SetExpr.exprs+=current} (',' exprs+=Expr)*) '}' | {ListExpr} '[' ']' | {SetExpr} '{' '}'
-	//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr} 'undeveloped'
+	//	{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)?
+	//	| {FailExpr} 'fail' (val=Expr | '**' failmsg+=ClaimText+ '**') | {ResultExpr} result=Result
+	//	| {IntExpr} val=IntegerTerm
+	//	| {RealExpr} val=RealTerm
+	//	| {BoolExpr} val=BooleanLiteral
+	//	| {StringExpr} val=StringTerm
+	//	| {IfThenElseExpr} 'if' cond=Expr 'then' then=Expr 'else' else=Expr
+	//	| {QuantifiedExpr} quant=('forall' | 'exists') ('(' args+=Arg ')')+ '.' expr=Expr
+	//	| => ({LibraryFnCallExpr} libName=ID '.' fnName=ID '(' (args+=Expr (',' args+=Expr)*)? ')') | {BuiltInFnCallExpr}
+	//	fn=BuiltInFn '(' (args+=Expr (',' args+=Expr)*)? ')'
+	//	| {FnCallExpr} fn=[FunctionDefinition] '(' (args+=Expr (',' args+=Expr)*)? ')'
+	//	| {LintExpr} lintStmt=LintStatement
+	//	| '[' Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {ListExpr.exprs+=current}
+	//	(',' exprs+=Expr)*) ']'
+	//	| '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? | {SetExpr.exprs+=current}
+	//	(',' exprs+=Expr)*) '}'
+	//	| {ListExpr} '[' ']'
+	//	| {SetExpr} '{' '}'
+	//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
+	//	| '(' Expr ')'
+	//	| {UndevelopedExpr} 'undeveloped'
 	//	//| {EvidenceExpr} 'evidence' name=ID ':' val=StringTerm 
-	// | {EvidenceExpr} 'evidence' | {SolutionExpr} 'solution'
-	//	name=ID ':' val=StringTerm;
+	//	| {EvidenceExpr} 'evidence'
+	//	| {SolutionExpr} 'solution' name=ID ':' val=StringTerm;
 	public AtomicExprElements getAtomicExprAccess() {
 		return pAtomicExpr;
 	}
@@ -4452,7 +4509,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Result:
-	//	'passed' | 'failed' | 'indeterminate' | 'revised_with_review' | 'revised_without_review';
+	//	'passed'
+	//	| 'failed'
+	//	| 'indeterminate'
+	//	| 'revised_with_review'
+	//	| 'revised_without_review';
 	public ResultElements getResultAccess() {
 		return pResult;
 	}
@@ -4462,149 +4523,85 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BuiltInFn: // Primary type: aadl
-	// 'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' |
-	//	'type' | 'has_type' | 'is_in_array' | 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' |
-	//	'is_system' | 'is_bus' | 'is_virtual_bus' | 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' |
-	//	'is_process' | 'is_data' | 'is_subprogram' | 'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections'
-	//	// Primary type: property
-	// | 'enumerated_values' // Primary type: component
-	// | 'subcomponents'
-	//	// Primary type: connection
-	// | 'source' | 'destination' | 'is_bidirectional' // Primary type: feature
-	// | 'direction'
-	//	| 'is_event_port' | 'is_abstract_feature' | 'is_data_port' | 'is_port' | 'is_data_access' | 'is_bus_access'
-	//	// Primary type: range
-	// | 'lower_bound' | 'upper_bound' // Primary type: set or list
-	// | 'member' | 'length' | 'size'
-	//	// Primary type: list
-	// | 'sum' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
-	// | 'union' | 'intersect'
-	//	| 'as_list' // Other
-	// | 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
-	// | 'receive_error'
-	//	// the component can receive an incoming error
-	// | 'contain_error' // the component contain the error
-	// |
-	//	'propagate_error' // the component propagate an error
-	// | 'error_state_reachable' // the error state is reachable
-	// |
-	//	'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
-	// |
-	//	'identifier' //	// ANALYSIS
-	//
+	//	'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' | 'type' | 'has_type' |
+	//	'is_in_array' | 'has_prototypes' | 'has_modes' | 'is_processor' | 'is_virtual_processor' | 'is_system' | 'is_bus' |
+	//	'is_virtual_bus' | 'is_device' | 'is_memory' | 'is_thread' | 'is_thread_group' | 'is_process' | 'is_data' |
+	//	'is_subprogram' | 'is_of_type' | 'is_bound_to' | 'has_member' | 'features' | 'connections' // Primary type: property
+	//	| 'enumerated_values' // Primary type: component
+	//	| 'subcomponents' // Primary type: connection
+	//	| 'source' | 'destination' | 'is_bidirectional' // Primary type: feature
+	//	| 'direction' | 'is_event_port' | 'is_abstract_feature' | 'is_data_port' | 'is_port' | 'is_data_access' |
+	//	'is_bus_access' // Primary type: range
+	//	| 'lower_bound' | 'upper_bound' // Primary type: set or list
+	//	| 'member' | 'length' | 'size' // Primary type: list
+	//	| 'sum' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
+	//	| 'union' | 'intersect' | 'as_list' // Other
+	//	| 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
+	//	| 'receive_error' // the component can receive an incoming error
+	//	| 'contain_error' // the component contain the error
+	//	| 'propagate_error' // the component propagate an error
+	//	| 'error_state_reachable' // the error state is reachable
+	//	| 'flow_source' | 'flow_destination' | 'flow_elements' | 'flow_specifications' | 'end_to_end_flows' // Evidences
+	//	| 'identifier' //	// ANALYSIS
 	//	//|	'result_of' // describes ANALYSIS_REPORT, TEST_RESULT with values of type TEST_STATUS
-	//
 	//	//|	'metric' // describes ANALYSIS_REPORT with values of type float
-	//
 	//	//|	'analyzes' // describes ANALYSIS_REPORT with values of type ENTITY
-	//
 	//	//|	'produced_by' // describes ANALYSIS_REPORT, SYSTEM, TEST with values of type ACTIVITY
-	//
 	//	//|	'performed_by' // describes ANALYSIS, CODE_GEN, COMPILE, PACKAGE_FILE with values of type AGENT
-	//
 	//	//|	'from_report' // describes ANALYSIS_ANNOTATION with values of type ENTITY
-	//
 	//	//|	'description' // describes ANALYSIS_ANNOTATION with values of type string
-	//
 	//	//|	'annotation_type' // describes ANALYSIS_ANNOTATION with values of type ANALYSIS_ANNOTATION_TYPE
-	// //	// HAZARD
-	//
+	//	//	// HAZARD
 	//	//|	'definition' // describes HAZARD with values of type string
-	//
 	//	//|	'source_of' // corresponds to SOURCE, describes HAZARD, INTERFACE with values of type ENTITY
-	//
 	//	//|	'identified' // describes HAZARD with values of type HAZARD_IDENTIFICATION
-	//
 	//	//|	'author' // describes HAZARD_IDENTIFICATION, REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type AGENT
-	//
 	//	//|	'text' // describes REQUIREMENT, DATA_DICTIONARY_TERM with values of type string
-	//
 	//	//|	'given_text' // describes REQUIREMENT with values of type string
-	//
 	//	//|	'if_text' // describes REQUIREMENT with values of type string
-	//
 	//	//|	'then_text' // describes REQUIREMENT with values of type string
-	//
 	//	//|	'governs' // describes REQUIREMENT with values of type ENTITY
-	//
 	//	//|	'satisfies' // describes REQUIREMENT, FILE with values of type ENTITY
-	//
 	//	//|	'mitigates' // describes REQUIREMENT with values of type ENTITY
-	//
 	//	//|	'created_by' // describes REQUIREMENT, DATA_DICTIONARY_TERM, REVIEW_LOG, FILE with values of type ACTIVITY
-	//
 	//	//|	'provided_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
-	//
 	//	//|	'consumed_by' // describes DATA_DICTIONARY_TERM with values of type ENTITY
-	//
 	//	//|	'referenced' // describes REQUIREMENT_DEVELOPMENT, CODE_DEVELOPMENT with values of type ENTITY
-	//
 	//	//|	'governed_by' // describes REQUIREMENT_DEVELOPMENT, REVIEW, CODE_DEVELOPMENT with values of type ENTITY
-	//
 	//	//	// REVIEW
-	// //|	'reviews' // describes REVIEW_LOG with values of type ENTITY
-	//
+	//	//|	'reviews' // describes REVIEW_LOG with values of type ENTITY
 	//	//|	'review_result' // describes REVIEW_LOG with values of type REVIEW_STATE
-	//
 	//	//|	'reviewer' // describes REVIEW with values of type AGENT
-	//
 	//	//|	'reviewed' // describes REVIEW with values of type ENTITY
-	// //	// SOFTWARE
-	//
+	//	//	// SOFTWARE
 	//	//|	'filename' // describes FILE with values of type string
-	//
 	//	//|	'step' // describes BUILD with values of type ACTIVITY
-	//
 	//	//|	'compiled_by' // describes COMPILE with values of type FILE
-	//
 	//	//|	'compile_input' // describes COMPILE with values of type FILE
-	//
 	//	//|	'packaged_by' // describes PACKAGE_FILE with values of type FILE
-	//
 	//	//|	'package_input' // describes PACKAGE_FILE with values of type FILE
-	//
 	//	////|	'name' // describes COMPONENT with values of type string
-	//
 	//	//|	'type_of' // corresponds to componentType, describes COMPONENT with a single value of type COMPONENT_TYPE
-	//
 	//	//|	'value_type' // describes COMPONENT with values of type string
-	//
 	//	//|	'instantiates' // describes COMPONENT with values of type ENTITY
-	//
 	//	//|	'defined_in' // describes COMPONENT with values of type ENTITY
-	//
 	//	//|	'mentions' // describes COMPONENT with values of type ENTITY
-	//
 	//	//|	'subcomponent_of' // describes COMPONENT with values of type ENTITY
-	//
 	//	//|	'requirements' // describes COMPONENT with values of type ENTITY
-	//
 	//	//|	'annotations' // describes COMPONENT with values of type ENTITY
-	//
 	//	//|	'control_flows_to_unconditionally' // describes COMPONENT with values of type COMPONENT
-	//
 	//	//|	'control_flows_to_conditionally' // describes COMPONENT with values of type COMPONENT
-	// //	// SYSTEM
-	//
+	//	//	// SYSTEM
 	//	//|	'part_of' // describes SYSTEM with values of type ENTITY
-	//
 	//	//|	'provides' // describes SYSTEM with values of type ENTITY
-	//
 	//	//|	'requires' // describes SYSTEM with values of type ENTITY
-	//
 	//	//|	'destination_of' // describes INTERFACE with values of type ENTITY
-	//
 	//	//|	'identified_by' // describes INTERFACE with values of type ACTIVITY
-	//
 	//	//|	'developed_by' // describes SYSTEM_DEVELOPMENT, TEST_DEVELOPMENT with values of type AGENT
-	// //	// TESTING
-	//
+	//	//	// TESTING
 	//	//|	'verifies' // describes TEST with values of type ENTITY
-	//
 	//	//|	'confirms' // describes TEST_RESULT with values of type ENTITY
-	//
 	//	//|	'executed_by' // describes TEST_RESULT with values of type ACTIVITY
-	//
 	//	//|	'executed_on' // describes TEST_EXECUTION with values of type AGENT
 	//;
 	public BuiltInFnElements getBuiltInFnAccess() {
@@ -4678,7 +4675,9 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LintStatement:
-	//	{WarningStatement} 'warning' expr=Expr | {ErrorStatement} 'error' expr=Expr | {InfoStatement} 'info' expr=Expr;
+	//	{WarningStatement} 'warning' expr=Expr
+	//	| {ErrorStatement} 'error' expr=Expr
+	//	| {InfoStatement} 'info' expr=Expr;
 	public LintStatementElements getLintStatementAccess() {
 		return pLintStatement;
 	}
@@ -4708,7 +4707,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AnalysisStatement:
-	//	{ProveStatement} 'prove' expr=Expr | {CheckStatement} 'check' expr=Expr;
+	//	{ProveStatement} 'prove' expr=Expr
+	//	| {CheckStatement} 'check' expr=Expr;
 	public AnalysisStatementElements getAnalysisStatementAccess() {
 		return pAnalysisStatement;
 	}

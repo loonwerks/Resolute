@@ -36,6 +36,7 @@ ResoluteLibrary:
 
 Definition:
 	ConstantDefinition 
+|	TypeDefinition
 |	FunctionDefinition
 |	Ruleset
 |	NotationDefinition
@@ -54,6 +55,7 @@ Type:
 |	{SetType} '{' type=Type '}'
 |	BaseType ('<' paramType=Type '>')?
 |	{LibraryFnType} libName=ID '.' fnType=ID
+|	{DefinedType} typeDefinition=[TypeDefinition]
 ;
 
 BaseType:
@@ -169,6 +171,10 @@ Arg returns Arg:
 
 ConstantDefinition:
 	name=ID ':' type=Type '=' expr=Expr
+;
+
+TypeDefinition:
+	'typedef' type=Type name=ID
 ;
 
 FunctionDefinition:

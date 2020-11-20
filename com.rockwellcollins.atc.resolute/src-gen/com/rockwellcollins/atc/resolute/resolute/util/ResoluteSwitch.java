@@ -144,6 +144,16 @@ public class ResoluteSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ResolutePackage.TYPE_DEFINITION:
+      {
+        TypeDefinition typeDefinition = (TypeDefinition)theEObject;
+        T result = caseTypeDefinition(typeDefinition);
+        if (result == null) result = caseDefinition(typeDefinition);
+        if (result == null) result = caseNamedElement(typeDefinition);
+        if (result == null) result = caseElement(typeDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ResolutePackage.FUNCTION_DEFINITION:
       {
         FunctionDefinition functionDefinition = (FunctionDefinition)theEObject;
@@ -341,6 +351,14 @@ public class ResoluteSwitch<T> extends Switch<T>
         LibraryFnType libraryFnType = (LibraryFnType)theEObject;
         T result = caseLibraryFnType(libraryFnType);
         if (result == null) result = caseType(libraryFnType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ResolutePackage.DEFINED_TYPE:
+      {
+        DefinedType definedType = (DefinedType)theEObject;
+        T result = caseDefinedType(definedType);
+        if (result == null) result = caseType(definedType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -784,6 +802,22 @@ public class ResoluteSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Type Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Type Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTypeDefinition(TypeDefinition object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Function Definition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1147,6 +1181,22 @@ public class ResoluteSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLibraryFnType(LibraryFnType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Defined Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Defined Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDefinedType(DefinedType object)
   {
     return null;
   }
