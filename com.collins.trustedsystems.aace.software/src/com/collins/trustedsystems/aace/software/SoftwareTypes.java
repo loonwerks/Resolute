@@ -77,6 +77,28 @@ public class SoftwareTypes extends ResoluteExternalFunctionLibraryType {
 		}
 	};
 
+	private static final BaseType SOURCE_CODE = new BaseType("source_code") {
+		@Override
+		public boolean subtypeOf(ResoluteType otherType) {
+			if (otherType.equals(FileTypes.FILE)) {
+				return true;
+			} else {
+				return super.subtypeOf(otherType);
+			}
+		}
+	};
+
+	private static final BaseType MODULE = new BaseType("module") {
+		@Override
+		public boolean subtypeOf(ResoluteType otherType) {
+			if (otherType.equals(COMPONENT_TYPE)) {
+				return true;
+			} else {
+				return super.subtypeOf(otherType);
+			}
+		}
+	};
+
 	// Special type to handle polymorphism
 	private static final BaseType PERFORMED_BY = new BaseType("performed_by") {
 		@Override
@@ -104,6 +126,10 @@ public class SoftwareTypes extends ResoluteExternalFunctionLibraryType {
 			return PACKAGE;
 		} else if (name.equalsIgnoreCase(COMPONENT_TYPE.toString())) {
 			return COMPONENT_TYPE;
+		} else if (name.equalsIgnoreCase(SOURCE_CODE.toString())) {
+			return SOURCE_CODE;
+		} else if (name.equalsIgnoreCase(MODULE.toString())) {
+			return MODULE;
 		}
 
 		switch (name.toLowerCase()) {
@@ -287,7 +313,8 @@ public class SoftwareTypes extends ResoluteExternalFunctionLibraryType {
 	public boolean isTypeDefined(String type) {
 		return type.equalsIgnoreCase(CODE_DEVELOPMENT.toString()) || type.equalsIgnoreCase(BUILD.toString())
 				|| type.equalsIgnoreCase(CODE_GEN.toString()) || type.equalsIgnoreCase(COMPILE.toString())
-				|| type.equalsIgnoreCase(PACKAGE.toString()) || type.equalsIgnoreCase(COMPONENT_TYPE.toString());
+				|| type.equalsIgnoreCase(PACKAGE.toString()) || type.equalsIgnoreCase(COMPONENT_TYPE.toString())
+				|| type.equalsIgnoreCase(SOURCE_CODE.toString()) || type.equalsIgnoreCase(MODULE.toString());
 	}
 
 }
