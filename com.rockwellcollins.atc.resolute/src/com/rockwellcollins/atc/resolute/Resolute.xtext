@@ -36,7 +36,7 @@ ResoluteLibrary:
 
 Definition:
 	ConstantDefinition 
-|	TypeDefinition
+//|	TypeDefinition
 |	FunctionDefinition
 |	Ruleset
 |	NotationDefinition
@@ -55,7 +55,7 @@ Type:
 |	{SetType} '{' type=Type '}'
 |	BaseType ('<' paramType=Type '>')?
 |	{LibraryFnType} libName=ID '.' fnType=ID
-|	{DefinedType} typeDefinition=[TypeDefinition]
+//|	{DefinedType} type=[TypeDefinition]
 ;
 
 BaseType:
@@ -110,58 +110,7 @@ BaseType:
 		|	'agent'
 		|	'activity'
 		|	'thing'
-//		 // ANALYSIS
-//		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
-//		|	'analysis_report' 
-//		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
-//		|	'analysis_annotation_type' // class
-//		|	'precondition'	// type of analysis_annotation_type
-//		|	'postcondition'	// type of analysis_annotation_type
-//		|	'invariant'	// type of analysis_annotation_type
-//		|	'analysis_annotation' // type of entity
-//		 // HAZARD
-//		|	'hazard' // entity
-//		|	'hazard_identification' // type of activity
-//		 // REQUIREMENT
-//		|	'requirement' // type of entity
-//		|	'data_dictionary_term' // type of entity
-//		|	'requirement_development' // type of activity
-//		 // REVIEW
-//		|	'review' // type of activity
-//		|	'review_log' // type of entity
-//		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-//		 // SOFTWARE
-//		|	'file' // type of entity
-//		|	'format' // type of thing
-//		|	'code_development' // type of activity
-//		|	'build' // type of activity
-//		|	'code_gen' // type of activity
-//		|	'compile' // type of activity
-//		|	'package_file' // corresponds to PACKAGE, type of activity
-//		|	'component_type' // type of thing
-//		|	'source_function' // type of component_type
-//		|	'binary_function' // type of component_type
-//		|	'source_global_variable' // type of component_type
-//		|	'binary_global_variable' // type of component_type
-//		|	'binary_basic_block' // type of component_type
-//		|	'class_definition' // type of component_type
-//		|	'class_method' // type of component_type
-//		|	'class_member_variable' // type of component_type
-//		|	'class_constructor' // type of component_type
-//		|	'module' // type of component_type
-//		|	'namespace' // type of component_type
-////		|	'component' // type of entity
-//		 // SYSTEM
-////		|	'system' // type of entity
-//		|	'interface' // type of entity
-//		|	'system_development' // type of activity
-//		 // TESTING
-//		|	'test' // type of entity
-//		|	'test_result' // type of entity
-//		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
-//		|	'test_developmemt' // type of activity
-//		|	'test_execution' // type of activity
-         );
+);
 
 //Arg types are used for functions, claims, and quantifiers
 Arg returns Arg: 
@@ -173,16 +122,16 @@ ConstantDefinition:
 	name=ID ':' type=Type '=' expr=Expr
 ;
 
-TypeDefinition:
-	'typedef' type=Type name=ID
-;
+//TypeDefinition:
+//	'typedef' type=Type name=ID
+//;
 
 FunctionDefinition:
-	(claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
+	(defType='extern')? (claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
 ;
 
 DefinitionBody:
-	 {FunctionBody} ':' type=Type '=' expr=Expr
+	 {FunctionBody} ':' type=Type ('=' expr=Expr)?
 |	 {ClaimBody} '<=' ('**'(claim+=ClaimText)+'**') (attributes+=ClaimAttribute)* expr=Expr
 ;
 

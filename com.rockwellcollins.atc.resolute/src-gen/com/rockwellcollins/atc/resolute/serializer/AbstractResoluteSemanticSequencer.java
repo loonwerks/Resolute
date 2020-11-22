@@ -23,7 +23,6 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ClaimString;
 import com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
-import com.rockwellcollins.atc.resolute.resolute.DefinedType;
 import com.rockwellcollins.atc.resolute.resolute.ErrorStatement;
 import com.rockwellcollins.atc.resolute.resolute.EvidenceExpr;
 import com.rockwellcollins.atc.resolute.resolute.FailExpr;
@@ -61,7 +60,6 @@ import com.rockwellcollins.atc.resolute.resolute.SetType;
 import com.rockwellcollins.atc.resolute.resolute.SolutionExpr;
 import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
-import com.rockwellcollins.atc.resolute.resolute.TypeDefinition;
 import com.rockwellcollins.atc.resolute.resolute.UnaryExpr;
 import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 import com.rockwellcollins.atc.resolute.resolute.WarningStatement;
@@ -271,9 +269,6 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 			case ResolutePackage.CONSTANT_DEFINITION:
 				sequence_ConstantDefinition(context, (ConstantDefinition) semanticObject); 
 				return; 
-			case ResolutePackage.DEFINED_TYPE:
-				sequence_Type(context, (DefinedType) semanticObject); 
-				return; 
 			case ResolutePackage.ERROR_STATEMENT:
 				sequence_LintStatement(context, (ErrorStatement) semanticObject); 
 				return; 
@@ -381,9 +376,6 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 				return; 
 			case ResolutePackage.THIS_EXPR:
 				sequence_AtomicExpr(context, (ThisExpr) semanticObject); 
-				return; 
-			case ResolutePackage.TYPE_DEFINITION:
-				sequence_TypeDefinition(context, (TypeDefinition) semanticObject); 
 				return; 
 			case ResolutePackage.UNARY_EXPR:
 				sequence_PrefixExpr(context, (UnaryExpr) semanticObject); 
@@ -1749,19 +1741,10 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     DefinitionBody returns FunctionBody
 	 *
 	 * Constraint:
-	 *     (type=Type expr=Expr)
+	 *     (type=Type expr=Expr?)
 	 */
 	protected void sequence_DefinitionBody(ISerializationContext context, FunctionBody semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.FUNCTION_BODY__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.FUNCTION_BODY__TYPE));
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.DEFINITION_BODY__EXPR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.DEFINITION_BODY__EXPR));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDefinitionBodyAccess().getTypeTypeParserRuleCall_0_2_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getDefinitionBodyAccess().getExprExprParserRuleCall_0_4_0(), semanticObject.getExpr());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1773,7 +1756,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     FunctionDefinition returns FunctionDefinition
 	 *
 	 * Constraint:
-	 *     ((claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID (args+=Arg args+=Arg*)? body=DefinitionBody)
+	 *     (defType='extern'? (claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID (args+=Arg args+=Arg*)? body=DefinitionBody)
 	 */
 	protected void sequence_FunctionDefinition(ISerializationContext context, FunctionDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2103,47 +2086,6 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getRulesetAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getRulesetAccess().getBodyRulesetBodyParserRuleCall_3_0(), semanticObject.getBody());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     NamedElement returns TypeDefinition
-	 *     Definition returns TypeDefinition
-	 *     TypeDefinition returns TypeDefinition
-	 *
-	 * Constraint:
-	 *     (type=Type name=ID)
-	 */
-	protected void sequence_TypeDefinition(ISerializationContext context, TypeDefinition semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.TYPE_DEFINITION__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.TYPE_DEFINITION__TYPE));
-			if (transientValues.isValueTransient(semanticObject, Aadl2Package.eINSTANCE.getNamedElement_Name()) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, Aadl2Package.eINSTANCE.getNamedElement_Name()));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTypeDefinitionAccess().getTypeTypeParserRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getTypeDefinitionAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Type returns DefinedType
-	 *
-	 * Constraint:
-	 *     typeDefinition=[TypeDefinition|ID]
-	 */
-	protected void sequence_Type(ISerializationContext context, DefinedType semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.DEFINED_TYPE__TYPE_DEFINITION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.DEFINED_TYPE__TYPE_DEFINITION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTypeAccess().getTypeDefinitionTypeDefinitionIDTerminalRuleCall_4_1_0_1(), semanticObject.eGet(ResolutePackage.Literals.DEFINED_TYPE__TYPE_DEFINITION, false));
 		feeder.finish();
 	}
 	

@@ -24,7 +24,6 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimText;
 import com.rockwellcollins.atc.resolute.resolute.ClaimTextVar;
 import com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
-import com.rockwellcollins.atc.resolute.resolute.DefinedType;
 import com.rockwellcollins.atc.resolute.resolute.Definition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
 import com.rockwellcollins.atc.resolute.resolute.ErrorStatement;
@@ -68,7 +67,6 @@ import com.rockwellcollins.atc.resolute.resolute.SolutionExpr;
 import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
 import com.rockwellcollins.atc.resolute.resolute.Type;
-import com.rockwellcollins.atc.resolute.resolute.TypeDefinition;
 import com.rockwellcollins.atc.resolute.resolute.UnaryExpr;
 import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 import com.rockwellcollins.atc.resolute.resolute.WarningStatement;
@@ -139,13 +137,6 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   private EClass constantDefinitionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass typeDefinitionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -307,13 +298,6 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   private EClass libraryFnTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass definedTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -794,28 +778,6 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
-  public EClass getTypeDefinition()
-  {
-    return typeDefinitionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getTypeDefinition_Type()
-  {
-    return (EReference)typeDefinitionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getFunctionDefinition()
   {
     return functionDefinitionEClass;
@@ -827,7 +789,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
-  public EAttribute getFunctionDefinition_ClaimType()
+  public EAttribute getFunctionDefinition_DefType()
   {
     return (EAttribute)functionDefinitionEClass.getEStructuralFeatures().get(0);
   }
@@ -838,9 +800,20 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
+  public EAttribute getFunctionDefinition_ClaimType()
+  {
+    return (EAttribute)functionDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getFunctionDefinition_Args()
   {
-    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(1);
+    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -851,7 +824,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
   @Override
   public EReference getFunctionDefinition_Body()
   {
-    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(2);
+    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1336,28 +1309,6 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
   public EAttribute getLibraryFnType_FnType()
   {
     return (EAttribute)libraryFnTypeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getDefinedType()
-  {
-    return definedTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getDefinedType_TypeDefinition()
-  {
-    return (EReference)definedTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2369,10 +2320,8 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     createEReference(constantDefinitionEClass, CONSTANT_DEFINITION__TYPE);
     createEReference(constantDefinitionEClass, CONSTANT_DEFINITION__EXPR);
 
-    typeDefinitionEClass = createEClass(TYPE_DEFINITION);
-    createEReference(typeDefinitionEClass, TYPE_DEFINITION__TYPE);
-
     functionDefinitionEClass = createEClass(FUNCTION_DEFINITION);
+    createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__DEF_TYPE);
     createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__CLAIM_TYPE);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__ARGS);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__BODY);
@@ -2442,9 +2391,6 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     libraryFnTypeEClass = createEClass(LIBRARY_FN_TYPE);
     createEAttribute(libraryFnTypeEClass, LIBRARY_FN_TYPE__LIB_NAME);
     createEAttribute(libraryFnTypeEClass, LIBRARY_FN_TYPE__FN_TYPE);
-
-    definedTypeEClass = createEClass(DEFINED_TYPE);
-    createEReference(definedTypeEClass, DEFINED_TYPE__TYPE_DEFINITION);
 
     quantArgEClass = createEClass(QUANT_ARG);
     createEReference(quantArgEClass, QUANT_ARG__EXPR);
@@ -2611,7 +2557,6 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     argEClass.getESuperTypes().add(this.getClaimTextVar());
     constantDefinitionEClass.getESuperTypes().add(this.getDefinition());
     constantDefinitionEClass.getESuperTypes().add(this.getClaimTextVar());
-    typeDefinitionEClass.getESuperTypes().add(this.getDefinition());
     functionDefinitionEClass.getESuperTypes().add(theAadl2Package.getNamespace());
     functionDefinitionEClass.getESuperTypes().add(this.getDefinition());
     definitionBodyEClass.getESuperTypes().add(theAadl2Package.getElement());
@@ -2635,7 +2580,6 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     listTypeEClass.getESuperTypes().add(this.getType());
     setTypeEClass.getESuperTypes().add(this.getType());
     libraryFnTypeEClass.getESuperTypes().add(this.getType());
-    definedTypeEClass.getESuperTypes().add(this.getType());
     quantArgEClass.getESuperTypes().add(this.getArg());
     functionBodyEClass.getESuperTypes().add(this.getDefinitionBody());
     claimBodyEClass.getESuperTypes().add(this.getDefinitionBody());
@@ -2695,10 +2639,8 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEReference(getConstantDefinition_Type(), this.getType(), null, "type", null, 0, 1, ConstantDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConstantDefinition_Expr(), this.getExpr(), null, "expr", null, 0, 1, ConstantDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(typeDefinitionEClass, TypeDefinition.class, "TypeDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTypeDefinition_Type(), this.getType(), null, "type", null, 0, 1, TypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(functionDefinitionEClass, FunctionDefinition.class, "FunctionDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFunctionDefinition_DefType(), theEcorePackage.getEString(), "defType", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionDefinition_ClaimType(), theEcorePackage.getEString(), "claimType", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Args(), this.getArg(), null, "args", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Body(), this.getDefinitionBody(), null, "body", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2768,9 +2710,6 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEClass(libraryFnTypeEClass, LibraryFnType.class, "LibraryFnType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLibraryFnType_LibName(), theEcorePackage.getEString(), "libName", null, 0, 1, LibraryFnType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLibraryFnType_FnType(), theEcorePackage.getEString(), "fnType", null, 0, 1, LibraryFnType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(definedTypeEClass, DefinedType.class, "DefinedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDefinedType_TypeDefinition(), this.getTypeDefinition(), null, "typeDefinition", null, 0, 1, DefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(quantArgEClass, QuantArg.class, "QuantArg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getQuantArg_Expr(), this.getExpr(), null, "expr", null, 0, 1, QuantArg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

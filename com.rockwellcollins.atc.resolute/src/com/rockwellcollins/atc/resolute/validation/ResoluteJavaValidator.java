@@ -72,7 +72,6 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimRestriction;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ClaimUsageDomain;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
-import com.rockwellcollins.atc.resolute.resolute.DefinedType;
 import com.rockwellcollins.atc.resolute.resolute.Definition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
 import com.rockwellcollins.atc.resolute.resolute.EvidenceExpr;
@@ -573,7 +572,10 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			claimType = "goal";
 		}
 
-		ResoluteType exprType = getExprType(body.getExpr());
+		ResoluteType exprType = null;
+		if (body.getExpr() != null) {
+			exprType = getExprType(body.getExpr());
+		}
 
 		if (body instanceof FunctionBody) {
 			FunctionBody funcBody = (FunctionBody) body;
@@ -583,7 +585,15 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				error("Keyword " + claimType + " can only be declared for claims", funcDef,
 						ResolutePackage.Literals.FUNCTION_DEFINITION__CLAIM_TYPE);
 			}
-			if (!defType.subtypeOf(exprType)) {
+			// make sure extern functions don't include a definition
+			// make sure functions without a definition are labeled extern
+			if (funcDef.getDefType().equalsIgnoreCase("extern") && funcBody.getExpr() != null) {
+				error(funcBody, "Extern functions cannot contain an expression.");
+			} else if (funcBody.getExpr() == null && !funcDef.getDefType().equalsIgnoreCase("extern")) {
+				error(funcDef, "Functions without expressions must be labeled 'extern'.");
+			}
+
+			if (exprType != null && !defType.subtypeOf(exprType)) {
 				error(funcBody.getType(), "Function expects type " + defType + " but has type " + exprType);
 			}
 		} else {
@@ -749,12 +759,12 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			QuantifiedExpr quantifiedExpr = (QuantifiedExpr) expr;
 			return isValidConclusionExpr(quantifiedExpr.getExpr());
 		} else if (expr instanceof FnCallExpr) {
-//			FnCallExpr fnCallExpr = (FnCallExpr) expr;
-//			FunctionDefinition funcDef = fnCallExpr.getFn();
-//			if (funcDef.getBody() instanceof ClaimBody) {
-//				return true;
-//			}
-			return true;
+			FnCallExpr fnCallExpr = (FnCallExpr) expr;
+			FunctionDefinition funcDef = fnCallExpr.getFn();
+			if (funcDef.getBody() instanceof ClaimBody) {
+				return true;
+			}
+			return false;
 		} else if (expr instanceof LetExpr) {
 			LetExpr letExpr = (LetExpr) expr;
 			return isValidConclusionExpr(letExpr.getExpr());
@@ -2654,9 +2664,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				throw new IllegalArgumentException();
 			}
 			return libraryType.getType(libraryFnType.getFnType());
-		} else if (type instanceof DefinedType) {
-			DefinedType defType = (DefinedType) type;
-			return typeToResoluteType(defType.getTypeDefinition().getType());
+//		} else if (type instanceof DefinedType) {
+//			DefinedType defType = (DefinedType) type;
+//			return typeToResoluteType(defType.getType().getType());
 		} else {
 			error(type, "Unable to convert type");
 			throw new IllegalArgumentException();

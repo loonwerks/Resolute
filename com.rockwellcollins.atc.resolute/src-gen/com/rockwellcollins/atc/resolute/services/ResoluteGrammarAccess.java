@@ -139,36 +139,33 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.Definition");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cConstantDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cTypeDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cFunctionDefinitionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cRulesetParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cNotationDefinitionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cFunctionDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cRulesetParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cNotationDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Definition:
 		//	ConstantDefinition
-		//	| TypeDefinition
+		//	//|	TypeDefinition
 		//	| FunctionDefinition
 		//	| Ruleset
 		//	| NotationDefinition;
 		@Override public ParserRule getRule() { return rule; }
 
-		//ConstantDefinition | TypeDefinition | FunctionDefinition | Ruleset | NotationDefinition
+		//ConstantDefinition //|	TypeDefinition
+		//| FunctionDefinition | Ruleset | NotationDefinition
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ConstantDefinition
 		public RuleCall getConstantDefinitionParserRuleCall_0() { return cConstantDefinitionParserRuleCall_0; }
 
-		//TypeDefinition
-		public RuleCall getTypeDefinitionParserRuleCall_1() { return cTypeDefinitionParserRuleCall_1; }
-
 		//FunctionDefinition
-		public RuleCall getFunctionDefinitionParserRuleCall_2() { return cFunctionDefinitionParserRuleCall_2; }
+		public RuleCall getFunctionDefinitionParserRuleCall_1() { return cFunctionDefinitionParserRuleCall_1; }
 
 		//Ruleset
-		public RuleCall getRulesetParserRuleCall_3() { return cRulesetParserRuleCall_3; }
+		public RuleCall getRulesetParserRuleCall_2() { return cRulesetParserRuleCall_2; }
 
 		//NotationDefinition
-		public RuleCall getNotationDefinitionParserRuleCall_4() { return cNotationDefinitionParserRuleCall_4; }
+		public RuleCall getNotationDefinitionParserRuleCall_3() { return cNotationDefinitionParserRuleCall_3; }
 	}
 
 	public class NotationDefinitionElements extends AbstractParserRuleElementFinder {
@@ -276,22 +273,18 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFullStopKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		private final Assignment cFnTypeAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
 		private final RuleCall cFnTypeIDTerminalRuleCall_3_3_0 = (RuleCall)cFnTypeAssignment_3_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
-		private final Action cDefinedTypeAction_4_0 = (Action)cGroup_4.eContents().get(0);
-		private final Assignment cTypeDefinitionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cTypeDefinitionTypeDefinitionCrossReference_4_1_0 = (CrossReference)cTypeDefinitionAssignment_4_1.eContents().get(0);
-		private final RuleCall cTypeDefinitionTypeDefinitionIDTerminalRuleCall_4_1_0_1 = (RuleCall)cTypeDefinitionTypeDefinitionCrossReference_4_1_0.eContents().get(1);
 		
 		//Type:
 		//	{ListType} '[' type=Type ']'
 		//	| {SetType} '{' type=Type '}'
 		//	| BaseType ('<' paramType=Type '>')?
 		//	| {LibraryFnType} libName=ID '.' fnType=ID
-		//	| {DefinedType} typeDefinition=[TypeDefinition];
+		//	//|	{DefinedType} type=[TypeDefinition]
+		//;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{ListType} '[' type=Type ']' | {SetType} '{' type=Type '}' | BaseType ('<' paramType=Type '>')? | {LibraryFnType}
-		//libName=ID '.' fnType=ID | {DefinedType} typeDefinition=[TypeDefinition]
+		//libName=ID '.' fnType=ID
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{ListType} '[' type=Type ']'
@@ -371,21 +364,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getFnTypeIDTerminalRuleCall_3_3_0() { return cFnTypeIDTerminalRuleCall_3_3_0; }
-
-		//{DefinedType} typeDefinition=[TypeDefinition]
-		public Group getGroup_4() { return cGroup_4; }
-
-		//{DefinedType}
-		public Action getDefinedTypeAction_4_0() { return cDefinedTypeAction_4_0; }
-
-		//typeDefinition=[TypeDefinition]
-		public Assignment getTypeDefinitionAssignment_4_1() { return cTypeDefinitionAssignment_4_1; }
-
-		//[TypeDefinition]
-		public CrossReference getTypeDefinitionTypeDefinitionCrossReference_4_1_0() { return cTypeDefinitionTypeDefinitionCrossReference_4_1_0; }
-
-		//ID
-		public RuleCall getTypeDefinitionTypeDefinitionIDTerminalRuleCall_4_1_0_1() { return cTypeDefinitionTypeDefinitionIDTerminalRuleCall_4_1_0_1; }
 	}
 
 	public class BaseTypeElements extends AbstractParserRuleElementFinder {
@@ -491,59 +469,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//	| 'entity'
 		//	| 'agent'
 		//	| 'activity'
-		//	| 'thing'
-		//	//		 // ANALYSIS
-		//	//		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
-		//	//		|	'analysis_report' 
-		//	//		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
-		//	//		|	'analysis_annotation_type' // class
-		//	//		|	'precondition'	// type of analysis_annotation_type
-		//	//		|	'postcondition'	// type of analysis_annotation_type
-		//	//		|	'invariant'	// type of analysis_annotation_type
-		//	//		|	'analysis_annotation' // type of entity
-		//	//		 // HAZARD
-		//	//		|	'hazard' // entity
-		//	//		|	'hazard_identification' // type of activity
-		//	//		 // REQUIREMENT
-		//	//		|	'requirement' // type of entity
-		//	//		|	'data_dictionary_term' // type of entity
-		//	//		|	'requirement_development' // type of activity
-		//	//		 // REVIEW
-		//	//		|	'review' // type of activity
-		//	//		|	'review_log' // type of entity
-		//	//		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		//	//		 // SOFTWARE
-		//	//		|	'file' // type of entity
-		//	//		|	'format' // type of thing
-		//	//		|	'code_development' // type of activity
-		//	//		|	'build' // type of activity
-		//	//		|	'code_gen' // type of activity
-		//	//		|	'compile' // type of activity
-		//	//		|	'package_file' // corresponds to PACKAGE, type of activity
-		//	//		|	'component_type' // type of thing
-		//	//		|	'source_function' // type of component_type
-		//	//		|	'binary_function' // type of component_type
-		//	//		|	'source_global_variable' // type of component_type
-		//	//		|	'binary_global_variable' // type of component_type
-		//	//		|	'binary_basic_block' // type of component_type
-		//	//		|	'class_definition' // type of component_type
-		//	//		|	'class_method' // type of component_type
-		//	//		|	'class_member_variable' // type of component_type
-		//	//		|	'class_constructor' // type of component_type
-		//	//		|	'module' // type of component_type
-		//	//		|	'namespace' // type of component_type
-		//	////		|	'component' // type of entity
-		//	//		 // SYSTEM
-		//	////		|	'system' // type of entity
-		//	//		|	'interface' // type of entity
-		//	//		|	'system_development' // type of activity
-		//	//		 // TESTING
-		//	//		|	'test' // type of entity
-		//	//		|	'test_result' // type of entity
-		//	//		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
-		//	//		|	'test_developmemt' // type of activity
-		//	//		|	'test_execution' // type of activity
-		//);
+		//	| 'thing');
 		@Override public ParserRule getRule() { return rule; }
 
 		//type=('int' | 'real' | 'string' | 'bool' | 'range' | 'aadl' | 'component' | 'abstract' | 'bus' | 'data' | 'device' |
@@ -554,58 +480,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
 		//'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
 		//// W3C-PROV
-		//| 'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
-		////		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
-		////		|	'analysis_report' 
-		////		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
-		////		|	'analysis_annotation_type' // class
-		////		|	'precondition'	// type of analysis_annotation_type
-		////		|	'postcondition'	// type of analysis_annotation_type
-		////		|	'invariant'	// type of analysis_annotation_type
-		////		|	'analysis_annotation' // type of entity
-		////		 // HAZARD
-		////		|	'hazard' // entity
-		////		|	'hazard_identification' // type of activity
-		////		 // REQUIREMENT
-		////		|	'requirement' // type of entity
-		////		|	'data_dictionary_term' // type of entity
-		////		|	'requirement_development' // type of activity
-		////		 // REVIEW
-		////		|	'review' // type of activity
-		////		|	'review_log' // type of entity
-		////		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		////		 // SOFTWARE
-		////		|	'file' // type of entity
-		////		|	'format' // type of thing
-		////		|	'code_development' // type of activity
-		////		|	'build' // type of activity
-		////		|	'code_gen' // type of activity
-		////		|	'compile' // type of activity
-		////		|	'package_file' // corresponds to PACKAGE, type of activity
-		////		|	'component_type' // type of thing
-		////		|	'source_function' // type of component_type
-		////		|	'binary_function' // type of component_type
-		////		|	'source_global_variable' // type of component_type
-		////		|	'binary_global_variable' // type of component_type
-		////		|	'binary_basic_block' // type of component_type
-		////		|	'class_definition' // type of component_type
-		////		|	'class_method' // type of component_type
-		////		|	'class_member_variable' // type of component_type
-		////		|	'class_constructor' // type of component_type
-		////		|	'module' // type of component_type
-		////		|	'namespace' // type of component_type
-		//////		|	'component' // type of entity
-		////		 // SYSTEM
-		//////		|	'system' // type of entity
-		////		|	'interface' // type of entity
-		////		|	'system_development' // type of activity
-		////		 // TESTING
-		////		|	'test' // type of entity
-		////		|	'test_result' // type of entity
-		////		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
-		////		|	'test_developmemt' // type of activity
-		////		|	'test_execution' // type of activity
-		//)
+		//| 'entity' | 'agent' | 'activity' | 'thing')
 		public Assignment getTypeAssignment() { return cTypeAssignment; }
 
 		//('int' | 'real' | 'string' | 'bool' | 'range' | 'aadl' | 'component' | 'abstract' | 'bus' | 'data' | 'device' | 'memory'
@@ -616,58 +491,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
 		//'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow' // Evidence types
 		//// W3C-PROV
-		//| 'entity' | 'agent' | 'activity' | 'thing' //		 // ANALYSIS
-		////		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
-		////		|	'analysis_report' 
-		////		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
-		////		|	'analysis_annotation_type' // class
-		////		|	'precondition'	// type of analysis_annotation_type
-		////		|	'postcondition'	// type of analysis_annotation_type
-		////		|	'invariant'	// type of analysis_annotation_type
-		////		|	'analysis_annotation' // type of entity
-		////		 // HAZARD
-		////		|	'hazard' // entity
-		////		|	'hazard_identification' // type of activity
-		////		 // REQUIREMENT
-		////		|	'requirement' // type of entity
-		////		|	'data_dictionary_term' // type of entity
-		////		|	'requirement_development' // type of activity
-		////		 // REVIEW
-		////		|	'review' // type of activity
-		////		|	'review_log' // type of entity
-		////		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-		////		 // SOFTWARE
-		////		|	'file' // type of entity
-		////		|	'format' // type of thing
-		////		|	'code_development' // type of activity
-		////		|	'build' // type of activity
-		////		|	'code_gen' // type of activity
-		////		|	'compile' // type of activity
-		////		|	'package_file' // corresponds to PACKAGE, type of activity
-		////		|	'component_type' // type of thing
-		////		|	'source_function' // type of component_type
-		////		|	'binary_function' // type of component_type
-		////		|	'source_global_variable' // type of component_type
-		////		|	'binary_global_variable' // type of component_type
-		////		|	'binary_basic_block' // type of component_type
-		////		|	'class_definition' // type of component_type
-		////		|	'class_method' // type of component_type
-		////		|	'class_member_variable' // type of component_type
-		////		|	'class_constructor' // type of component_type
-		////		|	'module' // type of component_type
-		////		|	'namespace' // type of component_type
-		//////		|	'component' // type of entity
-		////		 // SYSTEM
-		//////		|	'system' // type of entity
-		////		|	'interface' // type of entity
-		////		|	'system_development' // type of activity
-		////		 // TESTING
-		////		|	'test' // type of entity
-		////		|	'test_result' // type of entity
-		////		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
-		////		|	'test_developmemt' // type of activity
-		////		|	'test_execution' // type of activity
-		//)
+		//| 'entity' | 'agent' | 'activity' | 'thing')
 		public Alternatives getTypeAlternatives_0() { return cTypeAlternatives_0; }
 
 		//'int'
@@ -928,130 +752,109 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getExprExprParserRuleCall_4_0() { return cExprExprParserRuleCall_4_0; }
 	}
 
-	public class TypeDefinitionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.TypeDefinition");
+	public class FunctionDefinitionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.FunctionDefinition");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cTypedefKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Assignment cDefTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cDefTypeExternKeyword_0_0 = (Keyword)cDefTypeAssignment_0.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cClaimTypeAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final Keyword cClaimTypeGoalKeyword_1_0_0 = (Keyword)cClaimTypeAssignment_1_0.eContents().get(0);
+		private final Assignment cClaimTypeAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final Keyword cClaimTypeConclusionKeyword_1_1_0 = (Keyword)cClaimTypeAssignment_1_1.eContents().get(0);
+		private final Assignment cClaimTypeAssignment_1_2 = (Assignment)cAlternatives_1.eContents().get(2);
+		private final Keyword cClaimTypeStrategyKeyword_1_2_0 = (Keyword)cClaimTypeAssignment_1_2.eContents().get(0);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Assignment cArgsAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final RuleCall cArgsArgParserRuleCall_4_0_0 = (RuleCall)cArgsAssignment_4_0.eContents().get(0);
+		private final Group cGroup_4_1 = (Group)cGroup_4.eContents().get(1);
+		private final Keyword cCommaKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
+		private final Assignment cArgsAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
+		private final RuleCall cArgsArgParserRuleCall_4_1_1_0 = (RuleCall)cArgsAssignment_4_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cBodyAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cBodyDefinitionBodyParserRuleCall_6_0 = (RuleCall)cBodyAssignment_6.eContents().get(0);
 		
-		//TypeDefinition:
-		//	'typedef' type=Type name=ID;
+		////TypeDefinition:
+		////	'typedef' type=Type name=ID
+		////;
+		//FunctionDefinition:
+		//	defType='extern'? (claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID '(' (args+=Arg (','
+		//	args+=Arg)*)? ')' body=DefinitionBody;
 		@Override public ParserRule getRule() { return rule; }
 
-		//'typedef' type=Type name=ID
+		//defType='extern'? (claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID '(' (args+=Arg (','
+		//args+=Arg)*)? ')' body=DefinitionBody
 		public Group getGroup() { return cGroup; }
 
-		//'typedef'
-		public Keyword getTypedefKeyword_0() { return cTypedefKeyword_0; }
+		//defType='extern'?
+		public Assignment getDefTypeAssignment_0() { return cDefTypeAssignment_0; }
 
-		//type=Type
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		//'extern'
+		public Keyword getDefTypeExternKeyword_0_0() { return cDefTypeExternKeyword_0_0; }
 
-		//Type
-		public RuleCall getTypeTypeParserRuleCall_1_0() { return cTypeTypeParserRuleCall_1_0; }
+		//(claimType='goal' | claimType='conclusion' | claimType='strategy')?
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//claimType='goal'
+		public Assignment getClaimTypeAssignment_1_0() { return cClaimTypeAssignment_1_0; }
+
+		//'goal'
+		public Keyword getClaimTypeGoalKeyword_1_0_0() { return cClaimTypeGoalKeyword_1_0_0; }
+
+		//claimType='conclusion'
+		public Assignment getClaimTypeAssignment_1_1() { return cClaimTypeAssignment_1_1; }
+
+		//'conclusion'
+		public Keyword getClaimTypeConclusionKeyword_1_1_0() { return cClaimTypeConclusionKeyword_1_1_0; }
+
+		//claimType='strategy'
+		public Assignment getClaimTypeAssignment_1_2() { return cClaimTypeAssignment_1_2; }
+
+		//'strategy'
+		public Keyword getClaimTypeStrategyKeyword_1_2_0() { return cClaimTypeStrategyKeyword_1_2_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
-	}
-
-	public class FunctionDefinitionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.FunctionDefinition");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Assignment cClaimTypeAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
-		private final Keyword cClaimTypeGoalKeyword_0_0_0 = (Keyword)cClaimTypeAssignment_0_0.eContents().get(0);
-		private final Assignment cClaimTypeAssignment_0_1 = (Assignment)cAlternatives_0.eContents().get(1);
-		private final Keyword cClaimTypeConclusionKeyword_0_1_0 = (Keyword)cClaimTypeAssignment_0_1.eContents().get(0);
-		private final Assignment cClaimTypeAssignment_0_2 = (Assignment)cAlternatives_0.eContents().get(2);
-		private final Keyword cClaimTypeStrategyKeyword_0_2_0 = (Keyword)cClaimTypeAssignment_0_2.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Assignment cArgsAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
-		private final RuleCall cArgsArgParserRuleCall_3_0_0 = (RuleCall)cArgsAssignment_3_0.eContents().get(0);
-		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
-		private final Keyword cCommaKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
-		private final Assignment cArgsAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
-		private final RuleCall cArgsArgParserRuleCall_3_1_1_0 = (RuleCall)cArgsAssignment_3_1_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cBodyAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cBodyDefinitionBodyParserRuleCall_5_0 = (RuleCall)cBodyAssignment_5.eContents().get(0);
-		
-		//FunctionDefinition:
-		//	(claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')'
-		//	body=DefinitionBody;
-		@Override public ParserRule getRule() { return rule; }
-
-		//(claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')'
-		//body=DefinitionBody
-		public Group getGroup() { return cGroup; }
-
-		//(claimType='goal' | claimType='conclusion' | claimType='strategy')?
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-
-		//claimType='goal'
-		public Assignment getClaimTypeAssignment_0_0() { return cClaimTypeAssignment_0_0; }
-
-		//'goal'
-		public Keyword getClaimTypeGoalKeyword_0_0_0() { return cClaimTypeGoalKeyword_0_0_0; }
-
-		//claimType='conclusion'
-		public Assignment getClaimTypeAssignment_0_1() { return cClaimTypeAssignment_0_1; }
-
-		//'conclusion'
-		public Keyword getClaimTypeConclusionKeyword_0_1_0() { return cClaimTypeConclusionKeyword_0_1_0; }
-
-		//claimType='strategy'
-		public Assignment getClaimTypeAssignment_0_2() { return cClaimTypeAssignment_0_2; }
-
-		//'strategy'
-		public Keyword getClaimTypeStrategyKeyword_0_2_0() { return cClaimTypeStrategyKeyword_0_2_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
 		//'('
-		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		public Keyword getLeftParenthesisKeyword_3() { return cLeftParenthesisKeyword_3; }
 
 		//(args+=Arg (',' args+=Arg)*)?
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//args+=Arg
-		public Assignment getArgsAssignment_3_0() { return cArgsAssignment_3_0; }
+		public Assignment getArgsAssignment_4_0() { return cArgsAssignment_4_0; }
 
 		//Arg
-		public RuleCall getArgsArgParserRuleCall_3_0_0() { return cArgsArgParserRuleCall_3_0_0; }
+		public RuleCall getArgsArgParserRuleCall_4_0_0() { return cArgsArgParserRuleCall_4_0_0; }
 
 		//(',' args+=Arg)*
-		public Group getGroup_3_1() { return cGroup_3_1; }
+		public Group getGroup_4_1() { return cGroup_4_1; }
 
 		//','
-		public Keyword getCommaKeyword_3_1_0() { return cCommaKeyword_3_1_0; }
+		public Keyword getCommaKeyword_4_1_0() { return cCommaKeyword_4_1_0; }
 
 		//args+=Arg
-		public Assignment getArgsAssignment_3_1_1() { return cArgsAssignment_3_1_1; }
+		public Assignment getArgsAssignment_4_1_1() { return cArgsAssignment_4_1_1; }
 
 		//Arg
-		public RuleCall getArgsArgParserRuleCall_3_1_1_0() { return cArgsArgParserRuleCall_3_1_1_0; }
+		public RuleCall getArgsArgParserRuleCall_4_1_1_0() { return cArgsArgParserRuleCall_4_1_1_0; }
 
 		//')'
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 
 		//body=DefinitionBody
-		public Assignment getBodyAssignment_5() { return cBodyAssignment_5; }
+		public Assignment getBodyAssignment_6() { return cBodyAssignment_6; }
 
 		//DefinitionBody
-		public RuleCall getBodyDefinitionBodyParserRuleCall_5_0() { return cBodyDefinitionBodyParserRuleCall_5_0; }
+		public RuleCall getBodyDefinitionBodyParserRuleCall_6_0() { return cBodyDefinitionBodyParserRuleCall_6_0; }
 	}
 
 	public class DefinitionBodyElements extends AbstractParserRuleElementFinder {
@@ -1062,9 +865,10 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Assignment cTypeAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
 		private final RuleCall cTypeTypeParserRuleCall_0_2_0 = (RuleCall)cTypeAssignment_0_2.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Assignment cExprAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
-		private final RuleCall cExprExprParserRuleCall_0_4_0 = (RuleCall)cExprAssignment_0_4.eContents().get(0);
+		private final Group cGroup_0_3 = (Group)cGroup_0.eContents().get(3);
+		private final Keyword cEqualsSignKeyword_0_3_0 = (Keyword)cGroup_0_3.eContents().get(0);
+		private final Assignment cExprAssignment_0_3_1 = (Assignment)cGroup_0_3.eContents().get(1);
+		private final RuleCall cExprExprParserRuleCall_0_3_1_0 = (RuleCall)cExprAssignment_0_3_1.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cClaimBodyAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Keyword cLessThanSignEqualsSignKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
@@ -1079,15 +883,15 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprExprParserRuleCall_1_4_0 = (RuleCall)cExprAssignment_1_4.eContents().get(0);
 		
 		//DefinitionBody:
-		//	{FunctionBody} ':' type=Type '=' expr=Expr
+		//	{FunctionBody} ':' type=Type ('=' expr=Expr)?
 		//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
-		//{FunctionBody} ':' type=Type '=' expr=Expr | {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute*
-		//expr=Expr
+		//{FunctionBody} ':' type=Type ('=' expr=Expr)? | {ClaimBody} '<=' ('**' claim+=ClaimText+ '**')
+		//attributes+=ClaimAttribute* expr=Expr
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{FunctionBody} ':' type=Type '=' expr=Expr
+		//{FunctionBody} ':' type=Type ('=' expr=Expr)?
 		public Group getGroup_0() { return cGroup_0; }
 
 		//{FunctionBody}
@@ -1102,14 +906,17 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//Type
 		public RuleCall getTypeTypeParserRuleCall_0_2_0() { return cTypeTypeParserRuleCall_0_2_0; }
 
+		//('=' expr=Expr)?
+		public Group getGroup_0_3() { return cGroup_0_3; }
+
 		//'='
-		public Keyword getEqualsSignKeyword_0_3() { return cEqualsSignKeyword_0_3; }
+		public Keyword getEqualsSignKeyword_0_3_0() { return cEqualsSignKeyword_0_3_0; }
 
 		//expr=Expr
-		public Assignment getExprAssignment_0_4() { return cExprAssignment_0_4; }
+		public Assignment getExprAssignment_0_3_1() { return cExprAssignment_0_3_1; }
 
 		//Expr
-		public RuleCall getExprExprParserRuleCall_0_4_0() { return cExprExprParserRuleCall_0_4_0; }
+		public RuleCall getExprExprParserRuleCall_0_3_1_0() { return cExprExprParserRuleCall_0_3_1_0; }
 
 		//{ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr
 		public Group getGroup_1() { return cGroup_1; }
@@ -3828,7 +3635,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	private final BaseTypeElements pBaseType;
 	private final ArgElements pArg;
 	private final ConstantDefinitionElements pConstantDefinition;
-	private final TypeDefinitionElements pTypeDefinition;
 	private final FunctionDefinitionElements pFunctionDefinition;
 	private final DefinitionBodyElements pDefinitionBody;
 	private final ClaimAttributeElements pClaimAttribute;
@@ -3890,7 +3696,6 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		this.pBaseType = new BaseTypeElements();
 		this.pArg = new ArgElements();
 		this.pConstantDefinition = new ConstantDefinitionElements();
-		this.pTypeDefinition = new TypeDefinitionElements();
 		this.pFunctionDefinition = new FunctionDefinitionElements();
 		this.pDefinitionBody = new DefinitionBodyElements();
 		this.pClaimAttribute = new ClaimAttributeElements();
@@ -4025,7 +3830,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Definition:
 	//	ConstantDefinition
-	//	| TypeDefinition
+	//	//|	TypeDefinition
 	//	| FunctionDefinition
 	//	| Ruleset
 	//	| NotationDefinition;
@@ -4062,7 +3867,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//	| {SetType} '{' type=Type '}'
 	//	| BaseType ('<' paramType=Type '>')?
 	//	| {LibraryFnType} libName=ID '.' fnType=ID
-	//	| {DefinedType} typeDefinition=[TypeDefinition];
+	//	//|	{DefinedType} type=[TypeDefinition]
+	//;
 	public TypeElements getTypeAccess() {
 		return pType;
 	}
@@ -4121,59 +3927,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//	| 'entity'
 	//	| 'agent'
 	//	| 'activity'
-	//	| 'thing'
-	//	//		 // ANALYSIS
-	//	//		|	'analysis_activity'	// corresponds to ANALYSIS class, type of activity
-	//	//		|	'analysis_report' 
-	//	//		|	'analysis_result' // class, must be one of {Passed, Failed, Indeterminate}
-	//	//		|	'analysis_annotation_type' // class
-	//	//		|	'precondition'	// type of analysis_annotation_type
-	//	//		|	'postcondition'	// type of analysis_annotation_type
-	//	//		|	'invariant'	// type of analysis_annotation_type
-	//	//		|	'analysis_annotation' // type of entity
-	//	//		 // HAZARD
-	//	//		|	'hazard' // entity
-	//	//		|	'hazard_identification' // type of activity
-	//	//		 // REQUIREMENT
-	//	//		|	'requirement' // type of entity
-	//	//		|	'data_dictionary_term' // type of entity
-	//	//		|	'requirement_development' // type of activity
-	//	//		 // REVIEW
-	//	//		|	'review' // type of activity
-	//	//		|	'review_log' // type of entity
-	//	//		|	'review_state' // class, must be one of {Passed, RevisedWithoutReview, RevisedWithReview}
-	//	//		 // SOFTWARE
-	//	//		|	'file' // type of entity
-	//	//		|	'format' // type of thing
-	//	//		|	'code_development' // type of activity
-	//	//		|	'build' // type of activity
-	//	//		|	'code_gen' // type of activity
-	//	//		|	'compile' // type of activity
-	//	//		|	'package_file' // corresponds to PACKAGE, type of activity
-	//	//		|	'component_type' // type of thing
-	//	//		|	'source_function' // type of component_type
-	//	//		|	'binary_function' // type of component_type
-	//	//		|	'source_global_variable' // type of component_type
-	//	//		|	'binary_global_variable' // type of component_type
-	//	//		|	'binary_basic_block' // type of component_type
-	//	//		|	'class_definition' // type of component_type
-	//	//		|	'class_method' // type of component_type
-	//	//		|	'class_member_variable' // type of component_type
-	//	//		|	'class_constructor' // type of component_type
-	//	//		|	'module' // type of component_type
-	//	//		|	'namespace' // type of component_type
-	//	////		|	'component' // type of entity
-	//	//		 // SYSTEM
-	//	////		|	'system' // type of entity
-	//	//		|	'interface' // type of entity
-	//	//		|	'system_development' // type of activity
-	//	//		 // TESTING
-	//	//		|	'test' // type of entity
-	//	//		|	'test_result' // type of entity
-	//	//		|	'test_status' // class, must be one of {Passed, Failed, Indeterminate}
-	//	//		|	'test_developmemt' // type of activity
-	//	//		|	'test_execution' // type of activity
-	//);
+	//	| 'thing');
 	public BaseTypeElements getBaseTypeAccess() {
 		return pBaseType;
 	}
@@ -4203,19 +3957,12 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getConstantDefinitionAccess().getRule();
 	}
 
-	//TypeDefinition:
-	//	'typedef' type=Type name=ID;
-	public TypeDefinitionElements getTypeDefinitionAccess() {
-		return pTypeDefinition;
-	}
-	
-	public ParserRule getTypeDefinitionRule() {
-		return getTypeDefinitionAccess().getRule();
-	}
-
+	////TypeDefinition:
+	////	'typedef' type=Type name=ID
+	////;
 	//FunctionDefinition:
-	//	(claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')'
-	//	body=DefinitionBody;
+	//	defType='extern'? (claimType='goal' | claimType='conclusion' | claimType='strategy')? name=ID '(' (args+=Arg (','
+	//	args+=Arg)*)? ')' body=DefinitionBody;
 	public FunctionDefinitionElements getFunctionDefinitionAccess() {
 		return pFunctionDefinition;
 	}
@@ -4225,7 +3972,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DefinitionBody:
-	//	{FunctionBody} ':' type=Type '=' expr=Expr
+	//	{FunctionBody} ':' type=Type ('=' expr=Expr)?
 	//	| {ClaimBody} '<=' ('**' claim+=ClaimText+ '**') attributes+=ClaimAttribute* expr=Expr;
 	public DefinitionBodyElements getDefinitionBodyAccess() {
 		return pDefinitionBody;

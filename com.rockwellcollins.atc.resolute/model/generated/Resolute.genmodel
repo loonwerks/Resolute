@@ -27,10 +27,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ConstantDefinition/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ConstantDefinition/expr"/>
     </genClasses>
-    <genClasses ecoreClass="Resolute.ecore#//TypeDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//TypeDefinition/type"/>
-    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//FunctionDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//FunctionDefinition/defType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//FunctionDefinition/claimType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//FunctionDefinition/args"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//FunctionDefinition/body"/>
@@ -99,9 +97,6 @@
     <genClasses ecoreClass="Resolute.ecore#//LibraryFnType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//LibraryFnType/libName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//LibraryFnType/fnType"/>
-    </genClasses>
-    <genClasses ecoreClass="Resolute.ecore#//DefinedType">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Resolute.ecore#//DefinedType/typeDefinition"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//QuantArg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//QuantArg/expr"/>
@@ -222,6 +217,19 @@
     <genClasses ecoreClass="Resolute.ecore#//InfoStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//ProveStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//CheckStatement"/>
+    <genClasses ecoreClass="Resolute.ecore#//TypeDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//TypeDefinition/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//DefinedType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Resolute.ecore#//DefinedType/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Resolute.ecore#//DefinedType/typeDefinition"/>
+    </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//QuantArgType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//QuantArgType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//TypeDefExpr">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Resolute.ecore#//TypeDefExpr/type"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//EvidenceResultExpr">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//EvidenceResultExpr/val"/>
     </genClasses>

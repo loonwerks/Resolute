@@ -32,6 +32,7 @@ import org.osate.aadl2.impl.NamespaceImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.FunctionDefinitionImpl#getDefType <em>Def Type</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.FunctionDefinitionImpl#getClaimType <em>Claim Type</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.FunctionDefinitionImpl#getArgs <em>Args</em>}</li>
  *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.FunctionDefinitionImpl#getBody <em>Body</em>}</li>
@@ -41,6 +42,26 @@ import org.osate.aadl2.impl.NamespaceImpl;
  */
 public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDefinition
 {
+  /**
+   * The default value of the '{@link #getDefType() <em>Def Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDefType()
+   * @generated
+   * @ordered
+   */
+  protected static final String DEF_TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getDefType() <em>Def Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDefType()
+   * @generated
+   * @ordered
+   */
+  protected String defType = DEF_TYPE_EDEFAULT;
+
   /**
    * The default value of the '{@link #getClaimType() <em>Claim Type</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -100,6 +121,31 @@ public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDef
   protected EClass eStaticClass()
   {
     return ResolutePackage.Literals.FUNCTION_DEFINITION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getDefType()
+  {
+    return defType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDefType(String newDefType)
+  {
+    String oldDefType = defType;
+    defType = newDefType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.FUNCTION_DEFINITION__DEF_TYPE, oldDefType, defType));
   }
 
   /**
@@ -220,6 +266,8 @@ public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDef
   {
     switch (featureID)
     {
+      case ResolutePackage.FUNCTION_DEFINITION__DEF_TYPE:
+        return getDefType();
       case ResolutePackage.FUNCTION_DEFINITION__CLAIM_TYPE:
         return getClaimType();
       case ResolutePackage.FUNCTION_DEFINITION__ARGS:
@@ -241,6 +289,9 @@ public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDef
   {
     switch (featureID)
     {
+      case ResolutePackage.FUNCTION_DEFINITION__DEF_TYPE:
+        setDefType((String)newValue);
+        return;
       case ResolutePackage.FUNCTION_DEFINITION__CLAIM_TYPE:
         setClaimType((String)newValue);
         return;
@@ -265,6 +316,9 @@ public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDef
   {
     switch (featureID)
     {
+      case ResolutePackage.FUNCTION_DEFINITION__DEF_TYPE:
+        setDefType(DEF_TYPE_EDEFAULT);
+        return;
       case ResolutePackage.FUNCTION_DEFINITION__CLAIM_TYPE:
         setClaimType(CLAIM_TYPE_EDEFAULT);
         return;
@@ -288,6 +342,8 @@ public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDef
   {
     switch (featureID)
     {
+      case ResolutePackage.FUNCTION_DEFINITION__DEF_TYPE:
+        return DEF_TYPE_EDEFAULT == null ? defType != null : !DEF_TYPE_EDEFAULT.equals(defType);
       case ResolutePackage.FUNCTION_DEFINITION__CLAIM_TYPE:
         return CLAIM_TYPE_EDEFAULT == null ? claimType != null : !CLAIM_TYPE_EDEFAULT.equals(claimType);
       case ResolutePackage.FUNCTION_DEFINITION__ARGS:
@@ -309,7 +365,9 @@ public class FunctionDefinitionImpl extends NamespaceImpl implements FunctionDef
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (claimType: ");
+    result.append(" (defType: ");
+    result.append(defType);
+    result.append(", claimType: ");
     result.append(claimType);
     result.append(')');
     return result.toString();
