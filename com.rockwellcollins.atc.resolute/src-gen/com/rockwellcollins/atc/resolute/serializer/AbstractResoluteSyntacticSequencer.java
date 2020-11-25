@@ -20,14 +20,14 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ResoluteGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_AtomicExpr_LeftParenthesisKeyword_19_0_a;
-	protected AbstractElementAlias match_AtomicExpr_LeftParenthesisKeyword_19_0_p;
+	protected AbstractElementAlias match_AtomicExpr_LeftParenthesisKeyword_20_0_a;
+	protected AbstractElementAlias match_AtomicExpr_LeftParenthesisKeyword_20_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ResoluteGrammarAccess) access;
-		match_AtomicExpr_LeftParenthesisKeyword_19_0_a = new TokenAlias(true, true, grammarAccess.getAtomicExprAccess().getLeftParenthesisKeyword_19_0());
-		match_AtomicExpr_LeftParenthesisKeyword_19_0_p = new TokenAlias(true, false, grammarAccess.getAtomicExprAccess().getLeftParenthesisKeyword_19_0());
+		match_AtomicExpr_LeftParenthesisKeyword_20_0_a = new TokenAlias(true, true, grammarAccess.getAtomicExprAccess().getLeftParenthesisKeyword_20_0());
+		match_AtomicExpr_LeftParenthesisKeyword_20_0_p = new TokenAlias(true, false, grammarAccess.getAtomicExprAccess().getLeftParenthesisKeyword_20_0());
 	}
 	
 	@Override
@@ -80,10 +80,10 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_AtomicExpr_LeftParenthesisKeyword_19_0_a.equals(syntax))
-				emit_AtomicExpr_LeftParenthesisKeyword_19_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_AtomicExpr_LeftParenthesisKeyword_19_0_p.equals(syntax))
-				emit_AtomicExpr_LeftParenthesisKeyword_19_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_AtomicExpr_LeftParenthesisKeyword_20_0_a.equals(syntax))
+				emit_AtomicExpr_LeftParenthesisKeyword_20_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_AtomicExpr_LeftParenthesisKeyword_20_0_p.equals(syntax))
+				emit_AtomicExpr_LeftParenthesisKeyword_20_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -105,6 +105,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '[' (ambiguity) 'this' (rule start)
 	 *     (rule start) '[' (ambiguity) 'undeveloped' (rule start)
 	 *     (rule start) '[' (ambiguity) '{' '}' (rule start)
+	 *     (rule start) '[' (ambiguity) '|' expr=QCREF
 	 *     (rule start) '[' (ambiguity) fn=BuiltInFn
 	 *     (rule start) '[' (ambiguity) fn=[FunctionDefinition|ID]
 	 *     (rule start) '[' (ambiguity) id=[NamedElement|QCREF]
@@ -137,6 +138,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) '{' (ambiguity) 'this' (rule start)
 	 *     (rule start) '{' (ambiguity) 'undeveloped' (rule start)
 	 *     (rule start) '{' (ambiguity) '{' '}' (rule start)
+	 *     (rule start) '{' (ambiguity) '|' expr=QCREF
 	 *     (rule start) '{' (ambiguity) fn=BuiltInFn
 	 *     (rule start) '{' (ambiguity) fn=[FunctionDefinition|ID]
 	 *     (rule start) '{' (ambiguity) id=[NamedElement|QCREF]
@@ -169,6 +171,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) (ambiguity) 'this' (rule start)
 	 *     (rule start) (ambiguity) 'undeveloped' (rule start)
 	 *     (rule start) (ambiguity) '{' '}' (rule start)
+	 *     (rule start) (ambiguity) '|' expr=QCREF
 	 *     (rule start) (ambiguity) fn=BuiltInFn
 	 *     (rule start) (ambiguity) fn=[FunctionDefinition|ID]
 	 *     (rule start) (ambiguity) id=[NamedElement|QCREF]
@@ -190,7 +193,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) (ambiguity) {SetExpr.exprs+=}
 	 *     (rule start) (ambiguity) {SetFilterMapExpr.map=}
 	 */
-	protected void emit_AtomicExpr_LeftParenthesisKeyword_19_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_AtomicExpr_LeftParenthesisKeyword_20_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -205,7 +208,7 @@ public abstract class AbstractResoluteSyntacticSequencer extends AbstractSyntact
 	 *     (rule start) (ambiguity) {BinaryExpr.left=}
 	 *     (rule start) (ambiguity) {InstanceOfExpr.expr=}
 	 */
-	protected void emit_AtomicExpr_LeftParenthesisKeyword_19_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_AtomicExpr_LeftParenthesisKeyword_20_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

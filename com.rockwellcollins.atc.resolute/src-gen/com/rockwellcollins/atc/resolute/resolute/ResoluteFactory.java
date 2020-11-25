@@ -536,6 +536,15 @@ public interface ResoluteFactory extends EFactory
   SetExpr createSetExpr();
 
   /**
+   * Returns a new object of class '<em>Object Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Object Expr</em>'.
+   * @generated
+   */
+  ObjectExpr createObjectExpr();
+
+  /**
    * Returns a new object of class '<em>Let Expr</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

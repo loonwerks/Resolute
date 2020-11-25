@@ -2156,31 +2156,37 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftCurlyBracketKeyword_17_1 = (Keyword)cGroup_17.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_17_2 = (Keyword)cGroup_17.eContents().get(2);
 		private final Group cGroup_18 = (Group)cAlternatives.eContents().get(18);
-		private final Action cLetExprAction_18_0 = (Action)cGroup_18.eContents().get(0);
-		private final Keyword cLetKeyword_18_1 = (Keyword)cGroup_18.eContents().get(1);
-		private final Assignment cBindingAssignment_18_2 = (Assignment)cGroup_18.eContents().get(2);
-		private final RuleCall cBindingLetBindingParserRuleCall_18_2_0 = (RuleCall)cBindingAssignment_18_2.eContents().get(0);
-		private final Keyword cSemicolonKeyword_18_3 = (Keyword)cGroup_18.eContents().get(3);
-		private final Assignment cExprAssignment_18_4 = (Assignment)cGroup_18.eContents().get(4);
-		private final RuleCall cExprExprParserRuleCall_18_4_0 = (RuleCall)cExprAssignment_18_4.eContents().get(0);
+		private final Action cObjectExprAction_18_0 = (Action)cGroup_18.eContents().get(0);
+		private final Keyword cVerticalLineKeyword_18_1 = (Keyword)cGroup_18.eContents().get(1);
+		private final Assignment cExprAssignment_18_2 = (Assignment)cGroup_18.eContents().get(2);
+		private final RuleCall cExprQCREFParserRuleCall_18_2_0 = (RuleCall)cExprAssignment_18_2.eContents().get(0);
+		private final Keyword cVerticalLineKeyword_18_3 = (Keyword)cGroup_18.eContents().get(3);
 		private final Group cGroup_19 = (Group)cAlternatives.eContents().get(19);
-		private final Keyword cLeftParenthesisKeyword_19_0 = (Keyword)cGroup_19.eContents().get(0);
-		private final RuleCall cExprParserRuleCall_19_1 = (RuleCall)cGroup_19.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_19_2 = (Keyword)cGroup_19.eContents().get(2);
+		private final Action cLetExprAction_19_0 = (Action)cGroup_19.eContents().get(0);
+		private final Keyword cLetKeyword_19_1 = (Keyword)cGroup_19.eContents().get(1);
+		private final Assignment cBindingAssignment_19_2 = (Assignment)cGroup_19.eContents().get(2);
+		private final RuleCall cBindingLetBindingParserRuleCall_19_2_0 = (RuleCall)cBindingAssignment_19_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_19_3 = (Keyword)cGroup_19.eContents().get(3);
+		private final Assignment cExprAssignment_19_4 = (Assignment)cGroup_19.eContents().get(4);
+		private final RuleCall cExprExprParserRuleCall_19_4_0 = (RuleCall)cExprAssignment_19_4.eContents().get(0);
 		private final Group cGroup_20 = (Group)cAlternatives.eContents().get(20);
-		private final Action cUndevelopedExprAction_20_0 = (Action)cGroup_20.eContents().get(0);
-		private final Keyword cUndevelopedKeyword_20_1 = (Keyword)cGroup_20.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_20_0 = (Keyword)cGroup_20.eContents().get(0);
+		private final RuleCall cExprParserRuleCall_20_1 = (RuleCall)cGroup_20.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_20_2 = (Keyword)cGroup_20.eContents().get(2);
 		private final Group cGroup_21 = (Group)cAlternatives.eContents().get(21);
-		private final Action cEvidenceExprAction_21_0 = (Action)cGroup_21.eContents().get(0);
-		private final Keyword cEvidenceKeyword_21_1 = (Keyword)cGroup_21.eContents().get(1);
+		private final Action cUndevelopedExprAction_21_0 = (Action)cGroup_21.eContents().get(0);
+		private final Keyword cUndevelopedKeyword_21_1 = (Keyword)cGroup_21.eContents().get(1);
 		private final Group cGroup_22 = (Group)cAlternatives.eContents().get(22);
-		private final Action cSolutionExprAction_22_0 = (Action)cGroup_22.eContents().get(0);
-		private final Keyword cSolutionKeyword_22_1 = (Keyword)cGroup_22.eContents().get(1);
-		private final Assignment cNameAssignment_22_2 = (Assignment)cGroup_22.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_22_2_0 = (RuleCall)cNameAssignment_22_2.eContents().get(0);
-		private final Keyword cColonKeyword_22_3 = (Keyword)cGroup_22.eContents().get(3);
-		private final Assignment cValAssignment_22_4 = (Assignment)cGroup_22.eContents().get(4);
-		private final RuleCall cValStringTermParserRuleCall_22_4_0 = (RuleCall)cValAssignment_22_4.eContents().get(0);
+		private final Action cEvidenceExprAction_22_0 = (Action)cGroup_22.eContents().get(0);
+		private final Keyword cEvidenceKeyword_22_1 = (Keyword)cGroup_22.eContents().get(1);
+		private final Group cGroup_23 = (Group)cAlternatives.eContents().get(23);
+		private final Action cSolutionExprAction_23_0 = (Action)cGroup_23.eContents().get(0);
+		private final Keyword cSolutionKeyword_23_1 = (Keyword)cGroup_23.eContents().get(1);
+		private final Assignment cNameAssignment_23_2 = (Assignment)cGroup_23.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_23_2_0 = (RuleCall)cNameAssignment_23_2.eContents().get(0);
+		private final Keyword cColonKeyword_23_3 = (Keyword)cGroup_23.eContents().get(3);
+		private final Assignment cValAssignment_23_4 = (Assignment)cGroup_23.eContents().get(4);
+		private final RuleCall cValStringTermParserRuleCall_23_4_0 = (RuleCall)cValAssignment_23_4.eContents().get(0);
 		
 		//AtomicExpr Expr:
 		//	{IdExpr} id=[aadl2::NamedElement|QCREF] | {ThisExpr} 'this' ('.' sub=NestedDotID)?
@@ -2201,6 +2207,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//	(',' exprs+=Expr)*) '}'
 		//	| {ListExpr} '[' ']'
 		//	| {SetExpr} '{' '}'
+		//	| {ObjectExpr} '|' expr=QCREF '|'
 		//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
 		//	| '(' Expr ')'
 		//	| {UndevelopedExpr} 'undeveloped'
@@ -2218,7 +2225,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//lintStmt=LintStatement | '[' Expr ({ListFilterMapExpr.map=current} 'for' ('(' args+=Arg ')')+ ('|' filter=Expr)? |
 		//{ListExpr.exprs+=current} (',' exprs+=Expr)*) ']' | '{' Expr ({SetFilterMapExpr.map=current} 'for' ('(' args+=Arg
 		//')')+ ('|' filter=Expr)? | {SetExpr.exprs+=current} (',' exprs+=Expr)*) '}' | {ListExpr} '[' ']' | {SetExpr} '{' '}' |
-		//{LetExpr} 'let' binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr} 'undeveloped' //| {EvidenceExpr} 'evidence' name=ID ':' val=StringTerm 
+		//{ObjectExpr} '|' expr=QCREF '|' | {LetExpr} 'let' binding=LetBinding ';' expr=Expr | '(' Expr ')' | {UndevelopedExpr}
+		//'undeveloped' //| {EvidenceExpr} 'evidence' name=ID ':' val=StringTerm 
 		//| {EvidenceExpr} 'evidence' | {SolutionExpr} 'solution' name=ID ':' val=StringTerm
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -2736,83 +2744,101 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_17_2() { return cRightCurlyBracketKeyword_17_2; }
 
-		//{LetExpr} 'let' binding=LetBinding ';' expr=Expr
+		//{ObjectExpr} '|' expr=QCREF '|'
 		public Group getGroup_18() { return cGroup_18; }
 
-		//{LetExpr}
-		public Action getLetExprAction_18_0() { return cLetExprAction_18_0; }
+		//{ObjectExpr}
+		public Action getObjectExprAction_18_0() { return cObjectExprAction_18_0; }
 
-		//'let'
-		public Keyword getLetKeyword_18_1() { return cLetKeyword_18_1; }
+		//'|'
+		public Keyword getVerticalLineKeyword_18_1() { return cVerticalLineKeyword_18_1; }
 
-		//binding=LetBinding
-		public Assignment getBindingAssignment_18_2() { return cBindingAssignment_18_2; }
+		//expr=QCREF
+		public Assignment getExprAssignment_18_2() { return cExprAssignment_18_2; }
 
-		//LetBinding
-		public RuleCall getBindingLetBindingParserRuleCall_18_2_0() { return cBindingLetBindingParserRuleCall_18_2_0; }
+		//QCREF
+		public RuleCall getExprQCREFParserRuleCall_18_2_0() { return cExprQCREFParserRuleCall_18_2_0; }
 
-		//';'
-		public Keyword getSemicolonKeyword_18_3() { return cSemicolonKeyword_18_3; }
+		//'|'
+		public Keyword getVerticalLineKeyword_18_3() { return cVerticalLineKeyword_18_3; }
 
-		//expr=Expr
-		public Assignment getExprAssignment_18_4() { return cExprAssignment_18_4; }
-
-		//Expr
-		public RuleCall getExprExprParserRuleCall_18_4_0() { return cExprExprParserRuleCall_18_4_0; }
-
-		//'(' Expr ')'
+		//{LetExpr} 'let' binding=LetBinding ';' expr=Expr
 		public Group getGroup_19() { return cGroup_19; }
 
-		//'('
-		public Keyword getLeftParenthesisKeyword_19_0() { return cLeftParenthesisKeyword_19_0; }
+		//{LetExpr}
+		public Action getLetExprAction_19_0() { return cLetExprAction_19_0; }
+
+		//'let'
+		public Keyword getLetKeyword_19_1() { return cLetKeyword_19_1; }
+
+		//binding=LetBinding
+		public Assignment getBindingAssignment_19_2() { return cBindingAssignment_19_2; }
+
+		//LetBinding
+		public RuleCall getBindingLetBindingParserRuleCall_19_2_0() { return cBindingLetBindingParserRuleCall_19_2_0; }
+
+		//';'
+		public Keyword getSemicolonKeyword_19_3() { return cSemicolonKeyword_19_3; }
+
+		//expr=Expr
+		public Assignment getExprAssignment_19_4() { return cExprAssignment_19_4; }
 
 		//Expr
-		public RuleCall getExprParserRuleCall_19_1() { return cExprParserRuleCall_19_1; }
+		public RuleCall getExprExprParserRuleCall_19_4_0() { return cExprExprParserRuleCall_19_4_0; }
 
-		//')'
-		public Keyword getRightParenthesisKeyword_19_2() { return cRightParenthesisKeyword_19_2; }
-
-		//{UndevelopedExpr} 'undeveloped'
+		//'(' Expr ')'
 		public Group getGroup_20() { return cGroup_20; }
 
-		//{UndevelopedExpr}
-		public Action getUndevelopedExprAction_20_0() { return cUndevelopedExprAction_20_0; }
+		//'('
+		public Keyword getLeftParenthesisKeyword_20_0() { return cLeftParenthesisKeyword_20_0; }
 
-		//'undeveloped'
-		public Keyword getUndevelopedKeyword_20_1() { return cUndevelopedKeyword_20_1; }
+		//Expr
+		public RuleCall getExprParserRuleCall_20_1() { return cExprParserRuleCall_20_1; }
 
-		//{EvidenceExpr} 'evidence'
+		//')'
+		public Keyword getRightParenthesisKeyword_20_2() { return cRightParenthesisKeyword_20_2; }
+
+		//{UndevelopedExpr} 'undeveloped'
 		public Group getGroup_21() { return cGroup_21; }
 
-		//{EvidenceExpr}
-		public Action getEvidenceExprAction_21_0() { return cEvidenceExprAction_21_0; }
+		//{UndevelopedExpr}
+		public Action getUndevelopedExprAction_21_0() { return cUndevelopedExprAction_21_0; }
 
-		//'evidence'
-		public Keyword getEvidenceKeyword_21_1() { return cEvidenceKeyword_21_1; }
+		//'undeveloped'
+		public Keyword getUndevelopedKeyword_21_1() { return cUndevelopedKeyword_21_1; }
 
-		//{SolutionExpr} 'solution' name=ID ':' val=StringTerm
+		//{EvidenceExpr} 'evidence'
 		public Group getGroup_22() { return cGroup_22; }
 
+		//{EvidenceExpr}
+		public Action getEvidenceExprAction_22_0() { return cEvidenceExprAction_22_0; }
+
+		//'evidence'
+		public Keyword getEvidenceKeyword_22_1() { return cEvidenceKeyword_22_1; }
+
+		//{SolutionExpr} 'solution' name=ID ':' val=StringTerm
+		public Group getGroup_23() { return cGroup_23; }
+
 		//{SolutionExpr}
-		public Action getSolutionExprAction_22_0() { return cSolutionExprAction_22_0; }
+		public Action getSolutionExprAction_23_0() { return cSolutionExprAction_23_0; }
 
 		//'solution'
-		public Keyword getSolutionKeyword_22_1() { return cSolutionKeyword_22_1; }
+		public Keyword getSolutionKeyword_23_1() { return cSolutionKeyword_23_1; }
 
 		//name=ID
-		public Assignment getNameAssignment_22_2() { return cNameAssignment_22_2; }
+		public Assignment getNameAssignment_23_2() { return cNameAssignment_23_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_22_2_0() { return cNameIDTerminalRuleCall_22_2_0; }
+		public RuleCall getNameIDTerminalRuleCall_23_2_0() { return cNameIDTerminalRuleCall_23_2_0; }
 
 		//':'
-		public Keyword getColonKeyword_22_3() { return cColonKeyword_22_3; }
+		public Keyword getColonKeyword_23_3() { return cColonKeyword_23_3; }
 
 		//val=StringTerm
-		public Assignment getValAssignment_22_4() { return cValAssignment_22_4; }
+		public Assignment getValAssignment_23_4() { return cValAssignment_23_4; }
 
 		//StringTerm
-		public RuleCall getValStringTermParserRuleCall_22_4_0() { return cValStringTermParserRuleCall_22_4_0; }
+		public RuleCall getValStringTermParserRuleCall_23_4_0() { return cValStringTermParserRuleCall_23_4_0; }
 	}
 
 	public class LetBindingElements extends AbstractParserRuleElementFinder {
@@ -4231,6 +4257,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//	(',' exprs+=Expr)*) '}'
 	//	| {ListExpr} '[' ']'
 	//	| {SetExpr} '{' '}'
+	//	| {ObjectExpr} '|' expr=QCREF '|'
 	//	| {LetExpr} 'let' binding=LetBinding ';' expr=Expr
 	//	| '(' Expr ')'
 	//	| {UndevelopedExpr} 'undeveloped'

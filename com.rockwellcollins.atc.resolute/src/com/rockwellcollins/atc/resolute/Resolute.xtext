@@ -252,6 +252,7 @@ AtomicExpr returns Expr:
              | ({SetExpr.exprs+=current} (',' exprs+=Expr)*)) '}'
 |   {ListExpr} '[' ']'
 |   {SetExpr} '{' '}'
+|	{ObjectExpr} '|' expr=QCREF '|'
 |   {LetExpr} 'let' binding=LetBinding ';' expr=Expr
 |	'(' Expr ')'
 

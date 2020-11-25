@@ -199,6 +199,9 @@
     <genClasses ecoreClass="Resolute.ecore#//SetExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//SetExpr/exprs"/>
     </genClasses>
+    <genClasses ecoreClass="Resolute.ecore#//ObjectExpr">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//ObjectExpr/expr"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//LetExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//LetExpr/binding"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//LetExpr/expr"/>

@@ -589,6 +589,15 @@ public class ResoluteSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ResolutePackage.OBJECT_EXPR:
+      {
+        ObjectExpr objectExpr = (ObjectExpr)theEObject;
+        T result = caseObjectExpr(objectExpr);
+        if (result == null) result = caseExpr(objectExpr);
+        if (result == null) result = caseElement(objectExpr);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ResolutePackage.LET_EXPR:
       {
         LetExpr letExpr = (LetExpr)theEObject;
@@ -1579,6 +1588,22 @@ public class ResoluteSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSetExpr(SetExpr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Object Expr</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Object Expr</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseObjectExpr(ObjectExpr object)
   {
     return null;
   }

@@ -121,6 +121,7 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.LIST_EXPR: return createListExpr();
       case ResolutePackage.SET_FILTER_MAP_EXPR: return createSetFilterMapExpr();
       case ResolutePackage.SET_EXPR: return createSetExpr();
+      case ResolutePackage.OBJECT_EXPR: return createObjectExpr();
       case ResolutePackage.LET_EXPR: return createLetExpr();
       case ResolutePackage.UNDEVELOPED_EXPR: return createUndevelopedExpr();
       case ResolutePackage.EVIDENCE_EXPR: return createEvidenceExpr();
@@ -817,6 +818,18 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
   {
     SetExprImpl setExpr = new SetExprImpl();
     return setExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ObjectExpr createObjectExpr()
+  {
+    ObjectExprImpl objectExpr = new ObjectExprImpl();
+    return objectExpr;
   }
 
   /**

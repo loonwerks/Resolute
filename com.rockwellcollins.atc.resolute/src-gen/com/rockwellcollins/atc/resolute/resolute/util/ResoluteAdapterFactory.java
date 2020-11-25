@@ -367,6 +367,11 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
         return createSetExprAdapter();
       }
       @Override
+      public Adapter caseObjectExpr(ObjectExpr object)
+      {
+        return createObjectExprAdapter();
+      }
+      @Override
       public Adapter caseLetExpr(LetExpr object)
       {
         return createLetExprAdapter();
@@ -1314,6 +1319,21 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSetExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.ObjectExpr <em>Object Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.rockwellcollins.atc.resolute.resolute.ObjectExpr
+   * @generated
+   */
+  public Adapter createObjectExprAdapter()
   {
     return null;
   }

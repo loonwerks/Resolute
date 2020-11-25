@@ -94,6 +94,7 @@ import com.rockwellcollins.atc.resolute.resolute.ListExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.NestedDotID;
 import com.rockwellcollins.atc.resolute.resolute.NotationDefinition;
+import com.rockwellcollins.atc.resolute.resolute.ObjectExpr;
 import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.QuantArg;
 import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
@@ -2117,6 +2118,10 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			if (expr instanceof ResultExpr) {
 				ResultExpr resultExpr = (ResultExpr) expr;
 				return new BaseType(resultExpr.getResult().toLowerCase());
+			}
+
+			if (expr instanceof ObjectExpr) {
+				return BaseType.ANY;
 			}
 
 			error(expr, "Unable to get type for expression");

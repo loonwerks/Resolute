@@ -49,6 +49,7 @@ import com.rockwellcollins.atc.resolute.resolute.ListFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListType;
 import com.rockwellcollins.atc.resolute.resolute.NestedDotID;
 import com.rockwellcollins.atc.resolute.resolute.NotationDefinition;
+import com.rockwellcollins.atc.resolute.resolute.ObjectExpr;
 import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.QuantArg;
 import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
@@ -487,6 +488,13 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   private EClass setExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass objectExprEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -2131,6 +2139,28 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
+  public EClass getObjectExpr()
+  {
+    return objectExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getObjectExpr_Expr()
+  {
+    return (EAttribute)objectExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getLetExpr()
   {
     return letExprEClass;
@@ -2493,6 +2523,9 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     setExprEClass = createEClass(SET_EXPR);
     createEReference(setExprEClass, SET_EXPR__EXPRS);
 
+    objectExprEClass = createEClass(OBJECT_EXPR);
+    createEAttribute(objectExprEClass, OBJECT_EXPR__EXPR);
+
     letExprEClass = createEClass(LET_EXPR);
     createEReference(letExprEClass, LET_EXPR__BINDING);
     createEReference(letExprEClass, LET_EXPR__EXPR);
@@ -2607,6 +2640,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     listExprEClass.getESuperTypes().add(this.getExpr());
     setFilterMapExprEClass.getESuperTypes().add(this.getExpr());
     setExprEClass.getESuperTypes().add(this.getExpr());
+    objectExprEClass.getESuperTypes().add(this.getExpr());
     letExprEClass.getESuperTypes().add(this.getExpr());
     undevelopedExprEClass.getESuperTypes().add(this.getExpr());
     evidenceExprEClass.getESuperTypes().add(this.getExpr());
@@ -2811,6 +2845,9 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
 
     initEClass(setExprEClass, SetExpr.class, "SetExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSetExpr_Exprs(), this.getExpr(), null, "exprs", null, 0, -1, SetExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(objectExprEClass, ObjectExpr.class, "ObjectExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getObjectExpr_Expr(), theEcorePackage.getEString(), "expr", null, 0, 1, ObjectExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(letExprEClass, LetExpr.class, "LetExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLetExpr_Binding(), this.getLetBinding(), null, "binding", null, 0, 1, LetExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

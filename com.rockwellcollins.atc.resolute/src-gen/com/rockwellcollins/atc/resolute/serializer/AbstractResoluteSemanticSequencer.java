@@ -44,6 +44,7 @@ import com.rockwellcollins.atc.resolute.resolute.ListFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListType;
 import com.rockwellcollins.atc.resolute.resolute.NestedDotID;
 import com.rockwellcollins.atc.resolute.resolute.NotationDefinition;
+import com.rockwellcollins.atc.resolute.resolute.ObjectExpr;
 import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.QuantArg;
 import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
@@ -331,6 +332,9 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 				return; 
 			case ResolutePackage.NOTATION_DEFINITION:
 				sequence_NotationDefinition(context, (NotationDefinition) semanticObject); 
+				return; 
+			case ResolutePackage.OBJECT_EXPR:
+				sequence_AtomicExpr(context, (ObjectExpr) semanticObject); 
 				return; 
 			case ResolutePackage.PROVE_STATEMENT:
 				sequence_AnalysisStatement(context, (ProveStatement) semanticObject); 
@@ -866,8 +870,8 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.LET_EXPR__EXPR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicExprAccess().getBindingLetBindingParserRuleCall_18_2_0(), semanticObject.getBinding());
-		feeder.accept(grammarAccess.getAtomicExprAccess().getExprExprParserRuleCall_18_4_0(), semanticObject.getExpr());
+		feeder.accept(grammarAccess.getAtomicExprAccess().getBindingLetBindingParserRuleCall_19_2_0(), semanticObject.getBinding());
+		feeder.accept(grammarAccess.getAtomicExprAccess().getExprExprParserRuleCall_19_4_0(), semanticObject.getExpr());
 		feeder.finish();
 	}
 	
@@ -1015,6 +1019,47 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 */
 	protected void sequence_AtomicExpr(ISerializationContext context, ListFilterMapExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Element returns ObjectExpr
+	 *     Expr returns ObjectExpr
+	 *     ImpliesExpr returns ObjectExpr
+	 *     ImpliesExpr.BinaryExpr_1_0_0_0 returns ObjectExpr
+	 *     OrExpr returns ObjectExpr
+	 *     OrExpr.BinaryExpr_1_0_0_0 returns ObjectExpr
+	 *     AndExpr returns ObjectExpr
+	 *     AndExpr.BinaryExpr_1_0_0_0 returns ObjectExpr
+	 *     InstanceOfExpr returns ObjectExpr
+	 *     InstanceOfExpr.InstanceOfExpr_1_0_0_0 returns ObjectExpr
+	 *     RelationalExpr returns ObjectExpr
+	 *     RelationalExpr.BinaryExpr_1_0_0_0 returns ObjectExpr
+	 *     PlusExpr returns ObjectExpr
+	 *     PlusExpr.BinaryExpr_1_0_0_0 returns ObjectExpr
+	 *     TimesExpr returns ObjectExpr
+	 *     TimesExpr.BinaryExpr_1_0_0_0 returns ObjectExpr
+	 *     ExpExpr returns ObjectExpr
+	 *     ExpExpr.BinaryExpr_1_0_0_0 returns ObjectExpr
+	 *     PrefixExpr returns ObjectExpr
+	 *     AtomicExpr returns ObjectExpr
+	 *     AtomicExpr.ListFilterMapExpr_14_2_0_0 returns ObjectExpr
+	 *     AtomicExpr.ListExpr_14_2_1_0 returns ObjectExpr
+	 *     AtomicExpr.SetFilterMapExpr_15_2_0_0 returns ObjectExpr
+	 *     AtomicExpr.SetExpr_15_2_1_0 returns ObjectExpr
+	 *
+	 * Constraint:
+	 *     expr=QCREF
+	 */
+	protected void sequence_AtomicExpr(ISerializationContext context, ObjectExpr semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.OBJECT_EXPR__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.OBJECT_EXPR__EXPR));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicExprAccess().getExprQCREFParserRuleCall_18_2_0(), semanticObject.getExpr());
+		feeder.finish();
 	}
 	
 	
@@ -1243,8 +1288,8 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.SOLUTION_EXPR__VAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicExprAccess().getNameIDTerminalRuleCall_22_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getAtomicExprAccess().getValStringTermParserRuleCall_22_4_0(), semanticObject.getVal());
+		feeder.accept(grammarAccess.getAtomicExprAccess().getNameIDTerminalRuleCall_23_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getAtomicExprAccess().getValStringTermParserRuleCall_23_4_0(), semanticObject.getVal());
 		feeder.finish();
 	}
 	
