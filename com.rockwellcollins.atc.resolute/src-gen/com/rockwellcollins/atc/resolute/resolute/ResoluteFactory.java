@@ -131,13 +131,13 @@ public interface ResoluteFactory extends EFactory
   ClaimRationale createClaimRationale();
 
   /**
-   * Returns a new object of class '<em>Claim Restriction</em>'.
+   * Returns a new object of class '<em>Claim Defeater</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Claim Restriction</em>'.
+   * @return a new object of class '<em>Claim Defeater</em>'.
    * @generated
    */
-  ClaimRestriction createClaimRestriction();
+  ClaimDefeater createClaimDefeater();
 
   /**
    * Returns a new object of class '<em>Claim Justification</em>'.

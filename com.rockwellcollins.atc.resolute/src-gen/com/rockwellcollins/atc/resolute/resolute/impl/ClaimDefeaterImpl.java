@@ -2,7 +2,7 @@
  */
 package com.rockwellcollins.atc.resolute.resolute.impl;
 
-import com.rockwellcollins.atc.resolute.resolute.ClaimRestriction;
+import com.rockwellcollins.atc.resolute.resolute.ClaimDefeater;
 import com.rockwellcollins.atc.resolute.resolute.Expr;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
 
@@ -18,18 +18,18 @@ import org.osate.aadl2.impl.NamedElementImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Claim Restriction</b></em>'.
+ * An implementation of the model object '<em><b>Claim Defeater</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimRestrictionImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimDefeaterImpl#getExpr <em>Expr</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ClaimRestrictionImpl extends NamedElementImpl implements ClaimRestriction
+public class ClaimDefeaterImpl extends NamedElementImpl implements ClaimDefeater
 {
   /**
    * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
@@ -46,7 +46,7 @@ public class ClaimRestrictionImpl extends NamedElementImpl implements ClaimRestr
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ClaimRestrictionImpl()
+  protected ClaimDefeaterImpl()
   {
     super();
   }
@@ -59,7 +59,7 @@ public class ClaimRestrictionImpl extends NamedElementImpl implements ClaimRestr
   @Override
   protected EClass eStaticClass()
   {
-    return ResolutePackage.Literals.CLAIM_RESTRICTION;
+    return ResolutePackage.Literals.CLAIM_DEFEATER;
   }
 
   /**
@@ -84,7 +84,7 @@ public class ClaimRestrictionImpl extends NamedElementImpl implements ClaimRestr
     expr = newExpr;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_RESTRICTION__EXPR, oldExpr, newExpr);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_DEFEATER__EXPR, oldExpr, newExpr);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -102,14 +102,14 @@ public class ClaimRestrictionImpl extends NamedElementImpl implements ClaimRestr
     {
       NotificationChain msgs = null;
       if (expr != null)
-        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_RESTRICTION__EXPR, null, msgs);
+        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_DEFEATER__EXPR, null, msgs);
       if (newExpr != null)
-        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_RESTRICTION__EXPR, null, msgs);
+        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResolutePackage.CLAIM_DEFEATER__EXPR, null, msgs);
       msgs = basicSetExpr(newExpr, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_RESTRICTION__EXPR, newExpr, newExpr));
+      eNotify(new ENotificationImpl(this, Notification.SET, ResolutePackage.CLAIM_DEFEATER__EXPR, newExpr, newExpr));
   }
 
   /**
@@ -122,7 +122,7 @@ public class ClaimRestrictionImpl extends NamedElementImpl implements ClaimRestr
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_RESTRICTION__EXPR:
+      case ResolutePackage.CLAIM_DEFEATER__EXPR:
         return basicSetExpr(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -138,7 +138,7 @@ public class ClaimRestrictionImpl extends NamedElementImpl implements ClaimRestr
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_RESTRICTION__EXPR:
+      case ResolutePackage.CLAIM_DEFEATER__EXPR:
         return getExpr();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -154,7 +154,7 @@ public class ClaimRestrictionImpl extends NamedElementImpl implements ClaimRestr
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_RESTRICTION__EXPR:
+      case ResolutePackage.CLAIM_DEFEATER__EXPR:
         setExpr((Expr)newValue);
         return;
     }
@@ -171,7 +171,7 @@ public class ClaimRestrictionImpl extends NamedElementImpl implements ClaimRestr
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_RESTRICTION__EXPR:
+      case ResolutePackage.CLAIM_DEFEATER__EXPR:
         setExpr((Expr)null);
         return;
     }
@@ -188,10 +188,10 @@ public class ClaimRestrictionImpl extends NamedElementImpl implements ClaimRestr
   {
     switch (featureID)
     {
-      case ResolutePackage.CLAIM_RESTRICTION__EXPR:
+      case ResolutePackage.CLAIM_DEFEATER__EXPR:
         return expr != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ClaimRestrictionImpl
+} //ClaimDefeaterImpl

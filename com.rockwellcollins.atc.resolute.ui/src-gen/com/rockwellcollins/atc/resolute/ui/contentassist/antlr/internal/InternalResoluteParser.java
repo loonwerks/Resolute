@@ -26,7 +26,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalResoluteParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "Provides_subprogram_group_access", "Requires_subprogram_group_access", "Provides_subprogram_access", "Requires_subprogram_access", "Subprogram_group_access", "Revised_without_review", "Error_state_reachable", "Is_virtual_processor", "Provides_data_access", "Requires_data_access", "Flow_specifications", "Is_abstract_feature", "Provides_bus_access", "Requires_bus_access", "Revised_with_review", "Flow_specification", "Enumerated_values", "Subprogram_access", "Virtual_processor", "End_to_end_flows", "Flow_destination", "Is_bidirectional", "Subprogram_group", "End_to_end_flow", "Event_data_port", "Is_thread_group", "Propagate_error", "Property_member", "Has_prototypes", "Is_data_access", "Is_virtual_bus", "Contain_error", "Feature_group", "Flow_elements", "Indeterminate", "Is_bus_access", "Is_event_port", "Is_subprogram", "Justification", "Receive_error", "Subcomponents", "Has_property", "Is_data_port", "Is_processor", "Thread_group", "Connections", "Data_access", "Destination", "Flow_source", "Is_bound_to", "Is_in_array", "Lower_bound", "Restriction", "Structuring", "Undeveloped", "Upper_bound", "Virtual_bus", "Assumption", "Bus_access", "Classifier", "Conclusion", "Connection", "Event_port", "Has_member", "Has_parent", "Identifier", "Instanceof", "Is_of_type", "Is_process", "Subprogram", "Component", "Data_port", "Direction", "Has_modes", "Instances", "Intersect", "Is_device", "Is_memory", "Is_system", "Is_thread", "Processor", "Rationale", "Reference", "Abstract", "Activity", "Analysis", "Constant", "Evidence", "Features", "Has_type", "Instance", "Notation", "Property", "Solution", "Strategy", "Andthen", "Applies", "As_list", "Binding", "Compute", "Context", "Feature", "Is_data", "Is_port", "Pattern", "Process", "Ruleset", "Warning", "Access", "Append", "As_set", "Device", "Domain", "Entity", "Exists", "Extern", "Failed", "Forall", "Is_bus", "Length", "Member", "Memory", "Orelse", "Parent", "Passed", "Source", "String", "KW_System", "Thread", "Agent", "Check", "Claim", "Debug", "Delta", "Error", "False", "Modes", "Prove", "Range", "Thing", "Union", "Aadl", "Bool", "Data", "Else", "Fail", "Goal", "Head", "Info", "Name", "Port", "Real", "Size", "Tail", "Then", "This", "True", "Type", "PlusSignEqualsSignGreaterThanSign", "And", "Bus", "For", "Gsn", "Int", "Let", "Not", "Sum", "AsteriskAsterisk", "FullStopFullStop", "ColonColon", "LessThanSignEqualsSign", "LessThanSignGreaterThanSign", "EqualsSignGreaterThanSign", "GreaterThanSignEqualsSign", "If", "In", "Jp", "Or", "To", "PercentSign", "LeftParenthesis", "RightParenthesis", "Asterisk", "PlusSign", "Comma", "HyphenMinus", "FullStop", "Solidus", "Colon", "Semicolon", "LessThanSign", "EqualsSign", "GreaterThanSign", "LeftSquareBracket", "RightSquareBracket", "CircumflexAccent", "LeftCurlyBracket", "VerticalLine", "RightCurlyBracket", "RULE_SL_COMMENT", "RULE_DIGIT", "RULE_EXPONENT", "RULE_INT_EXPONENT", "RULE_REAL_LIT", "RULE_BASED_INTEGER", "RULE_INTEGER_LIT", "RULE_EXTENDED_DIGIT", "RULE_STRING", "RULE_ID", "RULE_WS"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "Provides_subprogram_group_access", "Requires_subprogram_group_access", "Provides_subprogram_access", "Requires_subprogram_access", "Subprogram_group_access", "Revised_without_review", "Error_state_reachable", "Is_virtual_processor", "Provides_data_access", "Requires_data_access", "Flow_specifications", "Is_abstract_feature", "Provides_bus_access", "Requires_bus_access", "Revised_with_review", "Flow_specification", "Enumerated_values", "Subprogram_access", "Virtual_processor", "End_to_end_flows", "Flow_destination", "Is_bidirectional", "Subprogram_group", "End_to_end_flow", "Event_data_port", "Is_thread_group", "Propagate_error", "Property_member", "Has_prototypes", "Is_data_access", "Is_virtual_bus", "Contain_error", "Feature_group", "Flow_elements", "Indeterminate", "Is_bus_access", "Is_event_port", "Is_subprogram", "Justification", "Receive_error", "Subcomponents", "Has_property", "Is_data_port", "Is_processor", "Thread_group", "Connections", "Data_access", "Destination", "Flow_source", "Is_bound_to", "Is_in_array", "Lower_bound", "Structuring", "Undeveloped", "Upper_bound", "Virtual_bus", "Assumption", "Bus_access", "Classifier", "Conclusion", "Connection", "Event_port", "Has_member", "Has_parent", "Identifier", "Instanceof", "Is_of_type", "Is_process", "Subprogram", "Component", "Data_port", "Direction", "Has_modes", "Instances", "Intersect", "Is_device", "Is_memory", "Is_system", "Is_thread", "Processor", "Rationale", "Reference", "Abstract", "Activity", "Analysis", "Constant", "Defeater", "Evidence", "Features", "Has_type", "Instance", "Notation", "Property", "Solution", "Strategy", "Andthen", "Applies", "As_list", "Binding", "Compute", "Context", "Feature", "Is_data", "Is_port", "Pattern", "Process", "Ruleset", "Warning", "Access", "Append", "As_set", "Device", "Domain", "Entity", "Exists", "Extern", "Failed", "Forall", "Is_bus", "Length", "Member", "Memory", "Orelse", "Parent", "Passed", "Source", "String", "KW_System", "Thread", "Agent", "Check", "Claim", "Debug", "Delta", "Error", "False", "Modes", "Prove", "Range", "Thing", "Union", "Aadl", "Bool", "Data", "Else", "Fail", "Goal", "Head", "Info", "Name", "Port", "Real", "Size", "Tail", "Then", "This", "True", "Type", "PlusSignEqualsSignGreaterThanSign", "And", "Bus", "For", "Gsn", "Int", "Let", "Not", "Sum", "AsteriskAsterisk", "FullStopFullStop", "ColonColon", "LessThanSignEqualsSign", "LessThanSignGreaterThanSign", "EqualsSignGreaterThanSign", "GreaterThanSignEqualsSign", "If", "In", "Jp", "Or", "To", "PercentSign", "LeftParenthesis", "RightParenthesis", "Asterisk", "PlusSign", "Comma", "HyphenMinus", "FullStop", "Solidus", "Colon", "Semicolon", "LessThanSign", "EqualsSign", "GreaterThanSign", "LeftSquareBracket", "RightSquareBracket", "CircumflexAccent", "LeftCurlyBracket", "VerticalLine", "RightCurlyBracket", "RULE_SL_COMMENT", "RULE_DIGIT", "RULE_EXPONENT", "RULE_INT_EXPONENT", "RULE_REAL_LIT", "RULE_BASED_INTEGER", "RULE_INTEGER_LIT", "RULE_EXTENDED_DIGIT", "RULE_STRING", "RULE_ID", "RULE_WS"
     };
     public static final int Entity=117;
     public static final int Requires_subprogram_group_access=5;
@@ -34,17 +34,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int EqualsSignGreaterThanSign=176;
     public static final int Memory=125;
     public static final int Size=156;
-    public static final int Activity=88;
+    public static final int Activity=87;
     public static final int String=130;
     public static final int Feature=105;
     public static final int LessThanSign=194;
-    public static final int Has_member=67;
-    public static final int Data_port=75;
+    public static final int Has_member=66;
+    public static final int Data_port=74;
     public static final int PlusSignEqualsSignGreaterThanSign=162;
     public static final int Justification=42;
     public static final int Then=158;
     public static final int Thing=143;
-    public static final int Structuring=57;
+    public static final int Structuring=56;
     public static final int GreaterThanSign=196;
     public static final int Head=151;
     public static final int RULE_ID=212;
@@ -54,24 +54,24 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int ColonColon=173;
     public static final int Is_data=106;
     public static final int Has_property=45;
-    public static final int Analysis=89;
+    public static final int Analysis=88;
     public static final int Ruleset=110;
-    public static final int Processor=84;
+    public static final int Processor=83;
     public static final int Instance=94;
     public static final int RULE_REAL_LIT=207;
     public static final int Property_member=31;
-    public static final int Classifier=63;
+    public static final int Classifier=62;
     public static final int Union=144;
     public static final int Tail=157;
-    public static final int Event_port=66;
+    public static final int Event_port=65;
     public static final int Solidus=191;
     public static final int RightCurlyBracket=202;
     public static final int Context=104;
     public static final int Bus=164;
     public static final int FullStop=190;
-    public static final int Is_thread=83;
-    public static final int Has_modes=77;
-    public static final int Connection=65;
+    public static final int Is_thread=82;
+    public static final int Has_modes=76;
+    public static final int Connection=64;
     public static final int Provides_bus_access=16;
     public static final int Semicolon=193;
     public static final int RULE_EXPONENT=205;
@@ -91,7 +91,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int Name=153;
     public static final int RULE_INT_EXPONENT=206;
     public static final int Enumerated_values=20;
-    public static final int Identifier=69;
+    public static final int Identifier=68;
     public static final int FullStopFullStop=172;
     public static final int This=159;
     public static final int To=182;
@@ -106,19 +106,19 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int AsteriskAsterisk=171;
     public static final int Subcomponents=44;
     public static final int Is_data_port=46;
-    public static final int Subprogram=73;
+    public static final int Subprogram=72;
     public static final int Domain=116;
     public static final int Parent=127;
     public static final int RULE_SL_COMMENT=203;
     public static final int Provides_subprogram_group_access=4;
-    public static final int Bus_access=62;
-    public static final int Has_parent=68;
+    public static final int Bus_access=61;
+    public static final int Has_parent=67;
     public static final int Aadl=145;
     public static final int Evidence=91;
     public static final int Features=92;
-    public static final int Rationale=85;
+    public static final int Rationale=84;
     public static final int Colon=192;
-    public static final int Component=74;
+    public static final int Component=73;
     public static final int EOF=-1;
     public static final int Asterisk=186;
     public static final int Gsn=166;
@@ -129,7 +129,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int CircumflexAccent=199;
     public static final int Flow_source=52;
     public static final int Is_thread_group=29;
-    public static final int Is_system=82;
+    public static final int Is_system=81;
     public static final int Exists=118;
     public static final int Virtual_processor=22;
     public static final int Orelse=126;
@@ -152,6 +152,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int Agent=133;
     public static final int Is_virtual_bus=34;
     public static final int RULE_DIGIT=204;
+    public static final int Defeater=90;
     public static final int Has_prototypes=32;
     public static final int Is_bus_access=39;
     public static final int VerticalLine=201;
@@ -161,14 +162,14 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int LeftSquareBracket=197;
     public static final int If=178;
     public static final int Lower_bound=55;
-    public static final int Is_of_type=71;
+    public static final int Is_of_type=70;
     public static final int Provides_subprogram_access=6;
     public static final int Warning=111;
     public static final int In=179;
     public static final int Contain_error=35;
-    public static final int Is_memory=81;
-    public static final int Direction=76;
-    public static final int Assumption=61;
+    public static final int Is_memory=80;
+    public static final int Direction=75;
+    public static final int Assumption=60;
     public static final int Extern=119;
     public static final int Comma=188;
     public static final int HyphenMinus=189;
@@ -181,22 +182,22 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int Pattern=108;
     public static final int Modes=140;
     public static final int Revised_with_review=18;
-    public static final int Reference=86;
-    public static final int Abstract=87;
+    public static final int Reference=85;
+    public static final int Abstract=86;
     public static final int Jp=180;
-    public static final int Is_device=80;
+    public static final int Is_device=79;
     public static final int Thread=132;
-    public static final int Instances=78;
+    public static final int Instances=77;
     public static final int Type=161;
     public static final int Else=148;
     public static final int RULE_EXTENDED_DIGIT=210;
-    public static final int Virtual_bus=60;
+    public static final int Virtual_bus=59;
     public static final int True=160;
     public static final int Error_state_reachable=10;
-    public static final int Undeveloped=58;
+    public static final int Undeveloped=57;
     public static final int PercentSign=183;
-    public static final int Intersect=79;
-    public static final int Upper_bound=59;
+    public static final int Intersect=78;
+    public static final int Upper_bound=58;
     public static final int Real=155;
     public static final int As_set=114;
     public static final int Applies=100;
@@ -205,10 +206,10 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int RULE_BASED_INTEGER=208;
     public static final int RightSquareBracket=198;
     public static final int Is_in_array=54;
-    public static final int Conclusion=64;
+    public static final int Conclusion=63;
     public static final int Device=115;
     public static final int Range=142;
-    public static final int Is_process=72;
+    public static final int Is_process=71;
     public static final int Is_bound_to=53;
     public static final int Andthen=99;
     public static final int And=163;
@@ -216,7 +217,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int RULE_INTEGER_LIT=209;
     public static final int Destination=51;
     public static final int Revised_without_review=9;
-    public static final int Constant=90;
+    public static final int Constant=89;
     public static final int Indeterminate=38;
     public static final int RULE_STRING=211;
     public static final int Notation=95;
@@ -224,7 +225,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int Int=167;
     public static final int Flow_specification=19;
     public static final int EqualsSign=195;
-    public static final int Instanceof=70;
+    public static final int Instanceof=69;
     public static final int Subprogram_access=21;
     public static final int Debug=136;
     public static final int Has_type=93;
@@ -234,7 +235,6 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     public static final int Data=147;
     public static final int Propagate_error=30;
     public static final int Event_data_port=28;
-    public static final int Restriction=56;
     public static final int Compute=103;
     public static final int Strategy=98;
     public static final int Let=168;
@@ -371,6 +371,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     		tokenNameToValue.put("Activity", "'activity'");
     		tokenNameToValue.put("Analysis", "'analysis'");
     		tokenNameToValue.put("Constant", "'constant'");
+    		tokenNameToValue.put("Defeater", "'defeater'");
     		tokenNameToValue.put("Evidence", "'evidence'");
     		tokenNameToValue.put("Features", "'features'");
     		tokenNameToValue.put("Has_type", "'has_type'");
@@ -412,7 +413,6 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     		tokenNameToValue.put("Is_bound_to", "'is_bound_to'");
     		tokenNameToValue.put("Is_in_array", "'is_in_array'");
     		tokenNameToValue.put("Lower_bound", "'lower_bound'");
-    		tokenNameToValue.put("Restriction", "'restriction'");
     		tokenNameToValue.put("Structuring", "'structuring'");
     		tokenNameToValue.put("Undeveloped", "'undeveloped'");
     		tokenNameToValue.put("Upper_bound", "'upper_bound'");
@@ -1752,23 +1752,23 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "ruleClaimRationale"
 
 
-    // $ANTLR start "entryRuleClaimRestriction"
-    // InternalResoluteParser.g:691:1: entryRuleClaimRestriction : ruleClaimRestriction EOF ;
-    public final void entryRuleClaimRestriction() throws RecognitionException {
+    // $ANTLR start "entryRuleClaimDefeater"
+    // InternalResoluteParser.g:691:1: entryRuleClaimDefeater : ruleClaimDefeater EOF ;
+    public final void entryRuleClaimDefeater() throws RecognitionException {
         try {
-            // InternalResoluteParser.g:692:1: ( ruleClaimRestriction EOF )
-            // InternalResoluteParser.g:693:1: ruleClaimRestriction EOF
+            // InternalResoluteParser.g:692:1: ( ruleClaimDefeater EOF )
+            // InternalResoluteParser.g:693:1: ruleClaimDefeater EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClaimRestrictionRule()); 
+               before(grammarAccess.getClaimDefeaterRule()); 
             }
             pushFollow(FollowSets000.FOLLOW_1);
-            ruleClaimRestriction();
+            ruleClaimDefeater();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClaimRestrictionRule()); 
+               after(grammarAccess.getClaimDefeaterRule()); 
             }
             match(input,EOF,FollowSets000.FOLLOW_2); if (state.failed) return ;
 
@@ -1783,30 +1783,30 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "entryRuleClaimRestriction"
+    // $ANTLR end "entryRuleClaimDefeater"
 
 
-    // $ANTLR start "ruleClaimRestriction"
-    // InternalResoluteParser.g:700:1: ruleClaimRestriction : ( ( rule__ClaimRestriction__Group__0 ) ) ;
-    public final void ruleClaimRestriction() throws RecognitionException {
+    // $ANTLR start "ruleClaimDefeater"
+    // InternalResoluteParser.g:700:1: ruleClaimDefeater : ( ( rule__ClaimDefeater__Group__0 ) ) ;
+    public final void ruleClaimDefeater() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:704:5: ( ( ( rule__ClaimRestriction__Group__0 ) ) )
-            // InternalResoluteParser.g:705:1: ( ( rule__ClaimRestriction__Group__0 ) )
+            // InternalResoluteParser.g:704:5: ( ( ( rule__ClaimDefeater__Group__0 ) ) )
+            // InternalResoluteParser.g:705:1: ( ( rule__ClaimDefeater__Group__0 ) )
             {
-            // InternalResoluteParser.g:705:1: ( ( rule__ClaimRestriction__Group__0 ) )
-            // InternalResoluteParser.g:706:1: ( rule__ClaimRestriction__Group__0 )
+            // InternalResoluteParser.g:705:1: ( ( rule__ClaimDefeater__Group__0 ) )
+            // InternalResoluteParser.g:706:1: ( rule__ClaimDefeater__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClaimRestrictionAccess().getGroup()); 
+               before(grammarAccess.getClaimDefeaterAccess().getGroup()); 
             }
-            // InternalResoluteParser.g:707:1: ( rule__ClaimRestriction__Group__0 )
-            // InternalResoluteParser.g:707:2: rule__ClaimRestriction__Group__0
+            // InternalResoluteParser.g:707:1: ( rule__ClaimDefeater__Group__0 )
+            // InternalResoluteParser.g:707:2: rule__ClaimDefeater__Group__0
             {
             pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimRestriction__Group__0();
+            rule__ClaimDefeater__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -1814,7 +1814,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClaimRestrictionAccess().getGroup()); 
+               after(grammarAccess.getClaimDefeaterAccess().getGroup()); 
             }
 
             }
@@ -1834,7 +1834,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "ruleClaimRestriction"
+    // $ANTLR end "ruleClaimDefeater"
 
 
     // $ANTLR start "entryRuleClaimJustification"
@@ -8870,13 +8870,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ClaimAttribute__Alternatives"
-    // InternalResoluteParser.g:2967:1: rule__ClaimAttribute__Alternatives : ( ( ruleClaimContext ) | ( ruleClaimJustification ) | ( ruleClaimAssumption ) | ( ruleClaimStrategy ) | ( ruleClaimUsageDomain ) | ( ruleClaimRationale ) | ( ruleClaimRestriction ) | ( ruleClaimGuarantee ) );
+    // InternalResoluteParser.g:2967:1: rule__ClaimAttribute__Alternatives : ( ( ruleClaimContext ) | ( ruleClaimJustification ) | ( ruleClaimAssumption ) | ( ruleClaimStrategy ) | ( ruleClaimUsageDomain ) | ( ruleClaimRationale ) | ( ruleClaimDefeater ) | ( ruleClaimGuarantee ) );
     public final void rule__ClaimAttribute__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:2971:1: ( ( ruleClaimContext ) | ( ruleClaimJustification ) | ( ruleClaimAssumption ) | ( ruleClaimStrategy ) | ( ruleClaimUsageDomain ) | ( ruleClaimRationale ) | ( ruleClaimRestriction ) | ( ruleClaimGuarantee ) )
+            // InternalResoluteParser.g:2971:1: ( ( ruleClaimContext ) | ( ruleClaimJustification ) | ( ruleClaimAssumption ) | ( ruleClaimStrategy ) | ( ruleClaimUsageDomain ) | ( ruleClaimRationale ) | ( ruleClaimDefeater ) | ( ruleClaimGuarantee ) )
             int alt8=8;
             switch ( input.LA(1) ) {
             case Context:
@@ -8909,7 +8909,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                 alt8=6;
                 }
                 break;
-            case Restriction:
+            case Defeater:
                 {
                 alt8=7;
                 }
@@ -9067,21 +9067,21 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                     }
                     break;
                 case 7 :
-                    // InternalResoluteParser.g:3008:6: ( ruleClaimRestriction )
+                    // InternalResoluteParser.g:3008:6: ( ruleClaimDefeater )
                     {
-                    // InternalResoluteParser.g:3008:6: ( ruleClaimRestriction )
-                    // InternalResoluteParser.g:3009:1: ruleClaimRestriction
+                    // InternalResoluteParser.g:3008:6: ( ruleClaimDefeater )
+                    // InternalResoluteParser.g:3009:1: ruleClaimDefeater
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getClaimAttributeAccess().getClaimRestrictionParserRuleCall_6()); 
+                       before(grammarAccess.getClaimAttributeAccess().getClaimDefeaterParserRuleCall_6()); 
                     }
                     pushFollow(FollowSets000.FOLLOW_2);
-                    ruleClaimRestriction();
+                    ruleClaimDefeater();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getClaimAttributeAccess().getClaimRestrictionParserRuleCall_6()); 
+                       after(grammarAccess.getClaimAttributeAccess().getClaimDefeaterParserRuleCall_6()); 
                     }
 
                     }
@@ -19127,7 +19127,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                 int alt38=2;
                 int LA38_0 = input.LA(1);
 
-                if ( (LA38_0==Justification||LA38_0==Restriction||LA38_0==Assumption||LA38_0==Rationale||LA38_0==Strategy||LA38_0==Context||LA38_0==Domain||LA38_0==Claim) ) {
+                if ( (LA38_0==Justification||LA38_0==Assumption||LA38_0==Rationale||LA38_0==Defeater||LA38_0==Strategy||LA38_0==Context||LA38_0==Domain||LA38_0==Claim) ) {
                     alt38=1;
                 }
 
@@ -20777,23 +20777,23 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__ClaimRationale__Group__4__Impl"
 
 
-    // $ANTLR start "rule__ClaimRestriction__Group__0"
-    // InternalResoluteParser.g:6858:1: rule__ClaimRestriction__Group__0 : rule__ClaimRestriction__Group__0__Impl rule__ClaimRestriction__Group__1 ;
-    public final void rule__ClaimRestriction__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__Group__0"
+    // InternalResoluteParser.g:6858:1: rule__ClaimDefeater__Group__0 : rule__ClaimDefeater__Group__0__Impl rule__ClaimDefeater__Group__1 ;
+    public final void rule__ClaimDefeater__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:6862:1: ( rule__ClaimRestriction__Group__0__Impl rule__ClaimRestriction__Group__1 )
-            // InternalResoluteParser.g:6863:2: rule__ClaimRestriction__Group__0__Impl rule__ClaimRestriction__Group__1
+            // InternalResoluteParser.g:6862:1: ( rule__ClaimDefeater__Group__0__Impl rule__ClaimDefeater__Group__1 )
+            // InternalResoluteParser.g:6863:2: rule__ClaimDefeater__Group__0__Impl rule__ClaimDefeater__Group__1
             {
             pushFollow(FollowSets000.FOLLOW_17);
-            rule__ClaimRestriction__Group__0__Impl();
+            rule__ClaimDefeater__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
             pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimRestriction__Group__1();
+            rule__ClaimDefeater__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20812,28 +20812,28 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__Group__0"
+    // $ANTLR end "rule__ClaimDefeater__Group__0"
 
 
-    // $ANTLR start "rule__ClaimRestriction__Group__0__Impl"
-    // InternalResoluteParser.g:6870:1: rule__ClaimRestriction__Group__0__Impl : ( Restriction ) ;
-    public final void rule__ClaimRestriction__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__Group__0__Impl"
+    // InternalResoluteParser.g:6870:1: rule__ClaimDefeater__Group__0__Impl : ( Defeater ) ;
+    public final void rule__ClaimDefeater__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:6874:1: ( ( Restriction ) )
-            // InternalResoluteParser.g:6875:1: ( Restriction )
+            // InternalResoluteParser.g:6874:1: ( ( Defeater ) )
+            // InternalResoluteParser.g:6875:1: ( Defeater )
             {
-            // InternalResoluteParser.g:6875:1: ( Restriction )
-            // InternalResoluteParser.g:6876:1: Restriction
+            // InternalResoluteParser.g:6875:1: ( Defeater )
+            // InternalResoluteParser.g:6876:1: Defeater
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClaimRestrictionAccess().getRestrictionKeyword_0()); 
+               before(grammarAccess.getClaimDefeaterAccess().getDefeaterKeyword_0()); 
             }
-            match(input,Restriction,FollowSets000.FOLLOW_2); if (state.failed) return ;
+            match(input,Defeater,FollowSets000.FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClaimRestrictionAccess().getRestrictionKeyword_0()); 
+               after(grammarAccess.getClaimDefeaterAccess().getDefeaterKeyword_0()); 
             }
 
             }
@@ -20853,26 +20853,26 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__Group__0__Impl"
+    // $ANTLR end "rule__ClaimDefeater__Group__0__Impl"
 
 
-    // $ANTLR start "rule__ClaimRestriction__Group__1"
-    // InternalResoluteParser.g:6889:1: rule__ClaimRestriction__Group__1 : rule__ClaimRestriction__Group__1__Impl rule__ClaimRestriction__Group__2 ;
-    public final void rule__ClaimRestriction__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__Group__1"
+    // InternalResoluteParser.g:6889:1: rule__ClaimDefeater__Group__1 : rule__ClaimDefeater__Group__1__Impl rule__ClaimDefeater__Group__2 ;
+    public final void rule__ClaimDefeater__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:6893:1: ( rule__ClaimRestriction__Group__1__Impl rule__ClaimRestriction__Group__2 )
-            // InternalResoluteParser.g:6894:2: rule__ClaimRestriction__Group__1__Impl rule__ClaimRestriction__Group__2
+            // InternalResoluteParser.g:6893:1: ( rule__ClaimDefeater__Group__1__Impl rule__ClaimDefeater__Group__2 )
+            // InternalResoluteParser.g:6894:2: rule__ClaimDefeater__Group__1__Impl rule__ClaimDefeater__Group__2
             {
             pushFollow(FollowSets000.FOLLOW_18);
-            rule__ClaimRestriction__Group__1__Impl();
+            rule__ClaimDefeater__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
             pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimRestriction__Group__2();
+            rule__ClaimDefeater__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20891,30 +20891,30 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__Group__1"
+    // $ANTLR end "rule__ClaimDefeater__Group__1"
 
 
-    // $ANTLR start "rule__ClaimRestriction__Group__1__Impl"
-    // InternalResoluteParser.g:6901:1: rule__ClaimRestriction__Group__1__Impl : ( ( rule__ClaimRestriction__NameAssignment_1 ) ) ;
-    public final void rule__ClaimRestriction__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__Group__1__Impl"
+    // InternalResoluteParser.g:6901:1: rule__ClaimDefeater__Group__1__Impl : ( ( rule__ClaimDefeater__NameAssignment_1 ) ) ;
+    public final void rule__ClaimDefeater__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:6905:1: ( ( ( rule__ClaimRestriction__NameAssignment_1 ) ) )
-            // InternalResoluteParser.g:6906:1: ( ( rule__ClaimRestriction__NameAssignment_1 ) )
+            // InternalResoluteParser.g:6905:1: ( ( ( rule__ClaimDefeater__NameAssignment_1 ) ) )
+            // InternalResoluteParser.g:6906:1: ( ( rule__ClaimDefeater__NameAssignment_1 ) )
             {
-            // InternalResoluteParser.g:6906:1: ( ( rule__ClaimRestriction__NameAssignment_1 ) )
-            // InternalResoluteParser.g:6907:1: ( rule__ClaimRestriction__NameAssignment_1 )
+            // InternalResoluteParser.g:6906:1: ( ( rule__ClaimDefeater__NameAssignment_1 ) )
+            // InternalResoluteParser.g:6907:1: ( rule__ClaimDefeater__NameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClaimRestrictionAccess().getNameAssignment_1()); 
+               before(grammarAccess.getClaimDefeaterAccess().getNameAssignment_1()); 
             }
-            // InternalResoluteParser.g:6908:1: ( rule__ClaimRestriction__NameAssignment_1 )
-            // InternalResoluteParser.g:6908:2: rule__ClaimRestriction__NameAssignment_1
+            // InternalResoluteParser.g:6908:1: ( rule__ClaimDefeater__NameAssignment_1 )
+            // InternalResoluteParser.g:6908:2: rule__ClaimDefeater__NameAssignment_1
             {
             pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimRestriction__NameAssignment_1();
+            rule__ClaimDefeater__NameAssignment_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20922,7 +20922,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClaimRestrictionAccess().getNameAssignment_1()); 
+               after(grammarAccess.getClaimDefeaterAccess().getNameAssignment_1()); 
             }
 
             }
@@ -20942,26 +20942,26 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__Group__1__Impl"
+    // $ANTLR end "rule__ClaimDefeater__Group__1__Impl"
 
 
-    // $ANTLR start "rule__ClaimRestriction__Group__2"
-    // InternalResoluteParser.g:6918:1: rule__ClaimRestriction__Group__2 : rule__ClaimRestriction__Group__2__Impl rule__ClaimRestriction__Group__3 ;
-    public final void rule__ClaimRestriction__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__Group__2"
+    // InternalResoluteParser.g:6918:1: rule__ClaimDefeater__Group__2 : rule__ClaimDefeater__Group__2__Impl rule__ClaimDefeater__Group__3 ;
+    public final void rule__ClaimDefeater__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:6922:1: ( rule__ClaimRestriction__Group__2__Impl rule__ClaimRestriction__Group__3 )
-            // InternalResoluteParser.g:6923:2: rule__ClaimRestriction__Group__2__Impl rule__ClaimRestriction__Group__3
+            // InternalResoluteParser.g:6922:1: ( rule__ClaimDefeater__Group__2__Impl rule__ClaimDefeater__Group__3 )
+            // InternalResoluteParser.g:6923:2: rule__ClaimDefeater__Group__2__Impl rule__ClaimDefeater__Group__3
             {
             pushFollow(FollowSets000.FOLLOW_19);
-            rule__ClaimRestriction__Group__2__Impl();
+            rule__ClaimDefeater__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
             pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimRestriction__Group__3();
+            rule__ClaimDefeater__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20980,12 +20980,12 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__Group__2"
+    // $ANTLR end "rule__ClaimDefeater__Group__2"
 
 
-    // $ANTLR start "rule__ClaimRestriction__Group__2__Impl"
-    // InternalResoluteParser.g:6930:1: rule__ClaimRestriction__Group__2__Impl : ( Colon ) ;
-    public final void rule__ClaimRestriction__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__Group__2__Impl"
+    // InternalResoluteParser.g:6930:1: rule__ClaimDefeater__Group__2__Impl : ( Colon ) ;
+    public final void rule__ClaimDefeater__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -20997,11 +20997,11 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6936:1: Colon
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClaimRestrictionAccess().getColonKeyword_2()); 
+               before(grammarAccess.getClaimDefeaterAccess().getColonKeyword_2()); 
             }
             match(input,Colon,FollowSets000.FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClaimRestrictionAccess().getColonKeyword_2()); 
+               after(grammarAccess.getClaimDefeaterAccess().getColonKeyword_2()); 
             }
 
             }
@@ -21021,26 +21021,26 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__Group__2__Impl"
+    // $ANTLR end "rule__ClaimDefeater__Group__2__Impl"
 
 
-    // $ANTLR start "rule__ClaimRestriction__Group__3"
-    // InternalResoluteParser.g:6949:1: rule__ClaimRestriction__Group__3 : rule__ClaimRestriction__Group__3__Impl rule__ClaimRestriction__Group__4 ;
-    public final void rule__ClaimRestriction__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__Group__3"
+    // InternalResoluteParser.g:6949:1: rule__ClaimDefeater__Group__3 : rule__ClaimDefeater__Group__3__Impl rule__ClaimDefeater__Group__4 ;
+    public final void rule__ClaimDefeater__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:6953:1: ( rule__ClaimRestriction__Group__3__Impl rule__ClaimRestriction__Group__4 )
-            // InternalResoluteParser.g:6954:2: rule__ClaimRestriction__Group__3__Impl rule__ClaimRestriction__Group__4
+            // InternalResoluteParser.g:6953:1: ( rule__ClaimDefeater__Group__3__Impl rule__ClaimDefeater__Group__4 )
+            // InternalResoluteParser.g:6954:2: rule__ClaimDefeater__Group__3__Impl rule__ClaimDefeater__Group__4
             {
             pushFollow(FollowSets000.FOLLOW_32);
-            rule__ClaimRestriction__Group__3__Impl();
+            rule__ClaimDefeater__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
             pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimRestriction__Group__4();
+            rule__ClaimDefeater__Group__4();
 
             state._fsp--;
             if (state.failed) return ;
@@ -21059,30 +21059,30 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__Group__3"
+    // $ANTLR end "rule__ClaimDefeater__Group__3"
 
 
-    // $ANTLR start "rule__ClaimRestriction__Group__3__Impl"
-    // InternalResoluteParser.g:6961:1: rule__ClaimRestriction__Group__3__Impl : ( ( rule__ClaimRestriction__ExprAssignment_3 ) ) ;
-    public final void rule__ClaimRestriction__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__Group__3__Impl"
+    // InternalResoluteParser.g:6961:1: rule__ClaimDefeater__Group__3__Impl : ( ( rule__ClaimDefeater__ExprAssignment_3 ) ) ;
+    public final void rule__ClaimDefeater__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:6965:1: ( ( ( rule__ClaimRestriction__ExprAssignment_3 ) ) )
-            // InternalResoluteParser.g:6966:1: ( ( rule__ClaimRestriction__ExprAssignment_3 ) )
+            // InternalResoluteParser.g:6965:1: ( ( ( rule__ClaimDefeater__ExprAssignment_3 ) ) )
+            // InternalResoluteParser.g:6966:1: ( ( rule__ClaimDefeater__ExprAssignment_3 ) )
             {
-            // InternalResoluteParser.g:6966:1: ( ( rule__ClaimRestriction__ExprAssignment_3 ) )
-            // InternalResoluteParser.g:6967:1: ( rule__ClaimRestriction__ExprAssignment_3 )
+            // InternalResoluteParser.g:6966:1: ( ( rule__ClaimDefeater__ExprAssignment_3 ) )
+            // InternalResoluteParser.g:6967:1: ( rule__ClaimDefeater__ExprAssignment_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClaimRestrictionAccess().getExprAssignment_3()); 
+               before(grammarAccess.getClaimDefeaterAccess().getExprAssignment_3()); 
             }
-            // InternalResoluteParser.g:6968:1: ( rule__ClaimRestriction__ExprAssignment_3 )
-            // InternalResoluteParser.g:6968:2: rule__ClaimRestriction__ExprAssignment_3
+            // InternalResoluteParser.g:6968:1: ( rule__ClaimDefeater__ExprAssignment_3 )
+            // InternalResoluteParser.g:6968:2: rule__ClaimDefeater__ExprAssignment_3
             {
             pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimRestriction__ExprAssignment_3();
+            rule__ClaimDefeater__ExprAssignment_3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -21090,7 +21090,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClaimRestrictionAccess().getExprAssignment_3()); 
+               after(grammarAccess.getClaimDefeaterAccess().getExprAssignment_3()); 
             }
 
             }
@@ -21110,21 +21110,21 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__Group__3__Impl"
+    // $ANTLR end "rule__ClaimDefeater__Group__3__Impl"
 
 
-    // $ANTLR start "rule__ClaimRestriction__Group__4"
-    // InternalResoluteParser.g:6978:1: rule__ClaimRestriction__Group__4 : rule__ClaimRestriction__Group__4__Impl ;
-    public final void rule__ClaimRestriction__Group__4() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__Group__4"
+    // InternalResoluteParser.g:6978:1: rule__ClaimDefeater__Group__4 : rule__ClaimDefeater__Group__4__Impl ;
+    public final void rule__ClaimDefeater__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:6982:1: ( rule__ClaimRestriction__Group__4__Impl )
-            // InternalResoluteParser.g:6983:2: rule__ClaimRestriction__Group__4__Impl
+            // InternalResoluteParser.g:6982:1: ( rule__ClaimDefeater__Group__4__Impl )
+            // InternalResoluteParser.g:6983:2: rule__ClaimDefeater__Group__4__Impl
             {
             pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimRestriction__Group__4__Impl();
+            rule__ClaimDefeater__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -21143,12 +21143,12 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__Group__4"
+    // $ANTLR end "rule__ClaimDefeater__Group__4"
 
 
-    // $ANTLR start "rule__ClaimRestriction__Group__4__Impl"
-    // InternalResoluteParser.g:6989:1: rule__ClaimRestriction__Group__4__Impl : ( Semicolon ) ;
-    public final void rule__ClaimRestriction__Group__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__Group__4__Impl"
+    // InternalResoluteParser.g:6989:1: rule__ClaimDefeater__Group__4__Impl : ( Semicolon ) ;
+    public final void rule__ClaimDefeater__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -21160,11 +21160,11 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6995:1: Semicolon
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClaimRestrictionAccess().getSemicolonKeyword_4()); 
+               before(grammarAccess.getClaimDefeaterAccess().getSemicolonKeyword_4()); 
             }
             match(input,Semicolon,FollowSets000.FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClaimRestrictionAccess().getSemicolonKeyword_4()); 
+               after(grammarAccess.getClaimDefeaterAccess().getSemicolonKeyword_4()); 
             }
 
             }
@@ -21184,7 +21184,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__Group__4__Impl"
+    // $ANTLR end "rule__ClaimDefeater__Group__4__Impl"
 
 
     // $ANTLR start "rule__ClaimJustification__Group__0"
@@ -52924,9 +52924,9 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__ClaimRationale__ValAssignment_3"
 
 
-    // $ANTLR start "rule__ClaimRestriction__NameAssignment_1"
-    // InternalResoluteParser.g:18829:1: rule__ClaimRestriction__NameAssignment_1 : ( RULE_ID ) ;
-    public final void rule__ClaimRestriction__NameAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__NameAssignment_1"
+    // InternalResoluteParser.g:18829:1: rule__ClaimDefeater__NameAssignment_1 : ( RULE_ID ) ;
+    public final void rule__ClaimDefeater__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -52938,11 +52938,11 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:18835:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClaimRestrictionAccess().getNameIDTerminalRuleCall_1_0()); 
+               before(grammarAccess.getClaimDefeaterAccess().getNameIDTerminalRuleCall_1_0()); 
             }
             match(input,RULE_ID,FollowSets000.FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClaimRestrictionAccess().getNameIDTerminalRuleCall_1_0()); 
+               after(grammarAccess.getClaimDefeaterAccess().getNameIDTerminalRuleCall_1_0()); 
             }
 
             }
@@ -52962,12 +52962,12 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__NameAssignment_1"
+    // $ANTLR end "rule__ClaimDefeater__NameAssignment_1"
 
 
-    // $ANTLR start "rule__ClaimRestriction__ExprAssignment_3"
-    // InternalResoluteParser.g:18844:1: rule__ClaimRestriction__ExprAssignment_3 : ( ruleExpr ) ;
-    public final void rule__ClaimRestriction__ExprAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__ClaimDefeater__ExprAssignment_3"
+    // InternalResoluteParser.g:18844:1: rule__ClaimDefeater__ExprAssignment_3 : ( ruleExpr ) ;
+    public final void rule__ClaimDefeater__ExprAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -52979,7 +52979,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:18850:1: ruleExpr
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClaimRestrictionAccess().getExprExprParserRuleCall_3_0()); 
+               before(grammarAccess.getClaimDefeaterAccess().getExprExprParserRuleCall_3_0()); 
             }
             pushFollow(FollowSets000.FOLLOW_2);
             ruleExpr();
@@ -52987,7 +52987,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClaimRestrictionAccess().getExprExprParserRuleCall_3_0()); 
+               after(grammarAccess.getClaimDefeaterAccess().getExprExprParserRuleCall_3_0()); 
             }
 
             }
@@ -53007,7 +53007,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ClaimRestriction__ExprAssignment_3"
+    // $ANTLR end "rule__ClaimDefeater__ExprAssignment_3"
 
 
     // $ANTLR start "rule__ClaimJustification__NameAssignment_1"
@@ -59299,7 +59299,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     static final String dfa_4s = "\2\uffff\1\2\1\3\1\4\4\uffff\1\5\1\6\1\7\1\uffff\1\10\1\11\1\12\1\uffff\1\14\102\uffff\1\16\4\uffff\1\23\1\24\1\25\1\26\1\27\1\30\1\1\1\13\1\15\1\17\1\21\1\20\1\22";
     static final String dfa_5s = "\1\uffff\1\0\125\uffff\1\1\1\2\15\uffff}>";
     static final String[] dfa_6s = {
-            "\1\4\2\21\2\uffff\2\21\2\uffff\1\4\1\uffff\1\21\2\uffff\3\21\3\uffff\7\21\1\uffff\1\21\1\4\3\21\1\uffff\5\21\1\uffff\1\21\1\uffff\5\21\2\uffff\1\134\1\21\7\uffff\3\21\1\uffff\2\21\3\uffff\10\21\5\uffff\1\21\1\uffff\1\135\3\21\1\uffff\1\21\1\136\3\uffff\1\21\4\uffff\2\21\3\uffff\1\124\1\uffff\2\21\3\uffff\1\17\1\uffff\1\4\1\17\3\21\2\uffff\1\21\1\4\1\21\6\uffff\1\21\1\uffff\1\124\1\13\4\uffff\1\21\4\uffff\1\3\1\uffff\1\21\1\124\1\21\2\uffff\2\21\1\uffff\1\2\1\13\1\21\6\uffff\1\132\1\uffff\1\21\7\uffff\1\16\5\uffff\1\133\14\uffff\1\127\2\uffff\1\130\1\131\5\uffff\1\12\1\uffff\1\11\1\uffff\1\15\1\1",
+            "\1\4\2\21\2\uffff\2\21\2\uffff\1\4\1\uffff\1\21\2\uffff\3\21\3\uffff\7\21\1\uffff\1\21\1\4\3\21\1\uffff\5\21\1\uffff\1\21\1\uffff\5\21\1\uffff\1\134\1\21\7\uffff\3\21\1\uffff\2\21\3\uffff\10\21\5\uffff\1\21\2\uffff\1\135\3\21\1\uffff\1\21\1\136\3\uffff\1\21\4\uffff\2\21\3\uffff\1\124\1\uffff\2\21\3\uffff\1\17\1\uffff\1\4\1\17\3\21\2\uffff\1\21\1\4\1\21\6\uffff\1\21\1\uffff\1\124\1\13\4\uffff\1\21\4\uffff\1\3\1\uffff\1\21\1\124\1\21\2\uffff\2\21\1\uffff\1\2\1\13\1\21\6\uffff\1\132\1\uffff\1\21\7\uffff\1\16\5\uffff\1\133\14\uffff\1\127\2\uffff\1\130\1\131\5\uffff\1\12\1\uffff\1\11\1\uffff\1\15\1\1",
             "\1\uffff",
             "",
             "",
@@ -59487,12 +59487,12 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     }
     static final String dfa_7s = "\23\uffff";
     static final String dfa_8s = "\6\uffff\1\15\1\17\1\uffff\1\21\2\uffff\1\15\1\uffff\1\17\3\uffff\1\21";
-    static final String dfa_9s = "\1\77\5\uffff\2\144\1\uffff\1\144\2\uffff\1\144\1\uffff\1\144\1\uffff\1\u00d4\1\uffff\1\144";
+    static final String dfa_9s = "\1\76\5\uffff\2\144\1\uffff\1\144\2\uffff\1\144\1\uffff\1\144\1\uffff\1\u00d4\1\uffff\1\144";
     static final String dfa_10s = "\1\u00d4\5\uffff\2\u00d4\1\uffff\1\u00c1\2\uffff\1\u00c1\1\uffff\1\u00c1\1\uffff\1\u00d4\1\uffff\1\u00c1";
     static final String dfa_11s = "\1\uffff\1\1\1\2\1\3\1\4\1\5\2\uffff\1\6\1\uffff\1\11\1\12\1\uffff\1\7\1\uffff\1\10\1\uffff\1\13\1\uffff";
     static final String dfa_12s = "\23\uffff}>";
     static final String[] dfa_13s = {
-            "\1\3\26\uffff\1\2\20\uffff\1\4\43\uffff\1\13\24\uffff\1\13\27\uffff\1\12\2\uffff\1\10\1\uffff\1\10\7\uffff\1\1\11\uffff\1\6\1\uffff\1\7\1\uffff\1\5\1\11",
+            "\1\3\26\uffff\1\2\21\uffff\1\4\43\uffff\1\13\24\uffff\1\13\27\uffff\1\12\2\uffff\1\10\1\uffff\1\10\7\uffff\1\1\11\uffff\1\6\1\uffff\1\7\1\uffff\1\5\1\11",
             "",
             "",
             "",
@@ -59544,14 +59544,14 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     private static class FollowSets000 {
         public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000000L,0x0080400480000001L,0x0000000000400000L,0x0000000000100000L});
-        public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000002L,0x0080400480000001L,0x0000000000400000L,0x0000000000100000L});
+        public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x8000000000000000L,0x0080400480000000L,0x0000000000400000L,0x0000000000100000L});
+        public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x8000000000000002L,0x0080400480000000L,0x0000000000400000L,0x0000000000100000L});
         public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000040000000000L,0x0000000000000000L,0x0010004000400000L});
         public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
-        public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0200000000000000L});
+        public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0100000000000000L});
         public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
         public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-        public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x500500101C6B31F0L,0x2029220101900E06L,0x000000900C0EC03CL,0x0000000000100120L});
+        public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x280500101C6B31F0L,0x2029220100C80703L,0x000000900C0EC03CL,0x0000000000100120L});
         public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
         public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000100L});
         public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000400L});
@@ -59560,17 +59560,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x4000000000000000L});
         public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000100000L});
         public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000001L});
-        public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0CFAFBEFE394CE00L,0x9F468C237A0FF1B8L,0x21040703B3A10D03L,0x00000000001A8320L});
+        public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x06FAFBEFE394CE00L,0x9F468C237907F8DCL,0x21040703B3A10D03L,0x00000000001A8320L});
         public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
-        public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000000L,0x0080000400000001L,0x0000000000400000L,0x0000000000100000L});
+        public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x8000000000000000L,0x0080000400000000L,0x0000000000400000L,0x0000000000100000L});
         public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0100000000000000L});
         public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0200000000000000L,0x0000000000100000L});
         public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000400000000000L,0x0000000000000001L});
         public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x1000000000000000L});
         public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x1000000000000000L});
         public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000080000000000L});
-        public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x2DFAFFEFE394CE00L,0x9F568D277A2FF1B8L,0x21040703B3A10D83L,0x00000000001A8320L});
-        public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x2100040000000002L,0x0010010400200000L,0x0000000000000080L});
+        public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x16FAFFEFE394CE00L,0x9F568D277D17F8DCL,0x21040703B3A10D83L,0x00000000001A8320L});
+        public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x1000040000000002L,0x0010010404100000L,0x0000000000000080L});
         public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000180000L});
         public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000180000L});
         public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000002L});
@@ -59581,8 +59581,8 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000000000000002L,0x4000000000000000L,0x0020000000000000L});
         public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000000000L,0x0000000800000000L,0x0000000800000000L});
         public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000002L,0x0000000800000000L,0x0000000800000000L});
-        public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-        public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x500500101C6B31F0L,0x2029220101900E06L,0x000000900C0EC03CL});
+        public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+        public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x280500101C6B31F0L,0x2029220100C80703L,0x000000900C0EC03CL});
         public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0002C00000000000L,0x000000000000001CL});
         public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x2800000000000000L});
         public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x2800000000000000L});
@@ -59594,7 +59594,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0200000000000000L});
         public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000080000000L});
         public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000200000L});
-        public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0CFAFBEFE394CE00L,0x9F468C237A0FF1B8L,0x21040F03B3A10D03L,0x00000000001A8320L});
+        public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x06FAFBEFE394CE00L,0x9F468C237907F8DCL,0x21040F03B3A10D03L,0x00000000001A8320L});
         public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000004000040200L,0x0100000000000000L,0x0000000000000001L});
         public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000020000L});
         public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000008000L});
@@ -59604,14 +59604,14 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000100000L});
         public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000000000000L,0x0240000000000000L});
         public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0100000000000000L});
-        public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0CFAFBEFE394CE00L,0x9F468C237A0FF1B8L,0x23040703B3A10D03L,0x00000000001A8320L});
-        public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x08FAFBAFE390CC00L,0x9C060C21720FF1B8L,0x0000040232810102L});
+        public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x06FAFBEFE394CE00L,0x9F468C237907F8DCL,0x23040703B3A10D03L,0x00000000001A8320L});
+        public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x04FAFBAFE390CC00L,0x9C060C217107F8DCL,0x0000040232810102L});
         public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L,0x0000000001000400L});
         public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x1000002000000000L});
         public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000002000000000L});
         public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000200L});
         public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000010000000000L});
-        public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0400000000000000L});
+        public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0200000000000000L});
         public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
         public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000002040L});
         public static final BitSet FOLLOW_73 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000002040L});
@@ -59620,12 +59620,12 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         public static final BitSet FOLLOW_76 = new BitSet(new long[]{0x0000000000000002L,0x0000800000000000L,0x0000000001000400L});
         public static final BitSet FOLLOW_77 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000002000L});
         public static final BitSet FOLLOW_78 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0001000400000000L});
-        public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x8000000000000000L,0x0000008004400000L,0x2900000100000800L,0x00000000001A8020L});
+        public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x4000000000000000L,0x0000008002200000L,0x2900000100000800L,0x00000000001A8020L});
         public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x0000000000000000L,0x0000001000000000L,0x0008000000000000L,0x0000000000000002L});
         public static final BitSet FOLLOW_81 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
         public static final BitSet FOLLOW_82 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x1200000000000000L});
         public static final BitSet FOLLOW_83 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000100000L});
-        public static final BitSet FOLLOW_84 = new BitSet(new long[]{0x8000000000000000L,0x0000008004400000L,0x2B00000100000800L,0x00000000001A8020L});
+        public static final BitSet FOLLOW_84 = new BitSet(new long[]{0x4000000000000000L,0x0000008002200000L,0x2B00000100000800L,0x00000000001A8020L});
         public static final BitSet FOLLOW_85 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
         public static final BitSet FOLLOW_86 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L,0x0000000000000040L});
         public static final BitSet FOLLOW_87 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x2800000000000000L,0x0000000000128000L});

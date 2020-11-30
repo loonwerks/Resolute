@@ -76,7 +76,7 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.CLAIM_CONTEXT: return createClaimContext();
       case ResolutePackage.CLAIM_USAGE_DOMAIN: return createClaimUsageDomain();
       case ResolutePackage.CLAIM_RATIONALE: return createClaimRationale();
-      case ResolutePackage.CLAIM_RESTRICTION: return createClaimRestriction();
+      case ResolutePackage.CLAIM_DEFEATER: return createClaimDefeater();
       case ResolutePackage.CLAIM_JUSTIFICATION: return createClaimJustification();
       case ResolutePackage.CLAIM_ASSUMPTION: return createClaimAssumption();
       case ResolutePackage.CLAIM_STRATEGY: return createClaimStrategy();
@@ -286,10 +286,10 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
    * @generated
    */
   @Override
-  public ClaimRestriction createClaimRestriction()
+  public ClaimDefeater createClaimDefeater()
   {
-    ClaimRestrictionImpl claimRestriction = new ClaimRestrictionImpl();
-    return claimRestriction;
+    ClaimDefeaterImpl claimDefeater = new ClaimDefeaterImpl();
+    return claimDefeater;
   }
 
   /**

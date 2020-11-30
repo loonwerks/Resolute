@@ -45,9 +45,8 @@
     <genClasses ecoreClass="Resolute.ecore#//ClaimRationale">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimRationale/val"/>
     </genClasses>
-    <genClasses ecoreClass="Resolute.ecore#//ClaimRestriction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimRestriction/expr"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimRestriction/val"/>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimDefeater">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimDefeater/expr"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ClaimJustification">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimJustification/val"/>
@@ -220,6 +219,10 @@
     <genClasses ecoreClass="Resolute.ecore#//InfoStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//ProveStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//CheckStatement"/>
+    <genClasses ecoreClass="Resolute.ecore#//ClaimRestriction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimRestriction/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimRestriction/val"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//TypeDefinition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//TypeDefinition/type"/>
     </genClasses>

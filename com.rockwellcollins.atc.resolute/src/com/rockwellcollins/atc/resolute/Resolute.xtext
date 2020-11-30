@@ -142,7 +142,8 @@ ClaimAttribute returns aadl2::NamedElement:
 |	ClaimStrategy
 |	ClaimUsageDomain
 |	ClaimRationale
-| 	ClaimRestriction
+//| 	ClaimRestriction
+|	ClaimDefeater
 |	ClaimGuarantee
 ;
 
@@ -158,8 +159,12 @@ ClaimRationale:
 	'rationale' name=ID ':' val=StringTerm ';'
 ;
 
-ClaimRestriction:
-	'restriction' name=ID ':' expr=Expr ';'
+//ClaimRestriction:
+//	'restriction' name=ID ':' expr=Expr ';'
+//;
+
+ClaimDefeater:
+	'defeater' name=ID ':' expr=Expr ';'
 ;
 
 ClaimJustification:

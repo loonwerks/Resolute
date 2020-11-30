@@ -35,8 +35,8 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimArg;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
+import com.rockwellcollins.atc.resolute.resolute.ClaimDefeater;
 import com.rockwellcollins.atc.resolute.resolute.ClaimGuarantee;
-import com.rockwellcollins.atc.resolute.resolute.ClaimRestriction;
 import com.rockwellcollins.atc.resolute.resolute.ClaimString;
 import com.rockwellcollins.atc.resolute.resolute.ClaimText;
 import com.rockwellcollins.atc.resolute.resolute.ClaimTextVar;
@@ -299,9 +299,12 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 			} else if (claimAttribute instanceof ClaimAssumption) {
 				ClaimAssumption claimAssumption = (ClaimAssumption) claimAttribute;
 				varStack.peek().put(claimAttribute, eval(claimAssumption.getExpr()));
-			} else if (claimAttribute instanceof ClaimRestriction) {
-				ClaimRestriction claimRestriction = (ClaimRestriction) claimAttribute;
-				varStack.peek().put(claimAttribute, eval(claimRestriction.getExpr()));
+//			} else if (claimAttribute instanceof ClaimRestriction) {
+//				ClaimRestriction claimRestriction = (ClaimRestriction) claimAttribute;
+//				varStack.peek().put(claimAttribute, eval(claimRestriction.getExpr()));
+			} else if (claimAttribute instanceof ClaimDefeater) {
+				ClaimDefeater claimDefeater = (ClaimDefeater) claimAttribute;
+				varStack.peek().put(claimAttribute, eval(claimDefeater.getExpr()));
 			} else if (claimAttribute instanceof ClaimGuarantee) {
 				ClaimGuarantee claimGuarantee = (ClaimGuarantee) claimAttribute;
 				varStack.peek().put(claimAttribute, eval(claimGuarantee.getExpr()));
@@ -399,8 +402,11 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 			} else if (claim instanceof ClaimAssumption) {
 				ResoluteValue val = eval(((ClaimAssumption) claim).getExpr());
 				text.append(val);
-			} else if (claim instanceof ClaimRestriction) {
-				ResoluteValue val = eval(((ClaimRestriction) claim).getExpr());
+//			} else if (claim instanceof ClaimRestriction) {
+//				ResoluteValue val = eval(((ClaimRestriction) claim).getExpr());
+//				text.append(val);
+			} else if (claim instanceof ClaimDefeater) {
+				ResoluteValue val = eval(((ClaimDefeater) claim).getExpr());
 				text.append(val);
 			} else if (claim instanceof ClaimGuarantee) {
 				ResoluteValue val = eval(((ClaimGuarantee) claim).getExpr());
@@ -436,7 +442,10 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 			} else if (claimAttribute instanceof ClaimAssumption) {
 				ResoluteValue val = varStack.peek().get(claimAttribute);
 				result.put(val.toString(), claimAttribute);
-			} else if (claimAttribute instanceof ClaimRestriction) {
+//			} else if (claimAttribute instanceof ClaimRestriction) {
+//				ResoluteValue val = varStack.peek().get(claimAttribute);
+//				result.put(val.toString(), claimAttribute);
+			} else if (claimAttribute instanceof ClaimDefeater) {
 				ResoluteValue val = varStack.peek().get(claimAttribute);
 				result.put(val.toString(), claimAttribute);
 			} else if (claimAttribute instanceof ClaimGuarantee) {

@@ -96,7 +96,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getClaimContextAccess().getGroup(), "rule__ClaimContext__Group__0");
 					put(grammarAccess.getClaimUsageDomainAccess().getGroup(), "rule__ClaimUsageDomain__Group__0");
 					put(grammarAccess.getClaimRationaleAccess().getGroup(), "rule__ClaimRationale__Group__0");
-					put(grammarAccess.getClaimRestrictionAccess().getGroup(), "rule__ClaimRestriction__Group__0");
+					put(grammarAccess.getClaimDefeaterAccess().getGroup(), "rule__ClaimDefeater__Group__0");
 					put(grammarAccess.getClaimJustificationAccess().getGroup(), "rule__ClaimJustification__Group__0");
 					put(grammarAccess.getClaimAssumptionAccess().getGroup(), "rule__ClaimAssumption__Group__0");
 					put(grammarAccess.getClaimStrategyAccess().getGroup(), "rule__ClaimStrategy__Group__0");
@@ -276,8 +276,8 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getClaimUsageDomainAccess().getValAssignment_3(), "rule__ClaimUsageDomain__ValAssignment_3");
 					put(grammarAccess.getClaimRationaleAccess().getNameAssignment_1(), "rule__ClaimRationale__NameAssignment_1");
 					put(grammarAccess.getClaimRationaleAccess().getValAssignment_3(), "rule__ClaimRationale__ValAssignment_3");
-					put(grammarAccess.getClaimRestrictionAccess().getNameAssignment_1(), "rule__ClaimRestriction__NameAssignment_1");
-					put(grammarAccess.getClaimRestrictionAccess().getExprAssignment_3(), "rule__ClaimRestriction__ExprAssignment_3");
+					put(grammarAccess.getClaimDefeaterAccess().getNameAssignment_1(), "rule__ClaimDefeater__NameAssignment_1");
+					put(grammarAccess.getClaimDefeaterAccess().getExprAssignment_3(), "rule__ClaimDefeater__ExprAssignment_3");
 					put(grammarAccess.getClaimJustificationAccess().getNameAssignment_1(), "rule__ClaimJustification__NameAssignment_1");
 					put(grammarAccess.getClaimJustificationAccess().getValAssignment_3(), "rule__ClaimJustification__ValAssignment_3");
 					put(grammarAccess.getClaimAssumptionAccess().getNameAssignment_1(), "rule__ClaimAssumption__NameAssignment_1");

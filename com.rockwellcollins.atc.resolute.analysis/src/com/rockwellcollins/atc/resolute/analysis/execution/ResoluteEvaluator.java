@@ -38,8 +38,8 @@ import com.rockwellcollins.atc.resolute.resolute.CastExpr;
 import com.rockwellcollins.atc.resolute.resolute.ClaimArg;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
+import com.rockwellcollins.atc.resolute.resolute.ClaimDefeater;
 import com.rockwellcollins.atc.resolute.resolute.ClaimGuarantee;
-import com.rockwellcollins.atc.resolute.resolute.ClaimRestriction;
 import com.rockwellcollins.atc.resolute.resolute.ClaimString;
 import com.rockwellcollins.atc.resolute.resolute.ClaimText;
 import com.rockwellcollins.atc.resolute.resolute.ClaimTextVar;
@@ -400,8 +400,13 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 		return varStack.peek().get(object);
 	}
 
+//	@Override
+//	public ResoluteValue caseClaimRestriction(ClaimRestriction object) {
+//		return varStack.peek().get(object);
+//	}
+
 	@Override
-	public ResoluteValue caseClaimRestriction(ClaimRestriction object) {
+	public ResoluteValue caseClaimDefeater(ClaimDefeater object) {
 		return varStack.peek().get(object);
 	}
 

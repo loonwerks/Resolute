@@ -14,10 +14,10 @@ import com.rockwellcollins.atc.resolute.resolute.ClaimArg;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
+import com.rockwellcollins.atc.resolute.resolute.ClaimDefeater;
 import com.rockwellcollins.atc.resolute.resolute.ClaimGuarantee;
 import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
 import com.rockwellcollins.atc.resolute.resolute.ClaimRationale;
-import com.rockwellcollins.atc.resolute.resolute.ClaimRestriction;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ClaimString;
 import com.rockwellcollins.atc.resolute.resolute.ClaimText;
@@ -179,7 +179,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass claimRestrictionEClass = null;
+  private EClass claimDefeaterEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -929,9 +929,9 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
-  public EClass getClaimRestriction()
+  public EClass getClaimDefeater()
   {
-    return claimRestrictionEClass;
+    return claimDefeaterEClass;
   }
 
   /**
@@ -940,9 +940,9 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
-  public EReference getClaimRestriction_Expr()
+  public EReference getClaimDefeater_Expr()
   {
-    return (EReference)claimRestrictionEClass.getEStructuralFeatures().get(0);
+    return (EReference)claimDefeaterEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2368,8 +2368,8 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     claimRationaleEClass = createEClass(CLAIM_RATIONALE);
     createEReference(claimRationaleEClass, CLAIM_RATIONALE__VAL);
 
-    claimRestrictionEClass = createEClass(CLAIM_RESTRICTION);
-    createEReference(claimRestrictionEClass, CLAIM_RESTRICTION__EXPR);
+    claimDefeaterEClass = createEClass(CLAIM_DEFEATER);
+    createEReference(claimDefeaterEClass, CLAIM_DEFEATER__EXPR);
 
     claimJustificationEClass = createEClass(CLAIM_JUSTIFICATION);
     createEReference(claimJustificationEClass, CLAIM_JUSTIFICATION__VAL);
@@ -2597,7 +2597,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     claimContextEClass.getESuperTypes().add(this.getClaimTextVar());
     claimUsageDomainEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
     claimRationaleEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
-    claimRestrictionEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
+    claimDefeaterEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
     claimJustificationEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
     claimAssumptionEClass.getESuperTypes().add(theAadl2Package.getNamedElement());
     claimAssumptionEClass.getESuperTypes().add(this.getClaimTextVar());
@@ -2691,8 +2691,8 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEClass(claimRationaleEClass, ClaimRationale.class, "ClaimRationale", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getClaimRationale_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimRationale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(claimRestrictionEClass, ClaimRestriction.class, "ClaimRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getClaimRestriction_Expr(), this.getExpr(), null, "expr", null, 0, 1, ClaimRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(claimDefeaterEClass, ClaimDefeater.class, "ClaimDefeater", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getClaimDefeater_Expr(), this.getExpr(), null, "expr", null, 0, 1, ClaimDefeater.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(claimJustificationEClass, ClaimJustification.class, "ClaimJustification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getClaimJustification_Val(), theAadl2Package.getStringLiteral(), null, "val", null, 0, 1, ClaimJustification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

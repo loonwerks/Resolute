@@ -863,14 +863,14 @@ public interface ResolutePackage extends EPackage
   int CLAIM_RATIONALE_FEATURE_COUNT = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimRestrictionImpl <em>Claim Restriction</em>}' class.
+   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimDefeaterImpl <em>Claim Defeater</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.rockwellcollins.atc.resolute.resolute.impl.ClaimRestrictionImpl
-   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimRestriction()
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ClaimDefeaterImpl
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimDefeater()
    * @generated
    */
-  int CLAIM_RESTRICTION = 12;
+  int CLAIM_DEFEATER = 12;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -879,7 +879,7 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLAIM_RESTRICTION__OWNED_ELEMENT = Aadl2Package.NAMED_ELEMENT__OWNED_ELEMENT;
+  int CLAIM_DEFEATER__OWNED_ELEMENT = Aadl2Package.NAMED_ELEMENT__OWNED_ELEMENT;
 
   /**
    * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -888,7 +888,7 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLAIM_RESTRICTION__OWNED_COMMENT = Aadl2Package.NAMED_ELEMENT__OWNED_COMMENT;
+  int CLAIM_DEFEATER__OWNED_COMMENT = Aadl2Package.NAMED_ELEMENT__OWNED_COMMENT;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -897,7 +897,7 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLAIM_RESTRICTION__NAME = Aadl2Package.NAMED_ELEMENT__NAME;
+  int CLAIM_DEFEATER__NAME = Aadl2Package.NAMED_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
@@ -906,7 +906,7 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLAIM_RESTRICTION__QUALIFIED_NAME = Aadl2Package.NAMED_ELEMENT__QUALIFIED_NAME;
+  int CLAIM_DEFEATER__QUALIFIED_NAME = Aadl2Package.NAMED_ELEMENT__QUALIFIED_NAME;
 
   /**
    * The feature id for the '<em><b>Owned Property Association</b></em>' containment reference list.
@@ -915,7 +915,7 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLAIM_RESTRICTION__OWNED_PROPERTY_ASSOCIATION = Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION;
+  int CLAIM_DEFEATER__OWNED_PROPERTY_ASSOCIATION = Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -924,16 +924,16 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLAIM_RESTRICTION__EXPR = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 0;
+  int CLAIM_DEFEATER__EXPR = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Claim Restriction</em>' class.
+   * The number of structural features of the '<em>Claim Defeater</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLAIM_RESTRICTION_FEATURE_COUNT = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 1;
+  int CLAIM_DEFEATER_FEATURE_COUNT = Aadl2Package.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimJustificationImpl <em>Claim Justification</em>}' class.
@@ -3958,25 +3958,25 @@ public interface ResolutePackage extends EPackage
   EReference getClaimRationale_Val();
 
   /**
-   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimRestriction <em>Claim Restriction</em>}'.
+   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimDefeater <em>Claim Defeater</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Claim Restriction</em>'.
-   * @see com.rockwellcollins.atc.resolute.resolute.ClaimRestriction
+   * @return the meta object for class '<em>Claim Defeater</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimDefeater
    * @generated
    */
-  EClass getClaimRestriction();
+  EClass getClaimDefeater();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.ClaimRestriction#getExpr <em>Expr</em>}'.
+   * Returns the meta object for the containment reference '{@link com.rockwellcollins.atc.resolute.resolute.ClaimDefeater#getExpr <em>Expr</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Expr</em>'.
-   * @see com.rockwellcollins.atc.resolute.resolute.ClaimRestriction#getExpr()
-   * @see #getClaimRestriction()
+   * @see com.rockwellcollins.atc.resolute.resolute.ClaimDefeater#getExpr()
+   * @see #getClaimDefeater()
    * @generated
    */
-  EReference getClaimRestriction_Expr();
+  EReference getClaimDefeater_Expr();
 
   /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ClaimJustification <em>Claim Justification</em>}'.
@@ -5541,14 +5541,14 @@ public interface ResolutePackage extends EPackage
     EReference CLAIM_RATIONALE__VAL = eINSTANCE.getClaimRationale_Val();
 
     /**
-     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimRestrictionImpl <em>Claim Restriction</em>}' class.
+     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimDefeaterImpl <em>Claim Defeater</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.rockwellcollins.atc.resolute.resolute.impl.ClaimRestrictionImpl
-     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimRestriction()
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ClaimDefeaterImpl
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getClaimDefeater()
      * @generated
      */
-    EClass CLAIM_RESTRICTION = eINSTANCE.getClaimRestriction();
+    EClass CLAIM_DEFEATER = eINSTANCE.getClaimDefeater();
 
     /**
      * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
@@ -5556,7 +5556,7 @@ public interface ResolutePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CLAIM_RESTRICTION__EXPR = eINSTANCE.getClaimRestriction_Expr();
+    EReference CLAIM_DEFEATER__EXPR = eINSTANCE.getClaimDefeater_Expr();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ClaimJustificationImpl <em>Claim Justification</em>}' class.

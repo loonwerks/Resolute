@@ -191,12 +191,12 @@ public class ResoluteSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ResolutePackage.CLAIM_RESTRICTION:
+      case ResolutePackage.CLAIM_DEFEATER:
       {
-        ClaimRestriction claimRestriction = (ClaimRestriction)theEObject;
-        T result = caseClaimRestriction(claimRestriction);
-        if (result == null) result = caseNamedElement(claimRestriction);
-        if (result == null) result = caseElement(claimRestriction);
+        ClaimDefeater claimDefeater = (ClaimDefeater)theEObject;
+        T result = caseClaimDefeater(claimDefeater);
+        if (result == null) result = caseNamedElement(claimDefeater);
+        if (result == null) result = caseElement(claimDefeater);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -873,17 +873,17 @@ public class ResoluteSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Claim Restriction</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Claim Defeater</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Claim Restriction</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Claim Defeater</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseClaimRestriction(ClaimRestriction object)
+  public T caseClaimDefeater(ClaimDefeater object)
   {
     return null;
   }

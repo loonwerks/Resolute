@@ -1754,11 +1754,11 @@ ruleClaimAttribute returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getClaimAttributeAccess().getClaimRestrictionParserRuleCall_6()); 
+        newCompositeNode(grammarAccess.getClaimAttributeAccess().getClaimDefeaterParserRuleCall_6()); 
     }
-    this_ClaimRestriction_6=ruleClaimRestriction
+    this_ClaimDefeater_6=ruleClaimDefeater
     {
-        $current = $this_ClaimRestriction_6.current;
+        $current = $this_ClaimDefeater_6.current;
         afterParserOrEnumRuleCall();
     }
 
@@ -1994,34 +1994,34 @@ ruleClaimRationale returns [EObject current=null]
 
 
 
-// Entry rule entryRuleClaimRestriction
-entryRuleClaimRestriction returns [EObject current=null]
+// Entry rule entryRuleClaimDefeater
+entryRuleClaimDefeater returns [EObject current=null]
 	:
-	{ newCompositeNode(grammarAccess.getClaimRestrictionRule()); }
-	 iv_ruleClaimRestriction=ruleClaimRestriction 
-	 { $current=$iv_ruleClaimRestriction.current; } 
+	{ newCompositeNode(grammarAccess.getClaimDefeaterRule()); }
+	 iv_ruleClaimDefeater=ruleClaimDefeater 
+	 { $current=$iv_ruleClaimDefeater.current; } 
 	 EOF 
 ;
 
-// Rule ClaimRestriction
-ruleClaimRestriction returns [EObject current=null] 
+// Rule ClaimDefeater
+ruleClaimDefeater returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 (
-	otherlv_0=Restriction
+	otherlv_0=Defeater
     {
-    	newLeafNode(otherlv_0, grammarAccess.getClaimRestrictionAccess().getRestrictionKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getClaimDefeaterAccess().getDefeaterKeyword_0());
     }
 (
 (
 		lv_name_1_0=RULE_ID
 		{
-			newLeafNode(lv_name_1_0, grammarAccess.getClaimRestrictionAccess().getNameIDTerminalRuleCall_1_0()); 
+			newLeafNode(lv_name_1_0, grammarAccess.getClaimDefeaterAccess().getNameIDTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getClaimRestrictionRule());
+	            $current = createModelElement(grammarAccess.getClaimDefeaterRule());
 	        }
        		setWithLastConsumed(
        			$current, 
@@ -2034,16 +2034,16 @@ ruleClaimRestriction returns [EObject current=null]
 )
 	otherlv_2=Colon
     {
-    	newLeafNode(otherlv_2, grammarAccess.getClaimRestrictionAccess().getColonKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getClaimDefeaterAccess().getColonKeyword_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClaimRestrictionAccess().getExprExprParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getClaimDefeaterAccess().getExprExprParserRuleCall_3_0()); 
 	    }
 		lv_expr_3_0=ruleExpr		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getClaimRestrictionRule());
+	            $current = createModelElementForParent(grammarAccess.getClaimDefeaterRule());
 	        }
        		set(
        			$current, 
@@ -2057,7 +2057,7 @@ ruleClaimRestriction returns [EObject current=null]
 )
 	otherlv_4=Semicolon
     {
-    	newLeafNode(otherlv_4, grammarAccess.getClaimRestrictionAccess().getSemicolonKeyword_4());
+    	newLeafNode(otherlv_4, grammarAccess.getClaimDefeaterAccess().getSemicolonKeyword_4());
     }
 )
 ;

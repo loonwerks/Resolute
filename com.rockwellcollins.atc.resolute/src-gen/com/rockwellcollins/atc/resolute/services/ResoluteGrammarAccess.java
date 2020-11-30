@@ -964,7 +964,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cClaimStrategyParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cClaimUsageDomainParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cClaimRationaleParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cClaimRestrictionParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cClaimDefeaterParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		private final RuleCall cClaimGuaranteeParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
 		
 		//ClaimAttribute aadl2::NamedElement:
@@ -974,12 +974,13 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//	| ClaimStrategy
 		//	| ClaimUsageDomain
 		//	| ClaimRationale
-		//	| ClaimRestriction
+		//	//| 	ClaimRestriction
+		//	| ClaimDefeater
 		//	| ClaimGuarantee;
 		@Override public ParserRule getRule() { return rule; }
 
-		//ClaimContext | ClaimJustification | ClaimAssumption | ClaimStrategy | ClaimUsageDomain | ClaimRationale |
-		//ClaimRestriction | ClaimGuarantee
+		//ClaimContext | ClaimJustification | ClaimAssumption | ClaimStrategy | ClaimUsageDomain | ClaimRationale //| 	ClaimRestriction
+		//| ClaimDefeater | ClaimGuarantee
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ClaimContext
@@ -1000,8 +1001,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//ClaimRationale
 		public RuleCall getClaimRationaleParserRuleCall_5() { return cClaimRationaleParserRuleCall_5; }
 
-		//ClaimRestriction
-		public RuleCall getClaimRestrictionParserRuleCall_6() { return cClaimRestrictionParserRuleCall_6; }
+		//ClaimDefeater
+		public RuleCall getClaimDefeaterParserRuleCall_6() { return cClaimDefeaterParserRuleCall_6; }
 
 		//ClaimGuarantee
 		public RuleCall getClaimGuaranteeParserRuleCall_7() { return cClaimGuaranteeParserRuleCall_7; }
@@ -1127,10 +1128,10 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
 	}
 
-	public class ClaimRestrictionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.ClaimRestriction");
+	public class ClaimDefeaterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.ClaimDefeater");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cRestrictionKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cDefeaterKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -1138,15 +1139,18 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprExprParserRuleCall_3_0 = (RuleCall)cExprAssignment_3.eContents().get(0);
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//ClaimRestriction:
-		//	'restriction' name=ID ':' expr=Expr ';';
+		////ClaimRestriction:
+		////	'restriction' name=ID ':' expr=Expr ';'
+		////;
+		//ClaimDefeater:
+		//	'defeater' name=ID ':' expr=Expr ';';
 		@Override public ParserRule getRule() { return rule; }
 
-		//'restriction' name=ID ':' expr=Expr ';'
+		//'defeater' name=ID ':' expr=Expr ';'
 		public Group getGroup() { return cGroup; }
 
-		//'restriction'
-		public Keyword getRestrictionKeyword_0() { return cRestrictionKeyword_0; }
+		//'defeater'
+		public Keyword getDefeaterKeyword_0() { return cDefeaterKeyword_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -3667,7 +3671,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	private final ClaimContextElements pClaimContext;
 	private final ClaimUsageDomainElements pClaimUsageDomain;
 	private final ClaimRationaleElements pClaimRationale;
-	private final ClaimRestrictionElements pClaimRestriction;
+	private final ClaimDefeaterElements pClaimDefeater;
 	private final ClaimJustificationElements pClaimJustification;
 	private final ClaimAssumptionElements pClaimAssumption;
 	private final ClaimStrategyElements pClaimStrategy;
@@ -3728,7 +3732,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		this.pClaimContext = new ClaimContextElements();
 		this.pClaimUsageDomain = new ClaimUsageDomainElements();
 		this.pClaimRationale = new ClaimRationaleElements();
-		this.pClaimRestriction = new ClaimRestrictionElements();
+		this.pClaimDefeater = new ClaimDefeaterElements();
 		this.pClaimJustification = new ClaimJustificationElements();
 		this.pClaimAssumption = new ClaimAssumptionElements();
 		this.pClaimStrategy = new ClaimStrategyElements();
@@ -4015,7 +4019,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//	| ClaimStrategy
 	//	| ClaimUsageDomain
 	//	| ClaimRationale
-	//	| ClaimRestriction
+	//	//| 	ClaimRestriction
+	//	| ClaimDefeater
 	//	| ClaimGuarantee;
 	public ClaimAttributeElements getClaimAttributeAccess() {
 		return pClaimAttribute;
@@ -4055,14 +4060,17 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		return getClaimRationaleAccess().getRule();
 	}
 
-	//ClaimRestriction:
-	//	'restriction' name=ID ':' expr=Expr ';';
-	public ClaimRestrictionElements getClaimRestrictionAccess() {
-		return pClaimRestriction;
+	////ClaimRestriction:
+	////	'restriction' name=ID ':' expr=Expr ';'
+	////;
+	//ClaimDefeater:
+	//	'defeater' name=ID ':' expr=Expr ';';
+	public ClaimDefeaterElements getClaimDefeaterAccess() {
+		return pClaimDefeater;
 	}
 	
-	public ParserRule getClaimRestrictionRule() {
-		return getClaimRestrictionAccess().getRule();
+	public ParserRule getClaimDefeaterRule() {
+		return getClaimDefeaterAccess().getRule();
 	}
 
 	//ClaimJustification:
