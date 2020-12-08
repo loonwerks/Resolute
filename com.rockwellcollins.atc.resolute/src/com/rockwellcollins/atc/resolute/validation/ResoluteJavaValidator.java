@@ -1537,44 +1537,6 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	public ResoluteType getBinaryExprType(BinaryExpr binExpr) {
 		ResoluteType leftType = getExprType(binExpr.getLeft());
 		ResoluteType rightType = getExprType(binExpr.getRight());
-	
-		switch (binExpr.getOp()) {
-		case "=>":
-		case "or":
-		case "orelse":
-		case "and":
-		case "andthen":
-		case "<":
-		case "<=":
-		case ">":
-		case ">=":
-		case "=":
-		case "<>":
-			return BaseType.BOOL;
-	
-		case "^":
-		case "+":
-		case "-":
-		case "*":
-		case "%":
-		case "/": {
-			if (leftType.equals(BaseType.REAL) && rightType.equals(BaseType.INT)) {
-				return BaseType.REAL;
-			}
-			if (leftType.equals(BaseType.INT) && rightType.equals(BaseType.REAL)) {
-				return BaseType.REAL;
-			}
-			return leftType;
-		}
-		}
-	
-		error(binExpr, "Unable to get type for binary expression");
-		return BaseType.FAIL;
-	}
-
-	public ResoluteType getBinaryExprType(BinaryExpr binExpr) {
-		ResoluteType leftType = getExprType(binExpr.getLeft());
-		ResoluteType rightType = getExprType(binExpr.getRight());
 
 		switch (binExpr.getOp()) {
 		case "=>":
