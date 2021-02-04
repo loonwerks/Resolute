@@ -2223,6 +2223,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		if (idClass instanceof ClaimGuarantee) {
 			ClaimGuarantee claimGuarantee = (ClaimGuarantee) idClass;
 			return getExprType(claimGuarantee.getExpr());
+		}
 
 		if (idClass instanceof FeatureGroupType) {
 			return BaseType.FEATURE_GROUP;
