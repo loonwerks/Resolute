@@ -32,6 +32,7 @@ import org.osate.aadl2.Connection;
 import org.osate.aadl2.DataType;
 import org.osate.aadl2.DeviceType;
 import org.osate.aadl2.EnumerationType;
+import org.osate.aadl2.FeatureGroupType;
 import org.osate.aadl2.MemoryType;
 import org.osate.aadl2.NamedElement;
 import org.osate.aadl2.ProcessType;
@@ -2208,6 +2209,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			return getExprType(claimAssumption.getExpr());
 		}
 
+
 //		if (idClass instanceof ClaimRestriction) {
 //			ClaimRestriction claimRestriction = (ClaimRestriction) idClass;
 //			return getExprType(claimRestriction.getExpr());
@@ -2221,6 +2223,10 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		if (idClass instanceof ClaimGuarantee) {
 			ClaimGuarantee claimGuarantee = (ClaimGuarantee) idClass;
 			return getExprType(claimGuarantee.getExpr());
+
+		if (idClass instanceof FeatureGroupType) {
+			return BaseType.FEATURE_GROUP;
+
 		}
 
 		if (idClass instanceof ComponentClassifier) {
