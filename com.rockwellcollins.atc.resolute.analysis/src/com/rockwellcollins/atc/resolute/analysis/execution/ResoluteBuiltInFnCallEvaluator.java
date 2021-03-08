@@ -608,6 +608,56 @@ public class ResoluteBuiltInFnCallEvaluator {
 			}
 		}
 
+		case "min": {
+			List<ResoluteValue> list = args.get(0).getListValues();
+			if (list.isEmpty()) {
+				return new IntValue(0);
+			}
+			ResoluteValue first = list.iterator().next();
+			if (first.isInt()) {
+				long min = first.getInt();
+				for (ResoluteValue item : list) {
+					if (item.getInt() < min) {
+						min = item.getInt();
+					}
+				}
+				return new IntValue(min);
+			} else {
+				double min = first.getReal();
+				for (ResoluteValue item : list) {
+					if (item.getReal() < min) {
+						min = item.getReal();
+					}
+				}
+				return new RealValue(min);
+			}
+		}
+
+		case "max": {
+			List<ResoluteValue> list = args.get(0).getListValues();
+			if (list.isEmpty()) {
+				return new IntValue(0);
+			}
+			ResoluteValue first = list.iterator().next();
+			if (first.isInt()) {
+				long max = first.getInt();
+				for (ResoluteValue item : list) {
+					if (item.getInt() > max) {
+						max = item.getInt();
+					}
+				}
+				return new IntValue(max);
+			} else {
+				double max = first.getReal();
+				for (ResoluteValue item : list) {
+					if (item.getReal() > max) {
+						max = item.getReal();
+					}
+				}
+				return new RealValue(max);
+			}
+		}
+
 		case "append": {
 			List<ResoluteValue> result = new ArrayList<>();
 			result.addAll(args.get(0).getListValues());

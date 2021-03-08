@@ -648,6 +648,12 @@ is a member of the set or list collection
 `sum`(\<numeric\_list\>): numeric - calculates the sum of a
 list collection of integers or a list collection of real
 
+`min`(\<numeric\_list\>): numeric - returns the minimum value in a 
+list collection of integers or a list collection of real
+
+`max`(\<numeric\_list\>): numeric - returns the maximum value in a 
+list collection of integers or a list collection of real
+
 `head`(\<list\>): type - returns the first element of the list collection
 
 `tail`(\<list\>): list - returns all but the first element of the list collection

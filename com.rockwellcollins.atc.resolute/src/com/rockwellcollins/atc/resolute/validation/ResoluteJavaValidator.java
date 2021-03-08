@@ -813,6 +813,12 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		case "sum":
 			checkSumCall(funCall, actualTypes);
 			return;
+		case "min":
+			checkMinCall(funCall, actualTypes);
+			return;
+		case "max":
+			checkMaxCall(funCall, actualTypes);
+			return;
 		case "append":
 			checkAppendCall(funCall, actualTypes);
 			return;
@@ -1013,6 +1019,40 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		}
 
 		error(funCall.getArgs().get(0), "function 'sum' not defined on type " + actualTypes.get(0));
+		return;
+	}
+
+	private void checkMinCall(BuiltInFnCallExpr funCall, List<ResoluteType> actualTypes) {
+		if (actualTypes.size() != 1) {
+			error(funCall, "function 'min' expects one argument");
+			return;
+		}
+
+		if (actualTypes.get(0) instanceof ListType) {
+			ListType listType = (ListType) actualTypes.get(0);
+			if (listType.elementType.subtypeOf(BaseType.INT) || listType.elementType.subtypeOf(BaseType.REAL)) {
+				return;
+			}
+		}
+
+		error(funCall.getArgs().get(0), "function 'min' not defined on type " + actualTypes.get(0));
+		return;
+	}
+
+	private void checkMaxCall(BuiltInFnCallExpr funCall, List<ResoluteType> actualTypes) {
+		if (actualTypes.size() != 1) {
+			error(funCall, "function 'max' expects one argument");
+			return;
+		}
+
+		if (actualTypes.get(0) instanceof ListType) {
+			ListType listType = (ListType) actualTypes.get(0);
+			if (listType.elementType.subtypeOf(BaseType.INT) || listType.elementType.subtypeOf(BaseType.REAL)) {
+				return;
+			}
+		}
+
+		error(funCall.getArgs().get(0), "function 'max' not defined on type " + actualTypes.get(0));
 		return;
 	}
 
@@ -1732,6 +1772,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 
 			// Primary type: List
 		case "sum":
+		case "min":
+		case "max":
 		case "head":
 			return getCollectionFnElementType(funCall);
 		case "append":
