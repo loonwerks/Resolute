@@ -32,11 +32,11 @@ public class LintResult extends ClaimResult {
 
 		findLocations(getChildren(), locations);
 
-		// If there aren't any lint_check claims,
-		// use the list statement call
-		if (locations.isEmpty()) {
-			locations.add(statement);
-		}
+//		// If there aren't any lint_check claims,
+//		// use the list statement call
+//		if (locations.isEmpty()) {
+//			locations.add(statement);
+//		}
 
 		return locations;
 	}
