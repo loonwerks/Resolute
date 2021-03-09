@@ -959,6 +959,9 @@ public class ResoluteBuiltInFnCallEvaluator {
 				result.add(exprToValue(element));
 			}
 			return new ListValue(result);
+		} else if (expr instanceof org.osate.aadl2.ClassifierValue) {
+			org.osate.aadl2.ClassifierValue value = (org.osate.aadl2.ClassifierValue) expr;
+			return new NamedElementValue(value.getClassifier());
 		} else if (expr instanceof RecordValue) {
 			Stream<BasicPropertyAssociation> fieldsStream = ((RecordValue) expr).getOwnedFieldValues().stream();
 			Map<String, ResoluteValue> fieldsMap = fieldsStream.collect(Collectors.toMap(field -> {
