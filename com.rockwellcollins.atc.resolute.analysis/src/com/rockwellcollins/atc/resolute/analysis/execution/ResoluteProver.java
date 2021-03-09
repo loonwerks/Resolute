@@ -439,7 +439,8 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 			FeatureInstance feat = (FeatureInstance) e;
 			return feat.getFeature();
 		} else {
-			return null;
+//			return null;
+			return e;
 		}
 	}
 

@@ -1040,7 +1040,7 @@ public class ResoluteBuiltInFnCallEvaluator {
 			return ci.getComponentClassifier();
 		} else if (ne instanceof DataSubcomponent) {
 			DataSubcomponent ds = (DataSubcomponent) ne;
-			return ds.getComponentType();
+			return ds.getDataSubcomponentType();
 		}
 
 		return null;
