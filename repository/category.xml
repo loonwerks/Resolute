@@ -8,4 +8,5 @@
    </feature>
    <category-def name="fm.workbench" label="Resolute (by Collins Aerospace)"/>
    <category-def name="fm.workbench.source" label="Resolute Source Code"/>
+   <repository-reference location="https://raw.githubusercontent.com/loonwerks/AGREE-Updates/master/" enabled="true" />
 </site>
