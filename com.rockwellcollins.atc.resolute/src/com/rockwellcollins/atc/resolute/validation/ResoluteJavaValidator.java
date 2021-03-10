@@ -50,6 +50,7 @@ import org.osate.aadl2.ThreadType;
 import org.osate.aadl2.VirtualBusType;
 import org.osate.aadl2.VirtualProcessorType;
 import org.osate.aadl2.modelsupport.scoping.Aadl2GlobalScopeUtil;
+import org.osate.aadl2.modelsupport.util.AadlUtil;
 
 import com.rockwellcollins.atc.resolute.analysis.external.EvaluateLibraryTypeExtension;
 import com.rockwellcollins.atc.resolute.analysis.external.EvaluateTypeExtention;
@@ -120,7 +121,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 
 	@Override
 	protected boolean isResponsible(Map<Object, Object> context, EObject eObject) {
-		return (eObject.eClass().getEPackage() == ResolutePackage.eINSTANCE);
+		NamedElement annex = AadlUtil.getContainingAnnex(eObject);
+		return (annex != null && annex.getName().equalsIgnoreCase("resolute")
+				&& eObject.eClass().getEPackage() == ResolutePackage.eINSTANCE);
 	}
 
 	/*********** begin expression type checking functions *************/
@@ -810,6 +813,12 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		case "sum":
 			checkSumCall(funCall, actualTypes);
 			return;
+		case "min":
+			checkMinCall(funCall, actualTypes);
+			return;
+		case "max":
+			checkMaxCall(funCall, actualTypes);
+			return;
 		case "append":
 			checkAppendCall(funCall, actualTypes);
 			return;
@@ -1010,6 +1019,40 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		}
 
 		error(funCall.getArgs().get(0), "function 'sum' not defined on type " + actualTypes.get(0));
+		return;
+	}
+
+	private void checkMinCall(BuiltInFnCallExpr funCall, List<ResoluteType> actualTypes) {
+		if (actualTypes.size() != 1) {
+			error(funCall, "function 'min' expects one argument");
+			return;
+		}
+
+		if (actualTypes.get(0) instanceof ListType) {
+			ListType listType = (ListType) actualTypes.get(0);
+			if (listType.elementType.subtypeOf(BaseType.INT) || listType.elementType.subtypeOf(BaseType.REAL)) {
+				return;
+			}
+		}
+
+		error(funCall.getArgs().get(0), "function 'min' not defined on type " + actualTypes.get(0));
+		return;
+	}
+
+	private void checkMaxCall(BuiltInFnCallExpr funCall, List<ResoluteType> actualTypes) {
+		if (actualTypes.size() != 1) {
+			error(funCall, "function 'max' expects one argument");
+			return;
+		}
+
+		if (actualTypes.get(0) instanceof ListType) {
+			ListType listType = (ListType) actualTypes.get(0);
+			if (listType.elementType.subtypeOf(BaseType.INT) || listType.elementType.subtypeOf(BaseType.REAL)) {
+				return;
+			}
+		}
+
+		error(funCall.getArgs().get(0), "function 'max' not defined on type " + actualTypes.get(0));
 		return;
 	}
 
@@ -1729,6 +1772,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 
 			// Primary type: List
 		case "sum":
+		case "min":
+		case "max":
 		case "head":
 			return getCollectionFnElementType(funCall);
 		case "append":

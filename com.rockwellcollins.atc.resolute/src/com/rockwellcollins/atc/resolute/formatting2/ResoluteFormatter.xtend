@@ -50,7 +50,7 @@ class ResoluteFormatter extends PropertiesFormatter {
 	// @Inject extension ResoluteGrammarAccess
 
 	def dispatch void format(ResoluteLibrary resolutelibrary, extension IFormattableDocument document) {
-		resolutelibrary.surround[noSpace];
+		resolutelibrary.surround[noSpace].prepend[newLines=1];
 		for (Definition definitions : resolutelibrary.getDefinitions()) {
 			format(definitions, document);
 		}

@@ -284,6 +284,8 @@ BuiltInFn:
 
 // Primary type: list
 |	'sum'
+|	'min'
+|	'max'
 |	'append'
 |	'head'
 |	'tail'

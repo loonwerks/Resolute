@@ -133,7 +133,7 @@ public class LinterHandler extends AadlHandler {
 			}
 		}
 
-		displayResults(checkTrees);
+		displayResults(checkTrees, compImpl);
 
 		stop = System.currentTimeMillis();
 		System.out.println("Evaluation time: " + (stop - start) / 1000.0 + "s");
@@ -154,7 +154,7 @@ public class LinterHandler extends AadlHandler {
 
 	}
 
-	private void displayResults(List<ResoluteResult> checkTrees) {
+	private void displayResults(List<ResoluteResult> checkTrees, ComponentImplementation ci) {
 		// Print the errors to standard 'Problems' pane.
 		int errors = 0;
 		int warnings = 0;
@@ -163,18 +163,31 @@ public class LinterHandler extends AadlHandler {
 			if (resoluteResult != null && !resoluteResult.isValid()) {
 				LintResult result = (LintResult) resoluteResult;
 				try {
-					for (EObject ref : result.getLocations()) {
-						if (ref != null) {
-							IMarker marker = getIResource(ref.eResource()).createMarker(MARKER_TYPE);
-							marker.setAttribute(IMarker.MESSAGE, result.getText());
-							int severity = result.getSeverity();
-							marker.setAttribute(IMarker.SEVERITY, severity);
-							if (severity == IMarker.SEVERITY_ERROR) {
-								errors++;
-							} else if (severity == IMarker.SEVERITY_WARNING) {
-								warnings++;
+					if (result.getLocations().isEmpty()) {
+						IMarker marker = getIResource(ci.eResource()).createMarker(MARKER_TYPE);
+						marker.setAttribute(IMarker.MESSAGE, result.getText());
+						int severity = result.getSeverity();
+						marker.setAttribute(IMarker.SEVERITY, severity);
+						if (severity == IMarker.SEVERITY_ERROR) {
+							errors++;
+						} else if (severity == IMarker.SEVERITY_WARNING) {
+							warnings++;
+						}
+						marker.setAttribute(IMarker.LINE_NUMBER, getLineNumberFor(ci));
+					} else {
+						for (EObject ref : result.getLocations()) {
+							if (ref != null) {
+								IMarker marker = getIResource(ref.eResource()).createMarker(MARKER_TYPE);
+								marker.setAttribute(IMarker.MESSAGE, result.getText());
+								int severity = result.getSeverity();
+								marker.setAttribute(IMarker.SEVERITY, severity);
+								if (severity == IMarker.SEVERITY_ERROR) {
+									errors++;
+								} else if (severity == IMarker.SEVERITY_WARNING) {
+									warnings++;
+								}
+								marker.setAttribute(IMarker.LINE_NUMBER, getLineNumberFor(ref));
 							}
-							marker.setAttribute(IMarker.LINE_NUMBER, getLineNumberFor(ref));
 						}
 					}
 				} catch (Exception e) {
