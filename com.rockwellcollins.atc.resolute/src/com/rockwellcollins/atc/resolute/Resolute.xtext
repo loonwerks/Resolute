@@ -105,7 +105,12 @@ ConstantDefinition:
 ;
 
 FunctionDefinition:
-	(claimType='goal' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
+	(claimType=ClaimType)? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
+;
+
+ClaimType:
+	'goal'
+|	'strategy'
 ;
 
 DefinitionBody:

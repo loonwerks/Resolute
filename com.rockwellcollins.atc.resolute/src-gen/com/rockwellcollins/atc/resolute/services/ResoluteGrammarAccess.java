@@ -644,11 +644,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	public class FunctionDefinitionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.FunctionDefinition");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Assignment cClaimTypeAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
-		private final Keyword cClaimTypeGoalKeyword_0_0_0 = (Keyword)cClaimTypeAssignment_0_0.eContents().get(0);
-		private final Assignment cClaimTypeAssignment_0_1 = (Assignment)cAlternatives_0.eContents().get(1);
-		private final Keyword cClaimTypeStrategyKeyword_0_1_0 = (Keyword)cClaimTypeAssignment_0_1.eContents().get(0);
+		private final Assignment cClaimTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cClaimTypeClaimTypeParserRuleCall_0_0 = (RuleCall)cClaimTypeAssignment_0.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -664,26 +661,17 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBodyDefinitionBodyParserRuleCall_5_0 = (RuleCall)cBodyAssignment_5.eContents().get(0);
 		
 		//FunctionDefinition:
-		//	(claimType='goal' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody;
+		//	claimType=ClaimType? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody;
 		@Override public ParserRule getRule() { return rule; }
 
-		//(claimType='goal' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
+		//claimType=ClaimType? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody
 		public Group getGroup() { return cGroup; }
 
-		//(claimType='goal' | claimType='strategy')?
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		//claimType=ClaimType?
+		public Assignment getClaimTypeAssignment_0() { return cClaimTypeAssignment_0; }
 
-		//claimType='goal'
-		public Assignment getClaimTypeAssignment_0_0() { return cClaimTypeAssignment_0_0; }
-
-		//'goal'
-		public Keyword getClaimTypeGoalKeyword_0_0_0() { return cClaimTypeGoalKeyword_0_0_0; }
-
-		//claimType='strategy'
-		public Assignment getClaimTypeAssignment_0_1() { return cClaimTypeAssignment_0_1; }
-
-		//'strategy'
-		public Keyword getClaimTypeStrategyKeyword_0_1_0() { return cClaimTypeStrategyKeyword_0_1_0; }
+		//ClaimType
+		public RuleCall getClaimTypeClaimTypeParserRuleCall_0_0() { return cClaimTypeClaimTypeParserRuleCall_0_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -723,6 +711,27 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//DefinitionBody
 		public RuleCall getBodyDefinitionBodyParserRuleCall_5_0() { return cBodyDefinitionBodyParserRuleCall_5_0; }
+	}
+
+	public class ClaimTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.ClaimType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cGoalKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cStrategyKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//ClaimType:
+		//	'goal'
+		//	| 'strategy';
+		@Override public ParserRule getRule() { return rule; }
+
+		//'goal' | 'strategy'
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//'goal'
+		public Keyword getGoalKeyword_0() { return cGoalKeyword_0; }
+
+		//'strategy'
+		public Keyword getStrategyKeyword_1() { return cStrategyKeyword_1; }
 	}
 
 	public class DefinitionBodyElements extends AbstractParserRuleElementFinder {
@@ -3191,6 +3200,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	private final ArgElements pArg;
 	private final ConstantDefinitionElements pConstantDefinition;
 	private final FunctionDefinitionElements pFunctionDefinition;
+	private final ClaimTypeElements pClaimType;
 	private final DefinitionBodyElements pDefinitionBody;
 	private final ClaimAttributeElements pClaimAttribute;
 	private final ClaimContextElements pClaimContext;
@@ -3245,6 +3255,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		this.pArg = new ArgElements();
 		this.pConstantDefinition = new ConstantDefinitionElements();
 		this.pFunctionDefinition = new FunctionDefinitionElements();
+		this.pClaimType = new ClaimTypeElements();
 		this.pDefinitionBody = new DefinitionBodyElements();
 		this.pClaimAttribute = new ClaimAttributeElements();
 		this.pClaimContext = new ClaimContextElements();
@@ -3471,13 +3482,24 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FunctionDefinition:
-	//	(claimType='goal' | claimType='strategy')? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody;
+	//	claimType=ClaimType? name=ID '(' (args+=Arg (',' args+=Arg)*)? ')' body=DefinitionBody;
 	public FunctionDefinitionElements getFunctionDefinitionAccess() {
 		return pFunctionDefinition;
 	}
 	
 	public ParserRule getFunctionDefinitionRule() {
 		return getFunctionDefinitionAccess().getRule();
+	}
+
+	//ClaimType:
+	//	'goal'
+	//	| 'strategy';
+	public ClaimTypeElements getClaimTypeAccess() {
+		return pClaimType;
+	}
+	
+	public ParserRule getClaimTypeRule() {
+		return getClaimTypeAccess().getRule();
 	}
 
 	//DefinitionBody:

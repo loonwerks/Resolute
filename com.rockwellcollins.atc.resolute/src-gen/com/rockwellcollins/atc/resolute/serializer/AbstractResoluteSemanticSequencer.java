@@ -1565,7 +1565,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     FunctionDefinition returns FunctionDefinition
 	 *
 	 * Constraint:
-	 *     ((claimType='goal' | claimType='strategy')? name=ID (args+=Arg args+=Arg*)? body=DefinitionBody)
+	 *     (claimType=ClaimType? name=ID (args+=Arg args+=Arg*)? body=DefinitionBody)
 	 */
 	protected void sequence_FunctionDefinition(ISerializationContext context, FunctionDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

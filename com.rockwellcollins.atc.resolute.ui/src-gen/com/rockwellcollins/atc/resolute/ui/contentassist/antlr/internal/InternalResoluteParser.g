@@ -471,6 +471,34 @@ finally {
 
 
 
+// Entry rule entryRuleClaimType
+entryRuleClaimType 
+:
+{ before(grammarAccess.getClaimTypeRule()); }
+	 ruleClaimType
+{ after(grammarAccess.getClaimTypeRule()); } 
+	 EOF 
+;
+
+// Rule ClaimType
+ruleClaimType 
+    @init {
+		int stackSize = keepStackSize();
+    }
+    :
+(
+{ before(grammarAccess.getClaimTypeAccess().getAlternatives()); }
+(rule__ClaimType__Alternatives)
+{ after(grammarAccess.getClaimTypeAccess().getAlternatives()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleDefinitionBody
 entryRuleDefinitionBody 
 :
@@ -2622,21 +2650,25 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionDefinition__Alternatives_0
+rule__ClaimType__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionDefinitionAccess().getClaimTypeAssignment_0_0()); }
-(rule__FunctionDefinition__ClaimTypeAssignment_0_0)
-{ after(grammarAccess.getFunctionDefinitionAccess().getClaimTypeAssignment_0_0()); }
+{ before(grammarAccess.getClaimTypeAccess().getGoalKeyword_0()); }
+
+	Goal 
+
+{ after(grammarAccess.getClaimTypeAccess().getGoalKeyword_0()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionDefinitionAccess().getClaimTypeAssignment_0_1()); }
-(rule__FunctionDefinition__ClaimTypeAssignment_0_1)
-{ after(grammarAccess.getFunctionDefinitionAccess().getClaimTypeAssignment_0_1()); }
+{ before(grammarAccess.getClaimTypeAccess().getStrategyKeyword_1()); }
+
+	Strategy 
+
+{ after(grammarAccess.getClaimTypeAccess().getStrategyKeyword_1()); }
 )
 
 ;
@@ -4992,9 +5024,9 @@ rule__FunctionDefinition__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getFunctionDefinitionAccess().getAlternatives_0()); }
-(rule__FunctionDefinition__Alternatives_0)?
-{ after(grammarAccess.getFunctionDefinitionAccess().getAlternatives_0()); }
+{ before(grammarAccess.getFunctionDefinitionAccess().getClaimTypeAssignment_0()); }
+(rule__FunctionDefinition__ClaimTypeAssignment_0)?
+{ after(grammarAccess.getFunctionDefinitionAccess().getClaimTypeAssignment_0()); }
 )
 
 ;
@@ -16907,45 +16939,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionDefinition__ClaimTypeAssignment_0_0
+rule__FunctionDefinition__ClaimTypeAssignment_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionDefinitionAccess().getClaimTypeGoalKeyword_0_0_0()); }
-(
-{ before(grammarAccess.getFunctionDefinitionAccess().getClaimTypeGoalKeyword_0_0_0()); }
-
-	Goal 
-
-{ after(grammarAccess.getFunctionDefinitionAccess().getClaimTypeGoalKeyword_0_0_0()); }
-)
-
-{ after(grammarAccess.getFunctionDefinitionAccess().getClaimTypeGoalKeyword_0_0_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionDefinition__ClaimTypeAssignment_0_1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFunctionDefinitionAccess().getClaimTypeStrategyKeyword_0_1_0()); }
-(
-{ before(grammarAccess.getFunctionDefinitionAccess().getClaimTypeStrategyKeyword_0_1_0()); }
-
-	Strategy 
-
-{ after(grammarAccess.getFunctionDefinitionAccess().getClaimTypeStrategyKeyword_0_1_0()); }
-)
-
-{ after(grammarAccess.getFunctionDefinitionAccess().getClaimTypeStrategyKeyword_0_1_0()); }
+{ before(grammarAccess.getFunctionDefinitionAccess().getClaimTypeClaimTypeParserRuleCall_0_0()); }
+	ruleClaimType{ after(grammarAccess.getFunctionDefinitionAccess().getClaimTypeClaimTypeParserRuleCall_0_0()); }
 )
 
 ;

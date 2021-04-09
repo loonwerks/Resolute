@@ -43,7 +43,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 					put(grammarAccess.getBaseTypeAccess().getTypeAlternatives_0(), "rule__BaseType__TypeAlternatives_0");
 					put(grammarAccess.getArgAccess().getAlternatives(), "rule__Arg__Alternatives");
-					put(grammarAccess.getFunctionDefinitionAccess().getAlternatives_0(), "rule__FunctionDefinition__Alternatives_0");
+					put(grammarAccess.getClaimTypeAccess().getAlternatives(), "rule__ClaimType__Alternatives");
 					put(grammarAccess.getDefinitionBodyAccess().getAlternatives(), "rule__DefinitionBody__Alternatives");
 					put(grammarAccess.getClaimAttributeAccess().getAlternatives(), "rule__ClaimAttribute__Alternatives");
 					put(grammarAccess.getClaimTextAccess().getAlternatives(), "rule__ClaimText__Alternatives");
@@ -242,8 +242,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getConstantDefinitionAccess().getNameAssignment_0(), "rule__ConstantDefinition__NameAssignment_0");
 					put(grammarAccess.getConstantDefinitionAccess().getTypeAssignment_2(), "rule__ConstantDefinition__TypeAssignment_2");
 					put(grammarAccess.getConstantDefinitionAccess().getExprAssignment_4(), "rule__ConstantDefinition__ExprAssignment_4");
-					put(grammarAccess.getFunctionDefinitionAccess().getClaimTypeAssignment_0_0(), "rule__FunctionDefinition__ClaimTypeAssignment_0_0");
-					put(grammarAccess.getFunctionDefinitionAccess().getClaimTypeAssignment_0_1(), "rule__FunctionDefinition__ClaimTypeAssignment_0_1");
+					put(grammarAccess.getFunctionDefinitionAccess().getClaimTypeAssignment_0(), "rule__FunctionDefinition__ClaimTypeAssignment_0");
 					put(grammarAccess.getFunctionDefinitionAccess().getNameAssignment_1(), "rule__FunctionDefinition__NameAssignment_1");
 					put(grammarAccess.getFunctionDefinitionAccess().getArgsAssignment_3_0(), "rule__FunctionDefinition__ArgsAssignment_3_0");
 					put(grammarAccess.getFunctionDefinitionAccess().getArgsAssignment_3_1_1(), "rule__FunctionDefinition__ArgsAssignment_3_1_1");
