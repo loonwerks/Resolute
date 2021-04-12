@@ -457,8 +457,12 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			return; // handled by parse error
 		}
 
-		if (claimType == null && body instanceof ClaimBody) {
-			claimType = "goal";
+		if (claimType == null) {
+			if (body instanceof ClaimBody) {
+				claimType = "goal";
+			} else {
+				claimType = "";
+			}
 		}
 
 		ResoluteType exprType = getExprType(body.getExpr());
@@ -480,7 +484,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			}
 		}
 
-		if (claimType.equalsIgnoreCase("strategy") && body instanceof ClaimBody) {
+		if (body instanceof ClaimBody && claimType.equalsIgnoreCase("strategy")) {
 			ClaimBody claimBody = (ClaimBody) body;
 			for (NamedElement attr : claimBody.getAttributes()) {
 				if (attr instanceof ClaimStrategy) {
@@ -520,7 +524,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			FnCallExpr fnCallExpr = (FnCallExpr) expr;
 			FunctionDefinition functionDefinition = fnCallExpr.getFn();
 			if (functionDefinition.getBody() instanceof ClaimBody) {
-				if (functionDefinition.getClaimType().equalsIgnoreCase("strategy")) {
+				if (functionDefinition.getClaimType() != null
+						&& functionDefinition.getClaimType().equalsIgnoreCase("strategy")) {
 					return false;
 				}
 			} else if (functionDefinition.getBody() instanceof FunctionBody) {
@@ -552,7 +557,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		} else if (expr instanceof FnCallExpr) {
 			FnCallExpr fnCallExpr = (FnCallExpr) expr;
 			FunctionDefinition funcDef = fnCallExpr.getFn();
-			if (!funcDef.getClaimType().equalsIgnoreCase("strategy") && !(funcDef.getBody() instanceof FunctionBody)) {
+			if ((funcDef.getClaimType() == null
+					|| (funcDef.getClaimType() != null && !funcDef.getClaimType().equalsIgnoreCase("strategy")))
+					&& !(funcDef.getBody() instanceof FunctionBody)) {
 				return true;
 			}
 		} else if (expr instanceof LetExpr) {
