@@ -20,6 +20,7 @@ import org.osate.aadl2.PropertyConstant;
 import org.osate.aadl2.UnitLiteral;
 import org.osate.aadl2.instance.ComponentInstance;
 import org.osate.aadl2.instance.ConnectionInstance;
+import org.osate.aadl2.instance.ConnectionReference;
 
 import com.rockwellcollins.atc.resolute.analysis.values.BoolValue;
 import com.rockwellcollins.atc.resolute.analysis.values.IntValue;
@@ -427,8 +428,10 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 
 	public ConnectionInstance getConnectionInstance(ComponentInstance instance, NamedElement connection) {
 		for (ConnectionInstance child : instance.getConnectionInstances()) {
-			if (child.getConnectionReferences().get(0).getConnection().equals(connection)) {
-				return child;
+			for (ConnectionReference ref : child.getConnectionReferences()) {
+				if (ref.getConnection().equals(connection)) {
+					return child;
+				}
 			}
 		}
 		throw new IllegalArgumentException("Unable to find connection " + connection.getName() + " in instance of "
