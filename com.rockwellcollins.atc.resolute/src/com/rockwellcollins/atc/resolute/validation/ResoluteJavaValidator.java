@@ -30,6 +30,7 @@ import org.osate.aadl2.Connection;
 import org.osate.aadl2.DataType;
 import org.osate.aadl2.DeviceType;
 import org.osate.aadl2.EnumerationType;
+import org.osate.aadl2.Feature;
 import org.osate.aadl2.FeatureGroupType;
 import org.osate.aadl2.MemoryType;
 import org.osate.aadl2.NamedElement;
@@ -376,8 +377,10 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			while (subThis.getSub() != null) {
 				subThis = subThis.getSub();
 			}
-			if (!(subThis.getBase() instanceof Subcomponent) && !(subThis.getBase() instanceof Connection)) {
-				error(thisExpr, "ID '" + subThis.getBase().getName() + "' is not a subcomponent or connection");
+			if (!(subThis.getBase() instanceof Subcomponent) && !(subThis.getBase() instanceof Connection)
+					&& !(subThis.getBase() instanceof Feature)) {
+				error(thisExpr,
+						"ID '" + subThis.getBase().getName() + "' is not a subcomponent, connection or feature");
 			}
 
 		}
@@ -1437,6 +1440,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 						}
 					} else if (subExpr.getBase() instanceof Connection) {
 						return BaseType.CONNECTION;
+					} else if (subExpr.getBase() instanceof Feature) {
+						return BaseType.FEATURE;
 					}
 				}
 
@@ -2027,7 +2032,10 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 				return new SetType(innerType);
 			}
 		} else if (type instanceof LibraryFnType) {
-			return new BaseType("agree_spec");
+			LibraryFnType libFnType = (LibraryFnType) type;
+			ResoluteExternalFunctionLibraryType libraryType = EvaluateLibraryTypeExtension
+					.getLibraryType(libFnType.getLibName());
+			return libraryType.getType(((LibraryFnType) type).getFnType());
 		} else {
 			error(type, "Unable to convert type");
 			throw new IllegalArgumentException();

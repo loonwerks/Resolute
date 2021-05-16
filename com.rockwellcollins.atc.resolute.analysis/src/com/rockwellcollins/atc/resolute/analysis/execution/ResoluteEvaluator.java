@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.osate.aadl2.Classifier;
 import org.osate.aadl2.Connection;
 import org.osate.aadl2.Element;
+import org.osate.aadl2.Feature;
 import org.osate.aadl2.NamedElement;
 import org.osate.aadl2.Property;
 import org.osate.aadl2.PropertyConstant;
@@ -21,6 +22,7 @@ import org.osate.aadl2.UnitLiteral;
 import org.osate.aadl2.instance.ComponentInstance;
 import org.osate.aadl2.instance.ConnectionInstance;
 import org.osate.aadl2.instance.ConnectionReference;
+import org.osate.aadl2.instance.FeatureInstance;
 
 import com.rockwellcollins.atc.resolute.analysis.values.BoolValue;
 import com.rockwellcollins.atc.resolute.analysis.values.IntValue;
@@ -409,6 +411,8 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 		for (NestedDotID id = object.getSub(); id != null; id = id.getSub()) {
 			if (id.getBase() instanceof Connection) {
 				return new NamedElementValue(getConnectionInstance(curr, id.getBase()));
+			} else if (id.getBase() instanceof Feature) {
+				return new NamedElementValue(getFeatureInstance(curr, id.getBase()));
 			} else {
 				curr = getInstanceChild(curr, id.getBase());
 			}
@@ -435,6 +439,16 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 			}
 		}
 		throw new IllegalArgumentException("Unable to find connection " + connection.getName() + " in instance of "
+				+ instance.getComponentClassifier().getName());
+	}
+
+	public FeatureInstance getFeatureInstance(ComponentInstance instance, NamedElement feature) {
+		for (FeatureInstance child : instance.getFeatureInstances()) {
+			if (child.getFeature().equals(feature)) {
+				return child;
+			}
+		}
+		throw new IllegalArgumentException("Unable to find feature " + feature.getName() + " in instance of "
 				+ instance.getComponentClassifier().getName());
 	}
 
