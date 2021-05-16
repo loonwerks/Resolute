@@ -4,6 +4,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.osate.aadl2.Connection;
+import org.osate.aadl2.Feature;
 import org.osate.aadl2.NamedElement;
 import org.osate.aadl2.Subcomponent;
 import org.osate.xtext.aadl2.serializer.Aadl2CrossReferenceSerializer;
@@ -24,7 +25,7 @@ public class ResoluteCrossReferenceSerializer extends Aadl2CrossReferenceSeriali
 		if (semanticObject instanceof NestedDotID) {
 			NestedDotID dotID = (NestedDotID) semanticObject;
 			NamedElement base = dotID.getBase();
-			if (base instanceof Subcomponent || base instanceof Connection) {
+			if (base instanceof Subcomponent || base instanceof Connection || base instanceof Feature) {
 				return base.getName();
 			} else if (scope.getElements(target).iterator().hasNext()) {
 				return base.getName();

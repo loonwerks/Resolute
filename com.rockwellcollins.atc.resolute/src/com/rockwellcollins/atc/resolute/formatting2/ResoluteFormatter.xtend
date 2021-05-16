@@ -51,6 +51,7 @@ class ResoluteFormatter extends PropertiesFormatter {
 
 	def dispatch void format(ResoluteLibrary resolutelibrary, extension IFormattableDocument document) {
 		resolutelibrary.surround[noSpace].prepend[newLines=1];
+
 		for (Definition definitions : resolutelibrary.getDefinitions()) {
 			format(definitions, document);
 		}
@@ -276,7 +277,7 @@ class ResoluteFormatter extends PropertiesFormatter {
 	}
 
 	def dispatch void format(ProveStatement provestatement, extension IFormattableDocument document) {
-		provestatement.append[newLines=1];
+		provestatement.prepend[newLines=1].append[newLines=1];
 		formatExpr(provestatement.getExpr(), document);
 	}
 	
