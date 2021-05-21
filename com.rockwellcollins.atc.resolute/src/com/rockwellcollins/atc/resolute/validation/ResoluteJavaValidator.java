@@ -273,6 +273,11 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 
 	@Check
 	public void checkClaimContext(ClaimContext claimContext) {
+
+		if (claimContext.getName() == null) {
+			return;
+		}
+
 		// Get containing claim
 		EObject parent = claimContext;
 		FunctionDefinition funcDef = null;
@@ -314,6 +319,11 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	}
 
 	private void checkDuplicateAttributeNames(NamedElement namedElement) {
+
+		if (namedElement.getName() == null) {
+			return;
+		}
+
 		EObject parent = namedElement;
 		FunctionDefinition funcDef = null;
 		while (parent != null) {
@@ -331,7 +341,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 					&& functionDefinition.getBody() instanceof ClaimBody) {
 				ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
 				for (NamedElement attr : claimBody.getAttributes()) {
-					if (attr.getName().equalsIgnoreCase(namedElement.getName())) {
+					if (attr.getName() == null) {
+						continue;
+					} else if (attr.getName().equalsIgnoreCase(namedElement.getName())) {
 						String attributeType = "";
 						if (attr instanceof ClaimJustification) {
 							attributeType = "Justification element ";

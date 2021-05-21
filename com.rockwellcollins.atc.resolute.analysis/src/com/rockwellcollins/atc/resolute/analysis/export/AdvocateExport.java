@@ -234,12 +234,19 @@ public class AdvocateExport {
 	private static int buildClaimAttributes(List<NamedElement> claimAttributes, ClaimResult res,
 			int parentNodeIndex, String funcDefName, List<String> cNode, List<String> cLink, HashMap<String, Integer> nodeNameMap, boolean isUniqueNodes) {
 
+		Map<String, Integer> uniqueNameIndexer = new HashMap<>();
 		for (NamedElement namedElement : claimAttributes) {
 			int index = parentNodeIndex;
 			String buildNode = "  <nodes xsi:type=\"argument:Argument";
 			String buildLink = "  <links xsi:type=\"egsn:";
 			if (namedElement instanceof ClaimContext) {
 				ClaimContext claimContext = (ClaimContext) namedElement;
+				// If context was not assigned a name, give it one
+				if (claimContext.getName() == null) {
+					int idx = uniqueNameIndexer.getOrDefault("C", 1);
+					claimContext.setName(funcDefName + "_C" + idx);
+					uniqueNameIndexer.put("C", ++idx);
+				}
 				Map<String, EObject> refs = res.getReferences();
 				for (String description : new TreeSet<String>(refs.keySet())) {
 					if (refs.get(description).equals(claimContext)) {
@@ -280,6 +287,12 @@ public class AdvocateExport {
 				}
 			} else if (namedElement instanceof ClaimAssumption) {
 				ClaimAssumption claimAssumption = (ClaimAssumption) namedElement;
+				// If assumption was not assigned a name, give it one
+				if (claimAssumption.getName() == null) {
+					int idx = uniqueNameIndexer.getOrDefault("A", 1);
+					claimAssumption.setName(funcDefName + "_A" + idx);
+					uniqueNameIndexer.put("A", ++idx);
+				}
 				Map<String, EObject> refs = res.getReferences();
 				for (String description : new TreeSet<String>(refs.keySet())) {
 					if (refs.get(description).equals(claimAssumption)) {
@@ -321,6 +334,12 @@ public class AdvocateExport {
 				}
 			} else if (namedElement instanceof ClaimJustification) {
 				ClaimJustification claimJustification = (ClaimJustification) namedElement;
+				// If justification was not assigned a name, give it one
+				if (claimJustification.getName() == null) {
+					int idx = uniqueNameIndexer.getOrDefault("J", 1);
+					claimJustification.setName(funcDefName + "_J" + idx);
+					uniqueNameIndexer.put("J", ++idx);
+				}
 				if ((!nodeNameMap.containsKey(claimJustification.getName()) && !isUniqueNodes) || isUniqueNodes) {
 					buildNode += "Justification\" name=\"" + claimJustification.getName() + "\" description="
 						+ claimJustification.getVal().getValue() + "/>" + "\r\n";
@@ -356,6 +375,12 @@ public class AdvocateExport {
 				}
 			} else if (namedElement instanceof ClaimStrategy) {
 				ClaimStrategy claimStrategy = (ClaimStrategy) namedElement;
+				// If strategy was not assigned a name, give it one
+				if (claimStrategy.getName() == null) {
+					int idx = uniqueNameIndexer.getOrDefault("S", 1);
+					claimStrategy.setName(funcDefName + "_S" + idx);
+					uniqueNameIndexer.put("S", ++idx);
+				}
 				if ((!nodeNameMap.containsKey(claimStrategy.getName()) && !isUniqueNodes) || isUniqueNodes) {
 					buildNode += "Strategy\" name=\"" + claimStrategy.getName() + "\" description="
 						+ claimStrategy.getVal().getValue() + "/>" + "\r\n";
