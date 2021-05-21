@@ -126,19 +126,19 @@ ClaimAttribute returns aadl2::NamedElement:
 ;
 
 ClaimContext:
-	'context' name=ID ':' expr=Expr ';'
+	'context' (name=ID)? ':' expr=Expr ';'
 ;
 
 ClaimJustification:
-	'justification' name=ID ':' val=StringTerm ';'
+	'justification' (name=ID)? ':' val=StringTerm ';'
 ;
 
 ClaimAssumption:
-	'assumption' name=ID ':' expr=Expr ';'
+	'assumption' (name=ID)? ':' expr=Expr ';'
 ;
 
 ClaimStrategy:
-	'strategy' name=ID ':' val=StringTerm ';' 
+	'strategy' (name=ID)? ':' val=StringTerm ';' 
 ;
 
 ClaimText:

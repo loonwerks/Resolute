@@ -39,9 +39,6 @@ import com.rockwellcollins.atc.resolute.resolute.SetFilterMapExpr;
  *
  */
 public class ResoluteScopeProvider extends PropertiesScopeProvider {
-	IScope scope_NamedElement(QuantifiedExpr ctx, EReference ref) {
-		return Scopes.scopeFor(ctx.getArgs(), getScope(ctx.eContainer(), ref));
-	}
 
 	IScope scope_NamedElement(FunctionDefinition ctx, EReference ref) {
 		return Scopes.scopeFor(ctx.getArgs(), getScope(ctx.eContainer(), ref));
@@ -58,6 +55,11 @@ public class ResoluteScopeProvider extends PropertiesScopeProvider {
 			List<Arg> args = parent.getArgs();
 			List<Arg> visibleArgs = args.subList(0, args.indexOf(ctx));
 			return Scopes.scopeFor(visibleArgs, getScope(parent.eContainer(), ref));
+		} else if (ctx.eContainer() instanceof QuantifiedExpr) {
+			QuantifiedExpr parent = (QuantifiedExpr) ctx.eContainer();
+			List<Arg> args = parent.getArgs();
+			List<Arg> visibleArgs = args.subList(0, args.indexOf(ctx));
+			return Scopes.scopeFor(visibleArgs, getScope(parent.eContainer(), ref));
 		} else if (ctx.eContainer() instanceof FunctionDefinition) {
 			return IScope.NULLSCOPE;
 		}
@@ -70,6 +72,10 @@ public class ResoluteScopeProvider extends PropertiesScopeProvider {
 	}
 
 	IScope scope_NamedElement(SetFilterMapExpr ctx, EReference ref) {
+		return Scopes.scopeFor(ctx.getArgs(), getScope(ctx.eContainer(), ref));
+	}
+
+	IScope scope_NamedElement(QuantifiedExpr ctx, EReference ref) {
 		return Scopes.scopeFor(ctx.getArgs(), getScope(ctx.eContainer(), ref));
 	}
 

@@ -1578,7 +1578,7 @@ ruleClaimContext returns [EObject current=null]
 	    }
 
 )
-)
+)?
 	otherlv_2=Colon
     {
     	newLeafNode(otherlv_2, grammarAccess.getClaimContextAccess().getColonKeyword_2());
@@ -1650,7 +1650,7 @@ ruleClaimJustification returns [EObject current=null]
 	    }
 
 )
-)
+)?
 	otherlv_2=Colon
     {
     	newLeafNode(otherlv_2, grammarAccess.getClaimJustificationAccess().getColonKeyword_2());
@@ -1722,7 +1722,7 @@ ruleClaimAssumption returns [EObject current=null]
 	    }
 
 )
-)
+)?
 	otherlv_2=Colon
     {
     	newLeafNode(otherlv_2, grammarAccess.getClaimAssumptionAccess().getColonKeyword_2());
@@ -1794,7 +1794,7 @@ ruleClaimStrategy returns [EObject current=null]
 	    }
 
 )
-)
+)?
 	otherlv_2=Colon
     {
     	newLeafNode(otherlv_2, grammarAccess.getClaimStrategyAccess().getColonKeyword_2());

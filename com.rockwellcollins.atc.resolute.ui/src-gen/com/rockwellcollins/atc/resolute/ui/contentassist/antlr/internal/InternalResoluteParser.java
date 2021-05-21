@@ -8814,6 +8814,72 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             case LeftParenthesis:
                 {
                 switch ( input.LA(2) ) {
+                case Provides_subprogram_group_access:
+                case Requires_subprogram_group_access:
+                case Provides_subprogram_access:
+                case Requires_subprogram_access:
+                case Subprogram_group_access:
+                case Provides_data_access:
+                case Requires_data_access:
+                case Provides_bus_access:
+                case Requires_bus_access:
+                case Flow_specification:
+                case Subprogram_access:
+                case Virtual_processor:
+                case Subprogram_group:
+                case End_to_end_flow:
+                case Event_data_port:
+                case Feature_group:
+                case Thread_group:
+                case Data_access:
+                case Virtual_bus:
+                case Bus_access:
+                case Connection:
+                case Event_port:
+                case Subprogram:
+                case Component:
+                case Data_port:
+                case Processor:
+                case Abstract:
+                case Feature:
+                case Process:
+                case Access:
+                case Device:
+                case Memory:
+                case String:
+                case KW_System:
+                case Thread:
+                case Range:
+                case Aadl:
+                case Bool:
+                case Data:
+                case Port:
+                case Real:
+                case Bus:
+                case Int:
+                    {
+                    alt14=2;
+                    }
+                    break;
+                case Property:
+                    {
+                    int LA14_5 = input.LA(3);
+
+                    if ( (LA14_5==LeftParenthesis) ) {
+                        alt14=3;
+                    }
+                    else if ( (LA14_5==RightParenthesis) ) {
+                        alt14=2;
+                    }
+                    else {
+                        if (state.backtracking>0) {state.failed=true; return ;}
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 14, 5, input);
+
+                        throw nvae;
+                    }
+                    }
+                    break;
                 case Error_state_reachable:
                 case Is_virtual_processor:
                 case Flow_specifications:
@@ -8905,72 +8971,6 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                 case RULE_ID:
                     {
                     alt14=3;
-                    }
-                    break;
-                case Property:
-                    {
-                    int LA14_4 = input.LA(3);
-
-                    if ( (LA14_4==LeftParenthesis) ) {
-                        alt14=3;
-                    }
-                    else if ( (LA14_4==RightParenthesis) ) {
-                        alt14=2;
-                    }
-                    else {
-                        if (state.backtracking>0) {state.failed=true; return ;}
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 14, 4, input);
-
-                        throw nvae;
-                    }
-                    }
-                    break;
-                case Provides_subprogram_group_access:
-                case Requires_subprogram_group_access:
-                case Provides_subprogram_access:
-                case Requires_subprogram_access:
-                case Subprogram_group_access:
-                case Provides_data_access:
-                case Requires_data_access:
-                case Provides_bus_access:
-                case Requires_bus_access:
-                case Flow_specification:
-                case Subprogram_access:
-                case Virtual_processor:
-                case Subprogram_group:
-                case End_to_end_flow:
-                case Event_data_port:
-                case Feature_group:
-                case Thread_group:
-                case Data_access:
-                case Virtual_bus:
-                case Bus_access:
-                case Connection:
-                case Event_port:
-                case Subprogram:
-                case Component:
-                case Data_port:
-                case Processor:
-                case Abstract:
-                case Feature:
-                case Process:
-                case Access:
-                case Device:
-                case Memory:
-                case String:
-                case KW_System:
-                case Thread:
-                case Range:
-                case Aadl:
-                case Bool:
-                case Data:
-                case Port:
-                case Real:
-                case Bus:
-                case Int:
-                    {
-                    alt14=2;
                     }
                     break;
                 default:
@@ -17567,7 +17567,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:5747:1: ( rule__ClaimContext__Group__0__Impl rule__ClaimContext__Group__1 )
             // InternalResoluteParser.g:5748:2: rule__ClaimContext__Group__0__Impl rule__ClaimContext__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_13);
+            pushFollow(FollowSets000.FOLLOW_28);
             rule__ClaimContext__Group__0__Impl();
 
             state._fsp--;
@@ -17646,7 +17646,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:5778:1: ( rule__ClaimContext__Group__1__Impl rule__ClaimContext__Group__2 )
             // InternalResoluteParser.g:5779:2: rule__ClaimContext__Group__1__Impl rule__ClaimContext__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_14);
+            pushFollow(FollowSets000.FOLLOW_28);
             rule__ClaimContext__Group__1__Impl();
 
             state._fsp--;
@@ -17675,29 +17675,40 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ClaimContext__Group__1__Impl"
-    // InternalResoluteParser.g:5786:1: rule__ClaimContext__Group__1__Impl : ( ( rule__ClaimContext__NameAssignment_1 ) ) ;
+    // InternalResoluteParser.g:5786:1: rule__ClaimContext__Group__1__Impl : ( ( rule__ClaimContext__NameAssignment_1 )? ) ;
     public final void rule__ClaimContext__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:5790:1: ( ( ( rule__ClaimContext__NameAssignment_1 ) ) )
-            // InternalResoluteParser.g:5791:1: ( ( rule__ClaimContext__NameAssignment_1 ) )
+            // InternalResoluteParser.g:5790:1: ( ( ( rule__ClaimContext__NameAssignment_1 )? ) )
+            // InternalResoluteParser.g:5791:1: ( ( rule__ClaimContext__NameAssignment_1 )? )
             {
-            // InternalResoluteParser.g:5791:1: ( ( rule__ClaimContext__NameAssignment_1 ) )
-            // InternalResoluteParser.g:5792:1: ( rule__ClaimContext__NameAssignment_1 )
+            // InternalResoluteParser.g:5791:1: ( ( rule__ClaimContext__NameAssignment_1 )? )
+            // InternalResoluteParser.g:5792:1: ( rule__ClaimContext__NameAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getClaimContextAccess().getNameAssignment_1()); 
             }
-            // InternalResoluteParser.g:5793:1: ( rule__ClaimContext__NameAssignment_1 )
-            // InternalResoluteParser.g:5793:2: rule__ClaimContext__NameAssignment_1
-            {
-            pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimContext__NameAssignment_1();
+            // InternalResoluteParser.g:5793:1: ( rule__ClaimContext__NameAssignment_1 )?
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            state._fsp--;
-            if (state.failed) return ;
+            if ( (LA36_0==RULE_ID) ) {
+                alt36=1;
+            }
+            switch (alt36) {
+                case 1 :
+                    // InternalResoluteParser.g:5793:2: rule__ClaimContext__NameAssignment_1
+                    {
+                    pushFollow(FollowSets000.FOLLOW_2);
+                    rule__ClaimContext__NameAssignment_1();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
 
             }
 
@@ -17814,7 +17825,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:5838:1: ( rule__ClaimContext__Group__3__Impl rule__ClaimContext__Group__4 )
             // InternalResoluteParser.g:5839:2: rule__ClaimContext__Group__3__Impl rule__ClaimContext__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_28);
+            pushFollow(FollowSets000.FOLLOW_29);
             rule__ClaimContext__Group__3__Impl();
 
             state._fsp--;
@@ -17977,7 +17988,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:5907:1: ( rule__ClaimJustification__Group__0__Impl rule__ClaimJustification__Group__1 )
             // InternalResoluteParser.g:5908:2: rule__ClaimJustification__Group__0__Impl rule__ClaimJustification__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_13);
+            pushFollow(FollowSets000.FOLLOW_28);
             rule__ClaimJustification__Group__0__Impl();
 
             state._fsp--;
@@ -18056,7 +18067,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:5938:1: ( rule__ClaimJustification__Group__1__Impl rule__ClaimJustification__Group__2 )
             // InternalResoluteParser.g:5939:2: rule__ClaimJustification__Group__1__Impl rule__ClaimJustification__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_14);
+            pushFollow(FollowSets000.FOLLOW_28);
             rule__ClaimJustification__Group__1__Impl();
 
             state._fsp--;
@@ -18085,29 +18096,40 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ClaimJustification__Group__1__Impl"
-    // InternalResoluteParser.g:5946:1: rule__ClaimJustification__Group__1__Impl : ( ( rule__ClaimJustification__NameAssignment_1 ) ) ;
+    // InternalResoluteParser.g:5946:1: rule__ClaimJustification__Group__1__Impl : ( ( rule__ClaimJustification__NameAssignment_1 )? ) ;
     public final void rule__ClaimJustification__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:5950:1: ( ( ( rule__ClaimJustification__NameAssignment_1 ) ) )
-            // InternalResoluteParser.g:5951:1: ( ( rule__ClaimJustification__NameAssignment_1 ) )
+            // InternalResoluteParser.g:5950:1: ( ( ( rule__ClaimJustification__NameAssignment_1 )? ) )
+            // InternalResoluteParser.g:5951:1: ( ( rule__ClaimJustification__NameAssignment_1 )? )
             {
-            // InternalResoluteParser.g:5951:1: ( ( rule__ClaimJustification__NameAssignment_1 ) )
-            // InternalResoluteParser.g:5952:1: ( rule__ClaimJustification__NameAssignment_1 )
+            // InternalResoluteParser.g:5951:1: ( ( rule__ClaimJustification__NameAssignment_1 )? )
+            // InternalResoluteParser.g:5952:1: ( rule__ClaimJustification__NameAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getClaimJustificationAccess().getNameAssignment_1()); 
             }
-            // InternalResoluteParser.g:5953:1: ( rule__ClaimJustification__NameAssignment_1 )
-            // InternalResoluteParser.g:5953:2: rule__ClaimJustification__NameAssignment_1
-            {
-            pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimJustification__NameAssignment_1();
+            // InternalResoluteParser.g:5953:1: ( rule__ClaimJustification__NameAssignment_1 )?
+            int alt37=2;
+            int LA37_0 = input.LA(1);
 
-            state._fsp--;
-            if (state.failed) return ;
+            if ( (LA37_0==RULE_ID) ) {
+                alt37=1;
+            }
+            switch (alt37) {
+                case 1 :
+                    // InternalResoluteParser.g:5953:2: rule__ClaimJustification__NameAssignment_1
+                    {
+                    pushFollow(FollowSets000.FOLLOW_2);
+                    rule__ClaimJustification__NameAssignment_1();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
 
             }
 
@@ -18145,7 +18167,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:5967:1: ( rule__ClaimJustification__Group__2__Impl rule__ClaimJustification__Group__3 )
             // InternalResoluteParser.g:5968:2: rule__ClaimJustification__Group__2__Impl rule__ClaimJustification__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_29);
+            pushFollow(FollowSets000.FOLLOW_30);
             rule__ClaimJustification__Group__2__Impl();
 
             state._fsp--;
@@ -18224,7 +18246,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:5998:1: ( rule__ClaimJustification__Group__3__Impl rule__ClaimJustification__Group__4 )
             // InternalResoluteParser.g:5999:2: rule__ClaimJustification__Group__3__Impl rule__ClaimJustification__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_28);
+            pushFollow(FollowSets000.FOLLOW_29);
             rule__ClaimJustification__Group__3__Impl();
 
             state._fsp--;
@@ -18387,7 +18409,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6067:1: ( rule__ClaimAssumption__Group__0__Impl rule__ClaimAssumption__Group__1 )
             // InternalResoluteParser.g:6068:2: rule__ClaimAssumption__Group__0__Impl rule__ClaimAssumption__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_13);
+            pushFollow(FollowSets000.FOLLOW_28);
             rule__ClaimAssumption__Group__0__Impl();
 
             state._fsp--;
@@ -18466,7 +18488,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6098:1: ( rule__ClaimAssumption__Group__1__Impl rule__ClaimAssumption__Group__2 )
             // InternalResoluteParser.g:6099:2: rule__ClaimAssumption__Group__1__Impl rule__ClaimAssumption__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_14);
+            pushFollow(FollowSets000.FOLLOW_28);
             rule__ClaimAssumption__Group__1__Impl();
 
             state._fsp--;
@@ -18495,29 +18517,40 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ClaimAssumption__Group__1__Impl"
-    // InternalResoluteParser.g:6106:1: rule__ClaimAssumption__Group__1__Impl : ( ( rule__ClaimAssumption__NameAssignment_1 ) ) ;
+    // InternalResoluteParser.g:6106:1: rule__ClaimAssumption__Group__1__Impl : ( ( rule__ClaimAssumption__NameAssignment_1 )? ) ;
     public final void rule__ClaimAssumption__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:6110:1: ( ( ( rule__ClaimAssumption__NameAssignment_1 ) ) )
-            // InternalResoluteParser.g:6111:1: ( ( rule__ClaimAssumption__NameAssignment_1 ) )
+            // InternalResoluteParser.g:6110:1: ( ( ( rule__ClaimAssumption__NameAssignment_1 )? ) )
+            // InternalResoluteParser.g:6111:1: ( ( rule__ClaimAssumption__NameAssignment_1 )? )
             {
-            // InternalResoluteParser.g:6111:1: ( ( rule__ClaimAssumption__NameAssignment_1 ) )
-            // InternalResoluteParser.g:6112:1: ( rule__ClaimAssumption__NameAssignment_1 )
+            // InternalResoluteParser.g:6111:1: ( ( rule__ClaimAssumption__NameAssignment_1 )? )
+            // InternalResoluteParser.g:6112:1: ( rule__ClaimAssumption__NameAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getClaimAssumptionAccess().getNameAssignment_1()); 
             }
-            // InternalResoluteParser.g:6113:1: ( rule__ClaimAssumption__NameAssignment_1 )
-            // InternalResoluteParser.g:6113:2: rule__ClaimAssumption__NameAssignment_1
-            {
-            pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimAssumption__NameAssignment_1();
+            // InternalResoluteParser.g:6113:1: ( rule__ClaimAssumption__NameAssignment_1 )?
+            int alt38=2;
+            int LA38_0 = input.LA(1);
 
-            state._fsp--;
-            if (state.failed) return ;
+            if ( (LA38_0==RULE_ID) ) {
+                alt38=1;
+            }
+            switch (alt38) {
+                case 1 :
+                    // InternalResoluteParser.g:6113:2: rule__ClaimAssumption__NameAssignment_1
+                    {
+                    pushFollow(FollowSets000.FOLLOW_2);
+                    rule__ClaimAssumption__NameAssignment_1();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
 
             }
 
@@ -18634,7 +18667,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6158:1: ( rule__ClaimAssumption__Group__3__Impl rule__ClaimAssumption__Group__4 )
             // InternalResoluteParser.g:6159:2: rule__ClaimAssumption__Group__3__Impl rule__ClaimAssumption__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_28);
+            pushFollow(FollowSets000.FOLLOW_29);
             rule__ClaimAssumption__Group__3__Impl();
 
             state._fsp--;
@@ -18797,7 +18830,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6227:1: ( rule__ClaimStrategy__Group__0__Impl rule__ClaimStrategy__Group__1 )
             // InternalResoluteParser.g:6228:2: rule__ClaimStrategy__Group__0__Impl rule__ClaimStrategy__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_13);
+            pushFollow(FollowSets000.FOLLOW_28);
             rule__ClaimStrategy__Group__0__Impl();
 
             state._fsp--;
@@ -18876,7 +18909,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6258:1: ( rule__ClaimStrategy__Group__1__Impl rule__ClaimStrategy__Group__2 )
             // InternalResoluteParser.g:6259:2: rule__ClaimStrategy__Group__1__Impl rule__ClaimStrategy__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_14);
+            pushFollow(FollowSets000.FOLLOW_28);
             rule__ClaimStrategy__Group__1__Impl();
 
             state._fsp--;
@@ -18905,29 +18938,40 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ClaimStrategy__Group__1__Impl"
-    // InternalResoluteParser.g:6266:1: rule__ClaimStrategy__Group__1__Impl : ( ( rule__ClaimStrategy__NameAssignment_1 ) ) ;
+    // InternalResoluteParser.g:6266:1: rule__ClaimStrategy__Group__1__Impl : ( ( rule__ClaimStrategy__NameAssignment_1 )? ) ;
     public final void rule__ClaimStrategy__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalResoluteParser.g:6270:1: ( ( ( rule__ClaimStrategy__NameAssignment_1 ) ) )
-            // InternalResoluteParser.g:6271:1: ( ( rule__ClaimStrategy__NameAssignment_1 ) )
+            // InternalResoluteParser.g:6270:1: ( ( ( rule__ClaimStrategy__NameAssignment_1 )? ) )
+            // InternalResoluteParser.g:6271:1: ( ( rule__ClaimStrategy__NameAssignment_1 )? )
             {
-            // InternalResoluteParser.g:6271:1: ( ( rule__ClaimStrategy__NameAssignment_1 ) )
-            // InternalResoluteParser.g:6272:1: ( rule__ClaimStrategy__NameAssignment_1 )
+            // InternalResoluteParser.g:6271:1: ( ( rule__ClaimStrategy__NameAssignment_1 )? )
+            // InternalResoluteParser.g:6272:1: ( rule__ClaimStrategy__NameAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getClaimStrategyAccess().getNameAssignment_1()); 
             }
-            // InternalResoluteParser.g:6273:1: ( rule__ClaimStrategy__NameAssignment_1 )
-            // InternalResoluteParser.g:6273:2: rule__ClaimStrategy__NameAssignment_1
-            {
-            pushFollow(FollowSets000.FOLLOW_2);
-            rule__ClaimStrategy__NameAssignment_1();
+            // InternalResoluteParser.g:6273:1: ( rule__ClaimStrategy__NameAssignment_1 )?
+            int alt39=2;
+            int LA39_0 = input.LA(1);
 
-            state._fsp--;
-            if (state.failed) return ;
+            if ( (LA39_0==RULE_ID) ) {
+                alt39=1;
+            }
+            switch (alt39) {
+                case 1 :
+                    // InternalResoluteParser.g:6273:2: rule__ClaimStrategy__NameAssignment_1
+                    {
+                    pushFollow(FollowSets000.FOLLOW_2);
+                    rule__ClaimStrategy__NameAssignment_1();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
 
             }
 
@@ -18965,7 +19009,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6287:1: ( rule__ClaimStrategy__Group__2__Impl rule__ClaimStrategy__Group__3 )
             // InternalResoluteParser.g:6288:2: rule__ClaimStrategy__Group__2__Impl rule__ClaimStrategy__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_29);
+            pushFollow(FollowSets000.FOLLOW_30);
             rule__ClaimStrategy__Group__2__Impl();
 
             state._fsp--;
@@ -19044,7 +19088,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6318:1: ( rule__ClaimStrategy__Group__3__Impl rule__ClaimStrategy__Group__4 )
             // InternalResoluteParser.g:6319:2: rule__ClaimStrategy__Group__3__Impl rule__ClaimStrategy__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_28);
+            pushFollow(FollowSets000.FOLLOW_29);
             rule__ClaimStrategy__Group__3__Impl();
 
             state._fsp--;
@@ -19207,7 +19251,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6387:1: ( rule__ClaimText__Group_0__0__Impl rule__ClaimText__Group_0__1 )
             // InternalResoluteParser.g:6388:2: rule__ClaimText__Group_0__0__Impl rule__ClaimText__Group_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_29);
+            pushFollow(FollowSets000.FOLLOW_30);
             rule__ClaimText__Group_0__0__Impl();
 
             state._fsp--;
@@ -19449,7 +19493,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6481:1: ( rule__ClaimText__Group_1__1__Impl rule__ClaimText__Group_1__2 )
             // InternalResoluteParser.g:6482:2: rule__ClaimText__Group_1__1__Impl rule__ClaimText__Group_1__2
             {
-            pushFollow(FollowSets000.FOLLOW_30);
+            pushFollow(FollowSets000.FOLLOW_31);
             rule__ClaimText__Group_1__1__Impl();
 
             state._fsp--;
@@ -19578,13 +19622,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getClaimTextAccess().getGroup_1_2()); 
             }
             // InternalResoluteParser.g:6524:1: ( rule__ClaimText__Group_1_2__0 )?
-            int alt36=2;
-            int LA36_0 = input.LA(1);
+            int alt40=2;
+            int LA40_0 = input.LA(1);
 
-            if ( (LA36_0==PercentSign) ) {
-                alt36=1;
+            if ( (LA40_0==PercentSign) ) {
+                alt40=1;
             }
-            switch (alt36) {
+            switch (alt40) {
                 case 1 :
                     // InternalResoluteParser.g:6524:2: rule__ClaimText__Group_1_2__0
                     {
@@ -19796,7 +19840,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6607:1: ( rule__ImpliesExpr__Group__0__Impl rule__ImpliesExpr__Group__1 )
             // InternalResoluteParser.g:6608:2: rule__ImpliesExpr__Group__0__Impl rule__ImpliesExpr__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_31);
+            pushFollow(FollowSets000.FOLLOW_32);
             rule__ImpliesExpr__Group__0__Impl();
 
             state._fsp--;
@@ -19919,17 +19963,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getImpliesExprAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:6650:1: ( rule__ImpliesExpr__Group_1__0 )?
-            int alt37=2;
-            int LA37_0 = input.LA(1);
+            int alt41=2;
+            int LA41_0 = input.LA(1);
 
-            if ( (LA37_0==EqualsSignGreaterThanSign) ) {
-                int LA37_1 = input.LA(2);
+            if ( (LA41_0==EqualsSignGreaterThanSign) ) {
+                int LA41_1 = input.LA(2);
 
-                if ( (synpred187_InternalResoluteParser()) ) {
-                    alt37=1;
+                if ( (synpred191_InternalResoluteParser()) ) {
+                    alt41=1;
                 }
             }
-            switch (alt37) {
+            switch (alt41) {
                 case 1 :
                     // InternalResoluteParser.g:6650:2: rule__ImpliesExpr__Group_1__0
                     {
@@ -20235,7 +20279,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6759:1: ( rule__ImpliesExpr__Group_1_0_0__0__Impl rule__ImpliesExpr__Group_1_0_0__1 )
             // InternalResoluteParser.g:6760:2: rule__ImpliesExpr__Group_1_0_0__0__Impl rule__ImpliesExpr__Group_1_0_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_31);
+            pushFollow(FollowSets000.FOLLOW_32);
             rule__ImpliesExpr__Group_1_0_0__0__Impl();
 
             state._fsp--;
@@ -20398,7 +20442,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6822:1: ( rule__OrExpr__Group__0__Impl rule__OrExpr__Group__1 )
             // InternalResoluteParser.g:6823:2: rule__OrExpr__Group__0__Impl rule__OrExpr__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_32);
+            pushFollow(FollowSets000.FOLLOW_33);
             rule__OrExpr__Group__0__Impl();
 
             state._fsp--;
@@ -20521,36 +20565,36 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getOrExprAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:6865:1: ( rule__OrExpr__Group_1__0 )*
-            loop38:
+            loop42:
             do {
-                int alt38=2;
-                int LA38_0 = input.LA(1);
+                int alt42=2;
+                int LA42_0 = input.LA(1);
 
-                if ( (LA38_0==Or) ) {
-                    int LA38_2 = input.LA(2);
+                if ( (LA42_0==Or) ) {
+                    int LA42_2 = input.LA(2);
 
-                    if ( (synpred188_InternalResoluteParser()) ) {
-                        alt38=1;
+                    if ( (synpred192_InternalResoluteParser()) ) {
+                        alt42=1;
                     }
 
 
                 }
-                else if ( (LA38_0==Orelse) ) {
-                    int LA38_3 = input.LA(2);
+                else if ( (LA42_0==Orelse) ) {
+                    int LA42_3 = input.LA(2);
 
-                    if ( (synpred188_InternalResoluteParser()) ) {
-                        alt38=1;
+                    if ( (synpred192_InternalResoluteParser()) ) {
+                        alt42=1;
                     }
 
 
                 }
 
 
-                switch (alt38) {
+                switch (alt42) {
             	case 1 :
             	    // InternalResoluteParser.g:6865:2: rule__OrExpr__Group_1__0
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_33);
+            	    pushFollow(FollowSets000.FOLLOW_34);
             	    rule__OrExpr__Group_1__0();
 
             	    state._fsp--;
@@ -20560,7 +20604,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop38;
+            	    break loop42;
                 }
             } while (true);
 
@@ -20855,7 +20899,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:6974:1: ( rule__OrExpr__Group_1_0_0__0__Impl rule__OrExpr__Group_1_0_0__1 )
             // InternalResoluteParser.g:6975:2: rule__OrExpr__Group_1_0_0__0__Impl rule__OrExpr__Group_1_0_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_32);
+            pushFollow(FollowSets000.FOLLOW_33);
             rule__OrExpr__Group_1_0_0__0__Impl();
 
             state._fsp--;
@@ -21018,7 +21062,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:7037:1: ( rule__AndExpr__Group__0__Impl rule__AndExpr__Group__1 )
             // InternalResoluteParser.g:7038:2: rule__AndExpr__Group__0__Impl rule__AndExpr__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_34);
+            pushFollow(FollowSets000.FOLLOW_35);
             rule__AndExpr__Group__0__Impl();
 
             state._fsp--;
@@ -21141,36 +21185,36 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAndExprAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:7080:1: ( rule__AndExpr__Group_1__0 )*
-            loop39:
+            loop43:
             do {
-                int alt39=2;
-                int LA39_0 = input.LA(1);
+                int alt43=2;
+                int LA43_0 = input.LA(1);
 
-                if ( (LA39_0==And) ) {
-                    int LA39_2 = input.LA(2);
+                if ( (LA43_0==And) ) {
+                    int LA43_2 = input.LA(2);
 
-                    if ( (synpred189_InternalResoluteParser()) ) {
-                        alt39=1;
+                    if ( (synpred193_InternalResoluteParser()) ) {
+                        alt43=1;
                     }
 
 
                 }
-                else if ( (LA39_0==Andthen) ) {
-                    int LA39_3 = input.LA(2);
+                else if ( (LA43_0==Andthen) ) {
+                    int LA43_3 = input.LA(2);
 
-                    if ( (synpred189_InternalResoluteParser()) ) {
-                        alt39=1;
+                    if ( (synpred193_InternalResoluteParser()) ) {
+                        alt43=1;
                     }
 
 
                 }
 
 
-                switch (alt39) {
+                switch (alt43) {
             	case 1 :
             	    // InternalResoluteParser.g:7080:2: rule__AndExpr__Group_1__0
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_35);
+            	    pushFollow(FollowSets000.FOLLOW_36);
             	    rule__AndExpr__Group_1__0();
 
             	    state._fsp--;
@@ -21180,7 +21224,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop39;
+            	    break loop43;
                 }
             } while (true);
 
@@ -21475,7 +21519,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:7189:1: ( rule__AndExpr__Group_1_0_0__0__Impl rule__AndExpr__Group_1_0_0__1 )
             // InternalResoluteParser.g:7190:2: rule__AndExpr__Group_1_0_0__0__Impl rule__AndExpr__Group_1_0_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_34);
+            pushFollow(FollowSets000.FOLLOW_35);
             rule__AndExpr__Group_1_0_0__0__Impl();
 
             state._fsp--;
@@ -21638,7 +21682,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:7252:1: ( rule__InstanceOfExpr__Group__0__Impl rule__InstanceOfExpr__Group__1 )
             // InternalResoluteParser.g:7253:2: rule__InstanceOfExpr__Group__0__Impl rule__InstanceOfExpr__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_36);
+            pushFollow(FollowSets000.FOLLOW_37);
             rule__InstanceOfExpr__Group__0__Impl();
 
             state._fsp--;
@@ -21761,17 +21805,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getInstanceOfExprAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:7295:1: ( rule__InstanceOfExpr__Group_1__0 )?
-            int alt40=2;
-            int LA40_0 = input.LA(1);
+            int alt44=2;
+            int LA44_0 = input.LA(1);
 
-            if ( (LA40_0==Instanceof) ) {
-                int LA40_1 = input.LA(2);
+            if ( (LA44_0==Instanceof) ) {
+                int LA44_1 = input.LA(2);
 
-                if ( (synpred190_InternalResoluteParser()) ) {
-                    alt40=1;
+                if ( (synpred194_InternalResoluteParser()) ) {
+                    alt44=1;
                 }
             }
-            switch (alt40) {
+            switch (alt44) {
                 case 1 :
                     // InternalResoluteParser.g:7295:2: rule__InstanceOfExpr__Group_1__0
                     {
@@ -21820,7 +21864,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:7313:1: ( rule__InstanceOfExpr__Group_1__0__Impl rule__InstanceOfExpr__Group_1__1 )
             // InternalResoluteParser.g:7314:2: rule__InstanceOfExpr__Group_1__0__Impl rule__InstanceOfExpr__Group_1__1
             {
-            pushFollow(FollowSets000.FOLLOW_37);
+            pushFollow(FollowSets000.FOLLOW_38);
             rule__InstanceOfExpr__Group_1__0__Impl();
 
             state._fsp--;
@@ -22077,7 +22121,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:7404:1: ( rule__InstanceOfExpr__Group_1_0_0__0__Impl rule__InstanceOfExpr__Group_1_0_0__1 )
             // InternalResoluteParser.g:7405:2: rule__InstanceOfExpr__Group_1_0_0__0__Impl rule__InstanceOfExpr__Group_1_0_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_36);
+            pushFollow(FollowSets000.FOLLOW_37);
             rule__InstanceOfExpr__Group_1_0_0__0__Impl();
 
             state._fsp--;
@@ -22230,7 +22274,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:7469:1: ( rule__RelationalExpr__Group__0__Impl rule__RelationalExpr__Group__1 )
             // InternalResoluteParser.g:7470:2: rule__RelationalExpr__Group__0__Impl rule__RelationalExpr__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_38);
+            pushFollow(FollowSets000.FOLLOW_39);
             rule__RelationalExpr__Group__0__Impl();
 
             state._fsp--;
@@ -22353,65 +22397,65 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getRelationalExprAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:7512:1: ( rule__RelationalExpr__Group_1__0 )?
-            int alt41=2;
+            int alt45=2;
             switch ( input.LA(1) ) {
                 case LessThanSign:
                     {
-                    int LA41_1 = input.LA(2);
+                    int LA45_1 = input.LA(2);
 
-                    if ( (synpred191_InternalResoluteParser()) ) {
-                        alt41=1;
+                    if ( (synpred195_InternalResoluteParser()) ) {
+                        alt45=1;
                     }
                     }
                     break;
                 case LessThanSignEqualsSign:
                     {
-                    int LA41_2 = input.LA(2);
+                    int LA45_2 = input.LA(2);
 
-                    if ( (synpred191_InternalResoluteParser()) ) {
-                        alt41=1;
+                    if ( (synpred195_InternalResoluteParser()) ) {
+                        alt45=1;
                     }
                     }
                     break;
                 case GreaterThanSign:
                     {
-                    int LA41_3 = input.LA(2);
+                    int LA45_3 = input.LA(2);
 
-                    if ( (synpred191_InternalResoluteParser()) ) {
-                        alt41=1;
+                    if ( (synpred195_InternalResoluteParser()) ) {
+                        alt45=1;
                     }
                     }
                     break;
                 case GreaterThanSignEqualsSign:
                     {
-                    int LA41_4 = input.LA(2);
+                    int LA45_4 = input.LA(2);
 
-                    if ( (synpred191_InternalResoluteParser()) ) {
-                        alt41=1;
+                    if ( (synpred195_InternalResoluteParser()) ) {
+                        alt45=1;
                     }
                     }
                     break;
                 case EqualsSign:
                     {
-                    int LA41_5 = input.LA(2);
+                    int LA45_5 = input.LA(2);
 
-                    if ( (synpred191_InternalResoluteParser()) ) {
-                        alt41=1;
+                    if ( (synpred195_InternalResoluteParser()) ) {
+                        alt45=1;
                     }
                     }
                     break;
                 case LessThanSignGreaterThanSign:
                     {
-                    int LA41_6 = input.LA(2);
+                    int LA45_6 = input.LA(2);
 
-                    if ( (synpred191_InternalResoluteParser()) ) {
-                        alt41=1;
+                    if ( (synpred195_InternalResoluteParser()) ) {
+                        alt45=1;
                     }
                     }
                     break;
             }
 
-            switch (alt41) {
+            switch (alt45) {
                 case 1 :
                     // InternalResoluteParser.g:7512:2: rule__RelationalExpr__Group_1__0
                     {
@@ -22717,7 +22761,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:7621:1: ( rule__RelationalExpr__Group_1_0_0__0__Impl rule__RelationalExpr__Group_1_0_0__1 )
             // InternalResoluteParser.g:7622:2: rule__RelationalExpr__Group_1_0_0__0__Impl rule__RelationalExpr__Group_1_0_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_38);
+            pushFollow(FollowSets000.FOLLOW_39);
             rule__RelationalExpr__Group_1_0_0__0__Impl();
 
             state._fsp--;
@@ -22880,7 +22924,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:7684:1: ( rule__PlusExpr__Group__0__Impl rule__PlusExpr__Group__1 )
             // InternalResoluteParser.g:7685:2: rule__PlusExpr__Group__0__Impl rule__PlusExpr__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_39);
+            pushFollow(FollowSets000.FOLLOW_40);
             rule__PlusExpr__Group__0__Impl();
 
             state._fsp--;
@@ -23003,36 +23047,36 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getPlusExprAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:7727:1: ( rule__PlusExpr__Group_1__0 )*
-            loop42:
+            loop46:
             do {
-                int alt42=2;
-                int LA42_0 = input.LA(1);
+                int alt46=2;
+                int LA46_0 = input.LA(1);
 
-                if ( (LA42_0==PlusSign) ) {
-                    int LA42_2 = input.LA(2);
+                if ( (LA46_0==PlusSign) ) {
+                    int LA46_2 = input.LA(2);
 
-                    if ( (synpred192_InternalResoluteParser()) ) {
-                        alt42=1;
+                    if ( (synpred196_InternalResoluteParser()) ) {
+                        alt46=1;
                     }
 
 
                 }
-                else if ( (LA42_0==HyphenMinus) ) {
-                    int LA42_3 = input.LA(2);
+                else if ( (LA46_0==HyphenMinus) ) {
+                    int LA46_3 = input.LA(2);
 
-                    if ( (synpred192_InternalResoluteParser()) ) {
-                        alt42=1;
+                    if ( (synpred196_InternalResoluteParser()) ) {
+                        alt46=1;
                     }
 
 
                 }
 
 
-                switch (alt42) {
+                switch (alt46) {
             	case 1 :
             	    // InternalResoluteParser.g:7727:2: rule__PlusExpr__Group_1__0
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_40);
+            	    pushFollow(FollowSets000.FOLLOW_41);
             	    rule__PlusExpr__Group_1__0();
 
             	    state._fsp--;
@@ -23042,7 +23086,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop42;
+            	    break loop46;
                 }
             } while (true);
 
@@ -23337,7 +23381,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:7836:1: ( rule__PlusExpr__Group_1_0_0__0__Impl rule__PlusExpr__Group_1_0_0__1 )
             // InternalResoluteParser.g:7837:2: rule__PlusExpr__Group_1_0_0__0__Impl rule__PlusExpr__Group_1_0_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_39);
+            pushFollow(FollowSets000.FOLLOW_40);
             rule__PlusExpr__Group_1_0_0__0__Impl();
 
             state._fsp--;
@@ -23500,7 +23544,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:7899:1: ( rule__TimesExpr__Group__0__Impl rule__TimesExpr__Group__1 )
             // InternalResoluteParser.g:7900:2: rule__TimesExpr__Group__0__Impl rule__TimesExpr__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_41);
+            pushFollow(FollowSets000.FOLLOW_42);
             rule__TimesExpr__Group__0__Impl();
 
             state._fsp--;
@@ -23623,16 +23667,16 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getTimesExprAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:7942:1: ( rule__TimesExpr__Group_1__0 )*
-            loop43:
+            loop47:
             do {
-                int alt43=2;
+                int alt47=2;
                 switch ( input.LA(1) ) {
                 case Asterisk:
                     {
-                    int LA43_2 = input.LA(2);
+                    int LA47_2 = input.LA(2);
 
-                    if ( (synpred193_InternalResoluteParser()) ) {
-                        alt43=1;
+                    if ( (synpred197_InternalResoluteParser()) ) {
+                        alt47=1;
                     }
 
 
@@ -23640,10 +23684,10 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                     break;
                 case Solidus:
                     {
-                    int LA43_3 = input.LA(2);
+                    int LA47_3 = input.LA(2);
 
-                    if ( (synpred193_InternalResoluteParser()) ) {
-                        alt43=1;
+                    if ( (synpred197_InternalResoluteParser()) ) {
+                        alt47=1;
                     }
 
 
@@ -23651,10 +23695,10 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                     break;
                 case PercentSign:
                     {
-                    int LA43_4 = input.LA(2);
+                    int LA47_4 = input.LA(2);
 
-                    if ( (synpred193_InternalResoluteParser()) ) {
-                        alt43=1;
+                    if ( (synpred197_InternalResoluteParser()) ) {
+                        alt47=1;
                     }
 
 
@@ -23663,11 +23707,11 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
                 }
 
-                switch (alt43) {
+                switch (alt47) {
             	case 1 :
             	    // InternalResoluteParser.g:7942:2: rule__TimesExpr__Group_1__0
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_42);
+            	    pushFollow(FollowSets000.FOLLOW_43);
             	    rule__TimesExpr__Group_1__0();
 
             	    state._fsp--;
@@ -23677,7 +23721,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop43;
+            	    break loop47;
                 }
             } while (true);
 
@@ -23972,7 +24016,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:8051:1: ( rule__TimesExpr__Group_1_0_0__0__Impl rule__TimesExpr__Group_1_0_0__1 )
             // InternalResoluteParser.g:8052:2: rule__TimesExpr__Group_1_0_0__0__Impl rule__TimesExpr__Group_1_0_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_41);
+            pushFollow(FollowSets000.FOLLOW_42);
             rule__TimesExpr__Group_1_0_0__0__Impl();
 
             state._fsp--;
@@ -24135,7 +24179,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:8114:1: ( rule__ExpExpr__Group__0__Impl rule__ExpExpr__Group__1 )
             // InternalResoluteParser.g:8115:2: rule__ExpExpr__Group__0__Impl rule__ExpExpr__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_43);
+            pushFollow(FollowSets000.FOLLOW_44);
             rule__ExpExpr__Group__0__Impl();
 
             state._fsp--;
@@ -24258,27 +24302,27 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getExpExprAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:8157:1: ( rule__ExpExpr__Group_1__0 )*
-            loop44:
+            loop48:
             do {
-                int alt44=2;
-                int LA44_0 = input.LA(1);
+                int alt48=2;
+                int LA48_0 = input.LA(1);
 
-                if ( (LA44_0==CircumflexAccent) ) {
-                    int LA44_2 = input.LA(2);
+                if ( (LA48_0==CircumflexAccent) ) {
+                    int LA48_2 = input.LA(2);
 
-                    if ( (synpred194_InternalResoluteParser()) ) {
-                        alt44=1;
+                    if ( (synpred198_InternalResoluteParser()) ) {
+                        alt48=1;
                     }
 
 
                 }
 
 
-                switch (alt44) {
+                switch (alt48) {
             	case 1 :
             	    // InternalResoluteParser.g:8157:2: rule__ExpExpr__Group_1__0
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_44);
+            	    pushFollow(FollowSets000.FOLLOW_45);
             	    rule__ExpExpr__Group_1__0();
 
             	    state._fsp--;
@@ -24288,7 +24332,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop44;
+            	    break loop48;
                 }
             } while (true);
 
@@ -24583,7 +24627,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:8266:1: ( rule__ExpExpr__Group_1_0_0__0__Impl rule__ExpExpr__Group_1_0_0__1 )
             // InternalResoluteParser.g:8267:2: rule__ExpExpr__Group_1_0_0__0__Impl rule__ExpExpr__Group_1_0_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_43);
+            pushFollow(FollowSets000.FOLLOW_44);
             rule__ExpExpr__Group_1_0_0__0__Impl();
 
             state._fsp--;
@@ -24746,7 +24790,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:8329:1: ( rule__PrefixExpr__Group_0__0__Impl rule__PrefixExpr__Group_0__1 )
             // InternalResoluteParser.g:8330:2: rule__PrefixExpr__Group_0__0__Impl rule__PrefixExpr__Group_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_45);
+            pushFollow(FollowSets000.FOLLOW_46);
             rule__PrefixExpr__Group_0__0__Impl();
 
             state._fsp--;
@@ -25077,7 +25121,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:8454:1: ( rule__PrefixExpr__Group_1__1__Impl rule__PrefixExpr__Group_1__2 )
             // InternalResoluteParser.g:8455:2: rule__PrefixExpr__Group_1__1__Impl rule__PrefixExpr__Group_1__2
             {
-            pushFollow(FollowSets000.FOLLOW_37);
+            pushFollow(FollowSets000.FOLLOW_38);
             rule__PrefixExpr__Group_1__1__Impl();
 
             state._fsp--;
@@ -25156,7 +25200,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:8485:1: ( rule__PrefixExpr__Group_1__2__Impl rule__PrefixExpr__Group_1__3 )
             // InternalResoluteParser.g:8486:2: rule__PrefixExpr__Group_1__2__Impl rule__PrefixExpr__Group_1__3
             {
-            pushFollow(FollowSets000.FOLLOW_46);
+            pushFollow(FollowSets000.FOLLOW_47);
             rule__PrefixExpr__Group_1__2__Impl();
 
             state._fsp--;
@@ -25571,7 +25615,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:8646:1: ( rule__AtomicExpr__Group_1__0__Impl rule__AtomicExpr__Group_1__1 )
             // InternalResoluteParser.g:8647:2: rule__AtomicExpr__Group_1__0__Impl rule__AtomicExpr__Group_1__1
             {
-            pushFollow(FollowSets000.FOLLOW_47);
+            pushFollow(FollowSets000.FOLLOW_48);
             rule__AtomicExpr__Group_1__0__Impl();
 
             state._fsp--;
@@ -25769,13 +25813,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_1_2()); 
             }
             // InternalResoluteParser.g:8722:1: ( rule__AtomicExpr__Group_1_2__0 )?
-            int alt45=2;
-            int LA45_0 = input.LA(1);
+            int alt49=2;
+            int LA49_0 = input.LA(1);
 
-            if ( (LA45_0==FullStop) ) {
-                alt45=1;
+            if ( (LA49_0==FullStop) ) {
+                alt49=1;
             }
-            switch (alt45) {
+            switch (alt49) {
                 case 1 :
                     // InternalResoluteParser.g:8722:2: rule__AtomicExpr__Group_1_2__0
                     {
@@ -25987,7 +26031,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:8805:1: ( rule__AtomicExpr__Group_2__0__Impl rule__AtomicExpr__Group_2__1 )
             // InternalResoluteParser.g:8806:2: rule__AtomicExpr__Group_2__0__Impl rule__AtomicExpr__Group_2__1
             {
-            pushFollow(FollowSets000.FOLLOW_48);
+            pushFollow(FollowSets000.FOLLOW_49);
             rule__AtomicExpr__Group_2__0__Impl();
 
             state._fsp--;
@@ -26066,7 +26110,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:8836:1: ( rule__AtomicExpr__Group_2__1__Impl rule__AtomicExpr__Group_2__2 )
             // InternalResoluteParser.g:8837:2: rule__AtomicExpr__Group_2__1__Impl rule__AtomicExpr__Group_2__2
             {
-            pushFollow(FollowSets000.FOLLOW_49);
+            pushFollow(FollowSets000.FOLLOW_50);
             rule__AtomicExpr__Group_2__1__Impl();
 
             state._fsp--;
@@ -26379,17 +26423,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getFailmsgAssignment_2_2_1_1()); 
             }
             // InternalResoluteParser.g:8953:1: ( rule__AtomicExpr__FailmsgAssignment_2_2_1_1 )*
-            loop46:
+            loop50:
             do {
-                int alt46=2;
-                int LA46_0 = input.LA(1);
+                int alt50=2;
+                int LA50_0 = input.LA(1);
 
-                if ( ((LA46_0>=RULE_STRING && LA46_0<=RULE_ID)) ) {
-                    alt46=1;
+                if ( ((LA50_0>=RULE_STRING && LA50_0<=RULE_ID)) ) {
+                    alt50=1;
                 }
 
 
-                switch (alt46) {
+                switch (alt50) {
             	case 1 :
             	    // InternalResoluteParser.g:8953:2: rule__AtomicExpr__FailmsgAssignment_2_2_1_1
             	    {
@@ -26403,7 +26447,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop46;
+            	    break loop50;
                 }
             } while (true);
 
@@ -26518,7 +26562,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9004:1: ( rule__AtomicExpr__Group_3__0__Impl rule__AtomicExpr__Group_3__1 )
             // InternalResoluteParser.g:9005:2: rule__AtomicExpr__Group_3__0__Impl rule__AtomicExpr__Group_3__1
             {
-            pushFollow(FollowSets000.FOLLOW_50);
+            pushFollow(FollowSets000.FOLLOW_51);
             rule__AtomicExpr__Group_3__0__Impl();
 
             state._fsp--;
@@ -26681,7 +26725,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9067:1: ( rule__AtomicExpr__Group_4__0__Impl rule__AtomicExpr__Group_4__1 )
             // InternalResoluteParser.g:9068:2: rule__AtomicExpr__Group_4__0__Impl rule__AtomicExpr__Group_4__1
             {
-            pushFollow(FollowSets000.FOLLOW_51);
+            pushFollow(FollowSets000.FOLLOW_52);
             rule__AtomicExpr__Group_4__0__Impl();
 
             state._fsp--;
@@ -26844,7 +26888,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9130:1: ( rule__AtomicExpr__Group_5__0__Impl rule__AtomicExpr__Group_5__1 )
             // InternalResoluteParser.g:9131:2: rule__AtomicExpr__Group_5__0__Impl rule__AtomicExpr__Group_5__1
             {
-            pushFollow(FollowSets000.FOLLOW_52);
+            pushFollow(FollowSets000.FOLLOW_53);
             rule__AtomicExpr__Group_5__0__Impl();
 
             state._fsp--;
@@ -27007,7 +27051,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9193:1: ( rule__AtomicExpr__Group_6__0__Impl rule__AtomicExpr__Group_6__1 )
             // InternalResoluteParser.g:9194:2: rule__AtomicExpr__Group_6__0__Impl rule__AtomicExpr__Group_6__1
             {
-            pushFollow(FollowSets000.FOLLOW_29);
+            pushFollow(FollowSets000.FOLLOW_30);
             rule__AtomicExpr__Group_6__0__Impl();
 
             state._fsp--;
@@ -27170,7 +27214,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9256:1: ( rule__AtomicExpr__Group_7__0__Impl rule__AtomicExpr__Group_7__1 )
             // InternalResoluteParser.g:9257:2: rule__AtomicExpr__Group_7__0__Impl rule__AtomicExpr__Group_7__1
             {
-            pushFollow(FollowSets000.FOLLOW_53);
+            pushFollow(FollowSets000.FOLLOW_54);
             rule__AtomicExpr__Group_7__0__Impl();
 
             state._fsp--;
@@ -27328,7 +27372,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9318:1: ( rule__AtomicExpr__Group_7__2__Impl rule__AtomicExpr__Group_7__3 )
             // InternalResoluteParser.g:9319:2: rule__AtomicExpr__Group_7__2__Impl rule__AtomicExpr__Group_7__3
             {
-            pushFollow(FollowSets000.FOLLOW_54);
+            pushFollow(FollowSets000.FOLLOW_55);
             rule__AtomicExpr__Group_7__2__Impl();
 
             state._fsp--;
@@ -27496,7 +27540,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9378:1: ( rule__AtomicExpr__Group_7__4__Impl rule__AtomicExpr__Group_7__5 )
             // InternalResoluteParser.g:9379:2: rule__AtomicExpr__Group_7__4__Impl rule__AtomicExpr__Group_7__5
             {
-            pushFollow(FollowSets000.FOLLOW_55);
+            pushFollow(FollowSets000.FOLLOW_56);
             rule__AtomicExpr__Group_7__4__Impl();
 
             state._fsp--;
@@ -27748,7 +27792,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9480:1: ( rule__AtomicExpr__Group_8__0__Impl rule__AtomicExpr__Group_8__1 )
             // InternalResoluteParser.g:9481:2: rule__AtomicExpr__Group_8__0__Impl rule__AtomicExpr__Group_8__1
             {
-            pushFollow(FollowSets000.FOLLOW_56);
+            pushFollow(FollowSets000.FOLLOW_57);
             rule__AtomicExpr__Group_8__0__Impl();
 
             state._fsp--;
@@ -27966,7 +28010,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9556:1: ( rule__AtomicExpr__Group_8_2__0 )
             // InternalResoluteParser.g:9556:2: rule__AtomicExpr__Group_8_2__0
             {
-            pushFollow(FollowSets000.FOLLOW_57);
+            pushFollow(FollowSets000.FOLLOW_58);
             rule__AtomicExpr__Group_8_2__0();
 
             state._fsp--;
@@ -27987,21 +28031,21 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_8_2()); 
             }
             // InternalResoluteParser.g:9561:1: ( rule__AtomicExpr__Group_8_2__0 )*
-            loop47:
+            loop51:
             do {
-                int alt47=2;
-                int LA47_0 = input.LA(1);
+                int alt51=2;
+                int LA51_0 = input.LA(1);
 
-                if ( (LA47_0==LeftParenthesis) ) {
-                    alt47=1;
+                if ( (LA51_0==LeftParenthesis) ) {
+                    alt51=1;
                 }
 
 
-                switch (alt47) {
+                switch (alt51) {
             	case 1 :
             	    // InternalResoluteParser.g:9561:2: rule__AtomicExpr__Group_8_2__0
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_57);
+            	    pushFollow(FollowSets000.FOLLOW_58);
             	    rule__AtomicExpr__Group_8_2__0();
 
             	    state._fsp--;
@@ -28011,7 +28055,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop47;
+            	    break loop51;
                 }
             } while (true);
 
@@ -28294,7 +28338,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9676:1: ( rule__AtomicExpr__Group_8_2__1__Impl rule__AtomicExpr__Group_8_2__2 )
             // InternalResoluteParser.g:9677:2: rule__AtomicExpr__Group_8_2__1__Impl rule__AtomicExpr__Group_8_2__2
             {
-            pushFollow(FollowSets000.FOLLOW_46);
+            pushFollow(FollowSets000.FOLLOW_47);
             rule__AtomicExpr__Group_8_2__1__Impl();
 
             state._fsp--;
@@ -28877,7 +28921,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9891:1: ( rule__AtomicExpr__Group_9_0__4__Impl rule__AtomicExpr__Group_9_0__5 )
             // InternalResoluteParser.g:9892:2: rule__AtomicExpr__Group_9_0__4__Impl rule__AtomicExpr__Group_9_0__5
             {
-            pushFollow(FollowSets000.FOLLOW_58);
+            pushFollow(FollowSets000.FOLLOW_59);
             rule__AtomicExpr__Group_9_0__4__Impl();
 
             state._fsp--;
@@ -28956,7 +29000,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:9922:1: ( rule__AtomicExpr__Group_9_0__5__Impl rule__AtomicExpr__Group_9_0__6 )
             // InternalResoluteParser.g:9923:2: rule__AtomicExpr__Group_9_0__5__Impl rule__AtomicExpr__Group_9_0__6
             {
-            pushFollow(FollowSets000.FOLLOW_58);
+            pushFollow(FollowSets000.FOLLOW_59);
             rule__AtomicExpr__Group_9_0__5__Impl();
 
             state._fsp--;
@@ -29001,13 +29045,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_9_0_5()); 
             }
             // InternalResoluteParser.g:9937:1: ( rule__AtomicExpr__Group_9_0_5__0 )?
-            int alt48=2;
-            int LA48_0 = input.LA(1);
+            int alt52=2;
+            int LA52_0 = input.LA(1);
 
-            if ( ((LA48_0>=Error_state_reachable && LA48_0<=Is_virtual_processor)||(LA48_0>=Flow_specifications && LA48_0<=Is_abstract_feature)||LA48_0==Enumerated_values||(LA48_0>=End_to_end_flows && LA48_0<=Is_bidirectional)||(LA48_0>=Is_thread_group && LA48_0<=Contain_error)||(LA48_0>=Flow_elements && LA48_0<=Is_subprogram)||(LA48_0>=Receive_error && LA48_0<=Is_processor)||LA48_0==Connections||(LA48_0>=Destination && LA48_0<=Upper_bound)||(LA48_0>=Has_member && LA48_0<=Has_parent)||(LA48_0>=Is_of_type && LA48_0<=Is_process)||(LA48_0>=Direction && LA48_0<=Is_thread)||LA48_0==Analysis||(LA48_0>=Features && LA48_0<=Solution)||LA48_0==As_list||(LA48_0>=Is_data && LA48_0<=Is_port)||LA48_0==Warning||(LA48_0>=Append && LA48_0<=As_set)||(LA48_0>=Exists && LA48_0<=Member)||(LA48_0>=Parent && LA48_0<=Source)||LA48_0==Debug||(LA48_0>=Error && LA48_0<=False)||LA48_0==Union||LA48_0==Fail||(LA48_0>=Head && LA48_0<=Name)||(LA48_0>=Size && LA48_0<=Tail)||(LA48_0>=This && LA48_0<=Type)||(LA48_0>=Let && LA48_0<=Sum)||LA48_0==If||LA48_0==LeftParenthesis||LA48_0==HyphenMinus||LA48_0==LeftSquareBracket||LA48_0==LeftCurlyBracket||LA48_0==RULE_REAL_LIT||LA48_0==RULE_INTEGER_LIT||(LA48_0>=RULE_STRING && LA48_0<=RULE_ID)) ) {
-                alt48=1;
+            if ( ((LA52_0>=Error_state_reachable && LA52_0<=Is_virtual_processor)||(LA52_0>=Flow_specifications && LA52_0<=Is_abstract_feature)||LA52_0==Enumerated_values||(LA52_0>=End_to_end_flows && LA52_0<=Is_bidirectional)||(LA52_0>=Is_thread_group && LA52_0<=Contain_error)||(LA52_0>=Flow_elements && LA52_0<=Is_subprogram)||(LA52_0>=Receive_error && LA52_0<=Is_processor)||LA52_0==Connections||(LA52_0>=Destination && LA52_0<=Upper_bound)||(LA52_0>=Has_member && LA52_0<=Has_parent)||(LA52_0>=Is_of_type && LA52_0<=Is_process)||(LA52_0>=Direction && LA52_0<=Is_thread)||LA52_0==Analysis||(LA52_0>=Features && LA52_0<=Solution)||LA52_0==As_list||(LA52_0>=Is_data && LA52_0<=Is_port)||LA52_0==Warning||(LA52_0>=Append && LA52_0<=As_set)||(LA52_0>=Exists && LA52_0<=Member)||(LA52_0>=Parent && LA52_0<=Source)||LA52_0==Debug||(LA52_0>=Error && LA52_0<=False)||LA52_0==Union||LA52_0==Fail||(LA52_0>=Head && LA52_0<=Name)||(LA52_0>=Size && LA52_0<=Tail)||(LA52_0>=This && LA52_0<=Type)||(LA52_0>=Let && LA52_0<=Sum)||LA52_0==If||LA52_0==LeftParenthesis||LA52_0==HyphenMinus||LA52_0==LeftSquareBracket||LA52_0==LeftCurlyBracket||LA52_0==RULE_REAL_LIT||LA52_0==RULE_INTEGER_LIT||(LA52_0>=RULE_STRING && LA52_0<=RULE_ID)) ) {
+                alt52=1;
             }
-            switch (alt48) {
+            switch (alt52) {
                 case 1 :
                     // InternalResoluteParser.g:9937:2: rule__AtomicExpr__Group_9_0_5__0
                     {
@@ -29259,17 +29303,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_9_0_5_1()); 
             }
             // InternalResoluteParser.g:10038:1: ( rule__AtomicExpr__Group_9_0_5_1__0 )*
-            loop49:
+            loop53:
             do {
-                int alt49=2;
-                int LA49_0 = input.LA(1);
+                int alt53=2;
+                int LA53_0 = input.LA(1);
 
-                if ( (LA49_0==Comma) ) {
-                    alt49=1;
+                if ( (LA53_0==Comma) ) {
+                    alt53=1;
                 }
 
 
-                switch (alt49) {
+                switch (alt53) {
             	case 1 :
             	    // InternalResoluteParser.g:10038:2: rule__AtomicExpr__Group_9_0_5_1__0
             	    {
@@ -29283,7 +29327,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop49;
+            	    break loop53;
                 }
             } while (true);
 
@@ -29484,7 +29528,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:10119:1: ( rule__AtomicExpr__Group_10__0__Impl rule__AtomicExpr__Group_10__1 )
             // InternalResoluteParser.g:10120:2: rule__AtomicExpr__Group_10__0__Impl rule__AtomicExpr__Group_10__1
             {
-            pushFollow(FollowSets000.FOLLOW_59);
+            pushFollow(FollowSets000.FOLLOW_60);
             rule__AtomicExpr__Group_10__0__Impl();
 
             state._fsp--;
@@ -29652,7 +29696,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:10179:1: ( rule__AtomicExpr__Group_10__2__Impl rule__AtomicExpr__Group_10__3 )
             // InternalResoluteParser.g:10180:2: rule__AtomicExpr__Group_10__2__Impl rule__AtomicExpr__Group_10__3
             {
-            pushFollow(FollowSets000.FOLLOW_58);
+            pushFollow(FollowSets000.FOLLOW_59);
             rule__AtomicExpr__Group_10__2__Impl();
 
             state._fsp--;
@@ -29731,7 +29775,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:10210:1: ( rule__AtomicExpr__Group_10__3__Impl rule__AtomicExpr__Group_10__4 )
             // InternalResoluteParser.g:10211:2: rule__AtomicExpr__Group_10__3__Impl rule__AtomicExpr__Group_10__4
             {
-            pushFollow(FollowSets000.FOLLOW_58);
+            pushFollow(FollowSets000.FOLLOW_59);
             rule__AtomicExpr__Group_10__3__Impl();
 
             state._fsp--;
@@ -29776,13 +29820,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_10_3()); 
             }
             // InternalResoluteParser.g:10225:1: ( rule__AtomicExpr__Group_10_3__0 )?
-            int alt50=2;
-            int LA50_0 = input.LA(1);
+            int alt54=2;
+            int LA54_0 = input.LA(1);
 
-            if ( ((LA50_0>=Error_state_reachable && LA50_0<=Is_virtual_processor)||(LA50_0>=Flow_specifications && LA50_0<=Is_abstract_feature)||LA50_0==Enumerated_values||(LA50_0>=End_to_end_flows && LA50_0<=Is_bidirectional)||(LA50_0>=Is_thread_group && LA50_0<=Contain_error)||(LA50_0>=Flow_elements && LA50_0<=Is_subprogram)||(LA50_0>=Receive_error && LA50_0<=Is_processor)||LA50_0==Connections||(LA50_0>=Destination && LA50_0<=Upper_bound)||(LA50_0>=Has_member && LA50_0<=Has_parent)||(LA50_0>=Is_of_type && LA50_0<=Is_process)||(LA50_0>=Direction && LA50_0<=Is_thread)||LA50_0==Analysis||(LA50_0>=Features && LA50_0<=Solution)||LA50_0==As_list||(LA50_0>=Is_data && LA50_0<=Is_port)||LA50_0==Warning||(LA50_0>=Append && LA50_0<=As_set)||(LA50_0>=Exists && LA50_0<=Member)||(LA50_0>=Parent && LA50_0<=Source)||LA50_0==Debug||(LA50_0>=Error && LA50_0<=False)||LA50_0==Union||LA50_0==Fail||(LA50_0>=Head && LA50_0<=Name)||(LA50_0>=Size && LA50_0<=Tail)||(LA50_0>=This && LA50_0<=Type)||(LA50_0>=Let && LA50_0<=Sum)||LA50_0==If||LA50_0==LeftParenthesis||LA50_0==HyphenMinus||LA50_0==LeftSquareBracket||LA50_0==LeftCurlyBracket||LA50_0==RULE_REAL_LIT||LA50_0==RULE_INTEGER_LIT||(LA50_0>=RULE_STRING && LA50_0<=RULE_ID)) ) {
-                alt50=1;
+            if ( ((LA54_0>=Error_state_reachable && LA54_0<=Is_virtual_processor)||(LA54_0>=Flow_specifications && LA54_0<=Is_abstract_feature)||LA54_0==Enumerated_values||(LA54_0>=End_to_end_flows && LA54_0<=Is_bidirectional)||(LA54_0>=Is_thread_group && LA54_0<=Contain_error)||(LA54_0>=Flow_elements && LA54_0<=Is_subprogram)||(LA54_0>=Receive_error && LA54_0<=Is_processor)||LA54_0==Connections||(LA54_0>=Destination && LA54_0<=Upper_bound)||(LA54_0>=Has_member && LA54_0<=Has_parent)||(LA54_0>=Is_of_type && LA54_0<=Is_process)||(LA54_0>=Direction && LA54_0<=Is_thread)||LA54_0==Analysis||(LA54_0>=Features && LA54_0<=Solution)||LA54_0==As_list||(LA54_0>=Is_data && LA54_0<=Is_port)||LA54_0==Warning||(LA54_0>=Append && LA54_0<=As_set)||(LA54_0>=Exists && LA54_0<=Member)||(LA54_0>=Parent && LA54_0<=Source)||LA54_0==Debug||(LA54_0>=Error && LA54_0<=False)||LA54_0==Union||LA54_0==Fail||(LA54_0>=Head && LA54_0<=Name)||(LA54_0>=Size && LA54_0<=Tail)||(LA54_0>=This && LA54_0<=Type)||(LA54_0>=Let && LA54_0<=Sum)||LA54_0==If||LA54_0==LeftParenthesis||LA54_0==HyphenMinus||LA54_0==LeftSquareBracket||LA54_0==LeftCurlyBracket||LA54_0==RULE_REAL_LIT||LA54_0==RULE_INTEGER_LIT||(LA54_0>=RULE_STRING && LA54_0<=RULE_ID)) ) {
+                alt54=1;
             }
-            switch (alt50) {
+            switch (alt54) {
                 case 1 :
                     // InternalResoluteParser.g:10225:2: rule__AtomicExpr__Group_10_3__0
                     {
@@ -30034,17 +30078,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_10_3_1()); 
             }
             // InternalResoluteParser.g:10322:1: ( rule__AtomicExpr__Group_10_3_1__0 )*
-            loop51:
+            loop55:
             do {
-                int alt51=2;
-                int LA51_0 = input.LA(1);
+                int alt55=2;
+                int LA55_0 = input.LA(1);
 
-                if ( (LA51_0==Comma) ) {
-                    alt51=1;
+                if ( (LA55_0==Comma) ) {
+                    alt55=1;
                 }
 
 
-                switch (alt51) {
+                switch (alt55) {
             	case 1 :
             	    // InternalResoluteParser.g:10322:2: rule__AtomicExpr__Group_10_3_1__0
             	    {
@@ -30058,7 +30102,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop51;
+            	    break loop55;
                 }
             } while (true);
 
@@ -30427,7 +30471,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:10463:1: ( rule__AtomicExpr__Group_11__2__Impl rule__AtomicExpr__Group_11__3 )
             // InternalResoluteParser.g:10464:2: rule__AtomicExpr__Group_11__2__Impl rule__AtomicExpr__Group_11__3
             {
-            pushFollow(FollowSets000.FOLLOW_58);
+            pushFollow(FollowSets000.FOLLOW_59);
             rule__AtomicExpr__Group_11__2__Impl();
 
             state._fsp--;
@@ -30506,7 +30550,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:10494:1: ( rule__AtomicExpr__Group_11__3__Impl rule__AtomicExpr__Group_11__4 )
             // InternalResoluteParser.g:10495:2: rule__AtomicExpr__Group_11__3__Impl rule__AtomicExpr__Group_11__4
             {
-            pushFollow(FollowSets000.FOLLOW_58);
+            pushFollow(FollowSets000.FOLLOW_59);
             rule__AtomicExpr__Group_11__3__Impl();
 
             state._fsp--;
@@ -30551,13 +30595,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_11_3()); 
             }
             // InternalResoluteParser.g:10509:1: ( rule__AtomicExpr__Group_11_3__0 )?
-            int alt52=2;
-            int LA52_0 = input.LA(1);
+            int alt56=2;
+            int LA56_0 = input.LA(1);
 
-            if ( ((LA52_0>=Error_state_reachable && LA52_0<=Is_virtual_processor)||(LA52_0>=Flow_specifications && LA52_0<=Is_abstract_feature)||LA52_0==Enumerated_values||(LA52_0>=End_to_end_flows && LA52_0<=Is_bidirectional)||(LA52_0>=Is_thread_group && LA52_0<=Contain_error)||(LA52_0>=Flow_elements && LA52_0<=Is_subprogram)||(LA52_0>=Receive_error && LA52_0<=Is_processor)||LA52_0==Connections||(LA52_0>=Destination && LA52_0<=Upper_bound)||(LA52_0>=Has_member && LA52_0<=Has_parent)||(LA52_0>=Is_of_type && LA52_0<=Is_process)||(LA52_0>=Direction && LA52_0<=Is_thread)||LA52_0==Analysis||(LA52_0>=Features && LA52_0<=Solution)||LA52_0==As_list||(LA52_0>=Is_data && LA52_0<=Is_port)||LA52_0==Warning||(LA52_0>=Append && LA52_0<=As_set)||(LA52_0>=Exists && LA52_0<=Member)||(LA52_0>=Parent && LA52_0<=Source)||LA52_0==Debug||(LA52_0>=Error && LA52_0<=False)||LA52_0==Union||LA52_0==Fail||(LA52_0>=Head && LA52_0<=Name)||(LA52_0>=Size && LA52_0<=Tail)||(LA52_0>=This && LA52_0<=Type)||(LA52_0>=Let && LA52_0<=Sum)||LA52_0==If||LA52_0==LeftParenthesis||LA52_0==HyphenMinus||LA52_0==LeftSquareBracket||LA52_0==LeftCurlyBracket||LA52_0==RULE_REAL_LIT||LA52_0==RULE_INTEGER_LIT||(LA52_0>=RULE_STRING && LA52_0<=RULE_ID)) ) {
-                alt52=1;
+            if ( ((LA56_0>=Error_state_reachable && LA56_0<=Is_virtual_processor)||(LA56_0>=Flow_specifications && LA56_0<=Is_abstract_feature)||LA56_0==Enumerated_values||(LA56_0>=End_to_end_flows && LA56_0<=Is_bidirectional)||(LA56_0>=Is_thread_group && LA56_0<=Contain_error)||(LA56_0>=Flow_elements && LA56_0<=Is_subprogram)||(LA56_0>=Receive_error && LA56_0<=Is_processor)||LA56_0==Connections||(LA56_0>=Destination && LA56_0<=Upper_bound)||(LA56_0>=Has_member && LA56_0<=Has_parent)||(LA56_0>=Is_of_type && LA56_0<=Is_process)||(LA56_0>=Direction && LA56_0<=Is_thread)||LA56_0==Analysis||(LA56_0>=Features && LA56_0<=Solution)||LA56_0==As_list||(LA56_0>=Is_data && LA56_0<=Is_port)||LA56_0==Warning||(LA56_0>=Append && LA56_0<=As_set)||(LA56_0>=Exists && LA56_0<=Member)||(LA56_0>=Parent && LA56_0<=Source)||LA56_0==Debug||(LA56_0>=Error && LA56_0<=False)||LA56_0==Union||LA56_0==Fail||(LA56_0>=Head && LA56_0<=Name)||(LA56_0>=Size && LA56_0<=Tail)||(LA56_0>=This && LA56_0<=Type)||(LA56_0>=Let && LA56_0<=Sum)||LA56_0==If||LA56_0==LeftParenthesis||LA56_0==HyphenMinus||LA56_0==LeftSquareBracket||LA56_0==LeftCurlyBracket||LA56_0==RULE_REAL_LIT||LA56_0==RULE_INTEGER_LIT||(LA56_0>=RULE_STRING && LA56_0<=RULE_ID)) ) {
+                alt56=1;
             }
-            switch (alt52) {
+            switch (alt56) {
                 case 1 :
                     // InternalResoluteParser.g:10509:2: rule__AtomicExpr__Group_11_3__0
                     {
@@ -30809,17 +30853,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_11_3_1()); 
             }
             // InternalResoluteParser.g:10606:1: ( rule__AtomicExpr__Group_11_3_1__0 )*
-            loop53:
+            loop57:
             do {
-                int alt53=2;
-                int LA53_0 = input.LA(1);
+                int alt57=2;
+                int LA57_0 = input.LA(1);
 
-                if ( (LA53_0==Comma) ) {
-                    alt53=1;
+                if ( (LA57_0==Comma) ) {
+                    alt57=1;
                 }
 
 
-                switch (alt53) {
+                switch (alt57) {
             	case 1 :
             	    // InternalResoluteParser.g:10606:2: rule__AtomicExpr__Group_11_3_1__0
             	    {
@@ -30833,7 +30877,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop53;
+            	    break loop57;
                 }
             } while (true);
 
@@ -31034,7 +31078,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:10687:1: ( rule__AtomicExpr__Group_12__0__Impl rule__AtomicExpr__Group_12__1 )
             // InternalResoluteParser.g:10688:2: rule__AtomicExpr__Group_12__0__Impl rule__AtomicExpr__Group_12__1
             {
-            pushFollow(FollowSets000.FOLLOW_60);
+            pushFollow(FollowSets000.FOLLOW_61);
             rule__AtomicExpr__Group_12__0__Impl();
 
             state._fsp--;
@@ -31276,7 +31320,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:10781:1: ( rule__AtomicExpr__Group_13__1__Impl rule__AtomicExpr__Group_13__2 )
             // InternalResoluteParser.g:10782:2: rule__AtomicExpr__Group_13__1__Impl rule__AtomicExpr__Group_13__2
             {
-            pushFollow(FollowSets000.FOLLOW_61);
+            pushFollow(FollowSets000.FOLLOW_62);
             rule__AtomicExpr__Group_13__1__Impl();
 
             state._fsp--;
@@ -31522,7 +31566,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:10877:1: ( rule__AtomicExpr__Group_13_2_0__0__Impl rule__AtomicExpr__Group_13_2_0__1 )
             // InternalResoluteParser.g:10878:2: rule__AtomicExpr__Group_13_2_0__0__Impl rule__AtomicExpr__Group_13_2_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_62);
+            pushFollow(FollowSets000.FOLLOW_63);
             rule__AtomicExpr__Group_13_2_0__0__Impl();
 
             state._fsp--;
@@ -31680,7 +31724,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:10939:1: ( rule__AtomicExpr__Group_13_2_0__2__Impl rule__AtomicExpr__Group_13_2_0__3 )
             // InternalResoluteParser.g:10940:2: rule__AtomicExpr__Group_13_2_0__2__Impl rule__AtomicExpr__Group_13_2_0__3
             {
-            pushFollow(FollowSets000.FOLLOW_63);
+            pushFollow(FollowSets000.FOLLOW_64);
             rule__AtomicExpr__Group_13_2_0__2__Impl();
 
             state._fsp--;
@@ -31730,7 +31774,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:10955:1: ( rule__AtomicExpr__Group_13_2_0_2__0 )
             // InternalResoluteParser.g:10955:2: rule__AtomicExpr__Group_13_2_0_2__0
             {
-            pushFollow(FollowSets000.FOLLOW_57);
+            pushFollow(FollowSets000.FOLLOW_58);
             rule__AtomicExpr__Group_13_2_0_2__0();
 
             state._fsp--;
@@ -31751,21 +31795,21 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_13_2_0_2()); 
             }
             // InternalResoluteParser.g:10960:1: ( rule__AtomicExpr__Group_13_2_0_2__0 )*
-            loop54:
+            loop58:
             do {
-                int alt54=2;
-                int LA54_0 = input.LA(1);
+                int alt58=2;
+                int LA58_0 = input.LA(1);
 
-                if ( (LA54_0==LeftParenthesis) ) {
-                    alt54=1;
+                if ( (LA58_0==LeftParenthesis) ) {
+                    alt58=1;
                 }
 
 
-                switch (alt54) {
+                switch (alt58) {
             	case 1 :
             	    // InternalResoluteParser.g:10960:2: rule__AtomicExpr__Group_13_2_0_2__0
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_57);
+            	    pushFollow(FollowSets000.FOLLOW_58);
             	    rule__AtomicExpr__Group_13_2_0_2__0();
 
             	    state._fsp--;
@@ -31775,7 +31819,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop54;
+            	    break loop58;
                 }
             } while (true);
 
@@ -31856,13 +31900,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_13_2_0_3()); 
             }
             // InternalResoluteParser.g:10989:1: ( rule__AtomicExpr__Group_13_2_0_3__0 )?
-            int alt55=2;
-            int LA55_0 = input.LA(1);
+            int alt59=2;
+            int LA59_0 = input.LA(1);
 
-            if ( (LA55_0==VerticalLine) ) {
-                alt55=1;
+            if ( (LA59_0==VerticalLine) ) {
+                alt59=1;
             }
-            switch (alt55) {
+            switch (alt59) {
                 case 1 :
                     // InternalResoluteParser.g:10989:2: rule__AtomicExpr__Group_13_2_0_3__0
                     {
@@ -31990,7 +32034,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:11042:1: ( rule__AtomicExpr__Group_13_2_0_2__1__Impl rule__AtomicExpr__Group_13_2_0_2__2 )
             // InternalResoluteParser.g:11043:2: rule__AtomicExpr__Group_13_2_0_2__1__Impl rule__AtomicExpr__Group_13_2_0_2__2
             {
-            pushFollow(FollowSets000.FOLLOW_46);
+            pushFollow(FollowSets000.FOLLOW_47);
             rule__AtomicExpr__Group_13_2_0_2__1__Impl();
 
             state._fsp--;
@@ -32316,7 +32360,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:11170:1: ( rule__AtomicExpr__Group_13_2_1__0__Impl rule__AtomicExpr__Group_13_2_1__1 )
             // InternalResoluteParser.g:11171:2: rule__AtomicExpr__Group_13_2_1__0__Impl rule__AtomicExpr__Group_13_2_1__1
             {
-            pushFollow(FollowSets000.FOLLOW_61);
+            pushFollow(FollowSets000.FOLLOW_62);
             rule__AtomicExpr__Group_13_2_1__0__Impl();
 
             state._fsp--;
@@ -32435,17 +32479,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_13_2_1_1()); 
             }
             // InternalResoluteParser.g:11215:1: ( rule__AtomicExpr__Group_13_2_1_1__0 )*
-            loop56:
+            loop60:
             do {
-                int alt56=2;
-                int LA56_0 = input.LA(1);
+                int alt60=2;
+                int LA60_0 = input.LA(1);
 
-                if ( (LA56_0==Comma) ) {
-                    alt56=1;
+                if ( (LA60_0==Comma) ) {
+                    alt60=1;
                 }
 
 
-                switch (alt56) {
+                switch (alt60) {
             	case 1 :
             	    // InternalResoluteParser.g:11215:2: rule__AtomicExpr__Group_13_2_1_1__0
             	    {
@@ -32459,7 +32503,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop56;
+            	    break loop60;
                 }
             } while (true);
 
@@ -32739,7 +32783,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:11327:1: ( rule__AtomicExpr__Group_14__1__Impl rule__AtomicExpr__Group_14__2 )
             // InternalResoluteParser.g:11328:2: rule__AtomicExpr__Group_14__1__Impl rule__AtomicExpr__Group_14__2
             {
-            pushFollow(FollowSets000.FOLLOW_61);
+            pushFollow(FollowSets000.FOLLOW_62);
             rule__AtomicExpr__Group_14__1__Impl();
 
             state._fsp--;
@@ -32985,7 +33029,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:11423:1: ( rule__AtomicExpr__Group_14_2_0__0__Impl rule__AtomicExpr__Group_14_2_0__1 )
             // InternalResoluteParser.g:11424:2: rule__AtomicExpr__Group_14_2_0__0__Impl rule__AtomicExpr__Group_14_2_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_62);
+            pushFollow(FollowSets000.FOLLOW_63);
             rule__AtomicExpr__Group_14_2_0__0__Impl();
 
             state._fsp--;
@@ -33143,7 +33187,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:11485:1: ( rule__AtomicExpr__Group_14_2_0__2__Impl rule__AtomicExpr__Group_14_2_0__3 )
             // InternalResoluteParser.g:11486:2: rule__AtomicExpr__Group_14_2_0__2__Impl rule__AtomicExpr__Group_14_2_0__3
             {
-            pushFollow(FollowSets000.FOLLOW_63);
+            pushFollow(FollowSets000.FOLLOW_64);
             rule__AtomicExpr__Group_14_2_0__2__Impl();
 
             state._fsp--;
@@ -33193,7 +33237,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:11501:1: ( rule__AtomicExpr__Group_14_2_0_2__0 )
             // InternalResoluteParser.g:11501:2: rule__AtomicExpr__Group_14_2_0_2__0
             {
-            pushFollow(FollowSets000.FOLLOW_57);
+            pushFollow(FollowSets000.FOLLOW_58);
             rule__AtomicExpr__Group_14_2_0_2__0();
 
             state._fsp--;
@@ -33214,21 +33258,21 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_14_2_0_2()); 
             }
             // InternalResoluteParser.g:11506:1: ( rule__AtomicExpr__Group_14_2_0_2__0 )*
-            loop57:
+            loop61:
             do {
-                int alt57=2;
-                int LA57_0 = input.LA(1);
+                int alt61=2;
+                int LA61_0 = input.LA(1);
 
-                if ( (LA57_0==LeftParenthesis) ) {
-                    alt57=1;
+                if ( (LA61_0==LeftParenthesis) ) {
+                    alt61=1;
                 }
 
 
-                switch (alt57) {
+                switch (alt61) {
             	case 1 :
             	    // InternalResoluteParser.g:11506:2: rule__AtomicExpr__Group_14_2_0_2__0
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_57);
+            	    pushFollow(FollowSets000.FOLLOW_58);
             	    rule__AtomicExpr__Group_14_2_0_2__0();
 
             	    state._fsp--;
@@ -33238,7 +33282,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop57;
+            	    break loop61;
                 }
             } while (true);
 
@@ -33319,13 +33363,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_14_2_0_3()); 
             }
             // InternalResoluteParser.g:11535:1: ( rule__AtomicExpr__Group_14_2_0_3__0 )?
-            int alt58=2;
-            int LA58_0 = input.LA(1);
+            int alt62=2;
+            int LA62_0 = input.LA(1);
 
-            if ( (LA58_0==VerticalLine) ) {
-                alt58=1;
+            if ( (LA62_0==VerticalLine) ) {
+                alt62=1;
             }
-            switch (alt58) {
+            switch (alt62) {
                 case 1 :
                     // InternalResoluteParser.g:11535:2: rule__AtomicExpr__Group_14_2_0_3__0
                     {
@@ -33453,7 +33497,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:11588:1: ( rule__AtomicExpr__Group_14_2_0_2__1__Impl rule__AtomicExpr__Group_14_2_0_2__2 )
             // InternalResoluteParser.g:11589:2: rule__AtomicExpr__Group_14_2_0_2__1__Impl rule__AtomicExpr__Group_14_2_0_2__2
             {
-            pushFollow(FollowSets000.FOLLOW_46);
+            pushFollow(FollowSets000.FOLLOW_47);
             rule__AtomicExpr__Group_14_2_0_2__1__Impl();
 
             state._fsp--;
@@ -33779,7 +33823,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:11716:1: ( rule__AtomicExpr__Group_14_2_1__0__Impl rule__AtomicExpr__Group_14_2_1__1 )
             // InternalResoluteParser.g:11717:2: rule__AtomicExpr__Group_14_2_1__0__Impl rule__AtomicExpr__Group_14_2_1__1
             {
-            pushFollow(FollowSets000.FOLLOW_61);
+            pushFollow(FollowSets000.FOLLOW_62);
             rule__AtomicExpr__Group_14_2_1__0__Impl();
 
             state._fsp--;
@@ -33898,17 +33942,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getAtomicExprAccess().getGroup_14_2_1_1()); 
             }
             // InternalResoluteParser.g:11761:1: ( rule__AtomicExpr__Group_14_2_1_1__0 )*
-            loop59:
+            loop63:
             do {
-                int alt59=2;
-                int LA59_0 = input.LA(1);
+                int alt63=2;
+                int LA63_0 = input.LA(1);
 
-                if ( (LA59_0==Comma) ) {
-                    alt59=1;
+                if ( (LA63_0==Comma) ) {
+                    alt63=1;
                 }
 
 
-                switch (alt59) {
+                switch (alt63) {
             	case 1 :
             	    // InternalResoluteParser.g:11761:2: rule__AtomicExpr__Group_14_2_1_1__0
             	    {
@@ -33922,7 +33966,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop59;
+            	    break loop63;
                 }
             } while (true);
 
@@ -34587,7 +34631,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:12038:1: ( rule__AtomicExpr__Group_17__0__Impl rule__AtomicExpr__Group_17__1 )
             // InternalResoluteParser.g:12039:2: rule__AtomicExpr__Group_17__0__Impl rule__AtomicExpr__Group_17__1
             {
-            pushFollow(FollowSets000.FOLLOW_64);
+            pushFollow(FollowSets000.FOLLOW_65);
             rule__AtomicExpr__Group_17__0__Impl();
 
             state._fsp--;
@@ -34745,7 +34789,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:12100:1: ( rule__AtomicExpr__Group_17__2__Impl rule__AtomicExpr__Group_17__3 )
             // InternalResoluteParser.g:12101:2: rule__AtomicExpr__Group_17__2__Impl rule__AtomicExpr__Group_17__3
             {
-            pushFollow(FollowSets000.FOLLOW_28);
+            pushFollow(FollowSets000.FOLLOW_29);
             rule__AtomicExpr__Group_17__2__Impl();
 
             state._fsp--;
@@ -35076,7 +35120,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:12229:1: ( rule__AtomicExpr__Group_18__1__Impl rule__AtomicExpr__Group_18__2 )
             // InternalResoluteParser.g:12230:2: rule__AtomicExpr__Group_18__1__Impl rule__AtomicExpr__Group_18__2
             {
-            pushFollow(FollowSets000.FOLLOW_46);
+            pushFollow(FollowSets000.FOLLOW_47);
             rule__AtomicExpr__Group_18__1__Impl();
 
             state._fsp--;
@@ -35233,7 +35277,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:12294:1: ( rule__AtomicExpr__Group_19__0__Impl rule__AtomicExpr__Group_19__1 )
             // InternalResoluteParser.g:12295:2: rule__AtomicExpr__Group_19__0__Impl rule__AtomicExpr__Group_19__1
             {
-            pushFollow(FollowSets000.FOLLOW_65);
+            pushFollow(FollowSets000.FOLLOW_66);
             rule__AtomicExpr__Group_19__0__Impl();
 
             state._fsp--;
@@ -35633,7 +35677,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:12450:1: ( rule__AtomicExpr__Group_20__3__Impl rule__AtomicExpr__Group_20__4 )
             // InternalResoluteParser.g:12451:2: rule__AtomicExpr__Group_20__3__Impl rule__AtomicExpr__Group_20__4
             {
-            pushFollow(FollowSets000.FOLLOW_29);
+            pushFollow(FollowSets000.FOLLOW_30);
             rule__AtomicExpr__Group_20__3__Impl();
 
             state._fsp--;
@@ -36345,17 +36389,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getRealTermAccess().getUnitAssignment_1()); 
             }
             // InternalResoluteParser.g:12720:1: ( rule__RealTerm__UnitAssignment_1 )?
-            int alt60=2;
-            int LA60_0 = input.LA(1);
+            int alt64=2;
+            int LA64_0 = input.LA(1);
 
-            if ( (LA60_0==RULE_ID) ) {
-                int LA60_1 = input.LA(2);
+            if ( (LA64_0==RULE_ID) ) {
+                int LA64_1 = input.LA(2);
 
-                if ( (LA60_1==EOF||LA60_1==Instanceof||(LA60_1>=Strategy && LA60_1<=Applies)||(LA60_1>=Ruleset && LA60_1<=Warning)||LA60_1==Orelse||LA60_1==Check||(LA60_1>=Delta && LA60_1<=Error)||LA60_1==Prove||LA60_1==Else||LA60_1==Goal||LA60_1==Info||LA60_1==Then||LA60_1==And||LA60_1==For||LA60_1==FullStopFullStop||(LA60_1>=LessThanSignEqualsSign && LA60_1<=GreaterThanSignEqualsSign)||(LA60_1>=In && LA60_1<=Or)||LA60_1==PercentSign||(LA60_1>=RightParenthesis && LA60_1<=HyphenMinus)||LA60_1==Solidus||(LA60_1>=Semicolon && LA60_1<=GreaterThanSign)||(LA60_1>=RightSquareBracket && LA60_1<=CircumflexAccent)||LA60_1==RightCurlyBracket||LA60_1==RULE_ID) ) {
-                    alt60=1;
+                if ( (LA64_1==EOF||LA64_1==Instanceof||(LA64_1>=Strategy && LA64_1<=Applies)||(LA64_1>=Ruleset && LA64_1<=Warning)||LA64_1==Orelse||LA64_1==Check||(LA64_1>=Delta && LA64_1<=Error)||LA64_1==Prove||LA64_1==Else||LA64_1==Goal||LA64_1==Info||LA64_1==Then||LA64_1==And||LA64_1==For||LA64_1==FullStopFullStop||(LA64_1>=LessThanSignEqualsSign && LA64_1<=GreaterThanSignEqualsSign)||(LA64_1>=In && LA64_1<=Or)||LA64_1==PercentSign||(LA64_1>=RightParenthesis && LA64_1<=HyphenMinus)||LA64_1==Solidus||(LA64_1>=Semicolon && LA64_1<=GreaterThanSign)||(LA64_1>=RightSquareBracket && LA64_1<=CircumflexAccent)||LA64_1==RightCurlyBracket||LA64_1==RULE_ID) ) {
+                    alt64=1;
                 }
             }
-            switch (alt60) {
+            switch (alt64) {
                 case 1 :
                     // InternalResoluteParser.g:12720:2: rule__RealTerm__UnitAssignment_1
                     {
@@ -36533,17 +36577,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getIntegerTermAccess().getUnitAssignment_1()); 
             }
             // InternalResoluteParser.g:12781:1: ( rule__IntegerTerm__UnitAssignment_1 )?
-            int alt61=2;
-            int LA61_0 = input.LA(1);
+            int alt65=2;
+            int LA65_0 = input.LA(1);
 
-            if ( (LA61_0==RULE_ID) ) {
-                int LA61_1 = input.LA(2);
+            if ( (LA65_0==RULE_ID) ) {
+                int LA65_1 = input.LA(2);
 
-                if ( (LA61_1==EOF||LA61_1==Instanceof||(LA61_1>=Strategy && LA61_1<=Applies)||(LA61_1>=Ruleset && LA61_1<=Warning)||LA61_1==Orelse||LA61_1==Check||(LA61_1>=Delta && LA61_1<=Error)||LA61_1==Prove||LA61_1==Else||LA61_1==Goal||LA61_1==Info||LA61_1==Then||LA61_1==And||LA61_1==For||LA61_1==FullStopFullStop||(LA61_1>=LessThanSignEqualsSign && LA61_1<=GreaterThanSignEqualsSign)||(LA61_1>=In && LA61_1<=Or)||LA61_1==PercentSign||(LA61_1>=RightParenthesis && LA61_1<=HyphenMinus)||LA61_1==Solidus||(LA61_1>=Semicolon && LA61_1<=GreaterThanSign)||(LA61_1>=RightSquareBracket && LA61_1<=CircumflexAccent)||LA61_1==RightCurlyBracket||LA61_1==RULE_ID) ) {
-                    alt61=1;
+                if ( (LA65_1==EOF||LA65_1==Instanceof||(LA65_1>=Strategy && LA65_1<=Applies)||(LA65_1>=Ruleset && LA65_1<=Warning)||LA65_1==Orelse||LA65_1==Check||(LA65_1>=Delta && LA65_1<=Error)||LA65_1==Prove||LA65_1==Else||LA65_1==Goal||LA65_1==Info||LA65_1==Then||LA65_1==And||LA65_1==For||LA65_1==FullStopFullStop||(LA65_1>=LessThanSignEqualsSign && LA65_1<=GreaterThanSignEqualsSign)||(LA65_1>=In && LA65_1<=Or)||LA65_1==PercentSign||(LA65_1>=RightParenthesis && LA65_1<=HyphenMinus)||LA65_1==Solidus||(LA65_1>=Semicolon && LA65_1<=GreaterThanSign)||(LA65_1>=RightSquareBracket && LA65_1<=CircumflexAccent)||LA65_1==RightCurlyBracket||LA65_1==RULE_ID) ) {
+                    alt65=1;
                 }
             }
-            switch (alt61) {
+            switch (alt65) {
                 case 1 :
                     // InternalResoluteParser.g:12781:2: rule__IntegerTerm__UnitAssignment_1
                     {
@@ -36592,7 +36636,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:12799:1: ( rule__ResoluteSubclause__Group__0__Impl rule__ResoluteSubclause__Group__1 )
             // InternalResoluteParser.g:12800:2: rule__ResoluteSubclause__Group__0__Impl rule__ResoluteSubclause__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_66);
+            pushFollow(FollowSets000.FOLLOW_67);
             rule__ResoluteSubclause__Group__0__Impl();
 
             state._fsp--;
@@ -36711,21 +36755,21 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getResoluteSubclauseAccess().getProvesAssignment_1()); 
             }
             // InternalResoluteParser.g:12844:1: ( rule__ResoluteSubclause__ProvesAssignment_1 )*
-            loop62:
+            loop66:
             do {
-                int alt62=2;
-                int LA62_0 = input.LA(1);
+                int alt66=2;
+                int LA66_0 = input.LA(1);
 
-                if ( (LA62_0==Check||LA62_0==Prove) ) {
-                    alt62=1;
+                if ( (LA66_0==Check||LA66_0==Prove) ) {
+                    alt66=1;
                 }
 
 
-                switch (alt62) {
+                switch (alt66) {
             	case 1 :
             	    // InternalResoluteParser.g:12844:2: rule__ResoluteSubclause__ProvesAssignment_1
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_67);
+            	    pushFollow(FollowSets000.FOLLOW_68);
             	    rule__ResoluteSubclause__ProvesAssignment_1();
 
             	    state._fsp--;
@@ -36735,7 +36779,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop62;
+            	    break loop66;
                 }
             } while (true);
 
@@ -36902,13 +36946,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getNestedDotIDAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:12905:1: ( rule__NestedDotID__Group_1__0 )?
-            int alt63=2;
-            int LA63_0 = input.LA(1);
+            int alt67=2;
+            int LA67_0 = input.LA(1);
 
-            if ( (LA63_0==FullStop) ) {
-                alt63=1;
+            if ( (LA67_0==FullStop) ) {
+                alt67=1;
             }
-            switch (alt63) {
+            switch (alt67) {
                 case 1 :
                     // InternalResoluteParser.g:12905:2: rule__NestedDotID__Group_1__0
                     {
@@ -37120,7 +37164,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:12986:1: ( rule__LintStatement__Group_0__0__Impl rule__LintStatement__Group_0__1 )
             // InternalResoluteParser.g:12987:2: rule__LintStatement__Group_0__0__Impl rule__LintStatement__Group_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_68);
+            pushFollow(FollowSets000.FOLLOW_69);
             rule__LintStatement__Group_0__0__Impl();
 
             state._fsp--;
@@ -37362,7 +37406,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13082:1: ( rule__LintStatement__Group_1__0__Impl rule__LintStatement__Group_1__1 )
             // InternalResoluteParser.g:13083:2: rule__LintStatement__Group_1__0__Impl rule__LintStatement__Group_1__1
             {
-            pushFollow(FollowSets000.FOLLOW_69);
+            pushFollow(FollowSets000.FOLLOW_70);
             rule__LintStatement__Group_1__0__Impl();
 
             state._fsp--;
@@ -37604,7 +37648,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13178:1: ( rule__LintStatement__Group_2__0__Impl rule__LintStatement__Group_2__1 )
             // InternalResoluteParser.g:13179:2: rule__LintStatement__Group_2__0__Impl rule__LintStatement__Group_2__1
             {
-            pushFollow(FollowSets000.FOLLOW_60);
+            pushFollow(FollowSets000.FOLLOW_61);
             rule__LintStatement__Group_2__0__Impl();
 
             state._fsp--;
@@ -38014,7 +38058,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13334:1: ( rule__Ruleset__Group__2__Impl rule__Ruleset__Group__3 )
             // InternalResoluteParser.g:13335:2: rule__Ruleset__Group__2__Impl rule__Ruleset__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_60);
+            pushFollow(FollowSets000.FOLLOW_61);
             rule__Ruleset__Group__2__Impl();
 
             state._fsp--;
@@ -38256,7 +38300,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13434:1: ( rule__RulesetBody__Group__0__Impl rule__RulesetBody__Group__1 )
             // InternalResoluteParser.g:13435:2: rule__RulesetBody__Group__0__Impl rule__RulesetBody__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_60);
+            pushFollow(FollowSets000.FOLLOW_61);
             rule__RulesetBody__Group__0__Impl();
 
             state._fsp--;
@@ -38375,21 +38419,21 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getRulesetBodyAccess().getLintStatementsAssignment_1()); 
             }
             // InternalResoluteParser.g:13479:1: ( rule__RulesetBody__LintStatementsAssignment_1 )*
-            loop64:
+            loop68:
             do {
-                int alt64=2;
-                int LA64_0 = input.LA(1);
+                int alt68=2;
+                int LA68_0 = input.LA(1);
 
-                if ( (LA64_0==Warning||LA64_0==Error||LA64_0==Info) ) {
-                    alt64=1;
+                if ( (LA68_0==Warning||LA68_0==Error||LA68_0==Info) ) {
+                    alt68=1;
                 }
 
 
-                switch (alt64) {
+                switch (alt68) {
             	case 1 :
             	    // InternalResoluteParser.g:13479:2: rule__RulesetBody__LintStatementsAssignment_1
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_70);
+            	    pushFollow(FollowSets000.FOLLOW_71);
             	    rule__RulesetBody__LintStatementsAssignment_1();
 
             	    state._fsp--;
@@ -38399,7 +38443,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop64;
+            	    break loop68;
                 }
             } while (true);
 
@@ -38437,7 +38481,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13497:1: ( rule__AnalysisStatement__Group_0__0__Impl rule__AnalysisStatement__Group_0__1 )
             // InternalResoluteParser.g:13498:2: rule__AnalysisStatement__Group_0__0__Impl rule__AnalysisStatement__Group_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_71);
+            pushFollow(FollowSets000.FOLLOW_72);
             rule__AnalysisStatement__Group_0__0__Impl();
 
             state._fsp--;
@@ -38679,7 +38723,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13593:1: ( rule__AnalysisStatement__Group_1__0__Impl rule__AnalysisStatement__Group_1__1 )
             // InternalResoluteParser.g:13594:2: rule__AnalysisStatement__Group_1__0__Impl rule__AnalysisStatement__Group_1__1
             {
-            pushFollow(FollowSets000.FOLLOW_66);
+            pushFollow(FollowSets000.FOLLOW_67);
             rule__AnalysisStatement__Group_1__0__Impl();
 
             state._fsp--;
@@ -38921,7 +38965,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13689:1: ( rule__ContainedPropertyAssociation__Group__0__Impl rule__ContainedPropertyAssociation__Group__1 )
             // InternalResoluteParser.g:13690:2: rule__ContainedPropertyAssociation__Group__0__Impl rule__ContainedPropertyAssociation__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_72);
+            pushFollow(FollowSets000.FOLLOW_73);
             rule__ContainedPropertyAssociation__Group__0__Impl();
 
             state._fsp--;
@@ -39010,7 +39054,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13718:1: ( rule__ContainedPropertyAssociation__Group__1__Impl rule__ContainedPropertyAssociation__Group__2 )
             // InternalResoluteParser.g:13719:2: rule__ContainedPropertyAssociation__Group__1__Impl rule__ContainedPropertyAssociation__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_73);
+            pushFollow(FollowSets000.FOLLOW_74);
             rule__ContainedPropertyAssociation__Group__1__Impl();
 
             state._fsp--;
@@ -39099,7 +39143,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13747:1: ( rule__ContainedPropertyAssociation__Group__2__Impl rule__ContainedPropertyAssociation__Group__3 )
             // InternalResoluteParser.g:13748:2: rule__ContainedPropertyAssociation__Group__2__Impl rule__ContainedPropertyAssociation__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_73);
+            pushFollow(FollowSets000.FOLLOW_74);
             rule__ContainedPropertyAssociation__Group__2__Impl();
 
             state._fsp--;
@@ -39144,13 +39188,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getContainedPropertyAssociationAccess().getConstantAssignment_2()); 
             }
             // InternalResoluteParser.g:13762:1: ( rule__ContainedPropertyAssociation__ConstantAssignment_2 )?
-            int alt65=2;
-            int LA65_0 = input.LA(1);
+            int alt69=2;
+            int LA69_0 = input.LA(1);
 
-            if ( (LA65_0==Constant) ) {
-                alt65=1;
+            if ( (LA69_0==Constant) ) {
+                alt69=1;
             }
-            switch (alt65) {
+            switch (alt69) {
                 case 1 :
                     // InternalResoluteParser.g:13762:2: rule__ContainedPropertyAssociation__ConstantAssignment_2
                     {
@@ -39199,7 +39243,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13776:1: ( rule__ContainedPropertyAssociation__Group__3__Impl rule__ContainedPropertyAssociation__Group__4 )
             // InternalResoluteParser.g:13777:2: rule__ContainedPropertyAssociation__Group__3__Impl rule__ContainedPropertyAssociation__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_74);
+            pushFollow(FollowSets000.FOLLOW_75);
             rule__ContainedPropertyAssociation__Group__3__Impl();
 
             state._fsp--;
@@ -39288,7 +39332,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13805:1: ( rule__ContainedPropertyAssociation__Group__4__Impl rule__ContainedPropertyAssociation__Group__5 )
             // InternalResoluteParser.g:13806:2: rule__ContainedPropertyAssociation__Group__4__Impl rule__ContainedPropertyAssociation__Group__5
             {
-            pushFollow(FollowSets000.FOLLOW_74);
+            pushFollow(FollowSets000.FOLLOW_75);
             rule__ContainedPropertyAssociation__Group__4__Impl();
 
             state._fsp--;
@@ -39333,13 +39377,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getContainedPropertyAssociationAccess().getGroup_4()); 
             }
             // InternalResoluteParser.g:13820:1: ( rule__ContainedPropertyAssociation__Group_4__0 )?
-            int alt66=2;
-            int LA66_0 = input.LA(1);
+            int alt70=2;
+            int LA70_0 = input.LA(1);
 
-            if ( (LA66_0==Applies) ) {
-                alt66=1;
+            if ( (LA70_0==Applies) ) {
+                alt70=1;
             }
-            switch (alt66) {
+            switch (alt70) {
                 case 1 :
                     // InternalResoluteParser.g:13820:2: rule__ContainedPropertyAssociation__Group_4__0
                     {
@@ -39388,7 +39432,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13834:1: ( rule__ContainedPropertyAssociation__Group__5__Impl rule__ContainedPropertyAssociation__Group__6 )
             // InternalResoluteParser.g:13835:2: rule__ContainedPropertyAssociation__Group__5__Impl rule__ContainedPropertyAssociation__Group__6
             {
-            pushFollow(FollowSets000.FOLLOW_74);
+            pushFollow(FollowSets000.FOLLOW_75);
             rule__ContainedPropertyAssociation__Group__5__Impl();
 
             state._fsp--;
@@ -39433,13 +39477,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getContainedPropertyAssociationAccess().getGroup_5()); 
             }
             // InternalResoluteParser.g:13849:1: ( rule__ContainedPropertyAssociation__Group_5__0 )?
-            int alt67=2;
-            int LA67_0 = input.LA(1);
+            int alt71=2;
+            int LA71_0 = input.LA(1);
 
-            if ( (LA67_0==In) ) {
-                alt67=1;
+            if ( (LA71_0==In) ) {
+                alt71=1;
             }
-            switch (alt67) {
+            switch (alt71) {
                 case 1 :
                     // InternalResoluteParser.g:13849:2: rule__ContainedPropertyAssociation__Group_5__0
                     {
@@ -39691,17 +39735,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getContainedPropertyAssociationAccess().getGroup_3_1()); 
             }
             // InternalResoluteParser.g:13950:1: ( rule__ContainedPropertyAssociation__Group_3_1__0 )*
-            loop68:
+            loop72:
             do {
-                int alt68=2;
-                int LA68_0 = input.LA(1);
+                int alt72=2;
+                int LA72_0 = input.LA(1);
 
-                if ( (LA68_0==Comma) ) {
-                    alt68=1;
+                if ( (LA72_0==Comma) ) {
+                    alt72=1;
                 }
 
 
-                switch (alt68) {
+                switch (alt72) {
             	case 1 :
             	    // InternalResoluteParser.g:13950:2: rule__ContainedPropertyAssociation__Group_3_1__0
             	    {
@@ -39715,7 +39759,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop68;
+            	    break loop72;
                 }
             } while (true);
 
@@ -39753,7 +39797,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:13968:1: ( rule__ContainedPropertyAssociation__Group_3_1__0__Impl rule__ContainedPropertyAssociation__Group_3_1__1 )
             // InternalResoluteParser.g:13969:2: rule__ContainedPropertyAssociation__Group_3_1__0__Impl rule__ContainedPropertyAssociation__Group_3_1__1
             {
-            pushFollow(FollowSets000.FOLLOW_73);
+            pushFollow(FollowSets000.FOLLOW_74);
             rule__ContainedPropertyAssociation__Group_3_1__0__Impl();
 
             state._fsp--;
@@ -40128,17 +40172,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getContainedPropertyAssociationAccess().getGroup_4_2()); 
             }
             // InternalResoluteParser.g:14103:1: ( rule__ContainedPropertyAssociation__Group_4_2__0 )*
-            loop69:
+            loop73:
             do {
-                int alt69=2;
-                int LA69_0 = input.LA(1);
+                int alt73=2;
+                int LA73_0 = input.LA(1);
 
-                if ( (LA69_0==Comma) ) {
-                    alt69=1;
+                if ( (LA73_0==Comma) ) {
+                    alt73=1;
                 }
 
 
-                switch (alt69) {
+                switch (alt73) {
             	case 1 :
             	    // InternalResoluteParser.g:14103:2: rule__ContainedPropertyAssociation__Group_4_2__0
             	    {
@@ -40152,7 +40196,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop69;
+            	    break loop73;
                 }
             } while (true);
 
@@ -40515,7 +40559,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:14246:1: ( rule__ContainedPropertyAssociation__Group_5__2__Impl rule__ContainedPropertyAssociation__Group_5__3 )
             // InternalResoluteParser.g:14247:2: rule__ContainedPropertyAssociation__Group_5__2__Impl rule__ContainedPropertyAssociation__Group_5__3
             {
-            pushFollow(FollowSets000.FOLLOW_46);
+            pushFollow(FollowSets000.FOLLOW_47);
             rule__ContainedPropertyAssociation__Group_5__2__Impl();
 
             state._fsp--;
@@ -40678,7 +40722,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:14320:1: ( rule__OptionalModalPropertyValue__Group__0__Impl rule__OptionalModalPropertyValue__Group__1 )
             // InternalResoluteParser.g:14321:2: rule__OptionalModalPropertyValue__Group__0__Impl rule__OptionalModalPropertyValue__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_75);
+            pushFollow(FollowSets000.FOLLOW_76);
             rule__OptionalModalPropertyValue__Group__0__Impl();
 
             state._fsp--;
@@ -40807,17 +40851,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getOptionalModalPropertyValueAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:14363:1: ( rule__OptionalModalPropertyValue__Group_1__0 )?
-            int alt70=2;
-            int LA70_0 = input.LA(1);
+            int alt74=2;
+            int LA74_0 = input.LA(1);
 
-            if ( (LA70_0==In) ) {
-                int LA70_1 = input.LA(2);
+            if ( (LA74_0==In) ) {
+                int LA74_1 = input.LA(2);
 
-                if ( (LA70_1==Modes) ) {
-                    alt70=1;
+                if ( (LA74_1==Modes) ) {
+                    alt74=1;
                 }
             }
-            switch (alt70) {
+            switch (alt74) {
                 case 1 :
                     // InternalResoluteParser.g:14363:2: rule__OptionalModalPropertyValue__Group_1__0
                     {
@@ -41028,7 +41072,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:14441:1: ( rule__OptionalModalPropertyValue__Group_1__2__Impl rule__OptionalModalPropertyValue__Group_1__3 )
             // InternalResoluteParser.g:14442:2: rule__OptionalModalPropertyValue__Group_1__2__Impl rule__OptionalModalPropertyValue__Group_1__3
             {
-            pushFollow(FollowSets000.FOLLOW_76);
+            pushFollow(FollowSets000.FOLLOW_77);
             rule__OptionalModalPropertyValue__Group_1__2__Impl();
 
             state._fsp--;
@@ -41117,7 +41161,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:14470:1: ( rule__OptionalModalPropertyValue__Group_1__3__Impl rule__OptionalModalPropertyValue__Group_1__4 )
             // InternalResoluteParser.g:14471:2: rule__OptionalModalPropertyValue__Group_1__3__Impl rule__OptionalModalPropertyValue__Group_1__4
             {
-            pushFollow(FollowSets000.FOLLOW_76);
+            pushFollow(FollowSets000.FOLLOW_77);
             rule__OptionalModalPropertyValue__Group_1__3__Impl();
 
             state._fsp--;
@@ -41162,17 +41206,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getOptionalModalPropertyValueAccess().getGroup_1_3()); 
             }
             // InternalResoluteParser.g:14485:1: ( rule__OptionalModalPropertyValue__Group_1_3__0 )*
-            loop71:
+            loop75:
             do {
-                int alt71=2;
-                int LA71_0 = input.LA(1);
+                int alt75=2;
+                int LA75_0 = input.LA(1);
 
-                if ( (LA71_0==Comma) ) {
-                    alt71=1;
+                if ( (LA75_0==Comma) ) {
+                    alt75=1;
                 }
 
 
-                switch (alt71) {
+                switch (alt75) {
             	case 1 :
             	    // InternalResoluteParser.g:14485:2: rule__OptionalModalPropertyValue__Group_1_3__0
             	    {
@@ -41186,7 +41230,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop71;
+            	    break loop75;
                 }
             } while (true);
 
@@ -41461,7 +41505,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:14602:1: ( rule__BooleanLiteral__Group__0__Impl rule__BooleanLiteral__Group__1 )
             // InternalResoluteParser.g:14603:2: rule__BooleanLiteral__Group__0__Impl rule__BooleanLiteral__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_52);
+            pushFollow(FollowSets000.FOLLOW_53);
             rule__BooleanLiteral__Group__0__Impl();
 
             state._fsp--;
@@ -41782,7 +41826,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:14727:1: ( rule__ReferenceTerm__Group__2__Impl rule__ReferenceTerm__Group__3 )
             // InternalResoluteParser.g:14728:2: rule__ReferenceTerm__Group__2__Impl rule__ReferenceTerm__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_46);
+            pushFollow(FollowSets000.FOLLOW_47);
             rule__ReferenceTerm__Group__2__Impl();
 
             state._fsp--;
@@ -42074,7 +42118,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:14841:1: ( rule__RecordTerm__OwnedFieldValueAssignment_1 )
             // InternalResoluteParser.g:14841:2: rule__RecordTerm__OwnedFieldValueAssignment_1
             {
-            pushFollow(FollowSets000.FOLLOW_77);
+            pushFollow(FollowSets000.FOLLOW_78);
             rule__RecordTerm__OwnedFieldValueAssignment_1();
 
             state._fsp--;
@@ -42095,21 +42139,21 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getRecordTermAccess().getOwnedFieldValueAssignment_1()); 
             }
             // InternalResoluteParser.g:14846:1: ( rule__RecordTerm__OwnedFieldValueAssignment_1 )*
-            loop72:
+            loop76:
             do {
-                int alt72=2;
-                int LA72_0 = input.LA(1);
+                int alt76=2;
+                int LA76_0 = input.LA(1);
 
-                if ( (LA72_0==RULE_ID) ) {
-                    alt72=1;
+                if ( (LA76_0==RULE_ID) ) {
+                    alt76=1;
                 }
 
 
-                switch (alt72) {
+                switch (alt76) {
             	case 1 :
             	    // InternalResoluteParser.g:14846:2: rule__RecordTerm__OwnedFieldValueAssignment_1
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_77);
+            	    pushFollow(FollowSets000.FOLLOW_78);
             	    rule__RecordTerm__OwnedFieldValueAssignment_1();
 
             	    state._fsp--;
@@ -42119,7 +42163,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop72;
+            	    break loop76;
                 }
             } while (true);
 
@@ -42392,7 +42436,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:14960:1: ( rule__ComputedTerm__Group__2__Impl rule__ComputedTerm__Group__3 )
             // InternalResoluteParser.g:14961:2: rule__ComputedTerm__Group__2__Impl rule__ComputedTerm__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_46);
+            pushFollow(FollowSets000.FOLLOW_47);
             rule__ComputedTerm__Group__2__Impl();
 
             state._fsp--;
@@ -42713,7 +42757,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15089:1: ( rule__ComponentClassifierTerm__Group__2__Impl rule__ComponentClassifierTerm__Group__3 )
             // InternalResoluteParser.g:15090:2: rule__ComponentClassifierTerm__Group__2__Impl rule__ComponentClassifierTerm__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_46);
+            pushFollow(FollowSets000.FOLLOW_47);
             rule__ComponentClassifierTerm__Group__2__Impl();
 
             state._fsp--;
@@ -42955,7 +42999,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15187:1: ( rule__ListTerm__Group__1__Impl rule__ListTerm__Group__2 )
             // InternalResoluteParser.g:15188:2: rule__ListTerm__Group__1__Impl rule__ListTerm__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_78);
+            pushFollow(FollowSets000.FOLLOW_79);
             rule__ListTerm__Group__1__Impl();
 
             state._fsp--;
@@ -43034,7 +43078,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15218:1: ( rule__ListTerm__Group__2__Impl rule__ListTerm__Group__3 )
             // InternalResoluteParser.g:15219:2: rule__ListTerm__Group__2__Impl rule__ListTerm__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_78);
+            pushFollow(FollowSets000.FOLLOW_79);
             rule__ListTerm__Group__2__Impl();
 
             state._fsp--;
@@ -43079,13 +43123,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getListTermAccess().getGroup_2()); 
             }
             // InternalResoluteParser.g:15233:1: ( rule__ListTerm__Group_2__0 )?
-            int alt73=2;
-            int LA73_0 = input.LA(1);
+            int alt77=2;
+            int LA77_0 = input.LA(1);
 
-            if ( (LA73_0==Classifier||LA73_0==Reference||LA73_0==Compute||LA73_0==False||LA73_0==True||LA73_0==LeftParenthesis||LA73_0==PlusSign||LA73_0==HyphenMinus||LA73_0==LeftSquareBracket||LA73_0==RULE_REAL_LIT||LA73_0==RULE_INTEGER_LIT||(LA73_0>=RULE_STRING && LA73_0<=RULE_ID)) ) {
-                alt73=1;
+            if ( (LA77_0==Classifier||LA77_0==Reference||LA77_0==Compute||LA77_0==False||LA77_0==True||LA77_0==LeftParenthesis||LA77_0==PlusSign||LA77_0==HyphenMinus||LA77_0==LeftSquareBracket||LA77_0==RULE_REAL_LIT||LA77_0==RULE_INTEGER_LIT||(LA77_0>=RULE_STRING && LA77_0<=RULE_ID)) ) {
+                alt77=1;
             }
-            switch (alt73) {
+            switch (alt77) {
                 case 1 :
                     // InternalResoluteParser.g:15233:2: rule__ListTerm__Group_2__0
                     {
@@ -43337,17 +43381,17 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getListTermAccess().getGroup_2_1()); 
             }
             // InternalResoluteParser.g:15328:1: ( rule__ListTerm__Group_2_1__0 )*
-            loop74:
+            loop78:
             do {
-                int alt74=2;
-                int LA74_0 = input.LA(1);
+                int alt78=2;
+                int LA78_0 = input.LA(1);
 
-                if ( (LA74_0==Comma) ) {
-                    alt74=1;
+                if ( (LA78_0==Comma) ) {
+                    alt78=1;
                 }
 
 
-                switch (alt74) {
+                switch (alt78) {
             	case 1 :
             	    // InternalResoluteParser.g:15328:2: rule__ListTerm__Group_2_1__0
             	    {
@@ -43361,7 +43405,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop74;
+            	    break loop78;
                 }
             } while (true);
 
@@ -43399,7 +43443,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15346:1: ( rule__ListTerm__Group_2_1__0__Impl rule__ListTerm__Group_2_1__1 )
             // InternalResoluteParser.g:15347:2: rule__ListTerm__Group_2_1__0__Impl rule__ListTerm__Group_2_1__1
             {
-            pushFollow(FollowSets000.FOLLOW_73);
+            pushFollow(FollowSets000.FOLLOW_74);
             rule__ListTerm__Group_2_1__0__Impl();
 
             state._fsp--;
@@ -43562,7 +43606,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15409:1: ( rule__FieldPropertyAssociation__Group__0__Impl rule__FieldPropertyAssociation__Group__1 )
             // InternalResoluteParser.g:15410:2: rule__FieldPropertyAssociation__Group__0__Impl rule__FieldPropertyAssociation__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_31);
+            pushFollow(FollowSets000.FOLLOW_32);
             rule__FieldPropertyAssociation__Group__0__Impl();
 
             state._fsp--;
@@ -43651,7 +43695,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15438:1: ( rule__FieldPropertyAssociation__Group__1__Impl rule__FieldPropertyAssociation__Group__2 )
             // InternalResoluteParser.g:15439:2: rule__FieldPropertyAssociation__Group__1__Impl rule__FieldPropertyAssociation__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_73);
+            pushFollow(FollowSets000.FOLLOW_74);
             rule__FieldPropertyAssociation__Group__1__Impl();
 
             state._fsp--;
@@ -43730,7 +43774,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15469:1: ( rule__FieldPropertyAssociation__Group__2__Impl rule__FieldPropertyAssociation__Group__3 )
             // InternalResoluteParser.g:15470:2: rule__FieldPropertyAssociation__Group__2__Impl rule__FieldPropertyAssociation__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_28);
+            pushFollow(FollowSets000.FOLLOW_29);
             rule__FieldPropertyAssociation__Group__2__Impl();
 
             state._fsp--;
@@ -44022,13 +44066,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getContainmentPathElementAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:15579:1: ( rule__ContainmentPathElement__Group_1__0 )?
-            int alt75=2;
-            int LA75_0 = input.LA(1);
+            int alt79=2;
+            int LA79_0 = input.LA(1);
 
-            if ( (LA75_0==FullStop) ) {
-                alt75=1;
+            if ( (LA79_0==FullStop) ) {
+                alt79=1;
             }
-            switch (alt75) {
+            switch (alt79) {
                 case 1 :
                     // InternalResoluteParser.g:15579:2: rule__ContainmentPathElement__Group_1__0
                     {
@@ -44206,21 +44250,21 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getContainmentPathElementAccess().getArrayRangeAssignment_0_1()); 
             }
             // InternalResoluteParser.g:15640:1: ( rule__ContainmentPathElement__ArrayRangeAssignment_0_1 )*
-            loop76:
+            loop80:
             do {
-                int alt76=2;
-                int LA76_0 = input.LA(1);
+                int alt80=2;
+                int LA80_0 = input.LA(1);
 
-                if ( (LA76_0==LeftSquareBracket) ) {
-                    alt76=1;
+                if ( (LA80_0==LeftSquareBracket) ) {
+                    alt80=1;
                 }
 
 
-                switch (alt76) {
+                switch (alt80) {
             	case 1 :
             	    // InternalResoluteParser.g:15640:2: rule__ContainmentPathElement__ArrayRangeAssignment_0_1
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_79);
+            	    pushFollow(FollowSets000.FOLLOW_80);
             	    rule__ContainmentPathElement__ArrayRangeAssignment_0_1();
 
             	    state._fsp--;
@@ -44230,7 +44274,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop76;
+            	    break loop80;
                 }
             } while (true);
 
@@ -44510,7 +44554,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15753:1: ( rule__ArrayRange__Group__1__Impl rule__ArrayRange__Group__2 )
             // InternalResoluteParser.g:15754:2: rule__ArrayRange__Group__1__Impl rule__ArrayRange__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_50);
+            pushFollow(FollowSets000.FOLLOW_51);
             rule__ArrayRange__Group__1__Impl();
 
             state._fsp--;
@@ -44589,7 +44633,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15784:1: ( rule__ArrayRange__Group__2__Impl rule__ArrayRange__Group__3 )
             // InternalResoluteParser.g:15785:2: rule__ArrayRange__Group__2__Impl rule__ArrayRange__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_80);
+            pushFollow(FollowSets000.FOLLOW_81);
             rule__ArrayRange__Group__2__Impl();
 
             state._fsp--;
@@ -44678,7 +44722,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15813:1: ( rule__ArrayRange__Group__3__Impl rule__ArrayRange__Group__4 )
             // InternalResoluteParser.g:15814:2: rule__ArrayRange__Group__3__Impl rule__ArrayRange__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_80);
+            pushFollow(FollowSets000.FOLLOW_81);
             rule__ArrayRange__Group__3__Impl();
 
             state._fsp--;
@@ -44723,13 +44767,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getArrayRangeAccess().getGroup_3()); 
             }
             // InternalResoluteParser.g:15828:1: ( rule__ArrayRange__Group_3__0 )?
-            int alt77=2;
-            int LA77_0 = input.LA(1);
+            int alt81=2;
+            int LA81_0 = input.LA(1);
 
-            if ( (LA77_0==FullStopFullStop) ) {
-                alt77=1;
+            if ( (LA81_0==FullStopFullStop) ) {
+                alt81=1;
             }
-            switch (alt77) {
+            switch (alt81) {
                 case 1 :
                     // InternalResoluteParser.g:15828:2: rule__ArrayRange__Group_3__0
                     {
@@ -44852,7 +44896,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15882:1: ( rule__ArrayRange__Group_3__0__Impl rule__ArrayRange__Group_3__1 )
             // InternalResoluteParser.g:15883:2: rule__ArrayRange__Group_3__0__Impl rule__ArrayRange__Group_3__1
             {
-            pushFollow(FollowSets000.FOLLOW_50);
+            pushFollow(FollowSets000.FOLLOW_51);
             rule__ArrayRange__Group_3__0__Impl();
 
             state._fsp--;
@@ -45015,7 +45059,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:15945:1: ( rule__SignedConstant__Group__0__Impl rule__SignedConstant__Group__1 )
             // InternalResoluteParser.g:15946:2: rule__SignedConstant__Group__0__Impl rule__SignedConstant__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_81);
+            pushFollow(FollowSets000.FOLLOW_82);
             rule__SignedConstant__Group__0__Impl();
 
             state._fsp--;
@@ -45188,7 +45232,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:16008:1: ( rule__NumericRangeTerm__Group__0__Impl rule__NumericRangeTerm__Group__1 )
             // InternalResoluteParser.g:16009:2: rule__NumericRangeTerm__Group__0__Impl rule__NumericRangeTerm__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_82);
+            pushFollow(FollowSets000.FOLLOW_83);
             rule__NumericRangeTerm__Group__0__Impl();
 
             state._fsp--;
@@ -45277,7 +45321,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:16037:1: ( rule__NumericRangeTerm__Group__1__Impl rule__NumericRangeTerm__Group__2 )
             // InternalResoluteParser.g:16038:2: rule__NumericRangeTerm__Group__1__Impl rule__NumericRangeTerm__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_81);
+            pushFollow(FollowSets000.FOLLOW_82);
             rule__NumericRangeTerm__Group__1__Impl();
 
             state._fsp--;
@@ -45356,7 +45400,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:16068:1: ( rule__NumericRangeTerm__Group__2__Impl rule__NumericRangeTerm__Group__3 )
             // InternalResoluteParser.g:16069:2: rule__NumericRangeTerm__Group__2__Impl rule__NumericRangeTerm__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_83);
+            pushFollow(FollowSets000.FOLLOW_84);
             rule__NumericRangeTerm__Group__2__Impl();
 
             state._fsp--;
@@ -45485,13 +45529,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getNumericRangeTermAccess().getGroup_3()); 
             }
             // InternalResoluteParser.g:16111:1: ( rule__NumericRangeTerm__Group_3__0 )?
-            int alt78=2;
-            int LA78_0 = input.LA(1);
+            int alt82=2;
+            int LA82_0 = input.LA(1);
 
-            if ( (LA78_0==Delta) ) {
-                alt78=1;
+            if ( (LA82_0==Delta) ) {
+                alt82=1;
             }
-            switch (alt78) {
+            switch (alt82) {
                 case 1 :
                     // InternalResoluteParser.g:16111:2: rule__NumericRangeTerm__Group_3__0
                     {
@@ -45540,7 +45584,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:16133:1: ( rule__NumericRangeTerm__Group_3__0__Impl rule__NumericRangeTerm__Group_3__1 )
             // InternalResoluteParser.g:16134:2: rule__NumericRangeTerm__Group_3__0__Impl rule__NumericRangeTerm__Group_3__1
             {
-            pushFollow(FollowSets000.FOLLOW_81);
+            pushFollow(FollowSets000.FOLLOW_82);
             rule__NumericRangeTerm__Group_3__0__Impl();
 
             state._fsp--;
@@ -45703,7 +45747,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:16196:1: ( rule__AppliesToKeywords__Group__0__Impl rule__AppliesToKeywords__Group__1 )
             // InternalResoluteParser.g:16197:2: rule__AppliesToKeywords__Group__0__Impl rule__AppliesToKeywords__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_84);
+            pushFollow(FollowSets000.FOLLOW_85);
             rule__AppliesToKeywords__Group__0__Impl();
 
             state._fsp--;
@@ -45856,7 +45900,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:16261:1: ( rule__InBindingKeywords__Group__0__Impl rule__InBindingKeywords__Group__1 )
             // InternalResoluteParser.g:16262:2: rule__InBindingKeywords__Group__0__Impl rule__InBindingKeywords__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_85);
+            pushFollow(FollowSets000.FOLLOW_86);
             rule__InBindingKeywords__Group__0__Impl();
 
             state._fsp--;
@@ -46009,7 +46053,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:16326:1: ( rule__InModesKeywords__Group__0__Impl rule__InModesKeywords__Group__1 )
             // InternalResoluteParser.g:16327:2: rule__InModesKeywords__Group__0__Impl rule__InModesKeywords__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_86);
+            pushFollow(FollowSets000.FOLLOW_87);
             rule__InModesKeywords__Group__0__Impl();
 
             state._fsp--;
@@ -46162,7 +46206,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:16392:1: ( rule__QPREF__Group__0__Impl rule__QPREF__Group__1 )
             // InternalResoluteParser.g:16393:2: rule__QPREF__Group__0__Impl rule__QPREF__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_87);
+            pushFollow(FollowSets000.FOLLOW_88);
             rule__QPREF__Group__0__Impl();
 
             state._fsp--;
@@ -46281,13 +46325,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getQPREFAccess().getGroup_1()); 
             }
             // InternalResoluteParser.g:16435:1: ( rule__QPREF__Group_1__0 )?
-            int alt79=2;
-            int LA79_0 = input.LA(1);
+            int alt83=2;
+            int LA83_0 = input.LA(1);
 
-            if ( (LA79_0==ColonColon) ) {
-                alt79=1;
+            if ( (LA83_0==ColonColon) ) {
+                alt83=1;
             }
-            switch (alt79) {
+            switch (alt83) {
                 case 1 :
                     // InternalResoluteParser.g:16435:2: rule__QPREF__Group_1__0
                     {
@@ -46534,27 +46578,27 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getQCREFAccess().getGroup_0()); 
             }
             // InternalResoluteParser.g:16531:1: ( rule__QCREF__Group_0__0 )*
-            loop80:
+            loop84:
             do {
-                int alt80=2;
-                int LA80_0 = input.LA(1);
+                int alt84=2;
+                int LA84_0 = input.LA(1);
 
-                if ( (LA80_0==RULE_ID) ) {
-                    int LA80_1 = input.LA(2);
+                if ( (LA84_0==RULE_ID) ) {
+                    int LA84_1 = input.LA(2);
 
-                    if ( (LA80_1==ColonColon) ) {
-                        alt80=1;
+                    if ( (LA84_1==ColonColon) ) {
+                        alt84=1;
                     }
 
 
                 }
 
 
-                switch (alt80) {
+                switch (alt84) {
             	case 1 :
             	    // InternalResoluteParser.g:16531:2: rule__QCREF__Group_0__0
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_77);
+            	    pushFollow(FollowSets000.FOLLOW_78);
             	    rule__QCREF__Group_0__0();
 
             	    state._fsp--;
@@ -46564,7 +46608,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop80;
+            	    break loop84;
                 }
             } while (true);
 
@@ -46721,13 +46765,13 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
                before(grammarAccess.getQCREFAccess().getGroup_2()); 
             }
             // InternalResoluteParser.g:16588:1: ( rule__QCREF__Group_2__0 )?
-            int alt81=2;
-            int LA81_0 = input.LA(1);
+            int alt85=2;
+            int LA85_0 = input.LA(1);
 
-            if ( (LA81_0==FullStop) ) {
-                alt81=1;
+            if ( (LA85_0==FullStop) ) {
+                alt85=1;
             }
-            switch (alt81) {
+            switch (alt85) {
                 case 1 :
                     // InternalResoluteParser.g:16588:2: rule__QCREF__Group_2__0
                     {
@@ -46776,7 +46820,7 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
             // InternalResoluteParser.g:16608:1: ( rule__QCREF__Group_0__0__Impl rule__QCREF__Group_0__1 )
             // InternalResoluteParser.g:16609:2: rule__QCREF__Group_0__0__Impl rule__QCREF__Group_0__1
             {
-            pushFollow(FollowSets000.FOLLOW_87);
+            pushFollow(FollowSets000.FOLLOW_88);
             rule__QCREF__Group_0__0__Impl();
 
             state._fsp--;
@@ -53977,8 +54021,8 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
     }
     // $ANTLR end synpred85_InternalResoluteParser
 
-    // $ANTLR start synpred187_InternalResoluteParser
-    public final void synpred187_InternalResoluteParser_fragment() throws RecognitionException {   
+    // $ANTLR start synpred191_InternalResoluteParser
+    public final void synpred191_InternalResoluteParser_fragment() throws RecognitionException {   
         // InternalResoluteParser.g:6650:2: ( rule__ImpliesExpr__Group_1__0 )
         // InternalResoluteParser.g:6650:2: rule__ImpliesExpr__Group_1__0
         {
@@ -53990,10 +54034,10 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
         }
     }
-    // $ANTLR end synpred187_InternalResoluteParser
+    // $ANTLR end synpred191_InternalResoluteParser
 
-    // $ANTLR start synpred188_InternalResoluteParser
-    public final void synpred188_InternalResoluteParser_fragment() throws RecognitionException {   
+    // $ANTLR start synpred192_InternalResoluteParser
+    public final void synpred192_InternalResoluteParser_fragment() throws RecognitionException {   
         // InternalResoluteParser.g:6865:2: ( rule__OrExpr__Group_1__0 )
         // InternalResoluteParser.g:6865:2: rule__OrExpr__Group_1__0
         {
@@ -54005,10 +54049,10 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
         }
     }
-    // $ANTLR end synpred188_InternalResoluteParser
+    // $ANTLR end synpred192_InternalResoluteParser
 
-    // $ANTLR start synpred189_InternalResoluteParser
-    public final void synpred189_InternalResoluteParser_fragment() throws RecognitionException {   
+    // $ANTLR start synpred193_InternalResoluteParser
+    public final void synpred193_InternalResoluteParser_fragment() throws RecognitionException {   
         // InternalResoluteParser.g:7080:2: ( rule__AndExpr__Group_1__0 )
         // InternalResoluteParser.g:7080:2: rule__AndExpr__Group_1__0
         {
@@ -54020,10 +54064,10 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
         }
     }
-    // $ANTLR end synpred189_InternalResoluteParser
+    // $ANTLR end synpred193_InternalResoluteParser
 
-    // $ANTLR start synpred190_InternalResoluteParser
-    public final void synpred190_InternalResoluteParser_fragment() throws RecognitionException {   
+    // $ANTLR start synpred194_InternalResoluteParser
+    public final void synpred194_InternalResoluteParser_fragment() throws RecognitionException {   
         // InternalResoluteParser.g:7295:2: ( rule__InstanceOfExpr__Group_1__0 )
         // InternalResoluteParser.g:7295:2: rule__InstanceOfExpr__Group_1__0
         {
@@ -54035,10 +54079,10 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
         }
     }
-    // $ANTLR end synpred190_InternalResoluteParser
+    // $ANTLR end synpred194_InternalResoluteParser
 
-    // $ANTLR start synpred191_InternalResoluteParser
-    public final void synpred191_InternalResoluteParser_fragment() throws RecognitionException {   
+    // $ANTLR start synpred195_InternalResoluteParser
+    public final void synpred195_InternalResoluteParser_fragment() throws RecognitionException {   
         // InternalResoluteParser.g:7512:2: ( rule__RelationalExpr__Group_1__0 )
         // InternalResoluteParser.g:7512:2: rule__RelationalExpr__Group_1__0
         {
@@ -54050,10 +54094,10 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
         }
     }
-    // $ANTLR end synpred191_InternalResoluteParser
+    // $ANTLR end synpred195_InternalResoluteParser
 
-    // $ANTLR start synpred192_InternalResoluteParser
-    public final void synpred192_InternalResoluteParser_fragment() throws RecognitionException {   
+    // $ANTLR start synpred196_InternalResoluteParser
+    public final void synpred196_InternalResoluteParser_fragment() throws RecognitionException {   
         // InternalResoluteParser.g:7727:2: ( rule__PlusExpr__Group_1__0 )
         // InternalResoluteParser.g:7727:2: rule__PlusExpr__Group_1__0
         {
@@ -54065,10 +54109,10 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
         }
     }
-    // $ANTLR end synpred192_InternalResoluteParser
+    // $ANTLR end synpred196_InternalResoluteParser
 
-    // $ANTLR start synpred193_InternalResoluteParser
-    public final void synpred193_InternalResoluteParser_fragment() throws RecognitionException {   
+    // $ANTLR start synpred197_InternalResoluteParser
+    public final void synpred197_InternalResoluteParser_fragment() throws RecognitionException {   
         // InternalResoluteParser.g:7942:2: ( rule__TimesExpr__Group_1__0 )
         // InternalResoluteParser.g:7942:2: rule__TimesExpr__Group_1__0
         {
@@ -54080,10 +54124,10 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
         }
     }
-    // $ANTLR end synpred193_InternalResoluteParser
+    // $ANTLR end synpred197_InternalResoluteParser
 
-    // $ANTLR start synpred194_InternalResoluteParser
-    public final void synpred194_InternalResoluteParser_fragment() throws RecognitionException {   
+    // $ANTLR start synpred198_InternalResoluteParser
+    public final void synpred198_InternalResoluteParser_fragment() throws RecognitionException {   
         // InternalResoluteParser.g:8157:2: ( rule__ExpExpr__Group_1__0 )
         // InternalResoluteParser.g:8157:2: rule__ExpExpr__Group_1__0
         {
@@ -54095,38 +54139,10 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
 
         }
     }
-    // $ANTLR end synpred194_InternalResoluteParser
+    // $ANTLR end synpred198_InternalResoluteParser
 
     // Delegated rules
 
-    public final boolean synpred187_InternalResoluteParser() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred187_InternalResoluteParser_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred188_InternalResoluteParser() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred188_InternalResoluteParser_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
     public final boolean synpred49_InternalResoluteParser() {
         state.backtracking++;
         int start = input.mark();
@@ -54169,20 +54185,6 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         state.failed=false;
         return success;
     }
-    public final boolean synpred190_InternalResoluteParser() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred190_InternalResoluteParser_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
     public final boolean synpred191_InternalResoluteParser() {
         state.backtracking++;
         int start = input.mark();
@@ -54216,6 +54218,20 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         int start = input.mark();
         try {
             synpred82_InternalResoluteParser_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred195_InternalResoluteParser() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred195_InternalResoluteParser_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -54295,11 +54311,39 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         state.failed=false;
         return success;
     }
-    public final boolean synpred189_InternalResoluteParser() {
+    public final boolean synpred197_InternalResoluteParser() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred189_InternalResoluteParser_fragment(); // can never throw exception
+            synpred197_InternalResoluteParser_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred198_InternalResoluteParser() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred198_InternalResoluteParser_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred196_InternalResoluteParser() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred196_InternalResoluteParser_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -54597,66 +54641,67 @@ public class InternalResoluteParser extends AbstractInternalContentAssistParser 
         public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0100008000000002L,0x0000000020800000L});
         public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x8000000000000000L,0x0000000000000001L});
         public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x8000000000000000L,0x0000000000000001L});
-        public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000200000000000L});
-        public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x8000000000000000L});
-        public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000800000000L});
-        public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000020000000L});
-        public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L,0x0000000200000000L});
-        public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000002L,0x0000400000000000L,0x0000000200000000L});
-        public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L,0x0000000000008000L});
-        public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L,0x0000000000008000L});
-        public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x8000000000000000L});
-        public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x1A80A004071B99F0L,0xE80E20924020A01CL,0x00000000000500C0L});
-        public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0001C00058000000L});
-        public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000028000000000L});
-        public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000028000000000L});
-        public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000084800000000L});
-        public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000084800000000L});
-        public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
-        public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
-        public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000020000400000L});
-        public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000002000000000L});
-        public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
-        public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000002L});
-        public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x607F5F7BF8E46600L,0x11A19F69847D1FE3L,0xA812021081F83B3AL,0x0000000000000001L});
-        public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x2000000000000000L});
-        public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0800000000000000L});
-        public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L,0x0000000000001000L});
-        public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000080000000L});
-        public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000400L});
-        public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000001L});
-        public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0000000000000000L,0x0000030000000000L});
-        public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000001000000000L});
-        public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x607F5F7BF8E46600L,0x11A19F69847D1FE3L,0xA812023080F83B3AL,0x0000000000000001L});
-        public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x605F5F7BF8E46600L,0x10219C61843D1FE3L,0x0000000000B02328L});
-        public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000000000L,0x0080000800000000L,0x0000000000000010L});
-        public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000010000020000L});
-        public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000020000L});
-        public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0020000000000000L});
-        public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000080000L});
-        public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0020000000000000L});
-        public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000000000L,0x0410000000000000L});
-        public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000000002L,0x0410000000000000L});
-        public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000000000000000L,0x0000000800000000L});
-        public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-        public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000000002L,0x0080000800000000L,0x0000000000000010L});
-        public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x0000000000000000L,0x0400000000000000L});
-        public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000020004000L});
-        public static final BitSet FOLLOW_73 = new BitSet(new long[]{0x0400000000000000L,0x0100000010024000L,0xA802029000001000L,0x0000000000000001L});
-        public static final BitSet FOLLOW_74 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L,0x0000200100000000L});
-        public static final BitSet FOLLOW_75 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000100000000L});
-        public static final BitSet FOLLOW_76 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000012000000000L});
-        public static final BitSet FOLLOW_77 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000001L});
-        public static final BitSet FOLLOW_78 = new BitSet(new long[]{0x0400000000000000L,0x0100000010024000L,0xA80202B000001000L,0x0000000000000001L});
-        public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0002000000000000L});
-        public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0004000002000000L});
-        public static final BitSet FOLLOW_81 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x2800028000000000L,0x0000000000000001L});
-        public static final BitSet FOLLOW_82 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000002000000L});
-        public static final BitSet FOLLOW_83 = new BitSet(new long[]{0x0000000000000000L,0x0040000000000000L});
-        public static final BitSet FOLLOW_84 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
-        public static final BitSet FOLLOW_85 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
-        public static final BitSet FOLLOW_86 = new BitSet(new long[]{0x0000000000000000L,0x0200000000000000L});
-        public static final BitSet FOLLOW_87 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000004000000L});
+        public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L,0x0000000000000001L});
+        public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000200000000000L});
+        public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x8000000000000000L});
+        public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000800000000L});
+        public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000020000000L});
+        public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L,0x0000000200000000L});
+        public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000002L,0x0000400000000000L,0x0000000200000000L});
+        public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L,0x0000000000008000L});
+        public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L,0x0000000000008000L});
+        public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x8000000000000000L});
+        public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x1A80A004071B99F0L,0xE80E20924020A01CL,0x00000000000500C0L});
+        public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0001C00058000000L});
+        public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000028000000000L});
+        public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000028000000000L});
+        public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000084800000000L});
+        public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000084800000000L});
+        public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
+        public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0008000000000000L});
+        public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000020000400000L});
+        public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000002000000000L});
+        public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
+        public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000002L});
+        public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x607F5F7BF8E46600L,0x11A19F69847D1FE3L,0xA812021081F83B3AL,0x0000000000000001L});
+        public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x2000000000000000L});
+        public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0800000000000000L});
+        public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L,0x0000000000001000L});
+        public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000080000000L});
+        public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000400L});
+        public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000001L});
+        public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0000000000000000L,0x0000030000000000L});
+        public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000001000000000L});
+        public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x607F5F7BF8E46600L,0x11A19F69847D1FE3L,0xA812023080F83B3AL,0x0000000000000001L});
+        public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x605F5F7BF8E46600L,0x10219C61843D1FE3L,0x0000000000B02328L});
+        public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000000000000L,0x0080000800000000L,0x0000000000000010L});
+        public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000010000020000L});
+        public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000020000L});
+        public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0020000000000000L});
+        public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000080000L});
+        public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0020000000000000L});
+        public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000000000L,0x0410000000000000L});
+        public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000000000000002L,0x0410000000000000L});
+        public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000000000000L,0x0000000800000000L});
+        public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
+        public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x0000000000000002L,0x0080000800000000L,0x0000000000000010L});
+        public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000000000000L,0x0400000000000000L});
+        public static final BitSet FOLLOW_73 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000020004000L});
+        public static final BitSet FOLLOW_74 = new BitSet(new long[]{0x0400000000000000L,0x0100000010024000L,0xA802029000001000L,0x0000000000000001L});
+        public static final BitSet FOLLOW_75 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L,0x0000200100000000L});
+        public static final BitSet FOLLOW_76 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000100000000L});
+        public static final BitSet FOLLOW_77 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000012000000000L});
+        public static final BitSet FOLLOW_78 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x0000000000000001L});
+        public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x0400000000000000L,0x0100000010024000L,0xA80202B000001000L,0x0000000000000001L});
+        public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0002000000000000L});
+        public static final BitSet FOLLOW_81 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0004000002000000L});
+        public static final BitSet FOLLOW_82 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x2800028000000000L,0x0000000000000001L});
+        public static final BitSet FOLLOW_83 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000002000000L});
+        public static final BitSet FOLLOW_84 = new BitSet(new long[]{0x0000000000000000L,0x0040000000000000L});
+        public static final BitSet FOLLOW_85 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000400000000L});
+        public static final BitSet FOLLOW_86 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+        public static final BitSet FOLLOW_87 = new BitSet(new long[]{0x0000000000000000L,0x0200000000000000L});
+        public static final BitSet FOLLOW_88 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000004000000L});
     }
 
 

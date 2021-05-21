@@ -146,6 +146,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//QuantifiedExpr/quant"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//QuantifiedExpr/args"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//QuantifiedExpr/expr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//QuantifiedExpr/name"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//LibraryFnCallExpr">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//LibraryFnCallExpr/libName"/>

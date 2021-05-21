@@ -871,16 +871,16 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//ClaimContext:
-		//	'context' name=ID ':' expr=Expr ';';
+		//	'context' name=ID? ':' expr=Expr ';';
 		@Override public ParserRule getRule() { return rule; }
 
-		//'context' name=ID ':' expr=Expr ';'
+		//'context' name=ID? ':' expr=Expr ';'
 		public Group getGroup() { return cGroup; }
 
 		//'context'
 		public Keyword getContextKeyword_0() { return cContextKeyword_0; }
 
-		//name=ID
+		//name=ID?
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//ID
@@ -911,16 +911,16 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//ClaimJustification:
-		//	'justification' name=ID ':' val=StringTerm ';';
+		//	'justification' name=ID? ':' val=StringTerm ';';
 		@Override public ParserRule getRule() { return rule; }
 
-		//'justification' name=ID ':' val=StringTerm ';'
+		//'justification' name=ID? ':' val=StringTerm ';'
 		public Group getGroup() { return cGroup; }
 
 		//'justification'
 		public Keyword getJustificationKeyword_0() { return cJustificationKeyword_0; }
 
-		//name=ID
+		//name=ID?
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//ID
@@ -951,16 +951,16 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//ClaimAssumption:
-		//	'assumption' name=ID ':' expr=Expr ';';
+		//	'assumption' name=ID? ':' expr=Expr ';';
 		@Override public ParserRule getRule() { return rule; }
 
-		//'assumption' name=ID ':' expr=Expr ';'
+		//'assumption' name=ID? ':' expr=Expr ';'
 		public Group getGroup() { return cGroup; }
 
 		//'assumption'
 		public Keyword getAssumptionKeyword_0() { return cAssumptionKeyword_0; }
 
-		//name=ID
+		//name=ID?
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//ID
@@ -991,16 +991,16 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//ClaimStrategy:
-		//	'strategy' name=ID ':' val=StringTerm ';';
+		//	'strategy' name=ID? ':' val=StringTerm ';';
 		@Override public ParserRule getRule() { return rule; }
 
-		//'strategy' name=ID ':' val=StringTerm ';'
+		//'strategy' name=ID? ':' val=StringTerm ';'
 		public Group getGroup() { return cGroup; }
 
 		//'strategy'
 		public Keyword getStrategyKeyword_0() { return cStrategyKeyword_0; }
 
-		//name=ID
+		//name=ID?
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//ID
@@ -3527,7 +3527,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ClaimContext:
-	//	'context' name=ID ':' expr=Expr ';';
+	//	'context' name=ID? ':' expr=Expr ';';
 	public ClaimContextElements getClaimContextAccess() {
 		return pClaimContext;
 	}
@@ -3537,7 +3537,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ClaimJustification:
-	//	'justification' name=ID ':' val=StringTerm ';';
+	//	'justification' name=ID? ':' val=StringTerm ';';
 	public ClaimJustificationElements getClaimJustificationAccess() {
 		return pClaimJustification;
 	}
@@ -3547,7 +3547,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ClaimAssumption:
-	//	'assumption' name=ID ':' expr=Expr ';';
+	//	'assumption' name=ID? ':' expr=Expr ';';
 	public ClaimAssumptionElements getClaimAssumptionAccess() {
 		return pClaimAssumption;
 	}
@@ -3557,7 +3557,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ClaimStrategy:
-	//	'strategy' name=ID ':' val=StringTerm ';';
+	//	'strategy' name=ID? ':' val=StringTerm ';';
 	public ClaimStrategyElements getClaimStrategyAccess() {
 		return pClaimStrategy;
 	}

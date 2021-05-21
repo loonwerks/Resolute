@@ -5790,7 +5790,7 @@ rule__ClaimContext__Group__1__Impl
 :
 (
 { before(grammarAccess.getClaimContextAccess().getNameAssignment_1()); }
-(rule__ClaimContext__NameAssignment_1)
+(rule__ClaimContext__NameAssignment_1)?
 { after(grammarAccess.getClaimContextAccess().getNameAssignment_1()); }
 )
 
@@ -5950,7 +5950,7 @@ rule__ClaimJustification__Group__1__Impl
 :
 (
 { before(grammarAccess.getClaimJustificationAccess().getNameAssignment_1()); }
-(rule__ClaimJustification__NameAssignment_1)
+(rule__ClaimJustification__NameAssignment_1)?
 { after(grammarAccess.getClaimJustificationAccess().getNameAssignment_1()); }
 )
 
@@ -6110,7 +6110,7 @@ rule__ClaimAssumption__Group__1__Impl
 :
 (
 { before(grammarAccess.getClaimAssumptionAccess().getNameAssignment_1()); }
-(rule__ClaimAssumption__NameAssignment_1)
+(rule__ClaimAssumption__NameAssignment_1)?
 { after(grammarAccess.getClaimAssumptionAccess().getNameAssignment_1()); }
 )
 
@@ -6270,7 +6270,7 @@ rule__ClaimStrategy__Group__1__Impl
 :
 (
 { before(grammarAccess.getClaimStrategyAccess().getNameAssignment_1()); }
-(rule__ClaimStrategy__NameAssignment_1)
+(rule__ClaimStrategy__NameAssignment_1)?
 { after(grammarAccess.getClaimStrategyAccess().getNameAssignment_1()); }
 )
 
