@@ -33,6 +33,17 @@ source_component(c : connection) : component =
 
 destination_component(c : connection) : component =
   containing_component(destination(c))
+  
+-- Returns whether the specified connection originates somewhere inside the specified component
+is_source_component(conn : connection, comp : component) : bool =
+	source_component(conn) = comp or
+	(has_parent(source_component(conn)) and (parent(source_component(conn)) = comp or contained(parent(source_component(conn)), comp)))
+		
+-- Returns whether the specified connection terminates somewhere inside the specified component
+is_destination_component(conn : connection, comp : component) : bool =
+	destination_component(conn) = comp or
+	(has_parent(destination_component(conn)) and (parent(destination_component(conn)) = comp or contained(parent(destination_component(conn)), comp)))
+
 
 is_port_connection(c : connection) : bool =
   is_data_port_connection(c) or

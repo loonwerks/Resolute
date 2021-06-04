@@ -7,7 +7,9 @@ import java.util.TreeSet;
 
 import org.osate.aadl2.AnnexSubclause;
 import org.osate.aadl2.ComponentClassifier;
+import org.osate.aadl2.ComponentImplementation;
 import org.osate.aadl2.NamedElement;
+import org.osate.aadl2.Subcomponent;
 import org.osate.aadl2.instance.ComponentInstance;
 import org.osate.annexsupport.AnnexUtil;
 
@@ -44,7 +46,8 @@ public class ResoluteAgreeFunctions extends ResoluteExternalFunctionLibrary {
 			ResoluteValue arg1 = args.get(1);
 			assert (arg0.isNamedElement());
 			assert (arg1.isString());
-			return hasAgreeProperty(arg0.getNamedElement(), arg1.getString());
+			ComponentInstance ci = (ComponentInstance) arg0.getNamedElement();
+			return hasAgreeProperty(ci.getComponentClassifier(), arg1.getString());
 		}
 		case "agreeproperty": {
 			ResoluteValue arg0 = args.get(0);
@@ -114,12 +117,9 @@ public class ResoluteAgreeFunctions extends ResoluteExternalFunctionLibrary {
 				context.getThisInstance().getSubcomponent());
 	}
 
-	private BoolValue hasAgreeProperty(NamedElement component, String specID) {
+	private BoolValue hasAgreeProperty(ComponentClassifier component, String specID) {
 
-		ComponentInstance ci = (ComponentInstance) component;
-
-		ComponentClassifier cc = ci.getComponentClassifier();
-		for (AnnexSubclause annex : AnnexUtil.getAllAnnexSubclauses(cc,
+		for (AnnexSubclause annex : AnnexUtil.getAllAnnexSubclauses(component,
 				AgreePackage.eINSTANCE.getAgreeContractSubclause())) {
 			AgreeContract contract = (AgreeContract) ((AgreeContractSubclause) annex).getContract();
 			for (SpecStatement spec : contract.getSpecs()) {
@@ -127,6 +127,15 @@ public class ResoluteAgreeFunctions extends ResoluteExternalFunctionLibrary {
 					if (specID.equalsIgnoreCase(((NamedSpecStatement) spec).getName())) {
 						return new BoolValue(true);
 					}
+				}
+			}
+		}
+
+		if (component instanceof ComponentImplementation) {
+			ComponentImplementation ci = (ComponentImplementation) component;
+			for (Subcomponent sub : ci.getOwnedSubcomponents()) {
+				if (hasAgreeProperty(sub.getComponentType(), specID).getBool()) {
+					return new BoolValue(true);
 				}
 			}
 		}
