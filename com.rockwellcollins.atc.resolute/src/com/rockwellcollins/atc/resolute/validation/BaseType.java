@@ -65,7 +65,7 @@ public class BaseType extends ResoluteType {
 	public static final BaseType SUBPROGRAM_GROUP_ACCESS = new BaseType("subprogram_group_access");
 	public static final BaseType PROVIDES_SUBPROGRAM_GROUP_ACCESS = new BaseType("provides_subprogram_group_access");
 	public static final BaseType REQUIRES_SUBPROGRAM_GROUP_ACCESS = new BaseType("requires_subprogram_group_access");
-	
+
 	public static final BaseType FLOW_SPECIFICATION = new BaseType("flow_specification");
 	public static final BaseType END_TO_END_FLOW = new BaseType("end_to_end_flow");
 
@@ -228,12 +228,13 @@ public class BaseType extends ResoluteType {
 	public boolean equals(Object obj) {
 		if (obj instanceof BaseType) {
 			BaseType bt = (BaseType) obj;
-			return bt.name.equals(name);
+			return bt.name.equalsIgnoreCase(name);
 		}
 
 		return false;
 	}
 
+	@Override
 	public boolean similar(Type otherType) {
 		if (otherType instanceof com.rockwellcollins.atc.resolute.resolute.BaseType) {
 			com.rockwellcollins.atc.resolute.resolute.BaseType bt = (com.rockwellcollins.atc.resolute.resolute.BaseType) otherType;
