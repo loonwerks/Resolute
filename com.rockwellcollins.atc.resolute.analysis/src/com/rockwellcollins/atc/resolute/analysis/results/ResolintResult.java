@@ -7,20 +7,17 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
-import com.rockwellcollins.atc.resolute.resolute.LintStatement;
 
-public class LintResult extends ClaimResult {
+public class ResolintResult extends ClaimResult {
 
 	final private static String LINT_CHECK = "Lint_Check";
 
 	final private int severity;
-	final private LintStatement statement;
 
 
-	public LintResult(int severity, LintStatement statement, ClaimResult result) {
+	public ResolintResult(int severity, ClaimResult result) {
 		super(result.getText(), result, result.getReferences(), result.getLocation());
 		this.severity = severity;
-		this.statement = statement;
 	}
 
 	public int getSeverity() {
@@ -31,12 +28,6 @@ public class LintResult extends ClaimResult {
 		Set<EObject> locations = new HashSet<>();
 
 		findLocations(getChildren(), locations);
-
-//		// If there aren't any lint_check claims,
-//		// use the list statement call
-//		if (locations.isEmpty()) {
-//			locations.add(statement);
-//		}
 
 		return locations;
 	}

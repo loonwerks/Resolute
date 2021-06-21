@@ -39,8 +39,12 @@
      </command>
      <command
            categoryId="com.rockwellcollins.atc.resolute.analysis.commands"
-           id="com.rockwellcollins.atc.resolute.analysis.commands.linter"
-           name="Resolint">
+           id="com.rockwellcollins.atc.resolute.analysis.commands.resolint"
+           name="Run Resolint">
+     </command>
+     <command
+           id="com.rockwellcollins.atc.resolute.analysis.commands.clearmarkers"
+           name="Clear Resolint markers">
      </command>
 	 <command categoryId="com.rockwellcollins.atc.resolute.analysis.commands"
 	           id="com.rockwellcollins.atc.resolute.analysis.commands.resolutePredefined" 
@@ -114,12 +118,6 @@
                mnemonic="r"
                style="push">
          </command>
-         <command
-               commandId="com.rockwellcollins.atc.resolute.analysis.commands.linter"
-               icon="icons/claims.png"
-               id="com.rockwellcollins.atc.resolute.analysis.menus.linter"
-               style="push">
-         </command>
          <menu
                icon="icons/claims.png"
                id="com.rockwellcollins.atc.resolute.analysis.menus.predefined"
@@ -134,6 +132,20 @@
                      name="com.rockwellcollins.atc.resolute.analysis.theorem"
                      value="check_arinc653_compliance">
                </parameter>
+            </command>
+         </menu>
+         <menu
+               id="com.rockwellcollins.atc.resolute.analysis.menus.resolint"
+               label="Resolint">
+            <command
+                  commandId="com.rockwellcollins.atc.resolute.analysis.commands.resolint"
+                  id="com.rockwellcollins.atc.resolute.analysis.menus.resolint.run"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.rockwellcollins.atc.resolute.analysis.commands.clearmarkers"
+                  id="com.rockwellcollins.atc.resolute.analysis.menus.resolint.clearmarkers"
+                  style="push">
             </command>
          </menu>
       </menuContribution>
@@ -162,8 +174,8 @@
          </enabledWhen>
       </handler>
       <handler
-            class="com.rockwellcollins.atc.resolute.analysis.handlers.LinterHandler"
-            commandId="com.rockwellcollins.atc.resolute.analysis.commands.linter">
+            class="com.rockwellcollins.atc.resolute.analysis.handlers.ResolintHandler"
+            commandId="com.rockwellcollins.atc.resolute.analysis.commands.resolint">
       </handler>
       <handler
             class="com.rockwellcollins.atc.resolute.analysis.handlers.ResoluteHandler"
@@ -173,6 +185,10 @@
                   definitionId="com.rockwellcollins.atc.resolute.analysis.expressions.isSingleOutlineSelection">
             </reference>
          </enabledWhen>
+      </handler>
+      <handler
+            class="com.rockwellcollins.atc.resolute.analysis.handlers.ClearMarkersHandler"
+            commandId="com.rockwellcollins.atc.resolute.analysis.commands.clearmarkers">
       </handler>
    </extension>
    

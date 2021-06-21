@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -44,7 +45,7 @@ import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
 import com.rockwellcollins.atc.resolute.analysis.execution.FeatureToConnectionsMap;
 import com.rockwellcollins.atc.resolute.analysis.execution.NamedElementComparator;
 import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteInterpreter;
-import com.rockwellcollins.atc.resolute.analysis.results.LintResult;
+import com.rockwellcollins.atc.resolute.analysis.results.ResolintResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
 import com.rockwellcollins.atc.resolute.resolute.AnalysisStatement;
 import com.rockwellcollins.atc.resolute.resolute.CheckStatement;
@@ -57,13 +58,13 @@ import com.rockwellcollins.atc.resolute.resolute.Ruleset;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
 import com.rockwellcollins.atc.resolute.validation.BaseType;
 
-public class LinterHandler extends AadlHandler {
+public class ResolintHandler extends AadlHandler {
 
 	private static final String MARKER_TYPE = "com.rockwellcollins.atc.resolute.linter.marker";
 
 	@Override
 	protected String getJobName() {
-		return "Resolute Lint Analysis";
+		return "Resolint Analysis";
 	}
 
 	@Override
@@ -141,7 +142,7 @@ public class LinterHandler extends AadlHandler {
 		return Status.OK_STATUS;
 	}
 
-	private void clearMarkers(ComponentImplementation ci) {
+	public static void clearMarkers(ComponentImplementation ci) {
 
 		for (Resource r : ci.eResource().getResourceSet().getResources()) {
 			try {
@@ -161,9 +162,10 @@ public class LinterHandler extends AadlHandler {
 
 		for (ResoluteResult resoluteResult : checkTrees) {
 			if (resoluteResult != null && !resoluteResult.isValid()) {
-				LintResult result = (LintResult) resoluteResult;
+				ResolintResult result = (ResolintResult) resoluteResult;
 				try {
-					if (result.getLocations().isEmpty()) {
+					Set<EObject> locations = result.getLocations();
+					if (locations.isEmpty()) {
 						IMarker marker = getIResource(ci.eResource()).createMarker(MARKER_TYPE);
 						marker.setAttribute(IMarker.MESSAGE, result.getText());
 						int severity = result.getSeverity();
@@ -175,8 +177,19 @@ public class LinterHandler extends AadlHandler {
 						}
 						marker.setAttribute(IMarker.LINE_NUMBER, getLineNumberFor(ci));
 					} else {
-						for (EObject ref : result.getLocations()) {
-							if (ref != null) {
+						for (EObject ref : locations) {
+							if (ref == null) {
+								IMarker marker = getIResource(ci.eResource()).createMarker(MARKER_TYPE);
+								marker.setAttribute(IMarker.MESSAGE, result.getText());
+								int severity = result.getSeverity();
+								marker.setAttribute(IMarker.SEVERITY, severity);
+								if (severity == IMarker.SEVERITY_ERROR) {
+									errors++;
+								} else if (severity == IMarker.SEVERITY_WARNING) {
+									warnings++;
+								}
+								marker.setAttribute(IMarker.LINE_NUMBER, getLineNumberFor(ci));
+							} else {
 								IMarker marker = getIResource(ref.eResource()).createMarker(MARKER_TYPE);
 								marker.setAttribute(IMarker.MESSAGE, result.getText());
 								int severity = result.getSeverity();

@@ -7,7 +7,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
 
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
-import com.rockwellcollins.atc.resolute.analysis.results.LintResult;
+import com.rockwellcollins.atc.resolute.analysis.results.ResolintResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
 import com.rockwellcollins.atc.resolute.resolute.ErrorStatement;
 import com.rockwellcollins.atc.resolute.resolute.InfoStatement;
@@ -47,7 +47,7 @@ public class ResoluteInterpreter {
 
 		ResoluteResult result = evaluateLintStatementBody(lintStatement);
 		if (result instanceof ClaimResult) {
-			return new LintResult(severity, lintStatement, (ClaimResult) result);
+			return new ResolintResult(severity, (ClaimResult) result);
 		}
 		return null;
 	}
