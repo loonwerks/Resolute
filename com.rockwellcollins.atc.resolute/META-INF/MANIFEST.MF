@@ -15,11 +15,12 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.util,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
- org.antlr.runtime,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
  org.eclipse.xtext.common.types,
  org.osate.xtext.aadl2.properties;bundle-version="[3.0.0,4.0.0)",
  org.osate.xtext.aadl2;bundle-version="[6.0.0,7.0.0)",
- org.osate.aadl2;bundle-version="[4.0.0,5.0.0)"
+ org.osate.aadl2;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
@@ -38,4 +39,3 @@ Export-Package: com.rockwellcollins.atc.resolute,
  com.rockwellcollins.atc.resolute.validation,
  com.rockwellcollins.atc.resolute.parser.antlr.lexer
 Automatic-Module-Name: com.rockwellcollins.atc.resolute
-
