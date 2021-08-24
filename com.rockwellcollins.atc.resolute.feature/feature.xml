@@ -48,6 +48,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       <import plugin="org.eclipse.emf.common"/>
       <import plugin="org.antlr.runtime"/>
       <import plugin="org.eclipse.xtext.common.types"/>
+      <import plugin="org.osate.xtext.aadl2.properties" version="3.0.0" match="compatible"/>
+      <import plugin="org.osate.xtext.aadl2" version="5.0.0" match="compatible"/>
       <import plugin="org.osate.aadl2" version="4.0.0" match="compatible"/>
       <import plugin="org.apache.log4j"/>
       <import plugin="org.eclipse.xtext.xbase.lib"/>
@@ -76,19 +78,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       <import plugin="org.eclipse.gmf.runtime.emf.commands.core"/>
       <import plugin="org.eclipse.gmf.runtime.notation.edit"/>
       <import plugin="org.eclipse.emf" version="2.6.0" match="greaterOrEqual"/>
-      <import plugin="com.rockwellcollins.atc.agree" version="2.4.1" match="compatible"/>
-      <import plugin="com.rockwellcollins.atc.agree.analysis" version="2.4.1" match="compatible"/>
-      <import plugin="org.eclipse.core.resources" version="3.12.0" match="greaterOrEqual"/>
-      <import plugin="com.collins.trustedsystems.jkindapi" version="4.0.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.common.types.ui"/>
-      <import feature="org.osate.core.feature" version="2.7.0" match="greaterOrEqual"/>
-      <import feature="com.rockwellcollins.atc.agree.feature" version="2.4.2" match="greaterOrEqual"/>
-      <import plugin="org.osate.xtext.aadl2.properties" version="3.0.0" match="compatible"/>
-      <import plugin="org.osate.xtext.aadl2" version="5.0.0" match="compatible"/>
-      <import plugin="org.osate.annexsupport" version="3.0.0" match="compatible"/>
       <import plugin="org.osate.xtext.aadl2.properties.ui" version="4.0.0" match="compatible"/>
-      <import plugin="org.osate.aadl2.modelsupport" version="5.0.0" match="compatible"/>
-      <import plugin="org.osate.xtext.aadl2.ui" version="5.0.0" match="compatible"/>
+      <import plugin="org.osate.annexsupport" version="3.0.0" match="compatible"/>
+      <import plugin="org.osate.aadl2.modelsupport" version="5.0.0"/>
+      <import plugin="org.osate.xtext.aadl2.ui" version="5.0.0"/>
+      <import feature="org.osate.core.feature" version="2.7.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -100,20 +95,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
    <plugin
          id="com.rockwellcollins.atc.resolute.analysis"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="com.rockwellcollins.atc.resolute.agreelib"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="com.rockwellcollins.atc.resolute.agreecheck"
          download-size="0"
          install-size="0"
          version="0.0.0"
