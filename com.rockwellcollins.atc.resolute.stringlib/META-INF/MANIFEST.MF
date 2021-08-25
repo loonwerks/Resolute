@@ -11,5 +11,5 @@ Require-Bundle: org.eclipse.ui,
  org.osate.aadl2;bundle-version="[4.0.0,5.0.0)",
  com.rockwellcollins.atc.resolute,
  com.rockwellcollins.atc.resolute.analysis
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: StringLib
