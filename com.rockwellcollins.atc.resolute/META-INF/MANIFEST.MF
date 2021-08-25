@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.util,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
- org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ org.antlr.runtime,
  org.eclipse.xtext.common.types,
  org.osate.xtext.aadl2.properties;bundle-version="[3.0.0,4.0.0)",
  org.osate.xtext.aadl2;bundle-version="[6.0.0,7.0.0)",
@@ -39,3 +39,4 @@ Export-Package: com.rockwellcollins.atc.resolute,
  com.rockwellcollins.atc.resolute.validation,
  com.rockwellcollins.atc.resolute.parser.antlr.lexer
 Automatic-Module-Name: com.rockwellcollins.atc.resolute
+

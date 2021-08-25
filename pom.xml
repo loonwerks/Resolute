@@ -23,8 +23,6 @@
 
 	<modules>
 		<module>com.rockwellcollins.atc.resolute</module>
-		<module>com.rockwellcollins.atc.resolute.agreecheck</module>
-		<module>com.rockwellcollins.atc.resolute.agreelib</module>
 		<module>com.rockwellcollins.atc.resolute.analysis</module>
 		<module>com.rockwellcollins.atc.resolute.feature</module>
 		<module>com.rockwellcollins.atc.resolute.ngrep</module>
