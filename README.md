@@ -17,6 +17,23 @@ TBD
 
 ### Branches and Tags
 
+Development in Resolute takes place on two main branches: 'master' and
+'stable.'  The 'master' branch is the leading edge of development of
+AGREE and it maintains compatibility with the OSATE master branch.
+Developers are encouraged to create branches from the Resolute master
+branch to implement new features, address issues, or fix bugs.  Once
+these branch developments are ready, they may be merged into the 
+master branch.  ATO be ready for merging onto the master branch,
+work must not break build or regression testing, must be deemed
+ready for use by the developmental users, and should have a suite
+of test cases.
+
+The Resolute 'stable' branch contains the releases of Resolute (since
+Resolute 2.7.1).  At time for releases, the progress on the master
+branch is merged onto the stable branch.  At this point progress
+on the master must be ready for release to the public user community
+vi a marked release in GitHub.
+
 The Resolute tool development occurs on mainly on the **master** branch
 of this repository.  The 'master' branch contains the releases and the
 HEAD of this branch should contain the latest release.  Individual
