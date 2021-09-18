@@ -250,7 +250,7 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 			}
 
 			if (leftValue.isReal() && rightValue.isInt()) {
-				return new RealValue(leftValue.getInt() + (double) rightValue.getInt());
+				return new RealValue(leftValue.getReal() + rightValue.getInt());
 			}
 
 			if (leftValue.isString()) {
@@ -272,7 +272,7 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 			}
 
 			if (leftValue.isReal() && rightValue.isInt()) {
-				return new RealValue(leftValue.getInt() - (double) rightValue.getInt());
+				return new RealValue(leftValue.getReal() - rightValue.getInt());
 			}
 			break;
 
@@ -286,7 +286,7 @@ public class ResoluteEvaluator extends ResoluteSwitch<ResoluteValue> {
 			}
 
 			if (leftValue.isInt() && rightValue.isReal()) {
-				return new RealValue((leftValue.getInt()) * rightValue.getReal());
+				return new RealValue(leftValue.getInt() * rightValue.getReal());
 			}
 
 			if (leftValue.isReal() && rightValue.isInt()) {
