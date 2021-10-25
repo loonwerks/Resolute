@@ -63,6 +63,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getBuiltInFnAccess().getAlternatives(), "rule__BuiltInFn__Alternatives");
 					put(grammarAccess.getLintStatementAccess().getAlternatives(), "rule__LintStatement__Alternatives");
 					put(grammarAccess.getAnalysisStatementAccess().getAlternatives(), "rule__AnalysisStatement__Alternatives");
+					put(grammarAccess.getAnalysisStatementAccess().getTagAlternatives_0_1_0(), "rule__AnalysisStatement__TagAlternatives_0_1_0");
 					put(grammarAccess.getContainedPropertyAssociationAccess().getAlternatives_1(), "rule__ContainedPropertyAssociation__Alternatives_1");
 					put(grammarAccess.getPropertyAssociationAccess().getAlternatives_1(), "rule__PropertyAssociation__Alternatives_1");
 					put(grammarAccess.getPropertyExpressionAccess().getAlternatives(), "rule__PropertyExpression__Alternatives");
@@ -326,7 +327,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getRealTermAccess().getUnitAssignment_1(), "rule__RealTerm__UnitAssignment_1");
 					put(grammarAccess.getIntegerTermAccess().getValueAssignment_0(), "rule__IntegerTerm__ValueAssignment_0");
 					put(grammarAccess.getIntegerTermAccess().getUnitAssignment_1(), "rule__IntegerTerm__UnitAssignment_1");
-					put(grammarAccess.getResoluteSubclauseAccess().getProvesAssignment_1(), "rule__ResoluteSubclause__ProvesAssignment_1");
+					put(grammarAccess.getResoluteSubclauseAccess().getAnalysesAssignment_1(), "rule__ResoluteSubclause__AnalysesAssignment_1");
 					put(grammarAccess.getNestedDotIDAccess().getBaseAssignment_0(), "rule__NestedDotID__BaseAssignment_0");
 					put(grammarAccess.getNestedDotIDAccess().getSubAssignment_1_1(), "rule__NestedDotID__SubAssignment_1_1");
 					put(grammarAccess.getLintStatementAccess().getExprAssignment_0_2(), "rule__LintStatement__ExprAssignment_0_2");
@@ -335,6 +336,7 @@ public class ResoluteParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getRulesetAccess().getNameAssignment_1(), "rule__Ruleset__NameAssignment_1");
 					put(grammarAccess.getRulesetAccess().getBodyAssignment_3(), "rule__Ruleset__BodyAssignment_3");
 					put(grammarAccess.getRulesetBodyAccess().getLintStatementsAssignment_1(), "rule__RulesetBody__LintStatementsAssignment_1");
+					put(grammarAccess.getAnalysisStatementAccess().getTagAssignment_0_1(), "rule__AnalysisStatement__TagAssignment_0_1");
 					put(grammarAccess.getAnalysisStatementAccess().getExprAssignment_0_2(), "rule__AnalysisStatement__ExprAssignment_0_2");
 					put(grammarAccess.getAnalysisStatementAccess().getExprAssignment_1_2(), "rule__AnalysisStatement__ExprAssignment_1_2");
 					put(grammarAccess.getContainedPropertyAssociationAccess().getPropertyAssignment_0(), "rule__ContainedPropertyAssociation__PropertyAssignment_0");

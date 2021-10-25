@@ -306,6 +306,7 @@ BuiltInFn:
 |	'instances'
 |	'debug'
 |	'analysis'
+|	'resolint'
 
 // Error Annex
 |	'receive_error'           // the component can receive an incoming error
@@ -340,7 +341,7 @@ UnsignedInt returns aadl2::Integer:
 
 ResoluteSubclause:
 	{ResoluteSubclause}
-	proves+=AnalysisStatement*
+	analyses+=AnalysisStatement*
 
 ;
 
@@ -364,7 +365,7 @@ RulesetBody:
 ;
 
 AnalysisStatement:
-	{ProveStatement} 'prove' expr=Expr
+	{ArgueStatement} tag=('argue' | 'prove') expr=Expr
 |	{CheckStatement} 'check' expr=Expr	
 ;
 

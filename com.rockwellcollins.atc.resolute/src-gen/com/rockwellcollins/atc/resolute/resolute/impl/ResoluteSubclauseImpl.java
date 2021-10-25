@@ -28,7 +28,7 @@ import org.osate.aadl2.impl.AnnexSubclauseImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ResoluteSubclauseImpl#getProves <em>Proves</em>}</li>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.impl.ResoluteSubclauseImpl#getAnalyses <em>Analyses</em>}</li>
  * </ul>
  *
  * @generated
@@ -36,14 +36,14 @@ import org.osate.aadl2.impl.AnnexSubclauseImpl;
 public class ResoluteSubclauseImpl extends AnnexSubclauseImpl implements ResoluteSubclause
 {
   /**
-   * The cached value of the '{@link #getProves() <em>Proves</em>}' containment reference list.
+   * The cached value of the '{@link #getAnalyses() <em>Analyses</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProves()
+   * @see #getAnalyses()
    * @generated
    * @ordered
    */
-  protected EList<AnalysisStatement> proves;
+  protected EList<AnalysisStatement> analyses;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,13 +72,13 @@ public class ResoluteSubclauseImpl extends AnnexSubclauseImpl implements Resolut
    * @generated
    */
   @Override
-  public EList<AnalysisStatement> getProves()
+  public EList<AnalysisStatement> getAnalyses()
   {
-    if (proves == null)
+    if (analyses == null)
     {
-      proves = new EObjectContainmentEList<AnalysisStatement>(AnalysisStatement.class, this, ResolutePackage.RESOLUTE_SUBCLAUSE__PROVES);
+      analyses = new EObjectContainmentEList<AnalysisStatement>(AnalysisStatement.class, this, ResolutePackage.RESOLUTE_SUBCLAUSE__ANALYSES);
     }
-    return proves;
+    return analyses;
   }
 
   /**
@@ -91,8 +91,8 @@ public class ResoluteSubclauseImpl extends AnnexSubclauseImpl implements Resolut
   {
     switch (featureID)
     {
-      case ResolutePackage.RESOLUTE_SUBCLAUSE__PROVES:
-        return ((InternalEList<?>)getProves()).basicRemove(otherEnd, msgs);
+      case ResolutePackage.RESOLUTE_SUBCLAUSE__ANALYSES:
+        return ((InternalEList<?>)getAnalyses()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -107,8 +107,8 @@ public class ResoluteSubclauseImpl extends AnnexSubclauseImpl implements Resolut
   {
     switch (featureID)
     {
-      case ResolutePackage.RESOLUTE_SUBCLAUSE__PROVES:
-        return getProves();
+      case ResolutePackage.RESOLUTE_SUBCLAUSE__ANALYSES:
+        return getAnalyses();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -124,9 +124,9 @@ public class ResoluteSubclauseImpl extends AnnexSubclauseImpl implements Resolut
   {
     switch (featureID)
     {
-      case ResolutePackage.RESOLUTE_SUBCLAUSE__PROVES:
-        getProves().clear();
-        getProves().addAll((Collection<? extends AnalysisStatement>)newValue);
+      case ResolutePackage.RESOLUTE_SUBCLAUSE__ANALYSES:
+        getAnalyses().clear();
+        getAnalyses().addAll((Collection<? extends AnalysisStatement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -142,8 +142,8 @@ public class ResoluteSubclauseImpl extends AnnexSubclauseImpl implements Resolut
   {
     switch (featureID)
     {
-      case ResolutePackage.RESOLUTE_SUBCLAUSE__PROVES:
-        getProves().clear();
+      case ResolutePackage.RESOLUTE_SUBCLAUSE__ANALYSES:
+        getAnalyses().clear();
         return;
     }
     super.eUnset(featureID);
@@ -159,8 +159,8 @@ public class ResoluteSubclauseImpl extends AnnexSubclauseImpl implements Resolut
   {
     switch (featureID)
     {
-      case ResolutePackage.RESOLUTE_SUBCLAUSE__PROVES:
-        return proves != null && !proves.isEmpty();
+      case ResolutePackage.RESOLUTE_SUBCLAUSE__ANALYSES:
+        return analyses != null && !analyses.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -367,9 +367,9 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
         return createInfoStatementAdapter();
       }
       @Override
-      public Adapter caseProveStatement(ProveStatement object)
+      public Adapter caseArgueStatement(ArgueStatement object)
       {
-        return createProveStatementAdapter();
+        return createArgueStatementAdapter();
       }
       @Override
       public Adapter caseCheckStatement(CheckStatement object)
@@ -1284,16 +1284,16 @@ public class ResoluteAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.ProveStatement <em>Prove Statement</em>}'.
+   * Creates a new adapter for an object of class '{@link com.rockwellcollins.atc.resolute.resolute.ArgueStatement <em>Argue Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.rockwellcollins.atc.resolute.resolute.ProveStatement
+   * @see com.rockwellcollins.atc.resolute.resolute.ArgueStatement
    * @generated
    */
-  public Adapter createProveStatementAdapter()
+  public Adapter createArgueStatementAdapter()
   {
     return null;
   }

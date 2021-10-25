@@ -52,10 +52,10 @@ import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteInterpreter;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
 import com.rockwellcollins.atc.resolute.analysis.views.AssuranceCaseView;
 import com.rockwellcollins.atc.resolute.resolute.AnalysisStatement;
+import com.rockwellcollins.atc.resolute.resolute.ArgueStatement;
 import com.rockwellcollins.atc.resolute.resolute.FnCallExpr;
 import com.rockwellcollins.atc.resolute.resolute.FunctionDefinition;
 import com.rockwellcollins.atc.resolute.resolute.IdExpr;
-import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.ResoluteFactory;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
 import com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause;
@@ -137,7 +137,7 @@ public class ResoluteHandler extends AadlHandler {
 
 	@Override
 	protected IStatus runJob(Element root, IProgressMonitor monitor) {
-		clearProofs();
+		clearArguments();
 		disableRerunHandler();
 		String theorem;
 
@@ -165,7 +165,7 @@ public class ResoluteHandler extends AadlHandler {
 		initializeSets(si, sets);
 		FeatureToConnectionsMap featToConnsMap = new FeatureToConnectionsMap(si);
 
-		List<ResoluteResult> proofTrees = new ArrayList<>();
+		List<ResoluteResult> argumentTrees = new ArrayList<>();
 
 		if (theorem != null) {
 
@@ -173,29 +173,28 @@ public class ResoluteHandler extends AadlHandler {
 			FunctionDefinition functionDefinition = resolveResoluteFunction(si, theorem);
 
 			ResoluteSubclause resoluteSubclause = ResoluteFactory.eINSTANCE.createResoluteSubclause();
-			ProveStatement proveStatement;
-			FnCallExpr fnCallExpr;
+			ArgueStatement argueStatement = ResoluteFactory.eINSTANCE.createArgueStatement();
+			FnCallExpr fnCallExpr = ResoluteFactory.eINSTANCE.createFnCallExpr();
 
-			proveStatement = ResoluteFactory.eINSTANCE.createProveStatement();
-			fnCallExpr = ResoluteFactory.eINSTANCE.createFnCallExpr();
 			fnCallExpr.getArgs().add(ResoluteFactory.eINSTANCE.createThisExpr());
 			fnCallExpr.setFn(functionDefinition);
 
-			proveStatement.setExpr(fnCallExpr);
-			resoluteSubclause.getProves().add(proveStatement);
+			argueStatement.setTag("argue");
+			argueStatement.setExpr(fnCallExpr);
+			resoluteSubclause.getAnalyses().add(argueStatement);
 			si.getComponentClassifier().getOwnedAnnexSubclauses().add(resoluteSubclause);
 
 			ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
 
-			for (AnalysisStatement as : resoluteSubclause.getProves()) {
-				if (as instanceof ProveStatement) {
-					ProveStatement ps = (ProveStatement) as;
+			for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
+				if (as instanceof ArgueStatement) {
+					ArgueStatement stmt = (ArgueStatement) as;
 					try {
-						proofTrees.add(interpreter.evaluateProveStatement(ps));
+						argumentTrees.add(interpreter.evaluateArgueStatement(stmt));
 					} catch (Exception e) {
-						handleProveStatementException(ps, e);
+						handleArgueStatementException(stmt, e);
 					}
-					drawProofs(proofTrees);
+					drawArguments(argumentTrees);
 				}
 			}
 
@@ -210,15 +209,15 @@ public class ResoluteHandler extends AadlHandler {
 						ResoluteSubclause resoluteSubclause = (ResoluteSubclause) subclause;
 						EvaluationContext context = new EvaluationContext(compInst, sets, featToConnsMap);
 						ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
-						for (AnalysisStatement as : resoluteSubclause.getProves()) {
-							if (as instanceof ProveStatement) {
-								ProveStatement ps = (ProveStatement) as;
+						for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
+							if (as instanceof ArgueStatement) {
+								ArgueStatement stmt = (ArgueStatement) as;
 								try {
-									proofTrees.add(interpreter.evaluateProveStatement(ps));
+									argumentTrees.add(interpreter.evaluateArgueStatement(stmt));
 								} catch (Exception e) {
-									handleProveStatementException(ps, e);
+									handleArgueStatementException(stmt, e);
 								}
-								drawProofs(proofTrees);
+								drawArguments(argumentTrees);
 							}
 						}
 					}
@@ -235,10 +234,11 @@ public class ResoluteHandler extends AadlHandler {
 		return Status.OK_STATUS;
 	}
 
-	private void handleProveStatementException(ProveStatement ps, Exception e) {
-		String bodyText = simpleSerializer(ps.getExpr());
+	private void handleArgueStatementException(ArgueStatement as, Exception e) {
+		String bodyText = simpleSerializer(as.getExpr());
 		getWindow().getShell().getDisplay().syncExec(() -> {
-			MessageDialog.openError(getWindow().getShell(), "Error in prove statement: " + bodyText, e.getMessage());
+			MessageDialog.openError(getWindow().getShell(), "Error in " + as.getTag() + " statement: " + bodyText,
+					e.getMessage());
 		});
 		e.printStackTrace();
 	}
@@ -316,23 +316,23 @@ public class ResoluteHandler extends AadlHandler {
 		set.add(ne);
 	}
 
-	private void drawProofs(final List<ResoluteResult> proofTrees) {
+	private void drawArguments(final List<ResoluteResult> argumentTrees) {
 		final IWorkbenchPage page = getWindow().getActivePage();
 
-		Display.getDefault().asyncExec(() -> displayView(proofTrees, page));
+		Display.getDefault().asyncExec(() -> displayView(argumentTrees, page));
 	}
 
-	private void displayView(final List<ResoluteResult> proofTrees, final IWorkbenchPage page) {
+	private void displayView(final List<ResoluteResult> argumentTrees, final IWorkbenchPage page) {
 		try {
 			AssuranceCaseView view = (AssuranceCaseView) page.showView(AssuranceCaseView.ID);
-			view.setProofs(proofTrees);
+			view.setProofs(argumentTrees);
 			view.setFocus();
 		} catch (PartInitException e) {
 			e.printStackTrace();
 		}
 	}
 
-	protected void clearProofs() {
-		drawProofs(Collections.<ResoluteResult>emptyList());
+	protected void clearArguments() {
+		drawArguments(Collections.<ResoluteResult> emptyList());
 	}
 }

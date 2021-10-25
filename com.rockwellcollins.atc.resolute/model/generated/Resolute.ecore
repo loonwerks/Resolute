@@ -52,7 +52,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//Expr" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResoluteSubclause" eSuperTypes="platform:/resource/org.osate.aadl2/model/aadl2.ecore#//AnnexSubclause">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="proves" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="analyses" upperBound="-1"
         eType="#//AnalysisStatement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NestedDotID">
@@ -219,6 +219,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="WarningStatement" eSuperTypes="#//LintStatement"/>
   <eClassifiers xsi:type="ecore:EClass" name="ErrorStatement" eSuperTypes="#//LintStatement"/>
   <eClassifiers xsi:type="ecore:EClass" name="InfoStatement" eSuperTypes="#//LintStatement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ProveStatement" eSuperTypes="#//AnalysisStatement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ArgueStatement" eSuperTypes="#//AnalysisStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CheckStatement" eSuperTypes="#//AnalysisStatement"/>
 </ecore:EPackage>

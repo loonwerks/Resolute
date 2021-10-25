@@ -58,6 +58,7 @@ import com.rockwellcollins.atc.resolute.analysis.external.EvaluateTypeExtention;
 import com.rockwellcollins.atc.resolute.analysis.external.ResoluteExternalAnalysisType;
 import com.rockwellcollins.atc.resolute.analysis.external.ResoluteExternalFunctionLibraryType;
 import com.rockwellcollins.atc.resolute.resolute.Arg;
+import com.rockwellcollins.atc.resolute.resolute.ArgueStatement;
 import com.rockwellcollins.atc.resolute.resolute.BinaryExpr;
 import com.rockwellcollins.atc.resolute.resolute.BoolExpr;
 import com.rockwellcollins.atc.resolute.resolute.BuiltInFnCallExpr;
@@ -88,7 +89,6 @@ import com.rockwellcollins.atc.resolute.resolute.LintStatement;
 import com.rockwellcollins.atc.resolute.resolute.ListExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.NestedDotID;
-import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.QuantArg;
 import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
 import com.rockwellcollins.atc.resolute.resolute.RealExpr;
@@ -130,21 +130,26 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	/*********** begin expression type checking functions *************/
 
 	@Check
-	public void checkProveStatement(ProveStatement prove) {
-		Expr proveExpr = prove.getExpr();
+	public void checkArgueStatement(ArgueStatement argue) {
 
-		if (proveExpr instanceof FnCallExpr) {
-			FnCallExpr fnCallExpr = (FnCallExpr) proveExpr;
+		if (argue.getTag().equalsIgnoreCase("prove")) {
+			warning(argue, "'prove' statements have been deprecated.  Use 'argue' instead.");
+		}
+
+		Expr argueExpr = argue.getExpr();
+
+		if (argueExpr instanceof FnCallExpr) {
+			FnCallExpr fnCallExpr = (FnCallExpr) argueExpr;
 			if (fnCallExpr.getFn().getBody() instanceof ClaimBody) {
 				return;
 			}
 			if (fnCallExpr.getFn().eIsProxy()) {
-				error(prove, "Could not find claim function");
+				error(argue, "Could not find claim function");
 				return;
 			}
 		}
 
-		error(prove, "Prove statements must contain a claim");
+		error(argue, "'" + argue.getTag() + "' statements must contain a claim");
 	}
 
 	@Check
@@ -731,7 +736,7 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 	private boolean inClaimContext(EObject obj) {
 		EObject context = obj.eContainer();
 
-		if (context instanceof ClaimBody || context instanceof ProveStatement || context instanceof LintStatement) {
+		if (context instanceof ClaimBody || context instanceof ArgueStatement || context instanceof LintStatement) {
 			return true;
 		}
 
@@ -1261,6 +1266,9 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 		case "instance":
 		case "instances":
 			expectedTypes.add(BaseType.AADL);
+			break;
+		case "resolint":
+			expectedTypes.add(BaseType.COMPONENT);
 			break;
 
 			// Error Annex
@@ -1820,6 +1828,8 @@ public class ResoluteJavaValidator extends AbstractResoluteJavaValidator {
 			return new SetType(BaseType.COMPONENT);
 		case "analysis":
 			return getAnalysisType(funCall);
+		case "resolint":
+			return BaseType.BOOL;
 
 		case "debug":
 			return BaseType.BOOL;

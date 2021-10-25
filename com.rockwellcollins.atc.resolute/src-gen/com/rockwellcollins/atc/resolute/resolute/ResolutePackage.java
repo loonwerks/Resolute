@@ -1093,13 +1093,13 @@ public interface ResolutePackage extends EPackage
   int RESOLUTE_SUBCLAUSE__IN_MODE = Aadl2Package.ANNEX_SUBCLAUSE__IN_MODE;
 
   /**
-   * The feature id for the '<em><b>Proves</b></em>' containment reference list.
+   * The feature id for the '<em><b>Analyses</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESOLUTE_SUBCLAUSE__PROVES = Aadl2Package.ANNEX_SUBCLAUSE_FEATURE_COUNT + 0;
+  int RESOLUTE_SUBCLAUSE__ANALYSES = Aadl2Package.ANNEX_SUBCLAUSE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Subclause</em>' class.
@@ -3077,14 +3077,14 @@ public interface ResolutePackage extends EPackage
   int INFO_STATEMENT_FEATURE_COUNT = LINT_STATEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ProveStatementImpl <em>Prove Statement</em>}' class.
+   * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ArgueStatementImpl <em>Argue Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.rockwellcollins.atc.resolute.resolute.impl.ProveStatementImpl
-   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getProveStatement()
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ArgueStatementImpl
+   * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getArgueStatement()
    * @generated
    */
-  int PROVE_STATEMENT = 57;
+  int ARGUE_STATEMENT = 57;
 
   /**
    * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3093,7 +3093,7 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROVE_STATEMENT__OWNED_ELEMENT = ANALYSIS_STATEMENT__OWNED_ELEMENT;
+  int ARGUE_STATEMENT__OWNED_ELEMENT = ANALYSIS_STATEMENT__OWNED_ELEMENT;
 
   /**
    * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -3102,7 +3102,7 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROVE_STATEMENT__OWNED_COMMENT = ANALYSIS_STATEMENT__OWNED_COMMENT;
+  int ARGUE_STATEMENT__OWNED_COMMENT = ANALYSIS_STATEMENT__OWNED_COMMENT;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3111,16 +3111,25 @@ public interface ResolutePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROVE_STATEMENT__EXPR = ANALYSIS_STATEMENT__EXPR;
+  int ARGUE_STATEMENT__EXPR = ANALYSIS_STATEMENT__EXPR;
 
   /**
-   * The number of structural features of the '<em>Prove Statement</em>' class.
+   * The feature id for the '<em><b>Tag</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROVE_STATEMENT_FEATURE_COUNT = ANALYSIS_STATEMENT_FEATURE_COUNT + 0;
+  int ARGUE_STATEMENT__TAG = ANALYSIS_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Argue Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARGUE_STATEMENT_FEATURE_COUNT = ANALYSIS_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.CheckStatementImpl <em>Check Statement</em>}' class.
@@ -3516,15 +3525,15 @@ public interface ResolutePackage extends EPackage
   EClass getResoluteSubclause();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause#getProves <em>Proves</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause#getAnalyses <em>Analyses</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Proves</em>'.
-   * @see com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause#getProves()
+   * @return the meta object for the containment reference list '<em>Analyses</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause#getAnalyses()
    * @see #getResoluteSubclause()
    * @generated
    */
-  EReference getResoluteSubclause_Proves();
+  EReference getResoluteSubclause_Analyses();
 
   /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.NestedDotID <em>Nested Dot ID</em>}'.
@@ -4587,14 +4596,25 @@ public interface ResolutePackage extends EPackage
   EClass getInfoStatement();
 
   /**
-   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ProveStatement <em>Prove Statement</em>}'.
+   * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.ArgueStatement <em>Argue Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Prove Statement</em>'.
-   * @see com.rockwellcollins.atc.resolute.resolute.ProveStatement
+   * @return the meta object for class '<em>Argue Statement</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ArgueStatement
    * @generated
    */
-  EClass getProveStatement();
+  EClass getArgueStatement();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.rockwellcollins.atc.resolute.resolute.ArgueStatement#getTag <em>Tag</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Tag</em>'.
+   * @see com.rockwellcollins.atc.resolute.resolute.ArgueStatement#getTag()
+   * @see #getArgueStatement()
+   * @generated
+   */
+  EAttribute getArgueStatement_Tag();
 
   /**
    * Returns the meta object for class '{@link com.rockwellcollins.atc.resolute.resolute.CheckStatement <em>Check Statement</em>}'.
@@ -4928,12 +4948,12 @@ public interface ResolutePackage extends EPackage
     EClass RESOLUTE_SUBCLAUSE = eINSTANCE.getResoluteSubclause();
 
     /**
-     * The meta object literal for the '<em><b>Proves</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Analyses</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RESOLUTE_SUBCLAUSE__PROVES = eINSTANCE.getResoluteSubclause_Proves();
+    EReference RESOLUTE_SUBCLAUSE__ANALYSES = eINSTANCE.getResoluteSubclause_Analyses();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.NestedDotIDImpl <em>Nested Dot ID</em>}' class.
@@ -5816,14 +5836,22 @@ public interface ResolutePackage extends EPackage
     EClass INFO_STATEMENT = eINSTANCE.getInfoStatement();
 
     /**
-     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ProveStatementImpl <em>Prove Statement</em>}' class.
+     * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.ArgueStatementImpl <em>Argue Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.rockwellcollins.atc.resolute.resolute.impl.ProveStatementImpl
-     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getProveStatement()
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ArgueStatementImpl
+     * @see com.rockwellcollins.atc.resolute.resolute.impl.ResolutePackageImpl#getArgueStatement()
      * @generated
      */
-    EClass PROVE_STATEMENT = eINSTANCE.getProveStatement();
+    EClass ARGUE_STATEMENT = eINSTANCE.getArgueStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ARGUE_STATEMENT__TAG = eINSTANCE.getArgueStatement_Tag();
 
     /**
      * The meta object literal for the '{@link com.rockwellcollins.atc.resolute.resolute.impl.CheckStatementImpl <em>Check Statement</em>}' class.

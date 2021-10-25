@@ -18,7 +18,7 @@ public class RerunHandler extends AbstractHandler {
     @Override
     public Object execute(ExecutionEvent event) {
         // Manually clear the proofs in case the uri is stale and executeURI does nothing
-        resoluteHandler.clearProofs();
+		resoluteHandler.clearArguments();
         return resoluteHandler.executeURI(uri);
     }
 }

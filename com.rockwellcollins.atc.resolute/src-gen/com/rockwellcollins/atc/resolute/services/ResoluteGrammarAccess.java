@@ -388,8 +388,8 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 
 		//('int' | 'real' | 'string' | 'bool' | 'range' | 'aadl' | 'component' | 'abstract' | 'bus' | 'data' | 'device' | 'memory'
 		//| 'processor' | 'process' | 'subprogram_group' | 'subprogram' | 'system' | 'thread_group' | 'thread' | 'virtual_bus' |
-		//'virtual_processor' | 'connection' | 'property' | 'feature' | 'port' | 'data_port' | 'event_port' | 'event_data_port' |
-		//'feature_group' | 'access' | 'bus_access' | 'provides_bus_access' | 'requires_bus_access' | 'data_access' |
+		//'virtual_processor' | 'connection' | 'property' | 'feature' | 'port' | 'data_port' | 'event_port' | 'event_data_port'
+		//| 'feature_group' | 'access' | 'bus_access' | 'provides_bus_access' | 'requires_bus_access' | 'data_access' |
 		//'provides_data_access' | 'requires_data_access' | 'subprogram_access' | 'provides_subprogram_access' |
 		//'requires_subprogram_access' | 'subprogram_group_access' | 'provides_subprogram_group_access' |
 		//'requires_subprogram_group_access' | 'flow_specification' | 'end_to_end_flow')
@@ -2582,15 +2582,16 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cInstancesKeyword_56 = (Keyword)cAlternatives.eContents().get(56);
 		private final Keyword cDebugKeyword_57 = (Keyword)cAlternatives.eContents().get(57);
 		private final Keyword cAnalysisKeyword_58 = (Keyword)cAlternatives.eContents().get(58);
-		private final Keyword cReceive_errorKeyword_59 = (Keyword)cAlternatives.eContents().get(59);
-		private final Keyword cContain_errorKeyword_60 = (Keyword)cAlternatives.eContents().get(60);
-		private final Keyword cPropagate_errorKeyword_61 = (Keyword)cAlternatives.eContents().get(61);
-		private final Keyword cError_state_reachableKeyword_62 = (Keyword)cAlternatives.eContents().get(62);
-		private final Keyword cFlow_sourceKeyword_63 = (Keyword)cAlternatives.eContents().get(63);
-		private final Keyword cFlow_destinationKeyword_64 = (Keyword)cAlternatives.eContents().get(64);
-		private final Keyword cFlow_elementsKeyword_65 = (Keyword)cAlternatives.eContents().get(65);
-		private final Keyword cFlow_specificationsKeyword_66 = (Keyword)cAlternatives.eContents().get(66);
-		private final Keyword cEnd_to_end_flowsKeyword_67 = (Keyword)cAlternatives.eContents().get(67);
+		private final Keyword cResolintKeyword_59 = (Keyword)cAlternatives.eContents().get(59);
+		private final Keyword cReceive_errorKeyword_60 = (Keyword)cAlternatives.eContents().get(60);
+		private final Keyword cContain_errorKeyword_61 = (Keyword)cAlternatives.eContents().get(61);
+		private final Keyword cPropagate_errorKeyword_62 = (Keyword)cAlternatives.eContents().get(62);
+		private final Keyword cError_state_reachableKeyword_63 = (Keyword)cAlternatives.eContents().get(63);
+		private final Keyword cFlow_sourceKeyword_64 = (Keyword)cAlternatives.eContents().get(64);
+		private final Keyword cFlow_destinationKeyword_65 = (Keyword)cAlternatives.eContents().get(65);
+		private final Keyword cFlow_elementsKeyword_66 = (Keyword)cAlternatives.eContents().get(66);
+		private final Keyword cFlow_specificationsKeyword_67 = (Keyword)cAlternatives.eContents().get(67);
+		private final Keyword cEnd_to_end_flowsKeyword_68 = (Keyword)cAlternatives.eContents().get(68);
 		
 		//BuiltInFn: // Primary type: aadl
 		//	'has_property' | 'property' | 'property_member' | 'has_parent' | 'parent' | 'name' | 'type' | 'has_type' |
@@ -2606,7 +2607,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//	| 'member' | 'length' | 'size' // Primary type: list
 		//	| 'sum' | 'min' | 'max' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
 		//	| 'union' | 'intersect' | 'as_list' // Other
-		//	| 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
+		//	| 'instance' | 'instances' | 'debug' | 'analysis' | 'resolint' // Error Annex
 		//	| 'receive_error' // the component can receive an incoming error
 		//	| 'contain_error' // the component contain the error
 		//	| 'propagate_error' // the component propagate an error
@@ -2628,7 +2629,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//| 'member' | 'length' | 'size' // Primary type: list
 		//| 'sum' | 'min' | 'max' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
 		//| 'union' | 'intersect' | 'as_list' // Other
-		//| 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
+		//| 'instance' | 'instances' | 'debug' | 'analysis' | 'resolint' // Error Annex
 		//| 'receive_error' // the component can receive an incoming error
 		//| 'contain_error' // the component contain the error
 		//| 'propagate_error' // the component propagate an error
@@ -2814,32 +2815,35 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		//'analysis'
 		public Keyword getAnalysisKeyword_58() { return cAnalysisKeyword_58; }
 
+		//'resolint'
+		public Keyword getResolintKeyword_59() { return cResolintKeyword_59; }
+
 		//'receive_error'
-		public Keyword getReceive_errorKeyword_59() { return cReceive_errorKeyword_59; }
+		public Keyword getReceive_errorKeyword_60() { return cReceive_errorKeyword_60; }
 
 		//'contain_error'
-		public Keyword getContain_errorKeyword_60() { return cContain_errorKeyword_60; }
+		public Keyword getContain_errorKeyword_61() { return cContain_errorKeyword_61; }
 
 		//'propagate_error'
-		public Keyword getPropagate_errorKeyword_61() { return cPropagate_errorKeyword_61; }
+		public Keyword getPropagate_errorKeyword_62() { return cPropagate_errorKeyword_62; }
 
 		//'error_state_reachable'
-		public Keyword getError_state_reachableKeyword_62() { return cError_state_reachableKeyword_62; }
+		public Keyword getError_state_reachableKeyword_63() { return cError_state_reachableKeyword_63; }
 
 		//'flow_source'
-		public Keyword getFlow_sourceKeyword_63() { return cFlow_sourceKeyword_63; }
+		public Keyword getFlow_sourceKeyword_64() { return cFlow_sourceKeyword_64; }
 
 		//'flow_destination'
-		public Keyword getFlow_destinationKeyword_64() { return cFlow_destinationKeyword_64; }
+		public Keyword getFlow_destinationKeyword_65() { return cFlow_destinationKeyword_65; }
 
 		//'flow_elements'
-		public Keyword getFlow_elementsKeyword_65() { return cFlow_elementsKeyword_65; }
+		public Keyword getFlow_elementsKeyword_66() { return cFlow_elementsKeyword_66; }
 
 		//'flow_specifications'
-		public Keyword getFlow_specificationsKeyword_66() { return cFlow_specificationsKeyword_66; }
+		public Keyword getFlow_specificationsKeyword_67() { return cFlow_specificationsKeyword_67; }
 
 		//'end_to_end_flows'
-		public Keyword getEnd_to_end_flowsKeyword_67() { return cEnd_to_end_flowsKeyword_67; }
+		public Keyword getEnd_to_end_flowsKeyword_68() { return cEnd_to_end_flowsKeyword_68; }
 	}
 
 	public class RealTermElements extends AbstractParserRuleElementFinder {
@@ -2936,24 +2940,24 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.ResoluteSubclause");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cResoluteSubclauseAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cProvesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cProvesAnalysisStatementParserRuleCall_1_0 = (RuleCall)cProvesAssignment_1.eContents().get(0);
+		private final Assignment cAnalysesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cAnalysesAnalysisStatementParserRuleCall_1_0 = (RuleCall)cAnalysesAssignment_1.eContents().get(0);
 		
 		//ResoluteSubclause:
-		//	{ResoluteSubclause} proves+=AnalysisStatement*;
+		//	{ResoluteSubclause} analyses+=AnalysisStatement*;
 		@Override public ParserRule getRule() { return rule; }
 
-		//{ResoluteSubclause} proves+=AnalysisStatement*
+		//{ResoluteSubclause} analyses+=AnalysisStatement*
 		public Group getGroup() { return cGroup; }
 
 		//{ResoluteSubclause}
 		public Action getResoluteSubclauseAction_0() { return cResoluteSubclauseAction_0; }
 
-		//proves+=AnalysisStatement*
-		public Assignment getProvesAssignment_1() { return cProvesAssignment_1; }
+		//analyses+=AnalysisStatement*
+		public Assignment getAnalysesAssignment_1() { return cAnalysesAssignment_1; }
 
 		//AnalysisStatement
-		public RuleCall getProvesAnalysisStatementParserRuleCall_1_0() { return cProvesAnalysisStatementParserRuleCall_1_0; }
+		public RuleCall getAnalysesAnalysisStatementParserRuleCall_1_0() { return cAnalysesAnalysisStatementParserRuleCall_1_0; }
 	}
 
 	public class NestedDotIDElements extends AbstractParserRuleElementFinder {
@@ -3138,8 +3142,11 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.rockwellcollins.atc.resolute.Resolute.AnalysisStatement");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cProveStatementAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final Keyword cProveKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Action cArgueStatementAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cTagAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final Alternatives cTagAlternatives_0_1_0 = (Alternatives)cTagAssignment_0_1.eContents().get(0);
+		private final Keyword cTagArgueKeyword_0_1_0_0 = (Keyword)cTagAlternatives_0_1_0.eContents().get(0);
+		private final Keyword cTagProveKeyword_0_1_0_1 = (Keyword)cTagAlternatives_0_1_0.eContents().get(1);
 		private final Assignment cExprAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
 		private final RuleCall cExprExprParserRuleCall_0_2_0 = (RuleCall)cExprAssignment_0_2.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
@@ -3149,21 +3156,30 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprExprParserRuleCall_1_2_0 = (RuleCall)cExprAssignment_1_2.eContents().get(0);
 		
 		//AnalysisStatement:
-		//	{ProveStatement} 'prove' expr=Expr
+		//	{ArgueStatement} tag=('argue' | 'prove') expr=Expr
 		//	| {CheckStatement} 'check' expr=Expr;
 		@Override public ParserRule getRule() { return rule; }
 
-		//{ProveStatement} 'prove' expr=Expr | {CheckStatement} 'check' expr=Expr
+		//{ArgueStatement} tag=('argue' | 'prove') expr=Expr | {CheckStatement} 'check' expr=Expr
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{ProveStatement} 'prove' expr=Expr
+		//{ArgueStatement} tag=('argue' | 'prove') expr=Expr
 		public Group getGroup_0() { return cGroup_0; }
 
-		//{ProveStatement}
-		public Action getProveStatementAction_0_0() { return cProveStatementAction_0_0; }
+		//{ArgueStatement}
+		public Action getArgueStatementAction_0_0() { return cArgueStatementAction_0_0; }
+
+		//tag=('argue' | 'prove')
+		public Assignment getTagAssignment_0_1() { return cTagAssignment_0_1; }
+
+		//('argue' | 'prove')
+		public Alternatives getTagAlternatives_0_1_0() { return cTagAlternatives_0_1_0; }
+
+		//'argue'
+		public Keyword getTagArgueKeyword_0_1_0_0() { return cTagArgueKeyword_0_1_0_0; }
 
 		//'prove'
-		public Keyword getProveKeyword_0_1() { return cProveKeyword_0_1; }
+		public Keyword getTagProveKeyword_0_1_0_1() { return cTagProveKeyword_0_1_0_1; }
 
 		//expr=Expr
 		public Assignment getExprAssignment_0_2() { return cExprAssignment_0_2; }
@@ -3753,7 +3769,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	//	| 'member' | 'length' | 'size' // Primary type: list
 	//	| 'sum' | 'min' | 'max' | 'append' | 'head' | 'tail' | 'as_set' // Primary type: set
 	//	| 'union' | 'intersect' | 'as_list' // Other
-	//	| 'instance' | 'instances' | 'debug' | 'analysis' // Error Annex
+	//	| 'instance' | 'instances' | 'debug' | 'analysis' | 'resolint' // Error Annex
 	//	| 'receive_error' // the component can receive an incoming error
 	//	| 'contain_error' // the component contain the error
 	//	| 'propagate_error' // the component propagate an error
@@ -3810,7 +3826,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ResoluteSubclause:
-	//	{ResoluteSubclause} proves+=AnalysisStatement*;
+	//	{ResoluteSubclause} analyses+=AnalysisStatement*;
 	public ResoluteSubclauseElements getResoluteSubclauseAccess() {
 		return pResoluteSubclause;
 	}
@@ -3862,7 +3878,7 @@ public class ResoluteGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AnalysisStatement:
-	//	{ProveStatement} 'prove' expr=Expr
+	//	{ArgueStatement} tag=('argue' | 'prove') expr=Expr
 	//	| {CheckStatement} 'check' expr=Expr;
 	public AnalysisStatementElements getAnalysisStatementAccess() {
 		return pAnalysisStatement;

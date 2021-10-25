@@ -39,8 +39,8 @@ import com.rockwellcollins.atc.resolute.analysis.export.ResoluteDOTUtils;
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.FailResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
+import com.rockwellcollins.atc.resolute.resolute.ArgueStatement;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
-import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 
 public class AssuranceCaseView extends ViewPart {
     public static final String ID = "com.rockwellcollins.atc.resolute.views.assuranceCaseView";
@@ -67,8 +67,8 @@ public class AssuranceCaseView extends ViewPart {
 		        EObject location = claim.getLocation();
 		        if (claim instanceof FailResult) {
 		            manager1.add(createHyperlinkAction("Open Failure Location", location));
-		        } else if (location instanceof ProveStatement) {
-		            manager1.add(createHyperlinkAction("Open Prove Statement", location));
+				} else if (location instanceof ArgueStatement) {
+					manager1.add(createHyperlinkAction("Open Argue Statement", location));
 		            manager1.add(createExportSubmenu(claim));
 		        } else {
 		            manager1.add(createHyperlinkAction("Open Claim Definition", location));

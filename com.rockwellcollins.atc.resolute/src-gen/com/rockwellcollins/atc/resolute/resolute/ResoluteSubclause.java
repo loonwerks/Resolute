@@ -17,7 +17,7 @@ import org.osate.aadl2.AnnexSubclause;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause#getProves <em>Proves</em>}</li>
+ *   <li>{@link com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause#getAnalyses <em>Analyses</em>}</li>
  * </ul>
  *
  * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getResoluteSubclause()
@@ -27,15 +27,15 @@ import org.osate.aadl2.AnnexSubclause;
 public interface ResoluteSubclause extends EObject, AnnexSubclause
 {
   /**
-   * Returns the value of the '<em><b>Proves</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Analyses</b></em>' containment reference list.
    * The list contents are of type {@link com.rockwellcollins.atc.resolute.resolute.AnalysisStatement}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Proves</em>' containment reference list.
-   * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getResoluteSubclause_Proves()
+   * @return the value of the '<em>Analyses</em>' containment reference list.
+   * @see com.rockwellcollins.atc.resolute.resolute.ResolutePackage#getResoluteSubclause_Analyses()
    * @model containment="true"
    * @generated
    */
-  EList<AnalysisStatement> getProves();
+  EList<AnalysisStatement> getAnalyses();
 
 } // ResoluteSubclause

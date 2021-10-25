@@ -9,10 +9,10 @@ import org.eclipse.emf.ecore.EObject;
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResolintResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
+import com.rockwellcollins.atc.resolute.resolute.ArgueStatement;
 import com.rockwellcollins.atc.resolute.resolute.ErrorStatement;
 import com.rockwellcollins.atc.resolute.resolute.InfoStatement;
 import com.rockwellcollins.atc.resolute.resolute.LintStatement;
-import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.WarningStatement;
 
 public class ResoluteInterpreter {
@@ -22,17 +22,17 @@ public class ResoluteInterpreter {
         this.globalContext = globalContext;
     }
 
-    public ResoluteResult evaluateProveStatement(ProveStatement proveStatement) {
-        String proveText = ResoluteProver.proveStatementToString(proveStatement,
+	public ResoluteResult evaluateArgueStatement(ArgueStatement argueStatement) {
+		String argueText = ResoluteProver.argueStatementToString(argueStatement,
                 globalContext.getThisInstance());
-        ResoluteResult subResult = evaluateProveStatementBody(proveStatement);
+		ResoluteResult subResult = evaluateArgueStatementBody(argueStatement);
         Map<String, EObject> references = Collections.emptyMap();
-        return new ClaimResult(proveText, subResult, references, proveStatement);
+		return new ClaimResult(argueText, subResult, references, argueStatement);
     }
 
-    private ResoluteResult evaluateProveStatementBody(ProveStatement proveStatement) {
+	private ResoluteResult evaluateArgueStatementBody(ArgueStatement argueStatement) {
         ResoluteProver prover = new ResoluteProver(globalContext);
-        return prover.doSwitch(proveStatement.getExpr());
+		return prover.doSwitch(argueStatement.getExpr());
     }
 
 	public ResoluteResult evaluateLintStatement(LintStatement lintStatement) {

@@ -4478,66 +4478,73 @@ ruleBuiltInFn returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken
     }
 
     |
+	kw=Resolint 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getResolintKeyword_59()); 
+    }
+
+    |
 	kw=Receive_error 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getReceive_errorKeyword_59()); 
+        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getReceive_errorKeyword_60()); 
     }
 
     |
 	kw=Contain_error 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getContain_errorKeyword_60()); 
+        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getContain_errorKeyword_61()); 
     }
 
     |
 	kw=Propagate_error 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getPropagate_errorKeyword_61()); 
+        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getPropagate_errorKeyword_62()); 
     }
 
     |
 	kw=Error_state_reachable 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getError_state_reachableKeyword_62()); 
+        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getError_state_reachableKeyword_63()); 
     }
 
     |
 	kw=Flow_source 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getFlow_sourceKeyword_63()); 
+        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getFlow_sourceKeyword_64()); 
     }
 
     |
 	kw=Flow_destination 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getFlow_destinationKeyword_64()); 
+        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getFlow_destinationKeyword_65()); 
     }
 
     |
 	kw=Flow_elements 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getFlow_elementsKeyword_65()); 
+        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getFlow_elementsKeyword_66()); 
     }
 
     |
 	kw=Flow_specifications 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getFlow_specificationsKeyword_66()); 
+        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getFlow_specificationsKeyword_67()); 
     }
 
     |
 	kw=End_to_end_flows 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getEnd_to_end_flowsKeyword_67()); 
+        newLeafNode(kw, grammarAccess.getBuiltInFnAccess().getEnd_to_end_flowsKeyword_68()); 
     }
 )
     ;
@@ -4731,16 +4738,16 @@ ruleResoluteSubclause returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getResoluteSubclauseAccess().getProvesAnalysisStatementParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getResoluteSubclauseAccess().getAnalysesAnalysisStatementParserRuleCall_1_0()); 
 	    }
-		lv_proves_1_0=ruleAnalysisStatement		{
+		lv_analyses_1_0=ruleAnalysisStatement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getResoluteSubclauseRule());
 	        }
        		add(
        			$current, 
-       			"proves",
-        		lv_proves_1_0, 
+       			"analyses",
+        		lv_analyses_1_0, 
         		"com.rockwellcollins.atc.resolute.Resolute.AnalysisStatement");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -5054,15 +5061,42 @@ ruleAnalysisStatement returns [EObject current=null]
 (((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getAnalysisStatementAccess().getProveStatementAction_0_0(),
+            grammarAccess.getAnalysisStatementAccess().getArgueStatementAction_0_0(),
             $current);
     }
-)
-	otherlv_1=Prove
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getAnalysisStatementAccess().getProveKeyword_0_1());
-    }
+)(
 (
+(
+		lv_tag_1_1=
+	Argue
+    {
+        newLeafNode(lv_tag_1_1, grammarAccess.getAnalysisStatementAccess().getTagArgueKeyword_0_1_0_0());
+    }
+
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAnalysisStatementRule());
+	        }
+       		setWithLastConsumed($current, "tag", lv_tag_1_1, null);
+	    }
+
+    |		lv_tag_1_2=
+	Prove
+    {
+        newLeafNode(lv_tag_1_2, grammarAccess.getAnalysisStatementAccess().getTagProveKeyword_0_1_0_1());
+    }
+
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAnalysisStatementRule());
+	        }
+       		setWithLastConsumed($current, "tag", lv_tag_1_2, null);
+	    }
+
+)
+
+)
+)(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getAnalysisStatementAccess().getExprExprParserRuleCall_0_2_0()); 

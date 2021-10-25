@@ -27,7 +27,6 @@ import com.rockwellcollins.atc.resolute.resolute.ListExpr
 import com.rockwellcollins.atc.resolute.resolute.ListFilterMapExpr
 import com.rockwellcollins.atc.resolute.resolute.ListType
 import com.rockwellcollins.atc.resolute.resolute.NestedDotID
-import com.rockwellcollins.atc.resolute.resolute.ProveStatement
 import com.rockwellcollins.atc.resolute.resolute.QuantArg
 import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr
 import com.rockwellcollins.atc.resolute.resolute.RealExpr
@@ -44,6 +43,7 @@ import org.osate.xtext.aadl2.properties.formatting2.PropertiesFormatter
 import com.rockwellcollins.atc.resolute.resolute.AnalysisStatement
 import com.rockwellcollins.atc.resolute.resolute.CheckStatement
 import org.osate.aadl2.NamedElement
+import com.rockwellcollins.atc.resolute.resolute.ArgueStatement
 
 class ResoluteFormatter extends PropertiesFormatter {
 	
@@ -266,8 +266,8 @@ class ResoluteFormatter extends PropertiesFormatter {
 		
 		resolutesubclause.surround[noSpace];
 		
-		for (AnalysisStatement proves : resolutesubclause.getProves()) {
-			format(proves, document);
+		for (AnalysisStatement analysis : resolutesubclause.getAnalyses()) {
+			format(analysis, document);
 		}
 	}
 
@@ -276,9 +276,9 @@ class ResoluteFormatter extends PropertiesFormatter {
 		format(nesteddotid.getSub(), document);
 	}
 
-	def dispatch void format(ProveStatement provestatement, extension IFormattableDocument document) {
-		provestatement.prepend[newLines=1].append[newLines=1];
-		formatExpr(provestatement.getExpr(), document);
+	def dispatch void format(ArgueStatement arguestatement, extension IFormattableDocument document) {
+		arguestatement.prepend[newLines=1].append[newLines=1];
+		formatExpr(arguestatement.getExpr(), document);
 	}
 	
 	def dispatch void format(CheckStatement checkstatement, extension IFormattableDocument document) {

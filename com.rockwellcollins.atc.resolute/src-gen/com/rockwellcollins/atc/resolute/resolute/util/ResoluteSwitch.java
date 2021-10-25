@@ -585,12 +585,12 @@ public class ResoluteSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ResolutePackage.PROVE_STATEMENT:
+      case ResolutePackage.ARGUE_STATEMENT:
       {
-        ProveStatement proveStatement = (ProveStatement)theEObject;
-        T result = caseProveStatement(proveStatement);
-        if (result == null) result = caseAnalysisStatement(proveStatement);
-        if (result == null) result = caseElement(proveStatement);
+        ArgueStatement argueStatement = (ArgueStatement)theEObject;
+        T result = caseArgueStatement(argueStatement);
+        if (result == null) result = caseAnalysisStatement(argueStatement);
+        if (result == null) result = caseElement(argueStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1520,17 +1520,17 @@ public class ResoluteSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Prove Statement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Argue Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Prove Statement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Argue Statement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseProveStatement(ProveStatement object)
+  public T caseArgueStatement(ArgueStatement object)
   {
     return null;
   }

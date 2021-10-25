@@ -5,6 +5,7 @@ package com.rockwellcollins.atc.resolute.serializer;
 
 import com.google.inject.Inject;
 import com.rockwellcollins.atc.resolute.resolute.Arg;
+import com.rockwellcollins.atc.resolute.resolute.ArgueStatement;
 import com.rockwellcollins.atc.resolute.resolute.BaseType;
 import com.rockwellcollins.atc.resolute.resolute.BinaryExpr;
 import com.rockwellcollins.atc.resolute.resolute.BoolExpr;
@@ -38,7 +39,6 @@ import com.rockwellcollins.atc.resolute.resolute.ListExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListType;
 import com.rockwellcollins.atc.resolute.resolute.NestedDotID;
-import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.QuantArg;
 import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
 import com.rockwellcollins.atc.resolute.resolute.RealExpr;
@@ -201,6 +201,9 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 			case ResolutePackage.ARG:
 				sequence_Arg(context, (Arg) semanticObject); 
 				return; 
+			case ResolutePackage.ARGUE_STATEMENT:
+				sequence_AnalysisStatement(context, (ArgueStatement) semanticObject); 
+				return; 
 			case ResolutePackage.BASE_TYPE:
 				if (rule == grammarAccess.getBaseTypeRule()) {
 					sequence_BaseType(context, (BaseType) semanticObject); 
@@ -307,9 +310,6 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 			case ResolutePackage.NESTED_DOT_ID:
 				sequence_NestedDotID(context, (NestedDotID) semanticObject); 
 				return; 
-			case ResolutePackage.PROVE_STATEMENT:
-				sequence_AnalysisStatement(context, (ProveStatement) semanticObject); 
-				return; 
 			case ResolutePackage.QUANT_ARG:
 				sequence_Arg(context, (QuantArg) semanticObject); 
 				return; 
@@ -365,6 +365,19 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	
 	/**
 	 * Contexts:
+	 *     Element returns ArgueStatement
+	 *     AnalysisStatement returns ArgueStatement
+	 *
+	 * Constraint:
+	 *     ((tag='argue' | tag='prove') expr=Expr)
+	 */
+	protected void sequence_AnalysisStatement(ISerializationContext context, ArgueStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Element returns CheckStatement
 	 *     AnalysisStatement returns CheckStatement
 	 *
@@ -378,25 +391,6 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAnalysisStatementAccess().getExprExprParserRuleCall_1_2_0(), semanticObject.getExpr());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Element returns ProveStatement
-	 *     AnalysisStatement returns ProveStatement
-	 *
-	 * Constraint:
-	 *     expr=Expr
-	 */
-	protected void sequence_AnalysisStatement(ISerializationContext context, ProveStatement semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ResolutePackage.Literals.ANALYSIS_STATEMENT__EXPR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ResolutePackage.Literals.ANALYSIS_STATEMENT__EXPR));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAnalysisStatementAccess().getExprExprParserRuleCall_0_2_0(), semanticObject.getExpr());
 		feeder.finish();
 	}
 	
@@ -1798,7 +1792,7 @@ public abstract class AbstractResoluteSemanticSequencer extends PropertiesSemant
 	 *     ResoluteSubclause returns ResoluteSubclause
 	 *
 	 * Constraint:
-	 *     proves+=AnalysisStatement*
+	 *     analyses+=AnalysisStatement*
 	 */
 	protected void sequence_ResoluteSubclause(ISerializationContext context, ResoluteSubclause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

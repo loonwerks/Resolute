@@ -1,7 +1,5 @@
 package com.rockwellcollins.atc.resolute.analysis.handlers;
 
-import static java.util.stream.Collectors.joining;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +20,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -91,6 +91,17 @@ public class ResolintHandler extends AadlHandler {
 
 		start = System.currentTimeMillis();
 
+		List<ResoluteResult> checkTrees = run(si);
+		displayResults(checkTrees, compImpl);
+
+		stop = System.currentTimeMillis();
+		System.out.println("Evaluation time: " + (stop - start) / 1000.0 + "s");
+
+		return Status.OK_STATUS;
+	}
+
+	public static List<ResoluteResult> run(SystemInstance si) {
+
 		Map<String, SortedSet<NamedElement>> sets = new HashMap<>();
 		initializeSets(si, sets);
 		FeatureToConnectionsMap featToConnsMap = new FeatureToConnectionsMap(si);
@@ -105,7 +116,7 @@ public class ResolintHandler extends AadlHandler {
 				ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
 
 				// Evaluate each check statement in selected implementation
-				for (AnalysisStatement as : resoluteSubclause.getProves()) {
+				for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
 					if (as instanceof CheckStatement) {
 						CheckStatement cs = (CheckStatement) as;
 						if (cs.getExpr() instanceof IdExpr) {
@@ -134,12 +145,7 @@ public class ResolintHandler extends AadlHandler {
 			}
 		}
 
-		displayResults(checkTrees, compImpl);
-
-		stop = System.currentTimeMillis();
-		System.out.println("Evaluation time: " + (stop - start) / 1000.0 + "s");
-
-		return Status.OK_STATUS;
+		return checkTrees;
 	}
 
 	public static void clearMarkers(ComponentImplementation ci) {
@@ -266,18 +272,26 @@ public class ResolintHandler extends AadlHandler {
 		return resource;
 	}
 
-	private void handleCheckStatementException(CheckStatement cs, Exception e) {
+	private static void handleCheckStatementException(CheckStatement cs, Exception e) {
 		String bodyText = simpleSerializer(cs.getExpr());
-		getWindow().getShell().getDisplay().syncExec(() -> {
-			MessageDialog.openError(getWindow().getShell(), "Error in check statement: " + bodyText, e.getMessage());
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		window.getShell().getDisplay().syncExec(() -> {
+			MessageDialog.openError(window.getShell(), "Error in check statement: " + bodyText, e.getMessage());
 		});
 		e.printStackTrace();
 	}
 
-	private String simpleSerializer(EObject e) {
+	public static String simpleSerializer(EObject e) {
 		if (e instanceof FnCallExpr) {
 			FnCallExpr fce = (FnCallExpr) e;
-			String args = fce.getArgs().stream().map(this::simpleSerializer).collect(joining(", "));
+//			String args = fce.getArgs().stream().map(this::simpleSerializer).collect(joining(", "));
+			String args = "";
+			for (int i = 0; i < fce.getArgs().size(); ++i) {
+				args += fce.getArgs().get(i);
+				if (i < fce.getArgs().size() - 1) {
+					args += ", ";
+				}
+			}
 			return fce.getFn().getName() + "(" + args + ")";
 		} else if (e instanceof ThisExpr) {
 			return "this";
@@ -289,7 +303,7 @@ public class ResolintHandler extends AadlHandler {
 		}
 	}
 
-	private void initializeSets(ComponentInstance ci, Map<String, SortedSet<NamedElement>> sets) {
+	private static void initializeSets(ComponentInstance ci, Map<String, SortedSet<NamedElement>> sets) {
 		if (ci == null) {
 			return;
 		}
@@ -308,7 +322,7 @@ public class ResolintHandler extends AadlHandler {
 		}
 	}
 
-	private void addToSet(Map<String, SortedSet<NamedElement>> sets, InstanceObject io) {
+	private static void addToSet(Map<String, SortedSet<NamedElement>> sets, InstanceObject io) {
 		BaseType type = new BaseType(io);
 		for (BaseType superType : type.getAllSuperTypes()) {
 			addToSet(sets, superType.name, io);
@@ -316,7 +330,7 @@ public class ResolintHandler extends AadlHandler {
 
 	}
 
-	private void addToSet(Map<String, SortedSet<NamedElement>> sets, String name, NamedElement ne) {
+	private static void addToSet(Map<String, SortedSet<NamedElement>> sets, String name, NamedElement ne) {
 		SortedSet<NamedElement> set = sets.get(name);
 		if (set == null) {
 			set = new TreeSet<>(new NamedElementComparator());

@@ -53,6 +53,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//LetBinding/expr"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//ResoluteSubclause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ResoluteSubclause/analyses"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ResoluteSubclause/proves"/>
     </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//NestedDotID">
@@ -192,8 +193,11 @@
     <genClasses ecoreClass="Resolute.ecore#//WarningStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//ErrorStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//InfoStatement"/>
-    <genClasses ecoreClass="Resolute.ecore#//ProveStatement"/>
+    <genClasses ecoreClass="Resolute.ecore#//ArgueStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//ArgueStatement/tag"/>
+    </genClasses>
     <genClasses ecoreClass="Resolute.ecore#//CheckStatement"/>
+    <genClasses ecoreClass="Resolute.ecore#//ProveStatement"/>
     <genClasses ecoreClass="Resolute.ecore#//ClaimAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Resolute.ecore#//ClaimAttribute/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Resolute.ecore#//ClaimAttribute/val"/>

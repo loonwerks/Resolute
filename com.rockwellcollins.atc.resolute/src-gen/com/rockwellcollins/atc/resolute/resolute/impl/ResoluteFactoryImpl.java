@@ -121,7 +121,7 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
       case ResolutePackage.WARNING_STATEMENT: return createWarningStatement();
       case ResolutePackage.ERROR_STATEMENT: return createErrorStatement();
       case ResolutePackage.INFO_STATEMENT: return createInfoStatement();
-      case ResolutePackage.PROVE_STATEMENT: return createProveStatement();
+      case ResolutePackage.ARGUE_STATEMENT: return createArgueStatement();
       case ResolutePackage.CHECK_STATEMENT: return createCheckStatement();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -818,10 +818,10 @@ public class ResoluteFactoryImpl extends EFactoryImpl implements ResoluteFactory
    * @generated
    */
   @Override
-  public ProveStatement createProveStatement()
+  public ArgueStatement createArgueStatement()
   {
-    ProveStatementImpl proveStatement = new ProveStatementImpl();
-    return proveStatement;
+    ArgueStatementImpl argueStatement = new ArgueStatementImpl();
+    return argueStatement;
   }
 
   /**

@@ -30,6 +30,7 @@ import com.rockwellcollins.atc.resolute.analysis.values.RealValue;
 import com.rockwellcollins.atc.resolute.analysis.values.ResoluteValue;
 import com.rockwellcollins.atc.resolute.analysis.values.StringValue;
 import com.rockwellcollins.atc.resolute.resolute.Arg;
+import com.rockwellcollins.atc.resolute.resolute.ArgueStatement;
 import com.rockwellcollins.atc.resolute.resolute.BinaryExpr;
 import com.rockwellcollins.atc.resolute.resolute.ClaimArg;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
@@ -48,7 +49,6 @@ import com.rockwellcollins.atc.resolute.resolute.IfThenElseExpr;
 import com.rockwellcollins.atc.resolute.resolute.LetBinding;
 import com.rockwellcollins.atc.resolute.resolute.LetExpr;
 import com.rockwellcollins.atc.resolute.resolute.LintStatement;
-import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
 import com.rockwellcollins.atc.resolute.resolute.StringExpr;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
@@ -444,8 +444,8 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 		}
 	}
 
-	public static String proveStatementToString(ProveStatement ps, ComponentInstance thisInst) {
-		FnCallExpr fnCall = (FnCallExpr) ps.getExpr();
+	public static String argueStatementToString(ArgueStatement as, ComponentInstance thisInst) {
+		FnCallExpr fnCall = (FnCallExpr) as.getExpr();
 
 		StringBuilder text = new StringBuilder();
 		text.append(fnCall.getFn().getName());

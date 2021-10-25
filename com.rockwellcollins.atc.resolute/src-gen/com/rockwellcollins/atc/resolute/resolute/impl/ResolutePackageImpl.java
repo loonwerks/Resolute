@@ -4,6 +4,7 @@ package com.rockwellcollins.atc.resolute.resolute.impl;
 
 import com.rockwellcollins.atc.resolute.resolute.AnalysisStatement;
 import com.rockwellcollins.atc.resolute.resolute.Arg;
+import com.rockwellcollins.atc.resolute.resolute.ArgueStatement;
 import com.rockwellcollins.atc.resolute.resolute.BaseType;
 import com.rockwellcollins.atc.resolute.resolute.BinaryExpr;
 import com.rockwellcollins.atc.resolute.resolute.BoolExpr;
@@ -43,7 +44,6 @@ import com.rockwellcollins.atc.resolute.resolute.ListExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListFilterMapExpr;
 import com.rockwellcollins.atc.resolute.resolute.ListType;
 import com.rockwellcollins.atc.resolute.resolute.NestedDotID;
-import com.rockwellcollins.atc.resolute.resolute.ProveStatement;
 import com.rockwellcollins.atc.resolute.resolute.QuantArg;
 import com.rockwellcollins.atc.resolute.resolute.QuantifiedExpr;
 import com.rockwellcollins.atc.resolute.resolute.RealExpr;
@@ -486,7 +486,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass proveStatementEClass = null;
+  private EClass argueStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -931,7 +931,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
-  public EReference getResoluteSubclause_Proves()
+  public EReference getResoluteSubclause_Analyses()
   {
     return (EReference)resoluteSubclauseEClass.getEStructuralFeatures().get(0);
   }
@@ -2042,9 +2042,20 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
    * @generated
    */
   @Override
-  public EClass getProveStatement()
+  public EClass getArgueStatement()
   {
-    return proveStatementEClass;
+    return argueStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getArgueStatement_Tag()
+  {
+    return (EAttribute)argueStatementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2138,7 +2149,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     createEReference(letBindingEClass, LET_BINDING__EXPR);
 
     resoluteSubclauseEClass = createEClass(RESOLUTE_SUBCLAUSE);
-    createEReference(resoluteSubclauseEClass, RESOLUTE_SUBCLAUSE__PROVES);
+    createEReference(resoluteSubclauseEClass, RESOLUTE_SUBCLAUSE__ANALYSES);
 
     nestedDotIDEClass = createEClass(NESTED_DOT_ID);
     createEReference(nestedDotIDEClass, NESTED_DOT_ID__BASE);
@@ -2280,7 +2291,8 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
 
     infoStatementEClass = createEClass(INFO_STATEMENT);
 
-    proveStatementEClass = createEClass(PROVE_STATEMENT);
+    argueStatementEClass = createEClass(ARGUE_STATEMENT);
+    createEAttribute(argueStatementEClass, ARGUE_STATEMENT__TAG);
 
     checkStatementEClass = createEClass(CHECK_STATEMENT);
   }
@@ -2376,7 +2388,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     warningStatementEClass.getESuperTypes().add(this.getLintStatement());
     errorStatementEClass.getESuperTypes().add(this.getLintStatement());
     infoStatementEClass.getESuperTypes().add(this.getLintStatement());
-    proveStatementEClass.getESuperTypes().add(this.getAnalysisStatement());
+    argueStatementEClass.getESuperTypes().add(this.getAnalysisStatement());
     checkStatementEClass.getESuperTypes().add(this.getAnalysisStatement());
 
     // Initialize classes and features; add operations and parameters
@@ -2429,7 +2441,7 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
     initEReference(getLetBinding_Expr(), this.getExpr(), null, "expr", null, 0, 1, LetBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(resoluteSubclauseEClass, ResoluteSubclause.class, "ResoluteSubclause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getResoluteSubclause_Proves(), this.getAnalysisStatement(), null, "proves", null, 0, -1, ResoluteSubclause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getResoluteSubclause_Analyses(), this.getAnalysisStatement(), null, "analyses", null, 0, -1, ResoluteSubclause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(nestedDotIDEClass, NestedDotID.class, "NestedDotID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNestedDotID_Base(), theAadl2Package.getNamedElement(), null, "base", null, 0, 1, NestedDotID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2571,7 +2583,8 @@ public class ResolutePackageImpl extends EPackageImpl implements ResolutePackage
 
     initEClass(infoStatementEClass, InfoStatement.class, "InfoStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(proveStatementEClass, ProveStatement.class, "ProveStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(argueStatementEClass, ArgueStatement.class, "ArgueStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getArgueStatement_Tag(), theEcorePackage.getEString(), "tag", null, 0, 1, ArgueStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(checkStatementEClass, CheckStatement.class, "CheckStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

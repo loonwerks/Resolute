@@ -9,6 +9,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
 import org.osate.aadl2.AbstractNamedValue;
 import org.osate.aadl2.BasicPropertyAssociation;
@@ -49,6 +50,7 @@ import org.osate.aadl2.instance.FeatureInstance;
 import org.osate.aadl2.instance.FlowSpecificationInstance;
 import org.osate.aadl2.instance.InstanceReferenceValue;
 import org.osate.aadl2.instance.SystemInstance;
+import org.osate.aadl2.instantiation.InstantiateModel;
 import org.osate.aadl2.properties.PropertyDoesNotApplyToHolderException;
 import org.osate.aadl2.properties.PropertyNotPresentException;
 import org.osate.xtext.aadl2.errormodel.errorModel.ErrorBehaviorTransition;
@@ -59,6 +61,9 @@ import org.osate.xtext.aadl2.errormodel.util.EMV2Util;
 import org.osate.xtext.aadl2.properties.util.GetProperties;
 import org.osate.xtext.aadl2.properties.util.PropertyUtils;
 
+import com.rockwellcollins.atc.resolute.analysis.handlers.ResolintHandler;
+import com.rockwellcollins.atc.resolute.analysis.results.ResolintResult;
+import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
 import com.rockwellcollins.atc.resolute.analysis.values.BoolValue;
 import com.rockwellcollins.atc.resolute.analysis.values.IntValue;
 import com.rockwellcollins.atc.resolute.analysis.values.ListValue;
@@ -730,6 +735,33 @@ public class ResoluteBuiltInFnCallEvaluator {
 			} else {
 				return value;
 			}
+		}
+
+		case "resolint": {
+			NamedElement ne = args.get(0).getNamedElement();
+			if (ne instanceof ComponentInstance) {
+				ComponentInstance ci = (ComponentInstance) ne;
+				ComponentClassifier cc = ci.getComponentClassifier();
+				if (cc instanceof ComponentImplementation) {
+					ComponentImplementation compImpl = (ComponentImplementation) cc;
+					try {
+						SystemInstance si = InstantiateModel.buildInstanceModelFile(compImpl);
+						List<ResoluteResult> checkTrees = ResolintHandler.run(si);
+						for (ResoluteResult resoluteResult : checkTrees) {
+							if (resoluteResult != null && !resoluteResult.isValid()) {
+								ResolintResult result = (ResolintResult) resoluteResult;
+								if (result.getSeverity() == IMarker.SEVERITY_ERROR) {
+									return new BoolValue(false);
+								}
+							}
+						}
+						return new BoolValue(true);
+					} catch (Exception e) {
+
+					}
+				}
+			}
+			throw new ResoluteFailException("Resolint failed", fnCallExpr);
 		}
 
 		case "is_data_access": {

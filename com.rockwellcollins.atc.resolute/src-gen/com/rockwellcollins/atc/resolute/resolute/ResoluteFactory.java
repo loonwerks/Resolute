@@ -536,13 +536,13 @@ public interface ResoluteFactory extends EFactory
   InfoStatement createInfoStatement();
 
   /**
-   * Returns a new object of class '<em>Prove Statement</em>'.
+   * Returns a new object of class '<em>Argue Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Prove Statement</em>'.
+   * @return a new object of class '<em>Argue Statement</em>'.
    * @generated
    */
-  ProveStatement createProveStatement();
+  ArgueStatement createArgueStatement();
 
   /**
    * Returns a new object of class '<em>Check Statement</em>'.
