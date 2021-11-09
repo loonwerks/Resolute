@@ -23,3 +23,4 @@ RUN apt-get -q update \
   && apt-get autoremove --purge --yes \
   && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /host
