@@ -49,7 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       <import plugin="org.antlr.runtime"/>
       <import plugin="org.eclipse.xtext.common.types"/>
       <import plugin="org.osate.xtext.aadl2.properties" version="3.0.0" match="compatible"/>
-      <import plugin="org.osate.xtext.aadl2" version="5.0.0" match="compatible"/>
+      <import plugin="org.osate.xtext.aadl2" version="5.0.0" match="greaterOrEqual"/>
       <import plugin="org.osate.aadl2" version="4.0.0" match="compatible"/>
       <import plugin="org.apache.log4j"/>
       <import plugin="org.eclipse.xtext.xbase.lib"/>
