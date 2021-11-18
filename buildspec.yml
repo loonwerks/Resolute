@@ -25,4 +25,7 @@ phases:
 artifacts:
   files:
     - repository/target/repository/**/*
+cache:
+  paths:
+    - '/root/.m2/**/*'
 
