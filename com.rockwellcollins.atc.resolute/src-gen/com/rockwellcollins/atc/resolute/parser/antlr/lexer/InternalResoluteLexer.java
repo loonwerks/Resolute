@@ -224,8 +224,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Provides_subprogram_group_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:19:34: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:19:36: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:34:34: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:34:36: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -507,8 +507,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Requires_subprogram_group_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:21:34: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:21:36: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:36:34: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:36:36: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
                 input.consume();
@@ -790,8 +790,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Provides_subprogram_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:23:28: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:23:30: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:38:28: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:38:30: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -1027,8 +1027,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Requires_subprogram_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:25:28: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:25:30: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:40:28: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:40:30: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
                 input.consume();
@@ -1264,8 +1264,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Subprogram_group_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:27:25: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:27:27: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:42:25: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:42:27: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -1474,8 +1474,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Error_state_reachable;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:29:23: ( ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) '_' ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) '_' ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:29:25: ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) '_' ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) '_' ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'L' | 'l' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:44:23: ( ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) '_' ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) '_' ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:44:25: ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) '_' ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) '_' ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'L' | 'l' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -1666,8 +1666,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_virtual_processor;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:31:22: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:31:24: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:46:22: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:46:24: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -1849,8 +1849,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Provides_data_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:33:22: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:33:24: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:48:22: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:48:24: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -2032,8 +2032,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Requires_data_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:35:22: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:35:24: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:50:22: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:50:24: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
                 input.consume();
@@ -2215,8 +2215,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Flow_specifications;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:37:21: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:37:23: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:52:21: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:52:23: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -2397,8 +2397,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_abstract_feature;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:39:21: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'T' | 't' ) '_' ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:39:23: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'T' | 't' ) '_' ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:54:21: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'T' | 't' ) '_' ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:54:23: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'T' | 't' ) '_' ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -2571,8 +2571,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Provides_bus_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:41:21: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:41:23: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:56:21: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:56:23: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -2745,8 +2745,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Requires_bus_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:43:21: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:43:23: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:58:21: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:58:23: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'Q' | 'q' ) ( 'U' | 'u' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
                 input.consume();
@@ -2919,8 +2919,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Flow_specification;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:45:20: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:45:22: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:60:20: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:60:22: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -3092,8 +3092,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Enumerated_values;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:47:19: ( ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'D' | 'd' ) '_' ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:47:21: ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'D' | 'd' ) '_' ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:62:19: ( ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'D' | 'd' ) '_' ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:62:21: ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'D' | 'd' ) '_' ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -3256,8 +3256,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Subprogram_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:49:19: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:49:21: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:64:19: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:64:21: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -3420,8 +3420,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Virtual_processor;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:51:19: ( ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:51:21: ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:66:19: ( ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:66:21: ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='V'||input.LA(1)=='v' ) {
                 input.consume();
@@ -3584,8 +3584,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = End_to_end_flows;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:53:18: ( ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' ) '_' ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:53:20: ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' ) '_' ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:68:18: ( ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' ) '_' ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:68:20: ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' ) '_' ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -3723,8 +3723,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Flow_destination;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:55:18: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:55:20: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:70:18: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:70:20: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -3878,8 +3878,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_bidirectional;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:57:18: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'L' | 'l' ) )
-            // InternalResoluteLexer.g:57:20: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'L' | 'l' )
+            // InternalResoluteLexer.g:72:18: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'L' | 'l' ) )
+            // InternalResoluteLexer.g:72:20: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'I' | 'i' ) ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'L' | 'l' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -4033,8 +4033,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Subprogram_group;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:59:18: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) )
-            // InternalResoluteLexer.g:59:20: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' )
+            // InternalResoluteLexer.g:74:18: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) )
+            // InternalResoluteLexer.g:74:20: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -4188,8 +4188,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = End_to_end_flow;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:61:17: ( ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' ) '_' ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) )
-            // InternalResoluteLexer.g:61:19: ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' ) '_' ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' )
+            // InternalResoluteLexer.g:76:17: ( ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' ) '_' ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) )
+            // InternalResoluteLexer.g:76:19: ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' ) '_' ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -4318,8 +4318,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Event_data_port;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:63:17: ( ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:63:19: ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:78:17: ( ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:78:19: ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -4456,8 +4456,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_thread_group;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:65:17: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) )
-            // InternalResoluteLexer.g:65:19: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' )
+            // InternalResoluteLexer.g:80:17: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) )
+            // InternalResoluteLexer.g:80:19: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -4594,8 +4594,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Propagate_error;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:67:17: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'G' | 'g' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:67:19: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'G' | 'g' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:82:17: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'G' | 'g' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:82:19: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'G' | 'g' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -4740,8 +4740,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Property_member;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:69:17: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:69:19: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:84:17: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:84:19: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -4886,8 +4886,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Has_prototypes;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:71:16: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'T' | 't' ) ( 'O' | 'o' ) ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:71:18: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'T' | 't' ) ( 'O' | 'o' ) ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:86:16: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'T' | 't' ) ( 'O' | 'o' ) ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:86:18: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'T' | 't' ) ( 'O' | 'o' ) ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
                 input.consume();
@@ -5023,8 +5023,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_data_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:73:16: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:73:18: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:88:16: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:88:18: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -5152,8 +5152,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_virtual_bus;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:75:16: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:75:18: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:90:16: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:90:18: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -5281,8 +5281,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Contain_error;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:77:15: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'N' | 'n' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:77:17: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'N' | 'n' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:92:15: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'N' | 'n' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:92:17: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'N' | 'n' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -5409,8 +5409,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Feature_group;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:79:15: ( ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) )
-            // InternalResoluteLexer.g:79:17: ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' )
+            // InternalResoluteLexer.g:94:15: ( ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) )
+            // InternalResoluteLexer.g:94:17: ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -5537,8 +5537,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Flow_elements;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:81:15: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:81:17: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:96:15: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:96:17: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -5665,8 +5665,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_bus_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:83:15: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:83:17: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:98:15: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:98:17: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -5785,8 +5785,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_event_port;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:85:15: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:85:17: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:100:15: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:100:17: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -5905,8 +5905,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_subprogram;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:87:15: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) )
-            // InternalResoluteLexer.g:87:17: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' )
+            // InternalResoluteLexer.g:102:15: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) )
+            // InternalResoluteLexer.g:102:17: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -6033,8 +6033,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Justification;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:89:15: ( ( 'J' | 'j' ) ( 'U' | 'u' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:89:17: ( 'J' | 'j' ) ( 'U' | 'u' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:104:15: ( ( 'J' | 'j' ) ( 'U' | 'u' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:104:17: ( 'J' | 'j' ) ( 'U' | 'u' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='J'||input.LA(1)=='j' ) {
                 input.consume();
@@ -6169,8 +6169,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Receive_error;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:91:15: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'I' | 'i' ) ( 'V' | 'v' ) ( 'E' | 'e' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:91:17: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'I' | 'i' ) ( 'V' | 'v' ) ( 'E' | 'e' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:106:15: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'I' | 'i' ) ( 'V' | 'v' ) ( 'E' | 'e' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:106:17: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'I' | 'i' ) ( 'V' | 'v' ) ( 'E' | 'e' ) '_' ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
                 input.consume();
@@ -6297,8 +6297,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Subcomponents;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:93:15: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:93:17: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:108:15: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:108:17: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -6433,8 +6433,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Has_property;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:95:14: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' ) )
-            // InternalResoluteLexer.g:95:16: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' )
+            // InternalResoluteLexer.g:110:14: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' ) )
+            // InternalResoluteLexer.g:110:16: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' )
             {
             if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
                 input.consume();
@@ -6552,8 +6552,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_data_port;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:97:14: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:97:16: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:112:14: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:112:16: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -6663,8 +6663,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_processor;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:99:14: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:99:16: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:114:14: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:114:16: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -6782,8 +6782,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Thread_group;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:101:14: ( ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) )
-            // InternalResoluteLexer.g:101:16: ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' )
+            // InternalResoluteLexer.g:116:14: ( ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' ) )
+            // InternalResoluteLexer.g:116:16: ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) '_' ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'P' | 'p' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -6901,8 +6901,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Connections;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:103:13: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:103:15: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:118:13: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:118:15: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -7019,8 +7019,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Data_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:105:13: ( ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:105:15: ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:120:13: ( ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:120:15: ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -7129,8 +7129,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Destination;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:107:13: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:107:15: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:122:13: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:122:15: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -7247,8 +7247,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Flow_source;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:109:13: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:109:15: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:124:13: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:124:15: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) '_' ( 'S' | 's' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -7357,8 +7357,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_bound_to;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:111:13: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' ) )
-            // InternalResoluteLexer.g:111:15: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' )
+            // InternalResoluteLexer.g:126:13: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' ) )
+            // InternalResoluteLexer.g:126:15: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) '_' ( 'T' | 't' ) ( 'O' | 'o' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -7459,8 +7459,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_in_array;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:113:13: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'I' | 'i' ) ( 'N' | 'n' ) '_' ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'Y' | 'y' ) )
-            // InternalResoluteLexer.g:113:15: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'I' | 'i' ) ( 'N' | 'n' ) '_' ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'Y' | 'y' )
+            // InternalResoluteLexer.g:128:13: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'I' | 'i' ) ( 'N' | 'n' ) '_' ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'Y' | 'y' ) )
+            // InternalResoluteLexer.g:128:15: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'I' | 'i' ) ( 'N' | 'n' ) '_' ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'Y' | 'y' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -7561,8 +7561,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Lower_bound;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:115:13: ( ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'R' | 'r' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
-            // InternalResoluteLexer.g:115:15: ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'R' | 'r' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' )
+            // InternalResoluteLexer.g:130:13: ( ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'R' | 'r' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
+            // InternalResoluteLexer.g:130:15: ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'W' | 'w' ) ( 'E' | 'e' ) ( 'R' | 'r' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                 input.consume();
@@ -7671,8 +7671,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Undeveloped;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:117:13: ( ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'D' | 'd' ) )
-            // InternalResoluteLexer.g:117:15: ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'D' | 'd' )
+            // InternalResoluteLexer.g:132:13: ( ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'D' | 'd' ) )
+            // InternalResoluteLexer.g:132:15: ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
                 input.consume();
@@ -7789,8 +7789,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Upper_bound;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:119:13: ( ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
-            // InternalResoluteLexer.g:119:15: ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' )
+            // InternalResoluteLexer.g:134:13: ( ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
+            // InternalResoluteLexer.g:134:15: ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) '_' ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
                 input.consume();
@@ -7899,8 +7899,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Virtual_bus;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:121:13: ( ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:121:15: ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:136:13: ( ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:136:15: ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'A' | 'a' ) ( 'L' | 'l' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='V'||input.LA(1)=='v' ) {
                 input.consume();
@@ -8009,8 +8009,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Assumption;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:123:12: ( ( 'A' | 'a' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:123:14: ( 'A' | 'a' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:138:12: ( ( 'A' | 'a' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:138:14: ( 'A' | 'a' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -8118,8 +8118,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Bus_access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:125:12: ( ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:125:14: ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:140:12: ( ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:140:14: ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) '_' ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                 input.consume();
@@ -8219,8 +8219,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Classifier;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:127:12: ( ( 'C' | 'c' ) ( 'L' | 'l' ) ( 'A' | 'a' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:127:14: ( 'C' | 'c' ) ( 'L' | 'l' ) ( 'A' | 'a' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:142:12: ( ( 'C' | 'c' ) ( 'L' | 'l' ) ( 'A' | 'a' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:142:14: ( 'C' | 'c' ) ( 'L' | 'l' ) ( 'A' | 'a' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'I' | 'i' ) ( 'F' | 'f' ) ( 'I' | 'i' ) ( 'E' | 'e' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -8328,8 +8328,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Connection;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:129:12: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:129:14: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:144:12: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:144:14: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -8437,8 +8437,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Event_port;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:131:12: ( ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:131:14: ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:146:12: ( ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:146:14: ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -8538,8 +8538,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Has_member;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:133:12: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:133:14: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:148:12: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:148:14: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
                 input.consume();
@@ -8639,8 +8639,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Has_parent;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:135:12: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:135:14: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:150:12: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:150:14: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
                 input.consume();
@@ -8740,8 +8740,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Instanceof;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:137:12: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'O' | 'o' ) ( 'F' | 'f' ) )
-            // InternalResoluteLexer.g:137:14: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'O' | 'o' ) ( 'F' | 'f' )
+            // InternalResoluteLexer.g:152:12: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'O' | 'o' ) ( 'F' | 'f' ) )
+            // InternalResoluteLexer.g:152:14: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'O' | 'o' ) ( 'F' | 'f' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -8849,8 +8849,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_of_type;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:139:12: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'O' | 'o' ) ( 'F' | 'f' ) '_' ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:139:14: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'O' | 'o' ) ( 'F' | 'f' ) '_' ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:154:12: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'O' | 'o' ) ( 'F' | 'f' ) '_' ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:154:14: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'O' | 'o' ) ( 'F' | 'f' ) '_' ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -8942,8 +8942,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_process;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:141:12: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:141:14: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:156:12: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:156:14: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -9043,8 +9043,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Subprogram;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:143:12: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) )
-            // InternalResoluteLexer.g:143:14: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' )
+            // InternalResoluteLexer.g:158:12: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' ) )
+            // InternalResoluteLexer.g:158:14: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'B' | 'b' ) ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'G' | 'g' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'M' | 'm' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -9152,8 +9152,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Component;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:145:11: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:145:13: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:160:11: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:160:13: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -9252,8 +9252,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Data_port;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:147:11: ( ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:147:13: ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:162:11: ( ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:162:13: ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -9344,8 +9344,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Direction;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:149:11: ( ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:149:13: ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:164:11: ( ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:164:13: ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -9444,8 +9444,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Has_modes;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:151:11: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:151:13: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:166:11: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:166:13: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
                 input.consume();
@@ -9536,8 +9536,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Instances;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:153:11: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:153:13: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:168:11: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:168:13: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -9636,8 +9636,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Intersect;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:155:11: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:155:13: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:170:11: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:170:13: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -9736,8 +9736,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_device;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:157:11: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:157:13: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:172:11: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:172:13: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -9828,8 +9828,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_memory;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:159:11: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'Y' | 'y' ) )
-            // InternalResoluteLexer.g:159:13: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'Y' | 'y' )
+            // InternalResoluteLexer.g:174:11: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'Y' | 'y' ) )
+            // InternalResoluteLexer.g:174:13: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'Y' | 'y' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -9920,8 +9920,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_system;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:161:11: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'M' | 'm' ) )
-            // InternalResoluteLexer.g:161:13: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'M' | 'm' )
+            // InternalResoluteLexer.g:176:11: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'M' | 'm' ) )
+            // InternalResoluteLexer.g:176:13: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'M' | 'm' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -10012,8 +10012,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_thread;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:163:11: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) )
-            // InternalResoluteLexer.g:163:13: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' )
+            // InternalResoluteLexer.g:178:11: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) )
+            // InternalResoluteLexer.g:178:13: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -10104,8 +10104,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Processor;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:165:11: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:165:13: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:180:11: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:180:13: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -10204,8 +10204,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Reference;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:167:11: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:167:13: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:182:11: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:182:13: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
                 input.consume();
@@ -10304,8 +10304,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Abstract;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:169:10: ( ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:169:12: ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:184:10: ( ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:184:12: ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -10395,8 +10395,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Analysis;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:171:10: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'I' | 'i' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:171:12: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'I' | 'i' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:186:10: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'I' | 'i' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:186:12: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'I' | 'i' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -10486,8 +10486,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Constant;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:173:10: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:173:12: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:188:10: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:188:12: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -10577,8 +10577,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Features;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:175:10: ( ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:175:12: ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:190:10: ( ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:190:12: ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -10668,8 +10668,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Has_type;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:177:10: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:177:12: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:192:10: ( ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:192:12: ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
                 input.consume();
@@ -10751,8 +10751,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Instance;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:179:10: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:179:12: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:194:10: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:194:12: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -10842,8 +10842,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Property;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:181:10: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' ) )
-            // InternalResoluteLexer.g:181:12: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' )
+            // InternalResoluteLexer.g:196:10: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' ) )
+            // InternalResoluteLexer.g:196:12: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) ( 'Y' | 'y' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -10933,8 +10933,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Resolint;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:183:10: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:183:12: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:198:10: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:198:12: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'O' | 'o' ) ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
                 input.consume();
@@ -11024,8 +11024,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Solution;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:185:10: ( ( 'S' | 's' ) ( 'O' | 'o' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:185:12: ( 'S' | 's' ) ( 'O' | 'o' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:200:10: ( ( 'S' | 's' ) ( 'O' | 'o' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:200:12: ( 'S' | 's' ) ( 'O' | 'o' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -11115,8 +11115,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Strategy;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:187:10: ( ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'G' | 'g' ) ( 'Y' | 'y' ) )
-            // InternalResoluteLexer.g:187:12: ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'G' | 'g' ) ( 'Y' | 'y' )
+            // InternalResoluteLexer.g:202:10: ( ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'G' | 'g' ) ( 'Y' | 'y' ) )
+            // InternalResoluteLexer.g:202:12: ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'G' | 'g' ) ( 'Y' | 'y' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -11206,8 +11206,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Andthen;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:189:9: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:189:11: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:204:9: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:204:11: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -11288,8 +11288,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Applies;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:191:9: ( ( 'A' | 'a' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:191:11: ( 'A' | 'a' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'E' | 'e' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:206:9: ( ( 'A' | 'a' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:206:11: ( 'A' | 'a' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'E' | 'e' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -11370,8 +11370,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = As_list;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:193:9: ( ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:193:11: ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:208:9: ( ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:208:11: ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'L' | 'l' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -11444,8 +11444,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Binding;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:195:9: ( ( 'B' | 'b' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' ) )
-            // InternalResoluteLexer.g:195:11: ( 'B' | 'b' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' )
+            // InternalResoluteLexer.g:210:9: ( ( 'B' | 'b' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' ) )
+            // InternalResoluteLexer.g:210:11: ( 'B' | 'b' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'D' | 'd' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' )
             {
             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                 input.consume();
@@ -11526,8 +11526,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Compute;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:197:9: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:197:11: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:212:9: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:212:11: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'M' | 'm' ) ( 'P' | 'p' ) ( 'U' | 'u' ) ( 'T' | 't' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -11608,8 +11608,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Context;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:199:9: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:199:11: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:214:9: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:214:11: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -11690,8 +11690,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Feature;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:201:9: ( ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:201:11: ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:216:9: ( ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:216:11: ( 'F' | 'f' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -11772,8 +11772,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_data;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:203:9: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) )
-            // InternalResoluteLexer.g:203:11: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' )
+            // InternalResoluteLexer.g:218:9: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) )
+            // InternalResoluteLexer.g:218:11: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -11846,8 +11846,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_port;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:205:9: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:205:11: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:220:9: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:220:11: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -11920,8 +11920,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Process;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:207:9: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:207:11: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:222:9: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:222:11: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -12002,8 +12002,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Ruleset;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:209:9: ( ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:209:11: ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:224:9: ( ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:224:11: ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
                 input.consume();
@@ -12084,8 +12084,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Warning;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:211:9: ( ( 'W' | 'w' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'N' | 'n' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' ) )
-            // InternalResoluteLexer.g:211:11: ( 'W' | 'w' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'N' | 'n' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' )
+            // InternalResoluteLexer.g:226:9: ( ( 'W' | 'w' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'N' | 'n' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' ) )
+            // InternalResoluteLexer.g:226:11: ( 'W' | 'w' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'N' | 'n' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' )
             {
             if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
                 input.consume();
@@ -12166,8 +12166,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Access;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:213:8: ( ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:213:10: ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:228:8: ( ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:228:10: ( 'A' | 'a' ) ( 'C' | 'c' ) ( 'C' | 'c' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -12239,8 +12239,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Append;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:215:8: ( ( 'A' | 'a' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
-            // InternalResoluteLexer.g:215:10: ( 'A' | 'a' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' )
+            // InternalResoluteLexer.g:230:8: ( ( 'A' | 'a' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
+            // InternalResoluteLexer.g:230:10: ( 'A' | 'a' ) ( 'P' | 'p' ) ( 'P' | 'p' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -12312,8 +12312,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = As_set;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:217:8: ( ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:217:10: ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:232:8: ( ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:232:10: ( 'A' | 'a' ) ( 'S' | 's' ) '_' ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -12377,8 +12377,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Device;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:219:8: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:219:10: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:234:8: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:234:10: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'V' | 'v' ) ( 'I' | 'i' ) ( 'C' | 'c' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -12450,8 +12450,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Exists;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:221:8: ( ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:221:10: ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:236:8: ( ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:236:10: ( 'E' | 'e' ) ( 'X' | 'x' ) ( 'I' | 'i' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -12523,8 +12523,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Forall;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:223:8: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'L' | 'l' ) )
-            // InternalResoluteLexer.g:223:10: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'L' | 'l' )
+            // InternalResoluteLexer.g:238:8: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'L' | 'l' ) )
+            // InternalResoluteLexer.g:238:10: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'L' | 'l' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -12596,8 +12596,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Is_bus;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:225:8: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:225:10: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:240:8: ( ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:240:10: ( 'I' | 'i' ) ( 'S' | 's' ) '_' ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -12661,8 +12661,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Length;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:227:8: ( ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'T' | 't' ) ( 'H' | 'h' ) )
-            // InternalResoluteLexer.g:227:10: ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'T' | 't' ) ( 'H' | 'h' )
+            // InternalResoluteLexer.g:242:8: ( ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'T' | 't' ) ( 'H' | 'h' ) )
+            // InternalResoluteLexer.g:242:10: ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'T' | 't' ) ( 'H' | 'h' )
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                 input.consume();
@@ -12734,8 +12734,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Member;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:229:8: ( ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:229:10: ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:244:8: ( ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:244:10: ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'B' | 'b' ) ( 'E' | 'e' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
                 input.consume();
@@ -12807,8 +12807,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Memory;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:231:8: ( ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'Y' | 'y' ) )
-            // InternalResoluteLexer.g:231:10: ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'Y' | 'y' )
+            // InternalResoluteLexer.g:246:8: ( ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'Y' | 'y' ) )
+            // InternalResoluteLexer.g:246:10: ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'Y' | 'y' )
             {
             if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
                 input.consume();
@@ -12880,8 +12880,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Orelse;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:233:8: ( ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:233:10: ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:248:8: ( ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:248:10: ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
                 input.consume();
@@ -12953,8 +12953,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Parent;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:235:8: ( ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:235:10: ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:250:8: ( ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:250:10: ( 'P' | 'p' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'N' | 'n' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -13026,8 +13026,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Source;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:237:8: ( ( 'S' | 's' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:237:10: ( 'S' | 's' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:252:8: ( ( 'S' | 's' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:252:10: ( 'S' | 's' ) ( 'O' | 'o' ) ( 'U' | 'u' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -13099,8 +13099,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = String;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:239:8: ( ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' ) )
-            // InternalResoluteLexer.g:239:10: ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' )
+            // InternalResoluteLexer.g:254:8: ( ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' ) )
+            // InternalResoluteLexer.g:254:10: ( 'S' | 's' ) ( 'T' | 't' ) ( 'R' | 'r' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'G' | 'g' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -13172,8 +13172,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = KW_System;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:241:11: ( ( 'S' | 's' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'M' | 'm' ) )
-            // InternalResoluteLexer.g:241:13: ( 'S' | 's' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'M' | 'm' )
+            // InternalResoluteLexer.g:256:11: ( ( 'S' | 's' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'M' | 'm' ) )
+            // InternalResoluteLexer.g:256:13: ( 'S' | 's' ) ( 'Y' | 'y' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'M' | 'm' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -13245,8 +13245,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Thread;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:243:8: ( ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) )
-            // InternalResoluteLexer.g:243:10: ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' )
+            // InternalResoluteLexer.g:258:8: ( ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) )
+            // InternalResoluteLexer.g:258:10: ( 'T' | 't' ) ( 'H' | 'h' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -13318,8 +13318,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Argue;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:245:7: ( ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'G' | 'g' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:245:9: ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'G' | 'g' ) ( 'U' | 'u' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:260:7: ( ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'G' | 'g' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:260:9: ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'G' | 'g' ) ( 'U' | 'u' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -13382,8 +13382,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Check;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:247:7: ( ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'K' | 'k' ) )
-            // InternalResoluteLexer.g:247:9: ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'K' | 'k' )
+            // InternalResoluteLexer.g:262:7: ( ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'K' | 'k' ) )
+            // InternalResoluteLexer.g:262:9: ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'K' | 'k' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -13446,8 +13446,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Debug;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:249:7: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'G' | 'g' ) )
-            // InternalResoluteLexer.g:249:9: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'G' | 'g' )
+            // InternalResoluteLexer.g:264:7: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'G' | 'g' ) )
+            // InternalResoluteLexer.g:264:9: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'G' | 'g' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -13510,8 +13510,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Delta;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:251:7: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'T' | 't' ) ( 'A' | 'a' ) )
-            // InternalResoluteLexer.g:251:9: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'T' | 't' ) ( 'A' | 'a' )
+            // InternalResoluteLexer.g:266:7: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'T' | 't' ) ( 'A' | 'a' ) )
+            // InternalResoluteLexer.g:266:9: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'T' | 't' ) ( 'A' | 'a' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -13574,8 +13574,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Error;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:253:7: ( ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:253:9: ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:268:7: ( ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:268:9: ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -13638,8 +13638,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = False;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:255:7: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:255:9: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:270:7: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:270:9: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -13702,8 +13702,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Modes;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:257:7: ( ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:257:9: ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:272:7: ( ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:272:9: ( 'M' | 'm' ) ( 'O' | 'o' ) ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
                 input.consume();
@@ -13766,8 +13766,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Prove;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:259:7: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:259:9: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:274:7: ( ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:274:9: ( 'P' | 'p' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'V' | 'v' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -13830,8 +13830,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Range;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:261:7: ( ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:261:9: ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:276:7: ( ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:276:9: ( 'R' | 'r' ) ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'G' | 'g' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
                 input.consume();
@@ -13894,8 +13894,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Union;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:263:7: ( ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:263:9: ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:278:7: ( ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:278:9: ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
                 input.consume();
@@ -13958,8 +13958,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Aadl;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:265:6: ( ( 'A' | 'a' ) ( 'A' | 'a' ) ( 'D' | 'd' ) ( 'L' | 'l' ) )
-            // InternalResoluteLexer.g:265:8: ( 'A' | 'a' ) ( 'A' | 'a' ) ( 'D' | 'd' ) ( 'L' | 'l' )
+            // InternalResoluteLexer.g:280:6: ( ( 'A' | 'a' ) ( 'A' | 'a' ) ( 'D' | 'd' ) ( 'L' | 'l' ) )
+            // InternalResoluteLexer.g:280:8: ( 'A' | 'a' ) ( 'A' | 'a' ) ( 'D' | 'd' ) ( 'L' | 'l' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -14013,8 +14013,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Bool;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:267:6: ( ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'O' | 'o' ) ( 'L' | 'l' ) )
-            // InternalResoluteLexer.g:267:8: ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'O' | 'o' ) ( 'L' | 'l' )
+            // InternalResoluteLexer.g:282:6: ( ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'O' | 'o' ) ( 'L' | 'l' ) )
+            // InternalResoluteLexer.g:282:8: ( 'B' | 'b' ) ( 'O' | 'o' ) ( 'O' | 'o' ) ( 'L' | 'l' )
             {
             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                 input.consume();
@@ -14068,8 +14068,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Data;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:269:6: ( ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) )
-            // InternalResoluteLexer.g:269:8: ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' )
+            // InternalResoluteLexer.g:284:6: ( ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' ) )
+            // InternalResoluteLexer.g:284:8: ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'A' | 'a' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -14123,8 +14123,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Else;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:271:6: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:271:8: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:286:6: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:286:8: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -14178,8 +14178,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Fail;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:273:6: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'L' | 'l' ) )
-            // InternalResoluteLexer.g:273:8: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'L' | 'l' )
+            // InternalResoluteLexer.g:288:6: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'L' | 'l' ) )
+            // InternalResoluteLexer.g:288:8: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'L' | 'l' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -14233,8 +14233,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Goal;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:275:6: ( ( 'G' | 'g' ) ( 'O' | 'o' ) ( 'A' | 'a' ) ( 'L' | 'l' ) )
-            // InternalResoluteLexer.g:275:8: ( 'G' | 'g' ) ( 'O' | 'o' ) ( 'A' | 'a' ) ( 'L' | 'l' )
+            // InternalResoluteLexer.g:290:6: ( ( 'G' | 'g' ) ( 'O' | 'o' ) ( 'A' | 'a' ) ( 'L' | 'l' ) )
+            // InternalResoluteLexer.g:290:8: ( 'G' | 'g' ) ( 'O' | 'o' ) ( 'A' | 'a' ) ( 'L' | 'l' )
             {
             if ( input.LA(1)=='G'||input.LA(1)=='g' ) {
                 input.consume();
@@ -14288,8 +14288,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Head;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:277:6: ( ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) )
-            // InternalResoluteLexer.g:277:8: ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' )
+            // InternalResoluteLexer.g:292:6: ( ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' ) )
+            // InternalResoluteLexer.g:292:8: ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
                 input.consume();
@@ -14343,8 +14343,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Info;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:279:6: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'F' | 'f' ) ( 'O' | 'o' ) )
-            // InternalResoluteLexer.g:279:8: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'F' | 'f' ) ( 'O' | 'o' )
+            // InternalResoluteLexer.g:294:6: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'F' | 'f' ) ( 'O' | 'o' ) )
+            // InternalResoluteLexer.g:294:8: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'F' | 'f' ) ( 'O' | 'o' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -14398,8 +14398,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Name;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:281:6: ( ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:281:8: ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:296:6: ( ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:296:8: ( 'N' | 'n' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
                 input.consume();
@@ -14453,8 +14453,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Port;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:283:6: ( ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:283:8: ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:298:6: ( ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:298:8: ( 'P' | 'p' ) ( 'O' | 'o' ) ( 'R' | 'r' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
                 input.consume();
@@ -14508,8 +14508,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Real;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:285:6: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'L' | 'l' ) )
-            // InternalResoluteLexer.g:285:8: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'L' | 'l' )
+            // InternalResoluteLexer.g:300:6: ( ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'L' | 'l' ) )
+            // InternalResoluteLexer.g:300:8: ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'L' | 'l' )
             {
             if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
                 input.consume();
@@ -14563,8 +14563,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Size;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:287:6: ( ( 'S' | 's' ) ( 'I' | 'i' ) ( 'Z' | 'z' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:287:8: ( 'S' | 's' ) ( 'I' | 'i' ) ( 'Z' | 'z' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:302:6: ( ( 'S' | 's' ) ( 'I' | 'i' ) ( 'Z' | 'z' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:302:8: ( 'S' | 's' ) ( 'I' | 'i' ) ( 'Z' | 'z' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -14618,8 +14618,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Tail;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:289:6: ( ( 'T' | 't' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'L' | 'l' ) )
-            // InternalResoluteLexer.g:289:8: ( 'T' | 't' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'L' | 'l' )
+            // InternalResoluteLexer.g:304:6: ( ( 'T' | 't' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'L' | 'l' ) )
+            // InternalResoluteLexer.g:304:8: ( 'T' | 't' ) ( 'A' | 'a' ) ( 'I' | 'i' ) ( 'L' | 'l' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -14673,8 +14673,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Then;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:291:6: ( ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:291:8: ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:306:6: ( ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:306:8: ( 'T' | 't' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -14728,8 +14728,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = This;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:293:6: ( ( 'T' | 't' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:293:8: ( 'T' | 't' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:308:6: ( ( 'T' | 't' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:308:8: ( 'T' | 't' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -14783,8 +14783,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = True;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:295:6: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:295:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:310:6: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:310:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -14838,8 +14838,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Type;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:297:6: ( ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' ) )
-            // InternalResoluteLexer.g:297:8: ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' )
+            // InternalResoluteLexer.g:312:6: ( ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' ) )
+            // InternalResoluteLexer.g:312:8: ( 'T' | 't' ) ( 'Y' | 'y' ) ( 'P' | 'p' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -14893,8 +14893,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = PlusSignEqualsSignGreaterThanSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:299:35: ( '+' '=' '>' )
-            // InternalResoluteLexer.g:299:37: '+' '=' '>'
+            // InternalResoluteLexer.g:314:35: ( '+' '=' '>' )
+            // InternalResoluteLexer.g:314:37: '+' '=' '>'
             {
             match('+'); 
             match('='); 
@@ -14915,8 +14915,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = And;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:301:5: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
-            // InternalResoluteLexer.g:301:7: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' )
+            // InternalResoluteLexer.g:316:5: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
+            // InternalResoluteLexer.g:316:7: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -14961,8 +14961,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Bus;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:303:5: ( ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) )
-            // InternalResoluteLexer.g:303:7: ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' )
+            // InternalResoluteLexer.g:318:5: ( ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' ) )
+            // InternalResoluteLexer.g:318:7: ( 'B' | 'b' ) ( 'U' | 'u' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                 input.consume();
@@ -15007,8 +15007,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = For;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:305:5: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:305:7: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:320:5: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:320:7: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -15053,8 +15053,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Int;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:307:5: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:307:7: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:322:5: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:322:7: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -15099,8 +15099,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Let;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:309:5: ( ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:309:7: ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:324:5: ( ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:324:7: ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                 input.consume();
@@ -15145,8 +15145,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Max;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:311:5: ( ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'X' | 'x' ) )
-            // InternalResoluteLexer.g:311:7: ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'X' | 'x' )
+            // InternalResoluteLexer.g:326:5: ( ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'X' | 'x' ) )
+            // InternalResoluteLexer.g:326:7: ( 'M' | 'm' ) ( 'A' | 'a' ) ( 'X' | 'x' )
             {
             if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
                 input.consume();
@@ -15191,8 +15191,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Min;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:313:5: ( ( 'M' | 'm' ) ( 'I' | 'i' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:313:7: ( 'M' | 'm' ) ( 'I' | 'i' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:328:5: ( ( 'M' | 'm' ) ( 'I' | 'i' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:328:7: ( 'M' | 'm' ) ( 'I' | 'i' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
                 input.consume();
@@ -15237,8 +15237,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Not;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:315:5: ( ( 'N' | 'n' ) ( 'O' | 'o' ) ( 'T' | 't' ) )
-            // InternalResoluteLexer.g:315:7: ( 'N' | 'n' ) ( 'O' | 'o' ) ( 'T' | 't' )
+            // InternalResoluteLexer.g:330:5: ( ( 'N' | 'n' ) ( 'O' | 'o' ) ( 'T' | 't' ) )
+            // InternalResoluteLexer.g:330:7: ( 'N' | 'n' ) ( 'O' | 'o' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
                 input.consume();
@@ -15283,8 +15283,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Sum;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:317:5: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' ) )
-            // InternalResoluteLexer.g:317:7: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' )
+            // InternalResoluteLexer.g:332:5: ( ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' ) )
+            // InternalResoluteLexer.g:332:7: ( 'S' | 's' ) ( 'U' | 'u' ) ( 'M' | 'm' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -15329,8 +15329,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = AsteriskAsterisk;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:319:18: ( '*' '*' )
-            // InternalResoluteLexer.g:319:20: '*' '*'
+            // InternalResoluteLexer.g:334:18: ( '*' '*' )
+            // InternalResoluteLexer.g:334:20: '*' '*'
             {
             match('*'); 
             match('*'); 
@@ -15350,8 +15350,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = FullStopFullStop;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:321:18: ( '.' '.' )
-            // InternalResoluteLexer.g:321:20: '.' '.'
+            // InternalResoluteLexer.g:336:18: ( '.' '.' )
+            // InternalResoluteLexer.g:336:20: '.' '.'
             {
             match('.'); 
             match('.'); 
@@ -15371,8 +15371,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = ColonColon;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:323:12: ( ':' ':' )
-            // InternalResoluteLexer.g:323:14: ':' ':'
+            // InternalResoluteLexer.g:338:12: ( ':' ':' )
+            // InternalResoluteLexer.g:338:14: ':' ':'
             {
             match(':'); 
             match(':'); 
@@ -15392,8 +15392,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = LessThanSignEqualsSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:325:24: ( '<' '=' )
-            // InternalResoluteLexer.g:325:26: '<' '='
+            // InternalResoluteLexer.g:340:24: ( '<' '=' )
+            // InternalResoluteLexer.g:340:26: '<' '='
             {
             match('<'); 
             match('='); 
@@ -15413,8 +15413,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = LessThanSignGreaterThanSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:327:29: ( '<' '>' )
-            // InternalResoluteLexer.g:327:31: '<' '>'
+            // InternalResoluteLexer.g:342:29: ( '<' '>' )
+            // InternalResoluteLexer.g:342:31: '<' '>'
             {
             match('<'); 
             match('>'); 
@@ -15434,8 +15434,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = EqualsSignGreaterThanSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:329:27: ( '=' '>' )
-            // InternalResoluteLexer.g:329:29: '=' '>'
+            // InternalResoluteLexer.g:344:27: ( '=' '>' )
+            // InternalResoluteLexer.g:344:29: '=' '>'
             {
             match('='); 
             match('>'); 
@@ -15455,8 +15455,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = GreaterThanSignEqualsSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:331:27: ( '>' '=' )
-            // InternalResoluteLexer.g:331:29: '>' '='
+            // InternalResoluteLexer.g:346:27: ( '>' '=' )
+            // InternalResoluteLexer.g:346:29: '>' '='
             {
             match('>'); 
             match('='); 
@@ -15476,8 +15476,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = If;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:333:4: ( ( 'I' | 'i' ) ( 'F' | 'f' ) )
-            // InternalResoluteLexer.g:333:6: ( 'I' | 'i' ) ( 'F' | 'f' )
+            // InternalResoluteLexer.g:348:4: ( ( 'I' | 'i' ) ( 'F' | 'f' ) )
+            // InternalResoluteLexer.g:348:6: ( 'I' | 'i' ) ( 'F' | 'f' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -15513,8 +15513,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = In;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:335:4: ( ( 'I' | 'i' ) ( 'N' | 'n' ) )
-            // InternalResoluteLexer.g:335:6: ( 'I' | 'i' ) ( 'N' | 'n' )
+            // InternalResoluteLexer.g:350:4: ( ( 'I' | 'i' ) ( 'N' | 'n' ) )
+            // InternalResoluteLexer.g:350:6: ( 'I' | 'i' ) ( 'N' | 'n' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -15550,8 +15550,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Or;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:337:4: ( ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // InternalResoluteLexer.g:337:6: ( 'O' | 'o' ) ( 'R' | 'r' )
+            // InternalResoluteLexer.g:352:4: ( ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // InternalResoluteLexer.g:352:6: ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
                 input.consume();
@@ -15587,8 +15587,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = To;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:339:4: ( ( 'T' | 't' ) ( 'O' | 'o' ) )
-            // InternalResoluteLexer.g:339:6: ( 'T' | 't' ) ( 'O' | 'o' )
+            // InternalResoluteLexer.g:354:4: ( ( 'T' | 't' ) ( 'O' | 'o' ) )
+            // InternalResoluteLexer.g:354:6: ( 'T' | 't' ) ( 'O' | 'o' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -15624,8 +15624,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = PercentSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:341:13: ( '%' )
-            // InternalResoluteLexer.g:341:15: '%'
+            // InternalResoluteLexer.g:356:13: ( '%' )
+            // InternalResoluteLexer.g:356:15: '%'
             {
             match('%'); 
 
@@ -15644,8 +15644,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = LeftParenthesis;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:343:17: ( '(' )
-            // InternalResoluteLexer.g:343:19: '('
+            // InternalResoluteLexer.g:358:17: ( '(' )
+            // InternalResoluteLexer.g:358:19: '('
             {
             match('('); 
 
@@ -15664,8 +15664,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = RightParenthesis;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:345:18: ( ')' )
-            // InternalResoluteLexer.g:345:20: ')'
+            // InternalResoluteLexer.g:360:18: ( ')' )
+            // InternalResoluteLexer.g:360:20: ')'
             {
             match(')'); 
 
@@ -15684,8 +15684,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Asterisk;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:347:10: ( '*' )
-            // InternalResoluteLexer.g:347:12: '*'
+            // InternalResoluteLexer.g:362:10: ( '*' )
+            // InternalResoluteLexer.g:362:12: '*'
             {
             match('*'); 
 
@@ -15704,8 +15704,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = PlusSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:349:10: ( '+' )
-            // InternalResoluteLexer.g:349:12: '+'
+            // InternalResoluteLexer.g:364:10: ( '+' )
+            // InternalResoluteLexer.g:364:12: '+'
             {
             match('+'); 
 
@@ -15724,8 +15724,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Comma;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:351:7: ( ',' )
-            // InternalResoluteLexer.g:351:9: ','
+            // InternalResoluteLexer.g:366:7: ( ',' )
+            // InternalResoluteLexer.g:366:9: ','
             {
             match(','); 
 
@@ -15744,8 +15744,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = HyphenMinus;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:353:13: ( '-' )
-            // InternalResoluteLexer.g:353:15: '-'
+            // InternalResoluteLexer.g:368:13: ( '-' )
+            // InternalResoluteLexer.g:368:15: '-'
             {
             match('-'); 
 
@@ -15764,8 +15764,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = FullStop;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:355:10: ( '.' )
-            // InternalResoluteLexer.g:355:12: '.'
+            // InternalResoluteLexer.g:370:10: ( '.' )
+            // InternalResoluteLexer.g:370:12: '.'
             {
             match('.'); 
 
@@ -15784,8 +15784,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Solidus;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:357:9: ( '/' )
-            // InternalResoluteLexer.g:357:11: '/'
+            // InternalResoluteLexer.g:372:9: ( '/' )
+            // InternalResoluteLexer.g:372:11: '/'
             {
             match('/'); 
 
@@ -15804,8 +15804,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Colon;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:359:7: ( ':' )
-            // InternalResoluteLexer.g:359:9: ':'
+            // InternalResoluteLexer.g:374:7: ( ':' )
+            // InternalResoluteLexer.g:374:9: ':'
             {
             match(':'); 
 
@@ -15824,8 +15824,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = Semicolon;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:361:11: ( ';' )
-            // InternalResoluteLexer.g:361:13: ';'
+            // InternalResoluteLexer.g:376:11: ( ';' )
+            // InternalResoluteLexer.g:376:13: ';'
             {
             match(';'); 
 
@@ -15844,8 +15844,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = LessThanSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:363:14: ( '<' )
-            // InternalResoluteLexer.g:363:16: '<'
+            // InternalResoluteLexer.g:378:14: ( '<' )
+            // InternalResoluteLexer.g:378:16: '<'
             {
             match('<'); 
 
@@ -15864,8 +15864,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = EqualsSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:365:12: ( '=' )
-            // InternalResoluteLexer.g:365:14: '='
+            // InternalResoluteLexer.g:380:12: ( '=' )
+            // InternalResoluteLexer.g:380:14: '='
             {
             match('='); 
 
@@ -15884,8 +15884,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = GreaterThanSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:367:17: ( '>' )
-            // InternalResoluteLexer.g:367:19: '>'
+            // InternalResoluteLexer.g:382:17: ( '>' )
+            // InternalResoluteLexer.g:382:19: '>'
             {
             match('>'); 
 
@@ -15904,8 +15904,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = LeftSquareBracket;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:369:19: ( '[' )
-            // InternalResoluteLexer.g:369:21: '['
+            // InternalResoluteLexer.g:384:19: ( '[' )
+            // InternalResoluteLexer.g:384:21: '['
             {
             match('['); 
 
@@ -15924,8 +15924,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = RightSquareBracket;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:371:20: ( ']' )
-            // InternalResoluteLexer.g:371:22: ']'
+            // InternalResoluteLexer.g:386:20: ( ']' )
+            // InternalResoluteLexer.g:386:22: ']'
             {
             match(']'); 
 
@@ -15944,8 +15944,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = CircumflexAccent;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:373:18: ( '^' )
-            // InternalResoluteLexer.g:373:20: '^'
+            // InternalResoluteLexer.g:388:18: ( '^' )
+            // InternalResoluteLexer.g:388:20: '^'
             {
             match('^'); 
 
@@ -15964,8 +15964,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = LeftCurlyBracket;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:375:18: ( '{' )
-            // InternalResoluteLexer.g:375:20: '{'
+            // InternalResoluteLexer.g:390:18: ( '{' )
+            // InternalResoluteLexer.g:390:20: '{'
             {
             match('{'); 
 
@@ -15984,8 +15984,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = VerticalLine;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:377:14: ( '|' )
-            // InternalResoluteLexer.g:377:16: '|'
+            // InternalResoluteLexer.g:392:14: ( '|' )
+            // InternalResoluteLexer.g:392:16: '|'
             {
             match('|'); 
 
@@ -16004,8 +16004,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = RightCurlyBracket;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:379:19: ( '}' )
-            // InternalResoluteLexer.g:379:21: '}'
+            // InternalResoluteLexer.g:394:19: ( '}' )
+            // InternalResoluteLexer.g:394:21: '}'
             {
             match('}'); 
 
@@ -16024,12 +16024,12 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:383:17: ( '--' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalResoluteLexer.g:383:19: '--' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalResoluteLexer.g:396:17: ( '--' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalResoluteLexer.g:396:19: '--' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("--"); 
 
-            // InternalResoluteLexer.g:383:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalResoluteLexer.g:396:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop1:
             do {
                 int alt1=2;
@@ -16042,7 +16042,7 @@ public class InternalResoluteLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalResoluteLexer.g:383:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalResoluteLexer.g:396:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -16062,7 +16062,7 @@ public class InternalResoluteLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalResoluteLexer.g:383:40: ( ( '\\r' )? '\\n' )?
+            // InternalResoluteLexer.g:396:40: ( ( '\\r' )? '\\n' )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -16071,9 +16071,9 @@ public class InternalResoluteLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // InternalResoluteLexer.g:383:41: ( '\\r' )? '\\n'
+                    // InternalResoluteLexer.g:396:41: ( '\\r' )? '\\n'
                     {
-                    // InternalResoluteLexer.g:383:41: ( '\\r' )?
+                    // InternalResoluteLexer.g:396:41: ( '\\r' )?
                     int alt2=2;
                     int LA2_0 = input.LA(1);
 
@@ -16082,7 +16082,7 @@ public class InternalResoluteLexer extends Lexer {
                     }
                     switch (alt2) {
                         case 1 :
-                            // InternalResoluteLexer.g:383:41: '\\r'
+                            // InternalResoluteLexer.g:396:41: '\\r'
                             {
                             match('\r'); 
 
@@ -16112,8 +16112,8 @@ public class InternalResoluteLexer extends Lexer {
     // $ANTLR start "RULE_EXPONENT"
     public final void mRULE_EXPONENT() throws RecognitionException {
         try {
-            // InternalResoluteLexer.g:385:24: ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )
-            // InternalResoluteLexer.g:385:26: ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+
+            // InternalResoluteLexer.g:398:24: ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )
+            // InternalResoluteLexer.g:398:26: ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -16124,7 +16124,7 @@ public class InternalResoluteLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalResoluteLexer.g:385:36: ( '+' | '-' )?
+            // InternalResoluteLexer.g:398:36: ( '+' | '-' )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -16150,7 +16150,7 @@ public class InternalResoluteLexer extends Lexer {
 
             }
 
-            // InternalResoluteLexer.g:385:47: ( RULE_DIGIT )+
+            // InternalResoluteLexer.g:398:47: ( RULE_DIGIT )+
             int cnt5=0;
             loop5:
             do {
@@ -16164,7 +16164,7 @@ public class InternalResoluteLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // InternalResoluteLexer.g:385:47: RULE_DIGIT
+            	    // InternalResoluteLexer.g:398:47: RULE_DIGIT
             	    {
             	    mRULE_DIGIT(); 
 
@@ -16192,8 +16192,8 @@ public class InternalResoluteLexer extends Lexer {
     // $ANTLR start "RULE_INT_EXPONENT"
     public final void mRULE_INT_EXPONENT() throws RecognitionException {
         try {
-            // InternalResoluteLexer.g:387:28: ( ( 'e' | 'E' ) ( '+' )? ( RULE_DIGIT )+ )
-            // InternalResoluteLexer.g:387:30: ( 'e' | 'E' ) ( '+' )? ( RULE_DIGIT )+
+            // InternalResoluteLexer.g:400:28: ( ( 'e' | 'E' ) ( '+' )? ( RULE_DIGIT )+ )
+            // InternalResoluteLexer.g:400:30: ( 'e' | 'E' ) ( '+' )? ( RULE_DIGIT )+
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -16204,7 +16204,7 @@ public class InternalResoluteLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalResoluteLexer.g:387:40: ( '+' )?
+            // InternalResoluteLexer.g:400:40: ( '+' )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -16213,7 +16213,7 @@ public class InternalResoluteLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalResoluteLexer.g:387:40: '+'
+                    // InternalResoluteLexer.g:400:40: '+'
                     {
                     match('+'); 
 
@@ -16222,7 +16222,7 @@ public class InternalResoluteLexer extends Lexer {
 
             }
 
-            // InternalResoluteLexer.g:387:45: ( RULE_DIGIT )+
+            // InternalResoluteLexer.g:400:45: ( RULE_DIGIT )+
             int cnt7=0;
             loop7:
             do {
@@ -16236,7 +16236,7 @@ public class InternalResoluteLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalResoluteLexer.g:387:45: RULE_DIGIT
+            	    // InternalResoluteLexer.g:400:45: RULE_DIGIT
             	    {
             	    mRULE_DIGIT(); 
 
@@ -16266,10 +16266,10 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = RULE_REAL_LIT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:389:15: ( ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* '.' ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* ( RULE_EXPONENT )? )
-            // InternalResoluteLexer.g:389:17: ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* '.' ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* ( RULE_EXPONENT )?
+            // InternalResoluteLexer.g:402:15: ( ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* '.' ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* ( RULE_EXPONENT )? )
+            // InternalResoluteLexer.g:402:17: ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* '.' ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* ( RULE_EXPONENT )?
             {
-            // InternalResoluteLexer.g:389:17: ( RULE_DIGIT )+
+            // InternalResoluteLexer.g:402:17: ( RULE_DIGIT )+
             int cnt8=0;
             loop8:
             do {
@@ -16283,7 +16283,7 @@ public class InternalResoluteLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalResoluteLexer.g:389:17: RULE_DIGIT
+            	    // InternalResoluteLexer.g:402:17: RULE_DIGIT
             	    {
             	    mRULE_DIGIT(); 
 
@@ -16299,7 +16299,7 @@ public class InternalResoluteLexer extends Lexer {
                 cnt8++;
             } while (true);
 
-            // InternalResoluteLexer.g:389:29: ( '_' ( RULE_DIGIT )+ )*
+            // InternalResoluteLexer.g:402:29: ( '_' ( RULE_DIGIT )+ )*
             loop10:
             do {
                 int alt10=2;
@@ -16312,10 +16312,10 @@ public class InternalResoluteLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // InternalResoluteLexer.g:389:30: '_' ( RULE_DIGIT )+
+            	    // InternalResoluteLexer.g:402:30: '_' ( RULE_DIGIT )+
             	    {
             	    match('_'); 
-            	    // InternalResoluteLexer.g:389:34: ( RULE_DIGIT )+
+            	    // InternalResoluteLexer.g:402:34: ( RULE_DIGIT )+
             	    int cnt9=0;
             	    loop9:
             	    do {
@@ -16329,7 +16329,7 @@ public class InternalResoluteLexer extends Lexer {
 
             	        switch (alt9) {
             	    	case 1 :
-            	    	    // InternalResoluteLexer.g:389:34: RULE_DIGIT
+            	    	    // InternalResoluteLexer.g:402:34: RULE_DIGIT
             	    	    {
             	    	    mRULE_DIGIT(); 
 
@@ -16355,7 +16355,7 @@ public class InternalResoluteLexer extends Lexer {
             } while (true);
 
             match('.'); 
-            // InternalResoluteLexer.g:389:52: ( RULE_DIGIT )+
+            // InternalResoluteLexer.g:402:52: ( RULE_DIGIT )+
             int cnt11=0;
             loop11:
             do {
@@ -16369,7 +16369,7 @@ public class InternalResoluteLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // InternalResoluteLexer.g:389:52: RULE_DIGIT
+            	    // InternalResoluteLexer.g:402:52: RULE_DIGIT
             	    {
             	    mRULE_DIGIT(); 
 
@@ -16385,7 +16385,7 @@ public class InternalResoluteLexer extends Lexer {
                 cnt11++;
             } while (true);
 
-            // InternalResoluteLexer.g:389:64: ( '_' ( RULE_DIGIT )+ )*
+            // InternalResoluteLexer.g:402:64: ( '_' ( RULE_DIGIT )+ )*
             loop13:
             do {
                 int alt13=2;
@@ -16398,10 +16398,10 @@ public class InternalResoluteLexer extends Lexer {
 
                 switch (alt13) {
             	case 1 :
-            	    // InternalResoluteLexer.g:389:65: '_' ( RULE_DIGIT )+
+            	    // InternalResoluteLexer.g:402:65: '_' ( RULE_DIGIT )+
             	    {
             	    match('_'); 
-            	    // InternalResoluteLexer.g:389:69: ( RULE_DIGIT )+
+            	    // InternalResoluteLexer.g:402:69: ( RULE_DIGIT )+
             	    int cnt12=0;
             	    loop12:
             	    do {
@@ -16415,7 +16415,7 @@ public class InternalResoluteLexer extends Lexer {
 
             	        switch (alt12) {
             	    	case 1 :
-            	    	    // InternalResoluteLexer.g:389:69: RULE_DIGIT
+            	    	    // InternalResoluteLexer.g:402:69: RULE_DIGIT
             	    	    {
             	    	    mRULE_DIGIT(); 
 
@@ -16440,7 +16440,7 @@ public class InternalResoluteLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalResoluteLexer.g:389:83: ( RULE_EXPONENT )?
+            // InternalResoluteLexer.g:402:83: ( RULE_EXPONENT )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -16449,7 +16449,7 @@ public class InternalResoluteLexer extends Lexer {
             }
             switch (alt14) {
                 case 1 :
-                    // InternalResoluteLexer.g:389:83: RULE_EXPONENT
+                    // InternalResoluteLexer.g:402:83: RULE_EXPONENT
                     {
                     mRULE_EXPONENT(); 
 
@@ -16474,10 +16474,10 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = RULE_INTEGER_LIT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:391:18: ( ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* ( '#' RULE_BASED_INTEGER '#' ( RULE_INT_EXPONENT )? | ( RULE_INT_EXPONENT )? ) )
-            // InternalResoluteLexer.g:391:20: ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* ( '#' RULE_BASED_INTEGER '#' ( RULE_INT_EXPONENT )? | ( RULE_INT_EXPONENT )? )
+            // InternalResoluteLexer.g:404:18: ( ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* ( '#' RULE_BASED_INTEGER '#' ( RULE_INT_EXPONENT )? | ( RULE_INT_EXPONENT )? ) )
+            // InternalResoluteLexer.g:404:20: ( RULE_DIGIT )+ ( '_' ( RULE_DIGIT )+ )* ( '#' RULE_BASED_INTEGER '#' ( RULE_INT_EXPONENT )? | ( RULE_INT_EXPONENT )? )
             {
-            // InternalResoluteLexer.g:391:20: ( RULE_DIGIT )+
+            // InternalResoluteLexer.g:404:20: ( RULE_DIGIT )+
             int cnt15=0;
             loop15:
             do {
@@ -16491,7 +16491,7 @@ public class InternalResoluteLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // InternalResoluteLexer.g:391:20: RULE_DIGIT
+            	    // InternalResoluteLexer.g:404:20: RULE_DIGIT
             	    {
             	    mRULE_DIGIT(); 
 
@@ -16507,7 +16507,7 @@ public class InternalResoluteLexer extends Lexer {
                 cnt15++;
             } while (true);
 
-            // InternalResoluteLexer.g:391:32: ( '_' ( RULE_DIGIT )+ )*
+            // InternalResoluteLexer.g:404:32: ( '_' ( RULE_DIGIT )+ )*
             loop17:
             do {
                 int alt17=2;
@@ -16520,10 +16520,10 @@ public class InternalResoluteLexer extends Lexer {
 
                 switch (alt17) {
             	case 1 :
-            	    // InternalResoluteLexer.g:391:33: '_' ( RULE_DIGIT )+
+            	    // InternalResoluteLexer.g:404:33: '_' ( RULE_DIGIT )+
             	    {
             	    match('_'); 
-            	    // InternalResoluteLexer.g:391:37: ( RULE_DIGIT )+
+            	    // InternalResoluteLexer.g:404:37: ( RULE_DIGIT )+
             	    int cnt16=0;
             	    loop16:
             	    do {
@@ -16537,7 +16537,7 @@ public class InternalResoluteLexer extends Lexer {
 
             	        switch (alt16) {
             	    	case 1 :
-            	    	    // InternalResoluteLexer.g:391:37: RULE_DIGIT
+            	    	    // InternalResoluteLexer.g:404:37: RULE_DIGIT
             	    	    {
             	    	    mRULE_DIGIT(); 
 
@@ -16562,7 +16562,7 @@ public class InternalResoluteLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalResoluteLexer.g:391:51: ( '#' RULE_BASED_INTEGER '#' ( RULE_INT_EXPONENT )? | ( RULE_INT_EXPONENT )? )
+            // InternalResoluteLexer.g:404:51: ( '#' RULE_BASED_INTEGER '#' ( RULE_INT_EXPONENT )? | ( RULE_INT_EXPONENT )? )
             int alt20=2;
             int LA20_0 = input.LA(1);
 
@@ -16573,12 +16573,12 @@ public class InternalResoluteLexer extends Lexer {
                 alt20=2;}
             switch (alt20) {
                 case 1 :
-                    // InternalResoluteLexer.g:391:52: '#' RULE_BASED_INTEGER '#' ( RULE_INT_EXPONENT )?
+                    // InternalResoluteLexer.g:404:52: '#' RULE_BASED_INTEGER '#' ( RULE_INT_EXPONENT )?
                     {
                     match('#'); 
                     mRULE_BASED_INTEGER(); 
                     match('#'); 
-                    // InternalResoluteLexer.g:391:79: ( RULE_INT_EXPONENT )?
+                    // InternalResoluteLexer.g:404:79: ( RULE_INT_EXPONENT )?
                     int alt18=2;
                     int LA18_0 = input.LA(1);
 
@@ -16587,7 +16587,7 @@ public class InternalResoluteLexer extends Lexer {
                     }
                     switch (alt18) {
                         case 1 :
-                            // InternalResoluteLexer.g:391:79: RULE_INT_EXPONENT
+                            // InternalResoluteLexer.g:404:79: RULE_INT_EXPONENT
                             {
                             mRULE_INT_EXPONENT(); 
 
@@ -16600,9 +16600,9 @@ public class InternalResoluteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalResoluteLexer.g:391:98: ( RULE_INT_EXPONENT )?
+                    // InternalResoluteLexer.g:404:98: ( RULE_INT_EXPONENT )?
                     {
-                    // InternalResoluteLexer.g:391:98: ( RULE_INT_EXPONENT )?
+                    // InternalResoluteLexer.g:404:98: ( RULE_INT_EXPONENT )?
                     int alt19=2;
                     int LA19_0 = input.LA(1);
 
@@ -16611,7 +16611,7 @@ public class InternalResoluteLexer extends Lexer {
                     }
                     switch (alt19) {
                         case 1 :
-                            // InternalResoluteLexer.g:391:98: RULE_INT_EXPONENT
+                            // InternalResoluteLexer.g:404:98: RULE_INT_EXPONENT
                             {
                             mRULE_INT_EXPONENT(); 
 
@@ -16640,8 +16640,8 @@ public class InternalResoluteLexer extends Lexer {
     // $ANTLR start "RULE_DIGIT"
     public final void mRULE_DIGIT() throws RecognitionException {
         try {
-            // InternalResoluteLexer.g:393:21: ( '0' .. '9' )
-            // InternalResoluteLexer.g:393:23: '0' .. '9'
+            // InternalResoluteLexer.g:406:21: ( '0' .. '9' )
+            // InternalResoluteLexer.g:406:23: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -16656,8 +16656,8 @@ public class InternalResoluteLexer extends Lexer {
     // $ANTLR start "RULE_EXTENDED_DIGIT"
     public final void mRULE_EXTENDED_DIGIT() throws RecognitionException {
         try {
-            // InternalResoluteLexer.g:395:30: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-            // InternalResoluteLexer.g:395:32: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
+            // InternalResoluteLexer.g:408:30: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            // InternalResoluteLexer.g:408:32: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
             {
             if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='F')||(input.LA(1)>='a' && input.LA(1)<='f') ) {
                 input.consume();
@@ -16680,11 +16680,11 @@ public class InternalResoluteLexer extends Lexer {
     // $ANTLR start "RULE_BASED_INTEGER"
     public final void mRULE_BASED_INTEGER() throws RecognitionException {
         try {
-            // InternalResoluteLexer.g:397:29: ( RULE_EXTENDED_DIGIT ( ( '_' )? RULE_EXTENDED_DIGIT )* )
-            // InternalResoluteLexer.g:397:31: RULE_EXTENDED_DIGIT ( ( '_' )? RULE_EXTENDED_DIGIT )*
+            // InternalResoluteLexer.g:410:29: ( RULE_EXTENDED_DIGIT ( ( '_' )? RULE_EXTENDED_DIGIT )* )
+            // InternalResoluteLexer.g:410:31: RULE_EXTENDED_DIGIT ( ( '_' )? RULE_EXTENDED_DIGIT )*
             {
             mRULE_EXTENDED_DIGIT(); 
-            // InternalResoluteLexer.g:397:51: ( ( '_' )? RULE_EXTENDED_DIGIT )*
+            // InternalResoluteLexer.g:410:51: ( ( '_' )? RULE_EXTENDED_DIGIT )*
             loop22:
             do {
                 int alt22=2;
@@ -16697,9 +16697,9 @@ public class InternalResoluteLexer extends Lexer {
 
                 switch (alt22) {
             	case 1 :
-            	    // InternalResoluteLexer.g:397:52: ( '_' )? RULE_EXTENDED_DIGIT
+            	    // InternalResoluteLexer.g:410:52: ( '_' )? RULE_EXTENDED_DIGIT
             	    {
-            	    // InternalResoluteLexer.g:397:52: ( '_' )?
+            	    // InternalResoluteLexer.g:410:52: ( '_' )?
             	    int alt21=2;
             	    int LA21_0 = input.LA(1);
 
@@ -16708,7 +16708,7 @@ public class InternalResoluteLexer extends Lexer {
             	    }
             	    switch (alt21) {
             	        case 1 :
-            	            // InternalResoluteLexer.g:397:52: '_'
+            	            // InternalResoluteLexer.g:410:52: '_'
             	            {
             	            match('_'); 
 
@@ -16741,10 +16741,10 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:399:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalResoluteLexer.g:399:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalResoluteLexer.g:412:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalResoluteLexer.g:412:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalResoluteLexer.g:399:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalResoluteLexer.g:412:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -16762,10 +16762,10 @@ public class InternalResoluteLexer extends Lexer {
             }
             switch (alt25) {
                 case 1 :
-                    // InternalResoluteLexer.g:399:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalResoluteLexer.g:412:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalResoluteLexer.g:399:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalResoluteLexer.g:412:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop23:
                     do {
                         int alt23=3;
@@ -16781,7 +16781,7 @@ public class InternalResoluteLexer extends Lexer {
 
                         switch (alt23) {
                     	case 1 :
-                    	    // InternalResoluteLexer.g:399:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // InternalResoluteLexer.g:412:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -16797,7 +16797,7 @@ public class InternalResoluteLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalResoluteLexer.g:399:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalResoluteLexer.g:412:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -16822,10 +16822,10 @@ public class InternalResoluteLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalResoluteLexer.g:399:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalResoluteLexer.g:412:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalResoluteLexer.g:399:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalResoluteLexer.g:412:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop24:
                     do {
                         int alt24=3;
@@ -16841,7 +16841,7 @@ public class InternalResoluteLexer extends Lexer {
 
                         switch (alt24) {
                     	case 1 :
-                    	    // InternalResoluteLexer.g:399:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // InternalResoluteLexer.g:412:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -16857,7 +16857,7 @@ public class InternalResoluteLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalResoluteLexer.g:399:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalResoluteLexer.g:412:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -16900,8 +16900,8 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:401:9: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( ( '_' )? ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) )* )
-            // InternalResoluteLexer.g:401:11: ( 'a' .. 'z' | 'A' .. 'Z' ) ( ( '_' )? ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) )*
+            // InternalResoluteLexer.g:414:9: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( ( '_' )? ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) )* )
+            // InternalResoluteLexer.g:414:11: ( 'a' .. 'z' | 'A' .. 'Z' ) ( ( '_' )? ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -16912,7 +16912,7 @@ public class InternalResoluteLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalResoluteLexer.g:401:31: ( ( '_' )? ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) )*
+            // InternalResoluteLexer.g:414:31: ( ( '_' )? ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' ) )*
             loop27:
             do {
                 int alt27=2;
@@ -16925,9 +16925,9 @@ public class InternalResoluteLexer extends Lexer {
 
                 switch (alt27) {
             	case 1 :
-            	    // InternalResoluteLexer.g:401:32: ( '_' )? ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )
+            	    // InternalResoluteLexer.g:414:32: ( '_' )? ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )
             	    {
-            	    // InternalResoluteLexer.g:401:32: ( '_' )?
+            	    // InternalResoluteLexer.g:414:32: ( '_' )?
             	    int alt26=2;
             	    int LA26_0 = input.LA(1);
 
@@ -16936,7 +16936,7 @@ public class InternalResoluteLexer extends Lexer {
             	    }
             	    switch (alt26) {
             	        case 1 :
-            	            // InternalResoluteLexer.g:401:32: '_'
+            	            // InternalResoluteLexer.g:414:32: '_'
             	            {
             	            match('_'); 
 
@@ -16979,10 +16979,10 @@ public class InternalResoluteLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalResoluteLexer.g:403:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalResoluteLexer.g:403:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalResoluteLexer.g:416:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalResoluteLexer.g:416:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalResoluteLexer.g:403:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalResoluteLexer.g:416:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt28=0;
             loop28:
             do {

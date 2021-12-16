@@ -32,7 +32,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.compare,
  org.osate.pluginsupport;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: com.rockwellcollins.atc.resolute.analysis,
  com.rockwellcollins.atc.resolute.analysis.execution,
  com.rockwellcollins.atc.resolute.analysis.results,
