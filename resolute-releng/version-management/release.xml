@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<release>
+	<feature name="com.rockwellcollins.atc.resolute.feature" version="2.7.2">
+		<plugin name="com.rockwellcollins.atc.resolute" version="2.7.2"/>
+		<plugin name="com.rockwellcollins.atc.resolute.analysis" version="2.7.2"/>
+		<plugin name="com.rockwellcollins.atc.resolute.stringlib" version="2.7.2"/>
+		<plugin name="com.rockwellcollins.atc.resolute.ui" version="2.7.2"/>
+		<plugin name="org.osate.resolute.help" version="2.7.2"/>
+	</feature>
+	<plugin name="com.rockwellcollins.atc.resolute" version="2.7.2"/>
+	<plugin name="com.rockwellcollins.atc.resolute.analysis" version="2.7.2"/>
+	<plugin name="com.rockwellcollins.atc.resolute.ngrep" version="2.7.2"/>
+	<plugin name="com.rockwellcollins.atc.resolute.schedule.analysis" version="2.7.2"/>
+	<plugin name="com.rockwellcollins.atc.resolute.stringlib" version="2.7.2"/>
+	<plugin name="com.rockwellcollins.atc.resolute.ui" version="2.7.2"/>
+	<plugin name="org.osate.resolute.help" version="2.7.2"/>
+</release>
