@@ -132,6 +132,7 @@ import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
  * This class contains custom validation rules.
  *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
+ * @since 3.0
  */
 public class ResoluteValidator extends AbstractResoluteValidator {
 
