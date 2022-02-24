@@ -12,4 +12,4 @@ Require-Bundle: org.eclipse.ui,
  com.rockwellcollins.atc.resolute,
  com.rockwellcollins.atc.resolute.analysis
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Automatic-Module-Name: StringLib
+Automatic-Module-Name: com.rockwellcollins.atc.resolute.stringlib
