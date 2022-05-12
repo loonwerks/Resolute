@@ -44,6 +44,7 @@ import org.osate.aadl2.instance.InstanceObject;
 import org.osate.aadl2.instance.InstanceReferenceValue;
 import org.osate.aadl2.instance.SystemInstance;
 import org.osate.resolute.ResoluteAccess;
+import org.osate.result.Diagnostic;
 import org.osate.result.Result;
 import org.osate.result.util.ResultUtil;
 
@@ -67,6 +68,97 @@ import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
 import com.rockwellcollins.atc.resolute.validation.BaseType;
 
 public class ResoluteInterface implements ResoluteAccess {
+
+	//////////////////////
+	/// EMV2 ///
+	//////////////////////
+
+	/**
+	 * invokes Resolute claim function on targetComponent or targetElement if not null.
+	 * instanceroot is used to initialize the Resolute evaluation context.
+	 * targetComponent is the evaluation context
+	 * targetElement is the model element within the component instance or null.
+	 * parameterObjects is a list of additional parameters of types RealLiteral, IntegerLiteral, StringLiteral, BooleanLiteral
+	 * parameterObjects can be null or an empty list.
+	 * The return value is an Issue object with subissues for the list of issues returned in the Resolute ClaimResult.
+	 * If the proof fails then the top Issue is set to FAIL, if successful it is set to SUCCESS
+	 */
+	@Override
+	public Diagnostic executeEMV2Function(EObject fundef, final SystemInstance instanceroot,
+			final ComponentInstance targetComponent, final InstanceObject targetElement,
+			List<PropertyExpression> parameterObjects) {
+		FunctionDefinition fd = (FunctionDefinition) fundef;
+		initializeResoluteContext(instanceroot);
+		EvaluationContext context = new EvaluationContext(targetComponent, sets, featToConnsMap);
+		// check for claim function
+		FnCallExpr fcncall = createWrapperFunctionCall(fd, targetComponent, targetElement, parameterObjects);
+		if (fcncall != null) {
+			// using com.rockwellcollins.atc.resolute.analysis.results.ClaimResult
+			ResoluteProver prover = new ResoluteProver(context) {
+
+				@Override
+				protected ResoluteEvaluator createResoluteEvaluator() {
+					return new ResoluteEvaluator(context, varStack.peek()) {
+						@Override
+						public ResoluteValue caseThisExpr(ThisExpr object) {
+							NamedElement curr = context.getThisInstance();
+							if (object.getSub() != null) {
+								curr = object.getSub().getBase();
+							}
+							return new NamedElementValue(curr);
+						}
+
+					};
+				}
+
+			};
+			ResoluteResult res = prover.doSwitch(fcncall);
+			return doResoluteEMV2Results(res);
+		} else {
+			return ResultUtil.createErrorDiagnostic("Could not find Resolute Function " + fd.getName(), fd);
+		}
+	}
+
+	private FnCallExpr createWrapperFunctionCall(FunctionDefinition fd, ComponentInstance evalContext,
+			InstanceObject io, List<PropertyExpression> params) {
+		ResoluteFactory factory = ResoluteFactory.eINSTANCE;
+		FnCallExpr call = factory.createFnCallExpr();
+		call.setFn(fd);
+		call.getArgs().add(createInstanceObjectReference(evalContext, io));
+		if (params != null) {
+			addParams(call, params);
+		}
+		return call;
+	}
+
+	private ThisExpr createInstanceObjectReference(ComponentInstance evalContext, InstanceObject io) {
+		ResoluteFactory factory = ResoluteFactory.eINSTANCE;
+		NestedDotID nid = null;
+		if (io != null) {
+			nid = factory.createNestedDotID();
+			nid.setBase(io);
+		}
+		ThisExpr te = factory.createThisExpr();
+		te.setSub(nid);
+		return te;
+	}
+
+	private Diagnostic doResoluteEMV2Results(ResoluteResult resRes) {
+		Diagnostic ri = null;
+		if (resRes instanceof ClaimResult) {
+			ClaimResult rr = (ClaimResult) resRes;
+			if (rr.isValid()) {
+				ri = ResultUtil.createInfoDiagnostic(rr.getText(), rr.getLocation());
+			} else {
+				ri = ResultUtil.createErrorDiagnostic(rr.getText(), rr.getLocation());
+			}
+		}
+		return ri;
+	}
+
+	////////////////////////
+	/// ASSURE ///
+	////////////////////////
 
 	/**
 	 * interface with Resolute
@@ -130,7 +222,7 @@ public class ResoluteInterface implements ResoluteAccess {
 	 * If the proof fails then the top Issue is set to FAIL, if successful it is set to SUCCESS
 	 */
 	@Override
-	public EObject executeResoluteFunctionOnce(EObject fundef, final ComponentInstance targetComponent,
+	public EObject executeAssureFunction(EObject fundef, final ComponentInstance targetComponent,
 			final InstanceObject targetElement, List<PropertyExpression> parameterObjects) {
 		FunctionDefinition fd = (FunctionDefinition) fundef;
 		initializeResoluteContext(targetComponent.getSystemInstance());
@@ -162,7 +254,7 @@ public class ResoluteInterface implements ResoluteAccess {
 
 			try {
 				ResoluteResult res = prover.doSwitch(fcncall);
-				return doResoluteResults(res);
+				return doResoluteAssureResults(res);
 			} catch (ResoluteFailException e) {
 				return ResultUtil.createFailureResult(e.getMessage(), targetElement);
 			}
@@ -246,7 +338,7 @@ public class ResoluteInterface implements ResoluteAccess {
 
 	static private ResoluteResultContentProvider resoluteContent = new ResoluteResultContentProvider();
 
-	private Result doResoluteResults(ResoluteResult resRes) {
+	private Result doResoluteAssureResults(ResoluteResult resRes) {
 		if (resRes instanceof ClaimResult) {
 			Result ri = null;
 			ClaimResult rr = (ClaimResult) resRes;
@@ -258,7 +350,7 @@ public class ResoluteInterface implements ResoluteAccess {
 			Object[] subrrs = resoluteContent.getChildren(rr);
 			for (Object subrr : subrrs) {
 				ClaimResult subclaim = (ClaimResult) subrr;
-				ri.getSubResults().add(doResoluteResults(subclaim));
+				ri.getSubResults().add(doResoluteAssureResults(subclaim));
 			}
 			return ri;
 		} else if (resRes instanceof ResoluteResult) {
@@ -316,7 +408,7 @@ public class ResoluteInterface implements ResoluteAccess {
 		if (baseType instanceof com.rockwellcollins.atc.resolute.resolute.BaseType) {
 			return ((com.rockwellcollins.atc.resolute.resolute.BaseType) baseType).getType();
 		}
-		return null;
+		return "";
 	}
 
 }
