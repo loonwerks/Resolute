@@ -2,14 +2,14 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point
-   		id="com.rockwellcollins.atc.resolute.analysis.external.resoluteExternalAnalysis"
+   		id="ResoluteExternalAnalysis"
   		name="Resolute External Analysis"
   		schema="schema/ResoluteExternalAnalysis.exsd"/>
    <extension-point
-        id="com.rockwellcollins.atc.resolute.analysis.resoluteConfidenceAnalysis"
+        id="ResoluteConfidenceAnalysis"
         name="Resolute Confidence Analysis"
         schema="schema/ResoluteConfidenceAnalysis.exsd"/>
-   <extension-point id="com.rockwellcollins.atc.resolute.analysis.external.resoluteExternalFunctionLibrary" name="Resolute External Function Library" schema="schema/ResoluteExternalFunctionLibrary.exsd"/>
+   <extension-point id="ResoluteExternalFunctionLibrary" name="Resolute External Function Library" schema="schema/ResoluteExternalFunctionLibrary.exsd"/>
         
     <extension point="org.eclipse.ui.views">
       <category

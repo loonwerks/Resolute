@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="com.rockwellcollins.atc.resolute.analysis.external" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="com.rockwellcollins.atc.resolute.analysis" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="com.rockwellcollins.atc.resolute.analysis.external" id="resoluteExternalAnalysis" name="Resolute External Analysis"/>
+         <meta.schema plugin="com.rockwellcollins.atc.resolute.analysis" id="ResoluteExternalAnalysis" name="Resolute External Analysis"/>
       </appinfo>
       <documentation>
          Extension point for external resolute analysis
