@@ -21,7 +21,7 @@
  * aries to this license with respect to the terms applicable to their Third Party Software. Third Party Software li-
  * censes only apply to the Third Party Software and not any other portion of this program or this program as a whole.
  */
-package com.rockwellcollins.atc.resolute.analysis.execution;
+package com.rockwellcollins.atc.resolute.analysis.access;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +48,12 @@ import org.osate.result.Diagnostic;
 import org.osate.result.Result;
 import org.osate.result.util.ResultUtil;
 
+import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
+import com.rockwellcollins.atc.resolute.analysis.execution.FeatureToConnectionsMap;
+import com.rockwellcollins.atc.resolute.analysis.execution.NamedElementComparator;
+import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteEvaluator;
+import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteFailException;
+import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteProver;
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
 import com.rockwellcollins.atc.resolute.analysis.values.NamedElementValue;
@@ -69,9 +75,9 @@ import com.rockwellcollins.atc.resolute.validation.BaseType;
 
 public class ResoluteInterface implements ResoluteAccess {
 
-	//////////////////////
+	////////////
 	/// EMV2 ///
-	//////////////////////
+	////////////
 
 	/**
 	 * invokes Resolute claim function on targetComponent or targetElement if not null.
@@ -84,7 +90,7 @@ public class ResoluteInterface implements ResoluteAccess {
 	 * If the proof fails then the top Issue is set to FAIL, if successful it is set to SUCCESS
 	 */
 	@Override
-	public Diagnostic executeEMV2Function(EObject fundef, final SystemInstance instanceroot,
+	public Diagnostic executeResoluteFunctionOnce(EObject fundef, final SystemInstance instanceroot,
 			final ComponentInstance targetComponent, final InstanceObject targetElement,
 			List<PropertyExpression> parameterObjects) {
 		FunctionDefinition fd = (FunctionDefinition) fundef;
@@ -156,9 +162,9 @@ public class ResoluteInterface implements ResoluteAccess {
 		return ri;
 	}
 
-	////////////////////////
+	//////////////
 	/// ASSURE ///
-	////////////////////////
+	//////////////
 
 	/**
 	 * interface with Resolute
@@ -222,7 +228,7 @@ public class ResoluteInterface implements ResoluteAccess {
 	 * If the proof fails then the top Issue is set to FAIL, if successful it is set to SUCCESS
 	 */
 	@Override
-	public EObject executeAssureFunction(EObject fundef, final ComponentInstance targetComponent,
+	public EObject executeResoluteFunctionOnce(EObject fundef, final ComponentInstance targetComponent,
 			final InstanceObject targetElement, List<PropertyExpression> parameterObjects) {
 		FunctionDefinition fd = (FunctionDefinition) fundef;
 		initializeResoluteContext(targetComponent.getSystemInstance());
@@ -365,6 +371,12 @@ public class ResoluteInterface implements ResoluteAccess {
 		return null;
 	}
 
+	/**
+	 * Given a Resolute ResoluteLibrary, returns a list of its definitions, or null if argument is not a Resolute ResoluteLibrary
+	 * @param type - EObject that is an instance of com.rockwellcollins.atc.resolute.resolute.ResoluteLibrary
+	 * @return List of EObject that are instances of com.rockwellcollins.atc.resolute.resolute.Definition,
+	 * or null if argument is not a Resolute ResoluteLibrary
+	 */
 	@Override
 	public List<EObject> getDefinitions(EObject resoluteLibrary) {
 		if (resoluteLibrary instanceof ResoluteLibrary) {
@@ -375,11 +387,22 @@ public class ResoluteInterface implements ResoluteAccess {
 		return null;
 	}
 
+	/**
+	 * Given an EObject, returns whether is is an instance of com.rockwellcollins.atc.resolute.resolute.FunctionDefinition
+	 * @param type - EObject
+	 * @return boolean indicating whether type argument is a Resolute FunctionDefinition
+	 */
 	@Override
 	public boolean isFunctionDefinition(EObject obj) {
 		return obj instanceof FunctionDefinition;
 	}
 
+	/**
+	 * Given a Resolute FunctionDefinition, returns a list of its arguments, or null if argument is not a Resolute FunctionDefinition
+	 * @param functionDefinition - EObject that is an instance of com.rockwellcollins.atc.resolute.resolute.FunctionDefinition
+	 * @return List of org.osate.aadl2.NamedElement that are instances of com.rockwellcollins.atc.resolute.resolute.Arg,
+	 * or null if argument is not a Resolute FunctionDefinition
+	 */
 	@Override
 	public List<NamedElement> getArgs(EObject functionDefinition) {
 		if (functionDefinition instanceof FunctionDefinition) {
@@ -390,6 +413,12 @@ public class ResoluteInterface implements ResoluteAccess {
 		return null;
 	}
 
+	/**
+	 * Given a Resolute Arg, returns its Resolute Type, or null if argument is not an Arg
+	 * @param arg - EObject that is an instance of com.rockwellcollins.atc.resolute.Arg
+	 * @return EObject that is an instance com.rockwellcollins.atc.resolute.Type,
+	 * or null if arg is not a Resolute Arg.
+	 */
 	@Override
 	public EObject getType(EObject arg) {
 		if (arg instanceof Arg) {
@@ -398,11 +427,21 @@ public class ResoluteInterface implements ResoluteAccess {
 		return null;
 	}
 
+	/**
+	 * Given an EObject, returns whether is is an instance of com.rockwellcollins.atc.resolute.resolute.BaseType
+	 * @param type - EObject
+	 * @return boolean indicating whether type param is a Resolute BaseType
+	 */
 	@Override
 	public boolean isBaseType(EObject type) {
 		return type instanceof com.rockwellcollins.atc.resolute.resolute.BaseType;
 	}
 
+	/**
+	 * Given an EObject, returns the type name if argument is a Resolute BaseType, or an empty String otherwise
+	 * @param baseType - EObject that is an instance of com.rockwellcollins.atc.resolute.resolute.BaseType
+	 * @return String containing the type name of the argument, or an empty string if it is not a Resolute BaseType
+	 */
 	@Override
 	public String getTypeName(EObject baseType) {
 		if (baseType instanceof com.rockwellcollins.atc.resolute.resolute.BaseType) {
