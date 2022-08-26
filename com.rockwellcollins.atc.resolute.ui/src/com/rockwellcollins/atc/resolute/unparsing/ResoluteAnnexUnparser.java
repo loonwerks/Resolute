@@ -26,12 +26,12 @@ public class ResoluteAnnexUnparser implements AnnexUnparser {
 	@Override
 	public String unparseAnnexLibrary(AnnexLibrary library, String indent) {
 		library.setName(null);
-		return indent + getSerializer().serialize(library);
+		return System.lineSeparator() + indent + getSerializer().serialize(library).replaceAll("^\\\n*", "");
 	}
 
 	@Override
 	public String unparseAnnexSubclause(AnnexSubclause subclause, String indent) {
 		subclause.setName(null);
-		return indent + getSerializer().serialize(subclause);
+		return System.lineSeparator() + indent + getSerializer().serialize(subclause).replaceAll("^\\\n*", "");
 	}
 }
