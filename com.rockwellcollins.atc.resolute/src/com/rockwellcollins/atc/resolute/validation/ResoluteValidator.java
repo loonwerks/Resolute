@@ -1315,6 +1315,10 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 			expectedTypes.add(BaseType.COMPONENT);
 			break;
 
+		case "resolint":
+			expectedTypes.add(BaseType.COMPONENT);
+			break;
+
 		default:
 			error(funCall, "Unknown built-in function '" + funCall.getFn() + "'");
 			return null;
