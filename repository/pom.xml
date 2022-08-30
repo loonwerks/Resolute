@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>com.rockwellcollins.atc.resolute</groupId>
 		<artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-		<version>3.0.1</version>
+		<version>3.0.2-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>com.rockwellcollins.atc.resolute.repository</artifactId>
-  <version>3.1.0</version>
+  <version>3.1.1-SNAPSHOT</version>
 	<packaging>eclipse-repository</packaging>
 
 	<build>
