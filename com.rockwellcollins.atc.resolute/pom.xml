@@ -7,6 +7,7 @@
 		<version>3.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>com.rockwellcollins.atc.resolute</artifactId>
+	<version>3.0.100-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
 
 	<build>

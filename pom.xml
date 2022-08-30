@@ -7,30 +7,33 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!--
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
+		-->
 		<!-- Tycho settings -->
-		<tycho.version>2.4.0</tycho.version>
-		<tycho-extras.version>2.4.0</tycho-extras.version>
+		<tycho.version>2.7.3</tycho.version>
+		<tycho-extras.version>2.7.3</tycho-extras.version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties />
 		<moduleProperties />
 		<systemProperties />
 		<tycho.testArgLine />
 		<eclipse.mirror>http://download.eclipse.org</eclipse.mirror>
-		<xtext-version>2.20.0</xtext-version>
+		<xtext-version>2.27.0</xtext-version>
 	</properties>
 
 	<modules>
 		<module>com.rockwellcollins.atc.resolute</module>
 		<module>com.rockwellcollins.atc.resolute.analysis</module>
-		<module>com.rockwellcollins.atc.resolute.feature</module>
+		<module>com.rockwellcollins.atc.resolute.fileaccess</module>
 		<module>com.rockwellcollins.atc.resolute.ngrep</module>
 		<module>com.rockwellcollins.atc.resolute.schedule.analysis</module>
 		<module>com.rockwellcollins.atc.resolute.stringlib</module>
 		<module>com.rockwellcollins.atc.resolute.target</module>
 		<module>com.rockwellcollins.atc.resolute.ui</module>
 		<module>org.osate.resolute.help</module>
+		<module>com.rockwellcollins.atc.resolute.feature</module>
 		<module>repository</module>
 	</modules>
 
@@ -142,6 +145,9 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho.version}</version>
 				<configuration>
+					<executionEnvironment>JavaSE-17</executionEnvironment>
+					<resolveWithExecutionEnvironmentConstraints>false</resolveWithExecutionEnvironmentConstraints>
+					<resolver>p2</resolver>
 					<target>
 						<artifact>
 							<groupId>com.rockwellcollins.atc.resolute</groupId>
@@ -149,6 +155,7 @@
 							<version>${project.parent.version}</version>
 						</artifact>
 					</target>
+					<ignoreTychoRepositories>true</ignoreTychoRepositories>
 					<environments>
 						<environment>
 							<os>win32</os>
@@ -369,8 +376,7 @@
 					<version>${tycho.version}</version>
 					<configuration>
 						<!-- THE FOLLOWING LINE MUST NOT BE BROKEN BY AUTOFORMATTING -->
-						<argLine>${tycho.testArgLine} ${platformSystemProperties}
-							${systemProperties} ${moduleProperties}</argLine>
+						<argLine>${tycho.testArgLine} ${platformSystemProperties} ${systemProperties} ${moduleProperties}</argLine>
 						<failIfNoTests>false</failIfNoTests>
 						<useUIHarness>false</useUIHarness>
 					</configuration>
@@ -383,7 +389,7 @@
 		<repository>
 			<id>Eclipse</id>
 			<layout>p2</layout>
-			<url>${eclipse.mirror}/releases/2021-03/</url>
+			<url>${eclipse.mirror}/releases/2022-03/</url>
 		</repository>
 		<repository>
 			<id>Osate2</id>
