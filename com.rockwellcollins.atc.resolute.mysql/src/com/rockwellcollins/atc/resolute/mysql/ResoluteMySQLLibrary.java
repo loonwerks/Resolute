@@ -36,7 +36,8 @@ public class ResoluteMySQLLibrary extends ResoluteExternalFunctionLibrary {
 			try {
 				driverClass = Class.forName("com.mysql.cj.jdbc.Driver");
 			} catch (Exception e) {
-				throw new RuntimeException(e);
+				throw new ResoluteFailException("MySQL could not load JDBC driver", e,
+						context.getThisInstance().getSubcomponent());
 			}
 		}
 
@@ -132,14 +133,17 @@ public class ResoluteMySQLLibrary extends ResoluteExternalFunctionLibrary {
 			}
 
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			throw new ResoluteFailException("Unexpected exception occurred accessing MySQL JDBC driver.", e,
+					context.getThisInstance().getSubcomponent());
 		} finally {
 			try {
 				if (connection != null) {
 					connection.close();
 				}
 			} catch (Exception e) {
-				throw new RuntimeException(e);
+				throw new ResoluteFailException("MySQL select statement \"" + selectStatement + "\" threw exception.",
+						e,
+						context.getThisInstance().getSubcomponent());
 			}
 		}
 

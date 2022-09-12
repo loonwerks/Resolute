@@ -75,7 +75,8 @@ public class ResoluteShellCmdLibrary extends ResoluteExternalFunctionLibrary {
 			}});
 
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			throw new ResoluteFailException("Unexpected exception occurred accessing shell command.", e,
+					context.getThisInstance().getSubcomponent());
 		}
 	}
 
