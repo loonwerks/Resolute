@@ -54,6 +54,18 @@ public class ResoluteMySQLLibrary extends ResoluteExternalFunctionLibrary {
 				context.getThisInstance().getSubcomponent());
 	}
 
+	private String getConnectionURL() {
+		String hostname = System.getenv("MYSQL_HOSTNAME");
+		if (hostname == null) {
+			hostname = "localhost";
+		}
+		String port = System.getenv("MYSQL_PORT");
+		if (port == null) {
+			port = "3306";
+		}
+		return "jdbc:mysql://" + hostname + ":" + port + "/";
+	}
+
 	private ResoluteValue runSelect(EvaluationContext context, List<ResoluteValue> args) {
 		ResoluteValue arg0 = args.get(0);
 		ResoluteValue arg1 = args.get(1);
@@ -84,7 +96,7 @@ public class ResoluteMySQLLibrary extends ResoluteExternalFunctionLibrary {
 					context.getThisInstance().getSubcomponent());
 		}
 
-		final String url = "jdbc:mysql://localhost:3306/" + arg0.getString();
+		final String url = getConnectionURL() + arg0.getString();
 		final String selectStatement = "SELECT "
 				+ String.join(", ", arg2.getListValues().stream().map(v -> v.getString()).collect(Collectors.toList()))
 				+ " FROM " + arg1.getString() + ";";
