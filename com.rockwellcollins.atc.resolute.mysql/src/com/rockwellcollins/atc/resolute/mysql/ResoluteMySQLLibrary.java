@@ -36,6 +36,7 @@ public class ResoluteMySQLLibrary extends ResoluteExternalFunctionLibrary {
 			try {
 				driverClass = Class.forName("com.mysql.cj.jdbc.Driver");
 			} catch (Exception e) {
+				e.printStackTrace();
 				throw new ResoluteFailException("MySQL could not load JDBC driver", e,
 						context.getThisInstance().getSubcomponent());
 			}
@@ -100,6 +101,7 @@ public class ResoluteMySQLLibrary extends ResoluteExternalFunctionLibrary {
 		final String selectStatement = "SELECT "
 				+ String.join(", ", arg2.getListValues().stream().map(v -> v.getString()).collect(Collectors.toList()))
 				+ " FROM " + arg1.getString() + ";";
+		System.out.println("MySQL: " + url + " : " + selectStatement);
 
 		try {
 			connection = DriverManager.getConnection(url, username, password);
@@ -145,6 +147,7 @@ public class ResoluteMySQLLibrary extends ResoluteExternalFunctionLibrary {
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new ResoluteFailException("Unexpected exception occurred accessing MySQL JDBC driver.", e,
 					context.getThisInstance().getSubcomponent());
 		} finally {
