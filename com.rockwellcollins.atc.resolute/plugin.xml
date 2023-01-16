@@ -8,5 +8,17 @@
        class = "com.rockwellcollins.atc.resolute.resolute.ResolutePackage"
        genModel = "model/generated/Resolute.genmodel" /> 	
   </extension>
-
+  <extension
+         id="com.rockwellcollins.atc.resolute"
+         name="Resolute"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="com.rockwellcollins.atc.resolute.Cli">
+         </run>
+      </application>
+   </extension>
 </plugin>
