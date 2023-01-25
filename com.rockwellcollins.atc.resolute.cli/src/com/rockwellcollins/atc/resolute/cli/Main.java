@@ -9,7 +9,6 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.osate.aadl2.AadlPackage;
 import org.osate.aadl2.Classifier;
 import org.osate.aadl2.ComponentImplementation;
-import org.osate.aadl2.SystemImplementation;
 import org.osate.aadl2.instance.SystemInstance;
 import org.osate.aadl2.instantiation.InstantiateModel;
 import org.osate.aadl2.instance.InstancePackage;
@@ -17,6 +16,8 @@ import org.osate.aadl2.util.Aadl2ResourceFactoryImpl;
 import org.osate.annexsupport.AnnexRegistry;
 import org.osate.pluginsupport.PluginSupportUtil;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
+import org.eclipse.xtext.resource.IResourceServiceProvider.Registry;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.CancelIndicator;
@@ -39,7 +40,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
-//import org.osate.pluginsupport.PluginSupportUtil;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -148,6 +148,20 @@ public class Main implements IApplication {
 
 			ComponentImplementation compImpl = null;
 
+			// debug
+			// java.lang.NullPointerException: Cannot invoke "org.eclipse.xtext.resource.IResourceServiceProvider.get(java.lang.Class)" because "provider" is null
+			// at org.osate.annexsupport.AnnexUtil.getInjector(AnnexUtil.java:395)
+			// https://github.com/osate/osate2/blob/master/core/org.osate.annexsupport/src/org/osate/annexsupport/AnnexUtil.java
+
+			Registry registry = IResourceServiceProvider.Registry.INSTANCE;
+			for (String extension : registry.getExtensionToFactoryMap().keySet()) {
+				System.out.println("extension: " + extension);
+				if (!extension.equals("xtend")) {
+					IResourceServiceProvider provider = registry
+						.getResourceServiceProvider(URI.createURI("dummy." + extension));
+				}
+			}
+
 			//	        for (Resource resource : resourceSet.getResources()) {
 			for (int k = 0; k < resourceSet.getResources().size(); k++) {	        	
 				//        		if (k == 0 || k == 1 || k == 27 || k == 31 || k == 32) continue;
@@ -155,6 +169,7 @@ public class Main implements IApplication {
 				System.out.println(k);
 				Resource resource = resourceSet.getResources().get(k);
 				//        		Resource resource = resourceSet.getResources().get(31);
+
 				EList<EObject> contents = resource.getContents();
 
 				if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof AadlPackage) {
