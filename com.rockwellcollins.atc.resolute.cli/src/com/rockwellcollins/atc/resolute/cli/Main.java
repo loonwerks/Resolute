@@ -1,36 +1,5 @@
 package com.rockwellcollins.atc.resolute.cli;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.equinox.app.IApplication;
-import org.eclipse.equinox.app.IApplicationContext;
-import org.osate.aadl2.AadlPackage;
-import org.osate.aadl2.Classifier;
-import org.osate.aadl2.ComponentImplementation;
-import org.osate.aadl2.instance.SystemInstance;
-import org.osate.aadl2.instantiation.InstantiateModel;
-import org.osate.aadl2.instance.InstancePackage;
-import org.osate.aadl2.util.Aadl2ResourceFactoryImpl;
-import org.osate.annexsupport.AnnexRegistry;
-import org.osate.pluginsupport.PluginSupportUtil;
-import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
-import org.eclipse.xtext.resource.IResourceServiceProvider;
-import org.eclipse.xtext.resource.IResourceServiceProvider.Registry;
-import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.resource.XtextResourceSet;
-import org.eclipse.xtext.util.CancelIndicator;
-import org.eclipse.xtext.validation.CheckMode;
-import org.eclipse.xtext.validation.IResourceValidator;
-import org.eclipse.xtext.validation.Issue;
-
-import com.google.inject.Injector;
-import com.rockwellcollins.atc.resolute.ResoluteStandaloneSetup;
-import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexLinkingService;
-import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexParser;
-import com.rockwellcollins.atc.resolute.unparsing.ResoluteAnnexUnparser;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,12 +16,40 @@ import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.equinox.app.IApplication;
+import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.util.CancelIndicator;
+import org.eclipse.xtext.validation.CheckMode;
+import org.eclipse.xtext.validation.IResourceValidator;
+import org.eclipse.xtext.validation.Issue;
+import org.osate.aadl2.AadlPackage;
+import org.osate.aadl2.Classifier;
+import org.osate.aadl2.ComponentImplementation;
+import org.osate.aadl2.instance.InstancePackage;
+import org.osate.aadl2.instance.SystemInstance;
+import org.osate.aadl2.instantiation.InstantiateModel;
+import org.osate.aadl2.util.Aadl2ResourceFactoryImpl;
+import org.osate.aadl2.util.Aadl2Util;
+import org.osate.annexsupport.AnnexRegistry;
+import org.osate.pluginsupport.PluginSupportUtil;
+import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
+
+import com.google.inject.Injector;
+import com.rockwellcollins.atc.resolute.ResoluteStandaloneSetup;
+import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexLinkingService;
+import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexParser;
+import com.rockwellcollins.atc.resolute.unparsing.ResoluteAnnexUnparser;
 
 /** Adapted from sireum Phantom CLI and OSATE Using annex extensions in stand alone applications
- * https://github.com/sireum/osate-plugin/blob/master/org.sireum.aadl.osate.cli/src/org/sireum/aadl/osate/cli/Phantom.java 
+ * https://github.com/sireum/osate-plugin/blob/master/org.sireum.aadl.osate.cli/src/org/sireum/aadl/osate/cli/Phantom.java
  * https://github.com/sireum/osate-plugin/blob/master/org.sireum.aadl.osate/src/main/java/org/sireum/aadl/osate/util/AadlProjectUtil.java
  * https://github.com/osate/osate2/wiki/Using-annex-extensions-in-stand-alone-applications
- * https://github.com/osate/osate2/tree/1388_stand_alone_property_sets/standalone_tests 
+ * https://github.com/osate/osate2/tree/1388_stand_alone_property_sets/standalone_tests
  */
 
 public class Main implements IApplication {
@@ -66,7 +63,7 @@ public class Main implements IApplication {
 		// Read the meta information about the plug-ins to get the annex information.
 		EcorePlugin.ExtensionProcessor.process(null);
 
-		// Register Resolute annex, otherwise get exception when add Resolute annex to resource set 
+		// Register Resolute annex, otherwise get exception when add Resolute annex to resource set
 		AnnexRegistry.registerAnnex("Resolute", new ResoluteAnnexParser(), new ResoluteAnnexUnparser(),
 				new ResoluteAnnexLinkingService(), null, null, null, null, null);
 
@@ -79,14 +76,14 @@ public class Main implements IApplication {
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("aaxl2", new Aadl2ResourceFactoryImpl());
 		InstancePackage.eINSTANCE.eClass();
 
-		// Get the resource set from the Injector obtained from initializing the AADL meta model			
+		// Get the resource set from the Injector obtained from initializing the AADL meta model
 		XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 
 		// Add plug-in contributions to resource set
 		if (resourceSet != null) {
-			List<URI> contributed = PluginSupportUtil.getContributedAadl();			
+			List<URI> contributed = PluginSupportUtil.getContributedAadl();
 			for (URI uri : contributed) {
-				System.out.println(uri.toString());				
+				System.out.println(uri.toString());
 				resourceSet.getResource(uri, true);
 			}
 
@@ -94,8 +91,8 @@ public class Main implements IApplication {
 			//	        validateResourceSet(resourceSet);
 
 			String projPath = null;
-			String component = null;		
-			// Process command line options 
+			String component = null;
+			// Process command line options
 			final Map<?, ?> args = context.getArguments();
 			final String[] appArgs = (String[]) args.get("application.args");
 			System.out.println(Arrays.toString(appArgs));
@@ -104,25 +101,25 @@ public class Main implements IApplication {
 				String arg = appArgs[i];
 				if (arg.equals("-h")) {
 					printUsage();
-				} 
-				// specify project path, root for project aadl files and .project 
-				else if (arg.equals("-project")) { 
+				}
+				// specify project path, root for project aadl files and .project
+				else if (arg.equals("-project")) {
 					projPath = appArgs[++i];
 					System.out.println(projPath);
 					// process .project file references
-					String projectFileName = new String(".project"); 
-					String filePath = String.join("\\",projPath, projectFileName); 
-					System.out.println(filePath);	                
+					String projectFileName = new String(".project");
+					String filePath = String.join("\\",projPath, projectFileName);
+					System.out.println(filePath);
 					// TODO: handle reference
 
 					// Load project specific AADL files
 					loadProjectAadlFiles(projPath, resourceSet);
 
-				} else if (arg.equals("-compImpl")) { 
+				} else if (arg.equals("-compImpl")) {
 					// expects qualified name e.g. MC::MissionComputer.Impl
 					component = appArgs[++i];
 					System.out.println(component);
-					// TODO: process component	                
+					// TODO: process component
 				} else {
 					// invalid argument
 					System.err.println("WARNING: unsupported option " + appArgs[i]);
@@ -141,7 +138,7 @@ public class Main implements IApplication {
 			//	        if (res.getContents() == null) {
 			//	        	System.out.println("resource.getContents() = null");
 			//	        }
-			//	        
+			//
 			//	        if (res.getContents().get(0) == null) {
 			//	        	System.out.println("resource.getContents().get(0) = null");
 			//	        }
@@ -153,28 +150,29 @@ public class Main implements IApplication {
 			// at org.osate.annexsupport.AnnexUtil.getInjector(AnnexUtil.java:395)
 			// https://github.com/osate/osate2/blob/master/core/org.osate.annexsupport/src/org/osate/annexsupport/AnnexUtil.java
 
-			Registry registry = IResourceServiceProvider.Registry.INSTANCE;
-			for (String extension : registry.getExtensionToFactoryMap().keySet()) {
-				System.out.println("extension: " + extension);
-				if (!extension.equals("xtend")) {
-					IResourceServiceProvider provider = registry
-						.getResourceServiceProvider(URI.createURI("dummy." + extension));
-				}
-			}
+//			Registry registry = IResourceServiceProvider.Registry.INSTANCE;
+//			for (String extension : registry.getExtensionToFactoryMap().keySet()) {
+//				System.out.println("extension: " + extension);
+//				if (!extension.equals("xtend")) {
+//					IResourceServiceProvider provider = registry
+//						.getResourceServiceProvider(URI.createURI("dummy." + extension));
+//				}
+//			}
 
 			//	        for (Resource resource : resourceSet.getResources()) {
-			for (int k = 0; k < resourceSet.getResources().size(); k++) {	        	
+			for (int k = 0; k < resourceSet.getResources().size(); k++) {
 				//        		if (k == 0 || k == 1 || k == 27 || k == 31 || k == 32) continue;
-				if (k == 0 || k == 1) continue;
+				// if (k == 0 || k == 1) continue;
 				System.out.println(k);
 				Resource resource = resourceSet.getResources().get(k);
 				//        		Resource resource = resourceSet.getResources().get(31);
 
-				EList<EObject> contents = resource.getContents();
+//				EList<EObject> contents = resource.getContents();
 
 				if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof AadlPackage) {
 					AadlPackage candidate = (AadlPackage) resource.getContents().get(0);
-					if (candidate.getOwnedPublicSection() != null
+					if (candidate.getName().equalsIgnoreCase(Aadl2Util.getPackageName(component))
+							&& candidate.getOwnedPublicSection() != null
 							&& candidate.getOwnedPublicSection().getOwnedClassifiers() != null) {
 						Classifier classCand = getResourceByName(component,
 								candidate.getOwnedPublicSection().getOwnedClassifiers());
@@ -182,7 +180,7 @@ public class Main implements IApplication {
 						if (classCand != null) {
 							if (classCand instanceof ComponentImplementation) {
 								compImpl = (ComponentImplementation) classCand;
-								System.out.println("found" + component);
+								System.out.println("found " + component);
 								break;
 							} else {
 								System.err.println(component + " is a "
@@ -191,39 +189,45 @@ public class Main implements IApplication {
 								return null;
 							}
 						}
+						break;
 					}
 				}
 			}
-			if (compImpl != null) {	
-				SystemInstance si = InstantiateModel.buildInstanceModelFile(compImpl);
+			if (compImpl != null) {
+				SystemInstance si = null;
+				try {
+					si = InstantiateModel.buildInstanceModelFile(compImpl);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-		}				
+		}
 		System.out.println("Goodbye World!");
 		return IApplication.EXIT_OK;
 	}
 
 	// Load project specific AADL files
-	public static void loadProjectAadlFiles (String projPath, XtextResourceSet resourceSet) {	
-		try {        	
+	public static void loadProjectAadlFiles (String projPath, XtextResourceSet resourceSet) {
+		try {
 			List<String> projectFiles = findFiles(Paths.get(projPath), "aadl");
-			projectFiles.forEach(x -> System.out.println(x));	
+			projectFiles.forEach(x -> System.out.println(x));
 			File projectRootDirectory = new File(projPath);
 			File projectFile = new File(projectRootDirectory, ".project");
 			String projName = getProjectName(projectFile);
 
-			for (String pFile : projectFiles) {	  
-				File projFile = new File(pFile);		 		
+			for (String pFile : projectFiles) {
+				File projFile = new File(pFile);
 				loadFile(projectRootDirectory, projName, projFile, resourceSet);
-			}	        			             
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		}	
+		}
 	}
 
 	// Validation resource set
 	public static void validateResourceSet (XtextResourceSet resourceSet) {
 		for (Resource resource : resourceSet.getResources()) {
-			System.out.println("*** validating " + resource.getURI().toString() + " ***");				
+			System.out.println("*** validating " + resource.getURI().toString() + " ***");
 			IResourceValidator validator = ((XtextResource) resource).getResourceServiceProvider()
 					.getResourceValidator();
 			List<Issue> issues = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);
@@ -281,7 +285,7 @@ public class Main implements IApplication {
 
 			String prefix = "platform:/resource/";
 			String normalizedRelPath = relativize(projectRootDirectory, file).replace("\\", "/");
-			System.out.println(normalizedRelPath); 
+			System.out.println(normalizedRelPath);
 			// came up with this uri by comparing what OSATE IDE serialized AIR produces
 			URI resourceUri = URI.createURI(prefix + projectName + "/" + normalizedRelPath);
 			Resource res = rs.createResource(resourceUri);
