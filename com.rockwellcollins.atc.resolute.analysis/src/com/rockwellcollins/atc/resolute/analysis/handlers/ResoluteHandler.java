@@ -4,10 +4,7 @@ import static java.util.stream.Collectors.joining;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.SortedSet;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -41,8 +38,7 @@ import org.osate.annexsupport.AnnexUtil;
 import org.osate.ui.dialogs.Dialog;
 
 import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
-import com.rockwellcollins.atc.resolute.analysis.execution.FeatureToConnectionsMap;
-import com.rockwellcollins.atc.resolute.analysis.execution.Initializer;
+import com.rockwellcollins.atc.resolute.analysis.execution.ModelMap;
 import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteInterpreter;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
 import com.rockwellcollins.atc.resolute.analysis.views.AssuranceCaseView;
@@ -155,15 +151,14 @@ public class ResoluteHandler extends AadlHandler {
 
 		start = System.currentTimeMillis();
 
-		Map<String, SortedSet<NamedElement>> sets = new HashMap<>();
-		Initializer.initializeSets(si, sets);
-		FeatureToConnectionsMap featToConnsMap = new FeatureToConnectionsMap(si);
+		ModelMap modelMap = new ModelMap(si);
 
 		List<ResoluteResult> argumentTrees = new ArrayList<>();
 
 		if (theorem != null) {
 
-			EvaluationContext context = new EvaluationContext(si, sets, featToConnsMap);
+			EvaluationContext context = new EvaluationContext(si, modelMap.getElementSets(),
+					modelMap.getFeatureToConnectionsMap());
 			FunctionDefinition functionDefinition = resolveResoluteFunction(si, theorem);
 
 			ResoluteSubclause resoluteSubclause = ResoluteFactory.eINSTANCE.createResoluteSubclause();
@@ -193,7 +188,7 @@ public class ResoluteHandler extends AadlHandler {
 			}
 
 		} else {
-			for (NamedElement el : sets.get("component")) {
+			for (NamedElement el : modelMap.getElements("component")) {
 				ComponentInstance compInst = (ComponentInstance) el;
 				EClass resoluteSubclauseEClass = ResolutePackage.eINSTANCE.getResoluteSubclause();
 				for (AnnexSubclause subclause : AnnexUtil.getAllAnnexSubclauses(compInst.getComponentClassifier(),
@@ -201,7 +196,8 @@ public class ResoluteHandler extends AadlHandler {
 
 					if (subclause instanceof ResoluteSubclause) {
 						ResoluteSubclause resoluteSubclause = (ResoluteSubclause) subclause;
-						EvaluationContext context = new EvaluationContext(compInst, sets, featToConnsMap);
+						EvaluationContext context = new EvaluationContext(compInst, modelMap.getElementSets(),
+								modelMap.getFeatureToConnectionsMap());
 						ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
 						for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
 							if (as instanceof ArgueStatement) {

@@ -12,11 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.SortedSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -57,12 +54,12 @@ import org.osate.pluginsupport.PluginSupportUtil;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonWriter;
 import com.google.inject.Injector;
 import com.rockwellcollins.atc.resolute.ResoluteStandaloneSetup;
 import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
-import com.rockwellcollins.atc.resolute.analysis.execution.FeatureToConnectionsMap;
-import com.rockwellcollins.atc.resolute.analysis.execution.Initializer;
+import com.rockwellcollins.atc.resolute.analysis.execution.ModelMap;
 import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteInterpreter;
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.FailResult;
@@ -128,8 +125,8 @@ public class Main implements IApplication {
 		String outputPath = null;
 		boolean exitOnValidationWarning = false;
 		boolean validationOnly = false;
-		boolean resoluteOnly = false;
-		boolean resolintOnly = false;
+		boolean resolute = false;
+		boolean resolint = false;
 		boolean exit = false;
 
 		final String[] args = (String[]) context.getArguments().get("application.args");
@@ -165,11 +162,9 @@ public class Main implements IApplication {
 				outputPath = args[++i];
 				System.out.println("Output path = " + outputPath);
 			} else if (arg.equals("-resolute")) {
-				resoluteOnly = true;
-				resolintOnly = false;
+				resolute = true;
 			} else if (arg.equals("-resolint")) {
-				resolintOnly = true;
-				resoluteOnly = false;
+				resolint = true;
 			} else if (arg.equals("-v") || arg.equals("-validationOnly")) {
 				validationOnly = true;
 			} else if (arg.equals("-w") || arg.equals("-exitOnValidationWarning")) {
@@ -251,13 +246,14 @@ public class Main implements IApplication {
 		if (compImpl != null) {
 			try {
 				final SystemInstance si = InstantiateModel.buildInstanceModelFile(compImpl);
-				if (!resolintOnly) {
-					final List<ResoluteOutput> results = runResolute(si);
+				final ModelMap modelMap = new ModelMap(si);
+				if (resolute) {
+					final List<ResoluteOutput> results = runResolute(modelMap);
 					output.setStatus(CommandLineOutput.COMPLETED);
 					output.setResoluteOutput(results);
 				}
-				if (!resoluteOnly) {
-					final List<ResolintOutput> results = runResolint(si);
+				if (resolint) {
+					final List<ResolintOutput> results = runResolint(modelMap);
 					output.setStatus(CommandLineOutput.COMPLETED);
 					output.setResolintOutput(results);
 				}
@@ -279,22 +275,19 @@ public class Main implements IApplication {
 		return IApplication.EXIT_OK;
 	}
 
-	private List<ResoluteOutput> runResolute(SystemInstance si) throws Exception {
-
-		final Map<String, SortedSet<NamedElement>> sets = new HashMap<>();
-		Initializer.initializeSets(si, sets);
-		final FeatureToConnectionsMap featToConnsMap = new FeatureToConnectionsMap(si);
+	private List<ResoluteOutput> runResolute(ModelMap modelMap) throws Exception {
 
 		final List<ResoluteResult> argumentTrees = new ArrayList<>();
 
-		for (NamedElement el : sets.get("component")) {
+		for (NamedElement el : modelMap.getElements("component")) {
 			final ComponentInstance compInst = (ComponentInstance) el;
 			final EClass resoluteSubclauseEClass = ResolutePackage.eINSTANCE.getResoluteSubclause();
 			for (AnnexSubclause subclause : AnnexUtil.getAllAnnexSubclauses(compInst.getComponentClassifier(),
 					resoluteSubclauseEClass)) {
 				if (subclause instanceof ResoluteSubclause) {
 					final ResoluteSubclause resoluteSubclause = (ResoluteSubclause) subclause;
-					final EvaluationContext context = new EvaluationContext(compInst, sets, featToConnsMap);
+					final EvaluationContext context = new EvaluationContext(compInst, modelMap.getElementSets(),
+							modelMap.getFeatureToConnectionsMap());
 					final ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
 					for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
 						if (as instanceof ArgueStatement) {
@@ -339,22 +332,19 @@ public class Main implements IApplication {
 		return resoluteOutputs;
 	}
 
-	private List<ResolintOutput> runResolint(SystemInstance si) throws Exception {
-
-		final Map<String, SortedSet<NamedElement>> sets = new HashMap<>();
-		Initializer.initializeSets(si, sets);
-		final FeatureToConnectionsMap featToConnsMap = new FeatureToConnectionsMap(si);
+	private List<ResolintOutput> runResolint(ModelMap modelMap) throws Exception {
 
 		final List<ResoluteResult> checkTrees = new ArrayList<>();
 
-		for (NamedElement el : sets.get("component")) {
+		for (NamedElement el : modelMap.getElements("component")) {
 			final ComponentInstance compInst = (ComponentInstance) el;
 			final EClass resoluteSubclauseEClass = ResolutePackage.eINSTANCE.getResoluteSubclause();
 			for (AnnexSubclause subclause : AnnexUtil.getAllAnnexSubclauses(compInst.getComponentClassifier(),
 					resoluteSubclauseEClass)) {
 				if (subclause instanceof ResoluteSubclause) {
 					final ResoluteSubclause resoluteSubclause = (ResoluteSubclause) subclause;
-					final EvaluationContext context = new EvaluationContext(compInst, sets, featToConnsMap);
+					final EvaluationContext context = new EvaluationContext(compInst, modelMap.getElementSets(),
+							modelMap.getFeatureToConnectionsMap());
 					final ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
 					// Evaluate each check statement in selected implementation
 					for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
@@ -380,10 +370,10 @@ public class Main implements IApplication {
 		}
 
 		// Return output in json format
-		return getResolintResults(checkTrees);
+		return getResolintResults(checkTrees, modelMap.getSystemInstance().getComponentImplementation());
 	}
 
-	private List<ResolintOutput> getResolintResults(List<ResoluteResult> results) {
+	private List<ResolintOutput> getResolintResults(List<ResoluteResult> results, ComponentImplementation ci) {
 
 		final List<ResolintOutput> resolintOutputs = new ArrayList<>();
 
@@ -403,7 +393,7 @@ public class Main implements IApplication {
 						} else if (severity == IMarker.SEVERITY_WARNING) {
 							resolintOutput.setSeverity("warning");
 						}
-//						resolintOutput.setLine(getLineNumberFor(ci));
+						resolintOutput.setLine(getLineNumberFor(ci));
 					} else {
 						for (EObject ref : locations) {
 							if (ref == null) {
@@ -414,7 +404,7 @@ public class Main implements IApplication {
 								} else if (severity == IMarker.SEVERITY_WARNING) {
 									resolintOutput.setSeverity("warning");
 								}
-//								resolintOutput.setLine(getLineNumberFor(ci));
+								resolintOutput.setLine(getLineNumberFor(ci));
 							} else {
 								resolintOutput.setRule(result.getText());
 								int severity = result.getSeverity();
@@ -588,7 +578,7 @@ public class Main implements IApplication {
 	private void writeOutput(CommandLineOutput output, String outputPath) {
 
 		// Convert to json
-		final Gson gson = new Gson();
+		final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		try {
 			if (outputPath != null) {
 				final File outputFile = new File(outputPath);

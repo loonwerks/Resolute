@@ -1,11 +1,8 @@
 package com.rockwellcollins.atc.resolute.analysis.handlers;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.SortedSet;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -27,7 +24,6 @@ import org.osate.aadl2.AnnexSubclause;
 import org.osate.aadl2.ComponentImplementation;
 import org.osate.aadl2.DefaultAnnexSubclause;
 import org.osate.aadl2.Element;
-import org.osate.aadl2.NamedElement;
 import org.osate.aadl2.instance.SystemInstance;
 import org.osate.aadl2.instantiation.InstantiateModel;
 import org.osate.aadl2.modelsupport.util.AadlUtil;
@@ -36,8 +32,7 @@ import org.osate.aadl2.parsesupport.LocationReference;
 import org.osate.ui.dialogs.Dialog;
 
 import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
-import com.rockwellcollins.atc.resolute.analysis.execution.FeatureToConnectionsMap;
-import com.rockwellcollins.atc.resolute.analysis.execution.Initializer;
+import com.rockwellcollins.atc.resolute.analysis.execution.ModelMap;
 import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteInterpreter;
 import com.rockwellcollins.atc.resolute.analysis.results.ResolintResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
@@ -95,9 +90,7 @@ public class ResolintHandler extends AadlHandler {
 
 	public static List<ResoluteResult> run(SystemInstance si) {
 
-		Map<String, SortedSet<NamedElement>> sets = new HashMap<>();
-		Initializer.initializeSets(si, sets);
-		FeatureToConnectionsMap featToConnsMap = new FeatureToConnectionsMap(si);
+		ModelMap modelMap = new ModelMap(si);
 		List<ResoluteResult> checkTrees = new ArrayList<>();
 
 		// Get the resolute subclause for the selected component implementation
@@ -105,7 +98,8 @@ public class ResolintHandler extends AadlHandler {
 			DefaultAnnexSubclause defaultSubclause = (DefaultAnnexSubclause) annexSubclause;
 			if (defaultSubclause.getParsedAnnexSubclause() instanceof ResoluteSubclause) {
 				ResoluteSubclause resoluteSubclause = (ResoluteSubclause) defaultSubclause.getParsedAnnexSubclause();
-				EvaluationContext context = new EvaluationContext(si.getComponentInstance(), sets, featToConnsMap);
+				EvaluationContext context = new EvaluationContext(si.getComponentInstance(), modelMap.getElementSets(),
+						modelMap.getFeatureToConnectionsMap());
 				ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
 
 				// Evaluate each check statement in selected implementation

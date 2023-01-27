@@ -1,5 +1,6 @@
 package com.rockwellcollins.atc.resolute.analysis.execution;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -10,10 +11,37 @@ import org.osate.aadl2.instance.ComponentInstance;
 import org.osate.aadl2.instance.EndToEndFlowInstance;
 import org.osate.aadl2.instance.FlowSpecificationInstance;
 import org.osate.aadl2.instance.InstanceObject;
+import org.osate.aadl2.instance.SystemInstance;
 
 import com.rockwellcollins.atc.resolute.validation.BaseType;
 
-public class Initializer {
+public class ModelMap {
+
+	private final SystemInstance si;
+	private final Map<String, SortedSet<NamedElement>> sets = new HashMap<>();
+	private final FeatureToConnectionsMap featToConnsMap;
+
+	public ModelMap(SystemInstance si) {
+		this.si = si;
+		this.featToConnsMap = new FeatureToConnectionsMap(si);
+		initializeSets(si, this.sets);
+	}
+
+	public SystemInstance getSystemInstance() {
+		return this.si;
+	}
+
+	public SortedSet<NamedElement> getElements(String element) {
+		return this.sets.get(element);
+	}
+
+	public Map<String, SortedSet<NamedElement>> getElementSets() {
+		return this.sets;
+	}
+
+	public FeatureToConnectionsMap getFeatureToConnectionsMap() {
+		return this.featToConnsMap;
+	}
 
 	public static void initializeSets(ComponentInstance ci, Map<String, SortedSet<NamedElement>> sets) {
 		if (ci == null) {
