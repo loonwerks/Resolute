@@ -1,26 +1,32 @@
 package com.rockwellcollins.atc.resolute.cli;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.CancelIndicator;
@@ -28,21 +34,42 @@ import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 import org.osate.aadl2.AadlPackage;
-import org.osate.aadl2.Classifier;
+import org.osate.aadl2.AnnexSubclause;
 import org.osate.aadl2.ComponentImplementation;
+import org.osate.aadl2.NamedElement;
+import org.osate.aadl2.instance.ComponentInstance;
 import org.osate.aadl2.instance.InstancePackage;
 import org.osate.aadl2.instance.SystemInstance;
 import org.osate.aadl2.instantiation.InstantiateModel;
+import org.osate.aadl2.modelsupport.util.AadlUtil;
 import org.osate.aadl2.util.Aadl2ResourceFactoryImpl;
 import org.osate.aadl2.util.Aadl2Util;
 import org.osate.annexsupport.AnnexRegistry;
+import org.osate.annexsupport.AnnexUtil;
 import org.osate.pluginsupport.PluginSupportUtil;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.inject.Injector;
 import com.rockwellcollins.atc.resolute.ResoluteStandaloneSetup;
+import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
+import com.rockwellcollins.atc.resolute.analysis.execution.FeatureToConnectionsMap;
+import com.rockwellcollins.atc.resolute.analysis.execution.Initializer;
+import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteInterpreter;
+import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
+import com.rockwellcollins.atc.resolute.analysis.results.FailResult;
+import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
+import com.rockwellcollins.atc.resolute.cli.results.CommandLineOutput;
+import com.rockwellcollins.atc.resolute.cli.results.ResoluteOutput;
+import com.rockwellcollins.atc.resolute.cli.results.SyntaxValidationIssue;
+import com.rockwellcollins.atc.resolute.cli.results.SyntaxValidationResults;
 import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexLinkingService;
 import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexParser;
+import com.rockwellcollins.atc.resolute.resolute.AnalysisStatement;
+import com.rockwellcollins.atc.resolute.resolute.ArgueStatement;
+import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
+import com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause;
 import com.rockwellcollins.atc.resolute.unparsing.ResoluteAnnexUnparser;
 
 /** Adapted from sireum Phantom CLI and OSATE Using annex extensions in stand alone applications
@@ -56,7 +83,8 @@ public class Main implements IApplication {
 
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
-		System.out.println("Hello World!");
+
+		System.out.println("Starting Resolute analysis");
 
 		context.applicationRunning();
 
@@ -76,181 +104,267 @@ public class Main implements IApplication {
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("aaxl2", new Aadl2ResourceFactoryImpl());
 		InstancePackage.eINSTANCE.eClass();
 
+		// Output Json object
+		final CommandLineOutput output = new CommandLineOutput();
+		output.setDate((new Date()).toString());
+
+		// Process command line options
+		String projPath = null;
+		String component = null;
+		String outputPath = null;
+		boolean exitOnValidationWarning = false;
+		boolean validationOnly = false;
+		boolean exit = false;
+
+		final String[] args = (String[]) context.getArguments().get("application.args");
+		System.out.println(Arrays.toString(args));
+
+		for (int i = 0; i < args.length; i++) {
+			final String arg = args[i];
+			if (arg.equals("-h") || arg.equals("-help")) {
+				exit = true;
+				output.setStatus(CommandLineOutput.INTERRUPTED);
+				output.setMessage(usage());
+			}
+			// specify project path, root for project aadl files and .project
+			else if (arg.equals("-p") || arg.equals("-project")) {
+				projPath = args[++i];
+				output.setProject(projPath);
+				System.out.println("Project = " + projPath);
+				// Process .project file references
+				final String filePath = String.join(File.separator, projPath, ".project");
+				// TODO: handle referenced projects
+
+			} else if (arg.equals("-compImpl")) {
+				// expects qualified name
+				component = args[++i];
+				output.setComponent(component);
+				System.out.println("Component implementation = " + component);
+				if (!component.contains("::")) {
+					output.setStatus(CommandLineOutput.INTERRUPTED);
+					output.setMessage("Component implementation qualified name must be specified");
+					exit = true;
+				}
+			} else if (arg.equals("-o") || arg.equals("-output")) {
+				outputPath = args[++i];
+				System.out.println("Output path = " + outputPath);
+			} else if (arg.equals("-v") || arg.equals("-validationOnly")) {
+				validationOnly = true;
+			} else if (arg.equals("-w") || arg.equals("-exitOnValidationWarning")) {
+				exitOnValidationWarning = true;
+			} else {
+				// invalid argument
+				System.err.println("WARNING: unsupported option " + args[i]);
+			}
+		}
+
+		if (exit) {
+			writeOutput(output, outputPath);
+			return IApplication.EXIT_OK;
+		}
+
 		// Get the resource set from the Injector obtained from initializing the AADL meta model
-		XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
+		final XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 
 		// Add plug-in contributions to resource set
-		if (resourceSet != null) {
-			List<URI> contributed = PluginSupportUtil.getContributedAadl();
-			for (URI uri : contributed) {
-				System.out.println(uri.toString());
-				resourceSet.getResource(uri, true);
-			}
+		if (resourceSet == null) {
+			output.setStatus(CommandLineOutput.INTERRUPTED);
+			output.setMessage("Unable to initialize resource set");
+			writeOutput(output, outputPath);
+			return IApplication.EXIT_OK;
+		}
 
-			// Validate resource set
-			//	        validateResourceSet(resourceSet);
+		for (URI uri : PluginSupportUtil.getContributedAadl()) {
+//			System.out.println(uri.toString());
+			resourceSet.getResource(uri, true);
+		}
 
-			String projPath = null;
-			String component = null;
-			// Process command line options
-			final Map<?, ?> args = context.getArguments();
-			final String[] appArgs = (String[]) args.get("application.args");
-			System.out.println(Arrays.toString(appArgs));
+		// Load project specific AADL files
+		if (projPath == null) {
+			output.setStatus(CommandLineOutput.INTERRUPTED);
+			output.setMessage(usage());
+			writeOutput(output, outputPath);
+			return IApplication.EXIT_OK;
+		}
+		try {
+			loadProjectAadlFiles(projPath, resourceSet);
+		} catch (Exception e) {
+			output.setStatus(CommandLineOutput.INTERRUPTED);
+			output.setMessage(e.getMessage());
+			writeOutput(output, outputPath);
+			return IApplication.EXIT_OK;
+		}
 
-			for (int i = 0; i < appArgs.length; i++) {
-				String arg = appArgs[i];
-				if (arg.equals("-h")) {
-					printUsage();
-				}
-				// specify project path, root for project aadl files and .project
-				else if (arg.equals("-project")) {
-					projPath = appArgs[++i];
-					System.out.println(projPath);
-					// process .project file references
-					String projectFileName = new String(".project");
-					String filePath = String.join("\\",projPath, projectFileName);
-					System.out.println(filePath);
-					// TODO: handle reference
+		// Validate resource set
+		final SyntaxValidationResults validationResults = validateResourceSet(resourceSet);
+		// Add validation results to output
+		output.setSyntaxValidationResults(validationResults);
 
-					// Load project specific AADL files
-					loadProjectAadlFiles(projPath, resourceSet);
+		// If there are any errors, do not continue
+		// Don't continue if user doesn't want any warnings
+		// Don't continue if user only wants to validate model
+		if (validationResults.getErrors() > 0 || (exitOnValidationWarning && validationResults.getWarnings() > 0)) {
+			output.setStatus(CommandLineOutput.INTERRUPTED);
+			output.setMessage("Syntax validation issues found");
+			writeOutput(output, outputPath);
+			return IApplication.EXIT_OK;
+		} else if (validationOnly) {
+			output.setStatus(CommandLineOutput.COMPLETED);
+			writeOutput(output, outputPath);
+			return IApplication.EXIT_OK;
+		}
 
-				} else if (arg.equals("-compImpl")) {
-					// expects qualified name e.g. MC::MissionComputer.Impl
-					component = appArgs[++i];
-					System.out.println(component);
-					// TODO: process component
-				} else {
-					// invalid argument
-					System.err.println("WARNING: unsupported option " + appArgs[i]);
-				}
-			}
+		ComponentImplementation compImpl = null;
+		for (Resource resource : resourceSet.getResources()) {
 
-			// Validate resource set
-			//	        validateResourceSet(resourceSet);
+			if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof AadlPackage) {
+				final AadlPackage pkg = (AadlPackage) resource.getContents().get(0);
+				if (pkg.getName().equalsIgnoreCase(Aadl2Util.getPackageName(component))) {
 
+					compImpl = (ComponentImplementation) AadlUtil.findNamedElementInList(
+							AadlUtil.getAllComponentImpl(pkg), Aadl2Util.getItemNameWithoutQualification(component));
 
-			//	        Resource res = resourceSet.getResources().get(0);
-			//	        if (res == null) {
-			//	        	System.out.println("resource = null");
-			//	        }
-			//
-			//	        if (res.getContents() == null) {
-			//	        	System.out.println("resource.getContents() = null");
-			//	        }
-			//
-			//	        if (res.getContents().get(0) == null) {
-			//	        	System.out.println("resource.getContents().get(0) = null");
-			//	        }
-
-			ComponentImplementation compImpl = null;
-
-			// debug
-			// java.lang.NullPointerException: Cannot invoke "org.eclipse.xtext.resource.IResourceServiceProvider.get(java.lang.Class)" because "provider" is null
-			// at org.osate.annexsupport.AnnexUtil.getInjector(AnnexUtil.java:395)
-			// https://github.com/osate/osate2/blob/master/core/org.osate.annexsupport/src/org/osate/annexsupport/AnnexUtil.java
-
-//			Registry registry = IResourceServiceProvider.Registry.INSTANCE;
-//			for (String extension : registry.getExtensionToFactoryMap().keySet()) {
-//				System.out.println("extension: " + extension);
-//				if (!extension.equals("xtend")) {
-//					IResourceServiceProvider provider = registry
-//						.getResourceServiceProvider(URI.createURI("dummy." + extension));
-//				}
-//			}
-
-			//	        for (Resource resource : resourceSet.getResources()) {
-			for (int k = 0; k < resourceSet.getResources().size(); k++) {
-				//        		if (k == 0 || k == 1 || k == 27 || k == 31 || k == 32) continue;
-				// if (k == 0 || k == 1) continue;
-				System.out.println(k);
-				Resource resource = resourceSet.getResources().get(k);
-				//        		Resource resource = resourceSet.getResources().get(31);
-
-//				EList<EObject> contents = resource.getContents();
-
-				if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof AadlPackage) {
-					AadlPackage candidate = (AadlPackage) resource.getContents().get(0);
-					if (candidate.getName().equalsIgnoreCase(Aadl2Util.getPackageName(component))
-							&& candidate.getOwnedPublicSection() != null
-							&& candidate.getOwnedPublicSection().getOwnedClassifiers() != null) {
-						Classifier classCand = getResourceByName(component,
-								candidate.getOwnedPublicSection().getOwnedClassifiers());
-
-						if (classCand != null) {
-							if (classCand instanceof ComponentImplementation) {
-								compImpl = (ComponentImplementation) classCand;
-								System.out.println("found " + component);
-								break;
-							} else {
-								System.err.println(component + " is a "
-										+ classCand.getClass().getSimpleName()
-										+ " rather than a system implementation");
-								return null;
-							}
-						}
-						break;
-					}
-				}
-			}
-			if (compImpl != null) {
-				SystemInstance si = null;
-				try {
-					si = InstantiateModel.buildInstanceModelFile(compImpl);
-				} catch (Exception e) {
-					e.printStackTrace();
+					break;
 				}
 			}
 		}
-		System.out.println("Goodbye World!");
+		if (compImpl != null) {
+			try {
+				final SystemInstance si = InstantiateModel.buildInstanceModelFile(compImpl);
+				final List<ResoluteOutput> results = runResolute(si);
+				output.setStatus(CommandLineOutput.COMPLETED);
+				output.setResoluteOutput(results);
+				writeOutput(output, outputPath);
+			} catch (Exception e) {
+				e.printStackTrace();
+				output.setStatus(CommandLineOutput.INTERRUPTED);
+				output.setMessage(e.getMessage());
+				writeOutput(output, outputPath);
+				return IApplication.EXIT_OK;
+			}
+		} else {
+			output.setStatus(CommandLineOutput.INTERRUPTED);
+			output.setMessage("Could not find component implementation in project");
+			writeOutput(output, outputPath);
+			return IApplication.EXIT_OK;
+		}
+
 		return IApplication.EXIT_OK;
 	}
 
-	// Load project specific AADL files
-	public static void loadProjectAadlFiles (String projPath, XtextResourceSet resourceSet) {
-		try {
-			List<String> projectFiles = findFiles(Paths.get(projPath), "aadl");
-			projectFiles.forEach(x -> System.out.println(x));
-			File projectRootDirectory = new File(projPath);
-			File projectFile = new File(projectRootDirectory, ".project");
-			String projName = getProjectName(projectFile);
+	private List<ResoluteOutput> runResolute(SystemInstance si) throws Exception {
 
-			for (String pFile : projectFiles) {
-				File projFile = new File(pFile);
-				loadFile(projectRootDirectory, projName, projFile, resourceSet);
+		final Map<String, SortedSet<NamedElement>> sets = new HashMap<>();
+		Initializer.initializeSets(si, sets);
+		final FeatureToConnectionsMap featToConnsMap = new FeatureToConnectionsMap(si);
+
+		final List<ResoluteResult> argumentTrees = new ArrayList<>();
+
+		for (NamedElement el : sets.get("component")) {
+			final ComponentInstance compInst = (ComponentInstance) el;
+			final EClass resoluteSubclauseEClass = ResolutePackage.eINSTANCE.getResoluteSubclause();
+			for (AnnexSubclause subclause : AnnexUtil.getAllAnnexSubclauses(compInst.getComponentClassifier(),
+					resoluteSubclauseEClass)) {
+
+				if (subclause instanceof ResoluteSubclause) {
+					final ResoluteSubclause resoluteSubclause = (ResoluteSubclause) subclause;
+					final EvaluationContext context = new EvaluationContext(compInst, sets, featToConnsMap);
+					final ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
+					for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
+						if (as instanceof ArgueStatement) {
+							final ArgueStatement stmt = (ArgueStatement) as;
+//							try {
+								argumentTrees.add(interpreter.evaluateArgueStatement(stmt));
+//							} catch (Exception e) {
+//
+//							}
+						}
+					}
+				}
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
+		}
+
+		// Return output in json format
+		return getResoluteResults(argumentTrees);
+
+	}
+
+	private List<ResoluteOutput> getResoluteResults(List<ResoluteResult> results) {
+
+		final List<ResoluteOutput> resoluteOutputs = new ArrayList<>();
+
+		for (ResoluteResult result : results) {
+			final ResoluteOutput resoluteOutput = new ResoluteOutput();
+			if (result instanceof ClaimResult) {
+				final ClaimResult claimResult = (ClaimResult) result;
+				resoluteOutput.setClaim(claimResult.getText());
+				resoluteOutput.setStatus(claimResult.isValid());
+				final List<ResoluteOutput> childrenResult = getResoluteResults(claimResult.getChildren());
+				resoluteOutput.setSubclaims(childrenResult);
+			} else if (result instanceof FailResult) {
+				final FailResult failResult = (FailResult) result;
+				resoluteOutput.setClaim(failResult.getText());
+				resoluteOutput.setStatus(failResult.isValid());
+				final List<ResoluteOutput> childrenResult = getResoluteResults(failResult.getChildren());
+				resoluteOutput.setSubclaims(childrenResult);
+			} else {
+				continue;
+			}
+			resoluteOutputs.add(resoluteOutput);
+		}
+
+		return resoluteOutputs;
+	}
+
+	// Load project specific AADL files
+	public void loadProjectAadlFiles(String projPath, XtextResourceSet resourceSet) throws Exception {
+
+		final List<String> projectFiles = findFiles(Paths.get(projPath), "aadl");
+		projectFiles.forEach(x -> System.out.println(x));
+		final File projectRootDirectory = new File(projPath);
+		final File projectFile = new File(projectRootDirectory, ".project");
+		final String projName = getProjectName(projectFile);
+
+		for (String pFile : projectFiles) {
+			final File projFile = new File(pFile);
+			loadFile(projectRootDirectory, projName, projFile, resourceSet);
 		}
 	}
 
 	// Validation resource set
-	public static void validateResourceSet (XtextResourceSet resourceSet) {
+	private SyntaxValidationResults validateResourceSet(XtextResourceSet resourceSet) {
+
+		final List<SyntaxValidationIssue> syntaxValidationIssues = new ArrayList<>();
+		int numErrors = 0;
+		int numWarnings = 0;
 		for (Resource resource : resourceSet.getResources()) {
-			System.out.println("*** validating " + resource.getURI().toString() + " ***");
-			IResourceValidator validator = ((XtextResource) resource).getResourceServiceProvider()
-					.getResourceValidator();
-			List<Issue> issues = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);
-			for (Issue issue : issues) {
-				System.out.println(issue.getMessage());
+			if (resource.getURI().isPlatformResource()) {
+				System.out.println("Validating " + resource.getURI().toString());
+				final IResourceValidator validator = ((XtextResource) resource).getResourceServiceProvider()
+						.getResourceValidator();
+				final List<Issue> issues = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);
+				for (Issue issue : issues) {
+					final SyntaxValidationIssue valIssue = new SyntaxValidationIssue();
+					if (issue.getSeverity().equals(Severity.ERROR)) {
+						++numErrors;
+						valIssue.setSeverity("error");
+					} else if (issue.getSeverity().equals(Severity.WARNING)) {
+						++numWarnings;
+						valIssue.setSeverity("warning");
+					}
+					valIssue.setIssue(issue.getMessage());
+					valIssue.setFile(resource.getURI().toPlatformString(true));
+					valIssue.setLine(issue.getLineNumber());
+					syntaxValidationIssues.add(valIssue);
+					System.out.println(issue.getMessage());
+				}
 			}
 		}
+
+		return new SyntaxValidationResults(numWarnings, numErrors, syntaxValidationIssues);
 	}
 
-	public static Classifier getResourceByName(String name, EList<Classifier> l) {
-		boolean isQualified = name.contains("::");
-		for (Classifier oc : l) {
-			if (isQualified && oc.getQualifiedName().equals(name)) {
-				return oc;
-			} else if (oc.getName().equals(name)) {
-				return oc;
-			}
-		}
-		return null;
-	}
-
-	public static List<String> findFiles(Path path, String fileExtension)
-			throws IOException {
+	private List<String> findFiles(Path path, String fileExtension) throws Exception {
 
 		if (!Files.isDirectory(path)) {
 			throw new IllegalArgumentException("Path must be a directory!");
@@ -278,50 +392,68 @@ public class Main implements IApplication {
 	 */
 	//https://github.com/sireum/osate-plugin/blob/master/org.sireum.aadl.osate/src/main/java/org/sireum/aadl/osate/util/AadlProjectUtil.java
 
-	public static Resource loadFile(File projectRootDirectory, String projectName, File file, ResourceSet rs) {
+	private Resource loadFile(File projectRootDirectory, String projectName, File file, ResourceSet rs)
+			throws Exception {
+
+		final URL url = new URL("file:" + file.getAbsolutePath());
+		final InputStream stream = url.openConnection().getInputStream();
+
+		final String prefix = "platform:/resource/";
+		final String normalizedRelPath = relativize(projectRootDirectory, file).replace("\\", "/");
+//		System.out.println(normalizedRelPath);
+		// came up with this uri by comparing what OSATE IDE serialized AIR produces
+		final URI resourceUri = URI.createURI(prefix + projectName + "/" + normalizedRelPath);
+		final Resource res = rs.createResource(resourceUri);
+		if (res == null) {
+			throw new Exception("Error loading file " + projectName + "/" + normalizedRelPath);
+		}
 		try {
-			URL url = new URL("file:" + file.getAbsolutePath());
-			InputStream stream = url.openConnection().getInputStream();
-
-			String prefix = "platform:/resource/";
-			String normalizedRelPath = relativize(projectRootDirectory, file).replace("\\", "/");
-			System.out.println(normalizedRelPath);
-			// came up with this uri by comparing what OSATE IDE serialized AIR produces
-			URI resourceUri = URI.createURI(prefix + projectName + "/" + normalizedRelPath);
-			Resource res = rs.createResource(resourceUri);
-
-			if (res != null) {
-				res.load(stream, Collections.EMPTY_MAP);
-			}
+			res.load(stream, Collections.EMPTY_MAP);
 			return res;
 		} catch (IOException e) {
-			System.err.println("ERROR LOADING RESOURCE: " + e.getMessage());
-			return null;
+//			System.err.println("ERROR LOADING RESOURCE: " + e.getMessage());
+			throw new Exception("Error loading file " + projectName + "/" + normalizedRelPath);
 		}
 	}
 
-	public static String relativize(File root, File other) {
+	private String relativize(File root, File other) {
 		return Paths.get(root.toURI()).relativize(Paths.get(other.toURI())).toString();
 	}
 
-	public static String getProjectName(File projectFile) {
+	private String getProjectName(File projectFile) throws Exception {
 		String marker = "<name>";
 		String line = readFile(projectFile).split("\n")[2];
 		return line.substring(line.indexOf(marker) + marker.length(), line.indexOf("</name>"));
 	}
 
-	public static String readFile(File f) {
-		try {
-			return new String(Files.readAllBytes(Paths.get(f.toURI())));
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(1);
-			return null;
-		}
+	private String readFile(File f) throws Exception {
+		return new String(Files.readAllBytes(Paths.get(f.toURI())));
 	}
 
-	private static void printUsage() {
-		// print usage information
+	private String usage() {
+		// TODO: print usage information
+		final StringBuilder usage = new StringBuilder();
+
+		return usage.toString();
+	}
+
+	private void writeOutput(CommandLineOutput output, String outputPath) {
+
+		// Convert to json
+		final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		try {
+			if (outputPath != null) {
+				final File outputFile = new File(outputPath);
+				final FileWriter jsonWriter = new FileWriter(outputFile);
+				gson.toJson(output, new FileWriter(outputFile));
+				jsonWriter.close();
+			}
+		} catch (Exception e) {
+			System.out.println("Error writing to " + outputPath);
+		}
+
+		// Write to std out
+		System.out.println(gson.toJson(output));
 	}
 
 	@Override

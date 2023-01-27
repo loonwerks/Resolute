@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
-import java.util.TreeSet;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -22,7 +21,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.osate.aadl2.AnnexSubclause;
@@ -30,10 +28,6 @@ import org.osate.aadl2.ComponentImplementation;
 import org.osate.aadl2.DefaultAnnexSubclause;
 import org.osate.aadl2.Element;
 import org.osate.aadl2.NamedElement;
-import org.osate.aadl2.instance.ComponentInstance;
-import org.osate.aadl2.instance.EndToEndFlowInstance;
-import org.osate.aadl2.instance.FlowSpecificationInstance;
-import org.osate.aadl2.instance.InstanceObject;
 import org.osate.aadl2.instance.SystemInstance;
 import org.osate.aadl2.instantiation.InstantiateModel;
 import org.osate.aadl2.modelsupport.util.AadlUtil;
@@ -43,7 +37,7 @@ import org.osate.ui.dialogs.Dialog;
 
 import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
 import com.rockwellcollins.atc.resolute.analysis.execution.FeatureToConnectionsMap;
-import com.rockwellcollins.atc.resolute.analysis.execution.NamedElementComparator;
+import com.rockwellcollins.atc.resolute.analysis.execution.Initializer;
 import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteInterpreter;
 import com.rockwellcollins.atc.resolute.analysis.results.ResolintResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
@@ -56,7 +50,6 @@ import com.rockwellcollins.atc.resolute.resolute.LintStatement;
 import com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause;
 import com.rockwellcollins.atc.resolute.resolute.Ruleset;
 import com.rockwellcollins.atc.resolute.resolute.ThisExpr;
-import com.rockwellcollins.atc.resolute.validation.BaseType;
 
 public class ResolintHandler extends AadlHandler {
 
@@ -103,7 +96,7 @@ public class ResolintHandler extends AadlHandler {
 	public static List<ResoluteResult> run(SystemInstance si) {
 
 		Map<String, SortedSet<NamedElement>> sets = new HashMap<>();
-		initializeSets(si, sets);
+		Initializer.initializeSets(si, sets);
 		FeatureToConnectionsMap featToConnsMap = new FeatureToConnectionsMap(si);
 		List<ResoluteResult> checkTrees = new ArrayList<>();
 
@@ -303,39 +296,4 @@ public class ResolintHandler extends AadlHandler {
 		}
 	}
 
-	private static void initializeSets(ComponentInstance ci, Map<String, SortedSet<NamedElement>> sets) {
-		if (ci == null) {
-			return;
-		}
-
-		addToSet(sets, ci);
-		for (InstanceObject io : EcoreUtil2.getAllContentsOfType(ci, InstanceObject.class)) {
-			addToSet(sets, io);
-		}
-
-		for (FlowSpecificationInstance flowSpec : ci.getFlowSpecifications()) {
-			addToSet(sets, "flow_specification", flowSpec);
-		}
-
-		for (EndToEndFlowInstance etef : ci.getEndToEndFlows()) {
-			addToSet(sets, "end_to_end_flow", etef);
-		}
-	}
-
-	private static void addToSet(Map<String, SortedSet<NamedElement>> sets, InstanceObject io) {
-		BaseType type = new BaseType(io);
-		for (BaseType superType : type.getAllSuperTypes()) {
-			addToSet(sets, superType.name, io);
-		}
-
-	}
-
-	private static void addToSet(Map<String, SortedSet<NamedElement>> sets, String name, NamedElement ne) {
-		SortedSet<NamedElement> set = sets.get(name);
-		if (set == null) {
-			set = new TreeSet<>(new NamedElementComparator());
-			sets.put(name, set);
-		}
-		set.add(ne);
-	}
 }

@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.osate.xtext.aadl2,
  com.rockwellcollins.atc.resolute,
  org.osate.aadl2,
- org.osate.aadl2.instantiation
+ org.osate.aadl2.instantiation,
+ com.rockwellcollins.atc.resolute.analysis
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: com.rockwellcollins.atc.resolute.cli
 Bundle-ActivationPolicy: lazy
@@ -21,3 +22,5 @@ Import-Package: com.rockwellcollins.atc.resolute.parsing,
  org.osate.aadl2.util,
  org.osate.annexsupport,
  org.osate.pluginsupport
+Bundle-ClassPath: lib/gson.jar,
+ .
