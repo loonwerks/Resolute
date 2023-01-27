@@ -15,18 +15,23 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.xtext.diagnostics.Severity;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.CancelIndicator;
@@ -42,6 +47,8 @@ import org.osate.aadl2.instance.InstancePackage;
 import org.osate.aadl2.instance.SystemInstance;
 import org.osate.aadl2.instantiation.InstantiateModel;
 import org.osate.aadl2.modelsupport.util.AadlUtil;
+import org.osate.aadl2.parsesupport.AObject;
+import org.osate.aadl2.parsesupport.LocationReference;
 import org.osate.aadl2.util.Aadl2ResourceFactoryImpl;
 import org.osate.aadl2.util.Aadl2Util;
 import org.osate.annexsupport.AnnexRegistry;
@@ -50,7 +57,7 @@ import org.osate.pluginsupport.PluginSupportUtil;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonWriter;
 import com.google.inject.Injector;
 import com.rockwellcollins.atc.resolute.ResoluteStandaloneSetup;
 import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
@@ -59,8 +66,10 @@ import com.rockwellcollins.atc.resolute.analysis.execution.Initializer;
 import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteInterpreter;
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.FailResult;
+import com.rockwellcollins.atc.resolute.analysis.results.ResolintResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
 import com.rockwellcollins.atc.resolute.cli.results.CommandLineOutput;
+import com.rockwellcollins.atc.resolute.cli.results.ResolintOutput;
 import com.rockwellcollins.atc.resolute.cli.results.ResoluteOutput;
 import com.rockwellcollins.atc.resolute.cli.results.SyntaxValidationIssue;
 import com.rockwellcollins.atc.resolute.cli.results.SyntaxValidationResults;
@@ -68,8 +77,13 @@ import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexLinkingService;
 import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexParser;
 import com.rockwellcollins.atc.resolute.resolute.AnalysisStatement;
 import com.rockwellcollins.atc.resolute.resolute.ArgueStatement;
+import com.rockwellcollins.atc.resolute.resolute.CheckStatement;
+import com.rockwellcollins.atc.resolute.resolute.IdExpr;
+import com.rockwellcollins.atc.resolute.resolute.LintExpr;
+import com.rockwellcollins.atc.resolute.resolute.LintStatement;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
 import com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause;
+import com.rockwellcollins.atc.resolute.resolute.Ruleset;
 import com.rockwellcollins.atc.resolute.unparsing.ResoluteAnnexUnparser;
 
 /** Adapted from sireum Phantom CLI and OSATE Using annex extensions in stand alone applications
@@ -114,6 +128,8 @@ public class Main implements IApplication {
 		String outputPath = null;
 		boolean exitOnValidationWarning = false;
 		boolean validationOnly = false;
+		boolean resoluteOnly = false;
+		boolean resolintOnly = false;
 		boolean exit = false;
 
 		final String[] args = (String[]) context.getArguments().get("application.args");
@@ -148,6 +164,12 @@ public class Main implements IApplication {
 			} else if (arg.equals("-o") || arg.equals("-output")) {
 				outputPath = args[++i];
 				System.out.println("Output path = " + outputPath);
+			} else if (arg.equals("-resolute")) {
+				resoluteOnly = true;
+				resolintOnly = false;
+			} else if (arg.equals("-resolint")) {
+				resolintOnly = true;
+				resoluteOnly = false;
 			} else if (arg.equals("-v") || arg.equals("-validationOnly")) {
 				validationOnly = true;
 			} else if (arg.equals("-w") || arg.equals("-exitOnValidationWarning")) {
@@ -175,7 +197,6 @@ public class Main implements IApplication {
 		}
 
 		for (URI uri : PluginSupportUtil.getContributedAadl()) {
-//			System.out.println(uri.toString());
 			resourceSet.getResource(uri, true);
 		}
 
@@ -223,7 +244,6 @@ public class Main implements IApplication {
 
 					compImpl = (ComponentImplementation) AadlUtil.findNamedElementInList(
 							AadlUtil.getAllComponentImpl(pkg), Aadl2Util.getItemNameWithoutQualification(component));
-
 					break;
 				}
 			}
@@ -231,9 +251,16 @@ public class Main implements IApplication {
 		if (compImpl != null) {
 			try {
 				final SystemInstance si = InstantiateModel.buildInstanceModelFile(compImpl);
-				final List<ResoluteOutput> results = runResolute(si);
-				output.setStatus(CommandLineOutput.COMPLETED);
-				output.setResoluteOutput(results);
+				if (!resolintOnly) {
+					final List<ResoluteOutput> results = runResolute(si);
+					output.setStatus(CommandLineOutput.COMPLETED);
+					output.setResoluteOutput(results);
+				}
+				if (!resoluteOnly) {
+					final List<ResolintOutput> results = runResolint(si);
+					output.setStatus(CommandLineOutput.COMPLETED);
+					output.setResolintOutput(results);
+				}
 				writeOutput(output, outputPath);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -265,7 +292,6 @@ public class Main implements IApplication {
 			final EClass resoluteSubclauseEClass = ResolutePackage.eINSTANCE.getResoluteSubclause();
 			for (AnnexSubclause subclause : AnnexUtil.getAllAnnexSubclauses(compInst.getComponentClassifier(),
 					resoluteSubclauseEClass)) {
-
 				if (subclause instanceof ResoluteSubclause) {
 					final ResoluteSubclause resoluteSubclause = (ResoluteSubclause) subclause;
 					final EvaluationContext context = new EvaluationContext(compInst, sets, featToConnsMap);
@@ -273,21 +299,18 @@ public class Main implements IApplication {
 					for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
 						if (as instanceof ArgueStatement) {
 							final ArgueStatement stmt = (ArgueStatement) as;
-//							try {
-								argumentTrees.add(interpreter.evaluateArgueStatement(stmt));
-//							} catch (Exception e) {
-//
-//							}
+							argumentTrees.add(interpreter.evaluateArgueStatement(stmt));
 						}
 					}
+					break;
 				}
 			}
 		}
 
 		// Return output in json format
 		return getResoluteResults(argumentTrees);
-
 	}
+
 
 	private List<ResoluteOutput> getResoluteResults(List<ResoluteResult> results) {
 
@@ -314,6 +337,132 @@ public class Main implements IApplication {
 		}
 
 		return resoluteOutputs;
+	}
+
+	private List<ResolintOutput> runResolint(SystemInstance si) throws Exception {
+
+		final Map<String, SortedSet<NamedElement>> sets = new HashMap<>();
+		Initializer.initializeSets(si, sets);
+		final FeatureToConnectionsMap featToConnsMap = new FeatureToConnectionsMap(si);
+
+		final List<ResoluteResult> checkTrees = new ArrayList<>();
+
+		for (NamedElement el : sets.get("component")) {
+			final ComponentInstance compInst = (ComponentInstance) el;
+			final EClass resoluteSubclauseEClass = ResolutePackage.eINSTANCE.getResoluteSubclause();
+			for (AnnexSubclause subclause : AnnexUtil.getAllAnnexSubclauses(compInst.getComponentClassifier(),
+					resoluteSubclauseEClass)) {
+				if (subclause instanceof ResoluteSubclause) {
+					final ResoluteSubclause resoluteSubclause = (ResoluteSubclause) subclause;
+					final EvaluationContext context = new EvaluationContext(compInst, sets, featToConnsMap);
+					final ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
+					// Evaluate each check statement in selected implementation
+					for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
+						if (as instanceof CheckStatement) {
+							final CheckStatement cs = (CheckStatement) as;
+							if (cs.getExpr() instanceof IdExpr) {
+								final IdExpr idExpr = (IdExpr) cs.getExpr();
+								if (idExpr.getId() instanceof Ruleset) {
+									final Ruleset ruleset = (Ruleset) idExpr.getId();
+									for (LintStatement lint : ruleset.getBody().getLintStatements()) {
+										checkTrees.add(interpreter.evaluateLintStatement(lint));
+									}
+								}
+							} else if (cs.getExpr() instanceof LintExpr) {
+								final LintStatement lint = ((LintExpr) cs.getExpr()).getLintStmt();
+								checkTrees.add(interpreter.evaluateLintStatement(lint));
+							}
+						}
+					}
+				}
+				break;
+			}
+		}
+
+		// Return output in json format
+		return getResolintResults(checkTrees);
+	}
+
+	private List<ResolintOutput> getResolintResults(List<ResoluteResult> results) {
+
+		final List<ResolintOutput> resolintOutputs = new ArrayList<>();
+
+		for (ResoluteResult resoluteResult : results) {
+			final ResolintOutput resolintOutput = new ResolintOutput();
+			resolintOutput.setStatus(resoluteResult.isValid());
+			if (resoluteResult != null && !resoluteResult.isValid()) {
+				final ResolintResult result = (ResolintResult) resoluteResult;
+
+				try {
+					final Set<EObject> locations = result.getLocations();
+					if (locations.isEmpty()) {
+						resolintOutput.setRule(result.getText());
+						int severity = result.getSeverity();
+						if (severity == IMarker.SEVERITY_ERROR) {
+							resolintOutput.setSeverity("error");
+						} else if (severity == IMarker.SEVERITY_WARNING) {
+							resolintOutput.setSeverity("warning");
+						}
+//						resolintOutput.setLine(getLineNumberFor(ci));
+					} else {
+						for (EObject ref : locations) {
+							if (ref == null) {
+								resolintOutput.setRule(result.getText());
+								int severity = result.getSeverity();
+								if (severity == IMarker.SEVERITY_ERROR) {
+									resolintOutput.setSeverity("error");
+								} else if (severity == IMarker.SEVERITY_WARNING) {
+									resolintOutput.setSeverity("warning");
+								}
+//								resolintOutput.setLine(getLineNumberFor(ci));
+							} else {
+								resolintOutput.setRule(result.getText());
+								int severity = result.getSeverity();
+								if (severity == IMarker.SEVERITY_ERROR) {
+									resolintOutput.setSeverity("error");
+								} else if (severity == IMarker.SEVERITY_WARNING) {
+									resolintOutput.setSeverity("warning");
+								}
+								resolintOutput.setLine(getLineNumberFor(ref));
+							}
+						}
+					}
+				} catch (Exception e) {
+					continue;
+				}
+			}
+		}
+
+		return resolintOutputs;
+	}
+
+	public static int getLineNumberFor(EObject obj) {
+		if (obj == null) {
+			return 0;
+		}
+		if (obj instanceof AObject) {
+			LocationReference locref = ((AObject) obj).getLocationReference();
+			if (locref != null) {
+				return locref.getLine();
+			}
+		}
+		INode node = null;
+		int lineNum = 0;
+		EObject defaultannex = AadlUtil.getContainingDefaultAnnex(obj);
+		if (defaultannex != null) {
+			node = NodeModelUtils.findActualNodeFor(defaultannex);
+			if (node != null) {
+				lineNum = node.getStartLine() - 1;
+			}
+		}
+
+		node = NodeModelUtils.findActualNodeFor(obj);
+
+		if (node != null) {
+			return lineNum + node.getStartLine();
+		}
+
+		return 0;
 	}
 
 	// Load project specific AADL files
@@ -400,7 +549,7 @@ public class Main implements IApplication {
 
 		final String prefix = "platform:/resource/";
 		final String normalizedRelPath = relativize(projectRootDirectory, file).replace("\\", "/");
-//		System.out.println(normalizedRelPath);
+
 		// came up with this uri by comparing what OSATE IDE serialized AIR produces
 		final URI resourceUri = URI.createURI(prefix + projectName + "/" + normalizedRelPath);
 		final Resource res = rs.createResource(resourceUri);
@@ -411,7 +560,6 @@ public class Main implements IApplication {
 			res.load(stream, Collections.EMPTY_MAP);
 			return res;
 		} catch (IOException e) {
-//			System.err.println("ERROR LOADING RESOURCE: " + e.getMessage());
 			throw new Exception("Error loading file " + projectName + "/" + normalizedRelPath);
 		}
 	}
@@ -440,12 +588,13 @@ public class Main implements IApplication {
 	private void writeOutput(CommandLineOutput output, String outputPath) {
 
 		// Convert to json
-		final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		final Gson gson = new Gson();
 		try {
 			if (outputPath != null) {
 				final File outputFile = new File(outputPath);
-				final FileWriter jsonWriter = new FileWriter(outputFile);
-				gson.toJson(output, new FileWriter(outputFile));
+				final JsonWriter jsonWriter = new JsonWriter(new FileWriter(outputFile));
+				jsonWriter.setIndent("    ");
+				gson.toJson(output, CommandLineOutput.class, jsonWriter);
 				jsonWriter.close();
 			}
 		} catch (Exception e) {

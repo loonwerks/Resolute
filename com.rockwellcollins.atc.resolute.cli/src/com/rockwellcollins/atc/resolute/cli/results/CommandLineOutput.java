@@ -8,8 +8,9 @@ public class CommandLineOutput {
 	private String component;
 	private String status;
 	private String message;
-	private SyntaxValidationResults syntaxValidationResults;
+	private SyntaxValidationResults syntaxValidation;
 	private List<ResoluteOutput> resolute;
+	private List<ResolintOutput> resolint;
 
 	public final static String COMPLETED = "Analysis Completed";
 	public final static String INTERRUPTED = "Analysis Interrupted";
@@ -39,11 +40,15 @@ public class CommandLineOutput {
 	}
 
 	public SyntaxValidationResults getSyntaxValidationResults() {
-		return this.syntaxValidationResults;
+		return this.syntaxValidation;
 	}
 
 	public List<ResoluteOutput> getResoluteOutput() {
 		return this.resolute;
+	}
+
+	public List<ResolintOutput> getResolintOutput() {
+		return this.resolint;
 	}
 
 	public void setDate(String date) {
@@ -67,10 +72,15 @@ public class CommandLineOutput {
 	}
 
 	public void setSyntaxValidationResults(SyntaxValidationResults syntaxValidationResults) {
-		this.syntaxValidationResults = syntaxValidationResults;
+		this.syntaxValidation = syntaxValidationResults;
 	}
 
 	public void setResoluteOutput(List<ResoluteOutput> resoluteOutput) {
 		this.resolute = resoluteOutput;
 	}
+
+	public void setResolintOutput(List<ResolintOutput> resolintOutput) {
+		this.resolint = resolintOutput;
+	}
+
 }
