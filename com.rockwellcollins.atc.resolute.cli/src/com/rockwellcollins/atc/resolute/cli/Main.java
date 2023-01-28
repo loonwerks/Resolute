@@ -134,13 +134,13 @@ public class Main implements IApplication {
 
 		for (int i = 0; i < args.length; i++) {
 			final String arg = args[i];
-			if (arg.equals("-h") || arg.equals("-help")) {
+			if (arg.equals("-h") || arg.equals("--help")) {
 				exit = true;
 				output.setStatus(CommandLineOutput.INTERRUPTED);
 				output.setMessage(usage());
 			}
 			// specify project path, root for project aadl files and .project
-			else if (arg.equals("-p") || arg.equals("-project")) {
+			else if (arg.equals("-p") || arg.equals("--project")) {
 				projPath = args[++i];
 				output.setProject(projPath);
 				System.out.println("Project = " + projPath);
@@ -148,7 +148,7 @@ public class Main implements IApplication {
 				final String filePath = String.join(File.separator, projPath, ".project");
 				// TODO: handle referenced projects
 
-			} else if (arg.equals("-compImpl")) {
+			} else if (arg.equals("-c") || arg.equals("--compImpl")) {
 				// expects qualified name
 				component = args[++i];
 				output.setComponent(component);
@@ -158,20 +158,21 @@ public class Main implements IApplication {
 					output.setMessage("Component implementation qualified name must be specified");
 					exit = true;
 				}
-			} else if (arg.equals("-o") || arg.equals("-output")) {
+			} else if (arg.equals("-o") || arg.equals("--output")) {
 				outputPath = args[++i];
 				System.out.println("Output path = " + outputPath);
-			} else if (arg.equals("-resolute")) {
+			} else if (arg.equals("-u") || arg.equals("--resolute")) {
 				resolute = true;
-			} else if (arg.equals("-resolint")) {
+			} else if (arg.equals("-n") || arg.equals("--resolint")) {
 				resolint = true;
-			} else if (arg.equals("-v") || arg.equals("-validationOnly")) {
+			} else if (arg.equals("-v") || arg.equals("--validationOnly")) {
 				validationOnly = true;
-			} else if (arg.equals("-w") || arg.equals("-exitOnValidationWarning")) {
+			} else if (arg.equals("-w") || arg.equals("--exitOnValidationWarning")) {
 				exitOnValidationWarning = true;
 			} else {
 				// invalid argument
 				System.err.println("WARNING: unsupported option " + args[i]);
+				output.setMessage(usage());
 			}
 		}
 
@@ -571,7 +572,21 @@ public class Main implements IApplication {
 	private String usage() {
 		// TODO: print usage information
 		final StringBuilder usage = new StringBuilder();
+		
+		usage.append("usage: resolute [options]... [file]... \n");
+		usage.append("Run Resolute from command line without GUI\n");
+		usage.append("Example: resolute --project D:\\Resolute_Test\\Test --compImpl test_model::Aircraft.Impl --resolute -o D:\\Resolute_Test\\Test\\ResoluteResults.json \n");
+		usage.append("options:\n");
+		usage.append(" -h, --help \t\t\t\t  print command line usage\n");
+		usage.append(" -p, --project [PATH] \t\t\t  project root path to locate project AADL files and .project file\n");
+		usage.append(" -c, --compImpl [NAME] \t\t\t  qualified component implementation name where the analysis is performed\n");
+		usage.append(" -o, --output [FILE] \t\t\t  analysis results output JSON file name\n");
+		usage.append(" -u, --resolute \t\t\t  perform resolute analysis, default false\n");
+		usage.append(" -n, --resolint \t\t\t  perform resolint analysis, default false\n");
+		usage.append(" -v, --validationOnly \t\t\t  perform model validation only, default false\n");
+		usage.append(" -w, --exitOnValidationWarning \t\t  exit the analysis if validation generates warning, default false\n");
 
+		System.out.println(usage.toString());
 		return usage.toString();
 	}
 
