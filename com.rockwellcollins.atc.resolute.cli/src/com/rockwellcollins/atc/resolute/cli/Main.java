@@ -132,6 +132,7 @@ public class Main implements IApplication {
 		String projPath = null;
 		String component = null;
 		String outputPath = null;
+		String[] libArray = null;
 		boolean exitOnValidationWarning = false;
 		boolean validationOnly = false;
 		boolean resolute = false;
@@ -151,17 +152,17 @@ public class Main implements IApplication {
 		options.addOption("n", "resolint", false, "run Resolint, default false");
 		options.addOption("v", "validationOnly", false, "validation only, default false");
 		options.addOption("w", "exitOnValidtionWarning", false, "exit on validation warning, default false");
-		
+
 		Option option = new Option("l", "lib", true, "AADL library file list");
 		option.setArgs(Option.UNLIMITED_VALUES);
 		options.addOption(option);
 
 		CommandLine commandLine;        
 		CommandLineParser parser = new DefaultParser();
-
 		String[] testArgs =
-			{ "-p", "D:\\path", "-c", "component", "-l", "D:\\lib\\m.aadl", "D:\\lib2\\x.aadl",
-			"-o", "D:\\test.json", "-w","-h"};
+			{"--project", "D:\\Resolute_Test\\Test", "--compImpl", "test_model::Aircraft.Impl", "--resolute",
+					"-o", "D:\\Resolute_Test\\Test\\HeadlessResoluteResults.json", "-l", 
+			"D:\\Phase-2-UAV-Experimental-Platform-Transformed\\CASEAgree2.aadl"};
 
 		// parse options
 		try
@@ -198,7 +199,7 @@ public class Main implements IApplication {
 				System.out.println("Output = " + outputPath);
 			}
 			if (commandLine.hasOption("l")) {
-				String[] libArray = commandLine.getOptionValues("l");
+				libArray = commandLine.getOptionValues("l");
 				System.out.print("lib = ");
 				System.out.println(Arrays.toString(libArray));
 			}
@@ -243,15 +244,15 @@ public class Main implements IApplication {
 		for (URI uri : PluginSupportUtil.getContributedAadl()) {
 			resourceSet.getResource(uri, true);
 		}
-
-		// Load project specific AADL files
+		// May be redundant, option parser handles it already
 		if (projPath == null) {
 			output.setStatus(CommandLineOutput.INTERRUPTED);
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
 		}
+		// Load project AADL files
 		try {
-			loadProjectAadlFiles(projPath, resourceSet);
+			loadProjectAadlFiles(projPath, libArray, resourceSet);
 		} catch (Exception e) {
 			output.setStatus(CommandLineOutput.INTERRUPTED);
 			output.setMessage(e.getMessage());
@@ -504,9 +505,9 @@ public class Main implements IApplication {
 	}
 
 	// Load project specific AADL files
-	public void loadProjectAadlFiles(String projPath, XtextResourceSet resourceSet) throws Exception {
+	public void loadProjectAadlFiles(String projPath, String[] libArray, XtextResourceSet resourceSet) throws Exception {
 
-		final List<String> projectFiles = findFiles(Paths.get(projPath), "aadl");
+		final List<String> projectFiles = findFiles(Paths.get(projPath), "aadl");		
 		projectFiles.forEach(x -> System.out.println(x));
 		final File projectRootDirectory = new File(projPath);
 		final File projectFile = new File(projectRootDirectory, ".project");
@@ -516,6 +517,14 @@ public class Main implements IApplication {
 			final File projFile = new File(pFile);
 			loadFile(projectRootDirectory, projName, projFile, resourceSet);
 		}
+		// load user specified AADL libs
+		if (libArray != null) {
+			for (String libName : libArray) {
+				final File libFile = new File(libName.toLowerCase());
+				loadFile(projectRootDirectory, projName, libFile, resourceSet);
+			}			
+		}
+
 	}
 
 	// Validation resource set
@@ -583,7 +592,13 @@ public class Main implements IApplication {
 			throws Exception {
 
 		final URL url = new URL("file:" + file.getAbsolutePath());
-		final InputStream stream = url.openConnection().getInputStream();
+		System.out.println("url " + url.toString()); 
+		InputStream stream = null;
+		try {
+			stream = url.openConnection().getInputStream();
+		} catch (Exception ex) {
+			throw new Exception("Error loading file " + file.toString());
+		}
 
 		final String prefix = "platform:/resource/";
 		final String normalizedRelPath = relativize(projectRootDirectory, file).replace("\\", "/");
