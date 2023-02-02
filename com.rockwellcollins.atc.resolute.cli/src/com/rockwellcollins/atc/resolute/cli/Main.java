@@ -83,6 +83,15 @@ import com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause;
 import com.rockwellcollins.atc.resolute.resolute.Ruleset;
 import com.rockwellcollins.atc.resolute.unparsing.ResoluteAnnexUnparser;
 
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.Option.Builder;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.ParseException;
+
 /** Adapted from sireum Phantom CLI and OSATE Using annex extensions in stand alone applications
  * https://github.com/sireum/osate-plugin/blob/master/org.sireum.aadl.osate.cli/src/org/sireum/aadl/osate/cli/Phantom.java
  * https://github.com/sireum/osate-plugin/blob/master/org.sireum.aadl.osate/src/main/java/org/sireum/aadl/osate/util/AadlProjectUtil.java
@@ -132,48 +141,87 @@ public class Main implements IApplication {
 		final String[] args = (String[]) context.getArguments().get("application.args");
 		System.out.println(Arrays.toString(args));
 
-		for (int i = 0; i < args.length; i++) {
-			final String arg = args[i];
-			if (arg.equals("-h") || arg.equals("--help")) {
+		// create Options 
+		Options options = new Options();
+		options.addOption("h", "help", false, "print this message");
+		options.addOption("p", "project", true, "required, project root path");
+		options.addOption("c", "compImpl", true, "qualified component implementation name");
+		options.addOption("o", "output", true, "output JSON file name");		
+		options.addOption("u", "resolute", false, "run Resolute, default false");
+		options.addOption("n", "resolint", false, "run Resolint, default false");
+		options.addOption("v", "validationOnly", false, "validation only, default false");
+		options.addOption("w", "exitOnValidtionWarning", false, "exit on validation warning, default false");
+		
+		Option option = new Option("l", "lib", true, "AADL library file list");
+		option.setArgs(Option.UNLIMITED_VALUES);
+		options.addOption(option);
+
+		CommandLine commandLine;        
+		CommandLineParser parser = new DefaultParser();
+
+		String[] testArgs =
+			{ "-p", "D:\\path", "-c", "component", "-l", "D:\\lib\\m.aadl", "D:\\lib2\\x.aadl",
+			"-o", "D:\\test.json", "-w","-h"};
+
+		// parse options
+		try
+		{
+//			commandLine = parser.parse(options, testArgs);
+			commandLine = parser.parse(options, args);
+
+			if (commandLine.hasOption("h")) {
+				HelpFormatter formatter = new HelpFormatter();
+				formatter.printHelp("resolute", options);
 				exit = true;
 				output.setStatus(CommandLineOutput.INTERRUPTED);
-				output.setMessage(usage());
 			}
-			// specify project path, root for project aadl files and .project
-			else if (arg.equals("-p") || arg.equals("--project")) {
-				projPath = args[++i];
-				output.setProject(projPath);
-				System.out.println("Project = " + projPath);
-				// Process .project file references
-				final String filePath = String.join(File.separator, projPath, ".project");
-				// TODO: handle referenced projects
-
-			} else if (arg.equals("-c") || arg.equals("--compImpl")) {
-				// expects qualified name
-				component = args[++i];
+			if (commandLine.hasOption("c")) {
+				component = commandLine.getOptionValue("c");
 				output.setComponent(component);
-				System.out.println("Component implementation = " + component);
+				// expects qualified name
 				if (!component.contains("::")) {
 					output.setStatus(CommandLineOutput.INTERRUPTED);
 					output.setMessage("Component implementation qualified name must be specified");
 					exit = true;
 				}
-			} else if (arg.equals("-o") || arg.equals("--output")) {
-				outputPath = args[++i];
-				System.out.println("Output path = " + outputPath);
-			} else if (arg.equals("-u") || arg.equals("--resolute")) {
-				resolute = true;
-			} else if (arg.equals("-n") || arg.equals("--resolint")) {
-				resolint = true;
-			} else if (arg.equals("-v") || arg.equals("--validationOnly")) {
-				validationOnly = true;
-			} else if (arg.equals("-w") || arg.equals("--exitOnValidationWarning")) {
-				exitOnValidationWarning = true;
-			} else {
-				// invalid argument
-				System.err.println("WARNING: unsupported option " + args[i]);
-				output.setMessage(usage());
 			}
+			if (commandLine.hasOption("p"))	{
+				projPath = commandLine.getOptionValue("p");
+				output.setProject(projPath);
+				System.out.println("Project = " + projPath);
+				// Process .project file references
+				final String filePath = String.join(File.separator, projPath, ".project");
+				// TODO: handle referenced projects
+			}
+			if (commandLine.hasOption("o")) {
+				outputPath = commandLine.getOptionValue("o");
+				System.out.println("Output = " + outputPath);
+			}
+			if (commandLine.hasOption("l")) {
+				String[] libArray = commandLine.getOptionValues("l");
+				System.out.print("lib = ");
+				System.out.println(Arrays.toString(libArray));
+			}
+			if (commandLine.hasOption("u"))	{
+				resolute = true;
+			}
+			if (commandLine.hasOption("n"))	{
+				resolint = true;
+			}
+			if (commandLine.hasOption("v")) {
+				validationOnly = true;
+			}
+			if (commandLine.hasOption("w")) {
+				exitOnValidationWarning = true;
+			}			
+			String[] remainder = commandLine.getArgs();
+			for (String argument : remainder)
+			{
+				System.err.println("WARNING: remainder option " + argument + ". See 'resolute --help'");				
+			}
+		} catch (ParseException exception) {
+			System.out.print("Parse error: ");
+			System.out.println(exception.getMessage());
 		}
 
 		if (exit) {
@@ -199,7 +247,6 @@ public class Main implements IApplication {
 		// Load project specific AADL files
 		if (projPath == null) {
 			output.setStatus(CommandLineOutput.INTERRUPTED);
-			output.setMessage(usage());
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
 		}
@@ -567,27 +614,6 @@ public class Main implements IApplication {
 
 	private String readFile(File f) throws Exception {
 		return new String(Files.readAllBytes(Paths.get(f.toURI())));
-	}
-
-	private String usage() {
-		// TODO: print usage information
-		final StringBuilder usage = new StringBuilder();
-		
-		usage.append("usage: resolute [options]... [file]... \n");
-		usage.append("Run Resolute from command line without GUI\n");
-		usage.append("Example: resolute --project D:\\Resolute_Test\\Test --compImpl test_model::Aircraft.Impl --resolute -o D:\\Resolute_Test\\Test\\ResoluteResults.json \n");
-		usage.append("options:\n");
-		usage.append(" -h, --help \t\t\t\t  print command line usage\n");
-		usage.append(" -p, --project [PATH] \t\t\t  project root path to locate project AADL files and .project file\n");
-		usage.append(" -c, --compImpl [NAME] \t\t\t  qualified component implementation name where the analysis is performed\n");
-		usage.append(" -o, --output [FILE] \t\t\t  analysis results output JSON file name\n");
-		usage.append(" -u, --resolute \t\t\t  perform resolute analysis, default false\n");
-		usage.append(" -n, --resolint \t\t\t  perform resolint analysis, default false\n");
-		usage.append(" -v, --validationOnly \t\t\t  perform model validation only, default false\n");
-		usage.append(" -w, --exitOnValidationWarning \t\t  exit the analysis if validation generates warning, default false\n");
-
-		System.out.println(usage.toString());
-		return usage.toString();
 	}
 
 	private void writeOutput(CommandLineOutput output, String outputPath) {
