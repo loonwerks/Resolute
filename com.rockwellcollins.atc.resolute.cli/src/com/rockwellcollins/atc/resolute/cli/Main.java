@@ -189,19 +189,19 @@ public class Main implements IApplication {
 			if (commandLine.hasOption("p"))	{
 				projPath = commandLine.getOptionValue("p");
 				output.setProject(projPath);
-				System.out.println("Project = " + projPath);
+//				System.out.println("Project = " + projPath);
 				// Process .project file references
 				final String filePath = String.join(File.separator, projPath, ".project");
 				// TODO: handle referenced projects
 			}
 			if (commandLine.hasOption("o")) {
 				outputPath = commandLine.getOptionValue("o");
-				System.out.println("Output = " + outputPath);
+//				System.out.println("Output = " + outputPath);
 			}
 			if (commandLine.hasOption("l")) {
 				libArray = commandLine.getOptionValues("l");
-				System.out.print("lib = ");
-				System.out.println(Arrays.toString(libArray));
+//				System.out.print("lib = ");
+//				System.out.println(Arrays.toString(libArray));
 			}
 			if (commandLine.hasOption("u"))	{
 				resolute = true;
@@ -508,7 +508,7 @@ public class Main implements IApplication {
 	public void loadProjectAadlFiles(String projPath, String[] libArray, XtextResourceSet resourceSet) throws Exception {
 
 		final List<String> projectFiles = findFiles(Paths.get(projPath), "aadl");		
-		projectFiles.forEach(x -> System.out.println(x));
+//		projectFiles.forEach(x -> System.out.println(x));
 		final File projectRootDirectory = new File(projPath);
 		final File projectFile = new File(projectRootDirectory, ".project");
 		final String projName = getProjectName(projectFile);
@@ -517,6 +517,7 @@ public class Main implements IApplication {
 			final File projFile = new File(pFile);
 			loadFile(projectRootDirectory, projName, projFile, resourceSet);
 		}
+		
 		// load user specified AADL libs
 		if (libArray != null) {
 			for (String libName : libArray) {
@@ -524,7 +525,19 @@ public class Main implements IApplication {
 				loadFile(projectRootDirectory, projName, libFile, resourceSet);
 			}			
 		}
-
+		
+		// load referenced project AADL files
+		final String projParentPath = projectRootDirectory.getParent();
+		List<String> refProjNames = getReferenceProjectName(projectFile);	
+		for (String refProjName : refProjNames) {
+			// assuming reference project is at the same level of main project
+			File refProj = new File(projParentPath, refProjName);
+			List<String> refProjFileNames = findFiles(refProj.toPath(), "aadl");	
+			for (String refProjFileName : refProjFileNames) {
+				File refProjFile = new File(refProjFileName);
+				loadFile(projectRootDirectory, projName, refProjFile, resourceSet);
+			}
+		}
 	}
 
 	// Validation resource set
@@ -592,7 +605,6 @@ public class Main implements IApplication {
 			throws Exception {
 
 		final URL url = new URL("file:" + file.getAbsolutePath());
-		System.out.println("url " + url.toString()); 
 		InputStream stream = null;
 		try {
 			stream = url.openConnection().getInputStream();
@@ -610,6 +622,7 @@ public class Main implements IApplication {
 			throw new Exception("Error loading file " + projectName + "/" + normalizedRelPath);
 		}
 		try {
+			System.out.println("Loading " + file.getAbsolutePath()); 
 			res.load(stream, Collections.EMPTY_MAP);
 			return res;
 		} catch (IOException e) {
@@ -627,6 +640,20 @@ public class Main implements IApplication {
 		return line.substring(line.indexOf(marker) + marker.length(), line.indexOf("</name>"));
 	}
 
+	private List<String> getReferenceProjectName(File projectFile) throws Exception {
+		List<String> result = new ArrayList<>();
+
+		String marker = "<project>";
+		String[] lines = readFile(projectFile).split("\n");	
+		for (String line : lines) {
+            if (line.contains(marker)) {
+            	String refProjName = line.substring(line.indexOf(marker) + marker.length(), line.indexOf("</project>"));
+            	result.add(refProjName); 
+            }
+		}		
+		return result;
+	}
+	
 	private String readFile(File f) throws Exception {
 		return new String(Files.readAllBytes(Paths.get(f.toURI())));
 	}
