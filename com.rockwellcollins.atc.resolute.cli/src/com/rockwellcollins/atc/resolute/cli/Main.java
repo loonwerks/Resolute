@@ -189,19 +189,12 @@ public class Main implements IApplication {
 			if (commandLine.hasOption("p"))	{
 				projPath = commandLine.getOptionValue("p");
 				output.setProject(projPath);
-//				System.out.println("Project = " + projPath);
-				// Process .project file references
-				final String filePath = String.join(File.separator, projPath, ".project");
-				// TODO: handle referenced projects
 			}
 			if (commandLine.hasOption("o")) {
 				outputPath = commandLine.getOptionValue("o");
-//				System.out.println("Output = " + outputPath);
 			}
 			if (commandLine.hasOption("l")) {
 				libArray = commandLine.getOptionValues("l");
-//				System.out.print("lib = ");
-//				System.out.println(Arrays.toString(libArray));
 			}
 			if (commandLine.hasOption("u"))	{
 				resolute = true;
@@ -294,7 +287,7 @@ public class Main implements IApplication {
 		}
 		if (compImpl != null) {
 			try {
-				final SystemInstance si = InstantiateModel.buildInstanceModelFile(compImpl);
+				final SystemInstance si = InstantiateModel.instantiate(compImpl);
 				final ModelMap modelMap = new ModelMap(si);
 				if (resolute) {
 					final List<ResoluteOutput> results = runResolute(modelMap);
@@ -508,7 +501,6 @@ public class Main implements IApplication {
 	public void loadProjectAadlFiles(String projPath, String[] libArray, XtextResourceSet resourceSet) throws Exception {
 
 		final List<String> projectFiles = findFiles(Paths.get(projPath), "aadl");		
-//		projectFiles.forEach(x -> System.out.println(x));
 		final File projectRootDirectory = new File(projPath);
 		final File projectFile = new File(projectRootDirectory, ".project");
 		final String projName = getProjectName(projectFile);
@@ -521,8 +513,7 @@ public class Main implements IApplication {
 		// load user specified AADL libs
 		if (libArray != null) {
 			for (String libName : libArray) {
-				final File libFile = new File(libName.toLowerCase());
-				loadFile(projectRootDirectory, projName, libFile, resourceSet);
+				loadLibFile(libName, resourceSet);
 			}			
 		}
 		
@@ -629,7 +620,24 @@ public class Main implements IApplication {
 			throw new Exception("Error loading file " + projectName + "/" + normalizedRelPath);
 		}
 	}
-
+	
+	// User specified AADL file path may be outside workspace, relative path does not work
+	private Resource loadLibFile(String filePath, ResourceSet rs) {
+		try {
+			 URL url = new URL("file:" + filePath);
+			InputStream stream = url.openConnection().getInputStream();			
+			final String prefix = "platform:/resource/";
+			final Resource res = rs.createResource(URI.createPlatformResourceURI(prefix + filePath.replace("\\", "/"), true));
+			  			  
+			System.out.println("Loading " + filePath); 
+			res.load(stream, Collections.EMPTY_MAP);
+			return res;
+		} catch (IOException e) {
+			System.err.println("Error loading file " + filePath);
+			return null;
+		}	
+	}
+	
 	private String relativize(File root, File other) {
 		return Paths.get(root.toURI()).relativize(Paths.get(other.toURI())).toString();
 	}
