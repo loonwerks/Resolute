@@ -620,13 +620,17 @@ public class Main implements IApplication {
 		}
 	}
 	
-	// User specified AADL file path may be outside workspace, relative path does not work
+	// User specified AADL file path may be outside workspace, cannot use relative path from main project
 	private Resource loadLibFile(String filePath, ResourceSet rs) {
 		try {
 			 URL url = new URL("file:" + filePath);
-			InputStream stream = url.openConnection().getInputStream();			
-			final Resource res = rs.createResource(URI.createURI(filePath.replace("\\", "/"), true));
-			  			  
+			InputStream stream = url.openConnection().getInputStream();		
+			
+			Path path = Paths.get(filePath);
+			final String lib = "Lib";
+			final URI resourceUri = URI.createPlatformResourceURI(lib + "/" + path.getFileName().toString(), true);
+			final Resource res = rs.createResource(resourceUri);
+			
 			System.out.println("Loading " + filePath); 
 			res.load(stream, Collections.EMPTY_MAP);
 			return res;
