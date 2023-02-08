@@ -603,11 +603,10 @@ public class Main implements IApplication {
 			throw new Exception("Error loading file " + file.toString());
 		}
 
-		final String prefix = "platform:/resource/";
 		final String normalizedRelPath = relativize(projectRootDirectory, file).replace("\\", "/");
 
 		// came up with this uri by comparing what OSATE IDE serialized AIR produces
-		final URI resourceUri = URI.createURI(prefix + projectName + "/" + normalizedRelPath);
+		final URI resourceUri = URI.createPlatformResourceURI(projectName + "/" + normalizedRelPath, true);
 		final Resource res = rs.createResource(resourceUri);
 		if (res == null) {
 			throw new Exception("Error loading file " + projectName + "/" + normalizedRelPath);
@@ -626,8 +625,7 @@ public class Main implements IApplication {
 		try {
 			 URL url = new URL("file:" + filePath);
 			InputStream stream = url.openConnection().getInputStream();			
-			final String prefix = "platform:/resource/";
-			final Resource res = rs.createResource(URI.createPlatformResourceURI(prefix + filePath.replace("\\", "/"), true));
+			final Resource res = rs.createResource(URI.createURI(filePath.replace("\\", "/"), true));
 			  			  
 			System.out.println("Loading " + filePath); 
 			res.load(stream, Collections.EMPTY_MAP);
