@@ -519,9 +519,10 @@ public class Main implements IApplication {
 		
 		// load referenced project AADL files
 		final String projParentPath = projectRootDirectory.getParent();
-		List<String> refProjNames = getReferenceProjectName(projectFile);	
+		List<String> refProjNames = new ArrayList<>();
+		getRefProjName(refProjNames, projName, projParentPath);
 		for (String refProjName : refProjNames) {
-			// assuming reference project is at the same level of main project
+			// assuming reference project is at the same level of main project		
 			File refProj = new File(projParentPath, refProjName);
 			List<String> refProjFileNames = findFiles(refProj.toPath(), "aadl");	
 			for (String refProjFileName : refProjFileNames) {
@@ -650,6 +651,23 @@ public class Main implements IApplication {
 		return line.substring(line.indexOf(marker) + marker.length(), line.indexOf("</name>"));
 	}
 
+	// A reference project could depend on another reference project
+	private void getRefProjName(List<String> list, String project, String parent) throws Exception {
+		
+		File refProj = new File(parent, project);
+		File projectFile = new File(refProj, ".project");
+		List<String> refProjList = getReferenceProjectName(projectFile);
+		if (!refProjList.isEmpty()) {
+			for (String refProjName : refProjList) {
+				// avoid duplicate and break circular reference	
+				if (!list.contains(refProjName)) {
+					list.add(refProjName);
+					getRefProjName(list, refProjName, parent);
+				}
+            }
+		}		
+	}
+	
 	private List<String> getReferenceProjectName(File projectFile) throws Exception {
 		List<String> result = new ArrayList<>();
 
