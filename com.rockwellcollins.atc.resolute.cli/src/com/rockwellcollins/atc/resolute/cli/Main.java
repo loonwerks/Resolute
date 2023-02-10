@@ -17,6 +17,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -52,6 +55,10 @@ import org.osate.annexsupport.AnnexRegistry;
 import org.osate.annexsupport.AnnexUtil;
 import org.osate.pluginsupport.PluginSupportUtil;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -86,7 +93,6 @@ import com.rockwellcollins.atc.resolute.unparsing.ResoluteAnnexUnparser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
-import org.apache.commons.cli.Option.Builder;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
@@ -646,9 +652,25 @@ public class Main implements IApplication {
 	}
 
 	private String getProjectName(File projectFile) throws Exception {
-		String marker = "<name>";
-		String line = readFile(projectFile).split("\n")[2];
-		return line.substring(line.indexOf(marker) + marker.length(), line.indexOf("</name>"));
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document doc = builder.parse(projectFile);
+		doc.getDocumentElement().normalize();
+    	Element root = doc.getDocumentElement();
+		NodeList list = doc.getElementsByTagName("name");
+		
+		for (int i = 0; i < list.getLength(); i++) {
+            Node node = list.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+            	Element element = (Element) node;  
+            	// "name" tag could be used at lower level e.g. "<buildCommand>"
+            	if (element.getParentNode().isEqualNode(root)) {
+	            	String projName = element.getTextContent();            
+	            	return projName;
+            	}
+            }
+		}
+		throw new Exception("Error getting project name from file " + projectFile.toString());
 	}
 
 	// A reference project could depend on another reference project
@@ -669,17 +691,26 @@ public class Main implements IApplication {
 	}
 	
 	private List<String> getReferenceProjectName(File projectFile) throws Exception {
-		List<String> result = new ArrayList<>();
-
-		String marker = "<project>";
-		String[] lines = readFile(projectFile).split("\n");	
-		for (String line : lines) {
-            if (line.contains(marker)) {
-            	String refProjName = line.substring(line.indexOf(marker) + marker.length(), line.indexOf("</project>"));
-            	result.add(refProjName); 
+		List<String> refProjNameList = new ArrayList<>();
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document doc = builder.parse(projectFile);
+		doc.getDocumentElement().normalize();
+		NodeList list = doc.getElementsByTagName("projects");
+		
+		for (int i = 0; i < list.getLength(); i++) {
+            Node node = list.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+            	Element element = (Element) node;  
+            	Node projNode = element.getElementsByTagName("project").item(0);
+            	// Handle empty reference project list
+            	if (projNode != null) {
+            		String refProjName = projNode.getTextContent();
+            		refProjNameList.add(refProjName);
+            	}
             }
-		}		
-		return result;
+		}	
+		return refProjNameList;
 	}
 	
 	private String readFile(File f) throws Exception {
