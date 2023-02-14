@@ -7,7 +7,7 @@ Bundle-Activator: com.rockwellcollins.atc.resolute.schedule.analysis.Activator
 Bundle-Vendor: Collins Aerospace, Inc.
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.20.0,4.0.0)",
  com.rockwellcollins.atc.resolute;bundle-version="[3.0.0,4.0.0)",
- org.osate.aadl2;bundle-version="[4.0.0,5.0.0)",
+ org.osate.aadl2;bundle-version="[5.0.0,6.0.0)",
  com.rockwellcollins.atc.resolute.analysis;bundle-version="[2.8.0,3.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: com.rockwellcollins.atc.resolute.schedule.analysis
