@@ -21,6 +21,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -39,9 +40,12 @@ import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 import org.osate.aadl2.AadlPackage;
+import org.osate.aadl2.AnnexLibrary;
 import org.osate.aadl2.AnnexSubclause;
 import org.osate.aadl2.ComponentImplementation;
+import org.osate.aadl2.Element;
 import org.osate.aadl2.NamedElement;
+import org.osate.aadl2.PublicPackageSection;
 import org.osate.aadl2.instance.ComponentInstance;
 import org.osate.aadl2.instance.InstancePackage;
 import org.osate.aadl2.instance.SystemInstance;
@@ -56,7 +60,7 @@ import org.osate.annexsupport.AnnexUtil;
 import org.osate.pluginsupport.PluginSupportUtil;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+//import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -82,12 +86,15 @@ import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexParser;
 import com.rockwellcollins.atc.resolute.resolute.AnalysisStatement;
 import com.rockwellcollins.atc.resolute.resolute.ArgueStatement;
 import com.rockwellcollins.atc.resolute.resolute.CheckStatement;
+import com.rockwellcollins.atc.resolute.resolute.Definition;
 import com.rockwellcollins.atc.resolute.resolute.IdExpr;
 import com.rockwellcollins.atc.resolute.resolute.LintExpr;
 import com.rockwellcollins.atc.resolute.resolute.LintStatement;
+import com.rockwellcollins.atc.resolute.resolute.ResoluteLibrary;
 import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
 import com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause;
 import com.rockwellcollins.atc.resolute.resolute.Ruleset;
+import com.rockwellcollins.atc.resolute.resolute.impl.RulesetImpl;
 import com.rockwellcollins.atc.resolute.unparsing.ResoluteAnnexUnparser;
 
 import org.apache.commons.cli.CommandLine;
@@ -139,6 +146,7 @@ public class Main implements IApplication {
 		String component = null;
 		String outputPath = null;
 		String[] libArray = null;
+		String[] resolintRuleList = null;
 		boolean exitOnValidationWarning = false;
 		boolean validationOnly = false;
 		boolean resolute = false;
@@ -163,18 +171,25 @@ public class Main implements IApplication {
 		option.setArgs(Option.UNLIMITED_VALUES);
 		options.addOption(option);
 
-		CommandLine commandLine;        
+		option = new Option("r", "rule", true, "Resolint ruleset list");
+		option.setArgs(Option.UNLIMITED_VALUES);
+		options.addOption(option);		
+
+		CommandLine commandLine;    
 		CommandLineParser parser = new DefaultParser();
 		String[] testArgs =
-			{"--project", "D:\\Resolute_Test\\Test", "--compImpl", "test_model::Aircraft.Impl", "--resolute",
-					"-o", "D:\\Resolute_Test\\Test\\HeadlessResoluteResults.json", "-l", 
-			"D:\\Phase-2-UAV-Experimental-Platform-Transformed\\CASEAgree2.aadl"};
+//			{"--project", "D:\\Resolute_Test\\Test", "--compImpl", "test_model::Aircraft.Impl", "--resolute",
+//					"-o", "D:\\Resolute_Test\\Test\\HeadlessResoluteResults.json", "-l", 
+//			"D:\\Phase-2-UAV-Experimental-Platform-Transformed\\CASEAgree2.aadl"};
+		{"-p", "D:\\Resolute_Test\\Test", "-c", "test_model::Aircraft.Impl", "-n", "-r", "HAMR_Guidelines", "xyz", 
+			"-o", "D:\\Resolute_Test\\Test\\HeadlessResoluteResults.json"			
+		};
 
 		// parse options
 		try
 		{
-//			commandLine = parser.parse(options, testArgs);
-			commandLine = parser.parse(options, args);
+			commandLine = parser.parse(options, testArgs);
+//			commandLine = parser.parse(options, args);
 
 			if (commandLine.hasOption("h")) {
 				HelpFormatter formatter = new HelpFormatter();
@@ -208,6 +223,9 @@ public class Main implements IApplication {
 			if (commandLine.hasOption("n"))	{
 				resolint = true;
 			}
+			if (commandLine.hasOption("r"))	{
+				resolintRuleList = commandLine.getOptionValues("r");
+			}			
 			if (commandLine.hasOption("v")) {
 				validationOnly = true;
 			}
@@ -277,7 +295,7 @@ public class Main implements IApplication {
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
 		}
-
+		
 		ComponentImplementation compImpl = null;
 		for (Resource resource : resourceSet.getResources()) {
 
@@ -301,9 +319,18 @@ public class Main implements IApplication {
 					output.setResoluteOutput(results);
 				}
 				if (resolint) {
-					final List<ResolintOutput> results = runResolint(modelMap);
+					List<ResolintOutput> results = runResolint(modelMap);
+					
+					if (resolintRuleList != null) {
+						List<RulesetImpl> ruleSetDefs = getResolintRuleSetDefs(resourceSet);
+						List<ResolintOutput> resultsUserRule = runResolintUserRule(modelMap, compImpl, resolintRuleList, ruleSetDefs);
+						List<ResolintOutput> resultsFinal = Stream.concat(results.stream(), resultsUserRule.stream()).toList();
+						output.setResolintOutput(resultsFinal);
+					}
+					else {
+						output.setResolintOutput(results);					
+					}
 					output.setStatus(CommandLineOutput.COMPLETED);
-					output.setResolintOutput(results);
 				}
 				writeOutput(output, outputPath);
 			} catch (Exception e) {
@@ -380,8 +407,66 @@ public class Main implements IApplication {
 		return resoluteOutputs;
 	}
 
-	private List<ResolintOutput> runResolint(ModelMap modelMap) throws Exception {
+	private List<RulesetImpl> getResolintRuleSetDefs(XtextResourceSet resourceSet) throws Exception {
+		final List<RulesetImpl> rulesets = new ArrayList<>();
 
+		for (Resource resource : resourceSet.getResources()) {
+			if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof AadlPackage) {
+				AadlPackage pkg = (AadlPackage) resource.getContents().get(0);
+				EClass resoluteLibEClass = ResolutePackage.eINSTANCE.getResoluteLibrary();
+				for (AnnexLibrary lib : AnnexUtil.getAllActualAnnexLibraries(pkg, resoluteLibEClass))
+					if (lib instanceof ResoluteLibrary) {
+						final ResoluteLibrary resoluteLib = (ResoluteLibrary) lib;
+						for (Definition def : resoluteLib.getDefinitions()) {
+							String name = def.getName();	
+							if (def instanceof RulesetImpl) {
+								RulesetImpl rulesetImpl = (RulesetImpl) def;
+								rulesets.add(rulesetImpl);
+							}
+						}
+					}
+			}
+
+		}
+		return rulesets;
+	}
+	
+	private List<ResolintOutput> runResolintUserRule(ModelMap modelMap, ComponentImplementation compImpl, String[] ruleSetsToCheck, List<RulesetImpl> ruleSetDefs) throws Exception {
+		
+		final List<ResoluteResult> checkTrees = new ArrayList<>();
+
+		for (NamedElement el : modelMap.getElements("component")) {
+			// Avoid multiple subcomponents causing duplicated lint statements
+			if (el == el.getElementRoot()) {
+				final ComponentInstance compInst = (ComponentInstance) el;
+				final EvaluationContext context = new EvaluationContext(compInst, modelMap.getElementSets(),
+						modelMap.getFeatureToConnectionsMap());
+				final ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
+				for (String ruleSet: ruleSetsToCheck) {	
+					boolean match = false;
+					System.out.println("Info checking rule set " + ruleSet);
+					for (RulesetImpl rulesetImpl: ruleSetDefs) {						
+						if (ruleSet.equalsIgnoreCase(rulesetImpl.getName())) {
+							match = true;
+							for (LintStatement lint : rulesetImpl.getBody().getLintStatements()) {
+								checkTrees.add(interpreter.evaluateLintStatement(lint));
+							}						
+						}
+						break;
+					}
+					if (!match) {
+						System.err.println("Warning undefined rule set: " + ruleSet);
+					}
+
+				}
+			}
+		}
+		// Return output in json format
+		return getResolintResults(checkTrees, modelMap.getSystemInstance().getComponentImplementation());
+	}
+	
+	private List<ResolintOutput> runResolint(ModelMap modelMap) throws Exception {
+		
 		final List<ResoluteResult> checkTrees = new ArrayList<>();
 
 		for (NamedElement el : modelMap.getElements("component")) {
@@ -465,6 +550,7 @@ public class Main implements IApplication {
 							}
 						}
 					}
+					resolintOutputs.add(resolintOutput);
 				} catch (Exception e) {
 					continue;
 				}
@@ -656,13 +742,13 @@ public class Main implements IApplication {
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document doc = builder.parse(projectFile);
 		doc.getDocumentElement().normalize();
-    	Element root = doc.getDocumentElement();
+		org.w3c.dom.Element root = doc.getDocumentElement();
 		NodeList list = doc.getElementsByTagName("name");
 		
 		for (int i = 0; i < list.getLength(); i++) {
             Node node = list.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
-            	Element element = (Element) node;  
+            	org.w3c.dom.Element element = (org.w3c.dom.Element) node;  
             	// "name" tag could be used at lower level e.g. "<buildCommand>"
             	if (element.getParentNode().isEqualNode(root)) {
 	            	String projName = element.getTextContent();            
@@ -701,7 +787,7 @@ public class Main implements IApplication {
 		for (int i = 0; i < list.getLength(); i++) {
             Node node = list.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
-            	Element element = (Element) node;  
+            	org.w3c.dom.Element element = (org.w3c.dom.Element) node;  
             	Node projNode = element.getElementsByTagName("project").item(0);
             	// Handle empty reference project list
             	if (projNode != null) {
