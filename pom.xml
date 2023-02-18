@@ -389,12 +389,12 @@
 		<repository>
 			<id>Eclipse</id>
 			<layout>p2</layout>
-			<url>${eclipse.mirror}/releases/2022-03/</url>
+			<url>${eclipse.mirror}/releases/2022-06/</url>
 		</repository>
 		<repository>
 			<id>Osate2</id>
 			<layout>p2</layout>
-			<url>https://osate-build.sei.cmu.edu/download/osate/stable/latest/updates/</url>
+			<url>https://osate-build.sei.cmu.edu/download/osate/testing/updates/</url>
 		</repository>
 		<repository>
 			<id>Formal-Methods-Workbench-Updates</id>
