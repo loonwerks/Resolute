@@ -317,15 +317,19 @@ public class Main implements IApplication {
 							onlyReturnRuleViolations);
 
 					if (resolintRuleList != null) {
-						final List<ResolintJsonResult> resultsUserRule = ResolintAnalysis.runResolintUserRule(
-								resourceSet, evalContext, resolintRuleList, onlyReturnRuleViolations);
-						final List<ResolintJsonResult> resultsFinal = Stream
-								.concat(results.stream(), resultsUserRule.stream())
-								.toList();
-						resolintOutput.setResults(resultsFinal);
-					} else {
-						resolintOutput.setResults(results);
+//						final List<ResolintJsonResult> resultsUserRule = ResolintAnalysis.runResolintUserRule(
+//								resourceSet, evalContext, resolintRuleList, onlyReturnRuleViolations);
+						results.addAll(ResolintAnalysis.runResolintUserRule(
+								resourceSet, evalContext, resolintRuleList, onlyReturnRuleViolations));
+//						final List<ResolintJsonResult> resultsFinal = Stream
+//								.concat(results.stream(), resultsUserRule.stream())
+//								.toList();
+//						resolintOutput.setResults(resultsFinal);
+//						resolintOutput.setResults(results);
+//					} else {
+//						resolintOutput.setResults(results);
 					}
+					resolintOutput.setResults(results);
 					resolintOutput.setStatus(ToolOutput.COMPLETED);
 					writeOutput(resolintOutput, outputPath);
 				}
