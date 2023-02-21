@@ -51,7 +51,6 @@ import org.osate.annexsupport.AnnexRegistry;
 import org.osate.pluginsupport.PluginSupportUtil;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
 import org.w3c.dom.Document;
-//import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
