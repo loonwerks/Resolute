@@ -1,45 +1,24 @@
 package com.rockwellcollins.atc.resolute.cli.results;
 
-public class ResolintOutput {
+import java.util.List;
 
-	private String rule;
-	private boolean status;
-	private String severity;
-	private int line;
+public class ResolintOutput extends ToolOutput {
+
+	private List<ResolintJsonResult> results;
 
 	public ResolintOutput() {
 
 	}
 
-	public String getRule() {
-		return this.rule;
+	public ResolintOutput(ToolOutput output) {
+		super(output);
 	}
 
-	public boolean getStatus() {
-		return this.status;
+	public List<ResolintJsonResult> getResults() {
+		return this.results;
 	}
 
-	public String getSeverity() {
-		return this.severity;
-	}
-
-	public int getLine() {
-		return this.line;
-	}
-
-	public void setRule(String rule) {
-		this.rule = rule;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
-	public void setSeverity(String severity) {
-		this.severity = severity;
-	}
-
-	public void setLine(int line) {
-		this.line = line;
+	public void setResults(List<ResolintJsonResult> results) {
+		this.results = results;
 	}
 }

@@ -32,7 +32,6 @@ import org.osate.aadl2.parsesupport.LocationReference;
 import org.osate.ui.dialogs.Dialog;
 
 import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
-import com.rockwellcollins.atc.resolute.analysis.execution.ModelMap;
 import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteInterpreter;
 import com.rockwellcollins.atc.resolute.analysis.results.ResolintResult;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
@@ -90,7 +89,7 @@ public class ResolintHandler extends AadlHandler {
 
 	public static List<ResoluteResult> run(SystemInstance si) {
 
-		ModelMap modelMap = new ModelMap(si);
+		EvaluationContext context = new EvaluationContext(si);
 		List<ResoluteResult> checkTrees = new ArrayList<>();
 
 		// Get the resolute subclause for the selected component implementation
@@ -98,8 +97,6 @@ public class ResolintHandler extends AadlHandler {
 			DefaultAnnexSubclause defaultSubclause = (DefaultAnnexSubclause) annexSubclause;
 			if (defaultSubclause.getParsedAnnexSubclause() instanceof ResoluteSubclause) {
 				ResoluteSubclause resoluteSubclause = (ResoluteSubclause) defaultSubclause.getParsedAnnexSubclause();
-				EvaluationContext context = new EvaluationContext(si.getComponentInstance(), modelMap.getElementSets(),
-						modelMap.getFeatureToConnectionsMap());
 				ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
 
 				// Evaluate each check statement in selected implementation

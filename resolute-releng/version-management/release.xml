@@ -3,6 +3,7 @@
 	<feature name="com.rockwellcollins.atc.resolute.feature" version="3.0.0">
 		<plugin name="com.rockwellcollins.atc.resolute" version="3.0.0"/>
 		<plugin name="com.rockwellcollins.atc.resolute.analysis" version="2.8.0"/>
+		<plugin name="com.rockwellcollins.atc.resolute.cli" version="1.0.0"/>
 		<plugin name="com.rockwellcollins.atc.resolute.ngrep" version="2.8.0"/>
 		<plugin name="com.rockwellcollins.atc.resolute.schedule.analysis" version="2.8.0"/>
 		<plugin name="com.rockwellcollins.atc.resolute.stringlib" version="2.8.0"/>
@@ -12,6 +13,7 @@
 	</feature>
 	<plugin name="com.rockwellcollins.atc.resolute" version="3.0.0"/>
 	<plugin name="com.rockwellcollins.atc.resolute.analysis" version="2.8.0"/>
+	<plugin name="com.rockwellcollins.atc.resolute.cli" version="1.0.0"/>
 	<plugin name="com.rockwellcollins.atc.resolute.ngrep" version="2.8.0"/>
 	<plugin name="com.rockwellcollins.atc.resolute.schedule.analysis" version="2.8.0"/>
 	<plugin name="com.rockwellcollins.atc.resolute.stringlib" version="2.8.0"/>

@@ -13,26 +13,26 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.eclipse.core.resources.IMarker;
-import org.eclipse.emf.common.util.EList;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.xtext.diagnostics.Severity;
-import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.CancelIndicator;
@@ -40,23 +40,14 @@ import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 import org.osate.aadl2.AadlPackage;
-import org.osate.aadl2.AnnexLibrary;
-import org.osate.aadl2.AnnexSubclause;
 import org.osate.aadl2.ComponentImplementation;
-import org.osate.aadl2.Element;
-import org.osate.aadl2.NamedElement;
-import org.osate.aadl2.PublicPackageSection;
-import org.osate.aadl2.instance.ComponentInstance;
 import org.osate.aadl2.instance.InstancePackage;
 import org.osate.aadl2.instance.SystemInstance;
 import org.osate.aadl2.instantiation.InstantiateModel;
 import org.osate.aadl2.modelsupport.util.AadlUtil;
-import org.osate.aadl2.parsesupport.AObject;
-import org.osate.aadl2.parsesupport.LocationReference;
 import org.osate.aadl2.util.Aadl2ResourceFactoryImpl;
 import org.osate.aadl2.util.Aadl2Util;
 import org.osate.annexsupport.AnnexRegistry;
-import org.osate.annexsupport.AnnexUtil;
 import org.osate.pluginsupport.PluginSupportUtil;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
 import org.w3c.dom.Document;
@@ -70,40 +61,16 @@ import com.google.gson.stream.JsonWriter;
 import com.google.inject.Injector;
 import com.rockwellcollins.atc.resolute.ResoluteStandaloneSetup;
 import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
-import com.rockwellcollins.atc.resolute.analysis.execution.ModelMap;
-import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteInterpreter;
-import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
-import com.rockwellcollins.atc.resolute.analysis.results.FailResult;
-import com.rockwellcollins.atc.resolute.analysis.results.ResolintResult;
-import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
-import com.rockwellcollins.atc.resolute.cli.results.CommandLineOutput;
+import com.rockwellcollins.atc.resolute.cli.results.ResolintJsonResult;
 import com.rockwellcollins.atc.resolute.cli.results.ResolintOutput;
+import com.rockwellcollins.atc.resolute.cli.results.ResoluteJsonResult;
 import com.rockwellcollins.atc.resolute.cli.results.ResoluteOutput;
 import com.rockwellcollins.atc.resolute.cli.results.SyntaxValidationIssue;
 import com.rockwellcollins.atc.resolute.cli.results.SyntaxValidationResults;
+import com.rockwellcollins.atc.resolute.cli.results.ToolOutput;
 import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexLinkingService;
 import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexParser;
-import com.rockwellcollins.atc.resolute.resolute.AnalysisStatement;
-import com.rockwellcollins.atc.resolute.resolute.ArgueStatement;
-import com.rockwellcollins.atc.resolute.resolute.CheckStatement;
-import com.rockwellcollins.atc.resolute.resolute.Definition;
-import com.rockwellcollins.atc.resolute.resolute.IdExpr;
-import com.rockwellcollins.atc.resolute.resolute.LintExpr;
-import com.rockwellcollins.atc.resolute.resolute.LintStatement;
-import com.rockwellcollins.atc.resolute.resolute.ResoluteLibrary;
-import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
-import com.rockwellcollins.atc.resolute.resolute.ResoluteSubclause;
-import com.rockwellcollins.atc.resolute.resolute.Ruleset;
-import com.rockwellcollins.atc.resolute.resolute.impl.RulesetImpl;
 import com.rockwellcollins.atc.resolute.unparsing.ResoluteAnnexUnparser;
-
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.ParseException;
 
 /** Adapted from sireum Phantom CLI and OSATE Using annex extensions in stand alone applications
  * https://github.com/sireum/osate-plugin/blob/master/org.sireum.aadl.osate.cli/src/org/sireum/aadl/osate/cli/Phantom.java
@@ -138,7 +105,7 @@ public class Main implements IApplication {
 		InstancePackage.eINSTANCE.eClass();
 
 		// Output Json object
-		final CommandLineOutput output = new CommandLineOutput();
+		final ToolOutput output = new ToolOutput();
 		output.setDate((new Date()).toString());
 
 		// Process command line options
@@ -151,19 +118,34 @@ public class Main implements IApplication {
 		boolean validationOnly = false;
 		boolean resolute = false;
 		boolean resolint = false;
+		boolean onlyReturnRuleViolations = true;
 		boolean exit = false;
 
 		final String[] args = (String[]) context.getArguments().get("application.args");
 		System.out.println(Arrays.toString(args));
 
-		// create Options 
-		Options options = new Options();
+		// create Options
+		final Options options = new Options();
 		options.addOption("h", "help", false, "print this message");
+
+//		Option option = Option.builder("a")
+//				.longOpt("analysis")
+//
+//				.argName("analysis")
+//				.hasArg()
+//				.required()
+//				.desc("analysis to run")
+//				.build();
+//		option.setRequired(true);
+//		options.addOption(option);
+
 		options.addOption("p", "project", true, "required, project root path");
 		options.addOption("c", "compImpl", true, "qualified component implementation name");
-		options.addOption("o", "output", true, "output JSON file name");		
+		options.addOption("o", "output", true, "output JSON file name");
 		options.addOption("u", "resolute", false, "run Resolute, default false");
 		options.addOption("n", "resolint", false, "run Resolint, default false");
+		options.addOption("f", "onlyReturnRuleViolations", false,
+				"do not return passing Resolint results, default true");
 		options.addOption("v", "validationOnly", false, "validation only, default false");
 		options.addOption("w", "exitOnValidtionWarning", false, "exit on validation warning, default false");
 
@@ -171,38 +153,44 @@ public class Main implements IApplication {
 		option.setArgs(Option.UNLIMITED_VALUES);
 		options.addOption(option);
 
-		option = new Option("r", "rule", true, "Resolint ruleset list");
+		option = new Option("r", "ruleset", true, "Resolint ruleset list");
 		option.setArgs(Option.UNLIMITED_VALUES);
-		options.addOption(option);		
+		options.addOption(option);
 
-		CommandLine commandLine;    
+		CommandLine commandLine;
 		CommandLineParser parser = new DefaultParser();
 		String[] testArgs =
 //			{"--project", "D:\\Resolute_Test\\Test", "--compImpl", "test_model::Aircraft.Impl", "--resolute",
-//					"-o", "D:\\Resolute_Test\\Test\\HeadlessResoluteResults.json", "-l", 
+//					"-o", "D:\\Resolute_Test\\Test\\HeadlessResoluteResults.json", "-l",
 //			"D:\\Phase-2-UAV-Experimental-Platform-Transformed\\CASEAgree2.aadl"};
-		{"-p", "D:\\Resolute_Test\\Test", "-c", "test_model::Aircraft.Impl", "-n", "-r", "HAMR_Guidelines", "xyz", 
-			"-o", "D:\\Resolute_Test\\Test\\HeadlessResoluteResults.json"			
-		};
+//				{ "-p", "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-c",
+//						"test_model::Aircraft.Impl", "-n", "-r", "HAMR_Guidelines", "xyz", "-o",
+//						"C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test\\HeadlessResoluteResults.json" };
+				{ "-p", "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-c",
+						"test_model::Aircraft.Impl", "-u", "-o",
+						"C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test\\HeadlessResoluteResults.json" };
 
 		// parse options
-		try
-		{
+		try {
 			commandLine = parser.parse(options, testArgs);
 //			commandLine = parser.parse(options, args);
 
+			// One application name must be specified
+			// Otherwise print usage
+
+
 			if (commandLine.hasOption("h")) {
 				HelpFormatter formatter = new HelpFormatter();
-				formatter.printHelp("resolute", options);
+				formatter.printHelp("OSATE", options);
 				exit = true;
-				output.setStatus(CommandLineOutput.INTERRUPTED);
+				output.setStatus(ToolOutput.INTERRUPTED);
 			}
 			if (commandLine.hasOption("c")) {
 				component = commandLine.getOptionValue("c");
 				output.setComponent(component);
 				// expects qualified name
 				if (!component.contains("::")) {
-					output.setStatus(CommandLineOutput.INTERRUPTED);
+					output.setStatus(ToolOutput.INTERRUPTED);
 					output.setMessage("Component implementation qualified name must be specified");
 					exit = true;
 				}
@@ -222,20 +210,24 @@ public class Main implements IApplication {
 			}
 			if (commandLine.hasOption("n"))	{
 				resolint = true;
+
+				if (commandLine.hasOption("r")) {
+					resolintRuleList = commandLine.getOptionValues("r");
+				}
+				if (commandLine.hasOption("f")) {
+					onlyReturnRuleViolations = true;
+				}
 			}
-			if (commandLine.hasOption("r"))	{
-				resolintRuleList = commandLine.getOptionValues("r");
-			}			
 			if (commandLine.hasOption("v")) {
 				validationOnly = true;
 			}
 			if (commandLine.hasOption("w")) {
 				exitOnValidationWarning = true;
-			}			
+			}
 			String[] remainder = commandLine.getArgs();
 			for (String argument : remainder)
 			{
-				System.err.println("WARNING: remainder option " + argument + ". See 'resolute --help'");				
+				System.err.println("WARNING: remainder option " + argument + ". See 'OSATE --help'");
 			}
 		} catch (ParseException exception) {
 			System.out.print("Parse error: ");
@@ -252,7 +244,7 @@ public class Main implements IApplication {
 
 		// Add plug-in contributions to resource set
 		if (resourceSet == null) {
-			output.setStatus(CommandLineOutput.INTERRUPTED);
+			output.setStatus(ToolOutput.INTERRUPTED);
 			output.setMessage("Unable to initialize resource set");
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
@@ -263,7 +255,7 @@ public class Main implements IApplication {
 		}
 		// May be redundant, option parser handles it already
 		if (projPath == null) {
-			output.setStatus(CommandLineOutput.INTERRUPTED);
+			output.setStatus(ToolOutput.INTERRUPTED);
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
 		}
@@ -271,7 +263,7 @@ public class Main implements IApplication {
 		try {
 			loadProjectAadlFiles(projPath, libArray, resourceSet);
 		} catch (Exception e) {
-			output.setStatus(CommandLineOutput.INTERRUPTED);
+			output.setStatus(ToolOutput.INTERRUPTED);
 			output.setMessage(e.getMessage());
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
@@ -286,16 +278,16 @@ public class Main implements IApplication {
 		// Don't continue if user doesn't want any warnings
 		// Don't continue if user only wants to validate model
 		if (validationResults.getErrors() > 0 || (exitOnValidationWarning && validationResults.getWarnings() > 0)) {
-			output.setStatus(CommandLineOutput.INTERRUPTED);
+			output.setStatus(ToolOutput.INTERRUPTED);
 			output.setMessage("Syntax validation issues found");
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
 		} else if (validationOnly) {
-			output.setStatus(CommandLineOutput.COMPLETED);
+			output.setStatus(ToolOutput.COMPLETED);
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
 		}
-		
+
 		ComponentImplementation compImpl = null;
 		for (Resource resource : resourceSet.getResources()) {
 
@@ -312,36 +304,41 @@ public class Main implements IApplication {
 		if (compImpl != null) {
 			try {
 				final SystemInstance si = InstantiateModel.instantiate(compImpl);
-				final ModelMap modelMap = new ModelMap(si);
+				final EvaluationContext evalContext = new EvaluationContext(si);
 				if (resolute) {
-					final List<ResoluteOutput> results = runResolute(modelMap);
-					output.setStatus(CommandLineOutput.COMPLETED);
-					output.setResoluteOutput(results);
-				}
-				if (resolint) {
-					List<ResolintOutput> results = runResolint(modelMap);
-					
+					final ResoluteOutput resoluteOutput = new ResoluteOutput(output);
+					final List<ResoluteJsonResult> results = ResoluteAnalysis.runResolute(evalContext);
+					resoluteOutput.setStatus(ToolOutput.COMPLETED);
+					resoluteOutput.setResults(results);
+					writeOutput(resoluteOutput, outputPath);
+				} else if (resolint) {
+
+					final ResolintOutput resolintOutput = new ResolintOutput(output);
+					final List<ResolintJsonResult> results = ResolintAnalysis.runResolint(evalContext,
+							onlyReturnRuleViolations);
+
 					if (resolintRuleList != null) {
-						List<RulesetImpl> ruleSetDefs = getResolintRuleSetDefs(resourceSet);
-						List<ResolintOutput> resultsUserRule = runResolintUserRule(modelMap, compImpl, resolintRuleList, ruleSetDefs);
-						List<ResolintOutput> resultsFinal = Stream.concat(results.stream(), resultsUserRule.stream()).toList();
-						output.setResolintOutput(resultsFinal);
+						final List<ResolintJsonResult> resultsUserRule = ResolintAnalysis.runResolintUserRule(
+								resourceSet, evalContext, resolintRuleList, onlyReturnRuleViolations);
+						final List<ResolintJsonResult> resultsFinal = Stream
+								.concat(results.stream(), resultsUserRule.stream())
+								.toList();
+						resolintOutput.setResults(resultsFinal);
+					} else {
+						resolintOutput.setResults(results);
 					}
-					else {
-						output.setResolintOutput(results);					
-					}
-					output.setStatus(CommandLineOutput.COMPLETED);
+					resolintOutput.setStatus(ToolOutput.COMPLETED);
+					writeOutput(resolintOutput, outputPath);
 				}
-				writeOutput(output, outputPath);
 			} catch (Exception e) {
 				e.printStackTrace();
-				output.setStatus(CommandLineOutput.INTERRUPTED);
+				output.setStatus(ToolOutput.INTERRUPTED);
 				output.setMessage(e.getMessage());
 				writeOutput(output, outputPath);
 				return IApplication.EXIT_OK;
 			}
 		} else {
-			output.setStatus(CommandLineOutput.INTERRUPTED);
+			output.setStatus(ToolOutput.INTERRUPTED);
 			output.setMessage("Could not find component implementation in project");
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
@@ -350,249 +347,11 @@ public class Main implements IApplication {
 		return IApplication.EXIT_OK;
 	}
 
-	private List<ResoluteOutput> runResolute(ModelMap modelMap) throws Exception {
-
-		final List<ResoluteResult> argumentTrees = new ArrayList<>();
-
-		for (NamedElement el : modelMap.getElements("component")) {
-			final ComponentInstance compInst = (ComponentInstance) el;
-			final EClass resoluteSubclauseEClass = ResolutePackage.eINSTANCE.getResoluteSubclause();
-			for (AnnexSubclause subclause : AnnexUtil.getAllAnnexSubclauses(compInst.getComponentClassifier(),
-					resoluteSubclauseEClass)) {
-				if (subclause instanceof ResoluteSubclause) {
-					final ResoluteSubclause resoluteSubclause = (ResoluteSubclause) subclause;
-					final EvaluationContext context = new EvaluationContext(compInst, modelMap.getElementSets(),
-							modelMap.getFeatureToConnectionsMap());
-					final ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
-					for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
-						if (as instanceof ArgueStatement) {
-							final ArgueStatement stmt = (ArgueStatement) as;
-							argumentTrees.add(interpreter.evaluateArgueStatement(stmt));
-						}
-					}
-					break;
-				}
-			}
-		}
-
-		// Return output in json format
-		return getResoluteResults(argumentTrees);
-	}
-
-
-	private List<ResoluteOutput> getResoluteResults(List<ResoluteResult> results) {
-
-		final List<ResoluteOutput> resoluteOutputs = new ArrayList<>();
-
-		for (ResoluteResult result : results) {
-			final ResoluteOutput resoluteOutput = new ResoluteOutput();
-			if (result instanceof ClaimResult) {
-				final ClaimResult claimResult = (ClaimResult) result;
-				resoluteOutput.setClaim(claimResult.getText());
-				resoluteOutput.setStatus(claimResult.isValid());
-				final List<ResoluteOutput> childrenResult = getResoluteResults(claimResult.getChildren());
-				resoluteOutput.setSubclaims(childrenResult);
-			} else if (result instanceof FailResult) {
-				final FailResult failResult = (FailResult) result;
-				resoluteOutput.setClaim(failResult.getText());
-				resoluteOutput.setStatus(failResult.isValid());
-				final List<ResoluteOutput> childrenResult = getResoluteResults(failResult.getChildren());
-				resoluteOutput.setSubclaims(childrenResult);
-			} else {
-				continue;
-			}
-			resoluteOutputs.add(resoluteOutput);
-		}
-
-		return resoluteOutputs;
-	}
-
-	private List<RulesetImpl> getResolintRuleSetDefs(XtextResourceSet resourceSet) throws Exception {
-		final List<RulesetImpl> rulesets = new ArrayList<>();
-
-		for (Resource resource : resourceSet.getResources()) {
-			if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof AadlPackage) {
-				AadlPackage pkg = (AadlPackage) resource.getContents().get(0);
-				EClass resoluteLibEClass = ResolutePackage.eINSTANCE.getResoluteLibrary();
-				for (AnnexLibrary lib : AnnexUtil.getAllActualAnnexLibraries(pkg, resoluteLibEClass))
-					if (lib instanceof ResoluteLibrary) {
-						final ResoluteLibrary resoluteLib = (ResoluteLibrary) lib;
-						for (Definition def : resoluteLib.getDefinitions()) {
-							String name = def.getName();	
-							if (def instanceof RulesetImpl) {
-								RulesetImpl rulesetImpl = (RulesetImpl) def;
-								rulesets.add(rulesetImpl);
-							}
-						}
-					}
-			}
-
-		}
-		return rulesets;
-	}
-	
-	private List<ResolintOutput> runResolintUserRule(ModelMap modelMap, ComponentImplementation compImpl, String[] ruleSetsToCheck, List<RulesetImpl> ruleSetDefs) throws Exception {
-		
-		final List<ResoluteResult> checkTrees = new ArrayList<>();
-
-		for (NamedElement el : modelMap.getElements("component")) {
-			// Avoid multiple subcomponents causing duplicated lint statements
-			if (el == el.getElementRoot()) {
-				final ComponentInstance compInst = (ComponentInstance) el;
-				final EvaluationContext context = new EvaluationContext(compInst, modelMap.getElementSets(),
-						modelMap.getFeatureToConnectionsMap());
-				final ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
-				for (String ruleSet: ruleSetsToCheck) {	
-					boolean match = false;
-					System.out.println("Info checking rule set " + ruleSet);
-					for (RulesetImpl rulesetImpl: ruleSetDefs) {						
-						if (ruleSet.equalsIgnoreCase(rulesetImpl.getName())) {
-							match = true;
-							for (LintStatement lint : rulesetImpl.getBody().getLintStatements()) {
-								checkTrees.add(interpreter.evaluateLintStatement(lint));
-							}						
-						}
-						break;
-					}
-					if (!match) {
-						System.err.println("Warning undefined rule set: " + ruleSet);
-					}
-
-				}
-			}
-		}
-		// Return output in json format
-		return getResolintResults(checkTrees, modelMap.getSystemInstance().getComponentImplementation());
-	}
-	
-	private List<ResolintOutput> runResolint(ModelMap modelMap) throws Exception {
-		
-		final List<ResoluteResult> checkTrees = new ArrayList<>();
-
-		for (NamedElement el : modelMap.getElements("component")) {
-			final ComponentInstance compInst = (ComponentInstance) el;
-			final EClass resoluteSubclauseEClass = ResolutePackage.eINSTANCE.getResoluteSubclause();
-			for (AnnexSubclause subclause : AnnexUtil.getAllAnnexSubclauses(compInst.getComponentClassifier(),
-					resoluteSubclauseEClass)) {
-				if (subclause instanceof ResoluteSubclause) {
-					final ResoluteSubclause resoluteSubclause = (ResoluteSubclause) subclause;
-					final EvaluationContext context = new EvaluationContext(compInst, modelMap.getElementSets(),
-							modelMap.getFeatureToConnectionsMap());
-					final ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
-					// Evaluate each check statement in selected implementation
-					for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
-						if (as instanceof CheckStatement) {
-							final CheckStatement cs = (CheckStatement) as;
-							if (cs.getExpr() instanceof IdExpr) {
-								final IdExpr idExpr = (IdExpr) cs.getExpr();
-								if (idExpr.getId() instanceof Ruleset) {
-									final Ruleset ruleset = (Ruleset) idExpr.getId();
-									for (LintStatement lint : ruleset.getBody().getLintStatements()) {
-										checkTrees.add(interpreter.evaluateLintStatement(lint));
-									}
-								}
-							} else if (cs.getExpr() instanceof LintExpr) {
-								final LintStatement lint = ((LintExpr) cs.getExpr()).getLintStmt();
-								checkTrees.add(interpreter.evaluateLintStatement(lint));
-							}
-						}
-					}
-				}
-				break;
-			}
-		}
-
-		// Return output in json format
-		return getResolintResults(checkTrees, modelMap.getSystemInstance().getComponentImplementation());
-	}
-
-	private List<ResolintOutput> getResolintResults(List<ResoluteResult> results, ComponentImplementation ci) {
-
-		final List<ResolintOutput> resolintOutputs = new ArrayList<>();
-
-		for (ResoluteResult resoluteResult : results) {
-			final ResolintOutput resolintOutput = new ResolintOutput();
-			resolintOutput.setStatus(resoluteResult.isValid());
-			if (resoluteResult != null && !resoluteResult.isValid()) {
-				final ResolintResult result = (ResolintResult) resoluteResult;
-
-				try {
-					final Set<EObject> locations = result.getLocations();
-					if (locations.isEmpty()) {
-						resolintOutput.setRule(result.getText());
-						int severity = result.getSeverity();
-						if (severity == IMarker.SEVERITY_ERROR) {
-							resolintOutput.setSeverity("error");
-						} else if (severity == IMarker.SEVERITY_WARNING) {
-							resolintOutput.setSeverity("warning");
-						}
-						resolintOutput.setLine(getLineNumberFor(ci));
-					} else {
-						for (EObject ref : locations) {
-							if (ref == null) {
-								resolintOutput.setRule(result.getText());
-								int severity = result.getSeverity();
-								if (severity == IMarker.SEVERITY_ERROR) {
-									resolintOutput.setSeverity("error");
-								} else if (severity == IMarker.SEVERITY_WARNING) {
-									resolintOutput.setSeverity("warning");
-								}
-								resolintOutput.setLine(getLineNumberFor(ci));
-							} else {
-								resolintOutput.setRule(result.getText());
-								int severity = result.getSeverity();
-								if (severity == IMarker.SEVERITY_ERROR) {
-									resolintOutput.setSeverity("error");
-								} else if (severity == IMarker.SEVERITY_WARNING) {
-									resolintOutput.setSeverity("warning");
-								}
-								resolintOutput.setLine(getLineNumberFor(ref));
-							}
-						}
-					}
-					resolintOutputs.add(resolintOutput);
-				} catch (Exception e) {
-					continue;
-				}
-			}
-		}
-
-		return resolintOutputs;
-	}
-
-	public static int getLineNumberFor(EObject obj) {
-		if (obj == null) {
-			return 0;
-		}
-		if (obj instanceof AObject) {
-			LocationReference locref = ((AObject) obj).getLocationReference();
-			if (locref != null) {
-				return locref.getLine();
-			}
-		}
-		INode node = null;
-		int lineNum = 0;
-		EObject defaultannex = AadlUtil.getContainingDefaultAnnex(obj);
-		if (defaultannex != null) {
-			node = NodeModelUtils.findActualNodeFor(defaultannex);
-			if (node != null) {
-				lineNum = node.getStartLine() - 1;
-			}
-		}
-
-		node = NodeModelUtils.findActualNodeFor(obj);
-
-		if (node != null) {
-			return lineNum + node.getStartLine();
-		}
-
-		return 0;
-	}
 
 	// Load project specific AADL files
 	public void loadProjectAadlFiles(String projPath, String[] libArray, XtextResourceSet resourceSet) throws Exception {
 
-		final List<String> projectFiles = findFiles(Paths.get(projPath), "aadl");		
+		final List<String> projectFiles = findFiles(Paths.get(projPath), "aadl");
 		final File projectRootDirectory = new File(projPath);
 		final File projectFile = new File(projectRootDirectory, ".project");
 		final String projName = getProjectName(projectFile);
@@ -601,24 +360,24 @@ public class Main implements IApplication {
 			final File projFile = new File(pFile);
 			loadFile(projectRootDirectory, projName, projFile, resourceSet);
 		}
-		
+
 		// load user specified AADL libs
 		if (libArray != null) {
 			for (String libName : libArray) {
 				loadLibFile(libName, resourceSet);
-			}			
+			}
 		}
-		
+
 		// load referenced project AADL files
 		final String projParentPath = projectRootDirectory.getParent();
-		List<String> refProjNames = new ArrayList<>();
+		final List<String> refProjNames = new ArrayList<>();
 		getRefProjName(refProjNames, projName, projParentPath);
 		for (String refProjName : refProjNames) {
-			// assuming reference project is at the same level of main project		
-			File refProj = new File(projParentPath, refProjName);
-			List<String> refProjFileNames = findFiles(refProj.toPath(), "aadl");	
+			// assuming reference project is at the same level of main project
+			final File refProj = new File(projParentPath, refProjName);
+			final List<String> refProjFileNames = findFiles(refProj.toPath(), "aadl");
 			for (String refProjFileName : refProjFileNames) {
-				File refProjFile = new File(refProjFileName);
+				final File refProjFile = new File(refProjFileName);
 				loadFile(projectRootDirectory, projName, refProjFile, resourceSet);
 			}
 		}
@@ -632,7 +391,7 @@ public class Main implements IApplication {
 		int numWarnings = 0;
 		for (Resource resource : resourceSet.getResources()) {
 			if (resource.getURI().isPlatformResource()) {
-				System.out.println("Validating " + resource.getURI().toString());
+//				System.out.println("Validating " + resource.getURI().toString());
 				final IResourceValidator validator = ((XtextResource) resource).getResourceServiceProvider()
 						.getResourceValidator();
 				final List<Issue> issues = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);
@@ -649,7 +408,7 @@ public class Main implements IApplication {
 					valIssue.setFile(resource.getURI().toPlatformString(true));
 					valIssue.setLine(issue.getLineNumber());
 					syntaxValidationIssues.add(valIssue);
-					System.out.println(issue.getMessage());
+//					System.out.println(issue.getMessage());
 				}
 			}
 		}
@@ -663,7 +422,7 @@ public class Main implements IApplication {
 			throw new IllegalArgumentException("Path must be a directory!");
 		}
 
-		List<String> result;
+		final List<String> result;
 
 		try (Stream<Path> walk = Files.walk(path)) {
 			result = walk
@@ -705,54 +464,52 @@ public class Main implements IApplication {
 			throw new Exception("Error loading file " + projectName + "/" + normalizedRelPath);
 		}
 		try {
-			System.out.println("Loading " + file.getAbsolutePath()); 
+//			System.out.println("Loading " + file.getAbsolutePath());
 			res.load(stream, Collections.EMPTY_MAP);
 			return res;
 		} catch (IOException e) {
 			throw new Exception("Error loading file " + projectName + "/" + normalizedRelPath);
 		}
 	}
-	
+
 	// User specified AADL file path may be outside workspace, cannot use relative path from main project
 	private Resource loadLibFile(String filePath, ResourceSet rs) {
 		try {
-			 URL url = new URL("file:" + filePath);
-			InputStream stream = url.openConnection().getInputStream();		
-			
-			Path path = Paths.get(filePath);
-			final String lib = "Lib";
-			final URI resourceUri = URI.createPlatformResourceURI(lib + "/" + path.getFileName().toString(), true);
+			final URL url = new URL("file:" + filePath);
+			final InputStream stream = url.openConnection().getInputStream();
+
+			final Path path = Paths.get(filePath);
+			final URI resourceUri = URI.createPlatformResourceURI("Lib/" + path.getFileName().toString(), true);
 			final Resource res = rs.createResource(resourceUri);
-			
-			System.out.println("Loading " + filePath); 
+
+//			System.out.println("Loading " + filePath);
 			res.load(stream, Collections.EMPTY_MAP);
 			return res;
 		} catch (IOException e) {
-			System.err.println("Error loading file " + filePath);
+//			System.err.println("Error loading file " + filePath);
 			return null;
-		}	
+		}
 	}
-	
+
 	private String relativize(File root, File other) {
 		return Paths.get(root.toURI()).relativize(Paths.get(other.toURI())).toString();
 	}
 
 	private String getProjectName(File projectFile) throws Exception {
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document doc = builder.parse(projectFile);
+		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		final DocumentBuilder builder = factory.newDocumentBuilder();
+		final Document doc = builder.parse(projectFile);
 		doc.getDocumentElement().normalize();
-		org.w3c.dom.Element root = doc.getDocumentElement();
-		NodeList list = doc.getElementsByTagName("name");
-		
+		final org.w3c.dom.Element root = doc.getDocumentElement();
+		final NodeList list = doc.getElementsByTagName("name");
+
 		for (int i = 0; i < list.getLength(); i++) {
-            Node node = list.item(i);
+			final Node node = list.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
-            	org.w3c.dom.Element element = (org.w3c.dom.Element) node;  
+				final org.w3c.dom.Element element = (org.w3c.dom.Element) node;
             	// "name" tag could be used at lower level e.g. "<buildCommand>"
             	if (element.getParentNode().isEqualNode(root)) {
-	            	String projName = element.getTextContent();            
-	            	return projName;
+					return element.getTextContent();
             	}
             }
 		}
@@ -761,49 +518,44 @@ public class Main implements IApplication {
 
 	// A reference project could depend on another reference project
 	private void getRefProjName(List<String> list, String project, String parent) throws Exception {
-		
-		File refProj = new File(parent, project);
-		File projectFile = new File(refProj, ".project");
-		List<String> refProjList = getReferenceProjectName(projectFile);
+
+		final File refProj = new File(parent, project);
+		final File projectFile = new File(refProj, ".project");
+		final List<String> refProjList = getReferenceProjectName(projectFile);
 		if (!refProjList.isEmpty()) {
 			for (String refProjName : refProjList) {
-				// avoid duplicate and break circular reference	
+				// avoid duplicate and break circular reference
 				if (!list.contains(refProjName)) {
 					list.add(refProjName);
 					getRefProjName(list, refProjName, parent);
 				}
             }
-		}		
-	}
-	
-	private List<String> getReferenceProjectName(File projectFile) throws Exception {
-		List<String> refProjNameList = new ArrayList<>();
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document doc = builder.parse(projectFile);
-		doc.getDocumentElement().normalize();
-		NodeList list = doc.getElementsByTagName("projects");
-		
-		for (int i = 0; i < list.getLength(); i++) {
-            Node node = list.item(i);
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-            	org.w3c.dom.Element element = (org.w3c.dom.Element) node;  
-            	Node projNode = element.getElementsByTagName("project").item(0);
-            	// Handle empty reference project list
-            	if (projNode != null) {
-            		String refProjName = projNode.getTextContent();
-            		refProjNameList.add(refProjName);
-            	}
-            }
-		}	
-		return refProjNameList;
-	}
-	
-	private String readFile(File f) throws Exception {
-		return new String(Files.readAllBytes(Paths.get(f.toURI())));
+		}
 	}
 
-	private void writeOutput(CommandLineOutput output, String outputPath) {
+	private List<String> getReferenceProjectName(File projectFile) throws Exception {
+		final List<String> refProjNameList = new ArrayList<>();
+		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		final DocumentBuilder builder = factory.newDocumentBuilder();
+		final Document doc = builder.parse(projectFile);
+		doc.getDocumentElement().normalize();
+		final NodeList list = doc.getElementsByTagName("projects");
+
+		for (int i = 0; i < list.getLength(); i++) {
+			final Node node = list.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+				final org.w3c.dom.Element element = (org.w3c.dom.Element) node;
+				final Node projNode = element.getElementsByTagName("project").item(0);
+            	// Handle empty reference project list
+            	if (projNode != null) {
+					refProjNameList.add(projNode.getTextContent());
+            	}
+            }
+		}
+		return refProjNameList;
+	}
+
+	private void writeOutput(ToolOutput output, String outputPath) {
 
 		// Convert to json
 		final Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -812,7 +564,7 @@ public class Main implements IApplication {
 				final File outputFile = new File(outputPath);
 				final JsonWriter jsonWriter = new JsonWriter(new FileWriter(outputFile));
 				jsonWriter.setIndent("    ");
-				gson.toJson(output, CommandLineOutput.class, jsonWriter);
+				gson.toJson(output, output.getClass(), jsonWriter);
 				jsonWriter.close();
 			}
 		} catch (Exception e) {

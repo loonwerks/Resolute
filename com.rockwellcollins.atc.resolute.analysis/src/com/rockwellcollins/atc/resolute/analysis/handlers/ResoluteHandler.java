@@ -38,7 +38,6 @@ import org.osate.annexsupport.AnnexUtil;
 import org.osate.ui.dialogs.Dialog;
 
 import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
-import com.rockwellcollins.atc.resolute.analysis.execution.ModelMap;
 import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteInterpreter;
 import com.rockwellcollins.atc.resolute.analysis.results.ResoluteResult;
 import com.rockwellcollins.atc.resolute.analysis.views.AssuranceCaseView;
@@ -151,14 +150,12 @@ public class ResoluteHandler extends AadlHandler {
 
 		start = System.currentTimeMillis();
 
-		ModelMap modelMap = new ModelMap(si);
+		EvaluationContext context = new EvaluationContext(si);
 
 		List<ResoluteResult> argumentTrees = new ArrayList<>();
 
 		if (theorem != null) {
 
-			EvaluationContext context = new EvaluationContext(si, modelMap.getElementSets(),
-					modelMap.getFeatureToConnectionsMap());
 			FunctionDefinition functionDefinition = resolveResoluteFunction(si, theorem);
 
 			ResoluteSubclause resoluteSubclause = ResoluteFactory.eINSTANCE.createResoluteSubclause();
@@ -188,7 +185,7 @@ public class ResoluteHandler extends AadlHandler {
 			}
 
 		} else {
-			for (NamedElement el : modelMap.getElements("component")) {
+			for (NamedElement el : context.getSet("component")) {
 				ComponentInstance compInst = (ComponentInstance) el;
 				EClass resoluteSubclauseEClass = ResolutePackage.eINSTANCE.getResoluteSubclause();
 				for (AnnexSubclause subclause : AnnexUtil.getAllAnnexSubclauses(compInst.getComponentClassifier(),
@@ -196,8 +193,6 @@ public class ResoluteHandler extends AadlHandler {
 
 					if (subclause instanceof ResoluteSubclause) {
 						ResoluteSubclause resoluteSubclause = (ResoluteSubclause) subclause;
-						EvaluationContext context = new EvaluationContext(compInst, modelMap.getElementSets(),
-								modelMap.getFeatureToConnectionsMap());
 						ResoluteInterpreter interpreter = new ResoluteInterpreter(context);
 						for (AnalysisStatement as : resoluteSubclause.getAnalyses()) {
 							if (as instanceof ArgueStatement) {

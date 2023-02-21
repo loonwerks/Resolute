@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.osate.aadl2,
  org.osate.aadl2.instantiation,
  com.rockwellcollins.atc.resolute.analysis
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.rockwellcollins.atc.resolute.cli
 Bundle-ActivationPolicy: lazy
 Import-Package: com.rockwellcollins.atc.resolute.parsing,

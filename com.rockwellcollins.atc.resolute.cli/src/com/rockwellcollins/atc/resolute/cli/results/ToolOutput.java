@@ -1,22 +1,28 @@
 package com.rockwellcollins.atc.resolute.cli.results;
 
-import java.util.List;
-
-public class CommandLineOutput {
-	private String date;
-	private String project;
-	private String component;
-	private String status;
-	private String message;
-	private SyntaxValidationResults syntaxValidation;
-	private List<ResoluteOutput> resolute;
-	private List<ResolintOutput> resolint;
+public class ToolOutput {
 
 	public final static String COMPLETED = "Analysis Completed";
 	public final static String INTERRUPTED = "Analysis Interrupted";
 
-	public CommandLineOutput() {
+	private String date;
+	private String project;
+	private String component;
+	private String message;
+	private String status;
+	private SyntaxValidationResults syntaxValidation;
 
+	public ToolOutput() {
+
+	}
+
+	public ToolOutput(ToolOutput output) {
+		setDate(output.getDate());
+		setProject(output.getProject());
+		setComponent(output.getComponent());
+		setMessage(output.getMessage());
+		setStatus(output.getStatus());
+		setSyntaxValidationResults(output.getSyntaxValidationResults());
 	}
 
 	public String getDate() {
@@ -43,14 +49,6 @@ public class CommandLineOutput {
 		return this.syntaxValidation;
 	}
 
-	public List<ResoluteOutput> getResoluteOutput() {
-		return this.resolute;
-	}
-
-	public List<ResolintOutput> getResolintOutput() {
-		return this.resolint;
-	}
-
 	public void setDate(String date) {
 		this.date = date;
 	}
@@ -74,13 +72,4 @@ public class CommandLineOutput {
 	public void setSyntaxValidationResults(SyntaxValidationResults syntaxValidationResults) {
 		this.syntaxValidation = syntaxValidationResults;
 	}
-
-	public void setResoluteOutput(List<ResoluteOutput> resoluteOutput) {
-		this.resolute = resoluteOutput;
-	}
-
-	public void setResolintOutput(List<ResolintOutput> resolintOutput) {
-		this.resolint = resolintOutput;
-	}
-
 }
