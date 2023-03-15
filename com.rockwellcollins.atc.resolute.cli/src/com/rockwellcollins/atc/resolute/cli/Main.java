@@ -26,6 +26,7 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -80,12 +81,37 @@ import com.rockwellcollins.atc.resolute.unparsing.ResoluteAnnexUnparser;
 
 public class Main implements IApplication {
 
+	private final static String HELP = "h";
+	private final static String PROJECT = "p";
+	private final static String COMP_IMPL = "c";
+	private final static String OUTPUT = "o";
+	private final static String ANALYSIS = "a";
+	private final static String ONLY_RETURN_RULE_VIOLATIONS = "d";
+	private final static String VALIDATION_ONLY = "v";
+	private final static String EXIT_ON_VALIDATION_WARNING = "w";
+	private final static String FILES = "f";
+	private final static String RULESETS = "u";
+
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
 
-		System.out.println("Starting Resolute analysis");
+		System.out.println("Starting analysis");
 
 		context.applicationRunning();
+
+		System.out.println("Branding application: " + context.getBrandingApplication());
+		System.out.println("Branding name: " + context.getBrandingName());
+		System.out.println("Branding description: " + context.getBrandingDescription());
+		System.out.println("Branding id: " + context.getBrandingId());
+		String launcher = "";
+		for (int i = 0; i < Platform.getCommandLineArgs().length; ++i) {
+			final String arg = Platform.getCommandLineArgs()[i];
+			if ("-launcher".equals(arg.toLowerCase()) && i < Platform.getCommandLineArgs().length - 1) {
+				launcher = Platform.getCommandLineArgs()[i + 1];
+				break;
+			}
+		}
+		System.out.println("Launcher: " + launcher);
 
 		// Read the meta information about the plug-ins to get the annex information.
 		EcorePlugin.ExtensionProcessor.process(null);
@@ -111,7 +137,7 @@ public class Main implements IApplication {
 		String projPath = null;
 		String component = null;
 		String outputPath = null;
-		String[] libArray = null;
+		String[] fileArray = null;
 		String[] resolintRuleList = null;
 		boolean exitOnValidationWarning = false;
 		boolean validationOnly = false;
@@ -125,48 +151,36 @@ public class Main implements IApplication {
 
 		// create Options
 		final Options options = new Options();
-		options.addOption("h", "help", false, "print this message");
-
-//		Option option = Option.builder("a")
-//				.longOpt("analysis")
-//
-//				.argName("analysis")
-//				.hasArg()
-//				.required()
-//				.desc("analysis to run")
-//				.build();
-//		option.setRequired(true);
-//		options.addOption(option);
-
-		options.addOption("p", "project", true, "required, project root path");
-		options.addOption("c", "compImpl", true, "qualified component implementation name");
-		options.addOption("o", "output", true, "output JSON file name");
-		options.addOption("u", "resolute", false, "run Resolute, default false");
-		options.addOption("n", "resolint", false, "run Resolint, default false");
-		options.addOption("f", "onlyReturnRuleViolations", false,
+		options.addOption(HELP, "help", false, "print this message");
+		options.addOption(ANALYSIS, "analysis", true, "required, analysis to run [resolute | resolint]");
+		options.addOption(PROJECT, "project", true, "required, project root path");
+		options.addOption(COMP_IMPL, "compImpl", true, "qualified component implementation name");
+		options.addOption(OUTPUT, "output", true, "output JSON file name");
+		options.addOption(ONLY_RETURN_RULE_VIOLATIONS, "onlyReturnRuleViolations", false,
 				"do not return passing Resolint results, default true");
-		options.addOption("v", "validationOnly", false, "validation only, default false");
-		options.addOption("w", "exitOnValidtionWarning", false, "exit on validation warning, default false");
+		options.addOption(VALIDATION_ONLY, "validationOnly", false, "validation only, default false");
+		options.addOption(EXIT_ON_VALIDATION_WARNING, "exitOnValidtionWarning", false,
+				"exit on validation warning, default false");
 
-		Option option = new Option("l", "lib", true, "AADL library file list");
+		Option option = new Option(FILES, "files", true, "AADL file list");
 		option.setArgs(Option.UNLIMITED_VALUES);
 		options.addOption(option);
 
-		option = new Option("r", "ruleset", true, "Resolint ruleset list");
+		option = new Option(RULESETS, "rulesets", true, "Resolint ruleset list");
 		option.setArgs(Option.UNLIMITED_VALUES);
 		options.addOption(option);
 
 		CommandLine commandLine;
-		CommandLineParser parser = new DefaultParser();
+		final CommandLineParser parser = new DefaultParser();
 		String[] testArgs =
 //			{"--project", "D:\\Resolute_Test\\Test", "--compImpl", "test_model::Aircraft.Impl", "--resolute",
 //					"-o", "D:\\Resolute_Test\\Test\\HeadlessResoluteResults.json", "-l",
 //			"D:\\Phase-2-UAV-Experimental-Platform-Transformed\\CASEAgree2.aadl"};
-//				{ "-p", "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-c",
-//						"test_model::Aircraft.Impl", "-n", "-r", "HAMR_Guidelines", "xyz", "-o",
+//				{ "-" + PROJECT, "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-" + COMP_IMPL,
+//						"test_model::Aircraft.Impl", "-" + ANALYSIS + " resolint", "-" + RULESETS, "HAMR_Guidelines", "xyz", "-" + OUTPUT,
 //						"C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test\\HeadlessResoluteResults.json" };
-				{ "-p", "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-c",
-						"test_model::Aircraft.Impl", "-u", "-o",
+				{ "-" + PROJECT, "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-" + COMP_IMPL,
+						"test_model::Aircraft.Impl", "-" + ANALYSIS + " resolute", "-" + OUTPUT,
 						"C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test\\HeadlessResoluteResults.json" };
 
 		// parse options
@@ -174,18 +188,20 @@ public class Main implements IApplication {
 			commandLine = parser.parse(options, testArgs);
 //			commandLine = parser.parse(options, args);
 
-			// One application name must be specified
-			// Otherwise print usage
-
-
-			if (commandLine.hasOption("h")) {
-				HelpFormatter formatter = new HelpFormatter();
+			if (commandLine.hasOption(HELP)) {
+				final HelpFormatter formatter = new HelpFormatter();
+				// TODO: Get app name (it could be something other than OSATE)
 				formatter.printHelp("OSATE", options);
 				exit = true;
 				output.setStatus(ToolOutput.INTERRUPTED);
 			}
-			if (commandLine.hasOption("c")) {
-				component = commandLine.getOptionValue("c");
+			if (commandLine.hasOption(ANALYSIS)) {
+				final String analysis = commandLine.getOptionValue(ANALYSIS);
+				resolute = "resolute".equals(analysis.toLowerCase());
+				resolint = "resolint".equals(analysis.toLowerCase());
+			}
+			if (commandLine.hasOption(COMP_IMPL)) {
+				component = commandLine.getOptionValue(COMP_IMPL);
 				output.setComponent(component);
 				// expects qualified name
 				if (!component.contains("::")) {
@@ -194,38 +210,33 @@ public class Main implements IApplication {
 					exit = true;
 				}
 			}
-			if (commandLine.hasOption("p"))	{
-				projPath = commandLine.getOptionValue("p");
+			if (commandLine.hasOption(PROJECT)) {
+				projPath = commandLine.getOptionValue(PROJECT);
 				output.setProject(projPath);
 			}
-			if (commandLine.hasOption("o")) {
-				outputPath = commandLine.getOptionValue("o");
+			if (commandLine.hasOption(OUTPUT)) {
+				outputPath = commandLine.getOptionValue(OUTPUT);
 			}
-			if (commandLine.hasOption("l")) {
-				libArray = commandLine.getOptionValues("l");
+			if (commandLine.hasOption(FILES)) {
+				fileArray = commandLine.getOptionValues(FILES);
 			}
-			if (commandLine.hasOption("u"))	{
-				resolute = true;
-			}
-			if (commandLine.hasOption("n"))	{
-				resolint = true;
-
-				if (commandLine.hasOption("r")) {
-					resolintRuleList = commandLine.getOptionValues("r");
+			if (resolint) {
+				if (commandLine.hasOption(RULESETS)) {
+					resolintRuleList = commandLine.getOptionValues(RULESETS);
 				}
-				if (commandLine.hasOption("f")) {
+				if (commandLine.hasOption(ONLY_RETURN_RULE_VIOLATIONS)) {
 					onlyReturnRuleViolations = true;
 				}
 			}
-			if (commandLine.hasOption("v")) {
+			if (commandLine.hasOption(VALIDATION_ONLY)) {
 				validationOnly = true;
 			}
-			if (commandLine.hasOption("w")) {
+			if (commandLine.hasOption(EXIT_ON_VALIDATION_WARNING)) {
 				exitOnValidationWarning = true;
 			}
-			String[] remainder = commandLine.getArgs();
-			for (String argument : remainder)
-			{
+			final String[] remainder = commandLine.getArgs();
+			for (String argument : remainder) {
+				// TODO Get app name (it could be something other than OSATE)
 				System.err.println("WARNING: remainder option " + argument + ". See 'OSATE --help'");
 			}
 		} catch (ParseException exception) {
@@ -260,7 +271,7 @@ public class Main implements IApplication {
 		}
 		// Load project AADL files
 		try {
-			loadProjectAadlFiles(projPath, libArray, resourceSet);
+			loadProjectAadlFiles(projPath, fileArray, resourceSet);
 		} catch (Exception e) {
 			output.setStatus(ToolOutput.INTERRUPTED);
 			output.setMessage(e.getMessage());
