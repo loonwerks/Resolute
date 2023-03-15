@@ -11,6 +11,11 @@ public class ResoluteFailException extends RuntimeException {
         this.location = location;
     }
 
+	public ResoluteFailException(String str, Throwable cause, EObject location) {
+		super(str, cause);
+		this.location = location;
+	}
+
     public EObject getLocation() {
         return location;
     }

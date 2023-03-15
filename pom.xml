@@ -27,8 +27,10 @@
 		<module>com.rockwellcollins.atc.resolute</module>
 		<module>com.rockwellcollins.atc.resolute.analysis</module>
 		<module>com.rockwellcollins.atc.resolute.fileaccess</module>
+		<module>com.rockwellcollins.atc.resolute.mysql</module>
 		<module>com.rockwellcollins.atc.resolute.ngrep</module>
 		<module>com.rockwellcollins.atc.resolute.schedule.analysis</module>
+		<module>com.rockwellcollins.atc.resolute.shellcmd</module>
 		<module>com.rockwellcollins.atc.resolute.stringlib</module>
 		<module>com.rockwellcollins.atc.resolute.target</module>
 		<module>com.rockwellcollins.atc.resolute.ui</module>
