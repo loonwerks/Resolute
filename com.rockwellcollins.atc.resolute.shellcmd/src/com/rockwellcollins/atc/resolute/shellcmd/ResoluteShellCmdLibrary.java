@@ -13,11 +13,23 @@ import com.rockwellcollins.atc.resolute.analysis.values.IntValue;
 import com.rockwellcollins.atc.resolute.analysis.values.ResoluteRecordValue;
 import com.rockwellcollins.atc.resolute.analysis.values.ResoluteValue;
 import com.rockwellcollins.atc.resolute.analysis.values.StringValue;
+import com.rockwellcollins.atc.resolute.shellcmd.preferences.ShellCmdPreferenceConstants;
 
 public class ResoluteShellCmdLibrary extends ResoluteExternalFunctionLibrary {
 
 	@Override
 	public ResoluteValue run(EvaluationContext context, String function, List<ResoluteValue> args) {
+
+		// Make sure the plugin is currently enabled
+		if (Activator.getDefault()
+				.getPreferenceStore()
+				.getString(ShellCmdPreferenceConstants.ENABLE_PLUGIN)
+				.contentEquals(ShellCmdPreferenceConstants.DISABLED)) {
+			throw new ResoluteFailException(
+					"[ERROR] ShellCmd plugin is disabled. It can be enabled in Resolute preferences.",
+					context.getThisInstance().getSubcomponent());
+		}
+
 		switch (function.toLowerCase()) {
 		case ResoluteShellCmdLibraryType.SHELL_EXEC_FUNCTION_NAME:
 			return runExec(context, args);
@@ -26,7 +38,7 @@ public class ResoluteShellCmdLibrary extends ResoluteExternalFunctionLibrary {
 		case ResoluteShellCmdLibraryType.SHELL_GET_OUTPUT_FUNCTION_NAME:
 			return runGetOutput(context, args);
 		}
-		throw new ResoluteFailException("Function " + function + " not part of ShellCMD Library.",
+		throw new ResoluteFailException("[ERROR] Function " + function + " not part of ShellCMD Library.",
 				context.getThisInstance().getSubcomponent());
 	}
 
@@ -75,7 +87,7 @@ public class ResoluteShellCmdLibrary extends ResoluteExternalFunctionLibrary {
 			}});
 
 		} catch (Exception e) {
-			throw new ResoluteFailException("Unexpected exception occurred accessing shell command.", e,
+			throw new ResoluteFailException("[ERROR] Unexpected exception occurred accessing shell command.", e,
 					context.getThisInstance().getSubcomponent());
 		}
 	}

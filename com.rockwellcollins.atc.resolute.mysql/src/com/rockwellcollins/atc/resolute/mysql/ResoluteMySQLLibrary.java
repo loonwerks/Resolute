@@ -37,7 +37,7 @@ public class ResoluteMySQLLibrary extends ResoluteExternalFunctionLibrary {
 				driverClass = Class.forName("com.mysql.cj.jdbc.Driver");
 			} catch (Exception e) {
 				e.printStackTrace();
-				throw new ResoluteFailException("MySQL could not load JDBC driver", e,
+				throw new ResoluteFailException("[ERROR] MySQL could not load JDBC driver", e,
 						context.getThisInstance().getSubcomponent());
 			}
 		}
@@ -87,13 +87,13 @@ public class ResoluteMySQLLibrary extends ResoluteExternalFunctionLibrary {
 		final String username = System.getenv("MYSQL_USERNAME");
 		if (username == null) {
 			throw new ResoluteFailException(
-					"MySQL select: required MYSQL_USERNAME environment variable is not not set.",
+					"[ERROR] MySQL select: required MYSQL_USERNAME environment variable is not not set.",
 					context.getThisInstance().getSubcomponent());
 		}
 		final String password = System.getenv("MYSQL_PASSWORD");
 		if (password == null) {
 			throw new ResoluteFailException(
-					"MySQL select: required MY_SQLPASSWORD environment variable is not not set.",
+					"[ERROR] MySQL select: required MY_SQLPASSWORD environment variable is not not set.",
 					context.getThisInstance().getSubcomponent());
 		}
 
@@ -148,7 +148,7 @@ public class ResoluteMySQLLibrary extends ResoluteExternalFunctionLibrary {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ResoluteFailException("Unexpected exception occurred accessing MySQL JDBC driver.", e,
+			throw new ResoluteFailException("[ERROR] Unexpected exception occurred accessing MySQL JDBC driver.", e,
 					context.getThisInstance().getSubcomponent());
 		} finally {
 			try {
@@ -156,7 +156,8 @@ public class ResoluteMySQLLibrary extends ResoluteExternalFunctionLibrary {
 					connection.close();
 				}
 			} catch (Exception e) {
-				throw new ResoluteFailException("MySQL select statement \"" + selectStatement + "\" threw exception.",
+				throw new ResoluteFailException(
+						"[ERROR] MySQL select statement \"" + selectStatement + "\" threw exception.",
 						e,
 						context.getThisInstance().getSubcomponent());
 			}
