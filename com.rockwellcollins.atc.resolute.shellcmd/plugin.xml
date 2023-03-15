@@ -9,4 +9,19 @@
             typeClass="com.rockwellcollins.atc.resolute.shellcmd.ResoluteShellCmdLibraryType">
       </externalLibrary>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.rockwellcollins.atc.resolute.shellcmd.preferences.ShellCmdPreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="com.rockwellcollins.atc.resolute.Resolute"
+            class="com.rockwellcollins.atc.resolute.shellcmd.preferences.ShellCmdPreferencePage"
+            id="com.rockwellcollins.atc.resolute.shellcmd.ShellCmd"
+            name="ShellCmd">
+      </page>
+   </extension>
 </plugin>
