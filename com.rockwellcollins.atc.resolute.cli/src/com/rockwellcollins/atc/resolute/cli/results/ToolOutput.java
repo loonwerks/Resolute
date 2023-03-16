@@ -66,7 +66,11 @@ public class ToolOutput {
 	}
 
 	public void setMessage(String message) {
-		this.message = message;
+		if (this.message == null || this.message.isBlank()) {
+			this.message = message;
+		} else {
+			this.message += System.lineSeparator() + message;
+		}
 	}
 
 	public void setSyntaxValidationResults(SyntaxValidationResults syntaxValidationResults) {

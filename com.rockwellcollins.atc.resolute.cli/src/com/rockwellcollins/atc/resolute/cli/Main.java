@@ -172,26 +172,23 @@ public class Main implements IApplication {
 
 		CommandLine commandLine;
 		final CommandLineParser parser = new DefaultParser();
-		String[] testArgs =
+//		String[] testArgs =
 //			{"--project", "D:\\Resolute_Test\\Test", "--compImpl", "test_model::Aircraft.Impl", "--resolute",
 //					"-o", "D:\\Resolute_Test\\Test\\HeadlessResoluteResults.json", "-l",
 //			"D:\\Phase-2-UAV-Experimental-Platform-Transformed\\CASEAgree2.aadl"};
 //				{ "-" + PROJECT, "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-" + COMP_IMPL,
 //						"test_model::Aircraft.Impl", "-" + ANALYSIS + " resolint", "-" + RULESETS, "HAMR_Guidelines", "xyz", "-" + OUTPUT,
 //						"C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test\\HeadlessResoluteResults.json" };
-				{ "-" + PROJECT, "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-" + COMP_IMPL,
-						"test_model::Aircraft.Impl", "-" + ANALYSIS + " resolute", "-" + OUTPUT,
-						"C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test\\HeadlessResoluteResults.json" };
+//				{ "-" + PROJECT, "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-" + COMP_IMPL,
+//						"test_model::Aircraft.Impl", "-" + ANALYSIS + " resolute", "-" + OUTPUT,
+//						"C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test\\HeadlessResoluteResults.json" };
 
 		// parse options
 		try {
-			commandLine = parser.parse(options, testArgs);
-//			commandLine = parser.parse(options, args);
+//			commandLine = parser.parse(options, testArgs);
+			commandLine = parser.parse(options, args);
 
 			if (commandLine.hasOption(HELP)) {
-				final HelpFormatter formatter = new HelpFormatter();
-				// TODO: Get app name (it could be something other than OSATE)
-				formatter.printHelp("OSATE", options);
 				exit = true;
 				output.setStatus(ToolOutput.INTERRUPTED);
 			}
@@ -200,13 +197,18 @@ public class Main implements IApplication {
 				resolute = "resolute".equals(analysis.toLowerCase());
 				resolint = "resolint".equals(analysis.toLowerCase());
 			}
+			if (!(resolute || resolint)) {
+				output.setStatus(ToolOutput.INTERRUPTED);
+				output.setMessage("An analysis must be specified. See --help for command line options.");
+				exit = true;
+			}
 			if (commandLine.hasOption(COMP_IMPL)) {
 				component = commandLine.getOptionValue(COMP_IMPL);
 				output.setComponent(component);
 				// expects qualified name
 				if (!component.contains("::")) {
 					output.setStatus(ToolOutput.INTERRUPTED);
-					output.setMessage("Component implementation qualified name must be specified");
+					output.setMessage("Component implementation qualified name must be specified.");
 					exit = true;
 				}
 			}
@@ -236,15 +238,22 @@ public class Main implements IApplication {
 			}
 			final String[] remainder = commandLine.getArgs();
 			for (String argument : remainder) {
-				// TODO Get app name (it could be something other than OSATE)
-				System.err.println("WARNING: remainder option " + argument + ". See 'OSATE --help'");
+				final String message = "WARNING: unknown arguement " + argument
+						+ ". See --help for command line options.";
+				output.setMessage(message);
+				System.err.println(message);
 			}
 		} catch (ParseException exception) {
-			System.out.print("Parse error: ");
-			System.out.println(exception.getMessage());
+			final String message = "Parse error: " + exception.getMessage();
+			System.err.println(message);
+			output.setMessage(message);
+			exit = true;
 		}
 
 		if (exit) {
+			final HelpFormatter formatter = new HelpFormatter();
+			// TODO: Get app name (it could be something other than OSATE)
+			formatter.printHelp("OSATE", options);
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
 		}
@@ -289,7 +298,7 @@ public class Main implements IApplication {
 		// Don't continue if user only wants to validate model
 		if (validationResults.getErrors() > 0 || (exitOnValidationWarning && validationResults.getWarnings() > 0)) {
 			output.setStatus(ToolOutput.INTERRUPTED);
-			output.setMessage("Syntax validation issues found");
+			output.setMessage("Syntax validation issues found.");
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
 		} else if (validationOnly) {
@@ -328,19 +337,15 @@ public class Main implements IApplication {
 							onlyReturnRuleViolations);
 
 					if (resolintRuleList != null) {
-//						final List<ResolintJsonResult> resultsUserRule = ResolintAnalysis.runResolintUserRule(
-//								resourceSet, evalContext, resolintRuleList, onlyReturnRuleViolations);
-						results.addAll(ResolintAnalysis.runResolintUserRule(
-								resourceSet, evalContext, resolintRuleList, onlyReturnRuleViolations));
-//						final List<ResolintJsonResult> resultsFinal = Stream
-//								.concat(results.stream(), resultsUserRule.stream())
-//								.toList();
-//						resolintOutput.setResults(resultsFinal);
-//						resolintOutput.setResults(results);
-//					} else {
-//						resolintOutput.setResults(results);
+						final List<ResolintJsonResult> resultsUserRule = ResolintAnalysis.runResolintUserRule(
+								resourceSet, evalContext, resolintRuleList, onlyReturnRuleViolations);
+						final List<ResolintJsonResult> resultsFinal = Stream
+								.concat(results.stream(), resultsUserRule.stream())
+								.toList();
+						resolintOutput.setResults(resultsFinal);
+					} else {
+						resolintOutput.setResults(results);
 					}
-					resolintOutput.setResults(results);
 					resolintOutput.setStatus(ToolOutput.COMPLETED);
 					writeOutput(resolintOutput, outputPath);
 				}
@@ -353,7 +358,7 @@ public class Main implements IApplication {
 			}
 		} else {
 			output.setStatus(ToolOutput.INTERRUPTED);
-			output.setMessage("Could not find component implementation in project");
+			output.setMessage("Could not find component implementation in project.");
 			writeOutput(output, outputPath);
 			return IApplication.EXIT_OK;
 		}
