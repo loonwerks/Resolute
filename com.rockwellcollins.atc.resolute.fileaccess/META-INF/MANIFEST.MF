@@ -11,6 +11,6 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.119.0,4.0.0)",
  com.rockwellcollins.atc.resolute;bundle-version="[3.0.0,3.1.0)",
  org.osate.aadl2;bundle-version="[5.0.0,6.0.0)",
  org.osate.aadl2.modelsupport;bundle-version="[7.0.0,8.0.0)"
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: com.rockwellcollins.atc.resolute.fileaccess
 Bundle-ActivationPolicy: lazy

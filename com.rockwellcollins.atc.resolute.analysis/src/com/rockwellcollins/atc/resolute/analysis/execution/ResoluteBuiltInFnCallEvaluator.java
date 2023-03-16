@@ -745,7 +745,7 @@ public class ResoluteBuiltInFnCallEvaluator {
 				if (cc instanceof ComponentImplementation) {
 					ComponentImplementation compImpl = (ComponentImplementation) cc;
 					try {
-						SystemInstance si = InstantiateModel.buildInstanceModelFile(compImpl);
+						SystemInstance si = InstantiateModel.instantiate(compImpl);
 						List<ResoluteResult> checkTrees = ResolintHandler.run(si);
 						for (ResoluteResult resoluteResult : checkTrees) {
 							if (resoluteResult != null && !resoluteResult.isValid()) {

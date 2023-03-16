@@ -34,7 +34,7 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.119.0,4.0.0)",
  org.osate.results;bundle-version="[3.0.0,4.0.0)",
  org.osate.resolute;bundle-version="[1.0.0,2.0.0)"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: com.rockwellcollins.atc.resolute.analysis,
  com.rockwellcollins.atc.resolute.analysis.execution,
  com.rockwellcollins.atc.resolute.analysis.results,
