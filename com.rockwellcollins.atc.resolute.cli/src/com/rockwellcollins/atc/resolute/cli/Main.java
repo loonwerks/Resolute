@@ -48,7 +48,6 @@ import org.osate.aadl2.instantiation.InstantiateModel;
 import org.osate.aadl2.modelsupport.util.AadlUtil;
 import org.osate.aadl2.util.Aadl2ResourceFactoryImpl;
 import org.osate.aadl2.util.Aadl2Util;
-import org.osate.annexsupport.AnnexRegistry;
 import org.osate.pluginsupport.PluginSupportUtil;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
 import org.w3c.dom.Document;
@@ -68,9 +67,6 @@ import com.rockwellcollins.atc.resolute.cli.results.ResoluteOutput;
 import com.rockwellcollins.atc.resolute.cli.results.SyntaxValidationIssue;
 import com.rockwellcollins.atc.resolute.cli.results.SyntaxValidationResults;
 import com.rockwellcollins.atc.resolute.cli.results.ToolOutput;
-import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexLinkingService;
-import com.rockwellcollins.atc.resolute.parsing.ResoluteAnnexParser;
-import com.rockwellcollins.atc.resolute.unparsing.ResoluteAnnexUnparser;
 
 /** Adapted from sireum Phantom CLI and OSATE Using annex extensions in stand alone applications
  * https://github.com/sireum/osate-plugin/blob/master/org.sireum.aadl.osate.cli/src/org/sireum/aadl/osate/cli/Phantom.java
@@ -99,26 +95,14 @@ public class Main implements IApplication {
 
 		context.applicationRunning();
 
-		System.out.println("Branding application: " + context.getBrandingApplication());
-		System.out.println("Branding name: " + context.getBrandingName());
-		System.out.println("Branding description: " + context.getBrandingDescription());
-		System.out.println("Branding id: " + context.getBrandingId());
-		String launcher = "";
-		for (int i = 0; i < Platform.getCommandLineArgs().length; ++i) {
-			final String arg = Platform.getCommandLineArgs()[i];
-			if ("-launcher".equals(arg.toLowerCase()) && i < Platform.getCommandLineArgs().length - 1) {
-				launcher = Platform.getCommandLineArgs()[i + 1];
-				break;
-			}
-		}
-		System.out.println("Launcher: " + launcher);
+		System.out.println("Platform command line args: " + String.join(" ", Platform.getCommandLineArgs()));
 
 		// Read the meta information about the plug-ins to get the annex information.
 		EcorePlugin.ExtensionProcessor.process(null);
 
-		// Register Resolute annex, otherwise get exception when add Resolute annex to resource set
-		AnnexRegistry.registerAnnex("Resolute", new ResoluteAnnexParser(), new ResoluteAnnexUnparser(),
-				new ResoluteAnnexLinkingService(), null, null, null, null, null);
+//		// Register Resolute annex, otherwise get exception when add Resolute annex to resource set
+//		AnnexRegistry.registerAnnex("Resolute", new ResoluteAnnexParser(), new ResoluteAnnexUnparser(),
+//				new ResoluteAnnexLinkingService(), null, null, null, null, null);
 
 		// Initialize the AADL meta model
 		final Injector injector = new Aadl2StandaloneSetup().createInjectorAndDoEMFRegistration();
@@ -147,7 +131,7 @@ public class Main implements IApplication {
 		boolean exit = false;
 
 		final String[] args = (String[]) context.getArguments().get("application.args");
-		System.out.println(Arrays.toString(args));
+		System.out.println("application.args: " + Arrays.toString(args));
 
 		// create Options
 		final Options options = new Options();
@@ -161,32 +145,29 @@ public class Main implements IApplication {
 		options.addOption(VALIDATION_ONLY, "validationOnly", false, "validation only, default false");
 		options.addOption(EXIT_ON_VALIDATION_WARNING, "exitOnValidtionWarning", false,
 				"exit on validation warning, default false");
-
 		Option option = new Option(FILES, "files", true, "AADL file list");
 		option.setArgs(Option.UNLIMITED_VALUES);
 		options.addOption(option);
-
 		option = new Option(RULESETS, "rulesets", true, "Resolint ruleset list");
 		option.setArgs(Option.UNLIMITED_VALUES);
 		options.addOption(option);
 
-		CommandLine commandLine;
-		final CommandLineParser parser = new DefaultParser();
-//		String[] testArgs =
+		final String[] testArgs =
 //			{"--project", "D:\\Resolute_Test\\Test", "--compImpl", "test_model::Aircraft.Impl", "--resolute",
 //					"-o", "D:\\Resolute_Test\\Test\\HeadlessResoluteResults.json", "-l",
 //			"D:\\Phase-2-UAV-Experimental-Platform-Transformed\\CASEAgree2.aadl"};
 //				{ "-" + PROJECT, "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-" + COMP_IMPL,
-//						"test_model::Aircraft.Impl", "-" + ANALYSIS + " resolint", "-" + RULESETS, "HAMR_Guidelines", "xyz", "-" + OUTPUT,
+//						"test_model::Aircraft.Impl", "-" + ANALYSIS, "resolint", "-" + RULESETS, "HAMR_Guidelines", "xyz", "-" + OUTPUT,
 //						"C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test\\HeadlessResoluteResults.json" };
-//				{ "-" + PROJECT, "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-" + COMP_IMPL,
-//						"test_model::Aircraft.Impl", "-" + ANALYSIS + " resolute", "-" + OUTPUT,
-//						"C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test\\HeadlessResoluteResults.json" };
+				{ "-" + PROJECT, "C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test", "-" + COMP_IMPL,
+						"test_model::Aircraft.Impl", "-" + ANALYSIS, "resolute", "-" + OUTPUT,
+						"C:\\Apps\\osate2_2022-06\\runtime-osate2\\Resolute_Test\\Test\\HeadlessResoluteResults.json" };
 
 		// parse options
 		try {
-//			commandLine = parser.parse(options, testArgs);
-			commandLine = parser.parse(options, args);
+			final CommandLineParser parser = new DefaultParser();
+//			final CommandLine commandLine = parser.parse(options, testArgs);
+			final CommandLine commandLine = parser.parse(options, args);
 
 			if (commandLine.hasOption(HELP)) {
 				exit = true;
@@ -215,6 +196,10 @@ public class Main implements IApplication {
 			if (commandLine.hasOption(PROJECT)) {
 				projPath = commandLine.getOptionValue(PROJECT);
 				output.setProject(projPath);
+			} else {
+				output.setStatus(ToolOutput.INTERRUPTED);
+				output.setMessage("Project path must be specified.");
+				exit = true;
 			}
 			if (commandLine.hasOption(OUTPUT)) {
 				outputPath = commandLine.getOptionValue(OUTPUT);
@@ -261,7 +246,6 @@ public class Main implements IApplication {
 		// Get the resource set from the Injector obtained from initializing the AADL meta model
 		final XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 
-		// Add plug-in contributions to resource set
 		if (resourceSet == null) {
 			output.setStatus(ToolOutput.INTERRUPTED);
 			output.setMessage("Unable to initialize resource set");
@@ -269,15 +253,11 @@ public class Main implements IApplication {
 			return IApplication.EXIT_OK;
 		}
 
+		// Add plug-in contributions to resource set
 		for (URI uri : PluginSupportUtil.getContributedAadl()) {
 			resourceSet.getResource(uri, true);
 		}
-		// May be redundant, option parser handles it already
-		if (projPath == null) {
-			output.setStatus(ToolOutput.INTERRUPTED);
-			writeOutput(output, outputPath);
-			return IApplication.EXIT_OK;
-		}
+
 		// Load project AADL files
 		try {
 			loadProjectAadlFiles(projPath, fileArray, resourceSet);
