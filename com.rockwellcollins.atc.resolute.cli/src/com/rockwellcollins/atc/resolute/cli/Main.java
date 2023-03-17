@@ -138,7 +138,7 @@ public class Main implements IApplication {
 		String component = null;
 		String outputPath = null;
 		String[] fileArray = null;
-		String[] resolintRuleList = null;
+		String[] resolintRulesetList = null;
 		boolean exitOnValidationWarning = false;
 		boolean validationOnly = false;
 		boolean resolute = false;
@@ -224,7 +224,7 @@ public class Main implements IApplication {
 			}
 			if (resolint) {
 				if (commandLine.hasOption(RULESETS)) {
-					resolintRuleList = commandLine.getOptionValues(RULESETS);
+					resolintRulesetList = commandLine.getOptionValues(RULESETS);
 				}
 				if (commandLine.hasOption(ONLY_RETURN_RULE_VIOLATIONS)) {
 					onlyReturnRuleViolations = true;
@@ -336,16 +336,12 @@ public class Main implements IApplication {
 					final List<ResolintJsonResult> results = ResolintAnalysis.runResolint(evalContext,
 							onlyReturnRuleViolations);
 
-					if (resolintRuleList != null) {
-						final List<ResolintJsonResult> resultsUserRule = ResolintAnalysis.runResolintUserRule(
-								resourceSet, evalContext, resolintRuleList, onlyReturnRuleViolations);
-						final List<ResolintJsonResult> resultsFinal = Stream
-								.concat(results.stream(), resultsUserRule.stream())
-								.toList();
-						resolintOutput.setResults(resultsFinal);
-					} else {
-						resolintOutput.setResults(results);
+					if (resolintRulesetList != null) {
+						final List<ResolintJsonResult> resultsUserRulesets = ResolintAnalysis.runResolintUserRule(
+								resourceSet, evalContext, resolintRulesetList, onlyReturnRuleViolations);
+						results.addAll(resultsUserRulesets);
 					}
+					resolintOutput.setResults(results);
 					resolintOutput.setStatus(ToolOutput.COMPLETED);
 					writeOutput(resolintOutput, outputPath);
 				}
