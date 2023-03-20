@@ -40,6 +40,10 @@ public abstract class ResoluteValue implements Comparable<ResoluteValue> {
 		return false;
 	}
 
+	public boolean isRecord() {
+		return false;
+	}
+
 	public boolean getBool() {
 		throw new IllegalArgumentException();
 	}
@@ -72,6 +76,10 @@ public abstract class ResoluteValue implements Comparable<ResoluteValue> {
 		throw new IllegalArgumentException();
 	}
 
+	public ResoluteRecordValue getRecord() {
+		throw new IllegalArgumentException();
+	}
+
 	public abstract ResoluteType getType();
 
 	@Override
@@ -97,6 +105,8 @@ public abstract class ResoluteValue implements Comparable<ResoluteValue> {
 			} else {
 				return a.getMax().compareTo(b.getMax());
 			}
+		} else if (isRecord() && other.isRecord()) {
+			return String.CASE_INSENSITIVE_ORDER.compare(toString(), other.toString());
 		} else {
 			throw new IllegalArgumentException("Unable to compare " + getClass().getName() + " and "
 					+ other.getClass().getName());
