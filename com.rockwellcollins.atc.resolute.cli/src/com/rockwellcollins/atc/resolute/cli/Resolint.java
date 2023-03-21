@@ -145,6 +145,11 @@ public class Resolint implements IApplication {
 				exit = true;
 				output.setStatus(ToolOutput.INTERRUPTED);
 			}
+			if (workspace == null || workspace.isBlank()) {
+				exit = true;
+				output.setStatus(ToolOutput.INTERRUPTED);
+				output.addStatusMessage("A workspace must be specified.");
+			}
 			if (commandLine.hasOption(COMP_IMPL)) {
 				component = commandLine.getOptionValue(COMP_IMPL);
 				output.setComponent(component);
