@@ -14,5 +14,31 @@
          </run>
       </application>
    </extension>
+   <extension
+         id="Resolute"
+         name="Headless Resolute"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="com.rockwellcollins.atc.resolute.cli.Resolute">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="Resolint"
+         name="Headless Resolint"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="com.rockwellcollins.atc.resolute.cli.Resolint">
+         </run>
+      </application>
+   </extension>
 
 </plugin>

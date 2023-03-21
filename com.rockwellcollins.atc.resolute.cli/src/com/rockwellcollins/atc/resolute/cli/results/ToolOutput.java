@@ -1,5 +1,7 @@
 package com.rockwellcollins.atc.resolute.cli.results;
 
+import java.util.ArrayList;
+
 public class ToolOutput {
 
 	public final static String COMPLETED = "Analysis Completed";
@@ -8,7 +10,7 @@ public class ToolOutput {
 	private String date;
 	private String project;
 	private String component;
-	private String message;
+	private ArrayList<String> statusMessages;
 	private String status;
 	private SyntaxValidationResults syntaxValidation;
 
@@ -20,7 +22,7 @@ public class ToolOutput {
 		setDate(output.getDate());
 		setProject(output.getProject());
 		setComponent(output.getComponent());
-		setMessage(output.getMessage());
+		setStatusMessages(output.getStatusMessages());
 		setStatus(output.getStatus());
 		setSyntaxValidationResults(output.getSyntaxValidationResults());
 	}
@@ -41,8 +43,8 @@ public class ToolOutput {
 		return this.status;
 	}
 
-	public String getMessage() {
-		return this.message;
+	public ArrayList<String> getStatusMessages() {
+		return this.statusMessages;
 	}
 
 	public SyntaxValidationResults getSyntaxValidationResults() {
@@ -65,12 +67,20 @@ public class ToolOutput {
 		this.status = status;
 	}
 
-	public void setMessage(String message) {
-		if (this.message == null || this.message.isBlank()) {
-			this.message = message;
-		} else {
-			this.message += System.lineSeparator() + message;
+	public void setStatusMessages(ArrayList<String> statusMessages) {
+//		if (this.message == null || this.message.isBlank()) {
+//			this.message = message;
+//		} else {
+//			this.message += System.lineSeparator() + message;
+//		}
+		this.statusMessages = statusMessages;
+	}
+
+	public void addStatusMessage(String statusMessages) {
+		if (this.statusMessages == null) {
+			this.statusMessages = new ArrayList<>();
 		}
+		this.statusMessages.add(statusMessages);
 	}
 
 	public void setSyntaxValidationResults(SyntaxValidationResults syntaxValidationResults) {

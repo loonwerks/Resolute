@@ -8,6 +8,8 @@ public class ResolintJsonResult {
 	private String rule;
 	private boolean status;
 	private String severity;
+	private String element;
+	private String file;
 	private int line;
 
 	public String getRule() {
@@ -20,6 +22,14 @@ public class ResolintJsonResult {
 
 	public String getSeverity() {
 		return this.severity;
+	}
+
+	public String getElement() {
+		return this.element;
+	}
+
+	public String getFile() {
+		return this.file;
 	}
 
 	public int getLine() {
@@ -36,6 +46,14 @@ public class ResolintJsonResult {
 
 	public void setSeverity(String severity) {
 		this.severity = severity;
+	}
+
+	public void setElement(String element) {
+		this.element = element;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
 	}
 
 	public void setLine(int line) {
