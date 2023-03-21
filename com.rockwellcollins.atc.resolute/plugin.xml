@@ -8,5 +8,4 @@
        class = "com.rockwellcollins.atc.resolute.resolute.ResolutePackage"
        genModel = "model/generated/Resolute.genmodel" /> 	
   </extension>
-
 </plugin>

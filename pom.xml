@@ -26,6 +26,7 @@
 	<modules>
 		<module>com.rockwellcollins.atc.resolute</module>
 		<module>com.rockwellcollins.atc.resolute.analysis</module>
+		<module>com.rockwellcollins.atc.resolute.cli</module>
 		<module>com.rockwellcollins.atc.resolute.fileaccess</module>
 		<module>com.rockwellcollins.atc.resolute.mysql</module>
 		<module>com.rockwellcollins.atc.resolute.ngrep</module>
