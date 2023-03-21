@@ -66,7 +66,7 @@ public class ResolintHandler extends AadlHandler {
 			try {
 				si = InstantiateModel.buildInstanceModelFile(compImpl);
 			} catch (Exception e) {
-				Dialog.showError("Model Instantiate", "Error while re-instantiating the model: " + e.getMessage());
+				Dialog.showError("Resolint", "Error while instantiating the model: " + e.getMessage());
 				return Status.CANCEL_STATUS;
 			}
 		}
@@ -78,7 +78,13 @@ public class ResolintHandler extends AadlHandler {
 
 		start = System.currentTimeMillis();
 
-		List<ResoluteResult> checkTrees = run(si);
+		List<ResoluteResult> checkTrees = new ArrayList<>();
+		try {
+			checkTrees = run(si);
+		} catch (Exception e) {
+			Dialog.showError("Resolint", e.getMessage());
+			return Status.CANCEL_STATUS;
+		}
 		displayResults(checkTrees, compImpl);
 
 		stop = System.currentTimeMillis();
@@ -87,7 +93,7 @@ public class ResolintHandler extends AadlHandler {
 		return Status.OK_STATUS;
 	}
 
-	public static List<ResoluteResult> run(SystemInstance si) {
+	public static List<ResoluteResult> run(SystemInstance si) throws Exception {
 
 		EvaluationContext context = new EvaluationContext(si);
 		List<ResoluteResult> checkTrees = new ArrayList<>();
@@ -256,19 +262,14 @@ public class ResolintHandler extends AadlHandler {
 		return resource;
 	}
 
-	private static void handleCheckStatementException(CheckStatement cs, Exception e) {
-		String bodyText = simpleSerializer(cs.getExpr());
-		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-		window.getShell().getDisplay().syncExec(() -> {
-			MessageDialog.openError(window.getShell(), "Error in check statement: " + bodyText, e.getMessage());
-		});
-		e.printStackTrace();
+	private static void handleCheckStatementException(CheckStatement cs, Exception e) throws Exception {
+		final String bodyText = "Error in check statement: " + simpleSerializer(cs.getExpr()) + "\n" + e.getMessage();
+		throw new Exception(bodyText);
 	}
 
 	public static String simpleSerializer(EObject e) {
 		if (e instanceof FnCallExpr) {
 			FnCallExpr fce = (FnCallExpr) e;
-//			String args = fce.getArgs().stream().map(this::simpleSerializer).collect(joining(", "));
 			String args = "";
 			for (int i = 0; i < fce.getArgs().size(); ++i) {
 				args += fce.getArgs().get(i);

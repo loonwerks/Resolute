@@ -141,7 +141,7 @@ public class ResoluteHandler extends AadlHandler {
 			try {
 				si = InstantiateModel.buildInstanceModelFile(compImpl);
 			} catch (Exception e) {
-				Dialog.showError("Model Instantiate", "Error while re-instantiating the model: " + e.getMessage());
+				Dialog.showError("Resolute", "Error while instantiating the model: " + e.getMessage());
 				return Status.CANCEL_STATUS;
 			}
 		}

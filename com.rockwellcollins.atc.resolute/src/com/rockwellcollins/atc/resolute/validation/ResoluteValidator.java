@@ -407,8 +407,13 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 
 	@Check
 	public void checkThisExpr(ThisExpr thisExpr) {
-		Classifier parent = thisExpr.getContainingClassifier();
-		if (!(parent instanceof ComponentType) && !(parent instanceof ComponentImplementation)) {
+		Classifier parent = null;
+		try {
+			parent = thisExpr.getContainingClassifier();
+		} catch (Exception e) {
+
+		}
+		if (parent == null || !(parent instanceof ComponentType || parent instanceof ComponentImplementation)) {
 			error(thisExpr, "A 'this' expression can only be used in a "
 					+ "resolute subclause (inside of a component or component implementation)");
 		}
@@ -1488,7 +1493,12 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 					}
 				}
 
-				Classifier parent = expr.getContainingClassifier();
+				Classifier parent = null;
+				try {
+					parent = expr.getContainingClassifier();
+				} catch (Exception e) {
+					return BaseType.FAIL;
+				}
 				// A 'this' expression should always have a containing
 				// classifier that is of component type. This may not
 				// be the case if a 'this' statement appears in a ResoluteLibrary

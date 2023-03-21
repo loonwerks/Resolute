@@ -71,6 +71,7 @@ BaseType:
          | 'virtual_processor'
          | 'connection'
          | 'property'
+         | 'record'
          | 'feature'
          | 'port'
          | 'data_port'
