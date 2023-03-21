@@ -2,19 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         id="Main"
-         name="Headless Resolute"
-         point="org.eclipse.core.runtime.applications">
-      <application
-            cardinality="singleton-global"
-            thread="main"
-            visible="true">
-         <run
-               class="com.rockwellcollins.atc.resolute.cli.Main">
-         </run>
-      </application>
-   </extension>
-   <extension
          id="Resolute"
          name="Headless Resolute"
          point="org.eclipse.core.runtime.applications">
