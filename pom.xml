@@ -36,6 +36,7 @@
 		<module>com.rockwellcollins.atc.resolute.ui</module>
 		<module>org.osate.resolute.help</module>
 		<module>com.rockwellcollins.atc.resolute.feature</module>
+		<module>com.rockwellcollins.atc.resolute.external.examples.feature</module>
 		<module>repository</module>
 	</modules>
 
