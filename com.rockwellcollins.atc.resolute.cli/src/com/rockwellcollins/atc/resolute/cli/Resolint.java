@@ -7,9 +7,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
@@ -138,7 +138,7 @@ public class Resolint implements IApplication {
 
 		// parse options
 		try {
-			final CommandLineParser parser = new DefaultParser();
+			final CommandLineParser parser = new BasicParser();
 			final CommandLine commandLine = parser.parse(options, args);
 
 			if (commandLine.hasOption(HELP)) {
