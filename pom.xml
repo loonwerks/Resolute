@@ -36,6 +36,7 @@
 		<module>com.rockwellcollins.atc.resolute.ui</module>
 		<module>org.osate.resolute.help</module>
 		<module>com.rockwellcollins.atc.resolute.feature</module>
+		<module>com.rockwellcollins.atc.resolute.external.examples.feature</module>
 		<module>repository</module>
 	</modules>
 
@@ -396,12 +397,7 @@
 		<repository>
 			<id>Osate2</id>
 			<layout>p2</layout>
-			<url>https://osate-build.sei.cmu.edu/download/osate/testing/updates/</url>
-		</repository>
-		<repository>
-			<id>Formal-Methods-Workbench-Updates</id>
-			<layout>p2</layout>
-			<url>https://raw.githubusercontent.com/loonwerks/formal-methods-workbench-updates/master/</url>
+			<url>https://osate-build.sei.cmu.edu/download/osate/stable/2.12.0-vfinal/updates/</url>
 		</repository>
 		<repository>
 			<id>codehaus-snapshots</id>
