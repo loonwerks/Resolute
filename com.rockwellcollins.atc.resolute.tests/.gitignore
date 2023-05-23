@@ -1,0 +1,4 @@
+/target/
+/bin/
+/test-bin/
+/xtend-gen/**

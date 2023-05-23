@@ -33,6 +33,7 @@
 		<module>com.rockwellcollins.atc.resolute.shellcmd</module>
 		<module>com.rockwellcollins.atc.resolute.stringlib</module>
 		<module>com.rockwellcollins.atc.resolute.target</module>
+		<module>com.rockwellcollins.atc.resolute.tests</module>
 		<module>com.rockwellcollins.atc.resolute.ui</module>
 		<module>org.osate.resolute.help</module>
 		<module>com.rockwellcollins.atc.resolute.feature</module>
@@ -69,6 +70,14 @@
 			</modules>
 		</profile>
 	</profiles>
+
+	<dependencies>
+    		<dependency>
+      			<groupId>junit</groupId>
+      			<artifactId>junit</artifactId>
+      			<version>4.13.2</version>
+    		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
@@ -384,6 +393,11 @@
 						<useUIHarness>false</useUIHarness>
 					</configuration>
 				</plugin>
+			  	<plugin>
+    					<groupId>org.apache.maven.plugins</groupId>
+    					<artifactId>maven-surefire-plugin</artifactId>
+    					<version>3.1.0</version>
+  				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
