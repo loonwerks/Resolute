@@ -33,6 +33,7 @@
 		<module>com.rockwellcollins.atc.resolute.shellcmd</module>
 		<module>com.rockwellcollins.atc.resolute.stringlib</module>
 		<module>com.rockwellcollins.atc.resolute.target</module>
+		<module>com.rockwellcollins.atc.resolute.tests</module>
 		<module>com.rockwellcollins.atc.resolute.ui</module>
 		<module>org.osate.resolute.help</module>
 		<module>com.rockwellcollins.atc.resolute.feature</module>
