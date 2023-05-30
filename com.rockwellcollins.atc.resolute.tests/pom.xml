@@ -11,7 +11,23 @@
 	<packaging>eclipse-test-plugin</packaging>
 
 	<build>
-
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<configuration>
+					<dependency-resolution>
+						<extraRequirements>
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>com.rockwellcollins.atc.resolute.feature</id>
+								<versionRange>4.0.0</versionRange>
+							</requirement>
+						</extraRequirements>
+					</dependency-resolution>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 
 </project>
