@@ -361,4 +361,19 @@ public class UtilityFunctions {
 	public static EObject getFilter(EObject eObject){
 		return getSubclassBasedOnClassName(eObject, "filter");
 	}
+	
+	/**
+	 * Takes an list of issues and returns the error with the matching message
+	 *
+	 * @param issues the list of issues
+	 * @param message the message of the error
+	 * @return the error with the matching message
+	 */
+	public static Issue getError(List<Issue> issues, String message) {
+		for(Issue i : issues) {
+			if(i.getMessage().equals(message) && i.getSeverity()==Severity.ERROR)
+				return i;
+		}
+		return null;
+	}
 }
