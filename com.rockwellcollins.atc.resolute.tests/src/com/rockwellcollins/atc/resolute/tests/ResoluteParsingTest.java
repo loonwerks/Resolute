@@ -124,6 +124,10 @@ public class ResoluteParsingTest extends XtextTest{
 		assertNotNull(body);
 		assertTrue(body instanceof ClaimBody);
 		assertTrue(UtilityFunctions.getExpr(body) instanceof BoolExpr);
+		EObject claim = UtilityFunctions.getClaim(body);
+		assertNotNull(claim);
+		assertTrue(claim instanceof ClaimString);
+		assertTrue(UtilityFunctions.getStringProperty(claim, "str").equals("This is a simple unit test"));
 	}
 	
 	@Test
@@ -429,7 +433,50 @@ public class ResoluteParsingTest extends XtextTest{
 	
 	@Test
 	public void testTimesExpr() throws Exception{
-
+		String test = "package TestPackage\r\n"
+				+ "public\r\n"
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : component) <=\r\n"
+				+ "		** \"This is a simple unit test\" **\r\n"
+				+ "		1*5 <= 5\r\n"
+				+ "**};\r\n"
+				+ "	\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof BinaryExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr, "op").equals("<="));
+		EObject expr_left = UtilityFunctions.getLeft(expr);
+		assertNotNull(expr_left);
+		assertTrue(expr_left instanceof BinaryExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr_left, "op").equals("*"));
+		EObject expr_left_left = UtilityFunctions.getLeft(expr_left);
+		assertNotNull(expr_left_left);
+		assertTrue(expr_left_left instanceof IntExpr);
+		EObject expr_left_left_val = UtilityFunctions.getVal(expr_left_left);
+		assertNotNull(expr_left_left_val);
+		assertTrue(expr_left_left_val instanceof IntegerLiteral);
+		assertTrue(Integer.parseInt(UtilityFunctions.getStringProperty(expr_left_left_val, "value"))==1);
+		// And so on
 	}
 	
 	@Test
@@ -1558,6 +1605,14 @@ public class ResoluteParsingTest extends XtextTest{
 		assertNotNull(expr);
 		assertTrue(expr instanceof QuantifiedExpr);
 		assertTrue(UtilityFunctions.getStringProperty(expr, "quant").equals("forall"));
+		EObject expr_arg = UtilityFunctions.getArg(expr, 0);
+		assertNotNull(expr_arg);
+		assertTrue(expr_arg instanceof QuantArg);
+		assertTrue(UtilityFunctions.getStringProperty(expr_arg,"name").equals("sub"));
+		EObject expr_arg_expr = UtilityFunctions.getExpr(expr_arg);
+		assertNotNull(expr_arg_expr);
+		assertTrue(expr_arg_expr instanceof BuiltInFnCallExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr_arg_expr, "fn").equals("subcomponents"));
 		EObject expr_expr = UtilityFunctions.getExpr(expr);
 		assertNotNull(expr_expr);
 		assertTrue(expr_expr instanceof BuiltInFnCallExpr);
@@ -1706,18 +1761,211 @@ public class ResoluteParsingTest extends XtextTest{
 
 	
 	public void testBudgetCaseAllHaveBudgetsDefinition(EObject parsed_annex_lib) {
+		EObject definition = UtilityFunctions.getDefinition(parsed_annex_lib, "AllHaveBudgets");
+		assertNotNull(definition);
+		assertTrue(definition instanceof FunctionDefinition);
+		EObject arg = UtilityFunctions.getArg(definition, 0);
+		assertNotNull(arg);
+		assertTrue(UtilityFunctions.getStringProperty(arg, "name").equals("self"));
+		EObject arg_type = UtilityFunctions.getType(arg);
+		assertNotNull(arg_type);
+		assertTrue(arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(arg_type, "type").equals("component"));
+		EObject body = UtilityFunctions.getClaimBody(definition);
+		assertNotNull(body);
+		assertTrue(body instanceof ClaimBody);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof BinaryExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr, "op").equals("and"));
+		EObject expr_left = UtilityFunctions.getLeft(expr);
 		
+		assertNotNull(expr_left);
+		assertTrue(expr_left instanceof FnCallExpr);
+		EObject expr_left_arg = UtilityFunctions.getArg(expr_left, 0);
+		assertNotNull(expr_left_arg);
+		assertTrue(expr_left_arg instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(expr_left_arg), "name").equals("self"));
+		EObject expr_left_arg_type = UtilityFunctions.getType(UtilityFunctions.getID(expr_left_arg));
+		assertNotNull(expr_left_arg_type);
+		assertTrue(expr_left_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(expr_left_arg_type, "type").equals("component"));
+		EObject expr_left_fn = UtilityFunctions.getFn(expr_left);
+		assertNotNull(expr_left_fn);
+		assertTrue(expr_left_fn instanceof FunctionDefinition);
+		assertTrue(UtilityFunctions.getStringProperty(expr_left_fn, "name").equals("HasWeightBudget"));
+		EObject expr_left_fn_arg = UtilityFunctions.getArg(expr_left_fn, 0);
+		assertNotNull(expr_left_fn_arg);
+		assertTrue(expr_left_fn_arg instanceof Arg);
+		assertTrue(UtilityFunctions.getStringProperty(expr_left_fn_arg,"name").equals("t"));
+		EObject expr_left_fn_arg_type = UtilityFunctions.getType(expr_left_fn_arg);
+		assertNotNull(expr_left_fn_arg_type);
+		assertTrue(expr_left_fn_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(expr_left_fn_arg_type, "type").equals("component"));
+		
+		EObject expr_right = UtilityFunctions.getRight(expr);
+		assertNotNull(expr_right);
+		assertTrue(expr_right instanceof QuantifiedExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr_right, "quant").equals("forall"));
+		EObject expr_right_arg = UtilityFunctions.getArg(expr_right, 0);
+		assertNotNull(expr_right_arg);
+		assertTrue(expr_right_arg instanceof QuantArg);
+		assertTrue(UtilityFunctions.getStringProperty(expr_right_arg, "name").equals("c"));
+		EObject expr_right_arg_expr = UtilityFunctions.getExpr(expr_right_arg);
+		assertNotNull(expr_right_arg_expr);
+		assertTrue(expr_right_arg_expr instanceof BuiltInFnCallExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr_right_arg_expr, "fn").equals("subcomponents"));
+		EObject expr_right_arg_expr_arg = UtilityFunctions.getArg(expr_right_arg_expr, 0);
+		assertNotNull(expr_right_arg_expr_arg);
+		assertTrue(expr_right_arg_expr_arg instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(expr_right_arg_expr_arg), "name").equals("self"));
+		EObject expr_right_arg_expr_arg_type = UtilityFunctions.getType(UtilityFunctions.getID(expr_right_arg_expr_arg));
+		assertNotNull(expr_right_arg_expr_arg_type);
+		assertTrue(expr_right_arg_expr_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(expr_right_arg_expr_arg_type, "type").equals("component"));
+		
+		EObject expr_right_expr = UtilityFunctions.getExpr(expr_right);
+		assertNotNull(expr_right_expr);
+		assertTrue(expr_right_expr instanceof FnCallExpr);
+		EObject expr_right_expr_fn = UtilityFunctions.getFn(expr_right_expr);
+		assertNotNull(expr_right_expr_fn);
+		assertTrue(expr_right_expr_fn instanceof FunctionDefinition);
+		assertTrue(UtilityFunctions.getStringProperty(expr_right_expr_fn, "name").equals("AllHaveBudgets"));
+		EObject expr_right_expr_fn_arg = UtilityFunctions.getArg(expr_right_expr_fn, 0);
+		assertNotNull(expr_right_expr_fn_arg);
+		assertTrue(expr_right_expr_fn_arg instanceof Arg);
+		assertTrue(UtilityFunctions.getStringProperty(expr_right_expr_fn_arg, "name").equals("self"));
+		EObject expr_right_expr_fn_arg_type = UtilityFunctions.getType(expr_right_expr_fn_arg);
+		assertNotNull(expr_right_expr_fn_arg_type);
+		assertTrue(expr_right_expr_fn_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(expr_right_expr_fn_arg_type, "type").equals("component"));
 	}
 	
 	public void testBudgetCaseHasWeightBudgetDefinition(EObject parsed_annex_lib) {
+		EObject definition = UtilityFunctions.getDefinition(parsed_annex_lib, "HasWeightBudget");
+		assertNotNull(definition);
+		assertTrue(definition instanceof FunctionDefinition);
+		EObject arg = UtilityFunctions.getArg(definition, 0);
+		assertNotNull(arg);
+		assertTrue(UtilityFunctions.getStringProperty(arg, "name").equals("t"));
+		EObject arg_type = UtilityFunctions.getType(arg);
+		assertNotNull(arg_type);
+		assertTrue(arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(arg_type, "type").equals("component"));
+		EObject body = UtilityFunctions.getClaimBody(definition);
+		assertNotNull(body);
+		assertTrue(body instanceof FunctionBody);
+		EObject body_type = UtilityFunctions.getType(body);
+		assertNotNull(body_type);
+		assertTrue(body_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(body_type, "type").equals("bool"));
 		
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof BinaryExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr, "op").equals("=>"));	
+		EObject expr_left = UtilityFunctions.getLeft(expr);
+		assertNotNull(expr_left);
+		assertTrue(expr_left instanceof UnaryExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr_left, "op").equals("not"));
+		EObject expr_left_expr = UtilityFunctions.getExpr(expr_left);
+		assertNotNull(expr_left_expr);
+		assertTrue(expr_left_expr instanceof BuiltInFnCallExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr_left_expr, "fn").equals("has_property"));
+		EObject expr_left_expr_arg0 = UtilityFunctions.getArg(expr_left_expr, 0);
+		assertNotNull(expr_left_expr_arg0);
+		assertTrue(expr_left_expr_arg0 instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(expr_left_expr_arg0), "name").equals("t"));
+		EObject expr_left_expr_arg0_type = UtilityFunctions.getType(UtilityFunctions.getID(expr_left_expr_arg0));
+		assertNotNull(expr_left_expr_arg0_type);
+		assertTrue(expr_left_expr_arg0_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(expr_left_expr_arg0_type, "type").equals("component"));
+		EObject expr_left_expr_arg1 = UtilityFunctions.getArg(expr_left_expr, 1);
+		assertNotNull(expr_left_expr_arg1);
+		assertTrue(expr_left_expr_arg1 instanceof IdExpr);
+		assertTrue(UtilityFunctions.getID(expr_left_expr_arg1) instanceof Property);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(expr_left_expr_arg1), "name").equals("GrossWeight"));
+		EObject expr_right = UtilityFunctions.getRight(expr);
+		assertNotNull(expr_right);
+		assertTrue(expr_right instanceof FailExpr);
 	}
 	
 	public void testBudgetCaseSystemWideReq1Definition(EObject parsed_annex_lib) {
+		EObject definition = UtilityFunctions.getDefinition(parsed_annex_lib, "SystemWideReq1");
+		assertNotNull(definition);
+		assertTrue(definition instanceof FunctionDefinition);
+		EObject body = UtilityFunctions.getClaimBody(definition);
+		assertNotNull(body);
+		assertTrue(body instanceof ClaimBody);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof QuantifiedExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr, "quant").equals("forall"));
+		EObject expr_arg = UtilityFunctions.getArg(expr, 0);
+		assertNotNull(expr_arg);
+		assertTrue(expr_arg instanceof Arg);
+		assertTrue(UtilityFunctions.getStringProperty(expr_arg,"name").equals("t"));
+		EObject expr_arg_type = UtilityFunctions.getType(expr_arg);
+		assertNotNull(expr_arg_type);
+		assertTrue(expr_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(expr_arg_type, "type").equals("thread"));
+		EObject expr_expr = UtilityFunctions.getExpr(expr);
+		assertNotNull(expr_expr);
+		assertTrue(expr_expr instanceof FnCallExpr);
 		
+		
+		EObject expr_expr_arg = UtilityFunctions.getArg(expr_expr, 0);
+		assertNotNull(expr_expr_arg);
+		assertTrue(expr_expr_arg instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(expr_expr_arg), "name").equals("t"));
+		EObject expr_expr_arg_type = UtilityFunctions.getType(UtilityFunctions.getID(expr_expr_arg));
+		assertNotNull(expr_expr_arg_type);
+		assertTrue(expr_expr_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(expr_expr_arg_type, "type").equals("thread"));
+		EObject expr_expr_fn = UtilityFunctions.getFn(expr_expr);
+		assertNotNull(expr_expr_fn);
+		assertTrue(expr_expr_fn instanceof FunctionDefinition);
+		assertTrue(UtilityFunctions.getStringProperty(expr_expr_fn, "name").equals("HasPeriod"));
+		EObject expr_expr_fn_arg = UtilityFunctions.getArg(expr_expr_fn, 0);
+		assertNotNull(expr_expr_fn_arg);
+		assertTrue(expr_expr_fn_arg instanceof Arg);
+		assertTrue(UtilityFunctions.getStringProperty(expr_expr_fn_arg,"name").equals("t"));
+		EObject expr_expr_fn_arg_type = UtilityFunctions.getType(expr_expr_fn_arg);
+		assertNotNull(expr_expr_fn_arg_type);
+		assertTrue(expr_expr_fn_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(expr_expr_fn_arg_type, "type").equals("thread"));
 	}
 	
 	public void testBudgetCaseHasPeriodDefinition(EObject parsed_annex_lib) {
-		
+		EObject definition = UtilityFunctions.getDefinition(parsed_annex_lib, "HasPeriod");
+		assertNotNull(definition);
+		assertTrue(definition instanceof FunctionDefinition);
+		EObject arg = UtilityFunctions.getArg(definition, 0);
+		assertNotNull(arg);
+		assertTrue(UtilityFunctions.getStringProperty(arg, "name").equals("t"));
+		EObject arg_type = UtilityFunctions.getType(arg);
+		assertNotNull(arg_type);
+		assertTrue(arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(arg_type, "type").equals("thread"));
+		EObject body = UtilityFunctions.getClaimBody(definition);
+		assertNotNull(body);
+		assertTrue(body instanceof ClaimBody);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof BuiltInFnCallExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr, "fn").equals("has_property"));
+		EObject expr_arg0 = UtilityFunctions.getArg(expr, 0);
+		assertNotNull(expr_arg0);
+		assertTrue(expr_arg0 instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(expr_arg0), "name").equals("t"));
+		EObject expr_arg0_type = UtilityFunctions.getType(UtilityFunctions.getID(expr_arg0));
+		assertNotNull(expr_arg0_type);
+		assertTrue(expr_arg0_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(expr_arg0_type, "type").equals("thread"));
+		EObject expr_arg1 = UtilityFunctions.getArg(expr, 1);
+		assertNotNull(expr_arg1);
+		assertTrue(expr_arg1 instanceof IdExpr);
+		assertTrue(UtilityFunctions.getID(expr_arg1) instanceof Property);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(expr_arg1), "name").equals("Period"));
 	}
 }

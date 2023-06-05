@@ -253,6 +253,23 @@ public class UtilityFunctions {
 	}
 	
 	/**
+	 * Takes an EMF EObject and returns the claim if it exists
+	 *
+	 * @param eObject the EObject to find the claim in
+	 * @return the claim
+	 */
+	public static EObject getClaim(EObject eObject){
+		List<EObject> objects = eObject.eContents();
+		for(EObject e : objects) {
+			EStructuralFeature container_feature = e.eContainingFeature();
+			if(getStringProperty((EObject)container_feature, "name").equals("claim")){
+				return e;
+			}
+		}
+		return null;
+	}
+	
+	/**
 	 * Takes an EMF EObject and returns the binding if it exists
 	 *
 	 * @param eObject the EObject to find the binding in
