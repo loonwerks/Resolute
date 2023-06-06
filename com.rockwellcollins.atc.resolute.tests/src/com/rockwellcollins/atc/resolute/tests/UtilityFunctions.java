@@ -3,8 +3,6 @@ package com.rockwellcollins.atc.resolute.tests;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.validation.Issue;
 
-import com.rockwellcollins.atc.resolute.resolute.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -389,7 +387,23 @@ public class UtilityFunctions {
 	 */
 	public static Issue getError(List<Issue> issues, String message) {
 		for(Issue i : issues) {
+			System.out.println(i.getMessage());
 			if(i.getMessage().equals(message) && i.getSeverity()==Severity.ERROR)
+				return i;
+		}
+		return null;
+	}
+	
+	/**
+	 * Takes an list of issues and returns the warning with the matching message
+	 *
+	 * @param issues the list of issues
+	 * @param message the message of the warning
+	 * @return the warning with the matching message
+	 */
+	public static Issue getWarning(List<Issue> issues, String message) {
+		for(Issue i : issues) {
+			if(i.getMessage().equals(message) && i.getSeverity()==Severity.WARNING)
 				return i;
 		}
 		return null;

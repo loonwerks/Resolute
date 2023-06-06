@@ -318,14 +318,8 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 				break;
 			}
 		}
-//		if (funcDef != null) {
-//			// Check if an existing context with this name exists in this scope
-//			if (contextScope.getOrDefault(funcDef, Collections.emptySet()).contains(claimContext.getName())) {
-//				error(claimContext, "Context " + claimContext.getName() + " has already been declared");
-//			}
-//		}
 
-//		checkDuplicateAttributeNames(claimContext);
+		checkDuplicateAttributeNames(claimContext);
 
 		// Build the scope for this context
 		Set<FunctionDefinition> funcDefs = buildContextScope(funcDef.getBody().getExpr());
@@ -346,6 +340,11 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 	@Check
 	public void checkClaimAssumption(ClaimAssumption claimAssumption) {
 		checkDuplicateAttributeNames(claimAssumption);
+	}
+	
+	@Check
+	public void checkClaimStrategy(ClaimStrategy claimStrategy) {
+		checkDuplicateAttributeNames(claimStrategy);
 	}
 
 	private void checkDuplicateAttributeNames(NamedElement namedElement) {
@@ -381,8 +380,10 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 							attributeType = "Assumption element ";
 						} else if (attr instanceof ClaimContext) {
 							attributeType = "Context element ";
+						} else if (attr instanceof ClaimStrategy) {
+							attributeType = "Strategy element ";
 						}
-						error(namedElement, attributeType + namedElement.getName() + " has already been declared");
+						error(namedElement, attributeType + "'" +namedElement.getName() + "' has already been declared");
 						break;
 					}
 				}
