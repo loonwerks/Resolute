@@ -184,6 +184,7 @@ public class UtilityFunctions {
 		return getSubclassBasedOnClassName(eObject, "fn");
 	}
 	
+	
 	/**
 	 * Takes an EMF EObject(parsed annex) and returns the fn based on the claim if it exists
 	 *

@@ -1,6 +1,7 @@
 package com.rockwellcollins.atc.resolute.tests;
 
 import com.rockwellcollins.atc.resolute.resolute.*;
+import com.rockwellcollins.atc.resolute.resolute.Type;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.testing.InjectWith;
@@ -476,32 +477,282 @@ public class ResoluteParsingTest extends XtextTest{
 		assertNotNull(expr_left_left_val);
 		assertTrue(expr_left_left_val instanceof IntegerLiteral);
 		assertTrue(Integer.parseInt(UtilityFunctions.getStringProperty(expr_left_left_val, "value"))==1);
-		// And so on
+		EObject expr_left_right = UtilityFunctions.getRight(expr_left);
+        assertNotNull(expr_left_right);
+        assertTrue(expr_left_right instanceof IntExpr);       
+        EObject expr_left_right_val = UtilityFunctions.getVal(expr_left_right);
+        assertNotNull(expr_left_right_val);
+        assertTrue(expr_left_right_val instanceof IntegerLiteral);
+        assertTrue(Integer.parseInt(UtilityFunctions.getStringProperty(expr_left_right_val, "value"))==5);        
+        EObject expr_right = UtilityFunctions.getRight(expr);
+        assertNotNull(expr_right);
+        assertTrue(expr_right instanceof IntExpr);       
+        EObject expr_right_val = UtilityFunctions.getVal(expr_right);
+        assertNotNull(expr_right_val);
+        assertTrue(expr_right_val instanceof IntegerLiteral);
+        assertTrue(Integer.parseInt(UtilityFunctions.getStringProperty(expr_right_val, "value"))==5);
 	}
 	
 	@Test
 	public void testExpExpr() throws Exception{
-		
+		String test = "package Test\r\n"
+				+ "public\r\n"
+				+ "\r\n"
+				+ "            \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            2^2 = 4\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                argue SimpleTest(this)\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "end Test;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof BinaryExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr, "op").equals("="));		
+		EObject expr_left = UtilityFunctions.getLeft(expr);
+		assertNotNull(expr_left);
+		assertTrue(expr_left instanceof BinaryExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr_left, "op").equals("^"));		
+		EObject expr_left_left = UtilityFunctions.getLeft(expr_left);
+		assertNotNull(expr_left_left);
+		assertTrue(expr_left_left instanceof IntExpr);		
+		EObject expr_left_left_val = UtilityFunctions.getVal(expr_left_left);
+		assertNotNull(expr_left_left_val);
+		assertTrue(expr_left_left_val instanceof IntegerLiteral);
+		assertTrue(Integer.parseInt(UtilityFunctions.getStringProperty(expr_left_left_val, "value"))==2);		
+		EObject expr_left_right = UtilityFunctions.getRight(expr_left);
+        assertNotNull(expr_left_right);
+        assertTrue(expr_left_right instanceof IntExpr);       
+        EObject expr_left_right_val = UtilityFunctions.getVal(expr_left_right);
+        assertNotNull(expr_left_right_val);
+        assertTrue(expr_left_right_val instanceof IntegerLiteral);
+        assertTrue(Integer.parseInt(UtilityFunctions.getStringProperty(expr_left_right_val, "value"))==2);        
+        EObject expr_right = UtilityFunctions.getRight(expr);
+        assertNotNull(expr_right);
+        assertTrue(expr_right instanceof IntExpr);        
+        EObject expr_right_val = UtilityFunctions.getVal(expr_right);
+        assertNotNull(expr_right_val);
+        assertTrue(expr_right_val instanceof IntegerLiteral);
+        assertTrue(Integer.parseInt(UtilityFunctions.getStringProperty(expr_right_val, "value"))==4);    
 	}
 	
 	@Test
 	public void testPrefixExpr() throws Exception{
-		
+		String test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "           \r\n"
+				+ "           not(false)\r\n"
+				+ "           \r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                argue SimpleTest(this)\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "end Test;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);		
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof UnaryExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr, "op").equals("not"));		
+		EObject inner_expr = UtilityFunctions.getExpr(expr);
+		assertNotNull(inner_expr);
+		assertTrue(inner_expr instanceof BoolExpr);
+		assertFalse(Boolean.parseBoolean(UtilityFunctions.getStringProperty(inner_expr, "value")));
 	}
 	
 	@Test
 	public void testFailExpr() throws Exception{
+		String test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "           \r\n"
+				+ "           false => fail ** \"This isn't true\" **\r\n"
+				+ "           \r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                argue SimpleTest(this)\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "end Test;";
 		
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);		
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof BinaryExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr, "op").equals("=>"));		
+		EObject expr_left = UtilityFunctions.getLeft(expr);
+		assertNotNull(expr_left);
+		assertTrue(expr_left instanceof BoolExpr);
+		assertFalse(Boolean.parseBoolean(UtilityFunctions.getStringProperty(expr_left, "value")));		
+		EObject expr_right = UtilityFunctions.getRight(expr);
+        assertNotNull(expr_right);
+        assertTrue(expr_right instanceof FailExpr);	
 	}
 	
 	@Test
 	public void testIfThenElseExpr() throws Exception{
-		
+		String test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "  \r\n"
+				+ "           if(1<2)\r\n"
+				+ "           then true\r\n"
+				+ "           else\r\n"
+				+ "           false\r\n"
+				+ "           \r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                argue SimpleTest(this)\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "end Test;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);		
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof IfThenElseExpr);		
+		EObject expr_cond = UtilityFunctions.getCond(expr);
+		assertNotNull(expr_cond);
+		assertTrue(expr_cond instanceof BinaryExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr_cond, "op").equals("<"));		
+		EObject expr_cond_left = UtilityFunctions.getLeft(expr_cond);
+		assertNotNull(expr_cond_left);		
+		EObject expr_cond_left_val = UtilityFunctions.getVal(expr_cond_left);
+		assertTrue(expr_cond_left_val instanceof IntegerLiteral);
+        assertTrue(Integer.parseInt(UtilityFunctions.getStringProperty(expr_cond_left_val, "value"))==1);		
+		EObject expr_cond_right = UtilityFunctions.getRight(expr_cond);
+		assertNotNull(expr_cond_right);		
+		EObject expr_cond_right_val = UtilityFunctions.getVal(expr_cond_right);
+		assertTrue(expr_cond_right_val instanceof IntegerLiteral);
+        assertTrue(Integer.parseInt(UtilityFunctions.getStringProperty(expr_cond_right_val, "value"))==2);       
+        EObject expr_then = UtilityFunctions.getThen(expr);
+        assertNotNull(expr_then);
+        assertTrue(expr_then instanceof BoolExpr);
+        EObject expr_then_val = UtilityFunctions.getVal(expr_then);
+        assertNotNull(expr_then_val);
+        assertTrue(Boolean.parseBoolean(UtilityFunctions.getStringProperty(expr_then_val, "value")));      
+        EObject expr_else = UtilityFunctions.getElse(expr);
+        assertNotNull(expr_else);
+        assertTrue(expr_else instanceof BoolExpr);
+        EObject expr_else_val = UtilityFunctions.getVal(expr_else);
+        assertNotNull(expr_else_val);
+        assertFalse(Boolean.parseBoolean(UtilityFunctions.getStringProperty(expr_else_val, "value")));
 	}
 	
 	@Test
 	public void testQuantifiedExpr() throws Exception{
-		
+		String test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "  \r\n"
+				+ "           forall (x: component)\r\n"
+				+ "           . true \r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                argue SimpleTest(this)\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "end Test;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);		
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof QuantifiedExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr, "quant").equals("forall"));		
+		EObject expr_arg = UtilityFunctions.getArg(expr, 0);
+		assertNotNull(expr_arg);
+		assertTrue(UtilityFunctions.getStringProperty(expr_arg, "name").equals("x"));		
+		EObject expr_arg_type = UtilityFunctions.getType(expr_arg);
+		assertNotNull(expr_arg_type);
+		assertTrue(UtilityFunctions.getStringProperty(expr_arg_type, "type").equals("component"));		
+		EObject expr_expr = UtilityFunctions.getExpr(expr);
+		assertNotNull(expr_expr);
+		assertTrue(expr_expr instanceof BoolExpr);		
+		EObject expr_expr_val = UtilityFunctions.getVal(expr_expr);
+		assertNotNull(expr_expr_val);
+		assertTrue(expr_expr_val instanceof BooleanLiteral);
+		assertTrue(Boolean.parseBoolean(UtilityFunctions.getStringProperty(expr_expr_val, "value")));		
 	}
 	
 	@Test
@@ -586,7 +837,35 @@ public class ResoluteParsingTest extends XtextTest{
 	
 	@Test
 	public void testClaimType() throws Exception{
-		
+		String test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                argue SimpleTest(this)\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertTrue(UtilityFunctions.getStringProperty(fn, "claimType").equals("goal"));
+		assertNotNull(body);
 	}
 	
 	@Test
