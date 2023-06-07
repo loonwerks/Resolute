@@ -232,6 +232,29 @@ public class UtilityFunctions {
 	}
 	
 	/**
+	 * Takes an EMF EObject and an expression index and returns the 
+	 * class object if it exists
+	 *
+	 * @param eObject the EObject to find the exprs in
+	 * @param index the index of the exprs
+	 * @return the exprs at index
+	 */
+	public static EObject getExpr(EObject eObject, int index){
+		List<EObject> objects = eObject.eContents();
+		List<EObject> exprs = new ArrayList<EObject>();
+		for(EObject e : objects) {
+			EStructuralFeature container_feature = e.eContainingFeature();
+			if(getStringProperty((EObject)container_feature, "name").equals("exprs")){
+				exprs.add(e);
+			}
+		}
+		if(index < exprs.size())
+			return exprs.get(index);
+		else
+			return null;
+	}
+	
+	/**
 	 * Takes an EMF Object and returns the type if it exists
 	 *
 	 * @param eObject the argument to find the type in
@@ -387,7 +410,6 @@ public class UtilityFunctions {
 	 */
 	public static Issue getError(List<Issue> issues, String message) {
 		for(Issue i : issues) {
-			System.out.println(i.getMessage());
 			if(i.getMessage().equals(message) && i.getSeverity()==Severity.ERROR)
 				return i;
 		}
