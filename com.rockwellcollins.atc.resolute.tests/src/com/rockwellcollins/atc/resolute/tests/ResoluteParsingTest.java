@@ -1,7 +1,7 @@
 package com.rockwellcollins.atc.resolute.tests;
 
 import com.rockwellcollins.atc.resolute.resolute.*;
-import com.rockwellcollins.atc.resolute.resolute.Type;
+import com.rockwellcollins.atc.resolute.resolute.ListType;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.testing.InjectWith;
@@ -495,25 +495,25 @@ public class ResoluteParsingTest extends XtextTest{
 	
 	@Test
 	public void testExpExpr() throws Exception{
-		String test = "package Test\r\n"
+		String test = "package TestPackage\r\n"
 				+ "public\r\n"
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : component) <=\r\n"
+				+ "		** \"This is a simple unit test\" **\r\n"
+				+ "		2^2 = 4\r\n"
+				+ "**};\r\n"
+				+ "	\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
 				+ "\r\n"
-				+ "            \r\n"
-				+ "     annex Resolute{**\r\n"
-				+ "          SimpleTest(self : component) <=\r\n"
-				+ "            ** \"This is a simple unit test\" **\r\n"
-				+ "            2^2 = 4\r\n"
-				+ "          **};\r\n"
-				+ "            \r\n"
-				+ "      system sys\r\n"
-				+ "      end sys;\r\n"
-				+ "           \r\n"
-				+ "      system implementation sys.impl\r\n"
-				+ "      annex Resolute{**\r\n"
-				+ "                argue SimpleTest(this)\r\n"
-				+ "              **};\r\n"
-				+ "      end sys.impl;\r\n"
-				+ "end Test;";
+				+ "system implementation sys.impl\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
 		FluentIssueCollection issueCollection= testHelper.testString(test);
 		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
 		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
@@ -556,26 +556,25 @@ public class ResoluteParsingTest extends XtextTest{
 	
 	@Test
 	public void testPrefixExpr() throws Exception{
-		String test = "package Test\r\n"
+		String test = "package TestPackage\r\n"
 				+ "public\r\n"
-				+ "   \r\n"
-				+ "     annex Resolute{**\r\n"
-				+ "          SimpleTest(self : component) <=\r\n"
-				+ "            ** \"This is a simple unit test\" **\r\n"
-				+ "           \r\n"
-				+ "           not(false)\r\n"
-				+ "           \r\n"
-				+ "          **};\r\n"
-				+ "            \r\n"
-				+ "      system sys\r\n"
-				+ "      end sys;\r\n"
-				+ "           \r\n"
-				+ "      system implementation sys.impl\r\n"
-				+ "      annex Resolute{**\r\n"
-				+ "                argue SimpleTest(this)\r\n"
-				+ "              **};\r\n"
-				+ "      end sys.impl;\r\n"
-				+ "end Test;";
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : component) <=\r\n"
+				+ "		** \"This is a simple unit test\" **\r\n"
+				+ "		not(false)\r\n"
+				+ "**};\r\n"
+				+ "	\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
 		FluentIssueCollection issueCollection= testHelper.testString(test);
 		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
 		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
@@ -597,27 +596,25 @@ public class ResoluteParsingTest extends XtextTest{
 	
 	@Test
 	public void testFailExpr() throws Exception{
-		String test = "package Test\r\n"
+		String test = "package TestPackage\r\n"
 				+ "public\r\n"
-				+ "   \r\n"
-				+ "     annex Resolute{**\r\n"
-				+ "          SimpleTest(self : component) <=\r\n"
-				+ "            ** \"This is a simple unit test\" **\r\n"
-				+ "           \r\n"
-				+ "           false => fail ** \"This isn't true\" **\r\n"
-				+ "           \r\n"
-				+ "          **};\r\n"
-				+ "            \r\n"
-				+ "      system sys\r\n"
-				+ "      end sys;\r\n"
-				+ "           \r\n"
-				+ "      system implementation sys.impl\r\n"
-				+ "      annex Resolute{**\r\n"
-				+ "                argue SimpleTest(this)\r\n"
-				+ "              **};\r\n"
-				+ "      end sys.impl;\r\n"
-				+ "end Test;";
-		
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : component) <=\r\n"
+				+ "		** \"This is a simple unit test\" **\r\n"
+				+ "     false => fail ** \"This isn't true\" **\r\n"
+				+ "**};\r\n"
+				+ "	\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
 		FluentIssueCollection issueCollection= testHelper.testString(test);
 		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
 		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
@@ -642,29 +639,28 @@ public class ResoluteParsingTest extends XtextTest{
 	
 	@Test
 	public void testIfThenElseExpr() throws Exception{
-		String test = "package Test\r\n"
+		String test = "package TestPackage\r\n"
 				+ "public\r\n"
-				+ "   \r\n"
-				+ "     annex Resolute{**\r\n"
-				+ "          SimpleTest(self : component) <=\r\n"
-				+ "            ** \"This is a simple unit test\" **\r\n"
-				+ "  \r\n"
-				+ "           if(1<2)\r\n"
-				+ "           then true\r\n"
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : component) <=\r\n"
+				+ "		** \"This is a simple unit test\" **\r\n"
+				+ "           if(1<2) then\r\n"
+				+ "                true\r\n"
 				+ "           else\r\n"
-				+ "           false\r\n"
-				+ "           \r\n"
-				+ "          **};\r\n"
-				+ "            \r\n"
-				+ "      system sys\r\n"
-				+ "      end sys;\r\n"
-				+ "           \r\n"
-				+ "      system implementation sys.impl\r\n"
-				+ "      annex Resolute{**\r\n"
-				+ "                argue SimpleTest(this)\r\n"
-				+ "              **};\r\n"
-				+ "      end sys.impl;\r\n"
-				+ "end Test;";
+				+ "                false\r\n"
+				+ "**};\r\n"
+				+ "	\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
 		FluentIssueCollection issueCollection= testHelper.testString(test);
 		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
 		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
@@ -707,26 +703,25 @@ public class ResoluteParsingTest extends XtextTest{
 	
 	@Test
 	public void testQuantifiedExpr() throws Exception{
-		String test = "package Test\r\n"
+		String test = "package TestPackage\r\n"
 				+ "public\r\n"
-				+ "   \r\n"
-				+ "     annex Resolute{**\r\n"
-				+ "          SimpleTest(self : component) <=\r\n"
-				+ "            ** \"This is a simple unit test\" **\r\n"
-				+ "  \r\n"
-				+ "           forall (x: component)\r\n"
-				+ "           . true \r\n"
-				+ "          **};\r\n"
-				+ "            \r\n"
-				+ "      system sys\r\n"
-				+ "      end sys;\r\n"
-				+ "           \r\n"
-				+ "      system implementation sys.impl\r\n"
-				+ "      annex Resolute{**\r\n"
-				+ "                argue SimpleTest(this)\r\n"
-				+ "              **};\r\n"
-				+ "      end sys.impl;\r\n"
-				+ "end Test;";
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : component) <=\r\n"
+				+ "		** \"This is a simple unit test\" **\r\n"
+				+ "           forall (x: component) . true \r\n"
+				+ "**};\r\n"
+				+ "	\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
 		FluentIssueCollection issueCollection= testHelper.testString(test);
 		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
 		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
@@ -785,7 +780,405 @@ public class ResoluteParsingTest extends XtextTest{
 		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
 		EObject body = UtilityFunctions.getClaimBody(fn);
 		assertNotNull(body);
-		assertTrue(UtilityFunctions.getExpr(body) instanceof BuiltInFnCallExpr);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof BuiltInFnCallExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr, "fn").equals("is_system"));
+		EObject expr_arg = UtilityFunctions.getArg(expr, 0);
+		assertNotNull(expr_arg);
+		assertTrue(expr_arg instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(expr_arg), "name").equals("self"));
+		EObject expr_arg_type = UtilityFunctions.getType(UtilityFunctions.getID(expr_arg));
+		assertNotNull(expr_arg_type);
+		assertTrue(expr_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(expr_arg_type, "type").equals("component"));
+	}
+	
+	@Test
+	public void testListFilterMapExpr() throws Exception{
+		String test = "package TestPackage\r\n"
+				+ "public\r\n"
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : system) <=\r\n"
+				+ "		** \"This is a simple unit test\" ** \r\n"
+				+ "		let test : [component] = [sub for (sub : subcomponents(self)) | is_system(sub)];\r\n"
+				+ "		true\r\n"
+				+ "**};\r\n"
+				+ "\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	prototypes\r\n"
+				+ "		test : data;\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof LetExpr);
+		EObject binding = UtilityFunctions.getBinding(expr);
+		assertNotNull(binding);
+		assertTrue(binding instanceof LetBinding);
+		assertTrue(UtilityFunctions.getStringProperty(binding, "name").equals("test"));
+		EObject binding_type = UtilityFunctions.getType(binding);
+		assertNotNull(binding_type);
+		assertTrue(binding_type instanceof ListType);
+		EObject binding_list_type = UtilityFunctions.getType(binding_type);
+		assertNotNull(binding_list_type);
+		assertTrue(binding_list_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(binding_list_type, "type").equals("component"));
+		EObject binding_expr = UtilityFunctions.getExpr(binding);
+		assertNotNull(binding_expr);
+		assertTrue(binding_expr instanceof ListFilterMapExpr);
+		
+		EObject binding_expr_arg = UtilityFunctions.getArg(binding_expr, 0);
+		assertNotNull(binding_expr_arg);
+		assertTrue(binding_expr_arg instanceof QuantArg);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_arg, "name").equals("sub"));
+		EObject binding_expr_arg_expr = UtilityFunctions.getExpr(binding_expr_arg);
+		assertNotNull(binding_expr_arg_expr);
+		assertTrue(binding_expr_arg_expr instanceof BuiltInFnCallExpr);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_arg_expr, "fn").equals("subcomponents"));
+		EObject binding_expr_arg_expr_arg = UtilityFunctions.getArg(binding_expr_arg_expr, 0);
+		assertNotNull(binding_expr_arg_expr_arg);
+		assertTrue(binding_expr_arg_expr_arg instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(binding_expr_arg_expr_arg), "name").equals("self"));
+		EObject binding_expr_arg_expr_arg_type = UtilityFunctions.getType(UtilityFunctions.getID(binding_expr_arg_expr_arg));
+		assertNotNull(binding_expr_arg_expr_arg_type);
+		assertTrue(binding_expr_arg_expr_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_arg_expr_arg_type, "type").equals("system"));
+	
+		EObject binding_expr_filter = UtilityFunctions.getFilter(binding_expr);
+		assertNotNull(binding_expr_filter);
+		assertTrue(binding_expr_filter instanceof BuiltInFnCallExpr);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_filter, "fn").equals("is_system"));
+		EObject binding_expr_filter_arg = UtilityFunctions.getArg(binding_expr_filter, 0);
+		assertNotNull(binding_expr_filter_arg);
+		assertTrue(binding_expr_filter_arg instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(binding_expr_filter_arg), "name").equals("sub"));
+
+		EObject binding_expr_map = UtilityFunctions.getMap(binding_expr);
+		assertNotNull(binding_expr_map);
+		assertTrue(binding_expr_map instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(binding_expr_map), "name").equals("sub"));
+		EObject binding_expr_map_expr = UtilityFunctions.getExpr(UtilityFunctions.getID(binding_expr_map));
+		assertNotNull(binding_expr_map_expr);
+		assertTrue(binding_expr_map_expr instanceof BuiltInFnCallExpr);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_map_expr, "fn").equals("subcomponents"));
+		EObject binding_expr_map_expr_arg = UtilityFunctions.getArg(binding_expr_map_expr, 0);
+		assertNotNull(binding_expr_map_expr_arg);
+		assertTrue(binding_expr_map_expr_arg instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(binding_expr_map_expr_arg), "name").equals("self"));
+		EObject binding_expr_map_expr_arg_type = UtilityFunctions.getType(UtilityFunctions.getID(binding_expr_map_expr_arg));
+		assertNotNull(binding_expr_map_expr_arg_type);
+		assertTrue(binding_expr_map_expr_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_map_expr_arg_type, "type").equals("system"));
+	}
+	
+	@Test
+	public void testSetFilterMapExpr() throws Exception{
+		String test = "package TestPackage\r\n"
+				+ "public\r\n"
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : system) <=\r\n"
+				+ "		** \"This is a simple unit test\" ** \r\n"
+				+ "		let test : {component} = {sub for (sub : subcomponents(self)) | is_system(sub)};\r\n"
+				+ "		true\r\n"
+				+ "**};\r\n"
+				+ "\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	prototypes\r\n"
+				+ "		test : data;\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof LetExpr);
+		EObject binding = UtilityFunctions.getBinding(expr);
+		assertNotNull(binding);
+		assertTrue(binding instanceof LetBinding);
+		assertTrue(UtilityFunctions.getStringProperty(binding, "name").equals("test"));
+		EObject binding_type = UtilityFunctions.getType(binding);
+		assertNotNull(binding_type);
+		assertTrue(binding_type instanceof SetType);
+		EObject binding_Set_type = UtilityFunctions.getType(binding_type);
+		assertNotNull(binding_Set_type);
+		assertTrue(binding_Set_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(binding_Set_type, "type").equals("component"));
+		EObject binding_expr = UtilityFunctions.getExpr(binding);
+		assertNotNull(binding_expr);
+		assertTrue(binding_expr instanceof SetFilterMapExpr);
+		
+		EObject binding_expr_arg = UtilityFunctions.getArg(binding_expr, 0);
+		assertNotNull(binding_expr_arg);
+		assertTrue(binding_expr_arg instanceof QuantArg);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_arg, "name").equals("sub"));
+		EObject binding_expr_arg_expr = UtilityFunctions.getExpr(binding_expr_arg);
+		assertNotNull(binding_expr_arg_expr);
+		assertTrue(binding_expr_arg_expr instanceof BuiltInFnCallExpr);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_arg_expr, "fn").equals("subcomponents"));
+		EObject binding_expr_arg_expr_arg = UtilityFunctions.getArg(binding_expr_arg_expr, 0);
+		assertNotNull(binding_expr_arg_expr_arg);
+		assertTrue(binding_expr_arg_expr_arg instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(binding_expr_arg_expr_arg), "name").equals("self"));
+		EObject binding_expr_arg_expr_arg_type = UtilityFunctions.getType(UtilityFunctions.getID(binding_expr_arg_expr_arg));
+		assertNotNull(binding_expr_arg_expr_arg_type);
+		assertTrue(binding_expr_arg_expr_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_arg_expr_arg_type, "type").equals("system"));
+	
+		EObject binding_expr_filter = UtilityFunctions.getFilter(binding_expr);
+		assertNotNull(binding_expr_filter);
+		assertTrue(binding_expr_filter instanceof BuiltInFnCallExpr);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_filter, "fn").equals("is_system"));
+		EObject binding_expr_filter_arg = UtilityFunctions.getArg(binding_expr_filter, 0);
+		assertNotNull(binding_expr_filter_arg);
+		assertTrue(binding_expr_filter_arg instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(binding_expr_filter_arg), "name").equals("sub"));
+
+		EObject binding_expr_map = UtilityFunctions.getMap(binding_expr);
+		assertNotNull(binding_expr_map);
+		assertTrue(binding_expr_map instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(binding_expr_map), "name").equals("sub"));
+		EObject binding_expr_map_expr = UtilityFunctions.getExpr(UtilityFunctions.getID(binding_expr_map));
+		assertNotNull(binding_expr_map_expr);
+		assertTrue(binding_expr_map_expr instanceof BuiltInFnCallExpr);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_map_expr, "fn").equals("subcomponents"));
+		EObject binding_expr_map_expr_arg = UtilityFunctions.getArg(binding_expr_map_expr, 0);
+		assertNotNull(binding_expr_map_expr_arg);
+		assertTrue(binding_expr_map_expr_arg instanceof IdExpr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(binding_expr_map_expr_arg), "name").equals("self"));
+		EObject binding_expr_map_expr_arg_type = UtilityFunctions.getType(UtilityFunctions.getID(binding_expr_map_expr_arg));
+		assertNotNull(binding_expr_map_expr_arg_type);
+		assertTrue(binding_expr_map_expr_arg_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(binding_expr_map_expr_arg_type, "type").equals("system"));
+	}
+	
+	@Test
+	public void testListExpr() throws Exception{
+		String test = "package TestPackage\r\n"
+				+ "public\r\n"
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : system) <=\r\n"
+				+ "		** \"This is a simple unit test\" ** \r\n"
+				+ "		let test : [component] = [self];\r\n"
+				+ "		true\r\n"
+				+ "**};\r\n"
+				+ "\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	prototypes\r\n"
+				+ "		test : data;\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof LetExpr);
+		EObject binding = UtilityFunctions.getBinding(expr);
+		assertNotNull(binding);
+		assertTrue(binding instanceof LetBinding);
+		assertTrue(UtilityFunctions.getStringProperty(binding, "name").equals("test"));
+		EObject binding_type = UtilityFunctions.getType(binding);
+		assertNotNull(binding_type);
+		assertTrue(binding_type instanceof ListType);
+		EObject binding_list_type = UtilityFunctions.getType(binding_type);
+		assertNotNull(binding_list_type);
+		assertTrue(binding_list_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(binding_list_type, "type").equals("component"));
+		EObject binding_expr = UtilityFunctions.getExpr(binding);
+		assertNotNull(binding_expr);
+		assertTrue(binding_expr instanceof ListExpr);
+		EObject list_expr = UtilityFunctions.getExpr(binding_expr, 0);
+		assertNotNull(list_expr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(list_expr), "name").equals("self"));
+		EObject list_expr_type = UtilityFunctions.getType(UtilityFunctions.getID(list_expr));
+		assertNotNull(list_expr_type);
+		assertTrue(list_expr_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(list_expr_type, "type").equals("system"));
+	}
+	
+	@Test
+	public void testSetExpr() throws Exception{
+		String test = "package TestPackage\r\n"
+				+ "public\r\n"
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : system) <=\r\n"
+				+ "		** \"This is a simple unit test\" ** \r\n"
+				+ "		let test : {component} = {self};\r\n"
+				+ "		true\r\n"
+				+ "**};\r\n"
+				+ "\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	prototypes\r\n"
+				+ "		test : data;\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof LetExpr);
+		EObject binding = UtilityFunctions.getBinding(expr);
+		assertNotNull(binding);
+		assertTrue(binding instanceof LetBinding);
+		assertTrue(UtilityFunctions.getStringProperty(binding, "name").equals("test"));
+		EObject binding_type = UtilityFunctions.getType(binding);
+		assertNotNull(binding_type);
+		assertTrue(binding_type instanceof SetType);
+		EObject binding_set_type = UtilityFunctions.getType(binding_type);
+		assertNotNull(binding_set_type);
+		assertTrue(binding_set_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(binding_set_type, "type").equals("component"));
+		EObject binding_expr = UtilityFunctions.getExpr(binding);
+		assertNotNull(binding_expr);
+		assertTrue(binding_expr instanceof SetExpr);
+		EObject set_expr = UtilityFunctions.getExpr(binding_expr, 0);
+		assertNotNull(set_expr);
+		assertTrue(UtilityFunctions.getStringProperty(UtilityFunctions.getID(set_expr), "name").equals("self"));
+		EObject set_expr_type = UtilityFunctions.getType(UtilityFunctions.getID(set_expr));
+		assertNotNull(set_expr_type);
+		assertTrue(set_expr_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(set_expr_type, "type").equals("system"));
+	}
+	
+	@Test
+	public void testUndevelopedExpr() throws Exception{
+		String test = "package TestPackage\r\n"
+				+ "public\r\n"
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : system) <=\r\n"
+				+ "		** \"This is a simple unit test\" ** \r\n"
+				+ "		undeveloped\r\n"
+				+ "**};\r\n"
+				+ "\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	prototypes\r\n"
+				+ "		test : data;\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof UndevelopedExpr);
+	}
+	
+	@Test
+	public void testSolutionExpr() throws Exception{
+		String test = "package TestPackage\r\n"
+				+ "public\r\n"
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	SimpleTest(self : system) <=\r\n"
+				+ "		** \"This is a simple unit test\" ** \r\n"
+				+ "		solution test : 'SimpleTest'\r\n"
+				+ "**};\r\n"
+				+ "\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	prototypes\r\n"
+				+ "		test : data;\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
+		FluentIssueCollection issueCollection= testHelper.testString(test);
+		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
+		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
+		EObject owned_classifiers = UtilityFunctions.getownedClassifier(pub_sec, "sys.impl");
+		EObject annex_subclause = UtilityFunctions.getAnnexSubclause(owned_classifiers, "Resolute");
+		EObject parsed_annex_subclause = UtilityFunctions.getParsedAnnexSubclause(annex_subclause);
+		EObject fn = UtilityFunctions.getFn(parsed_annex_subclause, "argue SimpleTest(this)");
+		EObject body = UtilityFunctions.getClaimBody(fn);
+		assertNotNull(body);
+		EObject expr = UtilityFunctions.getExpr(body);
+		assertNotNull(expr);
+		assertTrue(expr instanceof SolutionExpr);
+		assertTrue(UtilityFunctions.getStringProperty(expr, "name").equals("test"));
+		EObject expr_val = UtilityFunctions.getVal(expr);
+		assertNotNull(expr_val);
+		assertTrue(expr_val instanceof StringLiteral);
+		assertTrue(UtilityFunctions.getStringProperty(expr_val, "value").equals("'SimpleTest'"));
 	}
 
 	@Test
@@ -826,6 +1219,10 @@ public class ResoluteParsingTest extends XtextTest{
 		assertNotNull(binding);
 		assertTrue(binding instanceof LetBinding);
 		assertTrue(UtilityFunctions.getStringProperty(binding, "name").equals("test"));
+		EObject binding_type = UtilityFunctions.getType(binding);
+		assertNotNull(binding_type);
+		assertTrue(binding_type instanceof BaseType);
+		assertTrue(UtilityFunctions.getStringProperty(binding_type, "type").equals("string"));
 		EObject binding_expr = UtilityFunctions.getExpr(binding);
 		assertNotNull(binding_expr);
 		assertTrue(binding_expr instanceof StringExpr);
@@ -837,25 +1234,25 @@ public class ResoluteParsingTest extends XtextTest{
 	
 	@Test
 	public void testClaimType() throws Exception{
-		String test = "package Test\r\n"
+		String test = "package TestPackage\r\n"
 				+ "public\r\n"
-				+ "   \r\n"
-				+ "     annex Resolute{**\r\n"
-				+ "          goal SimpleTest(self : component) <=\r\n"
-				+ "            ** \"This is a simple unit test\" **\r\n"
-				+ "           true\r\n"
-				+ "          **};\r\n"
-				+ "            \r\n"
-				+ "      system sys\r\n"
-				+ "      end sys;\r\n"
-				+ "           \r\n"
-				+ "      system implementation sys.impl\r\n"
-				+ "      annex Resolute{**\r\n"
-				+ "                argue SimpleTest(this)\r\n"
-				+ "              **};\r\n"
-				+ "      end sys.impl;\r\n"
-				+ "      \r\n"
-				+ "end Test;";
+				+ "	\r\n"
+				+ "annex Resolute{**\r\n"
+				+ "	goal SimpleTest(self : component) <=\r\n"
+				+ "		** \"This is a simple unit test\" **\r\n"
+				+ "           true \r\n"
+				+ "**};\r\n"
+				+ "	\r\n"
+				+ "system sys\r\n"
+				+ "end sys;\r\n"
+				+ "\r\n"
+				+ "system implementation sys.impl\r\n"
+				+ "	annex Resolute{**\r\n"
+				+ "			argue SimpleTest(this)\r\n"
+				+ "	**};\r\n"
+				+ "end sys.impl;\r\n"
+				+ "	\r\n"
+				+ "end TestPackage;";
 		FluentIssueCollection issueCollection= testHelper.testString(test);
 		EObject aadl_package_impl = issueCollection.getResource().getContents().get(0);
 		EObject pub_sec = UtilityFunctions.getownedPublicSection(aadl_package_impl);
