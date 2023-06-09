@@ -1411,26 +1411,1355 @@ public class ResoluteValidationTest extends XtextTest{
 	@Test
 	public void testBuiltInFnCallExpr() throws Exception{
 		
+		//analysis()
+		String test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "     		\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "           analysis(SimpleTest, self):component\r\n"
+				+ "             true\r\n"
+				+ "             \r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    \r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		FluentIssueCollection issueCollection = testHelper.testString(test);
+		issueCollection = testHelper.testString(test);
+		List<Issue> issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "The first argument of 'analysis' must be a literal string"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "     		\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"         
+				+ "             --let addition : int = sum(list1);\r\n"
+				+ "           analysis():component\r\n"
+				+ "             true\r\n"
+				+ "             \r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    \r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "Function 'analysis' expects at least one argument"));
+		
+		//ToDo - test for error message "Could not find external analysis \"SimpleTest\"" 
+		
+		//member()
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "       \r\n"
+				+ "             member(2, [1,2,3])\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "       \r\n"
+				+ "             member()\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'member' expects two arguments"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "       \r\n"
+				+ "       		let x : int = 1;\r\n"
+				+ "             member(1, x)\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "Expected list or set type but found type int"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "       \r\n"
+				+ "       		\r\n"
+				+ "             member(1, ['a'])\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'member' not defined on arguments of type int, string"));
+		
+		//length()/size()
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "             let list_size : int = length([1,2,3]);\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		//"Expected list or set type but found type " - the function accepts any argument
+		
+		//sum()
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ " \r\n"
+				+ "             let list : [int] = [1,2,3];\r\n"
+				+ "             let addition : int = sum(list);\r\n"
+				+ "             \r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ " \r\n"
+				+ "             let list : [int] = [1,2,3];\r\n"
+				+ "             let addition : int = sum();\r\n"
+				+ "             \r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'sum' expects one argument"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "             let list_size : int = sum({});\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'sum' not defined on type {}"));
+		
+		
+		//min()
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ " \r\n"
+				+ "             let minimum : int = min([1,2]);\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ " \r\n"
+				+ "             let minimum : int = min();\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'min' expects one argument"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ " \r\n"
+				+ "             let minimum : int = min({});\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'min' not defined on type {}"));
+		
+		//max()
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ " \r\n"
+				+ "             let maximum : int = max([1,2]);\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ " \r\n"
+				+ "             let maximum : int = max();\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'max' expects one argument"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ " \r\n"
+				+ "             let maximum : int = max({});\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'max' not defined on type {}"));
+		
+		//append()
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "             let maximum : [int] = append([1,2,3],[234]);\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "             let maximum : [int] = append([1,2,3]);\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'append' expects two arguments"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "             let maximum : [int] = append({},[1,2,3]);\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "first argument to function 'append' must be a list"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "             let maximum : [int] = append([1,2,4], self);\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "second argument to function 'append' must be a list"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "             let maximum : [int] = append([], {});\r\n"
+				+ "             true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'append' not defined on types [] and {}"));
+		
+		//head()
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :int =  head([1,2,3]);\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :int =  head();\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'head' expects one argument"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :int =  head(1+1);\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "argument to function 'head' must be a list"));
+		
+		//tail()
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :[int] =  tail([1,2,3]);\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :[int] =  tail();\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'tail' expects one argument"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :[int] =  tail(1+1);\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "argument to function 'tail' must be a list"));
+		
+		//as_set()
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :{int} =  as_set([1,2,3]);\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :{int} =  as_set();\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'as_set' expects one argument"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :{int} =  as_set(1);\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";	
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "argument to function 'as_set' must be a list"));
+		
+		// union()
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :{int} =  union({1,2,3},{1,2,3});\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";	
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :{int} =  union();\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";	
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'union' expects two arguments"));
+		
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :{int} =  union([],[]);\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "Expected set type but found type []"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :{int} =  union({1,2,3,4},{false});\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'union' not defined on arguments of type {int}, {bool}"));
+		
+		
+		// intersect()
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :{int} =  intersect({1,2,3,4},{1,2,3});\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :{int} =  intersect();\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";	
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'intersect' expects two arguments"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :{int} =  intersect([],[]);\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "Expected set type but found type []"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :{int} =  intersect({1,2,3,4},{false});\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";	
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'intersect' not defined on arguments of type {int}, {bool}"));
+		
+		// as_list()
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :[int] =  as_list({1,2,3});\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :[int] =  as_list();\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "function 'as_list' expects one argument"));
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "   \r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ "           let x :[int] =  as_list(2);\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "argument to function 'as_list' must be a set"));
+		
+		
+		// property() ToDo - test for a model with no validation errors
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ " \r\n"
+				+ "           let ref :int = 2; \r\n"
+				+ "           let x :int = property(self, ref:int);\r\n"
+				+ "           true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl    		\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";	
+		issueCollection = testHelper.testString(test);
+		issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "Only parameter expected to be a property constant reference."));
+		
+		// ToDo - test for error message: "The second argument is of type '" + type1 + "' and the third argument is of type '" + type2 + "'"
+		
+		// debug()
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "            \r\n"
+				+ " \r\n"
+				+ "           debug(true)\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl    		\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
 	}
-	
+		
 	@Test
 	public void testListFilterMapExpr() throws Exception{
 		
+		String test = "package Test\r\n"
+				+ "public\r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "           \r\n"
+				+ "           let x: [bool] = [true,false];\r\n"
+				+ "    		true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl    		\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		FluentIssueCollection issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		// ToDo - test for error message - "Expected type bool but found type " + validType
 	}
 	
 	@Test
 	public void testSetFilterMapExpr() throws Exception{
 		
+		String test = "package Test\r\n"
+				+ "public\r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "           \r\n"
+				+ "           let x: {bool} = {true};\r\n"
+				+ "    	    true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl    		\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		FluentIssueCollection issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		// ToDo - test for error message - "Expected type bool but found type " + validType
 	}
 	
 	@Test
 	public void testListExpr() throws Exception{
+		String test = "package Test\r\n"
+				+ "public\r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "           \r\n"
+				+ "           let x: [bool] = [true];\r\n"
+				+ "    	    true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl    		\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";
+		FluentIssueCollection issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
 		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "           \r\n"
+				+ "           let x: [bool] = [true,1];\r\n"
+				+ "    	    true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl    		\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		issueCollection = testHelper.testString(test);
+		List<Issue> issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "Unable to add type int to list of type [bool]"));	
 	}
 	
 	@Test
 	public void testSetExpr() throws Exception{
 		
+		String test = "package Test\r\n"
+				+ "public\r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "           \r\n"
+				+ "           let x: {bool} = {true};\r\n"
+				+ "    	    true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl    		\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";		
+		FluentIssueCollection issueCollection = testHelper.testString(test);
+		assertTrue(issueCollection.getIssues().isEmpty());
+		
+		test = "package Test\r\n"
+				+ "public\r\n"
+				+ "     annex Resolute{**\r\n"
+				+ "          goal SimpleTest(self : component) <=\r\n"
+				+ "            ** \"This is a simple unit test\" **\r\n"
+				+ "           \r\n"
+				+ "           let x: {bool} = {true,1};\r\n"
+				+ "    	    true\r\n"
+				+ "          **};\r\n"
+				+ "            \r\n"
+				+ "      system sys\r\n"
+				+ "      end sys;\r\n"
+				+ "           \r\n"
+				+ "      system implementation sys.impl    		\r\n"
+				+ "      annex Resolute{**\r\n"
+				+ "                prove SimpleTest(this)\r\n"
+				+ "    			\r\n"
+				+ "              **};\r\n"
+				+ "      end sys.impl;\r\n"
+				+ "      \r\n"
+				+ "end Test;";	
+		issueCollection = testHelper.testString(test);
+		List<Issue> issues = issueCollection.getIssues();
+		assertFalse(issues.isEmpty());
+		assertNotNull(UtilityFunctions.getError(issues, "Unable to add type int to set of type {bool}"));
 	}
 	
 	@Test

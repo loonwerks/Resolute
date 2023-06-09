@@ -1020,7 +1020,7 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 
 	private void checkLengthCall(String name, BuiltInFnCallExpr funCall, List<ResoluteType> actualTypes) {
 		if (actualTypes.size() != 1) {
-			error(funCall, "function '" + name + "' expects two arguments");
+			error(funCall, "function '" + name + "' expects one argument");
 			return;
 		}
 
