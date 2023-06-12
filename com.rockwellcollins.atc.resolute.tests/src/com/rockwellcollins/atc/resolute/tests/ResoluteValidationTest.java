@@ -165,7 +165,9 @@ public class ResoluteValidationTest extends XtextTest{
 	}
 	
 	@Test
-	//TODO: See if test is even necessary (i.e., error is already triggered by XText/OSATE)
+	//TODO: Test experiences strange behavior, i.e., "Couldn't resolve reference to '<name>'."
+	//      error is automatically triggered by XText/OSATE rather than the ResoluteValidator
+	//      error
 	public void testIdExprCouldNotResolve2Error() throws Exception{
 		String test = "package TestPackage\r\n"
 				+ "public\r\n"
@@ -198,7 +200,9 @@ public class ResoluteValidationTest extends XtextTest{
 	}
 	
 	@Test
-	//TODO: See if test is even necessary (i.e., error is already triggered by XText/OSATE)
+	//TODO: Test experiences strange behavior, i.e., "Couldn't resolve reference to '<name>'."
+	//      error is automatically triggered by XText/OSATE rather than the ResoluteValidator
+	//      error
 	public void testIdExprCouldNotResolve3Error() throws Exception{
 		String test = "package TestPackage\r\n"
 				+ "public\r\n"
@@ -1168,7 +1172,9 @@ public class ResoluteValidationTest extends XtextTest{
 	}
 	
 	@Test
-	//TODO: See if test is even necessary (i.e., error is already triggered by XText/OSATE)
+	//TODO: Test experiences strange behavior, i.e., "Couldn't resolve reference to '<name>'."
+	//      error is automatically triggered by XText/OSATE rather than the ResoluteValidator
+	//      error
 	public void testQuantArgCannotBeReferencedInOwnDefError() throws Exception{
 		String test = "package TestPackage\r\n"
 				+ "public\r\n"

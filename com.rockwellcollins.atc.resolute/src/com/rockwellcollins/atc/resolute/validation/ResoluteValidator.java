@@ -252,7 +252,7 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 				if (!(refElement instanceof Arg || refElement instanceof LetBinding
 						|| refElement instanceof ClaimContext || refElement instanceof ClaimAssumption)) {
 					error(expr, "Couldn't resolve reference to '" + expr.getId().getName() + "'.");
-				} else { //TODO: See if case is even necessary (i.e., error is already triggered by XText/OSATE)
+				} else {
 					// It must be a FunctionDefinition Arg, QuantifiedExpr Arg, LetExpr Arg, ListFilterMapExpr Arg, SetFilterMapExpr Arg
 					// AND the Arg container must be contained somewhere inside the FunctionDefinition
 					if (!idFuncDef.equals(refFuncDef)) {
@@ -625,7 +625,6 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 	public void checkQuantArg(QuantArg quantArg) {
 		// The definition of a quantifier arg expression must not reference
 		// the quantified arg being defined.
-		//TODO: See if test is even necessary (i.e., error is already triggered by XText/OSATE)
 		for (IdExpr idExpr : EcoreUtil2.getAllContentsOfType(quantArg.getExpr(), IdExpr.class)) {
 			if (quantArg.equals(idExpr.getId())) {
 				error(quantArg, "Quantifier argument '" + idExpr.getId().getName()
