@@ -251,8 +251,8 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 			if (inResoluteAnnex && !(refElement instanceof ConstantDefinition)) {
 				if (!(refElement instanceof Arg || refElement instanceof LetBinding
 						|| refElement instanceof ClaimContext || refElement instanceof ClaimAssumption)) {
-					error(expr, "Couldn't resolve reference to " + expr.getId().getName());
-				} else {
+					error(expr, "Couldn't resolve reference to '" + expr.getId().getName() + "'.");
+				} else { //TODO: See if case is even necessary (i.e., error is already triggered by XText/OSATE)
 					// It must be a FunctionDefinition Arg, QuantifiedExpr Arg, LetExpr Arg, ListFilterMapExpr Arg, SetFilterMapExpr Arg
 					// AND the Arg container must be contained somewhere inside the FunctionDefinition
 					if (!idFuncDef.equals(refFuncDef)) {
@@ -260,10 +260,10 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 							ClaimBody claimBody = (ClaimBody) refElement.eContainer();
 							Set<FunctionDefinition> funcDefs = buildContextScope(claimBody.getExpr());
 							if (!funcDefs.contains(idFuncDef)) {
-								error(expr, "Couldn't resolve reference to " + expr.getId().getName());
+								error(expr, "Couldn't resolve reference to '" + expr.getId().getName() + "'.");
 							}
 						} else {
-							error(expr, "Couldn't resolve reference to " + expr.getId().getName());
+							error(expr, "Couldn't resolve reference to '" + expr.getId().getName() + "'.");
 						}
 					}
 				}
@@ -625,6 +625,7 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 	public void checkQuantArg(QuantArg quantArg) {
 		// The definition of a quantifier arg expression must not reference
 		// the quantified arg being defined.
+		//TODO: See if test is even necessary (i.e., error is already triggered by XText/OSATE)
 		for (IdExpr idExpr : EcoreUtil2.getAllContentsOfType(quantArg.getExpr(), IdExpr.class)) {
 			if (quantArg.equals(idExpr.getId())) {
 				error(quantArg, "Quantifier argument '" + idExpr.getId().getName()
@@ -912,12 +913,13 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 			return;
 		}
 
-		if (actualTypes.size() != expectedTypes.size()
-				// special case for property statement
-				&& !(actualTypes.size() + 1 == expectedTypes.size())) {
-
-			error(funCall, "Function expects " + expectedTypes.size() + " arguments but found " + actualTypes.size()
+		if (actualTypes.size() != expectedTypes.size()) {
+			if(expectedTypes.size() == 1) {
+				error(funCall, "Function expects 1 argument but found " + actualTypes.size() + " arguments");
+			}else {
+				error(funCall, "Function expects " + expectedTypes.size() + " arguments but found " + actualTypes.size()
 					+ " arguments");
+			}
 			return;
 		}
 
@@ -1025,7 +1027,7 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 		}
 
 		if (!(actualTypes.get(0) instanceof ListType || actualTypes.get(0) instanceof SetType)) {
-			error(funCall.getArgs().get(0), "Expected list or set type but found type " + actualTypes.get(1));
+			error(funCall.getArgs().get(0), "Expected list or set type but found type " + actualTypes.get(0));
 			return;
 		}
 
@@ -1258,7 +1260,6 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 		// Primary type: component
 		case "subcomponents":
 			expectedTypes.add(BaseType.AADL);
-			expectedTypes.add(BaseType.COMPONENT);
 			break;
 
 		case "is_of_type":
