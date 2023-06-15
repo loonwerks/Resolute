@@ -34,6 +34,7 @@ import java.util.Stack;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.EcoreUtil2;
@@ -251,7 +252,7 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 			if (inResoluteAnnex && !(refElement instanceof ConstantDefinition)) {
 				if (!(refElement instanceof Arg || refElement instanceof LetBinding
 						|| refElement instanceof ClaimContext || refElement instanceof ClaimAssumption)) {
-					error(expr, "Couldn't resolve reference to '" + expr.getId().getName() + "'.");
+					error(expr, "The reference '" + expr.getId().getName() + "' could not be resolved.");
 				} else {
 					// It must be a FunctionDefinition Arg, QuantifiedExpr Arg, LetExpr Arg, ListFilterMapExpr Arg, SetFilterMapExpr Arg
 					// AND the Arg container must be contained somewhere inside the FunctionDefinition
@@ -260,10 +261,10 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 							ClaimBody claimBody = (ClaimBody) refElement.eContainer();
 							Set<FunctionDefinition> funcDefs = buildContextScope(claimBody.getExpr());
 							if (!funcDefs.contains(idFuncDef)) {
-								error(expr, "Couldn't resolve reference to '" + expr.getId().getName() + "'.");
+								error(expr, "The context '" + expr.getId().getName() + "' is not defined in " + idFuncDef.getName());
 							}
 						} else {
-							error(expr, "Couldn't resolve reference to '" + expr.getId().getName() + "'.");
+							error(expr, "'" + expr.getId().getName() + "' is not defined in " + idFuncDef.getName());
 						}
 					}
 				}
@@ -624,7 +625,7 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 	@Check
 	public void checkQuantArg(QuantArg quantArg) {
 		// The definition of a quantifier arg expression must not reference
-		// the quantified arg being defined.
+		// the quantified arg being defined.		
 		for (IdExpr idExpr : EcoreUtil2.getAllContentsOfType(quantArg.getExpr(), IdExpr.class)) {
 			if (quantArg.equals(idExpr.getId())) {
 				error(quantArg, "Quantifier argument '" + idExpr.getId().getName()

@@ -134,7 +134,7 @@ public class ResoluteValidationTest extends XtextTest{
 	}
 	
 	@Test
-	public void testIdExprCouldNotResolve1Error() throws Exception{
+	public void testIdExprCouldNotResolveRefError() throws Exception{
 		String test = "package TestPackage\r\n"
 				+ "public\r\n"
 				+ "	annex Resolute{**\r\n"
@@ -161,14 +161,11 @@ public class ResoluteValidationTest extends XtextTest{
 		FluentIssueCollection issueCollection = testHelper.testString(test);
 		List<Issue> issues = issueCollection.getIssues();
 		assertFalse(issues.isEmpty());
-		assertNotNull(UtilityFunctions.getError(issues, "Couldn't resolve reference to 'AnotherSimpleTest'."));
+		assertNotNull(UtilityFunctions.getError(issues, "The reference 'AnotherSimpleTest' could not be resolved."));
 	}
 	
 	@Test
-	//TODO: Test experiences strange behavior, i.e., "Couldn't resolve reference to '<name>'."
-	//      error is automatically triggered by XText/OSATE rather than the ResoluteValidator
-	//      error
-	public void testIdExprCouldNotResolve2Error() throws Exception{
+	public void testIdExprContextNotDefinedInClaimError() throws Exception{
 		String test = "package TestPackage\r\n"
 				+ "public\r\n"
 				+ "	annex Resolute{**\r\n"
@@ -196,14 +193,11 @@ public class ResoluteValidationTest extends XtextTest{
 		FluentIssueCollection issueCollection = testHelper.testString(test);
 		List<Issue> issues = issueCollection.getIssues();
 		assertFalse(issues.isEmpty());
-		assertNotNull(UtilityFunctions.getError(issues, "Couldn't resolve reference to 'another_test'."));
+		assertNotNull(UtilityFunctions.getError(issues, "The context 'another_test' is not defined in SimpleTest"));
 	}
 	
 	@Test
-	//TODO: Test experiences strange behavior, i.e., "Couldn't resolve reference to '<name>'."
-	//      error is automatically triggered by XText/OSATE rather than the ResoluteValidator
-	//      error
-	public void testIdExprCouldNotResolve3Error() throws Exception{
+	public void testIdExprNotDefinedInClaimError() throws Exception{
 		String test = "package TestPackage\r\n"
 				+ "public\r\n"
 				+ "	annex Resolute{**\r\n"
@@ -230,7 +224,7 @@ public class ResoluteValidationTest extends XtextTest{
 		FluentIssueCollection issueCollection = testHelper.testString(test);
 		List<Issue> issues = issueCollection.getIssues();
 		assertFalse(issues.isEmpty());
-		assertNotNull(UtilityFunctions.getError(issues, "Couldn't resolve reference to 'another_test'."));
+		assertNotNull(UtilityFunctions.getError(issues, "'another_test' is not defined in SimpleTest"));
 	}
 	
 	@Test
@@ -1172,9 +1166,6 @@ public class ResoluteValidationTest extends XtextTest{
 	}
 	
 	@Test
-	//TODO: Test experiences strange behavior, i.e., "Couldn't resolve reference to '<name>'."
-	//      error is automatically triggered by XText/OSATE rather than the ResoluteValidator
-	//      error
 	public void testQuantArgCannotBeReferencedInOwnDefError() throws Exception{
 		String test = "package TestPackage\r\n"
 				+ "public\r\n"
@@ -1197,8 +1188,7 @@ public class ResoluteValidationTest extends XtextTest{
 		FluentIssueCollection issueCollection = testHelper.testString(test);
 		List<Issue> issues = issueCollection.getIssues();
 		assertFalse(issues.isEmpty());
-		assertTrue(UtilityFunctions.getError(issues, "Quantifier argument 'sub' cannot be referenced in its own definition.")!=null ||
-					UtilityFunctions.getError(issues, "Couldn't resolve reference to 'sub'.")!=null);
+		assertNotNull(UtilityFunctions.getError(issues, "Quantifier argument 'sub' cannot be referenced in its own definition."));
 	}
 	
 	@Test
