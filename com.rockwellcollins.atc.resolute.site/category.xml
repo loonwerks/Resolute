@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="com.rockwellcollins.atc.resolute.feature">
+      <category name="resolute"/>
+   </feature>
+   <feature id="com.rockwellcollins.atc.resolute.feature.source">
+      <category name="resolute.source"/>
+   </feature>
+   <feature id="com.rockwellcollins.atc.resolute.external.examples.feature">
+      <category name="resolute"/>
+   </feature>
+   <feature id="com.rockwellcollins.atc.resolute.external.examples.feature.source">
+      <category name="resolute.source"/>
+   </feature>
+   <category-def name="resolute" label="Resolute (by Collins Aerospace)">
+      <description>
+         Resolute (by Collins Aerospace)
+      </description>
+   </category-def>
+   <category-def name="resolute.source" label="Resolute Source Code">
+         <description>
+         Resolute Source Code
+      </description>
+   </category-def>
+   <repository-reference location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.27.0" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.13.0" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/xsemantics/milestones/1.22" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/elk/updates/releases/0.8.1" enabled="true" />
+   <repository-reference location="https://eclipse.py4j.org" enabled="true" />
+   <repository-reference location="https://updates.yakindu.com/statecharts/releases/3.5.9" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/tools/orbit/downloads/2022-06" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/ease/release/0.8.0" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/justj/jres/17/updates/release/latest" enabled="true" />
+   <repository-reference location="https://downloads.efxclipse.bestsolution.at/p2-repos/openjfx-17.0.2" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/mylyn/releases/3.25" enabled="true" />
+   <repository-reference location="https://osate-build.sei.cmu.edu/download/osate/stable/2.12.0-vfinal/updates" enabled="true" />
+</site>

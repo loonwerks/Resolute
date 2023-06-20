@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="com.rockwellcollins.atc.resolute.external.examples.feature"
-      label="Resolute"
+      label="Resolute (external)"
       version="1.0.0"
       provider-name="Collins Aerospace, Inc.">
 
