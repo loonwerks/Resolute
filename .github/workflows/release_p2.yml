@@ -51,7 +51,7 @@ jobs:
       run: >
         mvn deploy
         -Pupdate-release-site
-        -Dgithub-update-repo=https://x-access-token:${{ secrets.ACTION_TOKEN }}@github.com/aaurandt/Resolute_test-Updates
+        -Dgithub-update-repo=https://x-access-token:${{ secrets.ACTION_TOKEN }}@github.com/loonwerks/Resolute-Updates
     - name: Upload p2 repo artifact
       uses: actions/upload-artifact@v3
       with:
@@ -95,5 +95,5 @@ jobs:
               -   OSATE version: 2.12.0
               -   Eclipse base version: 2022-06
               -   Java version: Java 17
-              -   Eclipse Update-Site: https://aaurandt.github.io/Resolute_test-Updates/releases/${{ steps.version_number.outputs._0 }}
+              -   Eclipse Update-Site: https://loonwerks.github.io/Resolute-Updates/releases/${{ steps.version_number.outputs._0 }}
         generateReleaseNotes: true

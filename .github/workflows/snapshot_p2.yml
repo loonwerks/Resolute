@@ -7,7 +7,7 @@ on:
   workflow_run:
     workflows: [Build and Test Project]
     types: [completed]
-    branches: [main]
+    branches: [master]
 
 jobs:
   publish:
@@ -30,11 +30,11 @@ jobs:
     - name: Configure Git
       run: |
         git config --global user.name 'GitHub Actions'
-        git config --global user.email 'GitHub_Actions@users.noreply.github.com'
+        git config --global user.email 'GH_Actions@users.noreply.github.com'
     - name: Deploy Maven Project to Github Pages
       env:
         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       run: >
         mvn deploy
         -Pupdate-snapshot-site
-        -Dgithub-update-repo=https://x-access-token:${{ secrets.ACTION_TOKEN }}@github.com/aaurandt/Resolute_test-Updates
+        -Dgithub-update-repo=https://x-access-token:${{ secrets.ACTION_TOKEN }}@github.com/loonwerks/Resolute-Updates

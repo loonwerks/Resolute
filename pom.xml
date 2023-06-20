@@ -19,7 +19,7 @@
 		<eclipse.version>2022-06</eclipse.version>
 		<xtext-version>2.27.0</xtext-version>
 		<!-- Deploy P2 repo settings-->
-		<github-update-repo>git@github.com:aaurandt/Resolute_test-Updates.git</github-update-repo>
+		<github-update-repo>git@github.com:loonwerks/Resolute-Updates.git</github-update-repo>
 		<github-local-clone>${project.build.directory}/checkout</github-local-clone>
 		<releases-directory>${github-local-clone}/releases</releases-directory>
 		<snapshots-directory>${github-local-clone}/snapshots</snapshots-directory>
@@ -27,9 +27,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:https://github.com/aaurandt/Resolute_test.git</connection>
-		<developerConnection>scm:git:git@github.com:aaurandt/Resolute_test.git</developerConnection>
-		<url>https://github.com/aaurandt/Resolute_test</url>
+		<connection>scm:git:https://github.com/loonwerks/Resolute.git</connection>
+		<developerConnection>scm:git:git@github.com:loonwerks/Resolute.git</developerConnection>
+		<url>https://github.com/loonwerks/Resolute</url>
 	</scm>
 
 	<modules>
@@ -49,15 +49,6 @@
 		<module>com.rockwellcollins.atc.resolute.external.examples.feature</module>
 		<module>com.rockwellcollins.atc.resolute.site</module>
 	</modules>
-
-	<!-- Distributes packages to Github Packages -->
-	<distributionManagement>
-   		<repository>
-     			<id>github</id>
-     			<name>GitHub aaurandt Apache Maven Packages</name>
-     			<url>https://maven.pkg.github.com/aaurandt/Resolute_test</url>
-   		</repository>
-	</distributionManagement>
 
 	<profiles>
 		<profile>
