@@ -10,9 +10,9 @@ name: Build and Test Project
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
     types: [opened, reopened, edited]
 
 jobs:  
