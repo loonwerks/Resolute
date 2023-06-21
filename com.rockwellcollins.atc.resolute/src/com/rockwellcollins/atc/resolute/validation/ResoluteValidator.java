@@ -252,20 +252,6 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 				if (!(refElement instanceof Arg || refElement instanceof LetBinding
 						|| refElement instanceof ClaimContext || refElement instanceof ClaimAssumption)) {
 					error(expr, "The reference '" + expr.getId().getName() + "' could not be resolved.");
-				} else {
-					// It must be a FunctionDefinition Arg, QuantifiedExpr Arg, LetExpr Arg, ListFilterMapExpr Arg, SetFilterMapExpr Arg
-					// AND the Arg container must be contained somewhere inside the FunctionDefinition
-					if (!idFuncDef.equals(refFuncDef)) {
-						if (refElement instanceof ClaimContext) {
-							ClaimBody claimBody = (ClaimBody) refElement.eContainer();
-							Set<FunctionDefinition> funcDefs = buildContextScope(claimBody.getExpr());
-							if (!funcDefs.contains(idFuncDef)) {
-								error(expr, "The context '" + expr.getId().getName() + "' is not defined in " + idFuncDef.getName());
-							}
-						} else {
-							error(expr, "'" + expr.getId().getName() + "' is not defined in " + idFuncDef.getName());
-						}
-					}
 				}
 			}
 		}
@@ -619,18 +605,6 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 			return true;
 		}
 		return false;
-	}
-
-	@Check
-	public void checkQuantArg(QuantArg quantArg) {
-		// The definition of a quantifier arg expression must not reference
-		// the quantified arg being defined.		
-		for (IdExpr idExpr : EcoreUtil2.getAllContentsOfType(quantArg.getExpr(), IdExpr.class)) {
-			if (quantArg.equals(idExpr.getId())) {
-				error(quantArg, "Quantifier argument '" + idExpr.getId().getName()
-						+ "' cannot be referenced in its own definition.");
-			}
-		}
 	}
 
 	@Check
