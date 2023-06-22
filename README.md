@@ -55,6 +55,8 @@ might be named 'develop-feature-A.'  Or to fix an issue recorded in
 the issue base the branch might be named 'fix-issue-x' where x is the
 sequence number assigned to the issue.
 
+Tags are typically reserved for releases, but may be used to mark special points in the development process.
+
 ## Continuous Integration / Continuous Deployment
 The CI/CD pipeline is carried out via GitHub actions. There are three different workflows defined. There are as follows:
    1. "Build and Test Project"
@@ -70,7 +72,7 @@ The CI/CD pipeline is carried out via GitHub actions. There are three different 
          * "publish": publishes the p2 repo of the current build to Resolute-Updates/snapshots/x.x.x-vyyyyMMdd-HHmm
    3. "Push and publish release to GitHub"
       - Trigger(s):
-         * a tag was pushed
+         * a tag was pushed with the suffix "-RELEASE"
       - Job(s): 
          * "verify": verifies that the project builds without errors and all tests pass by running the command `mvn clean verify` 
          * "publish": publishes the p2 repo of the current build to Resolute-Updates/releases/x.x.x
@@ -84,5 +86,3 @@ The CI/CD pipeline is carried out via GitHub actions. There are three different 
       1. `git tag x.x.x-RELEASE`
       2. `git push origin x.x.x-RELEASE`
 - The version number of com.rockwellcollins.atc.resolute.site should match the tag number when triggering a release.
-
-Tags are reserved for releases **ONLY**.

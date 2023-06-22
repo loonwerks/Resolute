@@ -10,8 +10,26 @@ on:
 
 jobs:
 
+  check_if_release:
+    runs-on: ubuntu-latest
+    outputs: 
+      output1: ${{ steps.release.outputs.is_release }}
+    steps:
+    - name: Get version number
+      uses: jungwinter/split@v2
+      id: tag_ref
+      with:
+        msg: ${{ github.ref_name }}
+        separator: '-'
+    - name: Check if release tag
+      id: release
+      if: ${{ steps.tag_ref.outputs._1 == 'RELEASE'}}
+      run: echo "is_release=true" >> $GITHUB_OUTPUT
+
   verify:
     runs-on: ubuntu-latest
+    needs: check_if_release
+    if: ${{ needs.check_if_release.outputs.output1 == 'true' }}
     steps:
     - uses: actions/checkout@v3
     - name: Set Up JDK 17
