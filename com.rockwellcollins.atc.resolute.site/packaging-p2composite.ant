@@ -34,19 +34,12 @@
 	-->
 
 	<!--
-		parsedVersion.majorVersion
-		parsedVersion.minorVersion
-		parsedVersion.incrementalVersion
-										are expected to be provided
-										(see the POM and the use of build-helper-maven-plugin)
-		timestamp						The timestamp of the current build
+		full.version	 				The current version of resolute (default 1.0.0)
 		composite.base.dir				The directory of the main composite (default "target")
 		releases.path					The directory of the releases composite (default "releases")
 		snapshots.path					The directory of the releases composite (default "snapshots")
 	-->
 	<target name="compute.child.repository.data">
-		<property name="full.version" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}" />
-
 		<property name="main.site.composite.name"
 			value="Resolute All Versions" />
 		<property name="releases.site.composite.name"
@@ -57,6 +50,7 @@
 		<!-- composite.base.dir	The base directory for the local composite metadata,
 			e.g., from Maven, ${project.build.directory}
 		-->
+		<property name="full.version" value="1.0.0" />
 		<property name="composite.base.dir" value="target"/>
 		<property name="releases.path" value="releases"/>
 		<property name="snapshots.path" value="snapshots"/>
@@ -88,7 +82,7 @@
 		<add.composite.repository.internal
 			composite.repository.location="${snapshots.site.composite.directory}"
 			composite.repository.name="${snapshots.site.composite.name}"
-			composite.repository.child="${full.version}-${timestamp}" />
+			composite.repository.child="${full.version}" />
 	</target>
 
 	<!-- = = = = = = = = = = = = = = = = =
