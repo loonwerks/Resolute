@@ -18,19 +18,7 @@
 		<eclipse.mirror>http://download.eclipse.org</eclipse.mirror>
 		<eclipse.version>2022-06</eclipse.version>
 		<xtext-version>2.27.0</xtext-version>
-		<!-- Deploy P2 repo settings-->
-		<github-update-repo>git@github.com:loonwerks/Resolute-Updates.git</github-update-repo>
-		<github-local-clone>${project.build.directory}/checkout</github-local-clone>
-		<releases-directory>${github-local-clone}/releases</releases-directory>
-		<snapshots-directory>${github-local-clone}/snapshots</snapshots-directory>
-		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 	</properties>
-
-	<scm>
-		<connection>scm:git:https://github.com/loonwerks/Resolute.git</connection>
-		<developerConnection>scm:git:git@github.com:loonwerks/Resolute.git</developerConnection>
-		<url>https://github.com/loonwerks/Resolute</url>
-	</scm>
 
 	<modules>
 		<module>com.rockwellcollins.atc.resolute</module>
@@ -73,7 +61,7 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>update-release-site</id>
+			<id>build-release</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -81,26 +69,32 @@
 				<pluginManagement>
 				<plugins>
 					<plugin>
-					<artifactId>maven-install-plugin</artifactId>
-					<executions>
-						<execution>
-						<id>default-install</id>
-						<phase>none</phase>
-						</execution>
-					</executions>
-					</plugin>
-					<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<configuration>
-						<skip>true</skip>
-					</configuration>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<id>enforce-no-snapshots</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireReleaseVersion>
+											<message>No Snapshots Allowed!</message>
+										</requireReleaseVersion>
+									</rules>
+									<fail>true</fail>
+								</configuration>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 				</pluginManagement>
 			</build>
 		</profile>
 		<profile>
-			<id>update-snapshot-site</id>
+			<id>build-snapshot</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -108,20 +102,26 @@
 				<pluginManagement>
 				<plugins>
 					<plugin>
-					<artifactId>maven-install-plugin</artifactId>
-					<executions>
-						<execution>
-						<id>default-install</id>
-						<phase>none</phase>
-						</execution>
-					</executions>
-					</plugin>
-					<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<configuration>
-						<skip>true</skip>
-					</configuration>
-					</plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<id>enforce-no-releases</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireSnapshotVersion>
+											<message>No Releases Allowed!</message>
+										</requireSnapshotVersion>
+									</rules>
+									<fail>true</fail>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>	
 				</plugins>
 				</pluginManagement>
 			</build>
