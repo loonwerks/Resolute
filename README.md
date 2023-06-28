@@ -58,31 +58,32 @@ sequence number assigned to the issue.
 Tags are typically reserved for releases, but may be used to mark special points in the development process.
 
 ## Continuous Integration / Continuous Deployment
-The CI/CD pipeline is carried out via GitHub actions. There are three different workflows defined. There are as follows:
-   1. "Build and Test Project"
+The CI/CD pipeline is carried out via GitHub actions. There are three different workflows defined. They are as follows:
+   1. "Build and Test Project" (defined in [.github/workflows/build_and_test.yml](https://github.com/loonwerks/Resolute/blob/main/.github/workflows/build_and_test.yml))
       - Trigger(s): 
          * push is made to master 
          * pull request is opened, reopened, or editted
       - Job(s):
-         * "verify": verifies that the project builds without errors and all tests pass by running the command `mvn clean verify` 
-   2. "Push snapshot to Github Pages"
+         * *verify*: verifies that the project builds without errors and all tests pass by running the command `mvn clean verify` 
+   2. "Push snapshot to Github Pages" (defined in [.github/workflows/snapshot.yml](https://github.com/loonwerks/Resolute/blob/main/.github/workflows/snapshot.yml))
       - Trigger(s):
          * "Build and Test Project" successfully completes on master branch
       - Job(s):
-         * "publish": publishes the p2 repo of the current build to Resolute-Updates/snapshots/x.x.x-vyyyyMMdd-HHmm
-   3. "Push and publish release to GitHub"
+         * *verify*: verifies that the project builds without errors all tests pass, and build is a snapshot by running the command `mvn verify -Pbuild-snapshot` 
+         * *publish*: publishes the p2 repo of the current build to Resolute-Updates/snapshots/x.x.x.yyyyMMddHHmm
+   3. "Push and publish release to GitHub" (defined in [.github/workflows/release.yml](https://github.com/loonwerks/Resolute/blob/main/.github/workflows/release.yml))
       - Trigger(s):
-         * a tag was pushed with the suffix "-RELEASE"
+         * a tag was pushed
       - Job(s): 
-         * "verify": verifies that the project builds without errors and all tests pass by running the command `mvn clean verify` 
-         * "publish": publishes the p2 repo of the current build to Resolute-Updates/releases/x.x.x
-         * "release": generates a release on the Resolute repo and attaches the p2 repo as an artifact
+         * *parse_tag*: parses the tag "x.x.x-RELEASE" into "x.x.x" and "RELEASE"
+         * *verify*: if the suffix of tag is "-RELEASE", verifies that the project builds without errors all tests pass, and build is a release by running the command `mvn verify -Pbuild-release` 
+         * *parse_version*: parses the version from the built p2 repo
+         * *publish*: if the tag and version of the built p2 repo match, publishes the p2 repo of the current build to Resolute-Updates/releases/x.x.x
+         * *release*: if the tag and version of the built p2 repo match, generates a release on the Resolute repo and attaches the p2 repo as an artifact
 
-**Important Details** 
-- The version number reflected in the Resolute-Updates repo is based on the version defined in com.rockwellcollins.atc.resolute.site 
-- The version number in the release on the Resolute repo is based on the release tag used to trigger "Push and publish release to GitHub"
-   * The tag should be in the format x.x.x-RELEASE where x.x.x is the version number (e.g., 4.0.0-RELEASE)
-   * Make the tag by using the following git commands:
-      1. `git tag x.x.x-RELEASE`
-      2. `git push origin x.x.x-RELEASE`
-- The version number of com.rockwellcollins.atc.resolute.site should match the tag number when triggering a release.
+**Important Details about Release Tags** 
+- The tag should be in the format x.x.x-RELEASE where x is the major version number, y is the minor version number, and z is the patch version number.
+- Make the tag by using the following git commands:
+   1. `git tag x.x.x-RELEASE`
+   2. `git push origin x.x.x-RELEASE`
+- The version number of com.rockwellcollins.atc.resolute needs to match the tag number when triggering a release.
