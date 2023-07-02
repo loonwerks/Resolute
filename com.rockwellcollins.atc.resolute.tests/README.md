@@ -3,8 +3,6 @@ This is the test regression suite for Resolute. There are currently two differen
 
 The [UtilityFunctions.java](https://github.com/loonwerks/Resolute/blob/master/com.rockwellcollins.atc.resolute.tests/src/com/rockwellcollins/atc/resolute/tests/UtilityFunctions.java) file has utility functions defined to aid in parsing the EMF model with java (compared to using Xtend). Detailed descriptions of each utility function are included in the comments of the file. When new tests are created, more utility functions can be added as necessary.
 
-The files located in [src/com.itemis.xtext.testing](https://github.com/loonwerks/Resolute/tree/master/com.rockwellcollins.atc.resolute.tests/src/com/itemis/xtext/testing) and [src/org.ostate.testsupport](https://github.com/loonwerks/Resolute/tree/master/com.rockwellcollins.atc.resolute.tests/src/org/osate/testsupport) aid in running tests with OSATE/Resolute/XText. These files are open source and were pulled from the [OSATE2/core/org.osate.testsupport](https://github.com/osate/osate2/tree/master/core/org.osate.testsupport/src) GitHub. (The reason these are included in this manner is that that OSATE2 excludes this plugin from its build.)
-
 ## Parsing Resolute Tests
 The parsing tests are declared in [ResoluteParsingTest.java](https://github.com/loonwerks/Resolute/blob/master/com.rockwellcollins.atc.resolute.tests/src/com/rockwellcollins/atc/resolute/tests/ResoluteParsingTest.java). This file contains unit tests that test the grammar as defined in [Resolute.xtext](https://github.com/loonwerks/Resolute/blob/master/com.rockwellcollins.atc.resolute/src/com/rockwellcollins/atc/resolute/Resolute.xtext). 
 
