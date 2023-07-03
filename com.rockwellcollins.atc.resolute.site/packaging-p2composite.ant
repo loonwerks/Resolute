@@ -85,6 +85,13 @@
 			composite.repository.child="${full.version}" />
 	</target>
 
+	<target name="p2.composite.remove.snapshot" depends="compute.child.repository.data">
+		<remove.composite.repository.internal
+			composite.repository.location="${snapshots.site.composite.directory}"
+			composite.repository.name="${snapshots.site.composite.name}"
+			composite.repository.child="${full.version}" />
+	</target>
+
 	<!-- = = = = = = = = = = = = = = = = =
           macrodef: add.composite.repository.internal          
          = = = = = = = = = = = = = = = = = -->
@@ -113,6 +120,33 @@
 			metadata.repository.factory.order=compositeContent.xml,\!
 			artifact.repository.factory.order=compositeArtifacts.xml,\!
 			</echo>
+
+		</sequential>
+	</macrodef>
+
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: remove.composite.repository.internal          
+         = = = = = = = = = = = = = = = = = -->
+	<macrodef name="remove.composite.repository.internal">
+		<attribute name="composite.repository.location" />
+		<attribute name="composite.repository.name" />
+		<attribute name="composite.repository.child" />
+		<sequential>
+
+			<echo message=" " />
+			<echo message="Composite repository       : @{composite.repository.location}" />
+			<echo message="Composite name             : @{composite.repository.name}" />
+			<echo message="Removing child repository  : @{composite.repository.child}" />
+
+			<p2.composite.repository>
+				<repository
+					compressed="false"
+					location="@{composite.repository.location}"
+					name="@{composite.repository.name}" />
+				<remove>
+					<repository location="@{composite.repository.child}" />
+				</remove>
+			</p2.composite.repository>
 
 		</sequential>
 	</macrodef>

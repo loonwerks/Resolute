@@ -55,7 +55,7 @@ might be named 'develop-feature-A.'  Or to fix an issue recorded in
 the issue base the branch might be named 'fix-issue-x' where x is the
 sequence number assigned to the issue.
 
-Tags are typically reserved for releases, but may be used to mark special points in the development process.
+Tags are typically reserved for releases, but may be used to mark special points in the development process (i.e. snapshot tags).
 
 ## Continuous Integration / Continuous Deployment
 The CI/CD pipeline is carried out via GitHub actions. There are three different workflows defined. They are as follows:
@@ -71,6 +71,8 @@ The CI/CD pipeline is carried out via GitHub actions. There are three different 
       - Job(s):
          * *verify*: verifies that the project builds without errors all tests pass, and build is a snapshot by running the command `mvn verify -Pbuild-snapshot` 
          * *publish*: publishes the p2 repo of the current build to Resolute-Updates/snapshots/x.x.x.yyyyMMddHHmm
+         * *find_snapshots_to_delete*: finds snapshots that should be deleted; the repo only keeps the 10 latest snapshots and those that have a tag
+         * *delete_snapshots*: deletes the snapshots indicated in *find_snapshots_to_delete*
    3. "Push and publish release to GitHub" (defined in [.github/workflows/release.yml](https://github.com/loonwerks/Resolute/blob/main/.github/workflows/release.yml))
       - Trigger(s):
          * a tag was pushed
@@ -80,6 +82,13 @@ The CI/CD pipeline is carried out via GitHub actions. There are three different 
          * *parse_version*: parses the version from the built p2 repo
          * *publish*: if the tag and version of the built p2 repo match, publishes the p2 repo of the current build to Resolute-Updates/releases/x.x.x
          * *release*: if the tag and version of the built p2 repo match, generates a release on the Resolute repo and attaches the p2 repo as an artifact
+
+**Important Details about Snapshot Tags** 
+- The tag should be in the format x.x.x.yyyyMMddHHmm-SNAPSHOT where x is the major version number, y is the minor version number, and z is the patch version number.
+- Make the tag by using the following git commands:
+   1. `git tag x.x.x.yyyyMMddHHmm-SNAPSHOT`
+   2. `git push origin x.x.x.yyyyMMddHHmm-SNAPSHOT`
+- The tag number should match an already existing snapshot.
 
 **Important Details about Release Tags** 
 - The tag should be in the format x.x.x-RELEASE where x is the major version number, y is the minor version number, and z is the patch version number.
