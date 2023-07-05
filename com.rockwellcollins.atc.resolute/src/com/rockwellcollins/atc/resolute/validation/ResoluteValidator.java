@@ -251,21 +251,7 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 			if (inResoluteAnnex && !(refElement instanceof ConstantDefinition)) {
 				if (!(refElement instanceof Arg || refElement instanceof LetBinding
 						|| refElement instanceof ClaimContext || refElement instanceof ClaimAssumption)) {
-					error(expr, "Couldn't resolve reference to " + expr.getId().getName());
-				} else {
-					// It must be a FunctionDefinition Arg, QuantifiedExpr Arg, LetExpr Arg, ListFilterMapExpr Arg, SetFilterMapExpr Arg
-					// AND the Arg container must be contained somewhere inside the FunctionDefinition
-					if (!idFuncDef.equals(refFuncDef)) {
-						if (refElement instanceof ClaimContext) {
-							ClaimBody claimBody = (ClaimBody) refElement.eContainer();
-							Set<FunctionDefinition> funcDefs = buildContextScope(claimBody.getExpr());
-							if (!funcDefs.contains(idFuncDef)) {
-								error(expr, "Couldn't resolve reference to " + expr.getId().getName());
-							}
-						} else {
-							error(expr, "Couldn't resolve reference to " + expr.getId().getName());
-						}
-					}
+					error(expr, "The reference '" + expr.getId().getName() + "' could not be resolved.");
 				}
 			}
 		}
@@ -318,14 +304,8 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 				break;
 			}
 		}
-//		if (funcDef != null) {
-//			// Check if an existing context with this name exists in this scope
-//			if (contextScope.getOrDefault(funcDef, Collections.emptySet()).contains(claimContext.getName())) {
-//				error(claimContext, "Context " + claimContext.getName() + " has already been declared");
-//			}
-//		}
 
-//		checkDuplicateAttributeNames(claimContext);
+		checkDuplicateAttributeNames(claimContext);
 
 		// Build the scope for this context
 		Set<FunctionDefinition> funcDefs = buildContextScope(funcDef.getBody().getExpr());
@@ -346,6 +326,11 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 	@Check
 	public void checkClaimAssumption(ClaimAssumption claimAssumption) {
 		checkDuplicateAttributeNames(claimAssumption);
+	}
+	
+	@Check
+	public void checkClaimStrategy(ClaimStrategy claimStrategy) {
+		checkDuplicateAttributeNames(claimStrategy);
 	}
 
 	private void checkDuplicateAttributeNames(NamedElement namedElement) {
@@ -381,8 +366,10 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 							attributeType = "Assumption element ";
 						} else if (attr instanceof ClaimContext) {
 							attributeType = "Context element ";
+						} else if (attr instanceof ClaimStrategy) {
+							attributeType = "Strategy element ";
 						}
-						error(namedElement, attributeType + namedElement.getName() + " has already been declared");
+						error(namedElement, attributeType + "'" +namedElement.getName() + "' has already been declared");
 						break;
 					}
 				}
@@ -618,18 +605,6 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 			return true;
 		}
 		return false;
-	}
-
-	@Check
-	public void checkQuantArg(QuantArg quantArg) {
-		// The definition of a quantifier arg expression must not reference
-		// the quantified arg being defined.
-		for (IdExpr idExpr : EcoreUtil2.getAllContentsOfType(quantArg.getExpr(), IdExpr.class)) {
-			if (quantArg.equals(idExpr.getId())) {
-				error(quantArg, "Quantifier argument '" + idExpr.getId().getName()
-						+ "' cannot be referenced in its own definition.");
-			}
-		}
 	}
 
 	@Check
@@ -911,12 +886,13 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 			return;
 		}
 
-		if (actualTypes.size() != expectedTypes.size()
-				// special case for property statement
-				&& !(actualTypes.size() + 1 == expectedTypes.size())) {
-
-			error(funCall, "Function expects " + expectedTypes.size() + " arguments but found " + actualTypes.size()
+		if (actualTypes.size() != expectedTypes.size()) {
+			if(expectedTypes.size() == 1) {
+				error(funCall, "Function expects 1 argument but found " + actualTypes.size() + " arguments");
+			}else {
+				error(funCall, "Function expects " + expectedTypes.size() + " arguments but found " + actualTypes.size()
 					+ " arguments");
+			}
 			return;
 		}
 
@@ -1019,12 +995,12 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 
 	private void checkLengthCall(String name, BuiltInFnCallExpr funCall, List<ResoluteType> actualTypes) {
 		if (actualTypes.size() != 1) {
-			error(funCall, "function '" + name + "' expects two arguments");
+			error(funCall, "function '" + name + "' expects one argument");
 			return;
 		}
 
 		if (!(actualTypes.get(0) instanceof ListType || actualTypes.get(0) instanceof SetType)) {
-			error(funCall.getArgs().get(0), "Expected list or set type but found type " + actualTypes.get(1));
+			error(funCall.getArgs().get(0), "Expected list or set type but found type " + actualTypes.get(0));
 			return;
 		}
 
@@ -1257,7 +1233,6 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 		// Primary type: component
 		case "subcomponents":
 			expectedTypes.add(BaseType.AADL);
-			expectedTypes.add(BaseType.COMPONENT);
 			break;
 
 		case "is_of_type":
