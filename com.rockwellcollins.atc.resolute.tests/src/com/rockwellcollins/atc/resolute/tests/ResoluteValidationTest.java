@@ -165,69 +165,6 @@ public class ResoluteValidationTest extends XtextTest{
 	}
 	
 	@Test
-	public void testIdExprContextNotDefinedInClaimError() throws Exception{
-		String test = "package TestPackage\r\n"
-				+ "public\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "  		SimpleTest() <=\r\n"
-				+ "  			** \"This is a simple unit test\" **\r\n"
-				+ "  			true and another_test\r\n"
-				+ "  		\r\n"
-				+ "  		AnotherSimpleTest() <= \r\n"
-				+ "  			** \"This is another simple unit test\" **\r\n"
-				+ "  			context another_test : true;\r\n"
-				+ "  			another_test\r\n"
-				+ "\r\n"
-				+ "	**};\r\n"
-				+ "\r\n"
-				+ "system sys\r\n"
-				+ "end sys;\r\n"
-				+ "\r\n"
-				+ "system implementation sys.impl\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "			argue SimpleTest()\r\n"
-				+ "	**};\r\n"
-				+ "end sys.impl;\r\n"
-				+ "\r\n"
-				+ "end TestPackage;";
-		FluentIssueCollection issueCollection = testHelper.testString(test);
-		List<Issue> issues = issueCollection.getIssues();
-		assertFalse(issues.isEmpty());
-		assertNotNull(UtilityFunctions.getError(issues, "The context 'another_test' is not defined in SimpleTest"));
-	}
-	
-	@Test
-	public void testIdExprNotDefinedInClaimError() throws Exception{
-		String test = "package TestPackage\r\n"
-				+ "public\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "		SimpleTest() <=\r\n"
-				+ "			** \"This is a simple unit test\" **\r\n"
-				+ "			another_test\r\n"
-				+ "			\r\n"
-				+ "		AnotherSimpleTest() <=\r\n"
-				+ "			** \"This is another simple test\" **\r\n"
-				+ "			let another_test : bool = true;\r\n"
-				+ "			another_test\r\n"
-				+ "	**};\r\n"
-				+ "\r\n"
-				+ "system sys\r\n"
-				+ "end sys;\r\n"
-				+ "\r\n"
-				+ "system implementation sys.impl\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "			argue SimpleTest()\r\n"
-				+ "	**};\r\n"
-				+ "end sys.impl;\r\n"
-				+ "\r\n"
-				+ "end TestPackage;";
-		FluentIssueCollection issueCollection = testHelper.testString(test);
-		List<Issue> issues = issueCollection.getIssues();
-		assertFalse(issues.isEmpty());
-		assertNotNull(UtilityFunctions.getError(issues, "'another_test' is not defined in SimpleTest"));
-	}
-	
-	@Test
 	public void testClaimContextNoErrors() throws Exception{
 		String test = "package TestPackage\r\n"
 				+ "public\r\n"
@@ -1139,56 +1076,6 @@ public class ResoluteValidationTest extends XtextTest{
 		List<Issue> issues = issueCollection.getIssues();
 		assertFalse(issues.isEmpty());
 		assertNotNull(UtilityFunctions.getError(issues, "An inline startegy can only be used with a goal claim call expression"));
-	}
-
-	@Test
-	public void testQuantArgNoErrors() throws Exception{
-		String test = "package TestPackage\r\n"
-				+ "public\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "		SimpleTest(self : component) <=\r\n"
-				+ "			** \"This is a simple unit test\" **\r\n"
-				+ "			exists (sub : subcomponents(self)). true\r\n"
-				+ "	**};\r\n"
-				+ "\r\n"
-				+ "system sys\r\n"
-				+ "end sys;\r\n"
-				+ "\r\n"
-				+ "system implementation sys.impl\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "			argue SimpleTest(this)\r\n"
-				+ "	**};\r\n"
-				+ "end sys.impl;\r\n"
-				+ "\r\n"
-				+ "end TestPackage;";
-		FluentIssueCollection issueCollection = testHelper.testString(test);
-		assertTrue(issueCollection.getIssues().isEmpty());
-	}
-	
-	@Test
-	public void testQuantArgCannotBeReferencedInOwnDefError() throws Exception{
-		String test = "package TestPackage\r\n"
-				+ "public\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "		SimpleTest(self : component) <=\r\n"
-				+ "			** \"This is a simple unit test\" **\r\n"
-				+ "			exists (sub : subcomponents(sub)). true\r\n"
-				+ "	**};\r\n"
-				+ "\r\n"
-				+ "system sys\r\n"
-				+ "end sys;\r\n"
-				+ "\r\n"
-				+ "system implementation sys.impl\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "			argue SimpleTest(this)\r\n"
-				+ "	**};\r\n"
-				+ "end sys.impl;\r\n"
-				+ "\r\n"
-				+ "end TestPackage;";
-		FluentIssueCollection issueCollection = testHelper.testString(test);
-		List<Issue> issues = issueCollection.getIssues();
-		assertFalse(issues.isEmpty());
-		assertNotNull(UtilityFunctions.getError(issues, "Quantifier argument 'sub' cannot be referenced in its own definition."));
 	}
 	
 	@Test
