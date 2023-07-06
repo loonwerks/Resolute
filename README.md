@@ -70,7 +70,7 @@ The CI/CD pipeline is carried out via GitHub actions. There are three different 
          * "Build and Test Project" successfully completes on master branch
       - Job(s):
          * *verify*: verifies that the project builds without errors all tests pass, and build is a snapshot by running the command `mvn verify -Pbuild-snapshot` 
-         * *publish*: publishes the p2 repo of the current build to Resolute-Updates/snapshots/x.x.x.yyyyMMddHHmm
+         * *publish*: publishes the p2 repo of the current build to [Resolute-Updates/snapshots/x.x.x.yyyyMMddHHmm](https://github.com/loonwerks/Resolute-Updates)
          * *find_snapshots_to_delete*: finds snapshots that should be deleted; the repo only keeps the 10 latest snapshots and those that have a tag
          * *delete_snapshots*: deletes the snapshots indicated in *find_snapshots_to_delete*
    3. "Push and publish release to GitHub" (defined in [.github/workflows/release.yml](https://github.com/loonwerks/Resolute/blob/main/.github/workflows/release.yml))
@@ -80,7 +80,7 @@ The CI/CD pipeline is carried out via GitHub actions. There are three different 
          * *parse_tag*: parses the tag "x.x.x-RELEASE" into "x.x.x" and "RELEASE"
          * *verify*: if the suffix of tag is "-RELEASE", verifies that the project builds without errors all tests pass, and build is a release by running the command `mvn verify -Pbuild-release` 
          * *parse_version*: parses the version from the built p2 repo
-         * *publish*: if the tag and version of the built p2 repo match, publishes the p2 repo of the current build to Resolute-Updates/releases/x.x.x
+         * *publish*: if the tag and version of the built p2 repo match, publishes the p2 repo of the current build to [Resolute-Updates/releases/x.x.x](https://github.com/loonwerks/Resolute-Updates)
          * *release*: if the tag and version of the built p2 repo match, generates a release on the Resolute repo and attaches the p2 repo as an artifact
 
 **Important Details about Snapshot Tags** 

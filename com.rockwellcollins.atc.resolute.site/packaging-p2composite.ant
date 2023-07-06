@@ -2,7 +2,7 @@
 <project name="project">
 
 	<!--
-	The idea is to have this directory layout:
+	This is the directory layout:
 
 	Resolute-Updates
 	├── releases

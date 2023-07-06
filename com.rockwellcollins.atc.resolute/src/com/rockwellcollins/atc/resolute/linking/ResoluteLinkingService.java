@@ -69,11 +69,7 @@ public class ResoluteLinkingService extends PropertiesLinkingService {
 					reference.getEReferenceType());
 
             URI contextUri = context.eResource().getURI();
-            String contextProject;
-            if(contextUri.segmentCount() == 1)
-            	contextProject = contextUri.segment(0); // Required for tests since we parse a string instead of a file
-            else
-            	contextProject = contextUri.segment(1);
+            String contextProject = contextUri.segment(1);
             for (IEObjectDescription eod : allObjectTypes) {
                 if (eod.getName().toString().equalsIgnoreCase(name)) {
                     EObject res = eod.getEObjectOrProxy();
