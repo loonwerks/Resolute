@@ -4,10 +4,10 @@
 	<parent>
 		<groupId>com.rockwellcollins.atc.resolute</groupId>
 		<artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-		<version>3.0.2</version>
+		<version>3.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>com.rockwellcollins.atc.resolute.tests</artifactId>
-	<version>4.0.0</version>
+	<version>4.0.1-SNAPSHOT</version>
 	<packaging>eclipse-test-plugin</packaging>
 
 	<build>
@@ -21,7 +21,7 @@
 							<requirement>
 								<type>eclipse-feature</type>
 								<id>com.rockwellcollins.atc.resolute.feature</id>
-								<versionRange>4.0.0</versionRange>
+								<versionRange>4.0.1</versionRange>
 							</requirement>
 							<requirement>
 								<type>eclipse-feature</type>
