@@ -74,7 +74,7 @@ jobs:
       with:
         repository: loonwerks/Resolute-Updates
         path: Resolute-Updates
-        token: ${{ secrets.ACTION_TOKEN }}
+        ssh-key: ${{ secrets.DEPLOY_KEY }}
         persist-credentials: true
     - name: Download p2 repo artifact
       uses: actions/download-artifact@v3
@@ -88,8 +88,6 @@ jobs:
     - name: Build with Ant
       run: java -jar $(find /snap/eclipse -name org.eclipse.equinox.launcher_*.jar) -application org.eclipse.ant.core.antRunner -buildfile  ${{ github.workspace }}/com.rockwellcollins.atc.resolute.site/packaging-p2composite.ant p2.composite.add.release -Dcomposite.base.dir=${{ github.workspace }}/Resolute-Updates -Dfull.version=${{ needs.parse_tag.outputs.version }}
     - name: Push new release to Resolute-Updates
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       run: | 
           cd Resolute-Updates
           git config --global user.name 'GitHub Actions'

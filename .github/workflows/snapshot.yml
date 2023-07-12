@@ -45,7 +45,7 @@ jobs:
       with:
         repository: loonwerks/Resolute-Updates
         path: Resolute-Updates
-        token: ${{ secrets.ACTION_TOKEN }}
+        ssh-key: ${{ secrets.DEPLOY_KEY }}
         persist-credentials: true
     - name: Download p2 repo artifact
       uses: actions/download-artifact@v3
@@ -143,15 +143,12 @@ jobs:
       with:
         repository: loonwerks/Resolute-Updates
         path: Resolute-Updates
-        token: ${{ secrets.ACTION_TOKEN }}
+        ssh-key: ${{ secrets.DEPLOY_KEY }}
         persist-credentials: true
     - name: Install git filter repo
       run: sudo apt-get install git-filter-repo
     - name: Push changes to git
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       run: |
-          echo ${{ matrix.version }}
           cd Resolute-Updates
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'GH_Actions@users.noreply.github.com'
@@ -160,6 +157,6 @@ jobs:
           git commit -m 'Delete Snapshot ${{ matrix.version }}'
           git push
           git filter-repo --invert-paths --path snapshots/${{ matrix.version }} --force
-          git remote add origin https://github.com/loonwerks/Resolute-Updates
+          git remote add origin git@github.com:loonwerks/Resolute-Updates
           git push origin --force --all
   
