@@ -84,6 +84,7 @@ jobs:
     - name: Rename p2-artifact and move to release directory
       run: |
           mv ${{ github.workspace }}/p2-artifact ${{ github.workspace }}/${{ needs.parse_tag.outputs.version }}
+          mkdir -p ${{ github.workspace }}/Resolute-Updates/releases
           mv ${{ github.workspace }}/${{ needs.parse_tag.outputs.version }} ${{ github.workspace }}/Resolute-Updates/releases
     - name: Build with Ant
       run: java -jar $(find /snap/eclipse -name org.eclipse.equinox.launcher_*.jar) -application org.eclipse.ant.core.antRunner -buildfile  ${{ github.workspace }}/com.rockwellcollins.atc.resolute.site/packaging-p2composite.ant p2.composite.add.release -Dcomposite.base.dir=${{ github.workspace }}/Resolute-Updates -Dfull.version=${{ needs.parse_tag.outputs.version }}
