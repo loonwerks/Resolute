@@ -53,7 +53,7 @@ jobs:
         name: p2-artifact
         path: ${{ github.workspace }}/p2-artifact
     - name: Parse version number
-      run: echo "RELEASE_VERSION=$(ls ${{ github.workspace }}/p2-artifact/plugins/com.rockwellcollins.atc.resolute_*.jar | grep -o "[0-9]\\+\\.[0-9]\\+\\.[0-9]")" >> $GITHUB_ENV
+      run: echo "RELEASE_VERSION=$(ls ${{ github.workspace }}/p2-artifact/features/com.rockwellcollins.atc.resolute.feature_*.jar | grep -o "[0-9]\\+\\.[0-9]\\+\\.[0-9]")" >> $GITHUB_ENV
 
   publish:
     runs-on: ubuntu-latest
