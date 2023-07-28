@@ -53,7 +53,7 @@ jobs:
         name: p2-artifact
         path: ${{ github.workspace }}/p2-artifact
     - name: Parse version number
-      run: echo "SNAPSHOT_VERSION=$(ls ${{ github.workspace }}/p2-artifact/plugins/com.rockwellcollins.atc.resolute_*.jar | grep -o "[0-9]\\+\\.[0-9]\\+\\.[0-9]\\+\\.[0-9]\\{12\\}")" >> $GITHUB_ENV
+      run: echo "SNAPSHOT_VERSION=$(ls ${{ github.workspace }}/p2-artifact/features/com.rockwellcollins.atc.resolute.feature_*.jar | grep -o "[0-9]\\+\\.[0-9]\\+\\.[0-9]\\+\\.[0-9]\\{12\\}")" >> $GITHUB_ENV
     - name: Rename p2-artifact and move to snapshot directory
       run: |
           mv ${{ github.workspace }}/p2-artifact ${{ github.workspace }}/${{ env.SNAPSHOT_VERSION }}
