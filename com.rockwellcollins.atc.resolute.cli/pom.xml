@@ -4,10 +4,10 @@
   <parent>
     <groupId>com.rockwellcollins.atc.resolute</groupId>
     <artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-    <version>3.0.2</version>
+    <version>3.0.2-SNAPSHOT</version>
   </parent>
   <artifactId>com.rockwellcollins.atc.resolute.cli</artifactId>
-  <version>1.0.100</version>
+  <version>1.0.100-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
   <properties>
 		<commons-cli.version>1.5.0</commons-cli.version>

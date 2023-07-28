@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Resolute back-end
 Bundle-Vendor: Collins Aerospace, Inc.
-Bundle-Version: 4.0.0
+Bundle-Version: 4.0.1.qualifier
 Bundle-SymbolicName: com.rockwellcollins.atc.resolute; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="[2.25.0,3.0.0)";visibility:=reexport,
@@ -24,18 +24,18 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.25.0,3.0.0)";visibility:=re
 Import-Package: org.apache.log4j;version="[1.2.0,2.0.0)",
  org.eclipse.xtext.xbase.lib;version="[2.14.0,3.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: com.rockwellcollins.atc.resolute;version="4.0.0",
- com.rockwellcollins.atc.resolute.analysis.external;version="4.0.0",
- com.rockwellcollins.atc.resolute.formatting2;version="4.0.0",
- com.rockwellcollins.atc.resolute.linking;version="4.0.0",
- com.rockwellcollins.atc.resolute.parser.antlr;version="4.0.0",
- com.rockwellcollins.atc.resolute.parser.antlr.internal;version="4.0.0",
- com.rockwellcollins.atc.resolute.resolute;version="4.0.0",
- com.rockwellcollins.atc.resolute.resolute.impl;version="4.0.0",
- com.rockwellcollins.atc.resolute.resolute.util;version="4.0.0",
- com.rockwellcollins.atc.resolute.scoping;version="4.0.0",
- com.rockwellcollins.atc.resolute.serializer;version="4.0.0",
- com.rockwellcollins.atc.resolute.services;version="4.0.0",
- com.rockwellcollins.atc.resolute.validation;version="4.0.0",
- com.rockwellcollins.atc.resolute.parser.antlr.lexer;version="4.0.0"
+Export-Package: com.rockwellcollins.atc.resolute;version="4.0.1",
+ com.rockwellcollins.atc.resolute.analysis.external;version="4.0.1",
+ com.rockwellcollins.atc.resolute.formatting2;version="4.0.1",
+ com.rockwellcollins.atc.resolute.linking;version="4.0.1",
+ com.rockwellcollins.atc.resolute.parser.antlr;version="4.0.1",
+ com.rockwellcollins.atc.resolute.parser.antlr.internal;version="4.0.1",
+ com.rockwellcollins.atc.resolute.resolute;version="4.0.1",
+ com.rockwellcollins.atc.resolute.resolute.impl;version="4.0.1",
+ com.rockwellcollins.atc.resolute.resolute.util;version="4.0.1",
+ com.rockwellcollins.atc.resolute.scoping;version="4.0.1",
+ com.rockwellcollins.atc.resolute.serializer;version="4.0.1",
+ com.rockwellcollins.atc.resolute.services;version="4.0.1",
+ com.rockwellcollins.atc.resolute.validation;version="4.0.1",
+ com.rockwellcollins.atc.resolute.parser.antlr.lexer;version="4.0.1"
 Automatic-Module-Name: com.rockwellcollins.atc.resolute

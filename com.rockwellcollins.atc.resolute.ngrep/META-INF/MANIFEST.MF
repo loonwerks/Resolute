@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Grep Analysis
 Bundle-SymbolicName: com.rockwellcollins.atc.resolute.ngrep;singleton:=true
-Bundle-Version: 3.0.0
+Bundle-Version: 3.0.0.qualifier
 Bundle-Activator: com.rockwellcollins.atc.resolute.ngrep.Activator
 Bundle-Vendor: CMU/SEI
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.20.0,4.0.0)",

@@ -2,15 +2,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.rockwellcollins.atc.resolute</groupId>
 	<artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-	<version>3.0.2</version>
+	<version>3.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!--
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
-		-->
 		<!-- Tycho settings -->
 		<tycho.version>2.7.3</tycho.version>
 		<tycho-extras.version>2.7.3</tycho-extras.version>
@@ -20,6 +16,7 @@
 		<systemProperties />
 		<tycho.testArgLine />
 		<eclipse.mirror>http://download.eclipse.org</eclipse.mirror>
+		<eclipse.version>2022-06</eclipse.version>
 		<xtext-version>2.27.0</xtext-version>
 	</properties>
 
@@ -38,7 +35,7 @@
 		<module>org.osate.resolute.help</module>
 		<module>com.rockwellcollins.atc.resolute.feature</module>
 		<module>com.rockwellcollins.atc.resolute.external.examples.feature</module>
-		<module>repository</module>
+		<module>com.rockwellcollins.atc.resolute.site</module>
 	</modules>
 
 	<profiles>
@@ -64,10 +61,70 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>build-update-site</id>
-			<modules>
-				<module>update-site</module>
-			</modules>
+			<id>build-release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<id>enforce-no-snapshots</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireReleaseVersion>
+											<message>No Snapshots Allowed!</message>
+										</requireReleaseVersion>
+									</rules>
+									<fail>true</fail>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		<profile>
+			<id>build-snapshot</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<id>enforce-no-releases</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireSnapshotVersion>
+											<message>No Releases Allowed!</message>
+										</requireSnapshotVersion>
+									</rules>
+									<fail>true</fail>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>	
+				</plugins>
+				</pluginManagement>
+			</build>
 		</profile>
 	</profiles>
 
@@ -135,13 +192,13 @@
 				<artifactId>tycho-p2-plugin</artifactId>
 				<version>${tycho.version}</version>
 				<executions>
-					<execution>
-						<id>attach-p2-metadata</id>
-						<phase>package</phase>
-						<goals>
-							<goal>p2-metadata</goal>
-						</goals>
-					</execution>
+				<execution>
+					<id>attach-p2-metadata</id>
+					<phase>package</phase>
+					<goals>
+						<goal>p2-metadata</goal>
+					</goals>
+				</execution>
 				</executions>
 			</plugin>
 			<plugin>
@@ -218,35 +275,28 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>2.5.3</version>
-					<configuration>
-						<preparationGoals>org.eclipse.tycho:tycho-versions-plugin:${tycho.version}:update-eclipse-metadata
-							org.apache.maven.plugins:maven-scm-plugin:1.9.5:add
-							org.apache.maven.plugins:maven-scm-plugin:1.9.5:checkin</preparationGoals>
-						<completionGoals>org.eclipse.tycho:tycho-versions-plugin:${tycho.version}:update-eclipse-metadata
-							org.apache.maven.plugins:maven-scm-plugin:1.9.5:add
-							org.apache.maven.plugins:maven-scm-plugin:1.9.5:checkin</completionGoals>
-					</configuration>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>1.11.2</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-scm-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>default-cli</id>
-							<goals>
-								<goal>add</goal>
-								<goal>checkin</goal>
-							</goals>
-							<configuration>
-								<includes>**/META-INF/MANIFEST.MF,**/feature.xml,**/*.product,**/category.xml</includes>
-								<excludes>**/target/**</excludes>
-								<message>Changing the version to reflect the pom versions for
-									the release</message>
-							</configuration>
-						</execution>
-					</executions>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.2.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>3.2.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho.extras</groupId>
+					<artifactId>tycho-eclipserun-plugin</artifactId>
+					<version>${tycho.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
@@ -388,12 +438,13 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
 	<repositories>
 		<!-- add Eclipse repository to resolve dependencies -->
 		<repository>
 			<id>Eclipse</id>
 			<layout>p2</layout>
-			<url>${eclipse.mirror}/releases/2022-06/</url>
+			<url>${eclipse.mirror}/releases/${eclipse.version}</url>
 		</repository>
 		<repository>
 			<id>Osate2</id>
@@ -425,11 +476,5 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
-	<scm>
-		<connection>scm:git:https://github.com/loonwerks/Resolute.git</connection>
-		<developerConnection>scm:git:https://github.com/loonwerks/Resolute.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
 
 </project>
