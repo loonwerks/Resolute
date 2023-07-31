@@ -255,6 +255,29 @@ public class UtilityFunctions {
 	}
 	
 	/**
+	 * Takes an EMF EObject and an attribute index and returns the 
+	 * class object if it exists
+	 *
+	 * @param eObject the EObject to find the attribute in
+	 * @param index the index of the attribute
+	 * @return the attribute at index
+	 */
+	public static EObject getAttribute(EObject eObject, int index){
+		List<EObject> objects = eObject.eContents();
+		List<EObject> args = new ArrayList<EObject>();
+		for(EObject e : objects) {
+			EStructuralFeature container_feature = e.eContainingFeature();
+			if(getStringProperty((EObject)container_feature, "name").equals("attributes")){
+				args.add(e);
+			}
+		}
+		if(index < args.size())
+			return args.get(index);
+		else
+			return null;
+	}
+	
+	/**
 	 * Takes an EMF Object and returns the type if it exists
 	 *
 	 * @param eObject the argument to find the type in
