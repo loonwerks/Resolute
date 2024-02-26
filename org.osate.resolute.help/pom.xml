@@ -21,9 +21,11 @@
               <goal>run</goal>
             </goals>
             <configuration>
-              <tasks>
-                <ant antfile="${basedir}/build_docs.xml" target="build-help" />
-              </tasks>
+              <target>
+                <ant antfile="${basedir}/build_docs.xml">
+                  <target name="build-help"/>
+                </ant>
+              </target>
             </configuration>
           </execution>
         </executions>
