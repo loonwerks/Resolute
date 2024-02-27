@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.rockwellcollins.atc.resolute</groupId>
     <artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-    <version>3.0.2-SNAPSHOT</version>
+    <version>4.1.0-SNAPSHOT</version>
   </parent>
   <artifactId>org.osate.resolute.help</artifactId>
   <version>3.0.0-SNAPSHOT</version>
@@ -12,7 +12,9 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.1.0</version>
         <executions>
           <execution>
             <id>ant-magic</id>
@@ -21,9 +23,11 @@
               <goal>run</goal>
             </goals>
             <configuration>
-              <tasks>
-                <ant antfile="${basedir}/build_docs.xml" target="build-help" />
-              </tasks>
+              <target>
+                <ant antfile="${basedir}/build_docs.xml">
+                  <target name="build-help"/>
+                </ant>
+              </target>
             </configuration>
           </execution>
         </executions>

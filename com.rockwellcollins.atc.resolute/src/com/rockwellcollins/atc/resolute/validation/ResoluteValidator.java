@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, Collins Aerospace.
+ * Copyright (c) 2024, Collins Aerospace.
  * Developed with the sponsorship of Defense Advanced Research Projects Agency (DARPA).
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this data,
@@ -327,7 +327,10 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 	public void checkClaimAssumption(ClaimAssumption claimAssumption) {
 		checkDuplicateAttributeNames(claimAssumption);
 	}
-	
+
+	/**
+	 * @since 5.0
+	 */
 	@Check
 	public void checkClaimStrategy(ClaimStrategy claimStrategy) {
 		checkDuplicateAttributeNames(claimStrategy);

@@ -39,6 +39,8 @@
 	<target name="build_user_guide_eclipse" description="Build the user guide">
 		<mkdir dir="${user_guide_output.dir}" />
 
+		<echo message="eclipse user guide output path: ${user_guide_output.dir}"/>
+
 		<exec executable="pandoc" dir="${user_guide.dir}">
 			<arg value="user_guide.md"/>
 			<arg value="--toc"/>

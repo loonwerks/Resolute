@@ -2,7 +2,7 @@
 <feature
       id="com.rockwellcollins.atc.resolute.feature"
       label="Resolute"
-      version="4.0.1.qualifier"
+      version="4.1.0.qualifier"
       provider-name="Collins Aerospace, Inc.">
 
    <description>
@@ -10,12 +10,12 @@
    </description>
 
    <copyright>
-      Copyright (c) 2012-2022, Collins Aerospace
+      Copyright (c) 2012-2024, Collins Aerospace
 All rights reserved.
    </copyright>
 
    <license url="">
-      Copyright (c) 2012-2022, Collins Aerospace
+      Copyright (c) 2012-2024, Collins Aerospace
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -42,100 +42,89 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    </license>
 
    <requires>
-      <import feature="org.osate.core.feature" version="2.12.0" match="greaterOrEqual"/>
-      <import plugin="com.rockwellcollins.atc.resolute" version="4.0.0" match="compatible"/>
-      <import plugin="com.rockwellcollins.atc.resolute.analysis" version="3.0.0" match="compatible"/>
-      <import plugin="com.rockwellcollins.atc.resolute.ui" version="4.0.0" match="compatible"/>
-      <import plugin="org.antlr.runtime" version="3.2.0" match="compatible"/>
-      <import plugin="org.apache.log4j" version="1.2.0" match="compatible"/>
-      <import plugin="org.eclipse.compare" version="3.7.0" match="compatible"/>
-      <import plugin="org.eclipse.core.resources" version="3.14.0" match="compatible"/>
-      <import plugin="org.eclipse.core.runtime" version="3.20.0" match="compatible"/>
-      <import plugin="org.eclipse.emf" version="2.6.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.common" version="2.22.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext" version="2.25.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.util" version="2.25.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore" version="2.23.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.transaction" version="1.4.0" match="compatible"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.core"/>
-      <import plugin="org.eclipse.gmf.runtime.emf.commands.core"/>
-      <import plugin="org.eclipse.gmf.runtime.emf.core" version="1.7.0" match="compatible"/>
-      <import plugin="org.eclipse.gmf.runtime.notation.edit"/>
-      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.emf.common" version="2.22.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.common.types" version="2.25.0" match="compatible"/>
+      <import plugin="org.osate.xtext.aadl2.properties" version="3.0.0" match="compatible"/>
+      <import plugin="org.osate.xtext.aadl2" version="7.0.0" match="compatible"/>
+      <import plugin="org.osate.aadl2" version="5.0.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.14.0" match="compatible"/>
+      <import plugin="org.apache.log4j" version="1.2.0" match="compatible"/>
       <import plugin="org.eclipse.ui" version="3.119.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.20.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.console" version="3.5.100" match="compatible"/>
+      <import plugin="org.eclipse.emf.transaction" version="1.4.0" match="compatible"/>
+      <import plugin="org.eclipse.core.resources" version="3.14.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.core" version="1.7.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.ui" version="2.25.0" match="compatible"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="compatible"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="compatible"/>
-      <import plugin="org.eclipse.ui.console" version="3.5.100" match="compatible"/>
-      <import plugin="org.eclipse.xtext" version="2.25.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.builder" version="2.25.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.common.types" version="2.25.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.common.types.ui" version="2.25.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.ui" version="2.25.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.ui.codetemplates.ui" version="2.25.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.ui.shared" version="2.25.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.util" version="2.25.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.xbase.lib" version="2.14.0" match="compatible"/>
-      <import plugin="org.osate.aadl2" version="5.0.0" match="compatible"/>
-      <import plugin="org.osate.aadl2.instantiation" version="1.0.1"/>
-      <import plugin="org.osate.aadl2.modelsupport" version="7.0.0" match="compatible"/>
-      <import plugin="org.osate.annexsupport" version="4.0.0" match="compatible"/>
-      <import plugin="org.osate.pluginsupport" version="2.0.0"/>
-      <import plugin="org.osate.resolute" version="1.0.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.builder" version="2.25.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates.ui" version="2.25.0" match="compatible"/>
+      <import plugin="org.eclipse.compare" version="3.7.0" match="compatible"/>
       <import plugin="org.osate.results" version="3.0.0" match="compatible"/>
-      <import plugin="org.osate.ui" version="2.0.0"/>
-      <import plugin="org.osate.xtext.aadl2" version="7.0.0" match="compatible"/>
-      <import plugin="org.osate.xtext.aadl2.errormodel" version="2.0.0"/>
-      <import plugin="org.osate.xtext.aadl2.properties" version="3.0.0" match="compatible"/>
+      <import plugin="org.osate.resolute" version="1.0.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.core"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.commands.core"/>
+      <import plugin="org.eclipse.gmf.runtime.notation"/>
+      <import plugin="org.eclipse.emf" version="2.6.0" match="compatible"/>
+      <import plugin="org.osate.aadl2.modelsupport" version="7.0.0" match="compatible"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.xtext.common.types.ui" version="2.25.0" match="compatible"/>
       <import plugin="org.osate.xtext.aadl2.properties.ui" version="4.0.0" match="compatible"/>
       <import plugin="org.osate.xtext.aadl2.ui" version="7.0.0" match="compatible"/>
+      <import feature="org.osate.core.feature" version="11.0.0" match="compatible"/>
+      <import plugin="org.osate.ui" version="6.0.0" match="compatible"/>
+      <import plugin="org.osate.aadl2.instantiation" version="3.0.0" match="compatible"/>
+      <import plugin="org.osate.annexsupport" version="4.0.0" match="compatible"/>
+      <import plugin="org.osate.xtext.aadl2.errormodel" version="7.0.0" match="compatible"/>
+      <import plugin="org.osate.pluginsupport" version="7.0.0" match="compatible"/>
    </requires>
 
    <plugin
          id="com.rockwellcollins.atc.resolute"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.analysis"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.cli"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.stringlib"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.fileaccess"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.shellcmd"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.ui"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
    <plugin
          id="org.osate.resolute.help"
