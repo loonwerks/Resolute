@@ -327,7 +327,10 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 	public void checkClaimAssumption(ClaimAssumption claimAssumption) {
 		checkDuplicateAttributeNames(claimAssumption);
 	}
-	
+
+	/**
+	 * @since 5.0
+	 */
 	@Check
 	public void checkClaimStrategy(ClaimStrategy claimStrategy) {
 		checkDuplicateAttributeNames(claimStrategy);

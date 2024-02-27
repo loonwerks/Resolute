@@ -2,10 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Resolute front-end
 Bundle-Vendor: Collins Aerospace, Inc.
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-SymbolicName: com.rockwellcollins.atc.resolute.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: com.rockwellcollins.atc.resolute;bundle-version="[4.0.0,5.0.0)";visibility:=reexport,
+Require-Bundle: com.rockwellcollins.atc.resolute;bundle-version="[5.0.0,6.0.0)";visibility:=reexport,
  org.eclipse.xtext.ui;bundle-version="[2.25.0,3.0.0)",
  org.eclipse.ui.editors;bundle-version="[3.5.0,4.0.0)",
  org.eclipse.ui.ide;bundle-version="[3.5.0,4.0.0)",
@@ -24,15 +24,15 @@ Require-Bundle: com.rockwellcollins.atc.resolute;bundle-version="[4.0.0,5.0.0)";
  org.osate.xtext.aadl2.ui;bundle-version="[7.0.0,8.0.0)"
 Import-Package: org.apache.log4j;version="[1.2.0,2.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: com.rockwellcollins.atc.resolute.parsing;version="4.0.0",
- com.rockwellcollins.atc.resolute.ui;version="4.0.0",
- com.rockwellcollins.atc.resolute.ui.contentassist;version="4.0.0",
- com.rockwellcollins.atc.resolute.ide.contentassist.antlr;version="4.0.0",
- com.rockwellcollins.atc.resolute.ide.contentassist.antlr.internal;version="4.0.0",
- com.rockwellcollins.atc.resolute.ui.internal;version="4.0.0",
- com.rockwellcollins.atc.resolute.ui.quickfix;version="4.0.0",
- com.rockwellcollins.atc.resolute.unparsing;version="4.0.0",
- com.rockwellcollins.atc.resolute.ide.contentassist.antlr.lexer;version="4.0.0"
+Export-Package: com.rockwellcollins.atc.resolute.parsing;version="5.0.0",
+ com.rockwellcollins.atc.resolute.ui;version="5.0.0",
+ com.rockwellcollins.atc.resolute.ui.contentassist;version="5.0.0",
+ com.rockwellcollins.atc.resolute.ide.contentassist.antlr;version="5.0.0",
+ com.rockwellcollins.atc.resolute.ide.contentassist.antlr.internal;version="5.0.0",
+ com.rockwellcollins.atc.resolute.ui.internal;version="5.0.0",
+ com.rockwellcollins.atc.resolute.ui.quickfix;version="5.0.0",
+ com.rockwellcollins.atc.resolute.unparsing;version="5.0.0",
+ com.rockwellcollins.atc.resolute.ide.contentassist.antlr.lexer;version="5.0.0"
 Bundle-Activator: com.rockwellcollins.atc.resolute.ui.internal.ResoluteActivator
 Eclipse-BuddyPolicy: registered
 Automatic-Module-Name: com.rockwellcollins.atc.resolute.ui
