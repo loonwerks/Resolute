@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.rockwellcollins.atc.resolute</groupId>
 	<artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-	<version>3.0.2-SNAPSHOT</version>
+	<version>4.1.0.release</version>
 	<packaging>pom</packaging>
 
 	<properties>

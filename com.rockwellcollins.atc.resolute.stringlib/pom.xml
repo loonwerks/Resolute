@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.rockwellcollins.atc.resolute</groupId>
     <artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-    <version>3.0.2-SNAPSHOT</version>
+    <version>4.1.0.release</version>
   </parent>
   <artifactId>com.rockwellcollins.atc.resolute.stringlib</artifactId>
   <version>3.0.0-SNAPSHOT</version>
