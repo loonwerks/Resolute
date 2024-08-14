@@ -11,6 +11,7 @@
   <packaging>eclipse-plugin</packaging>
   <build>
     <plugins>
+      <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -31,6 +32,28 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      -->
+      <plugin>
+        <groupId>com.ruleoftech</groupId>
+        <artifactId>markdown-page-generator-plugin</artifactId>
+        <version>2.4.2</version>
+        <executions>
+          <execution>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <inputDirectory>${project.basedir}/src</inputDirectory>
+          <outputDirectory>${project.basedir}/doc-gen/html/</outputDirectory>
+          <recursiveInput>true</recursiveInput>
+          <copyDirectories>guide/images,reference/images</copyDirectories>
+          <pegdownExtensions>TABLES,FENCED_CODE_BLOCKS,ANCHORLINKS,AUTOLINKS</pegdownExtensions>
+          <removeMarkdownHeaders>true</removeMarkdownHeaders>
+        </configuration>
       </plugin>
     </plugins>
   </build>
