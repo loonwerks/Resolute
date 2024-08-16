@@ -39,7 +39,7 @@ public class RealValue extends ResoluteValue {
 
 	@Override
 	public int hashCode() {
-		return new Double(value).hashCode();
+		return Double.valueOf(value).hashCode();
 	}
 
 	@Override

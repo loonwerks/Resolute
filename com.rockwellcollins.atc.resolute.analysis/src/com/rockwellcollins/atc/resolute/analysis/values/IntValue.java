@@ -44,7 +44,7 @@ public class IntValue extends ResoluteValue {
 
 	@Override
 	public int hashCode() {
-		return new Long(value).hashCode();
+		return Long.valueOf(value).hashCode();
 	}
 
 	@Override
