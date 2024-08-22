@@ -55,6 +55,68 @@
           <removeMarkdownHeaders>true</removeMarkdownHeaders>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+            <execution>
+                <id>generate-user-guide-toc</id>
+                <phase>process-resources</phase>
+                <goals>
+                    <goal>exec</goal>
+                </goals>
+                <configuration>
+                    <executable>python</executable>
+                    <arguments>
+                        <argument>src/toc-gen/tocgen.py</argument>
+                        <argument>--title</argument>
+                        <argument>Resolute User Guide</argument>
+                        <argument>--output</argument>
+                        <argument>doc-gen/html/guide/user_guide_toc.xml</argument>
+                        <argument>doc-gen/html/guide/user_guide.html</argument>
+                    </arguments>
+                </configuration>
+            </execution>
+            <execution>
+                <id>generate-reference-toc</id>
+                <phase>process-resources</phase>
+                <goals>
+                    <goal>exec</goal>
+                </goals>
+                <configuration>
+                    <executable>python</executable>
+                    <arguments>
+                        <argument>src/toc-gen/tocgen.py</argument>
+                        <argument>--title</argument>
+                        <argument>Resolute Reference Guide</argument>
+                        <argument>--output</argument>
+                        <argument>doc-gen/html/reference/reference_toc.xml</argument>
+                        <argument>doc-gen/html/reference/reference.html</argument>
+                    </arguments>
+                </configuration>
+            </execution>
+        </executions>
+      </plugin>
     </plugins>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}/doc-gen</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
   </build>
 </project>
