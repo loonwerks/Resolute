@@ -79,7 +79,7 @@ def build_element_tree(sections, topic_file, title):
     def build_element_tree_rec(parent, sections):
         for section in sections:
             subelement = ET.SubElement(parent, 'topic')
-            subelement.attrib['label'] = section.get('id', '<unnamed>')
+            subelement.attrib['label'] = section.get('data', '<unnamed>')
             subelement.attrib['href'] = section.get('href', '#MISSING')
             build_element_tree_rec(subelement, section['subsections'])
     root = ET.Element('toc')
