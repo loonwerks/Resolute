@@ -112,7 +112,8 @@ public class ResoluteStringFunctions extends ResoluteExternalFunctionLibrary {
 			assert (arg1.isInt());
 			assert (arg2.isInt());
 			return new StringValue(
-					arg0.getString().substring(new Long(arg1.getInt()).intValue(), new Long(arg2.getInt()).intValue()));
+					arg0.getString()
+							.substring(Long.valueOf(arg1.getInt()).intValue(), Long.valueOf(arg2.getInt()).intValue()));
 		}
 		case "tolowercase": {
 			ResoluteValue arg0 = args.get(0);

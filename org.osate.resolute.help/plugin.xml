@@ -4,14 +4,14 @@
    <extension
          point="org.eclipse.help.toc">
       <toc
-            file="doc-gen/html/user_guide_toc.xml"
+            file="doc-gen/html/guide/user_guide_toc.xml"
             primary="true">
       </toc>
    </extension>
    <extension
          point="org.eclipse.help.toc">
       <toc
-            file="doc-gen/html/reference_toc.xml"
+            file="doc-gen/html/reference/reference_toc.xml"
             primary="true">
       </toc>
    </extension>

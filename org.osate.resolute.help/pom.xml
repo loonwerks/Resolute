@@ -11,6 +11,7 @@
   <packaging>eclipse-plugin</packaging>
   <build>
     <plugins>
+      <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -32,6 +33,90 @@
           </execution>
         </executions>
       </plugin>
+      -->
+      <plugin>
+        <groupId>com.ruleoftech</groupId>
+        <artifactId>markdown-page-generator-plugin</artifactId>
+        <version>2.4.2</version>
+        <executions>
+          <execution>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <inputDirectory>${project.basedir}/src</inputDirectory>
+          <outputDirectory>${project.basedir}/doc-gen/html/</outputDirectory>
+          <recursiveInput>true</recursiveInput>
+          <copyDirectories>guide/images,reference/images</copyDirectories>
+          <pegdownExtensions>TABLES,FENCED_CODE_BLOCKS,ANCHORLINKS,AUTOLINKS</pegdownExtensions>
+          <removeMarkdownHeaders>true</removeMarkdownHeaders>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+            <execution>
+                <id>generate-user-guide-toc</id>
+                <phase>process-resources</phase>
+                <goals>
+                    <goal>exec</goal>
+                </goals>
+                <configuration>
+                    <executable>python</executable>
+                    <arguments>
+                        <argument>src/toc-gen/tocgen.py</argument>
+                        <argument>--title</argument>
+                        <argument>Resolute User Guide</argument>
+                        <argument>--output</argument>
+                        <argument>doc-gen/html/guide/user_guide_toc.xml</argument>
+                        <argument>doc-gen/html/guide/user_guide.html</argument>
+                    </arguments>
+                </configuration>
+            </execution>
+            <execution>
+                <id>generate-reference-toc</id>
+                <phase>process-resources</phase>
+                <goals>
+                    <goal>exec</goal>
+                </goals>
+                <configuration>
+                    <executable>python</executable>
+                    <arguments>
+                        <argument>src/toc-gen/tocgen.py</argument>
+                        <argument>--title</argument>
+                        <argument>Resolute Reference Guide</argument>
+                        <argument>--output</argument>
+                        <argument>doc-gen/html/reference/reference_toc.xml</argument>
+                        <argument>doc-gen/html/reference/reference.html</argument>
+                    </arguments>
+                </configuration>
+            </execution>
+        </executions>
+      </plugin>
     </plugins>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}/doc-gen</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
   </build>
 </project>
