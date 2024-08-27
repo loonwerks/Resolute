@@ -477,4 +477,10 @@
 		</pluginRepository>
 	</pluginRepositories>
 
+	<scm>
+		<connection>scm:git:https://github.com/loonwerks/Resolute.git</connection>
+		<developerConnection>scm:git:https://github.com/loonwerks/Resolute.git</developerConnection>
+		<tag>4.0.0-RELEASE</tag>
+	</scm>
+
 </project>
