@@ -4,10 +4,10 @@
   <parent>
     <groupId>com.rockwellcollins.atc.resolute</groupId>
     <artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-    <version>4.1.0-SNAPSHOT</version>
+    <version>4.1.0</version>
   </parent>
   <artifactId>org.osate.resolute.help</artifactId>
-  <version>3.0.0-SNAPSHOT</version>
+  <version>3.0.0</version>
   <packaging>eclipse-plugin</packaging>
   <build>
     <plugins>
@@ -26,7 +26,7 @@
             <configuration>
               <target>
                 <ant antfile="${basedir}/build_docs.xml">
-                  <target name="build-help"/>
+                  <target name="build-help" />
                 </ant>
               </target>
             </configuration>

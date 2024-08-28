@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Resolute Tests
 Bundle-Vendor: Collins Aerospace, Inc.
-Bundle-Version: 4.0.1.qualifier
+Bundle-Version: 4.0.1
 Bundle-SymbolicName: com.rockwellcollins.atc.resolute.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.rockwellcollins.atc.resolute;bundle-version="[5.0.0,6.0.0)",
