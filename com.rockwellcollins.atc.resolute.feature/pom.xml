@@ -4,10 +4,10 @@
   <parent>
     <groupId>com.rockwellcollins.atc.resolute</groupId>
     <artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-    <version>4.1.0</version>
+    <version>4.1.1-SNAPSHOT</version>
   </parent>
   
-  <version>4.1.1-SNAPSHOT</version>
+  <version>4.1.100-SNAPSHOT</version>
   <artifactId>com.rockwellcollins.atc.resolute.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 
