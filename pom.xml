@@ -16,8 +16,8 @@
 		<systemProperties />
 		<tycho.testArgLine />
 		<eclipse.mirror>http://download.eclipse.org</eclipse.mirror>
-		<eclipse.version>2023-03</eclipse.version>
-		<xtext-version>2.30.0</xtext-version>
+		<eclipse.version>2023-12</eclipse.version>
+		<xtext-version>2.33.0</xtext-version>
 	</properties>
 
 	<modules>
@@ -449,7 +449,7 @@
 		<repository>
 			<id>Osate2</id>
 			<layout>p2</layout>
-			<url>https://osate-build.sei.cmu.edu/download/osate/stable/2.13.0-vfinal/updates/</url>
+			<url>https://osate-build.sei.cmu.edu/download/osate/stable/2.14.0-vfinal/updates/</url>
 		</repository>
 		<repository>
 			<id>codehaus-snapshots</id>
