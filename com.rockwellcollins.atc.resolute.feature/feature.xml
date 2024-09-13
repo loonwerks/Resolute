@@ -2,7 +2,7 @@
 <feature
       id="com.rockwellcollins.atc.resolute.feature"
       label="Resolute"
-      version="4.1.100.qualifier"
+      version="4.1.100"
       provider-name="Collins Aerospace, Inc.">
 
    <description>
@@ -86,50 +86,34 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
    <plugin
          id="com.rockwellcollins.atc.resolute"
-         download-size="0"
-         install-size="0"
          version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.analysis"
-         download-size="0"
-         install-size="0"
          version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.cli"
-         download-size="0"
-         install-size="0"
          version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.stringlib"
-         download-size="0"
-         install-size="0"
          version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.fileaccess"
-         download-size="0"
-         install-size="0"
          version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.shellcmd"
-         download-size="0"
-         install-size="0"
          version="0.0.0"/>
 
    <plugin
          id="com.rockwellcollins.atc.resolute.ui"
-         download-size="0"
-         install-size="0"
          version="0.0.0"/>
 
    <plugin
          id="org.osate.resolute.help"
-         download-size="0"
-         install-size="0"
          version="0.0.0"/>
 
 </feature>

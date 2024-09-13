@@ -4,10 +4,10 @@
   <parent>
     <groupId>com.rockwellcollins.atc.resolute</groupId>
     <artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-    <version>4.1.1-SNAPSHOT</version>
+    <version>4.1.1</version>
   </parent>
   <artifactId>org.osate.resolute.help</artifactId>
-  <version>3.0.100-SNAPSHOT</version>
+  <version>3.0.100</version>
   <packaging>eclipse-plugin</packaging>
   <build>
     <plugins>
