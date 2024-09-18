@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Shell Command Analysis
 Bundle-SymbolicName: com.rockwellcollins.atc.resolute.shellcmd;singleton:=true
-Bundle-Version: 1.0.100
+Bundle-Version: 1.0.101.qualifier
 Bundle-Activator: com.rockwellcollins.atc.resolute.shellcmd.Activator
 Bundle-Vendor: Collins Aerospace
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.20.0,4.0.0)",

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Resolute Schedulabilty Analysis
 Bundle-SymbolicName: com.rockwellcollins.atc.resolute.schedule.analysis;singleton:=true
-Bundle-Version: 3.0.100
+Bundle-Version: 3.0.101.qualifier
 Bundle-Activator: com.rockwellcollins.atc.resolute.schedule.analysis.Activator
 Bundle-Vendor: Collins Aerospace, Inc.
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.20.0,4.0.0)",
