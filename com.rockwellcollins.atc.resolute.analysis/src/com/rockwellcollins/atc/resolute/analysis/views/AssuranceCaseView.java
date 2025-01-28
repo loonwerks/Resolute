@@ -35,6 +35,7 @@ import org.eclipse.xtext.ui.editor.GlobalURIEditorOpener;
 
 import com.google.inject.Inject;
 import com.rockwellcollins.atc.resolute.analysis.export.AdvocateExport;
+import com.rockwellcollins.atc.resolute.analysis.export.JsonExport;
 import com.rockwellcollins.atc.resolute.analysis.export.ResoluteDOTUtils;
 import com.rockwellcollins.atc.resolute.analysis.results.ClaimResult;
 import com.rockwellcollins.atc.resolute.analysis.results.FailResult;
@@ -111,6 +112,7 @@ public class AssuranceCaseView extends ViewPart {
         manager.add(createExportDOTAction(claim));
         manager.add(createExportCAZAction(claim));
 		manager.add(createAdvocateExportAction(claim));
+		manager.add(createJsonExportAction(claim));
         return manager;
     }
 
@@ -148,6 +150,20 @@ public class AssuranceCaseView extends ViewPart {
 		};
 	}
 
+	private IAction createJsonExportAction(final ClaimResult claim) {
+		return new Action("Export to JSON") {
+			@Override
+			public void run() {
+				try {
+					JsonExport.export(claim);
+				} catch (Throwable t) {
+					MessageDialog.openError(treeViewer.getControl().getShell(), "Error during export to JSON",
+							t.getMessage());
+					t.printStackTrace();
+				}
+			}
+		};
+	}
 
     private IAction createExportCAZAction(final ClaimResult claim) {
         String name = "Export to CertWare";
