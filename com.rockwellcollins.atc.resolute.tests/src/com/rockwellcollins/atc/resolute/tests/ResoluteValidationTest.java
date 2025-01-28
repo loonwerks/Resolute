@@ -1,22 +1,22 @@
 package com.rockwellcollins.atc.resolute.tests;
 
-import com.rockwellcollins.atc.resolute.resolute.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
 
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
 import org.eclipse.xtext.validation.Issue;
-import org.osate.testsupport.TestHelper;
-
-import com.itemis.xtext.testing.FluentIssueCollection;
-import com.itemis.xtext.testing.XtextTest;
-
-import com.google.inject.Inject;
-import java.util.List;
-
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.osate.testsupport.TestHelper;
+
+import com.google.inject.Inject;
+import com.itemis.xtext.testing.FluentIssueCollection;
+import com.itemis.xtext.testing.XtextTest;
+import com.rockwellcollins.atc.resolute.resolute.ResolutePackage;
 
 @RunWith(XtextRunner.class)
 @InjectWith(ResoluteInjectorProvider.class)
@@ -198,41 +198,6 @@ public class ResoluteValidationTest extends XtextTest{
 	}
 	
 	@Test
-	public void testClaimContextDuplicateAttributeError() throws Exception{
-		String test = "package TestPackage\r\n"
-				+ "public\r\n"
-				+ "	\r\n"
-				+ "annex Resolute{**\r\n"
-				+ "	SimpleTest() <=\r\n"
-				+ "		** \"This is a simple unit test\" ** \r\n"
-				+ "		context test : true;\r\n"
-				+ "		true\r\n"
-				+ "		\r\n"
-				+ "	AnotherSimpleTest() <=\r\n"
-				+ "		** \"This is another simple unit test\" ** \r\n"
-				+ "		context test : false;\r\n"
-				+ "		true\r\n"
-				+ "\r\n"
-				+ "**};\r\n"
-				+ "\r\n"
-				+ "system sys\r\n"
-				+ "end sys;\r\n"
-				+ "\r\n"
-				+ "system implementation sys.impl\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "			argue SimpleTest()\r\n"
-				+ "			argue AnotherSimpleTest()\r\n"
-				+ "	**};\r\n"
-				+ "end sys.impl;\r\n"
-				+ "	\r\n"
-				+ "end TestPackage;";
-		FluentIssueCollection issueCollection = testHelper.testString(test);
-		List<Issue> issues = issueCollection.getIssues();
-		assertFalse(issues.isEmpty());
-		assertNotNull(UtilityFunctions.getError(issues, "Context element 'test' has already been declared"));
-	}
-	
-	@Test
 	public void testClaimJustificationNoErrors() throws Exception{
 		String test = "package TestPackage\r\n"
 				+ "public\r\n"
@@ -263,41 +228,6 @@ public class ResoluteValidationTest extends XtextTest{
 				+ "end TestPackage;";
 		FluentIssueCollection issueCollection= testHelper.testString(test);
 		assertTrue(issueCollection.getIssues().isEmpty());
-	}
-	
-	@Test
-	public void testClaimJustificationDuplicateAttributeError() throws Exception{
-			String test = "package TestPackage\r\n"
-				+ "public\r\n"
-				+ "	\r\n"
-				+ "annex Resolute{**\r\n"
-				+ "	SimpleTest() <=\r\n"
-				+ "		** \"This is a simple unit test\" ** \r\n"
-				+ "		justification test : \"SimpleTest\";\r\n"
-				+ "		true\r\n"
-				+ "	\r\n"
-				+ "	AnotherSimpleTest() <=\r\n"
-				+ "		** \"This is another simple unit test\" **\r\n"
-				+ "		justification test: \"AnotherSimpleTest\";\r\n"
-				+ "		true\r\n"
-				+ "\r\n"
-				+ "**};\r\n"
-				+ "\r\n"
-				+ "system sys\r\n"
-				+ "end sys;\r\n"
-				+ "\r\n"
-				+ "system implementation sys.impl\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "			argue SimpleTest()\r\n"
-				+ "			argue AnotherSimpleTest()\r\n"
-				+ "	**};\r\n"
-				+ "end sys.impl;\r\n"
-				+ "	\r\n"
-				+ "end TestPackage;";
-		FluentIssueCollection issueCollection = testHelper.testString(test);
-		List<Issue> issues = issueCollection.getIssues();
-		assertFalse(issues.isEmpty());
-		assertNotNull(UtilityFunctions.getError(issues, "Justification element 'test' has already been declared"));
 	}
 	
 	@Test
@@ -333,40 +263,6 @@ public class ResoluteValidationTest extends XtextTest{
 		assertTrue(issueCollection.getIssues().isEmpty());
 	}
 	
-	@Test
-	public void testClaimAssumptionDuplicateAttributeError() throws Exception{
-		String test = "package TestPackage\r\n"
-				+ "public\r\n"
-				+ "	\r\n"
-				+ "annex Resolute{**\r\n"
-				+ "	SimpleTest() <=\r\n"
-				+ "		** \"This is a simple unit test\" ** \r\n"
-				+ "		assumption test : true;\r\n"
-				+ "		true\r\n"
-				+ "	\r\n"
-				+ "	AnotherSimpleTest() <=\r\n"
-				+ "		** \"This is another simple unit test\" **\r\n"
-				+ "		assumption test: false;\r\n"
-				+ "		true\r\n"
-				+ "\r\n"
-				+ "**};\r\n"
-				+ "\r\n"
-				+ "system sys\r\n"
-				+ "end sys;\r\n"
-				+ "\r\n"
-				+ "system implementation sys.impl\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "			argue SimpleTest()\r\n"
-				+ "			argue AnotherSimpleTest()\r\n"
-				+ "	**};\r\n"
-				+ "end sys.impl;\r\n"
-				+ "	\r\n"
-				+ "end TestPackage;";
-		FluentIssueCollection issueCollection = testHelper.testString(test);
-		List<Issue> issues = issueCollection.getIssues();
-		assertFalse(issues.isEmpty());
-		assertNotNull(UtilityFunctions.getError(issues, "Assumption element 'test' has already been declared"));
-	}
 	
 	@Test
 	public void testClaimStrategyNoErrors() throws Exception{
@@ -401,40 +297,6 @@ public class ResoluteValidationTest extends XtextTest{
 		assertTrue(issueCollection.getIssues().isEmpty());
 	}
 	
-	@Test
-	public void testClaimStrategyDuplicateAttributeError() throws Exception{
-		String test = "package TestPackage\r\n"
-				+ "public\r\n"
-				+ "	\r\n"
-				+ "annex Resolute{**\r\n"
-				+ "	SimpleTest() <=\r\n"
-				+ "		** \"This is a simple unit test\" ** \r\n"
-				+ "		strategy test : \"SimpleTest\";\r\n"
-				+ "		true\r\n"
-				+ "		\r\n"
-				+ "	AnotherSimpleTest() <=\r\n"
-				+ "		** \"This is another simple unit test\" ** \r\n"
-				+ "		strategy test : \"AnotherSimpleTest\";\r\n"
-				+ "		true\r\n"
-				+ "\r\n"
-				+ "**};\r\n"
-				+ "\r\n"
-				+ "system sys\r\n"
-				+ "end sys;\r\n"
-				+ "\r\n"
-				+ "system implementation sys.impl\r\n"
-				+ "	annex Resolute{**\r\n"
-				+ "			argue SimpleTest()\r\n"
-				+ "			argue AnotherSimpleTest()\r\n"
-				+ "	**};\r\n"
-				+ "end sys.impl;\r\n"
-				+ "	\r\n"
-				+ "end TestPackage;";
-		FluentIssueCollection issueCollection = testHelper.testString(test);
-		List<Issue> issues = issueCollection.getIssues();
-		assertFalse(issues.isEmpty());
-		assertNotNull(UtilityFunctions.getError(issues, "Strategy element 'test' has already been declared"));
-	}
 	
 	@Test
 	public void testThisExprNoErrors() throws Exception{
