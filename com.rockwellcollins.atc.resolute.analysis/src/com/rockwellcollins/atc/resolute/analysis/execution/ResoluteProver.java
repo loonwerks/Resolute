@@ -276,17 +276,6 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 
 		claimCallContexts.add(context);
 
-		// Copy ClaimContexts from calling claim
-		Map<NamedElement, ResoluteValue> claimContexts = new HashMap<>();
-		if (!varStack.isEmpty()) {
-			for (Map.Entry<NamedElement, ResoluteValue> var : varStack.peek().entrySet()) {
-				if (var.getKey() instanceof ClaimContext) {
-					claimContexts.put(var.getKey(), var.getValue());
-				}
-			}
-		}
-		varStack.push(claimContexts);
-
 		varStack.peek().putAll(ResoluteEvaluator.pairArguments(funcDef.getArgs(), argVals));
 
 		// Add any ClaimContexts and ClaimAssumption from this claim

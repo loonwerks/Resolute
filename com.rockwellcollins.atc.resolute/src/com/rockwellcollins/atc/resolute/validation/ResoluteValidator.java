@@ -24,19 +24,15 @@
 package com.rockwellcollins.atc.resolute.validation;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Stack;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.validation.Check;
 import org.osate.aadl2.AadlBoolean;
 import org.osate.aadl2.AadlInteger;
@@ -73,7 +69,6 @@ import org.osate.aadl2.ThreadGroupType;
 import org.osate.aadl2.ThreadType;
 import org.osate.aadl2.VirtualBusType;
 import org.osate.aadl2.VirtualProcessorType;
-import org.osate.aadl2.modelsupport.scoping.Aadl2GlobalScopeUtil;
 import org.osate.aadl2.modelsupport.util.AadlUtil;
 
 import com.rockwellcollins.atc.resolute.analysis.external.EvaluateLibraryTypeExtension;
@@ -90,7 +85,6 @@ import com.rockwellcollins.atc.resolute.resolute.CheckStatement;
 import com.rockwellcollins.atc.resolute.resolute.ClaimAssumption;
 import com.rockwellcollins.atc.resolute.resolute.ClaimBody;
 import com.rockwellcollins.atc.resolute.resolute.ClaimContext;
-import com.rockwellcollins.atc.resolute.resolute.ClaimJustification;
 import com.rockwellcollins.atc.resolute.resolute.ClaimStrategy;
 import com.rockwellcollins.atc.resolute.resolute.ConstantDefinition;
 import com.rockwellcollins.atc.resolute.resolute.DefinitionBody;
@@ -137,9 +131,6 @@ import com.rockwellcollins.atc.resolute.resolute.UndevelopedExpr;
 public class ResoluteValidator extends AbstractResoluteValidator {
 
 	// TODO: How do we handle arithmetic operations of complex types (e.g., Time in ms)?
-
-	// Map a Function to the Claim Contexts that are visible in it
-	Map<FunctionDefinition, Set<String>> contextScope = new HashMap<>();
 
 	@Override
 	protected List<EPackage> getEPackages() {
@@ -233,7 +224,6 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 		// If IdExpr is in a function definition
 		if (idFuncDef != null) {
 			boolean inResoluteAnnex = false;
-			NamedElement refFuncDef = null; // Resolute function containing the referenced element
 			parent = refElement;
 
 			while (parent.eContainer() != null) {
@@ -242,7 +232,6 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 					inResoluteAnnex = true;
 					break;
 				} else if (parent instanceof FunctionDefinition) {
-					refFuncDef = (FunctionDefinition) parent;
 					inResoluteAnnex = true;
 					break;
 				}
@@ -257,128 +246,6 @@ public class ResoluteValidator extends AbstractResoluteValidator {
 		}
 	}
 
-	/**
-	 * Recursive function to build a scope for a ClaimContext by compiling the set of FunctionDefinitions
-	 * that have visibility to the ClaimContext
-	 * @param expr
-	 * @return
-	 */
-	private Set<FunctionDefinition> buildContextScope(Expr expr) {
-		Set<FunctionDefinition> funcDefs = new HashSet<>();
-		if (expr instanceof BinaryExpr) {
-			BinaryExpr binaryExpr = (BinaryExpr) expr;
-			funcDefs = buildContextScope(binaryExpr.getLeft());
-			funcDefs.addAll(buildContextScope(binaryExpr.getRight()));
-		} else if (expr instanceof IfThenElseExpr) {
-			IfThenElseExpr ifThenElseExpr = (IfThenElseExpr) expr;
-			funcDefs = buildContextScope(ifThenElseExpr.getCond());
-			funcDefs.addAll(buildContextScope(ifThenElseExpr.getThen()));
-			funcDefs.addAll(buildContextScope(ifThenElseExpr.getElse()));
-		} else if (expr instanceof QuantifiedExpr) {
-			QuantifiedExpr quantifiedExpr = (QuantifiedExpr) expr;
-			funcDefs = buildContextScope(quantifiedExpr.getExpr());
-		} else if (expr instanceof FnCallExpr) {
-			FnCallExpr fnCallExpr = (FnCallExpr) expr;
-			if (fnCallExpr.getFn().getBody() instanceof ClaimBody) {
-				funcDefs.add(fnCallExpr.getFn());
-				funcDefs.addAll(buildContextScope(fnCallExpr.getFn().getBody().getExpr()));
-			}
-		}
-		return funcDefs;
-	}
-
-	@Check
-	public void checkClaimContext(ClaimContext claimContext) {
-
-		if (claimContext.getName() == null) {
-			return;
-		}
-
-		// Get containing claim
-		EObject parent = claimContext;
-		FunctionDefinition funcDef = null;
-		while (parent != null) {
-			parent = parent.eContainer();
-			if (parent instanceof FunctionDefinition) {
-				funcDef = (FunctionDefinition) parent;
-				break;
-			}
-		}
-
-		checkDuplicateAttributeNames(claimContext);
-
-		// Build the scope for this context
-		Set<FunctionDefinition> funcDefs = buildContextScope(funcDef.getBody().getExpr());
-		funcDefs.add(funcDef);
-		for (FunctionDefinition fd : funcDefs) {
-			if (contextScope.get(fd) == null) {
-				contextScope.put(fd, new HashSet<>());
-			}
-			contextScope.get(fd).add(claimContext.getName());
-		}
-	}
-
-	@Check
-	public void checkClaimJustification(ClaimJustification claimJustification) {
-		checkDuplicateAttributeNames(claimJustification);
-	}
-
-	@Check
-	public void checkClaimAssumption(ClaimAssumption claimAssumption) {
-		checkDuplicateAttributeNames(claimAssumption);
-	}
-
-	/**
-	 * @since 5.0
-	 */
-	@Check
-	public void checkClaimStrategy(ClaimStrategy claimStrategy) {
-		checkDuplicateAttributeNames(claimStrategy);
-	}
-
-	private void checkDuplicateAttributeNames(NamedElement namedElement) {
-
-		if (namedElement.getName() == null) {
-			return;
-		}
-
-		EObject parent = namedElement;
-		FunctionDefinition funcDef = null;
-		while (parent != null) {
-			parent = parent.eContainer();
-			if (parent instanceof FunctionDefinition) {
-				funcDef = (FunctionDefinition) parent;
-				break;
-			}
-		}
-		List<EObject> claims = Aadl2GlobalScopeUtil.getAll(funcDef, ResolutePackage.eINSTANCE.getFunctionDefinition());
-		claims.addAll(EcoreUtil2.getAllContentsOfType(funcDef.eContainer(), FunctionDefinition.class));
-		for (EObject claim : claims) {
-			FunctionDefinition functionDefinition = (FunctionDefinition) claim;
-			if (!funcDef.getName().equalsIgnoreCase(functionDefinition.getName())
-					&& functionDefinition.getBody() instanceof ClaimBody) {
-				ClaimBody claimBody = (ClaimBody) functionDefinition.getBody();
-				for (NamedElement attr : claimBody.getAttributes()) {
-					if (attr.getName() == null) {
-						continue;
-					} else if (attr.getName().equalsIgnoreCase(namedElement.getName())) {
-						String attributeType = "";
-						if (attr instanceof ClaimJustification) {
-							attributeType = "Justification element ";
-						} else if (attr instanceof ClaimAssumption) {
-							attributeType = "Assumption element ";
-						} else if (attr instanceof ClaimContext) {
-							attributeType = "Context element ";
-						} else if (attr instanceof ClaimStrategy) {
-							attributeType = "Strategy element ";
-						}
-						error(namedElement, attributeType + "'" +namedElement.getName() + "' has already been declared");
-						break;
-					}
-				}
-			}
-		}
-	}
 
 	@Check
 	public void checkLintStatement(LintStatement lintStmt) {
