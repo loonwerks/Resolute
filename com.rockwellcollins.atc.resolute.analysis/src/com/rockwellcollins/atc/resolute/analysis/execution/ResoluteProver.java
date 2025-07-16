@@ -276,7 +276,7 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 
 		claimCallContexts.add(context);
 
-		varStack.peek().putAll(ResoluteEvaluator.pairArguments(funcDef.getArgs(), argVals));
+		varStack.push(ResoluteEvaluator.pairArguments(funcDef.getArgs(), argVals));
 
 		// Add any ClaimContexts and ClaimAssumption from this claim
 		for (NamedElement claimAttribute : body.getAttributes()) {
@@ -303,6 +303,7 @@ public class ResoluteProver extends ResoluteSwitch<ResoluteResult> {
 		}
 
 		varStack.pop();
+
 		claimCallContexts.remove(context);
 
 		return new ClaimResult(text, subResult, references, funcDef);
