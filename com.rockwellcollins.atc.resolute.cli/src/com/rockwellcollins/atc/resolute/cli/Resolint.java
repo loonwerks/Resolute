@@ -1,6 +1,7 @@
 package com.rockwellcollins.atc.resolute.cli;
 
-import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -15,6 +16,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -99,10 +101,10 @@ public class Resolint implements IApplication {
 		output.setDate((new Date()).toString());
 
 		// Process command line options
-		String workspace = Activator.getWorkspace();
-		String projPath = null;
+		final Path workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toPath();
+		Path projPath = null;
 		String component = null;
-		String outputPath = null;
+		Path outputPath = null;
 		String[] fileArray = null;
 		String[] resolintRulesetList = null;
 		boolean exitOnValidationWarning = false;
@@ -145,7 +147,7 @@ public class Resolint implements IApplication {
 				exit = true;
 				output.setStatus(ToolOutput.INTERRUPTED);
 			}
-			if (workspace == null || workspace.isBlank()) {
+			if (workspace == null) {
 				exit = true;
 				output.setStatus(ToolOutput.INTERRUPTED);
 				output.addStatusMessage("A workspace must be specified.");
@@ -161,15 +163,15 @@ public class Resolint implements IApplication {
 				}
 			}
 			if (commandLine.hasOption(PROJECT)) {
-				projPath = workspace + File.separator + commandLine.getOptionValue(PROJECT);
-				output.setProject(projPath);
+				projPath = workspace.resolve(commandLine.getOptionValue(PROJECT));
+				output.setProject(projPath.toString());
 			} else {
 				output.setStatus(ToolOutput.INTERRUPTED);
 				output.addStatusMessage("Project path must be specified.");
 				exit = true;
 			}
 			if (commandLine.hasOption(OUTPUT)) {
-				outputPath = commandLine.getOptionValue(OUTPUT);
+				outputPath = Paths.get(commandLine.getOptionValue(OUTPUT));
 			}
 			if (commandLine.hasOption(FILES)) {
 				fileArray = commandLine.getOptionValues(FILES);
@@ -233,7 +235,7 @@ public class Resolint implements IApplication {
 
 		// Load project AADL files
 		try {
-			Util.loadProjectAadlFiles(projPath, fileArray, resourceSet);
+			Util.loadProjectAadlFiles(workspace, projPath, fileArray, resourceSet);
 		} catch (Exception e) {
 			output.setStatus(ToolOutput.INTERRUPTED);
 			output.addStatusMessage(e.getMessage());
@@ -368,7 +370,8 @@ public class Resolint implements IApplication {
 		final List<ResoluteResult> checkTrees = new ArrayList<>();
 
 		// Get the resolute subclause for the selected component implementation
-		for (AnnexSubclause annexSubclause : context.getComponentImplementation().getOwnedAnnexSubclauses()) {
+		for (AnnexSubclause annexSubclause : AnnexUtil.getAllAnnexSubclauses(context.getComponentImplementation(),
+				ResolutePackage.eINSTANCE.getResoluteSubclause())) {
 			if (annexSubclause instanceof ResoluteSubclause) {
 				final ResoluteSubclause resoluteSubclause = (ResoluteSubclause) annexSubclause;
 				final ResoluteInterpreter interpreter = new ResoluteInterpreter(context);

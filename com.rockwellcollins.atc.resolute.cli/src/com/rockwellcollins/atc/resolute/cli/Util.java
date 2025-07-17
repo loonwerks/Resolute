@@ -10,7 +10,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,17 +45,16 @@ import com.rockwellcollins.atc.resolute.cli.results.ToolOutput;
 public class Util {
 
 	// Load project specific AADL files
-	public static void loadProjectAadlFiles(String projPath, String[] libArray, XtextResourceSet resourceSet)
+	public static void loadProjectAadlFiles(Path workspace, Path projectPath, String[] libArray,
+			XtextResourceSet resourceSet)
 			throws Exception {
 
-		final List<String> projectFiles = findFiles(Paths.get(projPath), "aadl");
-		final File projectRootDirectory = new File(projPath);
-		final File projectFile = new File(projectRootDirectory, ".project");
-		final String projName = getProjectName(projectFile);
+		final List<File> projectAadlFiles = findFiles(projectPath, "aadl");
+		final File projectFile = projectPath.resolve(".project").toFile();
+		final String projectName = getProjectName(projectFile);
 
-		for (String pFile : projectFiles) {
-			final File projFile = new File(pFile);
-			loadFile(projectRootDirectory, projName, projFile, resourceSet);
+		for (File pFile : projectAadlFiles) {
+			loadFile(projectPath, projectName, pFile, resourceSet);
 		}
 
 		// load user specified AADL libs
@@ -63,16 +65,23 @@ public class Util {
 		}
 
 		// load referenced project AADL files
-		final String projParentPath = projectRootDirectory.getParent();
-		final List<String> refProjNames = new ArrayList<>();
-		getRefProjName(refProjNames, projName, projParentPath);
-		for (String refProjName : refProjNames) {
-			// assuming reference project is at the same level of main project
-			final File refProj = new File(projParentPath, refProjName);
-			final List<String> refProjFileNames = findFiles(refProj.toPath(), "aadl");
-			for (String refProjFileName : refProjFileNames) {
-				final File refProjFile = new File(refProjFileName);
-				loadFile(projectRootDirectory, projName, refProjFile, resourceSet);
+		final Map<String, List<Path>> projectMap = findProjects(workspace);
+		// If there are multiple projects in the workspace with the same name as the project being analyzed,
+		// ignore them by removing from list
+		final ListIterator<Path> i = projectMap.get(projectName).listIterator();
+		while (i.hasNext()) {
+			final Path p = i.next();
+			if (p.compareTo(projectPath) != 0) {
+				i.remove();
+			}
+		}
+
+		final List<Path> refProjPaths = new ArrayList<>();
+		getRefProjPaths(refProjPaths, projectName, projectMap);
+		for (Path refProjPath : refProjPaths) {
+			final List<File> refProjFiles = findFiles(refProjPath, "aadl");
+			for (File refProjFile : refProjFiles) {
+				loadFile(projectPath, projectName, refProjFile, resourceSet);
 			}
 		}
 	}
@@ -110,22 +119,53 @@ public class Util {
 		return new SyntaxValidationResults(numWarnings, numErrors, syntaxValidationIssues);
 	}
 
-	private static List<String> findFiles(Path path, String fileExtension) throws Exception {
+	private static List<File> findFiles(Path path, String fileExtension) throws Exception {
 
 		if (!Files.isDirectory(path)) {
 			throw new IllegalArgumentException("Path must be a directory!");
 		}
 
-		final List<String> result;
+		final List<File> result;
 
 		try (Stream<Path> walk = Files.walk(path)) {
 			result = walk
 					.filter(p -> !Files.isDirectory(p))
-					.map(p -> p.toString().toLowerCase())
-					.filter(f -> f.endsWith(fileExtension))
+					.filter(p -> p.toString().toLowerCase().endsWith(fileExtension))
+					.map(p -> p.toFile())
 					.collect(Collectors.toList());
 		}
 		return result;
+	}
+
+	// Finds all projects in workspace
+	// Returns a map of project name to project path
+	private static Map<String, List<Path>> findProjects(Path workspace) throws Exception {
+
+		if (!Files.isDirectory(workspace)) {
+			throw new IllegalArgumentException("Workspace must be a directory!");
+		}
+
+		final List<Path> projectPaths;
+
+		try (Stream<Path> walk = Files.walk(workspace)) {
+			projectPaths = walk.filter(p -> !Files.isDirectory(p))
+					.filter(f -> f.toString().toLowerCase().endsWith(".project"))
+					.collect(Collectors.toList());
+		}
+
+		final Map<String, List<Path>> projectMap = new HashMap<>();
+		for (Path p : projectPaths) {
+			final String projectName = getProjectName(p.toFile());
+			if (projectMap.containsKey(projectName)) {
+				projectMap.get(projectName).add(p.getParent());
+			} else {
+				final List<Path> projectPath = new ArrayList<>();
+				projectPath.add(p.getParent());
+				projectMap.put(projectName, projectPath);
+			}
+		}
+
+		return projectMap;
 	}
 
 	/** Adapted from
@@ -138,7 +178,7 @@ public class Util {
 	 */
 	//https://github.com/sireum/osate-plugin/blob/master/org.sireum.aadl.osate/src/main/java/org/sireum/aadl/osate/util/AadlProjectUtil.java
 
-	private static Resource loadFile(File projectRootDirectory, String projectName, File file, ResourceSet rs)
+	private static Resource loadFile(Path projectRootDirectory, String projectName, File file, ResourceSet rs)
 			throws Exception {
 
 		final URL url = new URL("file:" + file.getAbsolutePath());
@@ -149,7 +189,7 @@ public class Util {
 			throw new Exception("Error loading file " + file.toString());
 		}
 
-		final String normalizedRelPath = relativize(projectRootDirectory, file).replace("\\", "/");
+		final String normalizedRelPath = relativize(projectRootDirectory.toFile(), file).replace("\\", "/");
 
 		// came up with this uri by comparing what OSATE IDE serialized AIR produces
 		final URI resourceUri = URI.createPlatformResourceURI(projectName + "/" + normalizedRelPath, true);
@@ -210,24 +250,41 @@ public class Util {
 		throw new Exception("Error getting project name from file " + projectFile.toString());
 	}
 
-	// A reference project could depend on another reference project
-	private static void getRefProjName(List<String> list, String project, String parent) throws Exception {
 
-		final File refProj = new File(parent, project);
-		final File projectFile = new File(refProj, ".project");
-		final List<String> refProjList = getReferenceProjectName(projectFile);
-		if (!refProjList.isEmpty()) {
-			for (String refProjName : refProjList) {
-				// avoid duplicate and break circular reference
-				if (!list.contains(refProjName)) {
-					list.add(refProjName);
-					getRefProjName(list, refProjName, parent);
-				}
-            }
+	// Maps reference project names to project paths
+	// Note there could be multiple projects with the same name in the workspace
+	// A reference project could depend on another reference project
+	private static void getRefProjPaths(List<Path> refProjPaths, String projectName, Map<String, List<Path>> projectMap)
+			throws Exception {
+
+		List<Path> projectPaths = projectMap.get(projectName);
+		Path projectPath = null;
+		if (projectPaths.size() == 1) {
+			projectPath = projectPaths.get(0);
+		} else {
+			throw new Exception("Multiple projects found in workspace with same name: " + projectName);
+		}
+		final File projectFile = projectPath.resolve(".project").toFile();
+		final List<String> refProjList = getReferenceProjectNames(projectFile);
+		for (String refProjName : refProjList) {
+
+			projectPaths = projectMap.get(refProjName);
+			projectPath = null;
+			if (projectPaths.size() == 1) {
+				projectPath = projectPaths.get(0);
+			} else {
+				throw new Exception("Multiple projects found in workspace with same name: " + refProjName);
+			}
+
+			// avoid duplicate and break circular reference
+			if (!refProjPaths.contains(projectPath)) {
+				refProjPaths.add(projectPath);
+				getRefProjPaths(refProjPaths, refProjName, projectMap);
+			}
 		}
 	}
 
-	private static List<String> getReferenceProjectName(File projectFile) throws Exception {
+	private static List<String> getReferenceProjectNames(File projectFile) throws Exception {
 		final List<String> refProjNameList = new ArrayList<>();
 		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		final DocumentBuilder builder = factory.newDocumentBuilder();
@@ -249,13 +306,13 @@ public class Util {
 		return refProjNameList;
 	}
 
-	public static void writeOutput(ToolOutput output, String outputPath) {
+	public static void writeOutput(ToolOutput output, Path outputPath) {
 
 		// Convert to json
-		final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		final Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 		try {
 			if (outputPath != null) {
-				final File outputFile = new File(outputPath);
+				final File outputFile = outputPath.toFile();
 				final JsonWriter jsonWriter = new JsonWriter(new FileWriter(outputFile));
 				jsonWriter.setIndent("    ");
 				gson.toJson(output, output.getClass(), jsonWriter);
