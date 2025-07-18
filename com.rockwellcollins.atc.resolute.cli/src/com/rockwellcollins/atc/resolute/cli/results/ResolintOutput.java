@@ -4,6 +4,8 @@ import java.util.List;
 
 public class ResolintOutput extends ToolOutput {
 
+	private int warnings;
+	private int errors;
 	private List<ResolintJsonResult> results;
 
 	public ResolintOutput() {
@@ -20,5 +22,14 @@ public class ResolintOutput extends ToolOutput {
 
 	public void setResults(List<ResolintJsonResult> results) {
 		this.results = results;
+		this.warnings = 0;
+		this.errors = 0;
+		for (ResolintJsonResult r : this.results) {
+			if (ResolintJsonResult.WARNING.equals(r.getSeverity())) {
+				this.warnings++;
+			} else if (ResolintJsonResult.ERROR.equals(r.getSeverity())) {
+				this.errors++;
+			}
+		}
 	}
 }

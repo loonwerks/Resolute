@@ -80,7 +80,7 @@ public class Resolint implements IApplication {
 	private final static String PROJECT = "p";
 	private final static String COMP_IMPL = "c";
 	private final static String OUTPUT = "o";
-	private final static String ONLY_RETURN_RULE_VIOLATIONS = "d";
+	private final static String RETURN_PASSING_RESULTS = "a";
 	private final static String VALIDATION_ONLY = "v";
 	private final static String EXIT_ON_VALIDATION_WARNING = "w";
 	private final static String FILES = "f";
@@ -109,7 +109,7 @@ public class Resolint implements IApplication {
 		String[] resolintRulesetList = null;
 		boolean exitOnValidationWarning = false;
 		boolean validationOnly = false;
-		boolean onlyReturnRuleViolations = true;
+		boolean returnPassingResults = false;
 		boolean exit = false;
 
 		final String[] args = (String[]) context.getArguments().get("application.args");
@@ -126,8 +126,8 @@ public class Resolint implements IApplication {
 		options.addOption(PROJECT, "project", true, "required, project path (relative to workspace)");
 		options.addOption(COMP_IMPL, "compImpl", true, "qualified component implementation name");
 		options.addOption(OUTPUT, "output", true, "output JSON file absolute path");
-		options.addOption(ONLY_RETURN_RULE_VIOLATIONS, "onlyReturnRuleViolations", false,
-				"do not return passing Resolint results, default true");
+		options.addOption(RETURN_PASSING_RESULTS, "returnPassingResults", false,
+				"Return passing Resolint results, default false");
 		options.addOption(VALIDATION_ONLY, "validationOnly", false, "validation only, default false");
 		options.addOption(EXIT_ON_VALIDATION_WARNING, "exitOnValidtionWarning", false,
 				"exit on validation warning, default false");
@@ -179,8 +179,8 @@ public class Resolint implements IApplication {
 			if (commandLine.hasOption(RULESETS)) {
 				resolintRulesetList = commandLine.getOptionValues(RULESETS);
 			}
-			if (commandLine.hasOption(ONLY_RETURN_RULE_VIOLATIONS)) {
-				onlyReturnRuleViolations = true;
+			if (commandLine.hasOption(RETURN_PASSING_RESULTS)) {
+				returnPassingResults = true;
 			}
 			if (commandLine.hasOption(VALIDATION_ONLY)) {
 				validationOnly = true;
@@ -280,11 +280,11 @@ public class Resolint implements IApplication {
 				final SystemInstance si = InstantiateModel.instantiate(compImpl);
 				final EvaluationContext evalContext = new EvaluationContext(si);
 				final List<ResolintJsonResult> results = runResolint(evalContext,
-						onlyReturnRuleViolations);
+						returnPassingResults);
 
 				if (resolintRulesetList != null) {
 					final List<ResolintJsonResult> resultsUserRulesets = runResolintUserRule(
-							resourceSet, evalContext, resolintRulesetList, onlyReturnRuleViolations);
+							resourceSet, evalContext, resolintRulesetList, returnPassingResults);
 					results.addAll(resultsUserRulesets);
 				}
 
@@ -334,7 +334,7 @@ public class Resolint implements IApplication {
 	}
 
 	private List<ResolintJsonResult> runResolintUserRule(XtextResourceSet resourceSet, EvaluationContext context,
-			String[] ruleSetsToCheck, boolean onlyReturnRuleViolations) throws Exception {
+			String[] ruleSetsToCheck, boolean returnPassingResults) throws Exception {
 
 		final List<ResoluteResult> checkTrees = new ArrayList<>();
 
@@ -361,10 +361,10 @@ public class Resolint implements IApplication {
 			}
 		}
 		// Return output in json format
-		return getResolintResults(checkTrees, context.getComponentImplementation(), onlyReturnRuleViolations);
+		return getResolintResults(checkTrees, context.getComponentImplementation(), returnPassingResults);
 	}
 
-	private List<ResolintJsonResult> runResolint(EvaluationContext context, boolean onlyReturnRuleViolations)
+	private List<ResolintJsonResult> runResolint(EvaluationContext context, boolean returnPassingResults)
 			throws Exception {
 
 		final List<ResoluteResult> checkTrees = new ArrayList<>();
@@ -397,11 +397,11 @@ public class Resolint implements IApplication {
 		}
 
 		// Return output in json format
-		return getResolintResults(checkTrees, context.getComponentImplementation(), onlyReturnRuleViolations);
+		return getResolintResults(checkTrees, context.getComponentImplementation(), returnPassingResults);
 	}
 
 	private List<ResolintJsonResult> getResolintResults(List<ResoluteResult> results, ComponentImplementation ci,
-			boolean onlyReturnRuleViolations) {
+			boolean returnPassingResults) {
 
 		final List<ResolintJsonResult> resolintJsonResults = new ArrayList<>();
 
@@ -423,6 +423,7 @@ public class Resolint implements IApplication {
 						} else if (severity == IMarker.SEVERITY_WARNING) {
 							resolintJsonResult.setSeverity(ResolintJsonResult.WARNING);
 						}
+						resolintJsonResult.setFile(Util.trimProjectName(ci.eResource().getURI()));
 						resolintJsonResult.setLine(getLineNumberFor(ci));
 						resolintJsonResults.add(resolintJsonResult);
 					} else {
@@ -438,11 +439,11 @@ public class Resolint implements IApplication {
 							}
 							if (ref == null || !(ref instanceof NamedElement)) {
 								resolintJsonResult.setElement(ci.getQualifiedName());
-								resolintJsonResult.setFile(ci.eResource().getURI().toPlatformString(true));
+								resolintJsonResult.setFile(Util.trimProjectName(ci.eResource().getURI()));
 								resolintJsonResult.setLine(getLineNumberFor(ci));
 							} else {
 								resolintJsonResult.setElement(((NamedElement) ref).getQualifiedName());
-								resolintJsonResult.setFile(ref.eResource().getURI().toPlatformString(true));
+								resolintJsonResult.setFile(Util.trimProjectName(ref.eResource().getURI()));
 								resolintJsonResult.setLine(getLineNumberFor(ref));
 							}
 							resolintJsonResults.add(resolintJsonResult);
@@ -451,7 +452,7 @@ public class Resolint implements IApplication {
 				} catch (Exception e) {
 					continue;
 				}
-			} else if (!onlyReturnRuleViolations && resoluteResult != null && resoluteResult.isValid()) {
+			} else if (returnPassingResults && resoluteResult != null && resoluteResult.isValid()) {
 				final ResolintResult result = (ResolintResult) resoluteResult;
 				final ResolintJsonResult resolintJsonResult = new ResolintJsonResult();
 				resolintJsonResult.setStatus(true);

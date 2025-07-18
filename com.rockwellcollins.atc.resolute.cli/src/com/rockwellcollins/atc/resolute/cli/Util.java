@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -108,7 +109,7 @@ public class Util {
 						valIssue.setSeverity("warning");
 					}
 					valIssue.setIssue(issue.getMessage());
-					valIssue.setFile(resource.getURI().toPlatformString(true));
+					valIssue.setFile(trimProjectName(resource.getURI()));
 					valIssue.setLine(issue.getLineNumber());
 					syntaxValidationIssues.add(valIssue);
 //					System.out.println(issue.getMessage());
@@ -223,6 +224,18 @@ public class Util {
 //			System.err.println("Error loading file " + filePath);
 			return null;
 		}
+	}
+
+	public static String trimProjectName(org.eclipse.emf.common.util.URI fileLocation) {
+		String filePath = fileLocation.toPlatformString(true);
+		while (filePath.startsWith("/")) {
+			filePath = filePath.substring(1);
+		}
+		final List<String> segments = Arrays.asList(filePath.split("/"));
+		if (segments.size() > 1) {
+			filePath = String.join(File.separator, segments.subList(1, segments.size()));
+		}
+		return filePath;
 	}
 
 	private static String relativize(File root, File other) {

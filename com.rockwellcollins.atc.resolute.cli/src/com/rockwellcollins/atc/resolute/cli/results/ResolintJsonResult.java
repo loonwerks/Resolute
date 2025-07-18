@@ -10,7 +10,7 @@ public class ResolintJsonResult {
 	private String severity;
 	private String element;
 	private String file;
-	private int line;
+	private Integer line = null;
 
 	public String getRule() {
 		return this.rule;
