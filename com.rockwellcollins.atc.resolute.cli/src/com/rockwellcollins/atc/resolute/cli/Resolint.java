@@ -77,7 +77,7 @@ public class Resolint implements IApplication {
 	private final static String DATA = "data";
 	private final static String APPLICATION = "application";
 	private final static String NO_SPLASH = "noSplash";
-	private final static String PROJECT = "p";
+	private final static String PROJECT_PATH = "p";
 	private final static String COMP_IMPL = "c";
 	private final static String OUTPUT = "o";
 	private final static String RETURN_PASSING_RESULTS = "a";
@@ -123,7 +123,7 @@ public class Resolint implements IApplication {
 		options.addOption(DATA, true, "required, path of workspace");
 		options.addOption(APPLICATION, true,
 				"required, the name of this analysis (com.rockwellcollins.atc.resolute.cli.Resolint)");
-		options.addOption(PROJECT, "project", true, "required, project path (relative to workspace)");
+		options.addOption(PROJECT_PATH, "project", true, "optional, project path relative to workspace");
 		options.addOption(COMP_IMPL, "compImpl", true, "qualified component implementation name");
 		options.addOption(OUTPUT, "output", true, "output JSON file absolute path");
 		options.addOption(RETURN_PASSING_RESULTS, "returnPassingResults", false,
@@ -162,13 +162,14 @@ public class Resolint implements IApplication {
 					exit = true;
 				}
 			}
-			if (commandLine.hasOption(PROJECT)) {
-				projPath = workspace.resolve(commandLine.getOptionValue(PROJECT));
+			if (commandLine.hasOption(PROJECT_PATH)) {
+				projPath = workspace.resolve(commandLine.getOptionValue(PROJECT_PATH));
 				output.setProject(projPath.toString());
 			} else {
-				output.setStatus(ToolOutput.INTERRUPTED);
-				output.addStatusMessage("Project path must be specified.");
-				exit = true;
+				projPath = workspace;
+//				output.setStatus(ToolOutput.INTERRUPTED);
+//				output.addStatusMessage("Project path must be specified.");
+//				exit = true;
 			}
 			if (commandLine.hasOption(OUTPUT)) {
 				outputPath = Paths.get(commandLine.getOptionValue(OUTPUT));
