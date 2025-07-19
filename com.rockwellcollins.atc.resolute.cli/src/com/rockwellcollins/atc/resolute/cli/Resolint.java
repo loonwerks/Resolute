@@ -164,13 +164,10 @@ public class Resolint implements IApplication {
 			}
 			if (commandLine.hasOption(PROJECT_PATH)) {
 				projPath = workspace.resolve(commandLine.getOptionValue(PROJECT_PATH));
-				output.setProject(projPath.toString());
 			} else {
 				projPath = workspace;
-//				output.setStatus(ToolOutput.INTERRUPTED);
-//				output.addStatusMessage("Project path must be specified.");
-//				exit = true;
 			}
+			output.setProject(projPath.toString());
 			if (commandLine.hasOption(OUTPUT)) {
 				outputPath = Paths.get(commandLine.getOptionValue(OUTPUT));
 			}
