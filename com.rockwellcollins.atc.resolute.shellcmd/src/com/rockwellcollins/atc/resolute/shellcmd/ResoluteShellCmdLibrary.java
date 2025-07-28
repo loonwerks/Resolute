@@ -2,9 +2,11 @@ package com.rockwellcollins.atc.resolute.shellcmd;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
 import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteExternalFunctionLibrary;
@@ -50,10 +52,28 @@ public class ResoluteShellCmdLibrary extends ResoluteExternalFunctionLibrary {
 		assert (arg0.isString());
 
 		try {
-			// Build command
-			List<String> commands = Arrays.asList(arg0.getString().split(" "));
-			System.out.println(commands);
 
+			// Build command
+			// List<String> commands = Arrays.asList(arg0.getString().split("\S+"));
+
+			// Regex that allows us to pass parameters 'with spaces in them' if they're
+			// between single quotes.
+			// Double quotes pose a problem because Resolute is removing them
+			// somewhere before the string is passed as an argument here.
+			List<String> commands = new LinkedList<String>();
+			Pattern pattern = Pattern.compile("'([^']*)'|\\S+");
+			Matcher match = pattern.matcher(arg0.getString());
+
+			while (match.find()) {
+				if (match.group(1) != null) {
+					commands.add(match.group(1));
+				} else {
+					commands.add(match.group(0));
+				}
+			}
+
+
+			System.out.println(commands);
 			// Run
 			ProcessBuilder processBuilder = new ProcessBuilder(commands);
 			processBuilder.redirectErrorStream(true);
