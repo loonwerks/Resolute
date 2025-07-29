@@ -54,8 +54,7 @@ public class ResoluteShellCmdLibrary extends ResoluteExternalFunctionLibrary {
 		try {
 
 			// Build command
-			// List<String> commands = Arrays.asList(arg0.getString().split("\S+"));
-
+			
 			// Regex that allows us to pass parameters 'with spaces in them' if they're
 			// between single quotes.
 			// Double quotes pose a problem because Resolute is removing them
