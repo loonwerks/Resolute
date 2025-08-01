@@ -45,6 +45,8 @@ public class ResoluteStringFunctionsType extends ResoluteExternalFunctionLibrary
 			return BaseType.STRING;
 		case "trim":
 			return BaseType.STRING;
+		case "concatlist":
+			return BaseType.STRING;
 		default:
 			return BaseType.FAIL;
 		}
@@ -139,10 +141,18 @@ public class ResoluteStringFunctionsType extends ResoluteExternalFunctionLibrary
 			args.add(BaseType.STRING); // string
 			break;
 		}
+
 		case "trim": {
 			args.add(BaseType.STRING); // string
 			break;
 		}
+
+		case "concatlist": {
+			args.add(BaseType.STRING);
+			args.add(new ListType(BaseType.STRING));
+			break;
+		}
+
 		default:
 			args = null;
 		}

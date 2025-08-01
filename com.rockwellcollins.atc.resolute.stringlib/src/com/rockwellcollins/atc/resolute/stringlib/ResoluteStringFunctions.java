@@ -2,6 +2,7 @@ package com.rockwellcollins.atc.resolute.stringlib;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
 import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteExternalFunctionLibrary;
@@ -129,9 +130,33 @@ public class ResoluteStringFunctions extends ResoluteExternalFunctionLibrary {
 			ResoluteValue arg0 = args.get(0);
 			assert (arg0.isString());
 			return new StringValue(arg0.getString().trim());
-			}
 		}
 
+		case "concatlist": {
+			ResoluteValue between = args.get(0);
+			assert(between.isString());
+
+			ResoluteValue strings = args.get(1);
+			assert (strings.isList());
+
+			List<ResoluteValue> stringList = strings.getListValues();
+			for (ResoluteValue str : stringList) {
+				assert(str.isString());
+			}
+
+			String finalString = "";
+			String betweenStr = between.getString();
+
+			ListIterator<ResoluteValue> iter = stringList.listIterator();
+			if (iter.hasNext()) {
+				finalString = finalString.concat(iter.next().getString());
+				for (; iter.hasNext(); finalString = finalString.concat(iter.next().getString())) {
+					finalString = finalString.concat(betweenStr);
+				}
+			}
+			return new StringValue(finalString);
+		}
+		}
 		throw new ResoluteFailException("Function " + function + " not part of String Library.",
 				context.getThisInstance().getSubcomponent());
 
