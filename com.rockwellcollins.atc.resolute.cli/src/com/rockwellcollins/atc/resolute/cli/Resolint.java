@@ -1,5 +1,6 @@
 package com.rockwellcollins.atc.resolute.cli;
 
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -20,7 +21,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
@@ -92,9 +92,6 @@ public class Resolint implements IApplication {
 		System.out.println("Starting analysis");
 
 		context.applicationRunning();
-
-		// Read the meta information about the plug-ins to get the annex information.
-		EcorePlugin.ExtensionProcessor.process(null);
 
 		// Output Json object
 		final ResolintOutput output = new ResolintOutput();
@@ -170,6 +167,24 @@ public class Resolint implements IApplication {
 			output.setProject(projPath.toString());
 			if (commandLine.hasOption(OUTPUT)) {
 				outputPath = Paths.get(commandLine.getOptionValue(OUTPUT));
+				// Make sure output directory exists and is valid
+				try {
+					outputPath.getParent().toFile().mkdirs();
+				} catch (InvalidPathException e1) {
+					exit = true;
+					outputPath = null;
+					output.addStatusMessage("Invalid output path: " + outputPath + ".");
+				} catch (NullPointerException e2) {
+					// Do nothing, this is the root directory (which exists)
+				} catch (UnsupportedOperationException e3) {
+					exit = true;
+					outputPath = null;
+					output.addStatusMessage("No file system access to output path " + outputPath + ".");
+				} catch (SecurityException e4) {
+					exit = true;
+					outputPath = null;
+					output.addStatusMessage("Security settings prohibit writing to output path " + outputPath + ".");
+				}
 			}
 			if (commandLine.hasOption(FILES)) {
 				fileArray = commandLine.getOptionValues(FILES);

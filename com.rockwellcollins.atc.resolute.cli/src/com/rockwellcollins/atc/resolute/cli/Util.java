@@ -24,6 +24,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
@@ -85,6 +86,9 @@ public class Util {
 				loadFile(projectPath, projectName, refProjFile, resourceSet);
 			}
 		}
+
+		EcoreUtil.resolveAll(resourceSet);
+
 	}
 
 	// Validation resource set
@@ -95,7 +99,6 @@ public class Util {
 		int numWarnings = 0;
 		for (Resource resource : resourceSet.getResources()) {
 			if (resource.getURI().isPlatformResource()) {
-//				System.out.println("Validating " + resource.getURI().toString());
 				final IResourceValidator validator = ((XtextResource) resource).getResourceServiceProvider()
 						.getResourceValidator();
 				final List<Issue> issues = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);
@@ -112,7 +115,6 @@ public class Util {
 					valIssue.setFile(trimProjectName(resource.getURI()));
 					valIssue.setLine(issue.getLineNumber());
 					syntaxValidationIssues.add(valIssue);
-//					System.out.println(issue.getMessage());
 				}
 			}
 		}
@@ -199,7 +201,6 @@ public class Util {
 			throw new Exception("Error loading file " + projectName + "/" + normalizedRelPath);
 		}
 		try {
-//			System.out.println("Loading " + file.getAbsolutePath());
 			res.load(stream, Collections.EMPTY_MAP);
 			return res;
 		} catch (IOException e) {
@@ -217,11 +218,9 @@ public class Util {
 			final URI resourceUri = URI.createPlatformResourceURI("Lib/" + path.getFileName().toString(), true);
 			final Resource res = rs.createResource(resourceUri);
 
-//			System.out.println("Loading " + filePath);
 			res.load(stream, Collections.EMPTY_MAP);
 			return res;
 		} catch (IOException e) {
-//			System.err.println("Error loading file " + filePath);
 			return null;
 		}
 	}
