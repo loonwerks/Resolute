@@ -2,7 +2,6 @@ package com.rockwellcollins.atc.resolute.stringlib;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 import com.rockwellcollins.atc.resolute.analysis.execution.EvaluationContext;
 import com.rockwellcollins.atc.resolute.analysis.execution.ResoluteExternalFunctionLibrary;
@@ -54,6 +53,18 @@ public class ResoluteStringFunctions extends ResoluteExternalFunctionLibrary {
 			assert (arg0.isString());
 			assert (arg1.isString());
 			return new IntValue(arg0.getString().indexOf(arg1.getString()));
+		}
+		case "join": {
+			ResoluteValue arg0 = args.get(0);
+			ResoluteValue arg1 = args.get(1);
+			assert (arg0.isString());
+			assert (arg1.isList());
+			List<ResoluteValue> stringsToConcat = arg1.getListValues();
+			for (ResoluteValue resVal : stringsToConcat) {
+				assert (resVal.isString());
+			}
+			return new StringValue(
+					String.join(arg0.getString(), stringsToConcat.stream().map(rv -> rv.getString()).toList()));
 		}
 		case "lastindexof": {
 			ResoluteValue arg0 = args.get(0);
@@ -130,31 +141,6 @@ public class ResoluteStringFunctions extends ResoluteExternalFunctionLibrary {
 			ResoluteValue arg0 = args.get(0);
 			assert (arg0.isString());
 			return new StringValue(arg0.getString().trim());
-		}
-
-		case "concatlist": {
-			ResoluteValue between = args.get(0);
-			assert(between.isString());
-
-			ResoluteValue strings = args.get(1);
-			assert (strings.isList());
-
-			List<ResoluteValue> stringList = strings.getListValues();
-			for (ResoluteValue str : stringList) {
-				assert(str.isString());
-			}
-
-			String finalString = "";
-			String betweenStr = between.getString();
-
-			ListIterator<ResoluteValue> iter = stringList.listIterator();
-			if (iter.hasNext()) {
-				finalString = finalString.concat(iter.next().getString());
-				for (; iter.hasNext(); finalString = finalString.concat(iter.next().getString())) {
-					finalString = finalString.concat(betweenStr);
-				}
-			}
-			return new StringValue(finalString);
 		}
 		}
 		throw new ResoluteFailException("Function " + function + " not part of String Library.",
