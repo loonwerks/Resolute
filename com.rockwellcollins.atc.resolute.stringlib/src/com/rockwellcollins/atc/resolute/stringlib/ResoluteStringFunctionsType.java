@@ -25,6 +25,8 @@ public class ResoluteStringFunctionsType extends ResoluteExternalFunctionLibrary
 			return BaseType.INT;
 		case "indexof":
 			return BaseType.INT;
+		case "join":
+			return BaseType.STRING;
 		case "lastindexof":
 			return BaseType.INT;
 		case "stringlength":
@@ -87,6 +89,12 @@ public class ResoluteStringFunctionsType extends ResoluteExternalFunctionLibrary
 			break;
 		}
 
+		case "join": {
+			args.add(BaseType.STRING);
+			args.add(new ListType(BaseType.STRING));
+			break;
+		}
+
 		case "lastindexof": {
 			args.add(BaseType.STRING); // string
 			args.add(BaseType.STRING); // substring
@@ -139,10 +147,12 @@ public class ResoluteStringFunctionsType extends ResoluteExternalFunctionLibrary
 			args.add(BaseType.STRING); // string
 			break;
 		}
+
 		case "trim": {
 			args.add(BaseType.STRING); // string
 			break;
 		}
+
 		default:
 			args = null;
 		}
