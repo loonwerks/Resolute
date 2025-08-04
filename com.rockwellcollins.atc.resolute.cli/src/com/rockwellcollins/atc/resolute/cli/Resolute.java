@@ -72,6 +72,7 @@ public class Resolute implements IApplication {
 	private final static String VALIDATION_ONLY = "v";
 	private final static String EXIT_ON_VALIDATION_WARNING = "w";
 	private final static String FILES = "f";
+	private final static String CSV = "s";
 
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
@@ -92,6 +93,7 @@ public class Resolute implements IApplication {
 		String[] fileArray = null;
 		boolean exitOnValidationWarning = false;
 		boolean validationOnly = false;
+		boolean generateCsv = false;
 		boolean exit = false;
 
 		// Application Args
@@ -109,6 +111,7 @@ public class Resolute implements IApplication {
 		options.addOption(PROJECT_PATH, "project", true, "optional, project path (relative to workspace)");
 		options.addOption(COMP_IMPL, "compImpl", true, "qualified component implementation name");
 		options.addOption(OUTPUT, "output", true, "output JSON file absolute path");
+		options.addOption(CSV, "csv", false, "optional, generate output in csv format");
 		options.addOption(VALIDATION_ONLY, "validationOnly", false, "validation only, default false");
 		options.addOption(EXIT_ON_VALIDATION_WARNING, "exitOnValidtionWarning", false,
 				"exit on validation warning, default false");
@@ -175,6 +178,9 @@ public class Resolute implements IApplication {
 			}
 			if (commandLine.hasOption(EXIT_ON_VALIDATION_WARNING)) {
 				exitOnValidationWarning = true;
+			}
+			if (commandLine.hasOption(CSV)) {
+				generateCsv = true;
 			}
 			final String[] remainder = commandLine.getArgs();
 			for (String argument : remainder) {
@@ -271,6 +277,9 @@ public class Resolute implements IApplication {
 				output.setStatus(ToolOutput.COMPLETED);
 				output.setResults(results);
 				Util.writeOutput(output, outputPath);
+				if (generateCsv) {
+					Util.writeCsv(output, outputPath);
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 				output.setStatus(ToolOutput.INTERRUPTED);
@@ -327,16 +336,22 @@ public class Resolute implements IApplication {
 				resoluteResult.setStatus(claimResult.isValid());
 				final List<ResoluteJsonResult> childrenResult = getResoluteResults(claimResult.getChildren());
 				resoluteResult.setSubclaims(childrenResult);
+				resoluteOutputs.add(resoluteResult);
 			} else if (result instanceof FailResult) {
 				final FailResult failResult = (FailResult) result;
 				resoluteResult.setClaim(failResult.getText());
 				resoluteResult.setStatus(failResult.isValid());
 				final List<ResoluteJsonResult> childrenResult = getResoluteResults(failResult.getChildren());
 				resoluteResult.setSubclaims(childrenResult);
+				resoluteOutputs.add(resoluteResult);
 			} else {
-				continue;
+				final List<ResoluteJsonResult> childrenResult = getResoluteResults(result.getChildren());
+				for (ResoluteJsonResult childResult : childrenResult) {
+					if (childResult.getClaim() != null) {
+						resoluteOutputs.add(childResult);
+					}
+				}
 			}
-			resoluteOutputs.add(resoluteResult);
 		}
 
 		return resoluteOutputs;

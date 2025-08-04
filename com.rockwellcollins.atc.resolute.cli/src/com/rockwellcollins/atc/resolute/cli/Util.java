@@ -1,5 +1,6 @@
 package com.rockwellcollins.atc.resolute.cli;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -39,6 +40,9 @@ import org.w3c.dom.NodeList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonWriter;
+import com.rockwellcollins.atc.resolute.cli.results.CsvContents;
+import com.rockwellcollins.atc.resolute.cli.results.ResoluteJsonResult;
+import com.rockwellcollins.atc.resolute.cli.results.ResoluteOutput;
 import com.rockwellcollins.atc.resolute.cli.results.SyntaxValidationIssue;
 import com.rockwellcollins.atc.resolute.cli.results.SyntaxValidationResults;
 import com.rockwellcollins.atc.resolute.cli.results.ToolOutput;
@@ -336,6 +340,48 @@ public class Util {
 
 		// Write to std out
 		System.out.println(gson.toJson(output));
+	}
+
+	public static void writeCsv(ToolOutput output, Path outputPath) {
+
+		final String path = outputPath.toString();
+		final int dotIdx = path.toString().lastIndexOf('.');
+		final String nodesFilename = (dotIdx == -1 ? path : path.substring(0, dotIdx)) + "_nodes.csv";
+		final String edgesFilename = (dotIdx == -1 ? path : path.substring(0, dotIdx)) + "_edges.csv";
+
+		CsvContents csvContents = new CsvContents();
+
+		for (ResoluteJsonResult result : ((ResoluteOutput) output).getResults()) {
+			printCsvResult(result, csvContents);
+		}
+
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nodesFilename))) {
+			writer.write(csvContents.getNodeContents());
+		} catch (IOException e) {
+			System.err.println("Could not write nodes file: " + e.getMessage());
+			e.printStackTrace();
+		}
+
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(edgesFilename))) {
+			writer.write(csvContents.getEdgeContents());
+		} catch (IOException e) {
+			System.err.println("Could not write edges file: " + e.getMessage());
+			e.printStackTrace();
+		}
+
+	}
+
+	private static void printCsvResult(ResoluteJsonResult result, CsvContents csvContents) {
+
+		csvContents.appendNode(result.getClaim(), result.getStatus());
+		if (result.getSubclaims() == null) {
+			return;
+		}
+		final int currentNode = csvContents.getNumNodes();
+		for (ResoluteJsonResult subclaim : result.getSubclaims()) {
+			csvContents.appendEdge(currentNode, csvContents.getNumNodes() + 1, subclaim.getStatus());
+			printCsvResult(subclaim, csvContents);
+		}
 	}
 
 }
