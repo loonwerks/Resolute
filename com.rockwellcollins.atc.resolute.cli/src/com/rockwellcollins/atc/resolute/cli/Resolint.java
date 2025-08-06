@@ -18,12 +18,14 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResourceSet;
@@ -43,6 +45,7 @@ import org.osate.aadl2.util.Aadl2Util;
 import org.osate.annexsupport.AnnexUtil;
 import org.osate.pluginsupport.PluginSupportUtil;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
+import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 import com.rockwellcollins.atc.resolute.ResoluteStandaloneSetup;
@@ -85,6 +88,7 @@ public class Resolint implements IApplication {
 	private final static String EXIT_ON_VALIDATION_WARNING = "w";
 	private final static String FILES = "f";
 	private final static String RULESETS = "u";
+	private final static String ENABLE_SHELL = "e";
 
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
@@ -134,6 +138,7 @@ public class Resolint implements IApplication {
 		option = new Option(RULESETS, "rulesets", true, "Resolint ruleset name list");
 		option.setArgs(Option.UNLIMITED_VALUES);
 		options.addOption(option);
+		options.addOption(ENABLE_SHELL, "enableShell", false, "optional, enable shell commands, default false");
 
 		// parse options
 		try {
@@ -200,6 +205,16 @@ public class Resolint implements IApplication {
 			}
 			if (commandLine.hasOption(EXIT_ON_VALIDATION_WARNING)) {
 				exitOnValidationWarning = true;
+			}
+			if (commandLine.hasOption(ENABLE_SHELL)) {
+				if (Platform.getBundle("com.rockwellcollins.atc.resolute.shellcmd") != null) {
+					final Bundle bundle = Platform.getBundle("com.rockwellcollins.atc.resolute.shellcmd");
+					final Class<?> shellCmdInterface = bundle
+							.loadClass("com.rockwellcollins.atc.resolute.shellcmd.Activator");
+					final AbstractUIPlugin activator = (AbstractUIPlugin) shellCmdInterface.getDeclaredConstructor()
+							.newInstance();
+					activator.getPreferenceStore().setValue("enablePlugin", "enabledSession");
+				}
 			}
 			final String[] remainder = commandLine.getArgs();
 			for (String argument : remainder) {

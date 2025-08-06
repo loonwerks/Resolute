@@ -16,11 +16,13 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.osate.aadl2.AadlPackage;
 import org.osate.aadl2.AnnexSubclause;
@@ -36,6 +38,7 @@ import org.osate.aadl2.util.Aadl2Util;
 import org.osate.annexsupport.AnnexUtil;
 import org.osate.pluginsupport.PluginSupportUtil;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
+import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 import com.rockwellcollins.atc.resolute.ResoluteStandaloneSetup;
@@ -73,6 +76,7 @@ public class Resolute implements IApplication {
 	private final static String EXIT_ON_VALIDATION_WARNING = "w";
 	private final static String FILES = "f";
 	private final static String CSV = "s";
+	private final static String ENABLE_SHELL = "e";
 
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
@@ -112,12 +116,13 @@ public class Resolute implements IApplication {
 		options.addOption(COMP_IMPL, "compImpl", true, "qualified component implementation name");
 		options.addOption(OUTPUT, "output", true, "output JSON file absolute path");
 		options.addOption(CSV, "csv", false, "optional, generate output in csv format");
-		options.addOption(VALIDATION_ONLY, "validationOnly", false, "validation only, default false");
+		options.addOption(VALIDATION_ONLY, "validationOnly", false, "optional, syntax validation only, default false");
 		options.addOption(EXIT_ON_VALIDATION_WARNING, "exitOnValidtionWarning", false,
 				"exit on validation warning, default false");
 		Option option = new Option(FILES, "files", true, "Supplementary AADL files (absolute paths)");
 		option.setArgs(Option.UNLIMITED_VALUES);
 		options.addOption(option);
+		options.addOption(ENABLE_SHELL, "enableShell", false, "optional, enable shell commands, default false");
 
 		// parse options
 		try {
@@ -181,6 +186,16 @@ public class Resolute implements IApplication {
 			}
 			if (commandLine.hasOption(CSV)) {
 				generateCsv = true;
+			}
+			if (commandLine.hasOption(ENABLE_SHELL)) {
+				if (Platform.getBundle("com.rockwellcollins.atc.resolute.shellcmd") != null) {
+					final Bundle bundle = Platform.getBundle("com.rockwellcollins.atc.resolute.shellcmd");
+					final Class<?> shellCmdInterface = bundle
+						.loadClass("com.rockwellcollins.atc.resolute.shellcmd.Activator");
+					final AbstractUIPlugin activator = (AbstractUIPlugin) shellCmdInterface.getDeclaredConstructor()
+							.newInstance();
+					activator.getPreferenceStore().setValue("enablePlugin", "enabledSession");
+				}
 			}
 			final String[] remainder = commandLine.getArgs();
 			for (String argument : remainder) {
