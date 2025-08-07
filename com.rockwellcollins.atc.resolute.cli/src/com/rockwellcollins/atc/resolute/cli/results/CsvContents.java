@@ -14,7 +14,7 @@ public class CsvContents {
 	}
 
 	public void appendNode(String claim, int parentId, boolean status) {
-		nodeContents += "node" + ++numNodes + "," + (parentId <= 0 ? "" : parentId) + "," + claim + ","
+		nodeContents += "node" + ++numNodes + "," + (parentId <= 0 ? "NULL" : parentId) + "," + claim + ","
 				+ (status ? "TRUE" : "FALSE")
 				+ System.lineSeparator();
 	}
