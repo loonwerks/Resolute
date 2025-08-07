@@ -7,14 +7,15 @@ public class CsvContents {
 	private int numEdges;
 
 	public CsvContents() {
-		nodeContents = "id,title,color,highlighted" + System.lineSeparator();
+		nodeContents = "id,ParentID,Name,Status" + System.lineSeparator();
 		edgeContents = "id,source,target,thickness,highlighted,color" + System.lineSeparator();
 		numNodes = 0;
 		numEdges = 0;
 	}
 
-	public void appendNode(String claim, boolean status) {
-		nodeContents += "node" + ++numNodes + "," + claim + "," + (status ? "greeen" : "red") + ",TRUE"
+	public void appendNode(String claim, int parentId, boolean status) {
+		nodeContents += "node" + ++numNodes + "," + (parentId <= 0 ? "" : parentId) + "," + claim + ","
+				+ (status ? "TRUE" : "FALSE")
 				+ System.lineSeparator();
 	}
 

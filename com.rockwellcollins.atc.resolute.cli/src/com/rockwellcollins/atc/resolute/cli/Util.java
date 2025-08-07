@@ -352,7 +352,7 @@ public class Util {
 		CsvContents csvContents = new CsvContents();
 
 		for (ResoluteJsonResult result : ((ResoluteOutput) output).getResults()) {
-			printCsvResult(result, csvContents);
+			printCsvResult(result, 0, csvContents);
 		}
 
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nodesFilename))) {
@@ -371,16 +371,16 @@ public class Util {
 
 	}
 
-	private static void printCsvResult(ResoluteJsonResult result, CsvContents csvContents) {
+	private static void printCsvResult(ResoluteJsonResult result, int parentId, CsvContents csvContents) {
 
-		csvContents.appendNode(result.getClaim(), result.getStatus());
+		csvContents.appendNode(result.getClaim(), parentId, result.getStatus());
 		if (result.getSubclaims() == null) {
 			return;
 		}
 		final int currentNode = csvContents.getNumNodes();
 		for (ResoluteJsonResult subclaim : result.getSubclaims()) {
 			csvContents.appendEdge(currentNode, csvContents.getNumNodes() + 1, subclaim.getStatus());
-			printCsvResult(subclaim, csvContents);
+			printCsvResult(subclaim, currentNode, csvContents);
 		}
 	}
 
