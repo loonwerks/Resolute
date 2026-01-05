@@ -2,7 +2,7 @@
 <feature
       id="com.rockwellcollins.atc.resolute.feature"
       label="Resolute"
-      version="4.1.201.qualifier"
+      version="4.1.201"
       provider-name="Collins Aerospace, Inc.">
 
    <description>

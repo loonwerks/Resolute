@@ -4,9 +4,9 @@
   <parent>
     <groupId>com.rockwellcollins.atc.resolute</groupId>
     <artifactId>com.rockwellcollins.atc.resolute.parent</artifactId>
-    <version>4.1.2-SNAPSHOT</version>
+    <version>4.1.200</version>
   </parent>
   <artifactId>com.rockwellcollins.atc.resolute.analysis</artifactId>
-  <version>3.0.301-SNAPSHOT</version>
+  <version>3.0.301</version>
   <packaging>eclipse-plugin</packaging>
 </project>

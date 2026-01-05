@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Cli
 Bundle-SymbolicName: com.rockwellcollins.atc.resolute.cli;singleton:=true
-Bundle-Version: 1.0.301.qualifier
+Bundle-Version: 1.0.301
 Bundle-Activator: com.rockwellcollins.atc.resolute.cli.Activator
 Bundle-Vendor: ROCKWELLCOLLINS
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.20.0,4.0.0)",
