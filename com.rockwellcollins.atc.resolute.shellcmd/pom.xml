@@ -7,6 +7,6 @@
     <version>4.1.2-SNAPSHOT</version>
   </parent>
   <artifactId>com.rockwellcollins.atc.resolute.shellcmd</artifactId>
-  <version>1.0.101-SNAPSHOT</version>
+  <version>1.0.201-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>
