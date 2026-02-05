@@ -108,6 +108,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
          id="com.rockwellcollins.atc.resolute.shellcmd"
          version="0.0.0"/>
 
+	<plugin
+         id="com.rockwellcollins.atc.resolute.json"
+         version="0.0.0"/>
+
    <plugin
          id="com.rockwellcollins.atc.resolute.ui"
          version="0.0.0"/>
