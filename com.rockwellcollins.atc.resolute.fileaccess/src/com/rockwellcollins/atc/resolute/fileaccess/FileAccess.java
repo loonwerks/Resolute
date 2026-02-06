@@ -3,6 +3,12 @@ package com.rockwellcollins.atc.resolute.fileaccess;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,7 +72,11 @@ public class FileAccess extends ResoluteExternalFunctionLibrary {
 			case "getcontents": {
 				final ResoluteValue arg0 = args.get(0);
 				assert (arg0.isString());
-				return new StringValue(getContents(getFile(arg0.getString())));
+				if (isUrl(arg0.getString())) {
+					return new StringValue(getWebContents(arg0.getString()));
+				} else {
+					return new StringValue(getContents(getFile(arg0.getString())));
+				}
 			}
 			case "getparent": {
 				final ResoluteValue arg0 = args.get(0);
@@ -169,10 +179,38 @@ public class FileAccess extends ResoluteExternalFunctionLibrary {
 			final IFile f = ResourcesPlugin.getWorkspace().getRoot().getFile(p);
 			if (f.exists()) {
 				return f.getRawLocation().makeAbsolute().toFile();
+			} else {
+				return getFile(
+						ResourcesPlugin.getWorkspace().getRoot().getLocation().toPath() + File.separator + filename);
 			}
 		}
 
 		throw new Exception("Filename " + filename + " not found");
+
+	}
+
+	private boolean isUrl(String filename) {
+		try {
+			final URL url = new URL(filename);
+		} catch (MalformedURLException e) {
+			return false;
+		}
+		return true;
+	}
+
+	private String getWebContents(String filename) throws Exception {
+
+
+		HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(filename)).build();
+
+		// Read the body as a String (for text files)
+		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+		// Get the content in memory
+		String content = response.body();
+
+		return content;
 
 	}
 
