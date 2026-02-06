@@ -3,6 +3,12 @@ package com.rockwellcollins.atc.resolute.fileaccess;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,7 +72,11 @@ public class FileAccess extends ResoluteExternalFunctionLibrary {
 			case "getcontents": {
 				final ResoluteValue arg0 = args.get(0);
 				assert (arg0.isString());
-				return new StringValue(getContents(getFile(arg0.getString())));
+				if (isUrl(arg0.getString())) {
+					return new StringValue(getWebContents(arg0.getString()));
+				} else {
+					return new StringValue(getContents(getFile(arg0.getString())));
+				}
 			}
 			case "getparent": {
 				final ResoluteValue arg0 = args.get(0);
@@ -169,10 +179,44 @@ public class FileAccess extends ResoluteExternalFunctionLibrary {
 			final IFile f = ResourcesPlugin.getWorkspace().getRoot().getFile(p);
 			if (f.exists()) {
 				return f.getRawLocation().makeAbsolute().toFile();
+			} else {
+				return getFile(
+						ResourcesPlugin.getWorkspace().getRoot().getLocation().toPath() + File.separator + filename);
 			}
 		}
 
 		throw new Exception("Filename " + filename + " not found");
+
+	}
+
+	private boolean isUrl(String filename) {
+		try {
+			final URL url = new URL(filename);
+		} catch (MalformedURLException e) {
+			return false;
+		}
+		return true;
+	}
+
+	private String getWebContents(String filename) throws Exception {
+
+		final HttpClient client = HttpClient.newHttpClient();
+		final HttpRequest request = HttpRequest.newBuilder().uri(URI.create(filename)).build();
+
+		final HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+		final int statusCode = response.statusCode();
+
+		if (statusCode >= 200 && statusCode < 300) {
+			return response.body();
+		} else if (statusCode == 404) {
+			throw new Exception("File not found at " + filename);
+		} else if (statusCode >= 500) {
+			throw new Exception("Error on file server");
+		} else {
+			System.out.println("Unable to retrieve file at " + filename + " [status code " + statusCode + "]");
+			throw new Exception("Unable to retrieve file at " + filename);
+		}
 
 	}
 
