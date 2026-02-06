@@ -200,17 +200,23 @@ public class FileAccess extends ResoluteExternalFunctionLibrary {
 
 	private String getWebContents(String filename) throws Exception {
 
+		final HttpClient client = HttpClient.newHttpClient();
+		final HttpRequest request = HttpRequest.newBuilder().uri(URI.create(filename)).build();
 
-		HttpClient client = HttpClient.newHttpClient();
-		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(filename)).build();
+		final HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-		// Read the body as a String (for text files)
-		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+		final int statusCode = response.statusCode();
 
-		// Get the content in memory
-		String content = response.body();
-
-		return content;
+		if (statusCode >= 200 && statusCode < 300) {
+			return response.body();
+		} else if (statusCode == 404) {
+			throw new Exception("File not found at " + filename);
+		} else if (statusCode >= 500) {
+			throw new Exception("Error on file server");
+		} else {
+			System.out.println("Unable to retrieve file at " + filename + " [status code " + statusCode + "]");
+			throw new Exception("Unable to retrieve file at " + filename);
+		}
 
 	}
 
