@@ -10,6 +10,7 @@
 		<plugin name="com.rockwellcollins.atc.resolute.cli" version="1.0.201"/>
 		<plugin name="com.rockwellcollins.atc.resolute.stringlib" version="3.0.201"/>
 		<plugin name="com.rockwellcollins.atc.resolute.fileaccess" version="3.0.101"/>
+		<plugin name="com.rockwellcollins.atc.resolute.json" version="1.0.101"/>
 		<plugin name="com.rockwellcollins.atc.resolute.shellcmd" version="1.0.101"/>
 		<plugin name="com.rockwellcollins.atc.resolute.ui" version="5.0.101"/>
 		<plugin name="org.osate.resolute.help" version="3.0.101"/>
@@ -18,6 +19,7 @@
 	<plugin name="com.rockwellcollins.atc.resolute.analysis" version="3.0.201"/>
 	<plugin name="com.rockwellcollins.atc.resolute.cli" version="1.0.201"/>
 	<plugin name="com.rockwellcollins.atc.resolute.fileaccess" version="3.0.101"/>
+	<plugin name="com.rockwellcollins.atc.resolute.json" version="1.0.101"/>
 	<plugin name="com.rockwellcollins.atc.resolute.ngrep" version="3.0.101"/>
 	<plugin name="com.rockwellcollins.atc.resolute.schedule.analysis" version="3.0.101"/>
 	<plugin name="com.rockwellcollins.atc.resolute.shellcmd" version="1.0.101"/>
