@@ -869,7 +869,7 @@ if the the component instance has an error event with the specified error type. 
 []{#external-functions}
 
 External Functions
-------------------
+==================
 
 `analysis` (\<function: string\>, \<args\>): \<ResoluteValue\> - invocation of a Java
 function registered as an external function extension point. The
@@ -883,11 +883,184 @@ While the `analysis` capability in Resolute enables the execution of external pl
 Resolute external function library support provides a mechanism for packaging multiple functions into a single plugin, which can then be called in a Resolute claim using the syntax
 \<`LibraryName`\>`.`\<`LibraryFunction`\>`(Arg1, Arg2, ...)`
   
-For example, the concat function in string manipulation library is called as 
-`StringLib.concat(str1, str2)` 
+[]{#fileaccess}
 
-and returns a string.
+FileAccess Function Library
+---------------------------
 
+`FileAccess` provides read-only access to files and file attributes. Paths may be absolute or relative to the AADL project.
+
+`canExecute` (\<path: string\>) : bool – Returns whether the file is executable.
+
+`canRead` (\<path: string\>) : bool – Returns whether read permission exists.  
+
+`canWrite` (\<path: string\>) : bool – Returns whether write permission exists.  
+
+`compareTo` (\<path1: string\>, \<path2: string\>) : int – Compares two path names.  
+
+`fileExists` (\<path: string\>) : bool – Returns true if the file exists.  
+
+`getAbsolutePath` (\<path: string\>) : string – Returns absolute path.  
+
+`getContents` (\<path: string\>) : string – Returns file contents.  
+
+`getParent` (\<path: string\>) : string – Returns parent directory.  
+
+`getFreeSpace` (\<path: string\>) : int – Returns free bytes in the filesystem partition.  
+
+`getName` (\<path: string\>) : string – Returns filename only.  
+
+`getTotalSpace` (\<path: string\>) : int – Returns partition size in bytes.  
+
+`getUsableSpace` (\<path: string\>) : int – Returns usable free space in bytes.  
+
+`hashcode` (\<path: string\>) : int – Hashcode of pathname.  
+
+`isAbsolute` (\<path: string\>) : bool – Whether the path is absolute.  
+
+`isDirectory` (\<path: string\>) : bool – Whether the path is a directory.  
+
+`isFile` (\<path: string\>) : bool – Whether the path is a file.  
+
+`isHidden` (\<path: string\>) : bool – Whether the path is hidden.  
+
+`lastModified` (\<path: string\>) : int – Last modification time (ms since epoch).  
+
+`length` (\<path: string\>) : int – File length in bytes.  
+
+`list` (\<path: string\>) : [string] – List of files in a directory.
+
+
+[]{#json}
+
+Json Function Library
+---------------------
+
+Json provides functions for parsing JSON formatted strings.  The library also defines json_element, json_object, json_array, and json_primitive types for representing these common JSON structures in Resolute.  The JsonParser types and functions, along with their usage, are described below:
+
+**Json Types**
+
+`json_element` - Represents a JSON element, which is a super type of all other JSON types.
+
+`json_array` - Represents a JSON array.  json_array types in Resolute are interchangeable with Resolute list types.
+
+`json_object` - Represents a JSON object.
+
+`json_primitive` - Represents a JSON primitive.  
+
+**Json Functions**
+
+`get` (\<object : JsonParser.json_object/>, \<name : string/>) : JsonParser.json_element - Returns the member of the specified JSON object with the specified name.  The returned value is a json_element.  To ensure the JSON object has a member named s, the user should call hasMember() prior to calling get().  A Resolute exception will be thrown if the specified member does not exist. 
+
+`getArray` (\<object : JsonParser.json_object/>, \<name : string/>) : JsonParser.json_array - Convenience function to return the member of the specified JSON object with the specified name as a json_array.  To ensure the JSON object has a member named name, the user should call hasMember() prior to calling getArray().  To ensure the specified member is a JSON array, the user should call isArray() prior to calling getArray().  A Resolute exception will be thrown if the specified member does not exist or if the specified member is not an array.
+
+`getObject` (\<object : JsonParser.json_object/>, \<name : string/>) : JsonParser.json_object - Convenience function to return the member of the specified JSON object with the specified name as a json_object.  To ensure the JSON object has a member named name, the user should call hasMember() prior to calling getObject().  To ensure the specified member is a JSON object, the user should call isObject() prior to calling getObject().  A Resolute exception will be thrown if the specified member does not exist or if the specified member is not an object.
+
+`getPrimitive` (\<object : JsonParser.json_object/>, \<name : string/>) : JsonParser.json_primitive - Convenience function to return the member of the specified JSON object with the specified name as a json_primitive.  To ensure the JSON object has a member named name, the user should call hasMember() prior to calling getObject().  To ensure the specified member is a JSON primitive, the user should call isPrimitive() prior to calling getPrimitive().  A Resolute exception will be thrown if the specified member does not exist or if the specified member is not a primitive.
+
+`getBoolean` (\<object : JsonParser.json_object/>, \<name : string/>) : bool - Convenience function to return the member of the specified JSON object with the specified name as a bool.  To ensure the JSON object has a member named name, the user should call hasMember() prior to calling getBoolean().  To ensure the specified member is a Boolean, the user should call isBoolean() prior to calling getBoolean().  A Resolute exception will be thrown if the specified member does not exist or if the specified member is not a Boolean.
+
+`getInteger` (\<object : JsonParser.json_object/>, \<name : string/>) : int - Convenience function to return the member of the specified JSON object with the specified name as an int.  To ensure the JSON object has a member named name, the user should call hasMember() prior to calling getInteger().  To ensure the specified member is an integer, the user should call isInteger() prior to calling getInteger().  A Resolute exception will be thrown if the specified member does not exist or if the specified member is not an integer.
+
+`getReal` (\<object : JsonParser.json_object/>, \<name : string/>) : real - Convenience function to return the member of the specified JSON object with the specified name as a real.  To ensure the JSON object has a member named name, the user should call hasMember() prior to calling getReal().  To ensure the specified member is a real, the user should call isReal() prior to calling getReal().  A Resolute exception will be thrown if the specified member does not exist or if the specified member is not a real.
+
+`getString` (\<object : JsonParser.json_object/>, \<name : string/>) : string - Convenience function to return the member of the specified JSON object with the specified name as a string.  To ensure the JSON object has a member name, the user should call hasMember() prior to calling getString().  To ensure the specified member is a string, the user should call isString() prior to calling getString().  A Resolute exception will be thrown if the specified member does not exist or if the specified member is not a string.
+
+`hasMember` (\<object : JsonParser.json_object/>, \<name : string/>) : bool - Returns true if the specified JSON object contains a member with the specified name, and false otherwise.
+
+`isArray` (\<element : JsonParser.json_element/>) : bool - Returns true if the specified JSON element is an array, and false otherwise.
+
+`isObject` (\<element : JsonParser.json_element/>) : bool - Returns true if the specified JSON element is an object, and false otherwise.
+
+`isPrimitive` (\<element : JsonParser.json_element/>) : bool - Returns true if the specified JSON element is a primitive, and false otherwise.
+
+`isBoolean` (\<element : JsonParser.json_element/>) : bool - Returns true if the specified JSON element is a Boolean, and false otherwise.
+
+`isInteger` (\<element : JsonParser.json_element/>) : bool - Returns true if the specified JSON element is an integer, and false otherwise.
+
+`isNull` (\<element : JsonParser.json_element/>) : bool - Returns true if the specified JSON element is null, and false otherwise.
+
+`isReal` (\<element : JsonParser.json_element/>) : bool - Returns true if the specified JSON element is a real, and false otherwise.
+
+`isString` (\<element : JsonParser.json_element/>) : bool - Returns true if the specified JSON element is a string, and false otherwise.
+
+`parse` (\<s : string/>) : JsonParser.json_element - Parses a JSON string, s into a json_element.  A Resolute exception will be thrown if the specified string is not valid JSON.
+
+`toArray` (\<element : JsonParser.json_element/>) : JsonParser.json_array - Returns the specified JSON element as a json_array.  To ensure the specified element is a JSON array, the user should call isArray() prior to calling toArray().  A Resolute exception will be thrown if the specified element is not an array.
+
+`toObject` (\<element : JsonParser.json_element/>) : JsonParser.json_object - Returns the specified JSON element as a json_object.  To ensure the specified element is a JSON object, the user should call isObject() prior to calling toObject().  A Resolute exception will be thrown if the specified element is not an object.
+
+`toPrimitive` (\<element : JsonParser.json_element/>) : JsonParser.json_primitive - Returns the specified JSON element as a json_primitive.  To ensure the specified element is a JSON primitive, the user should call isPrimitive() prior to calling toPrimitive().  A Resolute exception will be thrown if the specified element is not a primitive.
+
+`toBoolean` (\<element : JsonParser.json_element/>) : bool - Returns the specified JSON element as a bool.  To ensure the specified element is a Boolean, the user should call isBoolean() prior to calling toBoolean().  A Resolute exception will be thrown if the specified element is not a Boolean.
+
+
+`toInteger` (\<element : JsonParser.json_element/>) : int - Returns the specified JSON element as an int.  To ensure the specified element is an integer, the user should call isInteger() prior to calling toInteger().  A Resolute exception will be thrown if the specified element is not an integer.
+
+
+`toReal` (\<element : JsonParser.json_element/>) : real - Returns the specified JSON element as a real.  To ensure the specified element is a real, the user should call isReal() prior to calling toReal().  A Resolute exception will be thrown if the specified element is not a real.
+
+`toString` (\<element : JsonParser.json_element/>) : string - Returns the specified JSON element as a string.  To ensure the specified element is a string, the user should call isString() prior to calling toString().  A Resolute exception will be thrown if the specified element is not a string.
+
+
+
+[]{#shellcmd}
+
+ShellCmd Function Library
+-------------------------
+
+The ShellCmd library provides functions for executing shell commands and processing return values.  Due to potential security implications, shell command execution must be explicitly enabled, either on the Resolute preference page, or from the command line using the 
+`-enableShellCmd` flag.
+
+**ShellCmd Types**
+
+`shell_return_type` - Record containing return code and output of executed command.
+
+**ShellCmd Functions**
+
+`exec` (\<s : string\>) : ShellCmd.shell_return_type - Executes the specified shell command, s.  The shell command should include any necessary command line arguments, separated with space characters.  The return code and output resulting from the `exec()` call are stored in the `shell_return_type`.
+
+`get_return_code` (\<returnValue : ShellCmd.shell_return_type\>) : int - Returns the shell command execution return code from the specified `returnValue`.
+
+`get_output` (\<returnValue : ShellCmd.shell_return_type\>) : string - Returns the shell command execution output from the specified `returnValue`.
+
+
+[]{#stringlib}
+
+StringLib Function Library
+--------------------------
+
+`StringLib` is a Resolute Function Library for string manipulation. It contains many of the basic functions found in the Java `String` class.
+
+`concat` (\<s1 : string\>, \<s2 : string\>) : string - Returns the concatenation of string s2 to the end of s1.
+
+`contains` (\<s1 : string\>, \<s2 : string\>) : bool - Returns true only if string s2 is contained within string s1.  Returns false otherwise.
+
+`endsWith` (\<s1 : string\>, \<s2 : string\>) : bool - Returns true only if string s1 ends with string s2.  Returns false otherwise.
+
+`hashCode` (\<s : string\>) : int - Returns the hashcode for string s.
+
+`indexOf` (\<s1 : string\>, \<s2 : string\>) : int - Returns the index within string s1 of the first occurrence of string s2.
+
+`lastIndexOf` (\<s1 : string\>, \<s2 : string\>) : int - Returns the index within string s1 of the last occurrence of string s2.
+
+`stringLength` (\<s : string\>) : int - Returns the length of string s.  Note that this library method name differs from the name in the java.lang package.  This is necessary to avoid conflict with the Resolute built-in length() function.
+
+`matches` (\<s1 : string\>, \<s2 : string\>) : bool - Returns true if string s1 matches the regular expression given in string s2.  Returns false otherwise.
+
+`replace` (\<s1 : string\>, \<s2 : string\>, \<s3, string\>) : string - Replaces each substring s2 in string s1 that matches the literal target sequence with the literal replacement sequence specified in string s3. The replacement proceeds from the beginning of the string to the end.  The modified string is returned.
+
+`split` (\<s1 : string\>, \<s2 : string\>) : [string] - Returns a list of strings that results from splitting string s1 around matches of the given regular expression specified in string s2.
+
+`startsWith` (\<s1 : string\>, \<s2 : string\>) : bool - Returns true only if string s1 starts with the substring s2.  Returns false otherwise.
+
+`substring` (\<s : string\>, \<i1 : int\>, \<i2 : int\>) : string - Returns a string that is a substring of string s. The substring begins at index i1 and extends to the character at index i2 - 1 of string s. The length of the returned substring is therefore i2 - i1.
+
+`toLowerCase` (\<s : string\>) : string - Converts all of the characters in string s to lower case and returns the string.
+
+`toUpperCase` (\<s : string\>) : string - Converts all of the characters in string s to upper case and returns the string.
+
+`trim` (\<s : string\>) : string - Returns string s, with any leading and trailing whitespace removed.
 
 
 []{#debug-functions}
